@@ -1,0 +1,5368 @@
+
+    #lv-86801dde34c6 { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* Liens du menu principal */
+    #lv-86801dde34c6 .footer-nav-link {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 2px;
+        transition: color 0.3s ease;
+    }
+    #lv-86801dde34c6 .footer-nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 1px;
+        bottom: 0;
+        left: 50%;
+        background-color: #9d623d;
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+    #lv-86801dde34c6 .footer-nav-link:hover {
+        color: #9d623d;
+    }
+    #lv-86801dde34c6 .footer-nav-link:hover::after {
+        width: 100%;
+    }
+
+    /* Liens d'action (Réservations) */
+    #lv-86801dde34c6 .footer-action-link {
+        display: inline-block;
+        border-bottom: 1px solid rgba(113, 53, 6, 0.3);
+        padding-bottom: 4px;
+        transition: all 0.3s ease;
+    }
+    #lv-86801dde34c6 .footer-action-link:hover {
+        color: #9d623d;
+        border-color: #9d623d;
+        transform: translateY(-2px);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        #lv-86801dde34c6 .footer-nav-link,#lv-86801dde34c6 
+        .footer-nav-link::after,#lv-86801dde34c6 
+        .footer-action-link,#lv-86801dde34c6 
+        .tripadvisor-badge img {
+            transition: none !important;
+        }
+    }
+
+
+    #lv-452a4a4cd6fa { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- CADRE VIDÉO FENÊTRE EN ARCHE ÉPURÉE --- */
+    #lv-452a4a4cd6fa .arched-video-frame {
+        position: relative;
+        background: #ffffff;
+        padding: 10px;
+        border-radius: 140px 140px 0 0;
+        border: 1px solid #713506;
+        box-shadow: 0 25px 50px -12px rgba(113, 53, 6, 0.15);
+        overflow: hidden;
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+        margin: 3rem auto;
+        max-width: 380px;
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    #lv-452a4a4cd6fa .arched-video-frame.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    #lv-452a4a4cd6fa .arched-video-frame:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 30px 60px -15px rgba(113, 53, 6, 0.25);
+    }
+    #lv-452a4a4cd6fa .arched-video-frame::before {
+        content: '';
+        position: absolute;
+        top: 8px; bottom: 8px; left: 8px; right: 8px;
+        border: 1px solid rgba(157, 98, 61, 0.6);
+        border-radius: 132px 132px 0 0;
+        pointer-events: none;
+        z-index: 30;
+    }
+    #lv-452a4a4cd6fa .video-mask {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 9/16;
+        border-radius: 130px 130px 0 0;
+        overflow: hidden;
+        background-color: #000;
+    }
+    #lv-452a4a4cd6fa .video-mask video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        z-index: 10;
+        position: relative;
+    }
+
+    /* --- BOUTONS PREMIUM (GLASSMORPHISM) --- */
+    #lv-452a4a4cd6fa .glass-btn {
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        color: #ffffff;
+        transition: all 0.3s ease;
+    }
+    #lv-452a4a4cd6fa .glass-btn:hover {
+        background: rgba(255, 255, 255, 0.9);
+        color: #713506;
+        transform: scale(1.1);
+    }
+    #lv-452a4a4cd6fa .video-controls {
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+    #lv-452a4a4cd6fa .arched-video-frame:hover .video-controls {
+        opacity: 1;
+    }
+
+    /* --- LETTRINE (Drop Cap) --- */
+    #lv-452a4a4cd6fa .drop-cap::first-letter {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5.5rem;
+        float: left;
+        line-height: 0.85;
+        margin-right: 0.5rem;
+        color: #9d623d;
+    }
+    
+    /* Style éditorial pour l'encart d'information */
+    #lv-452a4a4cd6fa .info-card {
+        background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(157, 98, 61, 0.1) 39px, rgba(157, 98, 61, 0.1) 40px);
+        background-color: #ffffff;
+        border: 1px solid rgba(113, 53, 6, 0.2);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        #lv-452a4a4cd6fa .arched-video-frame,#lv-452a4a4cd6fa 
+        .glass-btn,#lv-452a4a4cd6fa 
+        .video-controls,#lv-452a4a4cd6fa 
+        .hover\:scale-105 {
+            transition: none !important;
+        }
+    }
+
+
+    #lv-504180465d18 { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    #lv-504180465d18 .arched-video-frame {
+        position: relative;
+        background: #ffffff;
+        padding: 10px;
+        border-radius: 140px 140px 0 0;
+        border: 1px solid #713506;
+        box-shadow: 0 25px 50px -12px rgba(113, 53, 6, 0.15);
+        overflow: hidden;
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    #lv-504180465d18 .arched-video-frame:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 30px 60px -15px rgba(113, 53, 6, 0.25);
+    }
+
+    #lv-504180465d18 .arched-video-frame::before {
+        content: '';
+        position: absolute;
+        top: 8px;
+        bottom: 8px;
+        left: 8px;
+        right: 8px;
+        border: 1px solid rgba(157, 98, 61, 0.6);
+        border-radius: 132px 132px 0 0;
+        pointer-events: none;
+        z-index: 30;
+    }
+
+    #lv-504180465d18 .video-mask {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 9/16;
+        border-radius: 130px 130px 0 0;
+        overflow: hidden;
+        background-color: #000;
+    }
+
+    #lv-504180465d18 .video-mask video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        z-index: 10;
+        position: relative;
+    }
+
+    #lv-504180465d18 .glass-btn {
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        color: #ffffff;
+        transition: all 0.3s ease;
+    }
+
+    #lv-504180465d18 .glass-btn:hover {
+        background: rgba(255, 255, 255, 0.9);
+        color: #713506;
+        transform: scale(1.08);
+    }
+
+    #lv-504180465d18 .video-controls {
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    #lv-504180465d18 .arched-video-frame:hover .video-controls {
+        opacity: 1;
+    }
+
+    #lv-504180465d18 .drop-cap::first-letter {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5.5rem;
+        float: left;
+        line-height: 0.85;
+        margin-right: 0.5rem;
+        color: #9d623d;
+    }
+
+    @media (max-width: 767px) {
+        #lv-504180465d18 .drop-cap::first-letter {
+            font-size: 4.3rem;
+        }
+    }
+
+
+    #lv-f455a44a6f39 { margin: 0; padding: 0; }
+
+
+  #lv-012d39e69969 {
+    scroll-behavior: smooth;
+  }
+
+  #lv-012d39e69969 .lv-press-wrap {
+    position: relative;
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    background: #fcf9f3;
+    font-family: "Playfair Display", serif;
+    overflow: visible;
+  }
+
+  #lv-012d39e69969 .lv-press-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1px;
+    background: rgba(113, 53, 6, 0.28);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  #lv-012d39e69969 .lv-header {
+    position: relative;
+    z-index: 60;
+    background: #fcf9f3;
+  }
+
+  #lv-012d39e69969 .lv-header-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+  }
+
+  #lv-012d39e69969 .lv-header-left,#lv-012d39e69969 
+  .lv-header-center,#lv-012d39e69969 
+  .lv-header-right {
+    position: relative;
+    z-index: 3;
+    background: #fcf9f3;
+  }
+
+  #lv-012d39e69969 .lv-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-right: 12px;
+  }
+
+  #lv-012d39e69969 .lv-header-center {
+    padding: 0 16px;
+  }
+
+  #lv-012d39e69969 .lv-header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-left: 12px;
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 11px;
+  }
+
+  #lv-012d39e69969 .lv-header-link,#lv-012d39e69969 
+  .lv-social-link,#lv-012d39e69969 
+  .lv-menu-summary {
+    color: #713506;
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+
+  #lv-012d39e69969 .lv-header-link:hover,#lv-012d39e69969 
+  .lv-social-link:hover,#lv-012d39e69969 
+  .lv-menu-summary:hover {
+    color: #9d623d;
+  }
+
+  #lv-012d39e69969 .lv-socials {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  #lv-012d39e69969 .lv-logo {
+    display: block;
+    height: 230px;
+    object-fit: contain;
+  }
+
+  #lv-012d39e69969 .lv-menu-details {
+    position: relative;
+  }
+
+  #lv-012d39e69969 .lv-menu-summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  #lv-012d39e69969 .lv-menu-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  #lv-012d39e69969 .lv-menu-panel {
+    display: none;
+    position: absolute;
+    top: calc(100% + 14px);
+    left: 0;
+    width: min(360px, calc(100vw - 32px));
+    background: #fcf9f3;
+    border: 1px solid rgba(157, 98, 61, 0.18);
+    box-shadow: 0 18px 40px rgba(113, 53, 6, 0.12);
+    z-index: 80;
+  }
+
+  #lv-012d39e69969 .lv-menu-details[open] .lv-menu-panel {
+    display: block;
+  }
+
+  #lv-012d39e69969 .lv-menu-panel a {
+    display: block;
+    padding: 14px 32px;
+    color: #713506;
+    text-decoration: none;
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+
+  #lv-012d39e69969 .lv-menu-panel a:hover {
+    background: #f5f0ea;
+    color: #9d623d;
+  }
+
+  #lv-012d39e69969 .lv-hero {
+    position: relative;
+    width: 100%;
+    min-height: 58vh;
+    height: 58vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #lv-012d39e69969 .lv-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  #lv-012d39e69969 .lv-hero-bg img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #lv-012d39e69969 .lv-hero-img-desktop {
+    display: block;
+    object-position: center 34%;
+  }
+
+  #lv-012d39e69969 .lv-hero-img-mobile {
+    display: none;
+    object-position: center 20%;
+  }
+
+  #lv-012d39e69969 .lv-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(113, 53, 6, 0.38);
+  }
+
+  #lv-012d39e69969 .lv-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 20px;
+  }
+
+  #lv-012d39e69969 .lv-hero-title {
+    margin: 0 0 16px;
+    font-family: "Great Vibes", cursive;
+    font-weight: 400;
+    line-height: 0.95;
+    color: #ffffff;
+    font-size: clamp(64px, 10vw, 150px);
+    text-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  }
+
+  #lv-012d39e69969 .lv-hero-subtitle {
+    margin: 0;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    color: #f5f0ea;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-size: clamp(11px, 1.2vw, 16px);
+  }
+
+  #lv-012d39e69969 .lv-subnav {
+    background: #713506;
+    color: #f5f0ea;
+    padding: 22px 16px;
+    border-bottom: 1px solid rgba(157, 98, 61, 0.3);
+    box-shadow: 0 8px 24px rgba(113, 53, 6, 0.12);
+  }
+
+  #lv-012d39e69969 .lv-subnav ul {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 1100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px 48px;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 12px;
+  }
+
+  #lv-012d39e69969 .lv-subnav a {
+    color: #f5f0ea;
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+
+  #lv-012d39e69969 .lv-subnav a:hover {
+    color: #9d623d;
+  }
+
+  @media (min-width: 768px) {
+    #lv-012d39e69969 .lv-header-inner {
+      padding: 20px 40px;
+    }
+
+    #lv-012d39e69969 .lv-logo {
+      height: 240px;
+    }
+
+    #lv-012d39e69969 .lv-header-left {
+      gap: 20px;
+    }
+
+    #lv-012d39e69969 .lv-header-right {
+      gap: 20px;
+      font-size: 12px;
+    }
+
+    #lv-012d39e69969 .lv-hero {
+      min-height: 72vh;
+      height: 72vh;
+    }
+
+    #lv-012d39e69969 .lv-subnav ul {
+      gap: 32px 64px;
+      font-size: 13px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    #lv-012d39e69969 .lv-header-inner {
+      padding: 24px 56px;
+    }
+
+    #lv-012d39e69969 .lv-logo {
+      height: 288px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    #lv-012d39e69969 .lv-logo {
+      height: 320px;
+    }
+
+    #lv-012d39e69969 .lv-hero {
+      min-height: 76vh;
+      height: 76vh;
+    }
+  }
+
+  @media (max-width: 767px) {
+    #lv-012d39e69969 .lv-header-inner {
+      padding: 7px 14px;
+      gap: 4px;
+    }
+
+    #lv-012d39e69969 .lv-header-left {
+      flex: 0 0 auto;
+      gap: 0;
+      padding-right: 0;
+    }
+
+    #lv-012d39e69969 .lv-header-center {
+      flex: 1 1 auto;
+      min-width: 0;
+      display: flex;
+      justify-content: center;
+      padding: 0 0 0 6px;
+    }
+
+    #lv-012d39e69969 .lv-header-right,#lv-012d39e69969 
+    .lv-socials {
+      display: none !important;
+    }
+
+    #lv-012d39e69969 .lv-logo {
+      height: 128px;
+      max-width: 86vw;
+    }
+
+    #lv-012d39e69969 .lv-menu-panel {
+      left: 0;
+      width: calc(100vw - 24px);
+    }
+
+    #lv-012d39e69969 .lv-hero {
+      min-height: 70vh;
+      height: 70vh;
+    }
+
+    #lv-012d39e69969 .lv-hero-img-desktop {
+      display: none;
+    }
+
+    #lv-012d39e69969 .lv-hero-img-mobile {
+      display: block;
+      object-fit: cover;
+      object-position: center 20%;
+    }
+
+    #lv-012d39e69969 .lv-hero-title {
+      font-size: clamp(56px, 14vw, 90px);
+      margin-bottom: 10px;
+    }
+
+    #lv-012d39e69969 .lv-hero-subtitle {
+      letter-spacing: 0.16em;
+      font-size: 11px;
+    }
+
+    #lv-012d39e69969 .lv-subnav {
+      padding: 16px 12px;
+    }
+
+    #lv-012d39e69969 .lv-subnav ul {
+      gap: 16px 18px;
+      letter-spacing: 0.12em;
+      font-size: 10px;
+    }
+  }
+
+
+    #lv-e90b73d4b021 { margin: 0; padding: 0; background-color: #fcf9f3; }
+    
+    /* Lettrine élégante pour le début du texte */
+    #lv-e90b73d4b021 .drop-cap::first-letter {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5rem;
+        float: left;
+        line-height: 0.8;
+        margin-right: 0.5rem;
+        color: #9d623d;
+    }
+
+
+    #lv-3d26872be5d4 { margin: 0; padding: 0; }
+
+    /* --- FILTRE ÉLÉGANT SANS BUG DE COULEUR (PALACE STYLE) --- */
+    #lv-3d26872be5d4 .village-img-wrapper {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    /* Calque de fusion cuivré signature (Archive) */
+    #lv-3d26872be5d4 .village-img-wrapper::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: #9d623d; /* Cuivré */
+        mix-blend-mode: color;
+        opacity: 0.85;
+        transition: opacity 0.8s ease;
+        pointer-events: none;
+        z-index: 10;
+    }
+    
+    /* Voile de texture ancienne */
+    #lv-3d26872be5d4 .village-img-wrapper::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: rgba(113, 53, 6, 0.15); 
+        transition: opacity 0.8s ease;
+        pointer-events: none;
+        z-index: 11;
+    }
+    
+    /* Déclenchement au SURVOL de la souris OU au SCROLL (.is-visible) */
+    #lv-3d26872be5d4 .group:hover .village-img-wrapper::after,#lv-3d26872be5d4 
+    .group:hover .village-img-wrapper::before,#lv-3d26872be5d4 
+    .group.is-visible .village-img-wrapper::after,#lv-3d26872be5d4 
+    .group.is-visible .village-img-wrapper::before {
+        opacity: 0;
+    }
+
+    /* Mouvement de l'image doux et luxueux */
+    #lv-3d26872be5d4 .village-img {
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: transform;
+    }
+    
+    /* Zoom au SURVOL ou au SCROLL */
+    #lv-3d26872be5d4 .group:hover .village-img,#lv-3d26872be5d4 
+    .group.is-visible .village-img {
+        transform: scale(1.05);
+    }
+
+
+    #lv-50ef8f374aca { margin: 0; padding: 0; }
+    
+    /* --- FILTRE ÉLÉGANT SANS BUG DE COULEUR (PALACE STYLE) --- */
+    #lv-50ef8f374aca .village-img-wrapper {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    /* Calque de fusion cuivré signature (Archive) */
+    #lv-50ef8f374aca .village-img-wrapper::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: #9d623d; /* Cuivré */
+        mix-blend-mode: color;
+        opacity: 0.85;
+        transition: opacity 0.8s ease;
+        pointer-events: none;
+        z-index: 10;
+    }
+    
+    /* Voile de texture ancienne */
+    #lv-50ef8f374aca .village-img-wrapper::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: rgba(113, 53, 6, 0.15); 
+        transition: opacity 0.8s ease;
+        pointer-events: none;
+        z-index: 11;
+    }
+    
+    /* Déclenchement au SURVOL de la souris OU au SCROLL (.is-visible) */
+    #lv-50ef8f374aca .group:hover .village-img-wrapper::after,#lv-50ef8f374aca 
+    .group:hover .village-img-wrapper::before,#lv-50ef8f374aca 
+    .group.is-visible .village-img-wrapper::after,#lv-50ef8f374aca 
+    .group.is-visible .village-img-wrapper::before {
+        opacity: 0;
+    }
+
+    /* Mouvement de l'image doux et luxueux */
+    #lv-50ef8f374aca .village-img {
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: transform;
+    }
+    
+    /* Zoom au SURVOL ou au SCROLL */
+    #lv-50ef8f374aca .group:hover .village-img,#lv-50ef8f374aca 
+    .group.is-visible .village-img {
+        transform: scale(1.05);
+    }
+
+
+    #lv-737133057412 { margin: 0; padding: 0; }
+
+    /* --- CADRE VIDÉO FENÊTRE EN ARCHE ÉPURÉE --- */
+    #lv-737133057412 .arched-video-frame {
+        position: relative;
+        background: #ffffff;
+        padding: 10px;
+        border-radius: 140px 140px 0 0;
+        border: 1px solid #713506;
+        box-shadow: 0 25px 50px -12px rgba(113, 53, 6, 0.15);
+        overflow: hidden;
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+        opacity: 0;
+        transform: translateY(40px); /* Pour l'animation d'apparition douce */
+    }
+    
+    /* Animation déclenchée au scroll */
+    #lv-737133057412 .arched-video-frame.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    #lv-737133057412 .arched-video-frame:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 30px 60px -15px rgba(113, 53, 6, 0.25);
+    }
+
+    /* La bordure cuivrée interne très fine et chic */
+    #lv-737133057412 .arched-video-frame::before {
+        content: '';
+        position: absolute;
+        top: 8px; bottom: 8px; left: 8px; right: 8px;
+        border: 1px solid rgba(157, 98, 61, 0.6); /* Accent cuivré léger */
+        border-radius: 132px 132px 0 0;
+        pointer-events: none;
+        z-index: 30;
+    }
+
+    /* Masque intérieur */
+    #lv-737133057412 .video-mask {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 9/16;
+        border-radius: 130px 130px 0 0;
+        overflow: hidden;
+        background-color: #000;
+    }
+    
+    #lv-737133057412 .video-mask video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        z-index: 10;
+        position: relative;
+        transition: filter 0.5s ease;
+    }
+
+    /* --- BOUTONS PREMIUM (GLASSMORPHISM) --- */
+    #lv-737133057412 .glass-btn {
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        color: #ffffff;
+        transition: all 0.3s ease;
+    }
+    #lv-737133057412 .glass-btn:hover {
+        background: rgba(255, 255, 255, 0.9);
+        color: #713506; /* Devient marron foncé au survol */
+        transform: scale(1.1);
+    }
+
+    /* Contrôles cachés par défaut pour épurer l'image, visibles au survol */
+    #lv-737133057412 .video-controls {
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+    #lv-737133057412 .arched-video-frame:hover .video-controls {
+        opacity: 1;
+    }
+
+
+    #lv-84d40bd136ff { margin: 0; padding: 0; }
+
+
+    #lv-85d4bceb726a { margin: 0; padding: 0; }
+    
+    /* --- FILTRE ÉLÉGANT SANS BUG DE COULEUR (PALACE STYLE) --- */
+    #lv-85d4bceb726a .village-img-wrapper {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    /* Calque de fusion cuivré signature (Archive) */
+    #lv-85d4bceb726a .village-img-wrapper::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: #9d623d; /* Cuivré */
+        mix-blend-mode: color;
+        opacity: 0.85;
+        transition: opacity 0.8s ease;
+        pointer-events: none;
+        z-index: 10;
+    }
+    
+    /* Voile de texture ancienne pour la profondeur */
+    #lv-85d4bceb726a .village-img-wrapper::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: rgba(113, 53, 6, 0.15); 
+        transition: opacity 0.8s ease;
+        pointer-events: none;
+        z-index: 11;
+    }
+    
+    /* Déclenchement au SURVOL de la souris OU au SCROLL (.is-visible) */
+    #lv-85d4bceb726a .group:hover .village-img-wrapper::after,#lv-85d4bceb726a 
+    .group:hover .village-img-wrapper::before,#lv-85d4bceb726a 
+    .group.is-visible .village-img-wrapper::after,#lv-85d4bceb726a 
+    .group.is-visible .village-img-wrapper::before {
+        opacity: 0;
+    }
+
+    /* Mouvement de l'image doux et luxueux */
+    #lv-85d4bceb726a .village-img {
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: transform;
+    }
+    
+    /* Zoom au SURVOL ou au SCROLL */
+    #lv-85d4bceb726a .group:hover .village-img,#lv-85d4bceb726a 
+    .group.is-visible .village-img {
+        transform: scale(1.05);
+    }
+
+
+    #lv-f9c85bbb6b4a { margin: 0; padding: 0; }
+
+    /* --- DESIGN ARCHE SOBRE ET ÉLÉGANT --- */
+    #lv-f9c85bbb6b4a .mini-arched-video {
+        position: relative;
+        background: #ffffff; /* Passe-partout blanc pur et sobre */
+        padding: 8px; /* Finesse du cadre */
+        border-radius: 120px 120px 0 0;
+        border: 1px solid #713506; /* Ligne marron signature */
+        box-shadow: 0 15px 30px -10px rgba(113, 53, 6, 0.10); /* Ombre très douce */
+        overflow: hidden;
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+        margin: 10px auto 0;
+        max-width: 220px; 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    
+    #lv-f9c85bbb6b4a .mini-arched-video.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    #lv-f9c85bbb6b4a .mini-arched-video:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px -12px rgba(113, 53, 6, 0.18);
+    }
+
+    /* Liseré cuivré intérieur très discret */
+    #lv-f9c85bbb6b4a .mini-arched-video::before {
+        content: '';
+        position: absolute;
+        top: 6px; bottom: 6px; left: 6px; right: 6px;
+        border: 1px solid rgba(157, 98, 61, 0.4);
+        border-radius: 114px 114px 0 0;
+        pointer-events: none;
+        z-index: 30;
+    }
+
+    /* Masque de la vidéo */
+    #lv-f9c85bbb6b4a .mini-video-mask {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 9/16;
+        border-radius: 112px 112px 0 0;
+        overflow: hidden;
+        background-color: #000;
+    }
+    
+    #lv-f9c85bbb6b4a .mini-video-mask video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        z-index: 10;
+        position: relative;
+    }
+
+    /* Voile sombre subtil en bas pour faire ressortir les boutons en verre au survol */
+    #lv-f9c85bbb6b4a .mini-video-mask::after {
+        content: '';
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        height: 35%;
+        background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%);
+        pointer-events: none;
+        z-index: 20;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+    #lv-f9c85bbb6b4a .mini-arched-video:hover .mini-video-mask::after {
+        opacity: 1;
+    }
+
+    /* --- BOUTONS PREMIUM (GLASSMORPHISM) --- */
+    #lv-f9c85bbb6b4a .glass-btn-mini {
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        color: #ffffff;
+        transition: all 0.3s ease;
+        padding: 8px;
+        position: relative;
+        z-index: 40;
+    }
+    #lv-f9c85bbb6b4a .glass-btn-mini:hover {
+        background: #ffffff;
+        color: #713506;
+        transform: scale(1.15);
+    }
+
+    #lv-f9c85bbb6b4a .video-controls {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.5s ease;
+    }
+    #lv-f9c85bbb6b4a .mini-arched-video:hover .video-controls {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+
+    #lv-2a438d69744f { margin: 0; padding: 0; }
+
+    #lv-2a438d69744f .room-tabs-scroll {
+        display: flex;
+        gap: 14px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 4px;
+        justify-content: flex-start;
+    }
+
+    #lv-2a438d69744f .room-tabs-scroll::-webkit-scrollbar {
+        display: none;
+    }
+
+    #lv-2a438d69744f .vh-gallery-shell {
+        width: 100%;
+    }
+
+    #lv-2a438d69744f .vh-gallery-main-wrap {
+        position: relative;
+        overflow: hidden;
+        background: rgba(0, 0, 0, 0.08);
+    }
+
+    #lv-2a438d69744f .vh-gallery-main-btn {
+        width: 100%;
+        border: 0;
+        padding: 0;
+        background: transparent;
+        display: block;
+        cursor: default;
+    }
+
+    #lv-2a438d69744f .vh-gallery-main-image {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+        display: block;
+    }
+
+    #lv-2a438d69744f .vh-gallery-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 5;
+        border: 0;
+        background: rgba(255, 255, 255, 0.72);
+        color: rgba(113, 53, 6, 0.82);
+        width: 34px;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.2s ease, opacity 0.2s ease;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+        border-radius: 999px;
+        backdrop-filter: blur(2px);
+    }
+
+    #lv-2a438d69744f .vh-gallery-arrow:hover {
+        background: rgba(255, 255, 255, 0.88);
+    }
+
+    #lv-2a438d69744f .vh-gallery-arrow-left {
+        left: 10px;
+    }
+
+    #lv-2a438d69744f .vh-gallery-arrow-right {
+        right: 10px;
+    }
+
+    #lv-2a438d69744f .vh-gallery-counter {
+        position: absolute;
+        right: 12px;
+        bottom: 12px;
+        z-index: 5;
+        background: rgba(0, 0, 0, 0.46);
+        color: #ffffff;
+        font-family: "Lato", sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        padding: 7px 10px;
+    }
+
+    #lv-2a438d69744f .vh-gallery-thumbs {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        padding-top: 14px;
+    }
+
+    #lv-2a438d69744f .vh-gallery-thumbs::-webkit-scrollbar {
+        display: none;
+    }
+
+    #lv-2a438d69744f .vh-thumb-btn {
+        flex: 0 0 auto;
+        width: 74px;
+        height: 74px;
+        border: 1px solid rgba(245, 240, 234, 0.18);
+        overflow: hidden;
+        opacity: 0.72;
+        transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+        background: transparent;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    #lv-2a438d69744f .vh-thumb-btn img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    #lv-2a438d69744f .vh-thumb-btn.is-active {
+        opacity: 1;
+        border-color: #9d623d;
+        transform: translateY(-1px);
+    }
+
+    #lv-2a438d69744f .vh-thumb-btn:hover {
+        opacity: 1;
+    }
+
+    @media (min-width: 768px) {
+        #lv-2a438d69744f .vh-gallery-main-image {
+            height: 460px;
+        }
+
+        #lv-2a438d69744f .vh-thumb-btn {
+            width: 90px;
+            height: 90px;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        #lv-2a438d69744f .vh-gallery-main-image {
+            height: 520px;
+        }
+
+        #lv-2a438d69744f .vh-gallery-arrow {
+            opacity: 0;
+        }
+
+        #lv-2a438d69744f .vh-gallery-main-wrap:hover .vh-gallery-arrow {
+            opacity: 1;
+        }
+    }
+
+    @media (max-width: 767px) {
+        #lv-2a438d69744f .vh-gallery-main-image {
+            height: 320px;
+        }
+
+        #lv-2a438d69744f .vh-gallery-arrow {
+            opacity: 1;
+            width: 32px;
+            height: 32px;
+        }
+    }
+
+
+    #lv-b6673ed595c7 { margin: 0; padding: 0; }
+
+
+    #lv-09f213954d45 { margin: 0; padding: 0; }
+
+
+#lv-46915d34a5d1 {
+    margin: 0;
+    padding: 0;
+    background-color: #fcf9f3;
+}
+
+
+/* ===================================================================== */
+/* LETTRINE                                                              */
+/* ===================================================================== */
+
+#lv-46915d34a5d1 .drop-cap::first-letter {
+    font-family: 'Great Vibes', cursive;
+    font-size: 5.5rem;
+    float: left;
+    line-height: 0.85;
+    margin-right: 0.5rem;
+    color: #9d623d;
+}
+
+
+/* ===================================================================== */
+/* CTA / LIENS                                                           */
+/* ===================================================================== */
+
+#lv-46915d34a5d1 .nav-links-village {
+    text-align: center !important;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+}
+
+
+#lv-46915d34a5d1 .nav-links-village .nav-col {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
+
+@media (min-width: 768px) {
+
+    #lv-46915d34a5d1 .nav-links-village .nav-col {
+        flex-direction: row !important;
+        justify-content: center !important;
+        gap: 28px !important;
+    }
+
+}
+
+
+#lv-46915d34a5d1 .nav-links-village .village-link {
+    color: #713506 !important;
+    text-decoration: none !important;
+    font-weight: 500 !important;
+    display: inline-block !important;
+    position: relative !important;
+    padding-bottom: 3px !important;
+    white-space: nowrap !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 13px !important;
+}
+
+
+#lv-46915d34a5d1 .nav-links-village .village-link::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 0 !important;
+    height: 1px !important;
+    background: #9d623d !important;
+    transition: width .28s ease !important;
+}
+
+
+#lv-46915d34a5d1 .nav-links-village .village-link:hover::after {
+    width: 100% !important;
+}
+
+
+/* ===================================================================== */
+/* ENCART INFORMATIONS                                                   */
+/* ===================================================================== */
+
+#lv-46915d34a5d1 .info-card {
+
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 39px,
+            rgba(157,98,61,.08) 39px,
+            rgba(157,98,61,.08) 40px
+        );
+
+    background-color: #ffffff;
+    border: 1px solid rgba(113,53,6,.2);
+}
+
+
+
+    #lv-44a9684da79c {
+      background-color: #fcf9f3;
+      color: #713506;
+      margin: 0;
+    }
+
+    #lv-44a9684da79c .press-header-line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 1px;
+      background: rgba(113, 53, 6, 0.28);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    #lv-44a9684da79c .header-safe {
+      position: relative;
+      z-index: 20;
+    }
+
+    #lv-44a9684da79c .header-safe a,#lv-44a9684da79c 
+    .header-safe button {
+      position: relative;
+      z-index: 30;
+      pointer-events: auto;
+    }
+
+    #lv-44a9684da79c .collage-container {
+      position: relative;
+      width: 100%;
+      max-width: 980px;
+      margin: 0 auto;
+      aspect-ratio: 16 / 10;
+    }
+
+    #lv-44a9684da79c .collage-photo {
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: auto;
+      box-shadow: 0 18px 40px -18px rgba(113, 53, 6, 0.22);
+      transition: transform 0.45s ease;
+      will-change: transform;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    #lv-44a9684da79c .collage-photo:hover {
+      transform: scale(1.02);
+    }
+
+    #lv-44a9684da79c .img-left {
+      top: 28%;
+      left: 8%;
+      width: 27%;
+      z-index: 2;
+    }
+
+    #lv-44a9684da79c .img-center {
+      top: 6%;
+      left: 35%;
+      width: 30%;
+      z-index: 1;
+    }
+
+    #lv-44a9684da79c .img-right {
+      top: 38%;
+      right: 7%;
+      width: 37%;
+      z-index: 3;
+    }
+
+    @media (max-width: 991px) {
+      #lv-44a9684da79c .collage-container {
+        max-width: 760px;
+        aspect-ratio: 16 / 11;
+      }
+
+      #lv-44a9684da79c .img-left {
+        top: 30%;
+        left: 5%;
+        width: 30%;
+      }
+
+      #lv-44a9684da79c .img-center {
+        top: 8%;
+        left: 31%;
+        width: 32%;
+      }
+
+      #lv-44a9684da79c .img-right {
+        top: 40%;
+        right: 4%;
+        width: 40%;
+      }
+    }
+
+    @media (max-width: 767px) {
+      #lv-44a9684da79c .collage-container {
+        max-width: 410px;
+        aspect-ratio: 1 / 1.08;
+      }
+
+      #lv-44a9684da79c .collage-photo {
+        box-shadow: 0 12px 28px -14px rgba(113, 53, 6, 0.18);
+      }
+
+      #lv-44a9684da79c .img-left {
+        top: 30%;
+        left: 0;
+        width: 46%;
+        z-index: 2;
+      }
+
+      #lv-44a9684da79c .img-center {
+        top: 3%;
+        left: 24%;
+        width: 48%;
+        z-index: 1;
+      }
+
+      #lv-44a9684da79c .img-right {
+        top: 42%;
+        right: 0;
+        width: 54%;
+        z-index: 3;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #lv-44a9684da79c .collage-container {
+        max-width: 350px;
+      }
+    }
+  
+
+        #lv-803b152a45b2 { margin: 0; padding: 0; background-color: #fcf9f3; }
+    
+
+        #lv-2c543565dbe4 .press-pdf-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(113, 53, 6, 0.55);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 9999;
+        }
+
+        #lv-2c543565dbe4 .press-pdf-modal.is-open {
+            display: flex;
+        }
+
+        #lv-2c543565dbe4 .press-pdf-box {
+            position: relative;
+            width: min(1180px, 100%);
+            height: min(88vh, 920px);
+            background: #ffffff;
+            box-shadow: 0 20px 60px rgba(113, 53, 6, 0.18);
+            overflow: hidden;
+        }
+
+        #lv-2c543565dbe4 .press-pdf-close {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            z-index: 20;
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(113, 53, 6, 0.18);
+            background: rgba(255, 255, 255, 0.95);
+            color: #713506;
+            font-size: 24px;
+            line-height: 1;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        #lv-2c543565dbe4 .press-pdf-close:hover {
+            background: #713506;
+            color: #ffffff;
+        }
+
+        #lv-2c543565dbe4 .press-pdf-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        @media (max-width: 767px) {
+            #lv-2c543565dbe4 .press-pdf-modal {
+                padding: 10px;
+            }
+
+            #lv-2c543565dbe4 .press-pdf-box {
+                height: 88vh;
+            }
+
+            #lv-2c543565dbe4 .press-pdf-close {
+                top: 10px;
+                right: 10px;
+                width: 38px;
+                height: 38px;
+                font-size: 22px;
+            }
+        }
+    
+#lv-1c9e2557b0a5 { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- LETTRINE (Drop Cap) --- */
+    #lv-1c9e2557b0a5 .drop-cap::first-letter {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5.5rem;
+        float: left;
+        line-height: 0.85;
+        margin-right: 0.5rem;
+        color: #9d623d;
+    }
+    
+    /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
+    #lv-1c9e2557b0a5 .nav-links-village {
+        text-align: center !important;
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 16px !important;
+        line-height: 1.4 !important;
+    }
+    #lv-1c9e2557b0a5 .nav-links-village .nav-col {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+    @media (min-width: 768px) {
+        #lv-1c9e2557b0a5 .nav-links-village .nav-col {
+            flex-direction: row !important;
+            justify-content: center !important;
+            gap: 28px !important; 
+        }
+    }
+    #lv-1c9e2557b0a5 .nav-links-village .village-link {
+        color: #713506 !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+        display: inline-block !important;
+        position: relative !important;
+        padding-bottom: 3px !important;
+        white-space: nowrap !important;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 13px !important;
+    }
+    #lv-1c9e2557b0a5 .nav-links-village .village-link::after {
+        content: "" !important;
+        position: absolute !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        width: 0 !important;
+        height: 1px !important;
+        background: #9d623d !important;
+        transition: width .28s ease !important;
+    }
+    #lv-1c9e2557b0a5 .nav-links-village .village-link:hover::after {
+        width: 100% !important;
+    }
+
+    /* --- CADRE VIDÉO FENÊTRE EN ARCHE ÉPURÉE --- */
+    #lv-1c9e2557b0a5 .arched-video-frame {
+        position: relative;
+        background: #ffffff;
+        padding: 10px;
+        border-radius: 140px 140px 0 0;
+        border: 1px solid rgba(113, 53, 6, 0.2);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+        margin: 0 auto;
+    }
+    #lv-1c9e2557b0a5 .arched-video-frame:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.4);
+    }
+    #lv-1c9e2557b0a5 .arched-video-frame::before {
+        content: '';
+        position: absolute;
+        top: 8px; bottom: 8px; left: 8px; right: 8px;
+        border: 1px solid rgba(157, 98, 61, 0.6);
+        border-radius: 132px 132px 0 0;
+        pointer-events: none;
+        z-index: 30;
+    }
+    #lv-1c9e2557b0a5 .video-mask {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 9/16;
+        border-radius: 130px 130px 0 0;
+        overflow: hidden;
+        background-color: #000000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #lv-1c9e2557b0a5 .video-mask video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        z-index: 10;
+        position: relative;
+    }
+
+    /* --- BOUTONS PREMIUM (GLASSMORPHISM) --- */
+    #lv-1c9e2557b0a5 .glass-btn {
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        color: #ffffff;
+        transition: all 0.3s ease;
+    }
+    #lv-1c9e2557b0a5 .glass-btn:hover {
+        background: #ffffff;
+        color: #713506;
+        transform: scale(1.1);
+    }
+    #lv-1c9e2557b0a5 .video-controls {
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+    #lv-1c9e2557b0a5 .arched-video-frame:hover .video-controls {
+        opacity: 1;
+    }
+
+#lv-6c90d994e64a { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- LETTRINE (Drop Cap) --- */
+    #lv-6c90d994e64a .drop-cap::first-letter {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5.5rem;
+        float: left;
+        line-height: 0.85;
+        margin-right: 0.5rem;
+        color: #9d623d;
+    }
+    
+    /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
+    #lv-6c90d994e64a .nav-links-village {
+        text-align: center !important;
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 16px !important;
+        line-height: 1.4 !important;
+    }
+    #lv-6c90d994e64a .nav-links-village .nav-col {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+    @media (min-width: 768px) {
+        #lv-6c90d994e64a .nav-links-village .nav-col {
+            flex-direction: row !important;
+            justify-content: center !important;
+            gap: 28px !important; 
+        }
+    }
+    #lv-6c90d994e64a .nav-links-village .village-link {
+        color: #713506 !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+        display: inline-block !important;
+        position: relative !important;
+        padding-bottom: 3px !important;
+        white-space: nowrap !important;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 13px !important;
+    }
+    #lv-6c90d994e64a .nav-links-village .village-link::after {
+        content: "" !important;
+        position: absolute !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        width: 0 !important;
+        height: 1px !important;
+        background: #9d623d !important;
+        transition: width .28s ease !important;
+    }
+    #lv-6c90d994e64a .nav-links-village .village-link:hover::after {
+        width: 100% !important;
+    }
+
+    /* Style éditorial menu */
+    #lv-6c90d994e64a .menu-card {
+        background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(157, 98, 61, 0.1) 39px, rgba(157, 98, 61, 0.1) 40px);
+        background-color: #ffffff;
+        border: 1px solid rgba(113, 53, 6, 0.2);
+    }
+    
+    /* Conteneur image signature */
+    #lv-6c90d994e64a .village-img-wrapper {
+        position: relative;
+        overflow: hidden;
+        border-radius: 2px;
+    }
+
+    /* --- CADRE VIDÉO FENÊTRE EN ARCHE ÉPURÉE --- */
+    #lv-6c90d994e64a .arched-video-frame {
+        position: relative;
+        background: #ffffff;
+        padding: 10px;
+        border-radius: 140px 140px 0 0;
+        border: 1px solid #713506;
+        box-shadow: 0 25px 50px -12px rgba(113, 53, 6, 0.15);
+        overflow: hidden;
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+        margin: 0 auto;
+    }
+    #lv-6c90d994e64a .arched-video-frame:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 30px 60px -15px rgba(113, 53, 6, 0.25);
+    }
+    #lv-6c90d994e64a .arched-video-frame::before {
+        content: '';
+        position: absolute;
+        top: 8px; bottom: 8px; left: 8px; right: 8px;
+        border: 1px solid rgba(157, 98, 61, 0.6);
+        border-radius: 132px 132px 0 0;
+        pointer-events: none;
+        z-index: 30;
+    }
+    #lv-6c90d994e64a .video-mask {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 9/16;
+        border-radius: 130px 130px 0 0;
+        overflow: hidden;
+        background-color: #f5f0ea;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #lv-6c90d994e64a .video-mask iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+        z-index: 10;
+        position: relative;
+    }
+
+#lv-917dcc2f1e58 { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- LETTRINE (Drop Cap) --- */
+    #lv-917dcc2f1e58 .drop-cap::first-letter {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5.5rem;
+        float: left;
+        line-height: 0.85;
+        margin-right: 0.5rem;
+        color: #9d623d;
+    }
+    
+    /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
+    #lv-917dcc2f1e58 .nav-links-village {
+        text-align: center !important;
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 16px !important;
+        line-height: 1.4 !important;
+    }
+    #lv-917dcc2f1e58 .nav-links-village .nav-col {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+    @media (min-width: 768px) {
+        #lv-917dcc2f1e58 .nav-links-village .nav-col {
+            flex-direction: row !important;
+            justify-content: center !important;
+            gap: 28px !important; 
+        }
+    }
+    #lv-917dcc2f1e58 .nav-links-village .village-link {
+        color: #713506 !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+        display: inline-block !important;
+        position: relative !important;
+        padding-bottom: 3px !important;
+        white-space: nowrap !important;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 13px !important;
+    }
+    #lv-917dcc2f1e58 .nav-links-village .village-link::after {
+        content: "" !important;
+        position: absolute !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        width: 0 !important;
+        height: 1px !important;
+        background: #000 !important;
+        transition: width .28s ease !important;
+    }
+    #lv-917dcc2f1e58 .nav-links-village .village-link:hover::after {
+        width: 100% !important;
+    }
+
+    /* Conteneur Facebook responsif */
+    #lv-917dcc2f1e58 .fb-embed-container {
+        display: flex;
+        justify-content: center;
+        margin: 3rem 0;
+        width: 100%;
+        overflow: hidden;
+    }
+    #lv-917dcc2f1e58 .fb-embed-container iframe {
+        max-width: 100%;
+        border-radius: 4px;
+        box-shadow: 0 10px 30px -10px rgba(113, 53, 6, 0.15);
+    }
+
+#lv-04fe81cbd7bb { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- LETTRINE (Drop Cap) --- */
+    #lv-04fe81cbd7bb .drop-cap::first-letter {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5.5rem;
+        float: left;
+        line-height: 0.85;
+        margin-right: 0.5rem;
+        color: #9d623d;
+    }
+    
+    /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
+    #lv-04fe81cbd7bb .nav-links-village {
+        text-align: center !important;
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 16px !important;
+        line-height: 1.4 !important;
+    }
+    #lv-04fe81cbd7bb .nav-links-village .nav-col {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+    @media (min-width: 768px) {
+        #lv-04fe81cbd7bb .nav-links-village .nav-col {
+            flex-direction: row !important;
+            justify-content: center !important;
+            gap: 28px !important; 
+        }
+    }
+    #lv-04fe81cbd7bb .nav-links-village .village-link {
+        color: #713506 !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+        display: inline-block !important;
+        position: relative !important;
+        padding-bottom: 3px !important;
+        white-space: nowrap !important;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 13px !important;
+    }
+    #lv-04fe81cbd7bb .nav-links-village .village-link::after {
+        content: "" !important;
+        position: absolute !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        width: 0 !important;
+        height: 1px !important;
+        background: #9d623d !important;
+        transition: width .28s ease !important;
+    }
+    #lv-04fe81cbd7bb .nav-links-village .village-link:hover::after {
+        width: 100% !important;
+    }
+
+    /* Style éditorial menu */
+    #lv-04fe81cbd7bb .menu-card {
+        background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(157, 98, 61, 0.1) 39px, rgba(157, 98, 61, 0.1) 40px);
+        background-color: #ffffff;
+        border: 1px solid rgba(113, 53, 6, 0.2);
+    }
+    
+    /* Conteneur Facebook responsif pour éviter le débordement sur petit mobile */
+    #lv-04fe81cbd7bb .fb-embed-container {
+        display: flex;
+        justify-content: center;
+        margin: 3rem 0;
+        width: 100%;
+        overflow: hidden;
+    }
+    #lv-04fe81cbd7bb .fb-embed-container iframe {
+        max-width: 100%;
+        border-radius: 4px;
+        box-shadow: 0 10px 30px -10px rgba(113, 53, 6, 0.15);
+    }
+
+
+    #lv-78f4935d406b { scroll-behavior: smooth; }
+    #lv-78f4935d406b { margin: 0; padding: 0; background-color: #fcf9f3; color: #713506; }
+
+    /* --- LETTRINE PREMIUM --- */
+    #lv-78f4935d406b .drop-cap-hotel::first-letter {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5.5rem;
+        float: left;
+        line-height: 0.85;
+        margin-right: 0.5rem;
+        color: #9d623d;
+    }
+
+    /* --- CADRE IMAGE (Type Tableau/Polaroïd) --- */
+    #lv-78f4935d406b .framed-image-container {
+        width: 100%;
+        max-width: 480px;
+        margin: 0 auto;
+        background: #ffffff;
+        padding: 10px;
+        border-radius: 4px;
+        box-shadow: 0 20px 40px -10px rgba(113, 53, 6, 0.15);
+    }
+    #lv-78f4935d406b .framed-image-inner {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 2px;
+    }
+    #lv-78f4935d406b .village-framed-img {
+        width: 100%;
+        display: block;
+        transition: transform 0.8s ease;
+    }
+
+    /* Sur mobile : format d'origine de la photo (aucun rognage) */
+    @media (max-width: 767px) {
+        #lv-78f4935d406b .framed-image-inner { aspect-ratio: auto; }
+        #lv-78f4935d406b .village-framed-img { height: auto; object-fit: contain; }
+    }
+
+    /* Sur PC : photo ajustée en format paysage */
+    @media (min-width: 768px) {
+        #lv-78f4935d406b .framed-image-inner { aspect-ratio: 4 / 3; }
+        #lv-78f4935d406b .village-framed-img { height: 100%; object-fit: cover; }
+    }
+
+    #lv-78f4935d406b .framed-image-container:hover .village-framed-img {
+        transform: scale(1.05);
+    }
+
+    /* --- ÉCRIN WIDGET HOLIDU --- */
+    #lv-78f4935d406b .booking-card {
+        background-color: #ffffff;
+        border: 1px solid rgba(113, 53, 6, 0.15);
+        box-shadow: 0 25px 50px -12px rgba(113, 53, 6, 0.08);
+        border-radius: 2px;
+        padding: 16px;
+    }
+
+    /* Décoration section */
+    #lv-78f4935d406b .section-ornament {
+        width: 40px;
+        height: 1px;
+        background-color: #9d623d;
+        margin: 0 auto 2.5rem;
+        opacity: 0.5;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        #lv-78f4935d406b { scroll-behavior: auto; }
+        #lv-78f4935d406b .village-framed-img {
+            transition: none !important;
+        }
+    }
+
+
+    #lv-aadce0b8979e { margin: 0; padding: 0; background-color: #fcf9f3; color: #713506; }
+
+    /* Décoration section */
+    #lv-aadce0b8979e .section-ornament {
+        width: 40px; height: 1px; background-color: #9d623d; margin: 0 auto 2.5rem auto; opacity: 0.5;
+    }
+
+    /* --- STYLE DE LA SECTION CARTE --- */
+    #lv-aadce0b8979e .map-preview-btn {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(157, 98, 61, 0.4);
+        color: #713506;
+        transition: all 0.4s ease;
+    }
+    #lv-aadce0b8979e .map-preview-btn:hover {
+        background: #ffffff;
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 10px 25px -5px rgba(113, 53, 6, 0.2);
+    }
+
+    /* Modal Map Styles */
+    #lv-aadce0b8979e .lv-map-modal {
+        position: fixed; inset: 0; background: rgba(113, 53, 6, 0.85);
+        display: none; align-items: center; justify-content: center; z-index: 9999; padding: 18px;
+        backdrop-filter: blur(5px);
+    }
+    #lv-aadce0b8979e .lv-map-modal.lv-open { display: flex; animation: fadeIn 0.3s ease; }
+    #lv-aadce0b8979e .lv-map-modal-inner {
+        width: min(1420px, 100%); height: min(860px, 92vh);
+        background: #fcf9f3; border-radius: 4px; overflow: hidden;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.4); position: relative; display: flex; flex-direction: column;
+        border: 1px solid rgba(157, 98, 61, 0.3);
+    }
+    
+    #lv-aadce0b8979e .lv-pin {
+        width: 34px; height: 34px; border-radius: 999px; background: #ffffff;
+        border: 2px solid #9d623d; box-shadow: 0 10px 18px rgba(113, 53, 6, 0.25);
+        display: grid; place-items: center; transition: transform 0.3s ease;
+    }
+    #lv-aadce0b8979e .lv-pin:hover { transform: scale(1.1); }
+    #lv-aadce0b8979e .lv-pin svg { width: 18px; height: 18px; fill: #9d623d; display: block; }
+    #lv-aadce0b8979e .lv-pin.main { background: #713506; border-color: #713506; }
+    #lv-aadce0b8979e .lv-pin.main svg { fill: #ffffff; }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+
+    #lv-82efaf4e48b1 { margin: 0; padding: 0; }
+
+    #lv-82efaf4e48b1 .hide-scroll {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    #lv-82efaf4e48b1 .hide-scroll::-webkit-scrollbar {
+        display: none;
+    }
+
+    #lv-82efaf4e48b1 .village-img-wrapper {
+        position: relative;
+        overflow: hidden;
+        border-radius: 2px;
+    }
+    
+    #lv-82efaf4e48b1 .village-img-wrapper::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: #9d623d;
+        mix-blend-mode: color;
+        opacity: 0.85;
+        transition: opacity 0.8s ease;
+        pointer-events: none;
+        z-index: 10;
+    }
+    
+    #lv-82efaf4e48b1 .village-img-wrapper::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: rgba(113, 53, 6, 0.15); 
+        transition: opacity 0.8s ease;
+        pointer-events: none;
+        z-index: 11;
+    }
+    
+    #lv-82efaf4e48b1 .group:hover .village-img-wrapper::after,#lv-82efaf4e48b1 
+    .group:hover .village-img-wrapper::before {
+        opacity: 0;
+    }
+
+    #lv-82efaf4e48b1 .village-img {
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: transform;
+    }
+    #lv-82efaf4e48b1 .group:hover .village-img {
+        transform: scale(1.05);
+    }
+
+    #lv-82efaf4e48b1 .village-link-read {
+        color: #713506;
+        text-decoration: none;
+        font-weight: 500;
+        display: inline-block;
+        position: relative;
+        padding-bottom: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 11px;
+        font-family: 'Poppins', sans-serif;
+        transition: color 0.3s ease;
+        margin-top: auto;
+    }
+    #lv-82efaf4e48b1 .village-link-read::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 1px;
+        background: #9d623d;
+        transition: width 0.4s ease;
+    }
+    #lv-82efaf4e48b1 .group:hover .village-link-read {
+        color: #9d623d;
+    }
+    #lv-82efaf4e48b1 .group:hover .village-link-read::after {
+        width: 100%;
+    }
+
+    /* Flèches visibles aussi sur mobile */
+    #lv-82efaf4e48b1 .blog-carousel-arrows {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    @media (min-width: 768px) {
+        #lv-82efaf4e48b1 .blog-carousel-arrows {
+            width: auto;
+            justify-content: flex-end;
+        }
+    }
+
+    #lv-82efaf4e48b1 .blog-carousel-arrow {
+        width: 44px;
+        height: 44px;
+        border-radius: 999px;
+        border: 1px solid rgba(113, 53, 6, 0.28);
+        background: rgba(252, 249, 243, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #713506;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 18px rgba(113, 53, 6, 0.08);
+    }
+
+    #lv-82efaf4e48b1 .blog-carousel-arrow:hover {
+        background: #713506;
+        color: #ffffff;
+        border-color: #713506;
+    }
+
+    @media (max-width: 767px) {
+        #lv-82efaf4e48b1 .blog-carousel-arrow {
+            width: 42px;
+            height: 42px;
+            background: #ffffff;
+            border-color: rgba(157, 98, 61, 0.45);
+            box-shadow: 0 8px 20px rgba(113, 53, 6, 0.12);
+        }
+    }
+
+
+    #lv-92ecf4eb1f2f { margin: 0; padding: 0; }
+
+    /* --- FILTRE ÉLÉGANT SANS BUG DE COULEUR (PALACE STYLE) --- */
+    #lv-92ecf4eb1f2f .village-img-wrapper {
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Calque de fusion cuivré signature (Archive) */
+    #lv-92ecf4eb1f2f .village-img-wrapper::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: #9d623d; /* Cuivré */
+        mix-blend-mode: color;
+        opacity: 0.8;
+        transition: opacity 0.7s ease;
+        pointer-events: none;
+        z-index: 10;
+    }
+
+    /* Voile de profondeur */
+    #lv-92ecf4eb1f2f .village-img-wrapper::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: rgba(113, 53, 6, 0.15); 
+        transition: opacity 0.7s ease;
+        pointer-events: none;
+        z-index: 11;
+    }
+
+    /* Disparition nette des calques au survol */
+    #lv-92ecf4eb1f2f .group:hover .village-img-wrapper::after,#lv-92ecf4eb1f2f 
+    .group:hover .village-img-wrapper::before {
+        opacity: 0;
+    }
+
+    /* Mouvement de l'image (Plus lent pour le luxe) */
+    #lv-92ecf4eb1f2f .village-img {
+        transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: transform;
+    }
+    #lv-92ecf4eb1f2f .group:hover .village-img {
+        transform: translateY(-12px);
+    }
+
+    /* Soulignement Poppins animé */
+    #lv-92ecf4eb1f2f .title-underline::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 0;
+        height: 1px;
+        background: #713506;
+        transition: width 0.4s ease;
+    }
+    #lv-92ecf4eb1f2f .group:hover .title-underline::after {
+        width: 100%;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        #lv-92ecf4eb1f2f .village-img,#lv-92ecf4eb1f2f 
+        .village-img-wrapper::after,#lv-92ecf4eb1f2f 
+        .village-img-wrapper::before,#lv-92ecf4eb1f2f 
+        .title-underline::after {
+            transition: none !important;
+        }
+    }
+
+
+    #lv-1ccfb89f166e { margin: 0; padding: 0; }
+
+    /* Animation du lien itinéraire */
+    #lv-1ccfb89f166e .btn-itineraire {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    #lv-1ccfb89f166e .btn-itineraire:hover {
+        letter-spacing: 0.2em;
+        color: #713506;
+    }
+
+    /* Cadre de la carte : Ombre légère demandée */
+    #lv-1ccfb89f166e .map-frame {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        overflow: hidden;
+        border-radius: 2px;
+        /* Ombre plus diffuse et légère */
+        box-shadow: 0 15px 45px -15px rgba(113, 53, 6, 0.12);
+        border: 1px solid rgba(157, 98, 61, 0.08);
+    }
+    
+    @media (min-width: 768px) {
+        #lv-1ccfb89f166e .map-frame {
+            height: 600px;
+        }
+    }
+
+    /* Le filtre signature sur la carte */
+    #lv-1ccfb89f166e .map-sepia-overlay {
+        position: absolute;
+        inset: 0;
+        background: #f5f0ea;
+        mix-blend-mode: multiply;
+        opacity: 0.4;
+        pointer-events: none;
+        z-index: 5;
+    }
+
+    #lv-1ccfb89f166e .google-map-iframe {
+        width: 100%;
+        height: 100%;
+        filter: grayscale(1) contrast(1.05) brightness(1);
+        border: 0;
+    }
+
+    /* Décoration de fond subtile */
+    #lv-1ccfb89f166e .bg-ornament {
+        font-family: 'Playfair Display', serif;
+        font-size: 15vw;
+        color: rgba(113, 53, 6, 0.02);
+        position: absolute;
+        top: 10%;
+        left: -5%;
+        pointer-events: none;
+        user-select: none;
+        z-index: 0;
+        white-space: nowrap;
+    }
+
+
+    #lv-9693338ce32a { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    #lv-9693338ce32a .drop-cap-home::first-letter {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5.5rem;
+        float: left;
+        line-height: 0.85;
+        margin-right: 0.5rem;
+        color: #9d623d;
+    }
+
+    #lv-9693338ce32a .lv-ig-carousel {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        background: #ffffff;
+        padding: 8px;
+        border-radius: 4px;
+        box-shadow: 0 20px 40px -10px rgba(113, 53, 6, 0.15);
+    }
+
+    #lv-9693338ce32a .lv-ig-slides {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1 / 1; 
+        overflow: hidden;
+        border-radius: 2px;
+    }
+
+    #lv-9693338ce32a .lv-ig-slide {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transition: opacity 0.6s ease-in-out;
+        z-index: 1;
+    }
+
+    #lv-9693338ce32a .lv-ig-slide.lv-active {
+        opacity: 1;
+        z-index: 2;
+    }
+
+    #lv-9693338ce32a .lv-ig-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    #lv-9693338ce32a .lv-ig-dots {
+        position: absolute;
+        bottom: 16px;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        z-index: 10;
+    }
+
+    #lv-9693338ce32a .lv-ig-dot {
+        width: 6px;
+        height: 6px;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.5);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        #lv-9693338ce32a .lv-ig-slide,#lv-9693338ce32a 
+        .lv-ig-dot,#lv-9693338ce32a 
+        .lv-ig-arrow {
+            transition: none !important;
+        }
+    }
+
+    #lv-9693338ce32a .lv-ig-dot.lv-active {
+        width: 18px;
+        border-radius: 10px;
+        background: #ffffff;
+    }
+
+    /* Flèches plus discrètes */
+    #lv-9693338ce32a .lv-ig-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: rgba(252, 249, 243, 0.45);
+        color: rgba(113, 53, 6, 0.75);
+        border: 1px solid rgba(157, 98, 61, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 10;
+        user-select: none;
+        box-shadow: none;
+        opacity: 0.55;
+        transition: all 0.25s ease;
+    }
+
+    #lv-9693338ce32a .lv-ig-arrow svg {
+        width: 13px;
+        height: 13px;
+        stroke-width: 1.6;
+    }
+
+    #lv-9693338ce32a .lv-ig-arrow-left { left: 10px; }
+    #lv-9693338ce32a .lv-ig-arrow-right { right: 10px; }
+
+    #lv-9693338ce32a .lv-ig-arrow:hover { 
+        background: rgba(252, 249, 243, 0.75);
+        color: #713506;
+        opacity: 0.9;
+        transform: translateY(-50%) scale(1.04); 
+    }
+
+    #lv-9693338ce32a .nav-links-village {
+        text-align: left !important;
+        margin-top: 40px !important;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 15px !important;
+        line-height: 1.8 !important;
+    }
+
+    #lv-9693338ce32a .nav-links-village .nav-row {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 20px !important;
+        margin-bottom: 12px !important;
+    }
+
+    @media (max-width: 640px) {
+        #lv-9693338ce32a .nav-links-village {
+            text-align: center !important;
+        }
+        #lv-9693338ce32a .nav-links-village .nav-row {
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 16px !important;
+        }
+    }
+
+    #lv-9693338ce32a .nav-links-village .village-link {
+        color: #713506 !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+        display: inline-block !important;
+        position: relative !important;
+        padding-bottom: 4px !important;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 13px !important;
+    }
+
+    #lv-9693338ce32a .nav-links-village .village-link::after {
+        content: "" !important;
+        position: absolute !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        width: 0 !important;
+        height: 1px !important;
+        background: #9d623d !important;
+        transition: width .3s ease !important;
+    }
+
+    #lv-9693338ce32a .nav-links-village .village-link:hover::after {
+        width: 100% !important;
+    }
+
+
+    #lv-d8e4bbe94f88 { margin: 0; padding: 0; }
+
+    /* --- STYLES DU CARROUSEL --- */
+    #lv-d8e4bbe94f88 .lv-ig-carousel {
+        width: 100%;
+        margin: 0 auto;
+    }
+    #lv-d8e4bbe94f88 .lv-ig-slides {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1 / 1; 
+        overflow: hidden;
+        border-radius: 2px;
+    }
+    #lv-d8e4bbe94f88 .lv-ig-slide {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        z-index: 1;
+    }
+    #lv-d8e4bbe94f88 .lv-ig-slide.lv-active {
+        opacity: 1;
+        z-index: 2;
+    }
+    #lv-d8e4bbe94f88 .lv-ig-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+ /* Navigation du Carrousel (Flèches discrètes) */
+#lv-d8e4bbe94f88 .lv-ig-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: rgba(255, 255, 255, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    user-select: none;
+    box-shadow: none;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+    opacity: 0.65;
+}
+
+#lv-d8e4bbe94f88 .lv-ig-arrow-left { left: 10px; }
+#lv-d8e4bbe94f88 .lv-ig-arrow-right { right: 10px; }
+
+#lv-d8e4bbe94f88 .lv-ig-arrow svg {
+    width: 15px;
+    height: 15px;
+    stroke-width: 1.4;
+}
+
+#lv-d8e4bbe94f88 .lv-ig-arrow:hover {
+    background: rgba(255, 255, 255, 0.55);
+    color: #ffffff;
+    opacity: 1;
+    transform: translateY(-50%);
+}
+
+    /* --- STYLES DES LIENS DE NAVIGATION (Poppins - Adaptés pour fond clair) --- */
+    #lv-d8e4bbe94f88 .nav-links-village {
+        text-align: center !important;
+        margin-top: 24px !important;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 15px !important;
+        line-height: 1.4 !important;
+    }
+    #lv-d8e4bbe94f88 .nav-links-village .village-link {
+        color: #713506 !important; /* Texte Sombre */
+        text-decoration: none !important;
+        font-weight: 400 !important;
+        display: inline-block !important;
+        position: relative !important;
+        padding-bottom: 6px !important;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 12px !important;
+        transition: color 0.3s ease !important;
+    }
+    #lv-d8e4bbe94f88 .nav-links-village .village-link::after {
+        content: "" !important;
+        position: absolute !important;
+        left: 50% !important;
+        bottom: 0 !important;
+        width: 0 !important;
+        height: 1px !important;
+        background: #9d623d !important; /* Soulignement cuivré élégant */
+        transition: width 0.3s ease, left 0.3s ease !important;
+    }
+    #lv-d8e4bbe94f88 .nav-links-village .village-link:hover {
+        color: #9d623d !important;
+    }
+    #lv-d8e4bbe94f88 .nav-links-village .village-link:hover::after {
+        width: 100% !important;
+        left: 0 !important;
+    }
+
+
+    #lv-455354669495 { margin: 0; padding: 0; }
+
+    /* --- FILTRE ÉLÉGANT (SANS BUG DE COULEUR AU SURVOL) --- */
+    #lv-455354669495 .village-img-wrapper {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    #lv-455354669495 .village-img-wrapper::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: #9d623d; 
+        mix-blend-mode: color;
+        opacity: 0.8;
+        transition: opacity 0.8s ease;
+        pointer-events: none;
+        z-index: 10;
+    }
+    
+    #lv-455354669495 .village-img-wrapper::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: rgba(113, 53, 6, 0.15); 
+        transition: opacity 0.8s ease;
+        pointer-events: none;
+        z-index: 11;
+    }
+    
+    #lv-455354669495 .group:hover .village-img-wrapper::after,#lv-455354669495 
+    .group:hover .village-img-wrapper::before {
+        opacity: 0;
+    }
+
+    #lv-455354669495 .village-img {
+        transition: transform 0.8s ease;
+        will-change: transform;
+    }
+
+    #lv-455354669495 .group:hover .village-img {
+        transform: scale(1.05);
+    }
+
+    /* --- STYLES DU CARROUSEL --- */
+    #lv-455354669495 .lv-ig-carousel {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    #lv-455354669495 .lv-ig-slides {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        overflow: hidden;
+        border-radius: 2px;
+    }
+
+    #lv-455354669495 .lv-ig-slide {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.6s ease, visibility 0.6s ease;
+        z-index: 1;
+    }
+
+    #lv-455354669495 .lv-ig-slide.lv-active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        z-index: 2;
+    }
+
+    #lv-455354669495 .lv-ig-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* Slide vidéo Facebook */
+    #lv-455354669495 .lv-video-slide {
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #lv-455354669495 .lv-video-slide iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        overflow: hidden;
+        display: block;
+    }
+
+    /* Navigation */
+    #lv-455354669495 .lv-ig-dots {
+        position: absolute;
+        bottom: 14px;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        z-index: 20;
+    }
+
+    #lv-455354669495 .lv-ig-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.6);
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
+
+    #lv-455354669495 .lv-ig-dot.lv-active {
+        width: 16px;
+        border-radius: 999px;
+        background: #ffffff;
+    }
+
+    #lv-455354669495 .lv-ig-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 30;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        opacity: 0;
+    }
+
+    #lv-455354669495 .group:hover .lv-ig-arrow { opacity: 1; }
+
+    #lv-455354669495 .lv-ig-arrow-left { left: 8px; }
+    #lv-455354669495 .lv-ig-arrow-right { right: 8px; }
+
+    #lv-455354669495 .lv-ig-arrow:hover {
+        background: #ffffff;
+        color: #713506;
+    }
+    
+    @media (max-width: 768px) {
+        #lv-455354669495 .lv-ig-arrow { opacity: 0.9; }
+    }
+
+
+    #lv-0cb9460fa41e { margin: 0; padding: 0; }
+    
+    /* Grande guillemet décorative en arrière-plan de la carte */
+    #lv-0cb9460fa41e .quote-bg::before {
+        content: '"';
+        position: absolute;
+        top: -10px;
+        left: 10px;
+        font-family: 'Great Vibes', cursive;
+        font-size: 8rem;
+        color: rgba(157, 98, 61, 0.05); /* Cuivré très transparent */
+        line-height: 1;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    /* --- STYLES DES LIENS DE NAVIGATION (Poppins) --- */
+    #lv-0cb9460fa41e .nav-links-village {
+        text-align: center !important;
+        margin-top: 24px !important;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 15px !important;
+        line-height: 1.4 !important;
+    }
+    #lv-0cb9460fa41e .nav-links-village .village-link {
+        color: #713506 !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+        display: inline-block !important;
+        position: relative !important;
+        padding-bottom: 4px !important;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 13px !important;
+    }
+    #lv-0cb9460fa41e .nav-links-village .village-link::after {
+        content: "" !important;
+        position: absolute !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        width: 0 !important;
+        height: 1px !important;
+        background: #000 !important;
+        transition: width .3s ease !important;
+    }
+    #lv-0cb9460fa41e .nav-links-village .village-link:hover::after {
+        width: 100% !important;
+    }
+
+
+    #lv-0a59827b680e { margin: 0; padding: 0; }
+
+    /* --- BOUTONS LUXE (Lignes fines et animations douces) --- */
+    #lv-0a59827b680e .btn-luxury {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px 42px;
+        border: 1px solid rgba(113, 53, 6, 0.15); /* Bordure très fine et discrète */
+        color: #713506;
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px; /* Plus petit pour l'élégance */
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 0.15em; /* Très espacé */
+        text-decoration: none;
+        background-color: transparent;
+        overflow: hidden;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+    }
+
+    /* Le fond qui monte subtilement au survol */
+    #lv-0a59827b680e .btn-luxury::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: rgba(113, 53, 6, 0.03); /* Voile à peine perceptible */
+        transform: scaleY(0);
+        transform-origin: bottom;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 0;
+    }
+
+    #lv-0a59827b680e .btn-luxury:hover {
+        border-color: rgba(113, 53, 6, 0.6); /* La bordure s'affirme */
+    }
+
+    #lv-0a59827b680e .btn-luxury:hover::before {
+        transform: scaleY(1);
+    }
+
+    /* Conteneur du texte pour rester au-dessus du fond animé */
+    #lv-0a59827b680e .btn-luxury-text {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    /* L'icône flèche qui se décale */
+    #lv-0a59827b680e .btn-luxury-arrow {
+        margin-left: 12px;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    #lv-0a59827b680e .btn-luxury:hover .btn-luxury-arrow {
+        transform: translateX(6px);
+    }
+
+#lv-582b5edb21a2 { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- LETTRINE (Drop Cap) --- */
+    #lv-582b5edb21a2 .drop-cap::first-letter {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5.5rem;
+        float: left;
+        line-height: 0.85;
+        margin-right: 0.5rem;
+        color: #9d623d;
+    }
+    
+    /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
+    #lv-582b5edb21a2 .nav-links-village {
+        text-align: center !important;
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 16px !important;
+        line-height: 1.4 !important;
+    }
+    #lv-582b5edb21a2 .nav-links-village .nav-col {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+    @media (min-width: 768px) {
+        #lv-582b5edb21a2 .nav-links-village .nav-col {
+            flex-direction: row !important;
+            justify-content: center !important;
+            gap: 28px !important; 
+        }
+    }
+    #lv-582b5edb21a2 .nav-links-village .village-link {
+        color: #713506 !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+        display: inline-block !important;
+        position: relative !important;
+        padding-bottom: 3px !important;
+        white-space: nowrap !important;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 13px !important;
+    }
+    #lv-582b5edb21a2 .nav-links-village .village-link::after {
+        content: "" !important;
+        position: absolute !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        width: 0 !important;
+        height: 1px !important;
+        background: #9d623d !important;
+        transition: width .28s ease !important;
+    }
+    #lv-582b5edb21a2 .nav-links-village .village-link:hover::after {
+        width: 100% !important;
+    }
+
+    /* --- CADRE VIDÉO FENÊTRE EN ARCHE ÉPURÉE --- */
+    #lv-582b5edb21a2 .arched-video-frame {
+        position: relative;
+        background: #ffffff;
+        padding: 10px;
+        border-radius: 140px 140px 0 0;
+        border: 1px solid rgba(113, 53, 6, 0.2);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+        margin: 0 auto;
+    }
+    #lv-582b5edb21a2 .arched-video-frame:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.4);
+    }
+    #lv-582b5edb21a2 .arched-video-frame::before {
+        content: '';
+        position: absolute;
+        top: 8px; bottom: 8px; left: 8px; right: 8px;
+        border: 1px solid rgba(157, 98, 61, 0.6);
+        border-radius: 132px 132px 0 0;
+        pointer-events: none;
+        z-index: 30;
+    }
+    #lv-582b5edb21a2 .video-mask {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 9/16;
+        border-radius: 130px 130px 0 0;
+        overflow: hidden;
+        background-color: #000000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #lv-582b5edb21a2 .video-mask video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        z-index: 10;
+        position: relative;
+    }
+
+    /* --- BOUTONS PREMIUM (GLASSMORPHISM) --- */
+    #lv-582b5edb21a2 .glass-btn {
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        color: #ffffff;
+        transition: all 0.3s ease;
+    }
+    #lv-582b5edb21a2 .glass-btn:hover {
+        background: #ffffff;
+        color: #713506;
+        transform: scale(1.1);
+    }
+    #lv-582b5edb21a2 .video-controls {
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+    #lv-582b5edb21a2 .arched-video-frame:hover .video-controls {
+        opacity: 1;
+    }
+
+    /* Style encart info */
+    #lv-582b5edb21a2 .info-card {
+        background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(157, 98, 61, 0.1) 39px, rgba(157, 98, 61, 0.1) 40px);
+        background-color: #ffffff;
+        border: 1px solid rgba(113, 53, 6, 0.2);
+    }
+
+    /* --- ENCADRÉ MAILLAGE INTERNE : PROGRAMME JAZZ AU CHÂTEAU --- */
+    #lv-582b5edb21a2 .jazz-program-card {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, rgba(113, 53, 6, 0.98), rgba(157, 98, 61, 0.92));
+        border: 1px solid rgba(245, 240, 234, 0.35);
+        box-shadow: 0 22px 44px -18px rgba(64, 28, 4, 0.5);
+    }
+    #lv-582b5edb21a2 .jazz-program-card::before,#lv-582b5edb21a2 
+    .jazz-program-card::after {
+        content: '';
+        position: absolute;
+        border: 1px solid rgba(245, 240, 234, 0.28);
+        border-radius: 999px;
+        pointer-events: none;
+    }
+    #lv-582b5edb21a2 .jazz-program-card::before {
+        width: 280px;
+        height: 280px;
+        top: -155px;
+        right: -80px;
+    }
+    #lv-582b5edb21a2 .jazz-program-card::after {
+        width: 180px;
+        height: 180px;
+        bottom: -120px;
+        left: -60px;
+    }
+    #lv-582b5edb21a2 .program-link-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: #ffffff;
+        color: #713506;
+        text-decoration: none;
+        font-family: 'Lato', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 15px 22px;
+        transition: transform .28s ease, background-color .28s ease, color .28s ease;
+    }
+    #lv-582b5edb21a2 .program-link-btn:hover {
+        transform: translateY(-3px);
+        background: #f5f0ea;
+        color: #713506;
+    }
+
+    /* --- VIDÉO YOUTUBE INTÉGRÉE AU DESIGN ÉDITORIAL --- */
+    #lv-582b5edb21a2 .youtube-showcase {
+        position: relative;
+        background: #ffffff;
+        padding: 10px;
+        border-radius: 46px 46px 0 0;
+        border: 1px solid rgba(113, 53, 6, 0.20);
+        box-shadow: 0 25px 50px -14px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        transition: transform .5s ease, box-shadow .5s ease;
+    }
+    #lv-582b5edb21a2 .youtube-showcase:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.35);
+    }
+    #lv-582b5edb21a2 .youtube-showcase::before {
+        content: '';
+        position: absolute;
+        inset: 8px;
+        border: 1px solid rgba(157, 98, 61, 0.55);
+        border-radius: 38px 38px 0 0;
+        pointer-events: none;
+        z-index: 2;
+    }
+    #lv-582b5edb21a2 .youtube-ratio {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        border-radius: 34px 34px 0 0;
+        background: #1d0c02;
+    }
+    #lv-582b5edb21a2 .youtube-ratio iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+    }
+
+
+    #lv-bb812be61b04 { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+
+    #lv-3c209cae58dd { margin: 0; padding: 0; background-color: #fcf9f3; scroll-behavior: smooth; }
+
+    /* --- BANDEAU DE NAVIGATION (Sur une seule ligne avec scroll horizontal) --- */
+    #lv-3c209cae58dd .carte-nav-wrapper {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background-color: rgba(252, 249, 243, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(113, 53, 6, 0.15);
+        margin-bottom: 40px;
+    }
+
+    #lv-3c209cae58dd .carte-nav {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 16px 20px;
+        display: flex;
+        justify-content: flex-start; /* Alignement à gauche pour le scroll mobile */
+        gap: 24px;
+        flex-wrap: nowrap; /* Empêche le passage à la ligne */
+        overflow-x: auto; /* Active le défilement horizontal */
+        -webkit-overflow-scrolling: touch; /* Défilement fluide sur iOS */
+        scrollbar-width: none; /* Cache la barre de scroll Firefox */
+    }
+    
+    /* Centrer sur les grands écrans si l'espace le permet */
+    @media (min-width: 1200px) {
+        #lv-3c209cae58dd .carte-nav { justify-content: center; }
+    }
+
+    /* Cache la barre de scroll Chrome/Safari */
+    #lv-3c209cae58dd .carte-nav::-webkit-scrollbar { 
+        display: none; 
+    }
+
+    #lv-3c209cae58dd .carte-nav-link {
+        font-family: 'Poppins', sans-serif;
+        font-size: 13px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #713506;
+        position: relative;
+        padding-bottom: 6px;
+        font-weight: 500;
+        white-space: nowrap; /* Obligatoire pour garder le texte sur une ligne */
+        transition: opacity 0.25s ease;
+    }
+
+    #lv-3c209cae58dd .carte-nav-link:hover {
+        opacity: 0.7;
+    }
+
+    #lv-3c209cae58dd .carte-nav-link::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 0%;
+        height: 1px;
+        background-color: #9d623d;
+        transition: width 0.3s ease;
+        transform: translateX(-50%);
+    }
+
+    #lv-3c209cae58dd .carte-nav-link:hover::after {
+        width: 100%;
+    }
+
+    /* Ornement décoratif pour le titre Midi */
+    #lv-3c209cae58dd .section-ornament {
+        width: 40px;
+        height: 1px;
+        background-color: #9d623d;
+        margin: 0 auto 2.5rem auto;
+        opacity: 0.5;
+    }
+
+    /* --- STYLE ÉDITORIAL MENU (Effet papier ligné) --- */
+    #lv-3c209cae58dd .menu-card {
+        background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(157, 98, 61, 0.1) 39px, rgba(157, 98, 61, 0.1) 40px);
+        background-color: #ffffff;
+        border: 1px solid rgba(113, 53, 6, 0.2);
+    }
+
+
+    #lv-c58b3eb7a9ab { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- TYPOGRAPHIE DES PLATS --- */
+    #lv-c58b3eb7a9ab .dish-container {
+        margin-bottom: 2rem;
+        position: relative;
+    }
+    #lv-c58b3eb7a9ab .dish-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+        margin-bottom: 0.25rem;
+    }
+    #lv-c58b3eb7a9ab .dish-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.15rem;
+        color: #713506;
+        font-weight: 600;
+        line-height: 1.3;
+    }
+    @media (min-width: 768px) {
+        #lv-c58b3eb7a9ab .dish-title { font-size: 1.3rem; }
+    }
+    #lv-c58b3eb7a9ab .dish-dots {
+        flex-grow: 1;
+        border-bottom: 1px dotted rgba(113, 53, 6, 0.3);
+        position: relative;
+        top: -6px;
+    }
+    #lv-c58b3eb7a9ab .dish-price {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.1rem;
+        color: #9d623d;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+    #lv-c58b3eb7a9ab .dish-desc {
+        font-family: 'Lato', sans-serif;
+        font-size: 0.95rem;
+        color: rgba(113, 53, 6, 0.85);
+        line-height: 1.5;
+        padding-right: 2rem; /* Espace sous le prix */
+    }
+    #lv-c58b3eb7a9ab .dish-en {
+        font-family: 'Lato', sans-serif;
+        font-size: 0.8rem;
+        color: rgba(113, 53, 6, 0.45);
+        font-style: italic;
+        line-height: 1.4;
+        margin-top: 0.2rem;
+        padding-right: 2rem;
+    }
+
+    /* Décoration sous le titre de section */
+    #lv-c58b3eb7a9ab .section-ornament {
+        width: 40px;
+        height: 1px;
+        background-color: #9d623d;
+        margin: 0 auto 2.5rem auto;
+        opacity: 0.5;
+    }
+
+
+    #lv-4655f81acc04 { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- TYPOGRAPHIE DES PLATS --- */
+    #lv-4655f81acc04 .dish-container {
+        margin-bottom: 2rem;
+        position: relative;
+    }
+    #lv-4655f81acc04 .dish-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+        margin-bottom: 0.25rem;
+    }
+    #lv-4655f81acc04 .dish-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.15rem;
+        color: #713506;
+        font-weight: 600;
+        line-height: 1.3;
+    }
+    @media (min-width: 768px) {
+        #lv-4655f81acc04 .dish-title { font-size: 1.3rem; }
+    }
+    #lv-4655f81acc04 .dish-dots {
+        flex-grow: 1;
+        border-bottom: 1px dotted rgba(113, 53, 6, 0.3);
+        position: relative;
+        top: -6px;
+    }
+    #lv-4655f81acc04 .dish-price {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.1rem;
+        color: #9d623d;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+    #lv-4655f81acc04 .dish-desc {
+        font-family: 'Lato', sans-serif;
+        font-size: 0.95rem;
+        color: rgba(113, 53, 6, 0.85);
+        line-height: 1.5;
+        padding-right: 2rem; /* Espace sous le prix */
+    }
+    #lv-4655f81acc04 .dish-en {
+        font-family: 'Lato', sans-serif;
+        font-size: 0.8rem;
+        color: rgba(113, 53, 6, 0.45);
+        font-style: italic;
+        line-height: 1.4;
+        margin-top: 0.2rem;
+        padding-right: 2rem;
+    }
+
+    /* Décoration sous le titre de section */
+    #lv-4655f81acc04 .section-ornament {
+        width: 40px;
+        height: 1px;
+        background-color: #9d623d;
+        margin: 0 auto 2.5rem auto;
+        opacity: 0.5;
+    }
+
+
+    #lv-00592823df97 { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- TYPOGRAPHIE DES PLATS --- */
+    #lv-00592823df97 .dish-container {
+        margin-bottom: 2rem;
+        position: relative;
+    }
+    #lv-00592823df97 .dish-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+        margin-bottom: 0.25rem;
+    }
+    #lv-00592823df97 .dish-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.15rem;
+        color: #713506;
+        font-weight: 600;
+        line-height: 1.3;
+    }
+    @media (min-width: 768px) {
+        #lv-00592823df97 .dish-title { font-size: 1.3rem; }
+    }
+    #lv-00592823df97 .dish-dots {
+        flex-grow: 1;
+        border-bottom: 1px dotted rgba(113, 53, 6, 0.3);
+        position: relative;
+        top: -6px;
+    }
+    #lv-00592823df97 .dish-price {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.1rem;
+        color: #9d623d;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+    #lv-00592823df97 .dish-desc {
+        font-family: 'Lato', sans-serif;
+        font-size: 0.95rem;
+        color: rgba(113, 53, 6, 0.85);
+        line-height: 1.5;
+        padding-right: 2rem;
+    }
+    #lv-00592823df97 .dish-en {
+        font-family: 'Lato', sans-serif;
+        font-size: 0.8rem;
+        color: rgba(113, 53, 6, 0.45);
+        font-style: italic;
+        line-height: 1.4;
+        margin-top: 0.2rem;
+        padding-right: 2rem;
+    }
+
+    /* Décoration sous le titre de section */
+    #lv-00592823df97 .section-ornament {
+        width: 40px;
+        height: 1px;
+        background-color: #9d623d;
+        margin: 0 auto 2.5rem auto;
+        opacity: 0.5;
+    }
+
+
+    #lv-558d2df7b744 { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- TYPOGRAPHIE DES PLATS --- */
+    #lv-558d2df7b744 .dish-container {
+        margin-bottom: 2rem;
+        position: relative;
+    }
+    #lv-558d2df7b744 .dish-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+        margin-bottom: 0.25rem;
+    }
+    #lv-558d2df7b744 .dish-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.15rem;
+        color: #713506;
+        font-weight: 600;
+        line-height: 1.3;
+    }
+    @media (min-width: 768px) {
+        #lv-558d2df7b744 .dish-title { font-size: 1.3rem; }
+    }
+    #lv-558d2df7b744 .dish-dots {
+        flex-grow: 1;
+        border-bottom: 1px dotted rgba(113, 53, 6, 0.3);
+        position: relative;
+        top: -6px;
+    }
+    #lv-558d2df7b744 .dish-price {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.1rem;
+        color: #9d623d;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+    #lv-558d2df7b744 .dish-desc {
+        font-family: 'Lato', sans-serif;
+        font-size: 0.95rem;
+        color: rgba(113, 53, 6, 0.85);
+        line-height: 1.5;
+        padding-right: 2rem;
+    }
+    #lv-558d2df7b744 .dish-en {
+        font-family: 'Lato', sans-serif;
+        font-size: 0.8rem;
+        color: rgba(113, 53, 6, 0.45);
+        font-style: italic;
+        line-height: 1.4;
+        margin-top: 0.2rem;
+        padding-right: 2rem;
+    }
+
+    /* Décoration sous le titre de section */
+    #lv-558d2df7b744 .section-ornament {
+        width: 40px;
+        height: 1px;
+        background-color: #9d623d;
+        margin: 0 auto 2.5rem auto;
+        opacity: 0.5;
+    }
+
+
+    #lv-ae7b2c48065a { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- TYPOGRAPHIE DES PLATS --- */
+    #lv-ae7b2c48065a .dish-container {
+        margin-bottom: 2rem;
+        position: relative;
+    }
+    #lv-ae7b2c48065a .dish-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+        margin-bottom: 0.25rem;
+    }
+    #lv-ae7b2c48065a .dish-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.15rem;
+        color: #713506;
+        font-weight: 600;
+        line-height: 1.3;
+    }
+    @media (min-width: 768px) {
+        #lv-ae7b2c48065a .dish-title { font-size: 1.3rem; }
+    }
+    #lv-ae7b2c48065a .dish-dots {
+        flex-grow: 1;
+        border-bottom: 1px dotted rgba(113, 53, 6, 0.3);
+        position: relative;
+        top: -6px;
+    }
+    #lv-ae7b2c48065a .dish-price {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.1rem;
+        color: #9d623d;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+    #lv-ae7b2c48065a .dish-desc {
+        font-family: 'Lato', sans-serif;
+        font-size: 0.95rem;
+        color: rgba(113, 53, 6, 0.85);
+        line-height: 1.5;
+        padding-right: 2rem;
+    }
+    #lv-ae7b2c48065a .dish-en {
+        font-family: 'Lato', sans-serif;
+        font-size: 0.8rem;
+        color: rgba(113, 53, 6, 0.45);
+        font-style: italic;
+        line-height: 1.4;
+        margin-top: 0.2rem;
+        padding-right: 2rem;
+    }
+
+    /* Décoration sous le titre de section */
+    #lv-ae7b2c48065a .section-ornament {
+        width: 40px;
+        height: 1px;
+        background-color: #9d623d;
+        margin: 0 auto 2.5rem auto;
+        opacity: 0.5;
+    }
+
+
+    #lv-dc51ef5c32bf { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- TYPOGRAPHIE DES PLATS --- */
+    #lv-dc51ef5c32bf .dish-container {
+        margin-bottom: 2rem;
+        position: relative;
+    }
+    #lv-dc51ef5c32bf .dish-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+        margin-bottom: 0.25rem;
+    }
+    #lv-dc51ef5c32bf .dish-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.15rem;
+        color: #713506;
+        font-weight: 600;
+        line-height: 1.3;
+    }
+    @media (min-width: 768px) {
+        #lv-dc51ef5c32bf .dish-title { font-size: 1.3rem; }
+    }
+    #lv-dc51ef5c32bf .dish-dots {
+        flex-grow: 1;
+        border-bottom: 1px dotted rgba(113, 53, 6, 0.3);
+        position: relative;
+        top: -6px;
+    }
+    #lv-dc51ef5c32bf .dish-price {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.1rem;
+        color: #9d623d;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+    #lv-dc51ef5c32bf .dish-desc {
+        font-family: 'Lato', sans-serif;
+        font-size: 0.95rem;
+        color: rgba(113, 53, 6, 0.85);
+        line-height: 1.5;
+        padding-right: 2rem;
+    }
+    #lv-dc51ef5c32bf .dish-en {
+        font-family: 'Lato', sans-serif;
+        font-size: 0.8rem;
+        color: rgba(113, 53, 6, 0.45);
+        font-style: italic;
+        line-height: 1.4;
+        margin-top: 0.2rem;
+        padding-right: 2rem;
+    }
+
+    /* Décoration sous le titre de section */
+    #lv-dc51ef5c32bf .section-ornament {
+        width: 40px;
+        height: 1px;
+        background-color: #9d623d;
+        margin: 0 auto 2.5rem auto;
+        opacity: 0.5;
+    }
+
+
+    #lv-55faa8a9f8c4 { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- TYPOGRAPHIE DES PLATS --- */
+    #lv-55faa8a9f8c4 .dish-container {
+        margin-bottom: 2rem;
+        position: relative;
+    }
+    #lv-55faa8a9f8c4 .dish-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+        margin-bottom: 0.25rem;
+    }
+    #lv-55faa8a9f8c4 .dish-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.15rem;
+        color: #713506;
+        font-weight: 600;
+        line-height: 1.3;
+    }
+    @media (min-width: 768px) {
+        #lv-55faa8a9f8c4 .dish-title { font-size: 1.3rem; }
+    }
+    #lv-55faa8a9f8c4 .dish-dots {
+        flex-grow: 1;
+        border-bottom: 1px dotted rgba(113, 53, 6, 0.3);
+        position: relative;
+        top: -6px;
+    }
+    #lv-55faa8a9f8c4 .dish-price {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.1rem;
+        color: #9d623d;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+    #lv-55faa8a9f8c4 .dish-desc {
+        font-family: 'Lato', sans-serif;
+        font-size: 0.95rem;
+        color: rgba(113, 53, 6, 0.85);
+        line-height: 1.5;
+        padding-right: 2rem;
+    }
+    #lv-55faa8a9f8c4 .dish-en {
+        font-family: 'Lato', sans-serif;
+        font-size: 0.8rem;
+        color: rgba(113, 53, 6, 0.45);
+        font-style: italic;
+        line-height: 1.4;
+        margin-top: 0.2rem;
+        padding-right: 2rem;
+    }
+
+    /* Décoration sous le titre de section */
+    #lv-55faa8a9f8c4 .section-ornament {
+        width: 40px;
+        height: 1px;
+        background-color: #9d623d;
+        margin: 0 auto 2.5rem auto;
+        opacity: 0.5;
+    }
+
+
+    #lv-bd62718978f8 { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+
+    #lv-01fb1cc0d73a { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- TYPOGRAPHIE DES PLATS --- */
+    #lv-01fb1cc0d73a .dish-container {
+        margin-bottom: 2rem;
+        position: relative;
+    }
+    #lv-01fb1cc0d73a .dish-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+        margin-bottom: 0.25rem;
+    }
+    #lv-01fb1cc0d73a .dish-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.15rem;
+        color: #713506;
+        font-weight: 600;
+        line-height: 1.3;
+    }
+    @media (min-width: 768px) {
+        #lv-01fb1cc0d73a .dish-title { font-size: 1.3rem; }
+    }
+    #lv-01fb1cc0d73a .dish-dots {
+        flex-grow: 1;
+        border-bottom: 1px dotted rgba(113, 53, 6, 0.3);
+        position: relative;
+        top: -6px;
+    }
+    #lv-01fb1cc0d73a .dish-price {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.1rem;
+        color: #9d623d;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+    #lv-01fb1cc0d73a .dish-desc {
+        font-family: 'Lato', sans-serif;
+        font-size: 0.95rem;
+        color: rgba(113, 53, 6, 0.85);
+        line-height: 1.5;
+        padding-right: 2rem;
+    }
+    #lv-01fb1cc0d73a .dish-en {
+        font-family: 'Lato', sans-serif;
+        font-size: 0.8rem;
+        color: rgba(113, 53, 6, 0.45);
+        font-style: italic;
+        line-height: 1.4;
+        margin-top: 0.2rem;
+        padding-right: 2rem;
+    }
+
+    /* Décoration sous le titre de section */
+    #lv-01fb1cc0d73a .section-ornament {
+        width: 40px;
+        height: 1px;
+        background-color: #9d623d;
+        margin: 0 auto 2.5rem auto;
+        opacity: 0.5;
+    }
+
+
+    #lv-43dac97d2ed2 { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- TYPOGRAPHIE DES BOISSONS --- */
+    #lv-43dac97d2ed2 .dish-container {
+        margin-bottom: 1.5rem;
+        position: relative;
+    }
+    #lv-43dac97d2ed2 .dish-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+        margin-bottom: 0.25rem;
+    }
+    #lv-43dac97d2ed2 .dish-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.05rem; /* Légèrement plus petit pour les boissons */
+        color: #713506;
+        font-weight: 600;
+        line-height: 1.3;
+    }
+    @media (min-width: 768px) {
+        #lv-43dac97d2ed2 .dish-title { font-size: 1.15rem; }
+    }
+    #lv-43dac97d2ed2 .dish-dots {
+        flex-grow: 1;
+        border-bottom: 1px dotted rgba(113, 53, 6, 0.3);
+        position: relative;
+        top: -6px;
+    }
+    #lv-43dac97d2ed2 .dish-price {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.05rem;
+        color: #9d623d;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+    #lv-43dac97d2ed2 .dish-desc {
+        font-family: 'Lato', sans-serif;
+        font-size: 0.85rem;
+        color: rgba(113, 53, 6, 0.85);
+        line-height: 1.5;
+        padding-right: 2rem;
+    }
+    #lv-43dac97d2ed2 .dish-en {
+        font-family: 'Lato', sans-serif;
+        font-size: 0.75rem;
+        color: rgba(113, 53, 6, 0.45);
+        font-style: italic;
+        line-height: 1.4;
+        margin-top: 0.2rem;
+        padding-right: 2rem;
+    }
+
+    /* En-têtes de sous-catégories (Ex: Vins au verre, Spritz...) */
+    #lv-43dac97d2ed2 .drinks-category {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.3rem;
+        color: #713506;
+        border-bottom: 1px solid rgba(113, 53, 6, 0.15);
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+        margin-top: 2.5rem;
+    }
+
+    /* --- CTA BLOCK --- */
+    #lv-43dac97d2ed2 .nav-links-village {
+        text-align: center !important;
+        margin-top: 40px !important;
+        margin-bottom: 40px !important;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 14px !important;
+        line-height: 1.4 !important;
+    }
+    #lv-43dac97d2ed2 .nav-links-village .nav-col {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 16px !important;
+    }
+    #lv-43dac97d2ed2 .nav-links-village .village-link {
+        color: #713506 !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+        display: inline-block !important;
+        position: relative !important;
+        padding-bottom: 4px !important;
+        white-space: nowrap !important;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 13px !important;
+        transition: color 0.3s ease !important;
+    }
+    #lv-43dac97d2ed2 .nav-links-village .village-link::after {
+        content: "" !important;
+        position: absolute !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        width: 0 !important;
+        height: 1px !important;
+        background: #9d623d !important;
+        transition: width .3s ease !important;
+    }
+    #lv-43dac97d2ed2 .nav-links-village .village-link:hover { color: #9d623d !important; }
+    #lv-43dac97d2ed2 .nav-links-village .village-link:hover::after { width: 100% !important; }
+
+
+    #lv-c304e4a6822d { margin: 0; padding: 0; }
+
+    /* Animation du lien itinéraire */
+    #lv-c304e4a6822d .btn-itineraire {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    #lv-c304e4a6822d .btn-itineraire:hover {
+        letter-spacing: 0.2em;
+        color: #713506;
+    }
+
+    /* Cadre de la carte : Ombre légère demandée */
+    #lv-c304e4a6822d .map-frame {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        overflow: hidden;
+        border-radius: 2px;
+        /* Ombre plus diffuse et légère */
+        box-shadow: 0 15px 45px -15px rgba(113, 53, 6, 0.12);
+        border: 1px solid rgba(157, 98, 61, 0.08);
+    }
+    
+    @media (min-width: 768px) {
+        #lv-c304e4a6822d .map-frame {
+            height: 600px;
+        }
+    }
+
+    /* Le filtre signature sur la carte */
+    #lv-c304e4a6822d .map-sepia-overlay {
+        position: absolute;
+        inset: 0;
+        background: #f5f0ea;
+        mix-blend-mode: multiply;
+        opacity: 0.4;
+        pointer-events: none;
+        z-index: 5;
+    }
+
+    #lv-c304e4a6822d .google-map-iframe {
+        width: 100%;
+        height: 100%;
+        filter: grayscale(1) contrast(1.05) brightness(1);
+        border: 0;
+    }
+
+    /* Décoration de fond subtile */
+    #lv-c304e4a6822d .bg-ornament {
+        font-family: 'Playfair Display', serif;
+        font-size: 15vw;
+        color: rgba(113, 53, 6, 0.02);
+        position: absolute;
+        top: 10%;
+        left: -5%;
+        pointer-events: none;
+        user-select: none;
+        z-index: 0;
+        white-space: nowrap;
+    }
+
+
+    #lv-27f7eabb93f4 { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- SOUS-MENU DE NAVIGATION --- */
+    #lv-27f7eabb93f4 .resto-subnav {
+        max-width: 1100px;
+        margin: 0 auto 20px;
+        padding: 18px 20px 22px;
+        display: flex;
+        justify-content: center;
+        gap: 46px;
+        flex-wrap: wrap;
+        border-bottom: 1px solid rgba(113, 53, 6, 0.15);
+    }
+    #lv-27f7eabb93f4 .resto-subnav-link {
+        font-family: 'Poppins', sans-serif;
+        font-size: 13px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #713506;
+        position: relative;
+        padding-bottom: 6px;
+        font-weight: 500;
+        transition: opacity 0.25s ease;
+    }
+    #lv-27f7eabb93f4 .resto-subnav-link:hover {
+        opacity: 0.7;
+    }
+    #lv-27f7eabb93f4 .resto-subnav-link::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 0%;
+        height: 1px;
+        background-color: #9d623d;
+        transition: width 0.3s ease;
+        transform: translateX(-50%);
+    }
+    #lv-27f7eabb93f4 .resto-subnav-link:hover::after {
+        width: 100%;
+    }
+    @media (max-width: 700px) {
+        #lv-27f7eabb93f4 .resto-subnav { gap: 22px; padding: 12px 10px; }
+        #lv-27f7eabb93f4 .resto-subnav-link { font-size: 11px; }
+    }
+
+    /* --- LETTRINE PREMIUM --- */
+    #lv-27f7eabb93f4 .drop-cap-resto::first-letter {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5.5rem;
+        float: left;
+        line-height: 0.85;
+        margin-right: 0.5rem;
+        color: #9d623d;
+    }
+
+    /* --- CADRE IMAGE (Type Tableau/Polaroïd) --- */
+    #lv-27f7eabb93f4 .framed-image-container {
+        width: 100%;
+        max-width: 550px;
+        margin: 0 auto;
+        background: #ffffff;
+        padding: 10px;
+        border-radius: 4px;
+        box-shadow: 0 20px 40px -10px rgba(113, 53, 6, 0.15);
+    }
+    #lv-27f7eabb93f4 .framed-image-inner {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 2px;
+    }
+    #lv-27f7eabb93f4 .village-framed-img {
+        width: 100%;
+        display: block;
+        transition: transform 0.8s ease;
+    }
+    
+    /* Sur Mobile : Format d'origine de la photo (aucun rognage) */
+    @media (max-width: 767px) {
+        #lv-27f7eabb93f4 .framed-image-inner {
+            aspect-ratio: auto;
+        }
+        #lv-27f7eabb93f4 .village-framed-img {
+            height: auto;
+            object-fit: contain;
+        }
+    }
+    
+    /* Sur PC : Photo allongée (format portrait 4:5) pour l'équilibre de la grille */
+    @media (min-width: 768px) {
+        #lv-27f7eabb93f4 .framed-image-inner {
+            aspect-ratio: 4 / 5; 
+        }
+        #lv-27f7eabb93f4 .village-framed-img {
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    #lv-27f7eabb93f4 .framed-image-container:hover .village-framed-img {
+        transform: scale(1.05);
+    }
+
+    /* --- STYLES DES LIENS D'ACTION (CTA) --- */
+    #lv-27f7eabb93f4 .nav-links-village {
+        margin-top: 40px !important;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 14px !important;
+        line-height: 1.8 !important;
+    }
+    #lv-27f7eabb93f4 .nav-links-village .nav-col {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 16px !important;
+    }
+    /* Sur desktop, aligné à gauche sous le texte. Sur mobile, centré. */
+    #lv-27f7eabb93f4 .nav-links-village .nav-col { align-items: flex-start !important; }
+    @media (max-width: 1023px) {
+        #lv-27f7eabb93f4 .nav-links-village { text-align: center !important; }
+        #lv-27f7eabb93f4 .nav-links-village .nav-col { align-items: center !important; }
+    }
+
+    #lv-27f7eabb93f4 .nav-links-village .village-link {
+        color: #713506 !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+        display: inline-block !important;
+        position: relative !important;
+        padding-bottom: 4px !important;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 13px !important;
+        transition: color 0.3s ease !important;
+    }
+    #lv-27f7eabb93f4 .nav-links-village .village-link::after {
+        content: "" !important;
+        position: absolute !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        width: 0 !important;
+        height: 1px !important;
+        background: #9d623d !important;
+        transition: width .3s ease !important;
+    }
+    #lv-27f7eabb93f4 .nav-links-village .village-link:hover {
+        color: #9d623d !important;
+    }
+    #lv-27f7eabb93f4 .nav-links-village .village-link:hover::after {
+        width: 100% !important;
+    }
+
+
+    #lv-3eacd26dadbd { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- LETTRINE (Drop Cap) --- */
+    #lv-3eacd26dadbd .drop-cap-chef::first-letter {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5.5rem;
+        float: left;
+        line-height: 0.85;
+        margin-right: 0.6rem;
+        color: #9d623d;
+    }
+
+    /* --- CADRE VIDÉO FENÊTRE EN ARCHE (TAILLE RÉDUITE) --- */
+    #lv-3eacd26dadbd .arched-video-frame {
+        position: relative;
+        background: #ffffff;
+        padding: 8px;
+        border-radius: 120px 120px 0 0;
+        border: 1px solid #713506;
+        box-shadow: 0 15px 30px -10px rgba(113, 53, 6, 0.12);
+        overflow: hidden;
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+        opacity: 0;
+        transform: translateY(20px);
+        
+        /* Ajustements pour l'intégration dans la colonne */
+        width: 100%;
+        min-width: 170px;
+        max-width: 220px;
+        flex-shrink: 0;
+    }
+    
+    #lv-3eacd26dadbd .arched-video-frame.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    #lv-3eacd26dadbd .arched-video-frame:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 25px 40px -12px rgba(113, 53, 6, 0.20);
+    }
+
+    #lv-3eacd26dadbd .arched-video-frame::before {
+        content: '';
+        position: absolute;
+        top: 6px; bottom: 6px; left: 6px; right: 6px;
+        border: 1px solid rgba(157, 98, 61, 0.5);
+        border-radius: 114px 114px 0 0;
+        pointer-events: none;
+        z-index: 30;
+    }
+
+    #lv-3eacd26dadbd .video-mask {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 9/16;
+        border-radius: 112px 112px 0 0;
+        overflow: hidden;
+        background-color: #000;
+    }
+    
+    #lv-3eacd26dadbd .video-mask video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        z-index: 10;
+        position: relative;
+    }
+
+    /* --- BOUTONS PREMIUM (GLASSMORPHISM) --- */
+    #lv-3eacd26dadbd .glass-btn {
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        color: #ffffff;
+        transition: all 0.3s ease;
+        padding: 6px; /* Affiné pour les petits cadres */
+    }
+    #lv-3eacd26dadbd .glass-btn:hover {
+        background: rgba(255, 255, 255, 0.95);
+        color: #713506;
+        transform: scale(1.1);
+    }
+
+    #lv-3eacd26dadbd .video-controls {
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+    #lv-3eacd26dadbd .arched-video-frame:hover .video-controls {
+        opacity: 1;
+    }
+
+    /* --- SCROLL HORIZONTAL INVISIBLE POUR MOBILE --- */
+    #lv-3eacd26dadbd .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    #lv-3eacd26dadbd .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+#lv-96e50a10b9de { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- STYLE DU MENU "CARTE" --- */
+    #lv-96e50a10b9de .menu-card {
+        background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(157, 98, 61, 0.08) 39px, rgba(157, 98, 61, 0.08) 40px);
+        background-color: #ffffff;
+        border: 1px solid rgba(113, 53, 6, 0.15);
+    }
+
+    /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
+    #lv-96e50a10b9de .nav-links-village {
+        text-align: center !important;
+        margin-top: 20px !important;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 16px !important;
+        line-height: 1.4 !important;
+    }
+    #lv-96e50a10b9de .nav-links-village .nav-col {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+    @media (min-width: 768px) {
+        #lv-96e50a10b9de .nav-links-village .nav-col {
+            flex-direction: row !important;
+            justify-content: center !important;
+            gap: 28px !important;
+        }
+    }
+    #lv-96e50a10b9de .nav-links-village .village-link {
+        color: #713506 !important;
+        text-decoration: none !important;
+        font-weight: 400 !important;
+        display: inline-block !important;
+        position: relative !important;
+        padding-bottom: 3px !important;
+        white-space: nowrap !important;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 13px !important;
+        transition: color 0.3s ease;
+    }
+    #lv-96e50a10b9de .nav-links-village .village-link::after {
+        content: "" !important;
+        position: absolute !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        width: 0 !important;
+        height: 1px !important;
+        background: #000 !important;
+        transition: width .28s ease !important;
+    }
+    #lv-96e50a10b9de .nav-links-village .village-link:hover::after {
+        width: 100% !important;
+    }
+    #lv-96e50a10b9de .nav-links-village .village-link:hover {
+        color: #000 !important;
+    }
+
+    /* --- SLIDER INFINI (DESIGN "GALERIE D'ART") --- */
+    #lv-96e50a10b9de #lvSliderWrap {
+        overflow: hidden;
+        padding: 40px 0 60px 0; /* Plus d'espace pour les ombres */
+        background: transparent;
+        position: relative;
+        /* Désactive le comportement par défaut de pull-to-refresh lors du drag tactile */
+        touch-action: pan-y;
+    }
+    #lv-96e50a10b9de #lvSliderTrack {
+        display: flex;
+        will-change: transform;
+        cursor: grab;
+    }
+    #lv-96e50a10b9de #lvSliderTrack:active {
+        cursor: grabbing;
+    }
+    #lv-96e50a10b9de .lvSlide {
+        flex: 0 0 300px; /* Taille contrôlée */
+        margin-right: 40px; /* Plus d'espacement entre les images */
+        height: 420px;
+        border-radius: 2px;
+        background: #ffffff; /* Cadre blanc type polaroïd/tableau */
+        padding: 8px; /* Épaisseur du cadre */
+        box-shadow: 0 20px 40px -15px rgba(113, 53, 6, 0.2); /* Ombre douce et profonde */
+        cursor: zoom-in;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        user-select: none;
+    }
+    #lv-96e50a10b9de .lvSlide:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px -15px rgba(113, 53, 6, 0.3);
+    }
+    #lv-96e50a10b9de .lvSlideInner {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 1px;
+        pointer-events: none; /* Évite les comportements parasites au touch */
+    }
+    #lv-96e50a10b9de .lvSlide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.8s ease;
+        pointer-events: none;
+    }
+    #lv-96e50a10b9de .lvSlide:hover img {
+        transform: scale(1.05); /* Zoom subtil au survol */
+    }
+
+    /* Flèches cuivrées fines et élégantes (inspirées du style Instagram discret) */
+    #lv-96e50a10b9de .lvArrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: rgba(252, 249, 243, 0.45);
+        border: 1px solid rgba(157, 98, 61, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 10;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        box-shadow: none;
+        opacity: 0.55;
+        transition: all 0.25s ease;
+    }
+    #lv-96e50a10b9de .lvArrow:hover {
+        background: rgba(252, 249, 243, 0.75);
+        color: #713506;
+        opacity: 0.9;
+        transform: translateY(-50%) scale(1.04);
+    }
+    #lv-96e50a10b9de .lvArrow svg {
+        width: 13px;
+        height: 13px;
+        stroke: currentColor;
+        stroke-width: 1.6;
+        fill: none;
+        color: #713506;
+        transition: color 0.3s ease;
+    }
+    #lv-96e50a10b9de .lvArrow:hover svg {
+        color: #713506;
+    }
+    #lv-96e50a10b9de #lvPrev { left: 20px; }
+    #lv-96e50a10b9de #lvNext { right: 20px; }
+
+    /* Lightbox */
+    #lv-96e50a10b9de #lvLightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,.88);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        z-index: 9999;
+        cursor: zoom-out;
+    }
+    #lv-96e50a10b9de #lvLightbox.is-open { display: flex; }
+    #lv-96e50a10b9de #lvLightboxImg {
+        max-width: min(1100px, 92vw);
+        max-height: 92vh;
+        border-radius: 2px;
+        box-shadow: 0 20px 50px rgba(0,0,0,.5);
+        cursor: default;
+    }
+
+    #lv-96e50a10b9de .lvLightboxClose,#lv-96e50a10b9de 
+    .lvLightboxNav {
+        position: absolute;
+        color: #f5f0ea;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        z-index: 10000;
+        opacity: 0.75;
+        transition: opacity 0.25s ease, color 0.25s ease;
+    }
+
+    #lv-96e50a10b9de .lvLightboxClose:hover,#lv-96e50a10b9de 
+    .lvLightboxNav:hover {
+        opacity: 1;
+        color: #9d623d;
+    }
+
+    #lv-96e50a10b9de .lvLightboxClose {
+        top: 18px;
+        right: 22px;
+        font-size: 42px;
+        line-height: 1;
+    }
+
+    #lv-96e50a10b9de .lvLightboxNav {
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 56px;
+        line-height: 1;
+        padding: 12px;
+    }
+
+    #lv-96e50a10b9de #lvLightboxPrev { left: 18px; }
+    #lv-96e50a10b9de #lvLightboxNext { right: 18px; }
+
+    @media (max-width: 800px) {
+        #lv-96e50a10b9de .lvSlide { flex: 0 0 260px; height: 360px; margin-right: 20px; }
+        #lv-96e50a10b9de #lvPrev { left: 10px; }
+        #lv-96e50a10b9de #lvNext { right: 10px; }
+        #lv-96e50a10b9de .lvLightboxNav { font-size: 42px; }
+    }
+
+
+    #lv-622799eb1914 { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- FILTRE ÉLÉGANT SANS BUG DE COULEUR (PALACE STYLE) --- */
+    #lv-622799eb1914 .village-img-wrapper {
+        position: relative;
+        overflow: hidden;
+        background-color: #713506; 
+    }
+    
+    /* Calque de fusion cuivré signature (Archive) */
+    #lv-622799eb1914 .village-img-wrapper::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: #9d623d; 
+        mix-blend-mode: color;
+        opacity: 0.85;
+        transition: opacity 1.8s cubic-bezier(0.25, 1, 0.5, 1); /* Transition lente et luxueuse */
+        pointer-events: none;
+        z-index: 10;
+    }
+    
+    /* Voile de profondeur */
+    #lv-622799eb1914 .village-img-wrapper::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: rgba(113, 53, 6, 0.15); 
+        transition: opacity 1.8s cubic-bezier(0.25, 1, 0.5, 1);
+        pointer-events: none;
+        z-index: 11;
+    }
+    
+    /* Transition d'apparition progressive au scroll (Staggering) */
+    #lv-622799eb1914 .scroll-anim-trigger.is-visible:nth-child(1) .village-img-wrapper::after,#lv-622799eb1914 
+    .scroll-anim-trigger.is-visible:nth-child(1) .village-img-wrapper::before {
+        opacity: 0;
+        transition-delay: 0.3s; /* La première commence après 300ms */
+    }
+
+    #lv-622799eb1914 .scroll-anim-trigger.is-visible:nth-child(2) .village-img-wrapper::after,#lv-622799eb1914 
+    .scroll-anim-trigger.is-visible:nth-child(2) .village-img-wrapper::before {
+        opacity: 0;
+        transition-delay: 0.8s; /* La deuxième commence après 800ms */
+    }
+
+    #lv-622799eb1914 .scroll-anim-trigger.is-visible:nth-child(3) .village-img-wrapper::after,#lv-622799eb1914 
+    .scroll-anim-trigger.is-visible:nth-child(3) .village-img-wrapper::before {
+        opacity: 0;
+        transition-delay: 1.3s; /* La troisième commence après 1.3s */
+    }
+
+    /* Au survol souris, la réaction est instantanée (0.4s) sans délai pour l'interactivité */
+    #lv-622799eb1914 .group:hover .village-img-wrapper::after,#lv-622799eb1914 
+    .group:hover .village-img-wrapper::before {
+        opacity: 0 !important;
+        transition: opacity 0.4s ease-in-out !important;
+        transition-delay: 0s !important;
+    }
+
+    #lv-622799eb1914 .village-img {
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: transform;
+    }
+    
+    #lv-622799eb1914 .group:hover .village-img,#lv-622799eb1914 
+    .group.is-visible .village-img {
+        transform: scale(1.05);
+    }
+
+
+    #lv-1ed452825e13 { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- CADRE VIDÉO FENÊTRE EN ARCHE ÉPURÉE --- */
+    #lv-1ed452825e13 .arched-video-frame {
+        position: relative;
+        background: #ffffff;
+        padding: 10px;
+        border-radius: 140px 140px 0 0;
+        border: 1px solid #713506;
+        box-shadow: 0 25px 50px -12px rgba(113, 53, 6, 0.15);
+        overflow: hidden;
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    #lv-1ed452825e13 .arched-video-frame.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    #lv-1ed452825e13 .arched-video-frame:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 30px 60px -15px rgba(113, 53, 6, 0.25);
+    }
+    #lv-1ed452825e13 .arched-video-frame::before {
+        content: '';
+        position: absolute;
+        top: 8px; bottom: 8px; left: 8px; right: 8px;
+        border: 1px solid rgba(157, 98, 61, 0.6);
+        border-radius: 132px 132px 0 0;
+        pointer-events: none;
+        z-index: 30;
+    }
+    #lv-1ed452825e13 .video-mask {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 9/16;
+        border-radius: 130px 130px 0 0;
+        overflow: hidden;
+        background-color: #000;
+    }
+    #lv-1ed452825e13 .video-mask video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        z-index: 10;
+        position: relative;
+    }
+
+    /* --- BOUTONS PREMIUM (GLASSMORPHISM) --- */
+    #lv-1ed452825e13 .glass-btn {
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        color: #ffffff;
+        transition: all 0.3s ease;
+    }
+    #lv-1ed452825e13 .glass-btn:hover {
+        background: rgba(255, 255, 255, 0.9);
+        color: #713506;
+        transform: scale(1.1);
+    }
+    #lv-1ed452825e13 .video-controls {
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+    #lv-1ed452825e13 .arched-video-frame:hover .video-controls {
+        opacity: 1;
+    }
+
+    /* --- LETTRINE (Drop Cap) --- */
+    #lv-1ed452825e13 .drop-cap::first-letter {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5.5rem;
+        float: left;
+        line-height: 0.85;
+        margin-right: 0.5rem;
+        color: #9d623d;
+    }
+
+#lv-922469db1f17 { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- LETTRINE (Drop Cap) --- */
+    #lv-922469db1f17 .drop-cap::first-letter {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5.5rem;
+        float: left;
+        line-height: 0.85;
+        margin-right: 0.5rem;
+        color: #9d623d;
+    }
+    
+    /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
+    #lv-922469db1f17 .nav-links-village {
+        text-align: center !important;
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 16px !important;
+        line-height: 1.4 !important;
+    }
+    #lv-922469db1f17 .nav-links-village .nav-col {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+    @media (min-width: 768px) {
+        #lv-922469db1f17 .nav-links-village .nav-col {
+            flex-direction: row !important;
+            justify-content: center !important;
+            gap: 28px !important; 
+        }
+    }
+    #lv-922469db1f17 .nav-links-village .village-link {
+        color: #713506 !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+        display: inline-block !important;
+        position: relative !important;
+        padding-bottom: 3px !important;
+        white-space: nowrap !important;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 13px !important;
+    }
+    #lv-922469db1f17 .nav-links-village .village-link::after {
+        content: "" !important;
+        position: absolute !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        width: 0 !important;
+        height: 1px !important;
+        background: #000 !important;
+        transition: width .28s ease !important;
+    }
+    #lv-922469db1f17 .nav-links-village .village-link:hover::after {
+        width: 100% !important;
+    }
+
+    /* Conteneur Reel Facebook responsif et élégant */
+    #lv-922469db1f17 .reel-embed-container {
+        background: #ffffff;
+        padding: 8px;
+        border: 1px solid rgba(113, 53, 6, 0.1);
+        border-radius: 4px;
+        box-shadow: 0 15px 35px -10px rgba(113, 53, 6, 0.15);
+        display: inline-flex;
+        transition: transform 0.4s ease;
+    }
+    #lv-922469db1f17 .reel-embed-container:hover {
+        transform: translateY(-5px);
+    }
+
+#lv-a0a4b2d3fc19 { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- LETTRINE (Drop Cap) --- */
+    #lv-a0a4b2d3fc19 .drop-cap::first-letter {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5.5rem;
+        float: left;
+        line-height: 0.85;
+        margin-right: 0.5rem;
+        color: #9d623d;
+    }
+    
+    /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
+    #lv-a0a4b2d3fc19 .nav-links-village {
+        text-align: center !important;
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 16px !important;
+        line-height: 1.4 !important;
+    }
+    #lv-a0a4b2d3fc19 .nav-links-village .nav-col {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+    @media (min-width: 768px) {
+        #lv-a0a4b2d3fc19 .nav-links-village .nav-col {
+            flex-direction: row !important;
+            justify-content: center !important;
+            gap: 28px !important; 
+        }
+    }
+    #lv-a0a4b2d3fc19 .nav-links-village .village-link {
+        color: #713506 !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+        display: inline-block !important;
+        position: relative !important;
+        padding-bottom: 3px !important;
+        white-space: nowrap !important;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 13px !important;
+    }
+    #lv-a0a4b2d3fc19 .nav-links-village .village-link::after {
+        content: "" !important;
+        position: absolute !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        width: 0 !important;
+        height: 1px !important;
+        background: #9d623d !important;
+        transition: width .28s ease !important;
+    }
+    #lv-a0a4b2d3fc19 .nav-links-village .village-link:hover::after {
+        width: 100% !important;
+    }
+
+    /* Style éditorial menu */
+    #lv-a0a4b2d3fc19 .menu-card {
+        background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(157, 98, 61, 0.1) 39px, rgba(157, 98, 61, 0.1) 40px);
+        background-color: #ffffff;
+        border: 1px solid rgba(113, 53, 6, 0.2);
+    }
+    
+    /* Conteneur Facebook responsif */
+    #lv-a0a4b2d3fc19 .fb-embed-container {
+        display: flex;
+        justify-content: center;
+        margin: 3rem 0;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        #lv-a0a4b2d3fc19 .nav-links-village .village-link::after {
+            transition: none !important;
+        }
+    }
+
+
+    #lv-d6e294100282 { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- CADRE VIDÉO FENÊTRE EN ARCHE ÉPURÉE --- */
+    #lv-d6e294100282 .arched-video-frame {
+        position: relative;
+        background: #ffffff;
+        padding: 10px;
+        border-radius: 140px 140px 0 0;
+        border: 1px solid #713506;
+        box-shadow: 0 25px 50px -12px rgba(113, 53, 6, 0.15);
+        overflow: hidden;
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    #lv-d6e294100282 .arched-video-frame.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    #lv-d6e294100282 .arched-video-frame:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 30px 60px -15px rgba(113, 53, 6, 0.25);
+    }
+    #lv-d6e294100282 .arched-video-frame::before {
+        content: '';
+        position: absolute;
+        top: 8px; bottom: 8px; left: 8px; right: 8px;
+        border: 1px solid rgba(157, 98, 61, 0.6);
+        border-radius: 132px 132px 0 0;
+        pointer-events: none;
+        z-index: 30;
+    }
+    #lv-d6e294100282 .video-mask {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 9/16;
+        border-radius: 130px 130px 0 0;
+        overflow: hidden;
+        background-color: #000;
+    }
+    #lv-d6e294100282 .video-mask video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        z-index: 10;
+        position: relative;
+    }
+
+    /* --- BOUTONS PREMIUM (GLASSMORPHISM) --- */
+    #lv-d6e294100282 .glass-btn {
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        color: #ffffff;
+        transition: all 0.3s ease;
+    }
+    #lv-d6e294100282 .glass-btn:hover {
+        background: rgba(255, 255, 255, 0.9);
+        color: #713506;
+        transform: scale(1.1);
+    }
+    #lv-d6e294100282 .video-controls {
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+    #lv-d6e294100282 .arched-video-frame:hover .video-controls {
+        opacity: 1;
+    }
+
+    /* --- LETTRINE (Drop Cap) --- */
+    #lv-d6e294100282 .drop-cap::first-letter {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5.5rem;
+        float: left;
+        line-height: 0.85;
+        margin-right: 0.5rem;
+        color: #9d623d;
+    }
+
+#lv-c9de54853185 { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- LETTRINE (Drop Cap) --- */
+    #lv-c9de54853185 .drop-cap::first-letter {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5.5rem;
+        float: left;
+        line-height: 0.85;
+        margin-right: 0.5rem;
+        color: #9d623d;
+    }
+    
+    /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
+    #lv-c9de54853185 .nav-links-village {
+        text-align: center !important;
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 16px !important;
+        line-height: 1.4 !important;
+    }
+    #lv-c9de54853185 .nav-links-village .nav-col {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+    @media (min-width: 768px) {
+        #lv-c9de54853185 .nav-links-village .nav-col {
+            flex-direction: row !important;
+            justify-content: center !important;
+            gap: 28px !important; 
+        }
+    }
+    #lv-c9de54853185 .nav-links-village .village-link {
+        color: #713506 !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+        display: inline-block !important;
+        position: relative !important;
+        padding-bottom: 3px !important;
+        white-space: nowrap !important;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 13px !important;
+    }
+    #lv-c9de54853185 .nav-links-village .village-link::after {
+        content: "" !important;
+        position: absolute !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        width: 0 !important;
+        height: 1px !important;
+        background: #9d623d !important;
+        transition: width .28s ease !important;
+    }
+    #lv-c9de54853185 .nav-links-village .village-link:hover::after {
+        width: 100% !important;
+    }
+
+    /* Style éditorial pour les listes */
+    #lv-c9de54853185 .program-card {
+        background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(157, 98, 61, 0.1) 39px, rgba(157, 98, 61, 0.1) 40px);
+        background-color: #ffffff;
+        border: 1px solid rgba(113, 53, 6, 0.2);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        #lv-c9de54853185 .nav-links-village .village-link::after,#lv-c9de54853185 
+        .hover\:scale-105 {
+            transition: none !important;
+        }
+    }
+
+#lv-e9d6310fd1a1 { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- LETTRINE (Drop Cap) --- */
+    #lv-e9d6310fd1a1 .drop-cap::first-letter {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5.5rem;
+        float: left;
+        line-height: 0.85;
+        margin-right: 0.5rem;
+        color: #9d623d;
+    }
+    
+    /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
+    #lv-e9d6310fd1a1 .nav-links-village {
+        text-align: center !important;
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 16px !important;
+        line-height: 1.4 !important;
+    }
+    #lv-e9d6310fd1a1 .nav-links-village .nav-col {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+    @media (min-width: 768px) {
+        #lv-e9d6310fd1a1 .nav-links-village .nav-col {
+            flex-direction: row !important;
+            justify-content: center !important;
+            gap: 28px !important; 
+        }
+    }
+    #lv-e9d6310fd1a1 .nav-links-village .village-link {
+        color: #713506 !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+        display: inline-block !important;
+        position: relative !important;
+        padding-bottom: 3px !important;
+        white-space: nowrap !important;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 13px !important;
+    }
+    #lv-e9d6310fd1a1 .nav-links-village .village-link::after {
+        content: "" !important;
+        position: absolute !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        width: 0 !important;
+        height: 1px !important;
+        background: #9d623d !important;
+        transition: width .28s ease !important;
+    }
+    #lv-e9d6310fd1a1 .nav-links-village .village-link:hover::after {
+        width: 100% !important;
+    }
+
+    /* Style éditorial encart */
+    #lv-e9d6310fd1a1 .info-card {
+        background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(157, 98, 61, 0.08) 39px, rgba(157, 98, 61, 0.08) 40px);
+        background-color: #ffffff;
+        border: 1px solid rgba(113, 53, 6, 0.2);
+    }
+
+    /* --- PASSERELLE ÉDITORIALE : JAZZ AU CHÂTEAU --- */
+    #lv-e9d6310fd1a1 .jazz-weekly-note {
+        max-width: 760px;
+        margin: -8px auto 48px;
+        padding: 20px 0 21px;
+        text-align: center;
+        border-top: 1px solid rgba(113, 53, 6, 0.16);
+        border-bottom: 1px solid rgba(113, 53, 6, 0.16);
+    }
+    #lv-e9d6310fd1a1 .jazz-weekly-note .jazz-weekly-label {
+        margin: 0 0 7px;
+        color: #9d623d;
+        font-family: 'Poppins', sans-serif;
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        line-height: 1.2;
+        text-transform: uppercase;
+    }
+    #lv-e9d6310fd1a1 .jazz-weekly-note .jazz-weekly-copy {
+        margin: 0;
+        color: rgba(113, 53, 6, 0.78);
+        font-family: 'Lato', sans-serif;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+    #lv-e9d6310fd1a1 .jazz-weekly-note a {
+        color: #713506;
+        font-family: 'Playfair Display', serif;
+        font-size: 16px;
+        font-style: italic;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(157, 98, 61, 0.58);
+        padding-bottom: 2px;
+        transition: color .25s ease, border-color .25s ease;
+    }
+    #lv-e9d6310fd1a1 .jazz-weekly-note a:hover {
+        color: #9d623d;
+        border-color: #9d623d;
+    }
+
+    /* --- CADRE VISUEL DE L'OPENING SESSION --- */
+    #lv-e9d6310fd1a1 .poster-frame {
+        background: #ffffff;
+        padding: 10px;
+        border: 1px solid rgba(113, 53, 6, 0.15);
+        box-shadow: 0 18px 35px -12px rgba(113, 53, 6, 0.18);
+        transform: rotate(2deg);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        max-width: 230px;
+        margin: 0 auto;
+    }
+    #lv-e9d6310fd1a1 .poster-frame:hover {
+        transform: rotate(0deg) translateY(-5px);
+        box-shadow: 0 24px 42px -14px rgba(113, 53, 6, 0.24);
+    }
+    #lv-e9d6310fd1a1 .poster-filter {
+        filter: sepia(22%) contrast(1.04) opacity(0.94) grayscale(8%);
+    }
+    
+    /* Conteneur image signature en arche */
+    #lv-e9d6310fd1a1 .arched-image-frame {
+        position: relative;
+        background: #ffffff;
+        padding: 10px;
+        border-radius: 140px 140px 0 0;
+        border: 1px solid rgba(113, 53, 6, 0.2);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+        margin: 0 auto;
+        max-width: 320px;
+    }
+    #lv-e9d6310fd1a1 .arched-image-frame:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.4);
+    }
+    #lv-e9d6310fd1a1 .arched-image-frame::before {
+        content: '';
+        position: absolute;
+        top: 8px; bottom: 8px; left: 8px; right: 8px;
+        border: 1px solid rgba(157, 98, 61, 0.6);
+        border-radius: 132px 132px 0 0;
+        pointer-events: none;
+        z-index: 30;
+    }
+    #lv-e9d6310fd1a1 .image-mask {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 9/16;
+        border-radius: 130px 130px 0 0;
+        overflow: hidden;
+        background-color: #000000;
+    }
+    #lv-e9d6310fd1a1 .image-mask img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.8s ease;
+    }
+    #lv-e9d6310fd1a1 .arched-image-frame:hover .image-mask img {
+        transform: scale(1.05);
+    }
+
+
+    #lv-3c9f5c3dc9f6 { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- LETTRINE (Drop Cap) --- */
+    #lv-3c9f5c3dc9f6 .drop-cap::first-letter {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5.5rem;
+        float: left;
+        line-height: 0.85;
+        margin-right: 0.5rem;
+        color: #9d623d;
+    }
+
+    /* --- INTÉGRATION FACEBOOK PREMIUM --- */
+    #lv-3c9f5c3dc9f6 .social-embed-container {
+        background: #ffffff;
+        padding: 10px;
+        border: 1px solid rgba(113, 53, 6, 0.2);
+        box-shadow: 0 20px 40px -10px rgba(113, 53, 6, 0.10);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        border-radius: 4px;
+        width: 100%;
+        max-width: 520px; /* Pour encadrer proprement l'iframe FB de 500px */
+        margin: 0 auto;
+    }
+    #lv-3c9f5c3dc9f6 .social-embed-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 25px 50px -12px rgba(113, 53, 6, 0.18);
+    }
+    
+    /* Conteneur responsive pour l'iframe */
+    #lv-3c9f5c3dc9f6 .fb-iframe-wrapper {
+        position: relative;
+        width: 100%;
+        /* Ratio approximatif du post FB */
+        padding-bottom: 105%; 
+        overflow: hidden;
+    }
+    #lv-3c9f5c3dc9f6 .fb-iframe-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+#lv-f2d2d7895c25 { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- LETTRINE (Drop Cap) --- */
+    #lv-f2d2d7895c25 .drop-cap::first-letter {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5.5rem;
+        float: left;
+        line-height: 0.85;
+        margin-right: 0.5rem;
+        color: #9d623d;
+    }
+    
+    /* Conteneur Facebook responsif */
+    #lv-f2d2d7895c25 .fb-embed-container {
+        display: flex;
+        justify-content: center;
+        margin: 3rem 0;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
+    #lv-f2d2d7895c25 .nav-links-village {
+        text-align: center !important;
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 16px !important;
+        line-height: 1.4 !important;
+    }
+    #lv-f2d2d7895c25 .nav-links-village .nav-col {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+    @media (min-width: 768px) {
+        #lv-f2d2d7895c25 .nav-links-village .nav-col {
+            flex-direction: row !important;
+            justify-content: center !important;
+            gap: 28px !important; 
+        }
+    }
+    #lv-f2d2d7895c25 .nav-links-village .village-link {
+        color: #713506 !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+        display: inline-block !important;
+        position: relative !important;
+        padding-bottom: 3px !important;
+        white-space: nowrap !important;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 13px !important;
+    }
+    #lv-f2d2d7895c25 .nav-links-village .village-link::after {
+        content: "" !important;
+        position: absolute !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        width: 0 !important;
+        height: 1px !important;
+        background: #9d623d !important;
+        transition: width .28s ease !important;
+    }
+    #lv-f2d2d7895c25 .nav-links-village .village-link:hover::after {
+        width: 100% !important;
+    }
+
+
+    #lv-78885753b849 { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- LETTRINE (Drop Cap) --- */
+    #lv-78885753b849 .drop-cap::first-letter {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5.5rem;
+        float: left;
+        line-height: 0.85;
+        margin-right: 0.5rem;
+        color: #9d623d;
+    }
+
+    /* --- CADRE EDITORIAL (Style Papier) --- */
+    #lv-78885753b849 .notebook-card {
+        background-color: #ffffff;
+        background-image: repeating-linear-gradient(0deg, transparent, transparent 35px, rgba(157, 98, 61, 0.08) 35px, rgba(157, 98, 61, 0.08) 36px);
+        border: 1px solid rgba(113, 53, 6, 0.15);
+        box-shadow: 0 15px 35px -10px rgba(113, 53, 6, 0.08);
+    }
+
+    /* --- BOUTONS LUXE (CTA FINAUX) --- */
+    #lv-78885753b849 .btn-luxury {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px 36px;
+        border: 1px solid rgba(113, 53, 6, 0.15);
+        color: #713506;
+        font-family: 'Poppins', sans-serif;
+        font-size: 11px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        text-decoration: none;
+        background-color: #ffffff;
+        overflow: hidden;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        box-shadow: 0 10px 20px -5px rgba(113, 53, 6, 0.08);
+    }
+    #lv-78885753b849 .btn-luxury::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: rgba(113, 53, 6, 0.04);
+        transform: scaleY(0);
+        transform-origin: bottom;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 0;
+    }
+    #lv-78885753b849 .btn-luxury:hover {
+        border-color: rgba(113, 53, 6, 0.6);
+        box-shadow: 0 15px 30px -5px rgba(113, 53, 6, 0.15);
+        transform: translateY(-2px);
+    }
+    #lv-78885753b849 .btn-luxury:hover::before { transform: scaleY(1); }
+    #lv-78885753b849 .btn-luxury-text { position: relative; z-index: 1; display: flex; align-items: center; }
+    #lv-78885753b849 .btn-luxury-arrow { margin-left: 12px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+    #lv-78885753b849 .btn-luxury:hover .btn-luxury-arrow { transform: translateX(6px); }
+    
+    /* --- FILTRE CUIVRÉ SIGNATURE --- */
+    #lv-78885753b849 .village-img-wrapper {
+        position: relative;
+        overflow: hidden;
+        background-color: #713506;
+    }
+    /* Calque Cuivré */
+    #lv-78885753b849 .village-img-wrapper::after {
+        content: ''; position: absolute; inset: 0;
+        background-color: #9d623d; mix-blend-mode: color; opacity: 0.85; 
+        transition: opacity 0.6s ease; pointer-events: none; z-index: 10;
+    }
+    /* Calque Profondeur */
+    #lv-78885753b849 .village-img-wrapper::before {
+        content: ''; position: absolute; inset: 0;
+        background-color: rgba(113, 53, 6, 0.15); 
+        transition: opacity 0.6s ease; pointer-events: none; z-index: 11;
+    }
+    /* Estompage du filtre uniquement au Survol */
+    #lv-78885753b849 .group:hover .village-img-wrapper::after,#lv-78885753b849  
+    .group:hover .village-img-wrapper::before { 
+        opacity: 0; 
+    }
+
+    /* Mouvement lent luxueux */
+    #lv-78885753b849 .village-img { 
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
+        will-change: transform; 
+    }
+    #lv-78885753b849 .group:hover .village-img { 
+        transform: scale(1.05); 
+    }
+
+
+#lv-26baac5e7dfc { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- LETTRINE (Drop Cap) --- */
+    #lv-26baac5e7dfc .drop-cap::first-letter {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5.5rem;
+        float: left;
+        line-height: 0.85;
+        margin-right: 0.5rem;
+        color: #9d623d;
+    }
+    
+    /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
+    #lv-26baac5e7dfc .nav-links-village {
+        text-align: center !important;
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 16px !important;
+        line-height: 1.4 !important;
+    }
+    #lv-26baac5e7dfc .nav-links-village .nav-col {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+    @media (min-width: 768px) {
+        #lv-26baac5e7dfc .nav-links-village .nav-col {
+            flex-direction: row !important;
+            justify-content: center !important;
+            gap: 28px !important; 
+        }
+    }
+    #lv-26baac5e7dfc .nav-links-village .village-link {
+        color: #713506 !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+        display: inline-block !important;
+        position: relative !important;
+        padding-bottom: 3px !important;
+        white-space: nowrap !important;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 13px !important;
+    }
+    #lv-26baac5e7dfc .nav-links-village .village-link::after {
+        content: "" !important;
+        position: absolute !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        width: 0 !important;
+        height: 1px !important;
+        background: #000 !important;
+        transition: width .28s ease !important;
+    }
+    #lv-26baac5e7dfc .nav-links-village .village-link:hover::after {
+        width: 100% !important;
+    }
+
+    /* Style éditorial menu */
+    #lv-26baac5e7dfc .menu-card {
+        background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(157, 98, 61, 0.1) 39px, rgba(157, 98, 61, 0.1) 40px);
+        background-color: #ffffff;
+        border: 1px solid rgba(113, 53, 6, 0.2);
+    }
+    
+    /* Conteneur vidéo responsif */
+    #lv-26baac5e7dfc .video-embed-container {
+        display: flex;
+        justify-content: center;
+        margin: 3rem 0;
+        width: 100%;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        #lv-26baac5e7dfc .nav-links-village .village-link::after {
+            transition: none !important;
+        }
+    }
+
+
+    #lv-7ac2eb90a8f5 { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- LETTRINE (Drop Cap) --- */
+    #lv-7ac2eb90a8f5 .drop-cap::first-letter {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5.5rem;
+        float: left;
+        line-height: 0.85;
+        margin-right: 0.5rem;
+        color: #9d623d;
+    }
+
+    /* --- IMAGE ENCADRÉE TYPE MENU (Cliquable) --- */
+    #lv-7ac2eb90a8f5 .menu-presentation-frame {
+        background: #ffffff;
+        padding: 12px;
+        border: 1px solid rgba(113, 53, 6, 0.15);
+        box-shadow: 0 25px 50px -12px rgba(113, 53, 6, 0.12);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        border-radius: 2px;
+        width: 100%;
+        position: relative;
+        display: block;
+        text-decoration: none;
+    }
+    #lv-7ac2eb90a8f5 .menu-presentation-frame:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 30px 60px -15px rgba(113, 53, 6, 0.20);
+    }
+    #lv-7ac2eb90a8f5 .menu-image-inner {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        border: 1px solid rgba(157, 98, 61, 0.3);
+    }
+    #lv-7ac2eb90a8f5 .menu-image-inner img {
+        width: 100%;
+        display: block;
+        transition: transform 0.8s ease;
+    }
+    #lv-7ac2eb90a8f5 .menu-presentation-frame:hover .menu-image-inner img {
+        transform: scale(1.03);
+    }
+
+#lv-ec06b7982f7d { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- LETTRINE (Drop Cap) --- */
+    #lv-ec06b7982f7d .drop-cap::first-letter {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5.5rem;
+        float: left;
+        line-height: 0.85;
+        margin-right: 0.5rem;
+        color: #9d623d;
+    }
+    
+    /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
+    #lv-ec06b7982f7d .nav-links-village {
+        text-align: center !important;
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 16px !important;
+        line-height: 1.4 !important;
+    }
+    #lv-ec06b7982f7d .nav-links-village .nav-col {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+    @media (min-width: 768px) {
+        #lv-ec06b7982f7d .nav-links-village .nav-col {
+            flex-direction: row !important;
+            justify-content: center !important;
+            gap: 28px !important; 
+        }
+    }
+    #lv-ec06b7982f7d .nav-links-village .village-link {
+        color: #713506 !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+        display: inline-block !important;
+        position: relative !important;
+        padding-bottom: 3px !important;
+        white-space: nowrap !important;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 13px !important;
+    }
+    #lv-ec06b7982f7d .nav-links-village .village-link::after {
+        content: "" !important;
+        position: absolute !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        width: 0 !important;
+        height: 1px !important;
+        background: #9d623d !important;
+        transition: width .28s ease !important;
+    }
+    #lv-ec06b7982f7d .nav-links-village .village-link:hover::after {
+        width: 100% !important;
+    }
+
+    /* Cadre d'image immersif */
+    #lv-ec06b7982f7d .village-img-wrapper {
+        position: relative;
+        overflow: hidden;
+        border-radius: 2px;
+    }
+    
+    /* Image encadrée type Polaroïd */
+    #lv-ec06b7982f7d .framed-image-container {
+        width: 100%;
+        max-width: 480px;
+        margin: 0 auto;
+        background: #ffffff;
+        padding: 10px;
+        border-radius: 4px;
+        box-shadow: 0 20px 40px -10px rgba(113, 53, 6, 0.15);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    #lv-ec06b7982f7d .framed-image-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 25px 50px -12px rgba(113, 53, 6, 0.20);
+    }
+    #lv-ec06b7982f7d .framed-image-inner {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 2px;
+    }
+    #lv-ec06b7982f7d .village-framed-img {
+        width: 100%;
+        display: block;
+        transition: transform 0.8s ease;
+    }
+    #lv-ec06b7982f7d .framed-image-container:hover .village-framed-img {
+        transform: scale(1.02);
+    }
+
+    /* Style éditorial menu */
+    #lv-ec06b7982f7d .menu-card {
+        background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(157, 98, 61, 0.1) 39px, rgba(157, 98, 61, 0.1) 40px);
+        background-color: #ffffff;
+        border: 1px solid rgba(113, 53, 6, 0.2);
+    }
+

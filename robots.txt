@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /tools/
+Disallow: /node_modules/
+# The temporary preview is noindex through HTML and HTTP headers.
+Sitemap: https://legrimaldibylevillage.com/sitemap.xml

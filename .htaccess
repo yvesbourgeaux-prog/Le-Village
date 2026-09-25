@@ -1,0 +1,24 @@
+Options -Indexes -MultiViews
+DirectoryIndex index.html
+RewriteEngine On
+RewriteRule ^(?:tools|node_modules|\.git)(?:/|$) - [F,L]
+RewriteRule ^(?:package(?:-lock)?\.json|tailwind\.config\.cjs|README\.md)$ - [F,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]
+ErrorDocument 404 /404.html
+<IfModule mod_headers.c>
+ Header always set X-Content-Type-Options "nosniff"
+ Header always set Referrer-Policy "strict-origin-when-cross-origin"
+ # Prevent the temporary domain competing with the current public website.
+ Header always set X-Robots-Tag "noindex, follow" "expr=%{HTTP_HOST} == 'lightgoldenrodyellow-ant-571258.hostingersite.com'"
+</IfModule>
+<IfModule mod_deflate.c>
+ AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+<IfModule mod_expires.c>
+ ExpiresActive On
+ ExpiresByType text/css "access plus 1 hour"
+ ExpiresByType application/javascript "access plus 1 hour"
+</IfModule>

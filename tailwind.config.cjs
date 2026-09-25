@@ -1,0 +1,1 @@
+module.exports={content:['./*.html','./assets/js/*.js'],theme:{extend:{colors:{'village-dark':'#713506','village-light':'#f5f0ea','village-white':'#ffffff','village-bg':'#fcf9f3','village-accent':'#9d623d'},fontFamily:{serif:['"Playfair Display"','serif'],cursive:['"Great Vibes"','cursive'],sans:['"Lato"','sans-serif']}}},plugins:[]};
