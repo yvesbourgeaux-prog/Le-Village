@@ -238,14 +238,14 @@
     }
 
 
-    #lv-f455a44a6f39 { margin: 0; padding: 0; }
+    #lv-43d114bf850c { margin: 0; padding: 0; }
 
 
-  #lv-012d39e69969 {
+  #lv-811edbe64ed4 {
     scroll-behavior: smooth;
   }
 
-  #lv-012d39e69969 .lv-press-wrap {
+  #lv-811edbe64ed4 .lv-press-wrap {
     position: relative;
     width: 100vw;
     max-width: 100vw;
@@ -256,7 +256,7 @@
     overflow: visible;
   }
 
-  #lv-012d39e69969 .lv-press-line {
+  #lv-811edbe64ed4 .lv-press-line {
     position: absolute;
     left: 0;
     right: 0;
@@ -268,13 +268,13 @@
     z-index: 0;
   }
 
-  #lv-012d39e69969 .lv-header {
+  #lv-811edbe64ed4 .lv-header {
     position: relative;
     z-index: 60;
     background: #fcf9f3;
   }
 
-  #lv-012d39e69969 .lv-header-inner {
+  #lv-811edbe64ed4 .lv-header-inner {
     position: relative;
     display: flex;
     align-items: center;
@@ -282,26 +282,26 @@
     padding: 12px 16px;
   }
 
-  #lv-012d39e69969 .lv-header-left,#lv-012d39e69969 
-  .lv-header-center,#lv-012d39e69969 
+  #lv-811edbe64ed4 .lv-header-left,#lv-811edbe64ed4 
+  .lv-header-center,#lv-811edbe64ed4 
   .lv-header-right {
     position: relative;
     z-index: 3;
     background: #fcf9f3;
   }
 
-  #lv-012d39e69969 .lv-header-left {
+  #lv-811edbe64ed4 .lv-header-left {
     display: flex;
     align-items: center;
     gap: 12px;
     padding-right: 12px;
   }
 
-  #lv-012d39e69969 .lv-header-center {
+  #lv-811edbe64ed4 .lv-header-center {
     padding: 0 16px;
   }
 
-  #lv-012d39e69969 .lv-header-right {
+  #lv-811edbe64ed4 .lv-header-right {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -313,48 +313,48 @@
     font-size: 11px;
   }
 
-  #lv-012d39e69969 .lv-header-link,#lv-012d39e69969 
-  .lv-social-link,#lv-012d39e69969 
+  #lv-811edbe64ed4 .lv-header-link,#lv-811edbe64ed4 
+  .lv-social-link,#lv-811edbe64ed4 
   .lv-menu-summary {
     color: #713506;
     text-decoration: none;
     transition: color 0.25s ease;
   }
 
-  #lv-012d39e69969 .lv-header-link:hover,#lv-012d39e69969 
-  .lv-social-link:hover,#lv-012d39e69969 
+  #lv-811edbe64ed4 .lv-header-link:hover,#lv-811edbe64ed4 
+  .lv-social-link:hover,#lv-811edbe64ed4 
   .lv-menu-summary:hover {
     color: #9d623d;
   }
 
-  #lv-012d39e69969 .lv-socials {
+  #lv-811edbe64ed4 .lv-socials {
     display: flex;
     align-items: center;
     gap: 10px;
   }
 
-  #lv-012d39e69969 .lv-logo {
+  #lv-811edbe64ed4 .lv-logo {
     display: block;
     height: 230px;
     object-fit: contain;
   }
 
-  #lv-012d39e69969 .lv-menu-details {
+  #lv-811edbe64ed4 .lv-menu-details {
     position: relative;
   }
 
-  #lv-012d39e69969 .lv-menu-summary {
+  #lv-811edbe64ed4 .lv-menu-summary {
     list-style: none;
     display: flex;
     align-items: center;
     cursor: pointer;
   }
 
-  #lv-012d39e69969 .lv-menu-summary::-webkit-details-marker {
+  #lv-811edbe64ed4 .lv-menu-summary::-webkit-details-marker {
     display: none;
   }
 
-  #lv-012d39e69969 .lv-menu-panel {
+  #lv-811edbe64ed4 .lv-menu-panel {
     display: none;
     position: absolute;
     top: calc(100% + 14px);
@@ -366,11 +366,11 @@
     z-index: 80;
   }
 
-  #lv-012d39e69969 .lv-menu-details[open] .lv-menu-panel {
+  #lv-811edbe64ed4 .lv-menu-details[open] .lv-menu-panel {
     display: block;
   }
 
-  #lv-012d39e69969 .lv-menu-panel a {
+  #lv-811edbe64ed4 .lv-menu-panel a {
     display: block;
     padding: 14px 32px;
     color: #713506;
@@ -378,12 +378,12 @@
     transition: background 0.25s ease, color 0.25s ease;
   }
 
-  #lv-012d39e69969 .lv-menu-panel a:hover {
+  #lv-811edbe64ed4 .lv-menu-panel a:hover {
     background: #f5f0ea;
     color: #9d623d;
   }
 
-  #lv-012d39e69969 .lv-hero {
+  #lv-811edbe64ed4 .lv-hero {
     position: relative;
     width: 100%;
     min-height: 58vh;
@@ -394,14 +394,14 @@
     justify-content: center;
   }
 
-  #lv-012d39e69969 .lv-hero-bg {
+  #lv-811edbe64ed4 .lv-hero-bg {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
   }
 
-  #lv-012d39e69969 .lv-hero-bg img {
+  #lv-811edbe64ed4 .lv-hero-bg img {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -409,30 +409,30 @@
     object-fit: cover;
   }
 
-  #lv-012d39e69969 .lv-hero-img-desktop {
+  #lv-811edbe64ed4 .lv-hero-img-desktop {
     display: block;
     object-position: center 34%;
   }
 
-  #lv-012d39e69969 .lv-hero-img-mobile {
+  #lv-811edbe64ed4 .lv-hero-img-mobile {
     display: none;
     object-position: center 20%;
   }
 
-  #lv-012d39e69969 .lv-hero-overlay {
+  #lv-811edbe64ed4 .lv-hero-overlay {
     position: absolute;
     inset: 0;
     background: rgba(113, 53, 6, 0.38);
   }
 
-  #lv-012d39e69969 .lv-hero-content {
+  #lv-811edbe64ed4 .lv-hero-content {
     position: relative;
     z-index: 2;
     text-align: center;
     padding: 20px;
   }
 
-  #lv-012d39e69969 .lv-hero-title {
+  #lv-811edbe64ed4 .lv-hero-title {
     margin: 0 0 16px;
     font-family: "Great Vibes", cursive;
     font-weight: 400;
@@ -442,7 +442,7 @@
     text-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
   }
 
-  #lv-012d39e69969 .lv-hero-subtitle {
+  #lv-811edbe64ed4 .lv-hero-subtitle {
     margin: 0;
     font-family: "Lato", sans-serif;
     font-weight: 400;
@@ -452,7 +452,7 @@
     font-size: clamp(11px, 1.2vw, 16px);
   }
 
-  #lv-012d39e69969 .lv-subnav {
+  #lv-811edbe64ed4 .lv-subnav {
     background: #713506;
     color: #f5f0ea;
     padding: 22px 16px;
@@ -460,7 +460,7 @@
     box-shadow: 0 8px 24px rgba(113, 53, 6, 0.12);
   }
 
-  #lv-012d39e69969 .lv-subnav ul {
+  #lv-811edbe64ed4 .lv-subnav ul {
     list-style: none;
     margin: 0 auto;
     padding: 0;
@@ -476,79 +476,79 @@
     font-size: 12px;
   }
 
-  #lv-012d39e69969 .lv-subnav a {
+  #lv-811edbe64ed4 .lv-subnav a {
     color: #f5f0ea;
     text-decoration: none;
     transition: color 0.25s ease;
   }
 
-  #lv-012d39e69969 .lv-subnav a:hover {
+  #lv-811edbe64ed4 .lv-subnav a:hover {
     color: #9d623d;
   }
 
   @media (min-width: 768px) {
-    #lv-012d39e69969 .lv-header-inner {
+    #lv-811edbe64ed4 .lv-header-inner {
       padding: 20px 40px;
     }
 
-    #lv-012d39e69969 .lv-logo {
+    #lv-811edbe64ed4 .lv-logo {
       height: 240px;
     }
 
-    #lv-012d39e69969 .lv-header-left {
+    #lv-811edbe64ed4 .lv-header-left {
       gap: 20px;
     }
 
-    #lv-012d39e69969 .lv-header-right {
+    #lv-811edbe64ed4 .lv-header-right {
       gap: 20px;
       font-size: 12px;
     }
 
-    #lv-012d39e69969 .lv-hero {
+    #lv-811edbe64ed4 .lv-hero {
       min-height: 72vh;
       height: 72vh;
     }
 
-    #lv-012d39e69969 .lv-subnav ul {
+    #lv-811edbe64ed4 .lv-subnav ul {
       gap: 32px 64px;
       font-size: 13px;
     }
   }
 
   @media (min-width: 1024px) {
-    #lv-012d39e69969 .lv-header-inner {
+    #lv-811edbe64ed4 .lv-header-inner {
       padding: 24px 56px;
     }
 
-    #lv-012d39e69969 .lv-logo {
+    #lv-811edbe64ed4 .lv-logo {
       height: 288px;
     }
   }
 
   @media (min-width: 1280px) {
-    #lv-012d39e69969 .lv-logo {
+    #lv-811edbe64ed4 .lv-logo {
       height: 320px;
     }
 
-    #lv-012d39e69969 .lv-hero {
+    #lv-811edbe64ed4 .lv-hero {
       min-height: 76vh;
       height: 76vh;
     }
   }
 
   @media (max-width: 767px) {
-    #lv-012d39e69969 .lv-header-inner {
+    #lv-811edbe64ed4 .lv-header-inner {
       padding: 7px 14px;
       gap: 4px;
     }
 
-    #lv-012d39e69969 .lv-header-left {
+    #lv-811edbe64ed4 .lv-header-left {
       flex: 0 0 auto;
       gap: 0;
       padding-right: 0;
     }
 
-    #lv-012d39e69969 .lv-header-center {
+    #lv-811edbe64ed4 .lv-header-center {
       flex: 1 1 auto;
       min-width: 0;
       display: flex;
@@ -556,51 +556,51 @@
       padding: 0 0 0 6px;
     }
 
-    #lv-012d39e69969 .lv-header-right,#lv-012d39e69969 
+    #lv-811edbe64ed4 .lv-header-right,#lv-811edbe64ed4 
     .lv-socials {
       display: none !important;
     }
 
-    #lv-012d39e69969 .lv-logo {
+    #lv-811edbe64ed4 .lv-logo {
       height: 128px;
       max-width: 86vw;
     }
 
-    #lv-012d39e69969 .lv-menu-panel {
+    #lv-811edbe64ed4 .lv-menu-panel {
       left: 0;
       width: calc(100vw - 24px);
     }
 
-    #lv-012d39e69969 .lv-hero {
+    #lv-811edbe64ed4 .lv-hero {
       min-height: 70vh;
       height: 70vh;
     }
 
-    #lv-012d39e69969 .lv-hero-img-desktop {
+    #lv-811edbe64ed4 .lv-hero-img-desktop {
       display: none;
     }
 
-    #lv-012d39e69969 .lv-hero-img-mobile {
+    #lv-811edbe64ed4 .lv-hero-img-mobile {
       display: block;
       object-fit: cover;
       object-position: center 20%;
     }
 
-    #lv-012d39e69969 .lv-hero-title {
+    #lv-811edbe64ed4 .lv-hero-title {
       font-size: clamp(56px, 14vw, 90px);
       margin-bottom: 10px;
     }
 
-    #lv-012d39e69969 .lv-hero-subtitle {
+    #lv-811edbe64ed4 .lv-hero-subtitle {
       letter-spacing: 0.16em;
       font-size: 11px;
     }
 
-    #lv-012d39e69969 .lv-subnav {
+    #lv-811edbe64ed4 .lv-subnav {
       padding: 16px 12px;
     }
 
-    #lv-012d39e69969 .lv-subnav ul {
+    #lv-811edbe64ed4 .lv-subnav ul {
       gap: 16px 18px;
       letter-spacing: 0.12em;
       font-size: 10px;
@@ -1251,13 +1251,13 @@
 
 
 
-    #lv-44a9684da79c {
+    #lv-0e61f442530d {
       background-color: #fcf9f3;
       color: #713506;
       margin: 0;
     }
 
-    #lv-44a9684da79c .press-header-line {
+    #lv-0e61f442530d .press-header-line {
       position: absolute;
       left: 0;
       right: 0;
@@ -1269,19 +1269,19 @@
       z-index: 0;
     }
 
-    #lv-44a9684da79c .header-safe {
+    #lv-0e61f442530d .header-safe {
       position: relative;
       z-index: 20;
     }
 
-    #lv-44a9684da79c .header-safe a,#lv-44a9684da79c 
+    #lv-0e61f442530d .header-safe a,#lv-0e61f442530d 
     .header-safe button {
       position: relative;
       z-index: 30;
       pointer-events: auto;
     }
 
-    #lv-44a9684da79c .collage-container {
+    #lv-0e61f442530d .collage-container {
       position: relative;
       width: 100%;
       max-width: 980px;
@@ -1289,7 +1289,7 @@
       aspect-ratio: 16 / 10;
     }
 
-    #lv-44a9684da79c .collage-photo {
+    #lv-0e61f442530d .collage-photo {
       position: absolute;
       display: block;
       width: 100%;
@@ -1301,25 +1301,25 @@
       -webkit-user-drag: none;
     }
 
-    #lv-44a9684da79c .collage-photo:hover {
+    #lv-0e61f442530d .collage-photo:hover {
       transform: scale(1.02);
     }
 
-    #lv-44a9684da79c .img-left {
+    #lv-0e61f442530d .img-left {
       top: 28%;
       left: 8%;
       width: 27%;
       z-index: 2;
     }
 
-    #lv-44a9684da79c .img-center {
+    #lv-0e61f442530d .img-center {
       top: 6%;
       left: 35%;
       width: 30%;
       z-index: 1;
     }
 
-    #lv-44a9684da79c .img-right {
+    #lv-0e61f442530d .img-right {
       top: 38%;
       right: 7%;
       width: 37%;
@@ -1327,24 +1327,24 @@
     }
 
     @media (max-width: 991px) {
-      #lv-44a9684da79c .collage-container {
+      #lv-0e61f442530d .collage-container {
         max-width: 760px;
         aspect-ratio: 16 / 11;
       }
 
-      #lv-44a9684da79c .img-left {
+      #lv-0e61f442530d .img-left {
         top: 30%;
         left: 5%;
         width: 30%;
       }
 
-      #lv-44a9684da79c .img-center {
+      #lv-0e61f442530d .img-center {
         top: 8%;
         left: 31%;
         width: 32%;
       }
 
-      #lv-44a9684da79c .img-right {
+      #lv-0e61f442530d .img-right {
         top: 40%;
         right: 4%;
         width: 40%;
@@ -1352,30 +1352,30 @@
     }
 
     @media (max-width: 767px) {
-      #lv-44a9684da79c .collage-container {
+      #lv-0e61f442530d .collage-container {
         max-width: 410px;
         aspect-ratio: 1 / 1.08;
       }
 
-      #lv-44a9684da79c .collage-photo {
+      #lv-0e61f442530d .collage-photo {
         box-shadow: 0 12px 28px -14px rgba(113, 53, 6, 0.18);
       }
 
-      #lv-44a9684da79c .img-left {
+      #lv-0e61f442530d .img-left {
         top: 30%;
         left: 0;
         width: 46%;
         z-index: 2;
       }
 
-      #lv-44a9684da79c .img-center {
+      #lv-0e61f442530d .img-center {
         top: 3%;
         left: 24%;
         width: 48%;
         z-index: 1;
       }
 
-      #lv-44a9684da79c .img-right {
+      #lv-0e61f442530d .img-right {
         top: 42%;
         right: 0;
         width: 54%;
@@ -1384,13 +1384,13 @@
     }
 
     @media (max-width: 480px) {
-      #lv-44a9684da79c .collage-container {
+      #lv-0e61f442530d .collage-container {
         max-width: 350px;
       }
     }
   
 
-        #lv-803b152a45b2 { margin: 0; padding: 0; background-color: #fcf9f3; }
+        #lv-9cdfc7feec4f { margin: 0; padding: 0; background-color: #fcf9f3; }
     
 
         #lv-2c543565dbe4 .press-pdf-modal {

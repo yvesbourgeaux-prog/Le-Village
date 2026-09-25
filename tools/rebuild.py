@@ -20,8 +20,8 @@ css_blocks={}; replacements=[]; scripts={};used_js={}
 def choose_image(alt):
  a=alt.lower()
  if any(w in a for w in ['chambre','suite','hôtel','hotel','lit']):return HOTEL,"Chambre de l’Hôtel Le Grimaldi au Haut-de-Cagnes"
- if any(w in a for w in ['plat','assiette','cuisine','gastronom','carte','chef']):return FOOD,'Cuisine du restaurant Le Village à Cagnes-sur-Mer'
- if any(w in a for w in ['château','village médiéval','vue','ruelle','patrimoine']):return PLACE,'Place de Gaulle au Haut-de-Cagnes'
+ if any(w in a for w in ['plat','assiette','cuisine','gastronom','carte','chef','culinaire']):return FOOD,'Cuisine du restaurant Le Village à Cagnes-sur-Mer'
+ if any(w in a for w in ['château','village médiéval','vue','ruelle','patrimoine','illustration']):return PLACE,'Place de Gaulle au Haut-de-Cagnes'
  return FALLBACK,'Terrasse du restaurant Le Village au Haut-de-Cagnes'
 def linkfix(raw):
  return raw.replace(BASE+'/','/').replace(BASE,"/")
@@ -29,7 +29,7 @@ def process(raw,page):
  raw=linkfix(raw)
  # Remove unavailable Cloudinary references, including CSS and JS galleries.
  for u in set(re.findall(r'https?://res\.cloudinary\.com/[^\s\"\'<>\\)]+',raw)):
-  raw=raw.replace(u,FALLBACK)
+  raw=raw.replace(u,LOGO if ('logo' in u.lower() or 'legrimaldi_-' in u.lower()) else FALLBACK)
  uid='lv-'+hashlib.sha256(raw.encode()).hexdigest()[:12]
  s=BeautifulSoup(raw,'html.parser'); external=[]; js=[]; styles=[]
  for n in s.find_all(string=lambda t:isinstance(t,Comment)):n.extract()
