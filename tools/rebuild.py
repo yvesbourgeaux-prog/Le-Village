@@ -148,8 +148,8 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
  head+=''.join(f'<script defer src="/assets/js/{uid}.js"></script>' for uid in jsids)
  home_footer=''
  if not slug:
-  head=head.replace('/assets/css/blocks.css', '/assets/css/blocks.css?v=home-20261001b').replace('/assets/css/tailwind.css', '/assets/css/tailwind.css?v=home-20261001b').replace('/assets/js/site.js', '/assets/js/site.js?v=home-20261001b')
-  head+='<link rel="stylesheet" href="/assets/css/home.css?v=home-20261001b"><script defer src="/assets/js/home.js?v=home-20261001b"></script><script id="zenchef-sdk" defer src="https://sdk.zenchef.com/v1/sdk.min.js"></script>'
+  head=head.replace('/assets/css/blocks.css', '/assets/css/blocks.css?v=home-20261001c').replace('/assets/css/tailwind.css', '/assets/css/tailwind.css?v=home-20261001c').replace('/assets/js/site.js', '/assets/js/site.js?v=home-20261001c')
+  head+='<link rel="stylesheet" href="/assets/css/home.css?v=home-20261001c"><script defer src="/assets/js/home.js?v=home-20261001c"></script><script id="zenchef-sdk" defer src="https://sdk.zenchef.com/v1/sdk.min.js"></script>'
   home_footer=home_footer_block+EXTRA_FOOT+'<div class="zc-widget-config" data-restaurant="361354" data-lang="fr" data-primary-color="794116" data-open="false"></div>'
  selected_header=(ROOT/'tools/home-header.html').read_text() if not slug else HEADER
  full=head+'</head><body'+(' class="home-page"' if not slug else '')+'>'+selected_header+'<main id="main">'+str(s)+'</main>'+(home_footer if not slug else footer+EXTRA_FOOT)+'<div id="privacy-panel" class="privacy-panel" hidden><p>Vous pouvez réinitialiser ici les autorisations des vidéos intégrées. La carte et le module de réservation utilisent les services Google Maps et Zenchef.</p><button type="button" data-reset-consent>Réinitialiser mes choix</button><button type="button" data-close-privacy>Fermer</button></div></body></html>'

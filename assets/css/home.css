@@ -21,14 +21,8 @@
 .home-page .lv-block section{max-width:var(--content-width);margin-inline:auto;padding-top:56px;padding-bottom:56px}
 .home-page #village-cta-block section{max-width:1024px}
 .home-page #village-accueil-intro-block section{padding-top:22px;padding-bottom:52px}
-.home-page #village-accueil-intro-block section>div:first-child{margin-bottom:46px}
 .home-page h1{font-size:clamp(52px,7.8vw,108px);line-height:1.15}
 .home-page #village-accueil-intro-block .drop-cap-home{font-size:clamp(20px,1.8vw,24px)}
-.home-page #village-croisee-block section>div:first-child{margin-bottom:40px}
-.home-page #village-croisee-block section>.grid{gap:56px}
-.home-page #village-blog-carousel-block section>div:first-child,.home-page #village-avis-block section>div:first-child{margin-bottom:32px}
-.home-page #village-avis-block section>div:last-child{margin-top:32px}
-.home-page #village-cta-block p{margin-bottom:32px}
 .home-page #village-grid-navigation-block section{padding-top:28px}
 .home-page #village-grid-navigation-block img{height:440px}
 .home-page #village-acces-prestige-block .map-frame{height:480px}
@@ -51,7 +45,6 @@
  .home-header #site-nav>a{font-size:16px}
  .home-header.is-scrolled #site-nav{max-height:calc(100dvh - 88px)}
  .home-page #main{padding-top:126px}
- .home-page #village-croisee-block section>.grid{gap:32px}
 }
 @media(max-width:640px){
  .home-header .header-inner{padding:0 16px;grid-template-columns:44px 1fr 94px;gap:4px;min-height:118px}
@@ -62,13 +55,9 @@
  .home-page #main{padding-top:118px}
  .home-page .lv-block section{padding-top:36px;padding-bottom:36px;padding-left:22px;padding-right:22px}
  .home-page #village-accueil-intro-block section{padding-top:12px;padding-bottom:36px}
- .home-page #village-accueil-intro-block section>div:first-child{margin-bottom:28px}
- .home-page #village-accueil-intro-block section>.grid{gap:30px}
  .home-page #village-accueil-intro-block .nav-row{flex-wrap:wrap;gap:14px 20px}
- .home-page #village-grid-navigation-block section>.grid{gap:28px}
  .home-page #village-grid-navigation-block img{height:340px}
  .home-page #village-acces-prestige-block .map-frame{height:360px}
- .home-page #village-acces-prestige-block .space-y-12>:not([hidden])~:not([hidden]){margin-top:28px}
 }
 @media(prefers-reduced-motion:reduce){.home-header,.home-header *{transition:none!important}}
 .home-page #village-cta-block h2>.font-cursive,.home-page #village-acces-prestige-block h2>.font-cursive{text-transform:none;letter-spacing:normal}
@@ -83,8 +72,6 @@
 .home-header .book-button:hover,.home-header .book-button:focus-visible{color:#fff!important}
 .home-header .book-button:hover::before,.home-header .book-button:focus-visible::before{transform:translateY(0)}
 .home-page #village-centered-footer>footer{padding-top:48px;padding-bottom:24px}
-.home-page #village-centered-footer .mb-20{margin-bottom:40px}
-.home-page #village-centered-footer .mb-14,.home-page #village-centered-footer .mb-12{margin-bottom:32px}
 @media(max-width:1199px){
  .home-header .header-inner{grid-template-columns:44px 1fr auto;min-height:126px;padding:0 24px}
  .home-header .menu-toggle{display:flex;flex-direction:column;justify-content:center;gap:6px;width:44px;height:44px}
@@ -105,3 +92,6 @@
  .home-page #main{padding-top:118px}
 }
 @media(prefers-reduced-motion:reduce){.home-header .book-button::before{transition:none}}
+
+/* Preserve the supplied blocks' internal rhythm; compact only section boundaries. */
+.home-page #village-croisee-block .lv-ig-carousel{margin-block:0 32px;margin-inline:auto;max-width:450px}
