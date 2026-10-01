@@ -192,8 +192,8 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
   head=head.replace('home-20261001c','carte-20261001a')
   head+='<link rel="stylesheet" href="/assets/css/carte.css?v=carte-20261001a">'
  if slug=='visiter-haut-de-cagnes':
-  head=head.replace('home-20261001c','visite-20261001a')
-  head+='<link rel="stylesheet" href="/assets/css/visit.css?v=visite-20261001a">'
+  head=head.replace('home-20261001c','visite-20261001b')
+  head+='<link rel="stylesheet" href="/assets/css/visit.css?v=visite-20261001b">'
  selected_header=(ROOT/'tools/home-header.html').read_text() if modern else HEADER
  if slug in (RESTAURANT_SLUG,HOTEL_SLUG,'la-carte','visiter-haut-de-cagnes'):selected_header=selected_header.replace(' aria-current="page"','')
  if slug==HOTEL_SLUG:selected_header=selected_header.replace('class="book-button" href="/reserver"','class="book-button" href="#reservation"')

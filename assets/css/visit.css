@@ -24,3 +24,6 @@
  .visit-page .visit-body{padding-bottom:32px}
 }
 @media(prefers-reduced-motion:reduce){.visit-page .village-img,.visit-page .village-img-wrapper::before,.visit-page .village-img-wrapper::after{transition:none!important;transform:none!important}}
+
+.visit-page .visit-hero>img{object-position:center 75%}
+.visit-page .visit-hero>div.absolute{background-image:linear-gradient(to top,#fcf9f3 0%,rgba(113,53,6,.06) 28%,rgba(18,27,32,.34) 65%,rgba(18,27,32,.48) 100%)}

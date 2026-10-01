@@ -5399,10 +5399,10 @@
     }
 
 
-    #lv-0eeeceef46db { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-b29b40547f04 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-0eeeceef46db .drop-cap::first-letter {
+    #lv-b29b40547f04 .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -5412,7 +5412,7 @@
     }
 
     /* --- CADRE EDITORIAL (Style Papier) --- */
-    #lv-0eeeceef46db .notebook-card {
+    #lv-b29b40547f04 .notebook-card {
         background-color: #ffffff;
         background-image: repeating-linear-gradient(0deg, transparent, transparent 35px, rgba(157, 98, 61, 0.08) 35px, rgba(157, 98, 61, 0.08) 36px);
         border: 1px solid rgba(113, 53, 6, 0.15);
@@ -5420,7 +5420,7 @@
     }
 
     /* --- BOUTONS LUXE (CTA FINAUX) --- */
-    #lv-0eeeceef46db .btn-luxury {
+    #lv-b29b40547f04 .btn-luxury {
         position: relative;
         display: inline-flex;
         align-items: center;
@@ -5440,7 +5440,7 @@
         cursor: pointer;
         box-shadow: 0 10px 20px -5px rgba(113, 53, 6, 0.08);
     }
-    #lv-0eeeceef46db .btn-luxury::before {
+    #lv-b29b40547f04 .btn-luxury::before {
         content: '';
         position: absolute;
         inset: 0;
@@ -5450,46 +5450,46 @@
         transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 0;
     }
-    #lv-0eeeceef46db .btn-luxury:hover {
+    #lv-b29b40547f04 .btn-luxury:hover {
         border-color: rgba(113, 53, 6, 0.6);
         box-shadow: 0 15px 30px -5px rgba(113, 53, 6, 0.15);
         transform: translateY(-2px);
     }
-    #lv-0eeeceef46db .btn-luxury:hover::before { transform: scaleY(1); }
-    #lv-0eeeceef46db .btn-luxury-text { position: relative; z-index: 1; display: flex; align-items: center; }
-    #lv-0eeeceef46db .btn-luxury-arrow { margin-left: 12px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
-    #lv-0eeeceef46db .btn-luxury:hover .btn-luxury-arrow { transform: translateX(6px); }
+    #lv-b29b40547f04 .btn-luxury:hover::before { transform: scaleY(1); }
+    #lv-b29b40547f04 .btn-luxury-text { position: relative; z-index: 1; display: flex; align-items: center; }
+    #lv-b29b40547f04 .btn-luxury-arrow { margin-left: 12px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+    #lv-b29b40547f04 .btn-luxury:hover .btn-luxury-arrow { transform: translateX(6px); }
     
     /* --- FILTRE CUIVRÉ SIGNATURE --- */
-    #lv-0eeeceef46db .village-img-wrapper {
+    #lv-b29b40547f04 .village-img-wrapper {
         position: relative;
         overflow: hidden;
         background-color: #713506;
     }
     /* Calque Cuivré */
-    #lv-0eeeceef46db .village-img-wrapper::after {
+    #lv-b29b40547f04 .village-img-wrapper::after {
         content: ''; position: absolute; inset: 0;
         background-color: #9d623d; mix-blend-mode: color; opacity: 0.85; 
         transition: opacity 0.6s ease; pointer-events: none; z-index: 10;
     }
     /* Calque Profondeur */
-    #lv-0eeeceef46db .village-img-wrapper::before {
+    #lv-b29b40547f04 .village-img-wrapper::before {
         content: ''; position: absolute; inset: 0;
         background-color: rgba(113, 53, 6, 0.15); 
         transition: opacity 0.6s ease; pointer-events: none; z-index: 11;
     }
     /* Estompage du filtre uniquement au Survol */
-    #lv-0eeeceef46db .group:hover .village-img-wrapper::after,#lv-0eeeceef46db  
+    #lv-b29b40547f04 .group:hover .village-img-wrapper::after,#lv-b29b40547f04  
     .group:hover .village-img-wrapper::before { 
         opacity: 0; 
     }
 
     /* Mouvement lent luxueux */
-    #lv-0eeeceef46db .village-img { 
+    #lv-b29b40547f04 .village-img { 
         transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
         will-change: transform; 
     }
-    #lv-0eeeceef46db .group:hover .village-img { 
+    #lv-b29b40547f04 .group:hover .village-img { 
         transform: scale(1.05); 
     }
 
