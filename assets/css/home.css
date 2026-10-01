@@ -72,3 +72,36 @@
 }
 @media(prefers-reduced-motion:reduce){.home-header,.home-header *{transition:none!important}}
 .home-page #village-cta-block h2>.font-cursive,.home-page #village-acces-prestige-block h2>.font-cursive{text-transform:none;letter-spacing:normal}
+/* Complete navigation labels and the reference's outlined animated action. */
+.home-header .header-inner{max-width:1440px;grid-template-columns:minmax(540px,1fr) 190px minmax(270px,1fr);gap:20px;padding-inline:32px}
+.home-header #site-nav{gap:24px}
+.home-header #site-nav>a{font-size:12px;letter-spacing:0}
+.home-header .social,.home-header .phone{width:38px}
+.home-header svg{width:24px;height:24px}
+.home-header .book-button{position:relative;isolation:isolate;overflow:hidden;background:transparent;color:#713506!important;border:2px solid #713506;min-width:154px;padding:17px 24px;letter-spacing:0;font:400 13px Poppins,sans-serif;transition:color .35s}
+.home-header .book-button::before{content:"";position:absolute;inset:0;z-index:-1;background:#713506;transform:translateY(102%);transition:transform .4s cubic-bezier(.4,0,.2,1)}
+.home-header .book-button:hover,.home-header .book-button:focus-visible{color:#fff!important}
+.home-header .book-button:hover::before,.home-header .book-button:focus-visible::before{transform:translateY(0)}
+.home-page #village-centered-footer>footer{padding-top:48px;padding-bottom:24px}
+.home-page #village-centered-footer .mb-20{margin-bottom:40px}
+.home-page #village-centered-footer .mb-14,.home-page #village-centered-footer .mb-12{margin-bottom:32px}
+@media(max-width:1199px){
+ .home-header .header-inner{grid-template-columns:44px 1fr auto;min-height:126px;padding:0 24px}
+ .home-header .menu-toggle{display:flex;flex-direction:column;justify-content:center;gap:6px;width:44px;height:44px}
+ .home-header .menu-toggle span{width:26px;height:2px;background:#713506}
+ .home-header #site-nav{display:none;position:absolute;top:100%;left:0;right:0;background:#fcf9f3;border-top:1px solid #71350618;padding:28px;flex-direction:column;max-height:calc(100dvh - 126px);overflow:auto}
+ .home-header #site-nav.open{display:flex}
+ .home-header #site-nav>a{font-size:15px;white-space:normal;text-align:center}
+ .home-header .mobile-extra{display:flex;flex-direction:column;gap:20px;text-align:center}
+ .home-header .brand{width:150px;height:126px;margin:auto}
+ .home-header .brand img{width:150px;height:126px}
+ .home-page #main{padding-top:126px}
+}
+@media(max-width:640px){
+ .home-header .header-inner{grid-template-columns:44px 1fr 94px;gap:4px;min-height:118px;padding:0 16px}
+ .home-header .brand{width:130px;height:118px}
+ .home-header .brand img{width:138px;height:118px}
+ .home-header .book-button{min-width:0;width:94px;padding:13px 8px;font-size:10px}
+ .home-page #main{padding-top:118px}
+}
+@media(prefers-reduced-motion:reduce){.home-header .book-button::before{transition:none}}

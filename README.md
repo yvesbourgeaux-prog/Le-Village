@@ -42,3 +42,6 @@ Les cinq blocs fournis sont conservés dans `tools/source-pages/index.json`. L�
 SEO : un H1, sections H2, liens descriptifs vers la page restaurant, entités Restaurant et Hotel reliées à la page. Le domaine provisoire reste en noindex ; activer l’indexation uniquement lors de la mise en production sur le domaine canonique. L’article Halloween ajouté aux actualités pointe encore vers le site source, sa page n’étant pas encore migrée.
 
 Vérification : `NODE_PATH=/chemin/vers/node_modules node tools/check-home.cjs` (jsdom requis).
+
+### Corrections du 1er octobre
+Le pied de page fourni est restauré dans `tools/home-footer.html`. Le carrousel Haut-de-Cagnes contient sept photos, sans vidéo Facebook. Google Maps se charge directement sur l’accueil. Le SDK Zenchef officiel gère le flotteur et les actions de réservation sur l’accueil ; les autres pages gardent leur module actuel. Le bouton du menu reprend une bordure brune avec un remplissage animé au survol.

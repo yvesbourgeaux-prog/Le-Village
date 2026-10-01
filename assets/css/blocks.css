@@ -49,6 +49,56 @@
     }
 
 
+    #lv-5a82e23671ce { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* Liens du menu principal */
+    #lv-5a82e23671ce .footer-nav-link {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 2px;
+        transition: color 0.3s ease;
+    }
+    #lv-5a82e23671ce .footer-nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 1px;
+        bottom: 0;
+        left: 50%;
+        background-color: #9d623d;
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+    #lv-5a82e23671ce .footer-nav-link:hover {
+        color: #9d623d;
+    }
+    #lv-5a82e23671ce .footer-nav-link:hover::after {
+        width: 100%;
+    }
+
+    /* Liens d'action (Réservations) */
+    #lv-5a82e23671ce .footer-action-link {
+        display: inline-block;
+        border-bottom: 1px solid rgba(113, 53, 6, 0.3);
+        padding-bottom: 4px;
+        transition: all 0.3s ease;
+    }
+    #lv-5a82e23671ce .footer-action-link:hover {
+        color: #9d623d;
+        border-color: #9d623d;
+        transform: translateY(-2px);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        #lv-5a82e23671ce .footer-nav-link,#lv-5a82e23671ce 
+        .footer-nav-link::after,#lv-5a82e23671ce 
+        .footer-action-link,#lv-5a82e23671ce 
+        .tripadvisor-badge img {
+            transition: none !important;
+        }
+    }
+
+
     #lv-452a4a4cd6fa { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- CADRE VIDÉO FENÊTRE EN ARCHE ÉPURÉE --- */
@@ -2542,15 +2592,15 @@
     }
 
 
-    #lv-3292e32a0e45 { margin: 0; padding: 0; }
+    #lv-fd1810ecc350 { margin: 0; padding: 0; }
 
     /* --- FILTRE ÉLÉGANT (SANS BUG DE COULEUR AU SURVOL) --- */
-    #lv-3292e32a0e45 .village-img-wrapper {
+    #lv-fd1810ecc350 .village-img-wrapper {
         position: relative;
         overflow: hidden;
     }
     
-    #lv-3292e32a0e45 .village-img-wrapper::after {
+    #lv-fd1810ecc350 .village-img-wrapper::after {
         content: '';
         position: absolute;
         inset: 0;
@@ -2562,7 +2612,7 @@
         z-index: 10;
     }
     
-    #lv-3292e32a0e45 .village-img-wrapper::before {
+    #lv-fd1810ecc350 .village-img-wrapper::before {
         content: '';
         position: absolute;
         inset: 0;
@@ -2572,27 +2622,27 @@
         z-index: 11;
     }
     
-    #lv-3292e32a0e45 .group:hover .village-img-wrapper::after,#lv-3292e32a0e45 
+    #lv-fd1810ecc350 .group:hover .village-img-wrapper::after,#lv-fd1810ecc350 
     .group:hover .village-img-wrapper::before {
         opacity: 0;
     }
 
-    #lv-3292e32a0e45 .village-img {
+    #lv-fd1810ecc350 .village-img {
         transition: transform 0.8s ease;
         will-change: transform;
     }
 
-    #lv-3292e32a0e45 .group:hover .village-img {
+    #lv-fd1810ecc350 .group:hover .village-img {
         transform: scale(1.05);
     }
 
     /* --- STYLES DU CARROUSEL --- */
-    #lv-3292e32a0e45 .lv-ig-carousel {
+    #lv-fd1810ecc350 .lv-ig-carousel {
         width: 100%;
         margin: 0 auto;
     }
 
-    #lv-3292e32a0e45 .lv-ig-slides {
+    #lv-fd1810ecc350 .lv-ig-slides {
         position: relative;
         width: 100%;
         aspect-ratio: 4 / 5;
@@ -2600,7 +2650,7 @@
         border-radius: 2px;
     }
 
-    #lv-3292e32a0e45 .lv-ig-slide {
+    #lv-fd1810ecc350 .lv-ig-slide {
         position: absolute;
         inset: 0;
         opacity: 0;
@@ -2610,14 +2660,14 @@
         z-index: 1;
     }
 
-    #lv-3292e32a0e45 .lv-ig-slide.lv-active {
+    #lv-fd1810ecc350 .lv-ig-slide.lv-active {
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
         z-index: 2;
     }
 
-    #lv-3292e32a0e45 .lv-ig-slide img {
+    #lv-fd1810ecc350 .lv-ig-slide img {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -2625,14 +2675,14 @@
     }
 
     /* Slide vidéo Facebook */
-    #lv-3292e32a0e45 .lv-video-slide {
+    #lv-fd1810ecc350 .lv-video-slide {
         background: #000;
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    #lv-3292e32a0e45 .lv-video-slide iframe {
+    #lv-fd1810ecc350 .lv-video-slide iframe {
         width: 100%;
         height: 100%;
         border: none;
@@ -2641,7 +2691,7 @@
     }
 
     /* Navigation */
-    #lv-3292e32a0e45 .lv-ig-dots {
+    #lv-fd1810ecc350 .lv-ig-dots {
         position: absolute;
         bottom: 14px;
         left: 0;
@@ -2652,7 +2702,7 @@
         z-index: 20;
     }
 
-    #lv-3292e32a0e45 .lv-ig-dot {
+    #lv-fd1810ecc350 .lv-ig-dot {
         width: 6px;
         height: 6px;
         border-radius: 50%;
@@ -2661,13 +2711,13 @@
         transition: all 0.25s ease;
     }
 
-    #lv-3292e32a0e45 .lv-ig-dot.lv-active {
+    #lv-fd1810ecc350 .lv-ig-dot.lv-active {
         width: 16px;
         border-radius: 999px;
         background: #ffffff;
     }
 
-    #lv-3292e32a0e45 .lv-ig-arrow {
+    #lv-fd1810ecc350 .lv-ig-arrow {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -2689,18 +2739,18 @@
         opacity: 0;
     }
 
-    #lv-3292e32a0e45 .group:hover .lv-ig-arrow { opacity: 1; }
+    #lv-fd1810ecc350 .group:hover .lv-ig-arrow { opacity: 1; }
 
-    #lv-3292e32a0e45 .lv-ig-arrow-left { left: 8px; }
-    #lv-3292e32a0e45 .lv-ig-arrow-right { right: 8px; }
+    #lv-fd1810ecc350 .lv-ig-arrow-left { left: 8px; }
+    #lv-fd1810ecc350 .lv-ig-arrow-right { right: 8px; }
 
-    #lv-3292e32a0e45 .lv-ig-arrow:hover {
+    #lv-fd1810ecc350 .lv-ig-arrow:hover {
         background: #ffffff;
         color: #713506;
     }
     
     @media (max-width: 768px) {
-        #lv-3292e32a0e45 .lv-ig-arrow { opacity: 0.9; }
+        #lv-fd1810ecc350 .lv-ig-arrow { opacity: 0.9; }
     }
 
 

@@ -84,6 +84,7 @@ def instagram():
  photos=[FALLBACK,FOOD,ASSET+'572928136_18117010441554133_1923760437050638675_n-TvrQ6sg8lBtejgDd.jpg',ASSET+'551078697_18111392815554133_227775813467422912_n-Si2wTcuvWMJoKJbj.jpg',ASSET+'582793372_18118705186554133_7027943419963072274_n-6UgIiwaTzcedSzpl.jpg',ASSET+'559846321_18113516263554133_4733225079968164517_n-WVwm5HBlhXahGJZh.jpg']
  return '<section class="instagram-wall"><p class="eyebrow">La vie du Village</p><h2>Retrouvons-nous sur Instagram</h2><p>Une sélection de moments à partager. Retrouvez nos dernières publications sur Instagram.</p><div class="instagram-grid">'+''.join(f'<a href="https://www.instagram.com/restaurantlevillagehdc/" target="_blank" rel="noopener noreferrer" aria-label="Voir le compte Instagram du Village"><img src="{u}" alt="Un aperçu du restaurant Le Village" loading="lazy" decoding="async"></a>' for u in photos)+'</div><a class="book-button" href="https://www.instagram.com/restaurantlevillagehdc/" target="_blank" rel="noopener noreferrer">Suivre @restaurantlevillagehdc</a></section>'
 footer,_=process(PAGES[0]['footer'],'footer')
+home_footer_block,_=process((ROOT/'tools/home-footer.html').read_text(),'home-footer')
 FONT='https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Poppins:wght@300;400;500;600&display=swap'
 manifest=[]
 def writepage(slug,meta,content,external=None,kind='default',date=None):
@@ -113,7 +114,7 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
  # Progressively load embeds only after consent; a plain link remains usable.
  for iframe in s.select('iframe[src]'):
   src=iframe['src']
-  if 'widget.holiduhost.com' in src:continue
+  if 'widget.holiduhost.com' in src or (not slug and 'google.com/maps/embed' in src):continue
   iframe['data-consent-src']=src;del iframe['src']
   parent=s.new_tag('div');parent['class']='embed-consent';iframe.wrap(parent)
   info=s.new_tag('div');info['class']='embed-notice'
@@ -141,19 +142,18 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
   if s.find('img'):article['image']=s.find('img').get('src',FALLBACK)
   graph.append(article)
  if slug:graph.append({'@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':'Accueil','item':BASE+'/'},{'@type':'ListItem','position':2,'name':title,'item':canonical}]})
- jsids=list(dict.fromkeys(used_js.get(slug,[])+used_js.get('footer',[])))
+ jsids=list(dict.fromkeys(used_js.get(slug,[])+used_js.get('home-footer' if not slug else 'footer',[])))
  es=''.join(f'<script defer src="{html.escape(u,quote=True)}"></script>' for u in dict.fromkeys(external or []))
  head=f'''<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)}</title><meta name="description" content="{html.escape(description,quote=True)}"><link rel="canonical" href="{canonical}"><meta name="robots" content="noindex,follow"><meta name="theme-color" content="#fcf9f3"><meta property="og:type" content="{'article' if kind=='blog' else 'website'}"><meta property="og:title" content="{html.escape(title,quote=True)}"><meta property="og:description" content="{html.escape(description,quote=True)}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="{s.find('img').get('src',FALLBACK) if s.find('img') else FALLBACK}"><meta property="og:locale" content="fr_FR"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="{LOGO}"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="{html.escape(FONT,quote=True)}"><link rel="stylesheet" href="/assets/css/tailwind.css"><link rel="stylesheet" href="/assets/css/blocks.css"><link rel="stylesheet" href="/assets/css/site.css"><script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False)}</script>{es}<script defer src="/assets/js/site.js"></script>'''
  head+=''.join(f'<script defer src="/assets/js/{uid}.js"></script>' for uid in jsids)
  home_footer=''
  if not slug:
-  head=head.replace('/assets/css/blocks.css', '/assets/css/blocks.css?v=home-20261001')
-  head+='<link rel="stylesheet" href="/assets/css/home.css?v=home-20261001"><script defer src="/assets/js/home.js"></script>'
-  contact=s.select_one('#village-acces-prestige-block')
-  if contact:home_footer=str(contact.parent.extract())
-  home_footer='<footer aria-label="Nous retrouver">'+home_footer+EXTRA_FOOT+'<p class="home-credit">© 2026 Le Grimaldi by Le Village · <a href="mailto:contact@legrimaldibylevillage.fr">Nous écrire</a> · Réalisation <a href="https://viralyagency.fr/">Viraly Agency</a></p></footer>'
+  head=head.replace('/assets/css/blocks.css', '/assets/css/blocks.css?v=home-20261001b').replace('/assets/css/tailwind.css', '/assets/css/tailwind.css?v=home-20261001b').replace('/assets/js/site.js', '/assets/js/site.js?v=home-20261001b')
+  head+='<link rel="stylesheet" href="/assets/css/home.css?v=home-20261001b"><script defer src="/assets/js/home.js?v=home-20261001b"></script><script id="zenchef-sdk" defer src="https://sdk.zenchef.com/v1/sdk.min.js"></script>'
+  home_footer=home_footer_block+EXTRA_FOOT+'<div class="zc-widget-config" data-restaurant="361354" data-lang="fr" data-primary-color="794116" data-open="false"></div>'
  selected_header=(ROOT/'tools/home-header.html').read_text() if not slug else HEADER
- full=head+'</head><body'+(' class="home-page"' if not slug else '')+'>'+selected_header+'<main id="main">'+str(s)+'</main>'+(home_footer if not slug else footer+EXTRA_FOOT)+'<div id="privacy-panel" class="privacy-panel" hidden><p>Les contenus externes (carte, vidéos et réservations) ne sont chargés qu’à votre demande.</p><button type="button" data-reset-consent>Réinitialiser mes choix</button><button type="button" data-close-privacy>Fermer</button></div></body></html>'
+ full=head+'</head><body'+(' class="home-page"' if not slug else '')+'>'+selected_header+'<main id="main">'+str(s)+'</main>'+(home_footer if not slug else footer+EXTRA_FOOT)+'<div id="privacy-panel" class="privacy-panel" hidden><p>Vous pouvez réinitialiser ici les autorisations des vidéos intégrées. La carte et le module de réservation utilisent les services Google Maps et Zenchef.</p><button type="button" data-reset-consent>Réinitialiser mes choix</button><button type="button" data-close-privacy>Fermer</button></div></body></html>'
+ if slug:full=full.replace('Vous pouvez réinitialiser ici les autorisations des vidéos intégrées. La carte et le module de réservation utilisent les services Google Maps et Zenchef.', 'Les contenus externes (carte, vidéos et réservations) ne sont chargés qu’à votre demande.')
  path=ROOT/((slug+'.html') if slug else 'index.html');path.write_text(full)
  manifest.append({'path':'/'+slug,'file':path.name,'title':title,'kind':kind})
 for p in PAGES:
