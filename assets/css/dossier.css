@@ -21,3 +21,6 @@
 .dossier-page #dossier-hero .lv-hero-bg img{object-position:center center}
 @media(max-width:767px){.dossier-page #dossier-hero{aspect-ratio:auto;height:88svh;min-height:540px}.dossier-page #dossier-hero .lv-hero-bg{inset:-35px 0;height:calc(100% + 70px)}}
 @media(prefers-reduced-motion:reduce){.dossier-page #dossier-hero .lv-hero-bg{transform:none;will-change:auto}}
+/* All editorial blocks share the same framed width as the hero. */
+.dossier-page #main>.lv-block:not(:first-child){width:calc(100% - 48px);max-width:1240px;margin-inline:auto}
+@media(max-width:767px){.dossier-page #main>.lv-block:not(:first-child){width:calc(100% - 32px)}}
