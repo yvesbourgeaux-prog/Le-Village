@@ -2,10 +2,12 @@
 window.lvScopedDocument=function(root){return new Proxy(window.document,{get(target,key){if(key==='querySelector')return selector=>root.querySelector(selector);if(key==='querySelectorAll')return selector=>root.querySelectorAll(selector);if(key==='getElementById')return id=>root.querySelector('#'+CSS.escape(id))||target.getElementById(id);const value=Reflect.get(target,key,target);return typeof value==='function'?value.bind(target):value;}})};
 const menu=document.querySelector('.menu-toggle'),nav=document.getElementById('site-nav');
 function closeMenu(){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Ouvrir le menu');}
+if(menu&&nav){
 menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Fermer le menu':'Ouvrir le menu');});
 nav.addEventListener('click',e=>{if(e.target.closest('a'))closeMenu();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeMenu();document.getElementById('privacy-panel').hidden=true;}});
 for(const a of nav.querySelectorAll('a'))if(a.pathname===location.pathname)a.setAttribute('aria-current','page');
+}
 const fallback='https://assets.zyrosite.com/gnKoPAn3rxzY53IR/548927768_18110917903554133_6103352769976099505_n-tx4bw2LvKuuQwaTd.jpg';
 document.addEventListener('error',event=>{const img=event.target;if(img.tagName==='IMG'&&!img.dataset.fallback){img.dataset.fallback='true';img.src=fallback;img.alt='Terrasse du restaurant Le Village au Haut-de-Cagnes';}},true);
 function loadEmbed(container){const frame=container.querySelector('iframe[data-consent-src]');if(!frame)return;const url=new URL(frame.dataset.consentSrc,location.href);if(url.hostname.endsWith('youtube.com'))url.searchParams.set('origin',location.origin);frame.src=url.href;frame.hidden=false;container.querySelector('.embed-notice').hidden=true;}

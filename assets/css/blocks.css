@@ -1351,13 +1351,13 @@
 
 
 
-    #lv-0e61f442530d {
+    #lv-7372fa1e10f4 {
       background-color: #fcf9f3;
       color: #713506;
       margin: 0;
     }
 
-    #lv-0e61f442530d .press-header-line {
+    #lv-7372fa1e10f4 .press-header-line {
       position: absolute;
       left: 0;
       right: 0;
@@ -1369,131 +1369,119 @@
       z-index: 0;
     }
 
-    #lv-0e61f442530d .header-safe {
+    #lv-7372fa1e10f4 .header-safe {
       position: relative;
       z-index: 20;
     }
 
-    #lv-0e61f442530d .header-safe a,#lv-0e61f442530d 
+    #lv-7372fa1e10f4 .header-safe a,#lv-7372fa1e10f4 
     .header-safe button {
       position: relative;
       z-index: 30;
       pointer-events: auto;
     }
 
-    #lv-0e61f442530d .collage-container {
+    /* --- COLLAGE STYLE "NEGRESCO" (IMAGES ENTIÈRES) --- */
+    #lv-7372fa1e10f4 .collage-container {
       position: relative;
       width: 100%;
-      max-width: 980px;
+      max-width: 1050px;
       margin: 0 auto;
-      aspect-ratio: 16 / 10;
+      aspect-ratio: 2 / 1; /* Format large pour laisser de l'espace aux photos */
     }
 
-    #lv-0e61f442530d .collage-photo {
+    #lv-7372fa1e10f4 .collage-photo {
       position: absolute;
       display: block;
-      width: 100%;
-      height: auto;
-      box-shadow: 0 18px 40px -18px rgba(113, 53, 6, 0.22);
-      transition: transform 0.45s ease;
+      box-shadow: 0 10px 40px -10px rgba(113, 53, 6, 0.15); /* Ombre douce et élégante */
+      transition: transform 0.4s ease;
       will-change: transform;
       user-select: none;
       -webkit-user-drag: none;
+      /* Ajout du style tirage photo */
+      background-color: #ffffff;
+      padding: 8px 8px 24px 8px;
     }
 
-    #lv-0e61f442530d .collage-photo:hover {
-      transform: scale(1.02);
+    #lv-7372fa1e10f4 .collage-photo img {
+      width: 100%;
+      height: auto; /* Permet à l'image de s'afficher en entier sans être coupée */
+      display: block;
     }
 
-    #lv-0e61f442530d .img-left {
-      top: 28%;
-      left: 8%;
-      width: 27%;
+    #lv-7372fa1e10f4 .collage-photo:hover {
+      transform: scale(1.05) translateY(-5px) !important;
+      z-index: 10 !important;
+      box-shadow: 0 20px 50px -12px rgba(113, 53, 6, 0.30);
+    }
+
+    /* 
+       Répartition mathématique (100% de largeur) sans superposition :
+       Gauche: 0% à 26%
+       Espace: 4%
+       Centre: 30% à 68%
+       Espace: 4%
+       Droite: 72% à 100%
+    */
+
+    #lv-7372fa1e10f4 .img-left {
+      top: 20%;
+      left: 0%;
+      width: 26%;
+      transform: rotate(-3deg);
       z-index: 2;
     }
 
-    #lv-0e61f442530d .img-center {
-      top: 6%;
-      left: 35%;
-      width: 30%;
+    #lv-7372fa1e10f4 .img-center {
+      top: 0%;
+      left: 30%;
+      width: 38%;
+      transform: rotate(2deg);
       z-index: 1;
     }
 
-    #lv-0e61f442530d .img-right {
-      top: 38%;
-      right: 7%;
-      width: 37%;
+    #lv-7372fa1e10f4 .img-right {
+      top: 35%;
+      left: 72%;
+      width: 28%;
+      transform: rotate(-2deg);
       z-index: 3;
     }
 
     @media (max-width: 991px) {
-      #lv-0e61f442530d .collage-container {
+      #lv-7372fa1e10f4 .collage-container {
         max-width: 760px;
-        aspect-ratio: 16 / 11;
-      }
-
-      #lv-0e61f442530d .img-left {
-        top: 30%;
-        left: 5%;
-        width: 30%;
-      }
-
-      #lv-0e61f442530d .img-center {
-        top: 8%;
-        left: 31%;
-        width: 32%;
-      }
-
-      #lv-0e61f442530d .img-right {
-        top: 40%;
-        right: 4%;
-        width: 40%;
+        aspect-ratio: 16 / 12;
       }
     }
 
     @media (max-width: 767px) {
-      #lv-0e61f442530d .collage-container {
-        max-width: 410px;
-        aspect-ratio: 1 / 1.08;
+      /* Sur mobile, on désactive l'absolu pour un affichage propre en colonne */
+      #lv-7372fa1e10f4 .collage-container {
+        aspect-ratio: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+        padding-bottom: 2rem;
       }
-
-      #lv-0e61f442530d .collage-photo {
-        box-shadow: 0 12px 28px -14px rgba(113, 53, 6, 0.18);
+      #lv-7372fa1e10f4 .collage-photo {
+        position: relative;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        width: 85% !important;
       }
-
-      #lv-0e61f442530d .img-left {
-        top: 30%;
-        left: 0;
-        width: 46%;
-        z-index: 2;
-      }
-
-      #lv-0e61f442530d .img-center {
-        top: 3%;
-        left: 24%;
-        width: 48%;
-        z-index: 1;
-      }
-
-      #lv-0e61f442530d .img-right {
-        top: 42%;
-        right: 0;
-        width: 54%;
-        z-index: 3;
-      }
-    }
-
-    @media (max-width: 480px) {
-      #lv-0e61f442530d .collage-container {
-        max-width: 350px;
-      }
+      #lv-7372fa1e10f4 .img-left { transform: rotate(-2deg); }
+      #lv-7372fa1e10f4 .img-center { transform: rotate(2deg); }
+      #lv-7372fa1e10f4 .img-right { transform: rotate(-2deg); }
     }
   
 
-        #lv-9cdfc7feec4f { margin: 0; padding: 0; background-color: #fcf9f3; }
+        #lv-24fb6e930982 { margin: 0; padding: 0; background-color: #fcf9f3; }
     
 
-        #lv-2c543565dbe4 .press-pdf-modal {
+        #lv-784edf0e382b .press-pdf-modal {
             position: fixed;
             inset: 0;
             background: rgba(113, 53, 6, 0.55);
@@ -1504,11 +1492,11 @@
             z-index: 9999;
         }
 
-        #lv-2c543565dbe4 .press-pdf-modal.is-open {
+        #lv-784edf0e382b .press-pdf-modal.is-open {
             display: flex;
         }
 
-        #lv-2c543565dbe4 .press-pdf-box {
+        #lv-784edf0e382b .press-pdf-box {
             position: relative;
             width: min(1180px, 100%);
             height: min(88vh, 920px);
@@ -1517,7 +1505,7 @@
             overflow: hidden;
         }
 
-        #lv-2c543565dbe4 .press-pdf-close {
+        #lv-784edf0e382b .press-pdf-close {
             position: absolute;
             top: 14px;
             right: 14px;
@@ -1533,12 +1521,12 @@
             transition: all 0.25s ease;
         }
 
-        #lv-2c543565dbe4 .press-pdf-close:hover {
+        #lv-784edf0e382b .press-pdf-close:hover {
             background: #713506;
             color: #ffffff;
         }
 
-        #lv-2c543565dbe4 .press-pdf-iframe {
+        #lv-784edf0e382b .press-pdf-iframe {
             width: 100%;
             height: 100%;
             border: none;
@@ -1546,15 +1534,15 @@
         }
 
         @media (max-width: 767px) {
-            #lv-2c543565dbe4 .press-pdf-modal {
+            #lv-784edf0e382b .press-pdf-modal {
                 padding: 10px;
             }
 
-            #lv-2c543565dbe4 .press-pdf-box {
+            #lv-784edf0e382b .press-pdf-box {
                 height: 88vh;
             }
 
-            #lv-2c543565dbe4 .press-pdf-close {
+            #lv-784edf0e382b .press-pdf-close {
                 top: 10px;
                 right: 10px;
                 width: 38px;

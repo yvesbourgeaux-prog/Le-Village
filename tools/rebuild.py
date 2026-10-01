@@ -97,6 +97,11 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
  s=BeautifulSoup(content,'html.parser')
  if slug=='la-carte':
   nav=s.select_one('.carte-nav-wrapper');nav.extract();s.select_one('.lv-block').insert_after(nav)
+ press_footer=''
+ if slug=='espace-presse':
+  press_footer=str(s.find('footer').find_parent(class_='lv-block').extract())
+  for a in s.select('a[href]'):
+   if a['href'] in ['/automne-haut-de-cagnes','/ete-en-musique-jazz-cagnes-sur-mer']:a['href']=BASE+a['href']
  h=s.select('h1')
  if not h:
   h1=s.new_tag('h1');h1['class']='native-page-title';h1.string=meta['title'];s.insert(0,h1)
@@ -194,10 +199,15 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
  if slug=='visiter-haut-de-cagnes':
   head=head.replace('home-20261001c','visite-20261001b')
   head+='<link rel="stylesheet" href="/assets/css/visit.css?v=visite-20261001b">'
+ if slug=='espace-presse':
+  head=head.replace('/assets/css/blocks.css','/assets/css/blocks.css?v=presse-20261001a').replace('/assets/css/tailwind.css','/assets/css/tailwind.css?v=presse-20261001a').replace('/assets/js/site.js','/assets/js/site.js?v=presse-20261001a')
+  head+='<link rel="stylesheet" href="/assets/css/press.css?v=presse-20261001a"><script defer src="/assets/js/press.js?v=presse-20261001a"></script><script defer src="/assets/js/home.js?v=presse-20261001a"></script><script id="zenchef-sdk" defer src="https://sdk.zenchef.com/v1/sdk.min.js"></script>'
+  press_footer+='<div class="zc-widget-config" data-restaurant="361354" data-lang="fr" data-primary-color="794116" data-open="false"></div>'
  selected_header=(ROOT/'tools/home-header.html').read_text() if modern else HEADER
  if slug in (RESTAURANT_SLUG,HOTEL_SLUG,'la-carte','visiter-haut-de-cagnes'):selected_header=selected_header.replace(' aria-current="page"','')
+ if slug=='espace-presse':selected_header='<a class="skip-link" href="#communiques">Aller aux communiqués</a>'
  if slug==HOTEL_SLUG:selected_header=selected_header.replace('class="book-button" href="/reserver"','class="book-button" href="#reservation"')
- full=head+'</head><body'+(' class="home-page visit-page"' if slug=='visiter-haut-de-cagnes' else ' class="home-page carte-page"' if slug=='la-carte' else ' class="home-page hotel-page"' if slug==HOTEL_SLUG else ' class="home-page restaurant-page"' if slug==RESTAURANT_SLUG else ' class="home-page"' if not slug else '')+'>'+selected_header+'<main id="main">'+str(s)+'</main>'+(home_footer if modern else footer+EXTRA_FOOT)+'<div id="privacy-panel" class="privacy-panel" hidden><p>Vous pouvez réinitialiser ici les autorisations des vidéos intégrées. La carte et le module de réservation utilisent les services Google Maps et Zenchef.</p><button type="button" data-reset-consent>Réinitialiser mes choix</button><button type="button" data-close-privacy>Fermer</button></div></body></html>'
+ full=head+'</head><body'+(' class="press-page"' if slug=='espace-presse' else ' class="home-page visit-page"' if slug=='visiter-haut-de-cagnes' else ' class="home-page carte-page"' if slug=='la-carte' else ' class="home-page hotel-page"' if slug==HOTEL_SLUG else ' class="home-page restaurant-page"' if slug==RESTAURANT_SLUG else ' class="home-page"' if not slug else '')+'>'+selected_header+'<main id="main">'+str(s)+'</main>'+(press_footer if slug=='espace-presse' else home_footer if modern else footer+EXTRA_FOOT)+'<div id="privacy-panel" class="privacy-panel" hidden><p>Vous pouvez réinitialiser ici les autorisations des vidéos intégrées. La carte et le module de réservation utilisent les services Google Maps et Zenchef.</p><button type="button" data-reset-consent>Réinitialiser mes choix</button><button type="button" data-close-privacy>Fermer</button></div></body></html>'
  if not modern:full=full.replace('Vous pouvez réinitialiser ici les autorisations des vidéos intégrées. La carte et le module de réservation utilisent les services Google Maps et Zenchef.', 'Les contenus externes (carte, vidéos et réservations) ne sont chargés qu’à votre demande.')
  path=ROOT/((slug+'.html') if slug else 'index.html');path.write_text(full)
  manifest.append({'path':'/'+slug,'file':path.name,'title':title,'kind':kind})
