@@ -1,6 +1,6 @@
 /* Restaurant page: full-width hero, original spacing within each supplied section. */
 .restaurant-page #main{padding-top:0}
-.restaurant-page #village-resto-top-block .restaurant-hero{max-width:none;width:100%;height:640px;padding:160px 0 56px}
+.restaurant-page #village-resto-top-block .restaurant-hero{max-width:none;width:100%;height:850px;height:92svh;min-height:720px;max-height:1100px;padding:160px 0 56px}
 .restaurant-page .restaurant-hero h1{font-size:clamp(58px,7.2vw,108px);color:white;text-shadow:0 2px 24px #23160d80}
 .restaurant-page .restaurant-hero .h1-location{color:#fff;font-size:clamp(12px,1.2vw,17px);letter-spacing:.12em}
 .restaurant-page .home-header:not(.is-scrolled){color:white}
@@ -19,10 +19,36 @@
 .restaurant-page #menuLightbox:not(.hidden){display:flex}
 .restaurant-page #village-chef-block .video-controls{opacity:1}
 @media(max-width:640px){
- .restaurant-page #village-resto-top-block .restaurant-hero{height:520px;padding-top:118px;padding-bottom:36px}
+ .restaurant-page #village-resto-top-block .restaurant-hero{height:82svh;min-height:600px;max-height:850px;padding-top:118px;padding-bottom:36px}
  .restaurant-page .restaurant-hero h1{font-size:58px}
  .restaurant-page .restaurant-hero .relative.z-10{margin-top:0}
  .restaurant-page .restaurant-hero p{font-size:11px;letter-spacing:.16em;line-height:1.8}
  .restaurant-page .instagram-wall{padding:36px 22px}
 }
 @media(prefers-reduced-motion:reduce){.restaurant-page .arched-video-frame{opacity:1;transform:none}}
+.restaurant-page .restaurant-menu-actions{margin-top:88px!important;margin-bottom:12px}
+.restaurant-page #restaurant-ribbons{max-width:none;width:100%;padding:0;overflow:hidden}
+.ribbon-row{overflow:hidden;margin-bottom:22px;--photo-width:230px;--photo-height:300px;--ribbon-time:110s}
+.ribbon-row-2{--photo-width:310px;--photo-height:430px;--ribbon-time:190s}
+.ribbon-track{display:flex;width:max-content;animation:ribbon-move var(--ribbon-time) linear infinite}
+.ribbon-row-1 .ribbon-track{animation-direction:reverse}
+.ribbon-set{display:flex;gap:22px;padding-right:22px;flex:none}
+.ribbon-photo{display:block;flex:none;width:var(--photo-width);height:var(--photo-height);padding:0;border:0;background:#f5f0ea;overflow:hidden;cursor:zoom-in}
+.ribbon-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.ribbon-photo:hover img{transform:scale(1.035)}
+.ribbon-row:hover .ribbon-track,.ribbon-row:focus-within .ribbon-track,#restaurant-ribbons.is-paused .ribbon-track{animation-play-state:paused}
+@keyframes ribbon-move{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ribbon-bottom{position:relative;text-align:center;padding:38px 24px 56px}
+.ribbon-pause{display:block;margin:0 auto 24px;border:0;border-bottom:1px solid #9d623d40;padding:6px 0;background:none;color:#9d623d;font:10px Poppins,sans-serif;letter-spacing:.12em;cursor:pointer}
+.ribbon-instagram{display:inline-flex;align-items:center;flex-direction:column;color:#713506;text-decoration:none}
+.ribbon-invitation{font:48px/1.2 'Great Vibes',cursive;color:#9d623d;margin-bottom:18px}
+.ribbon-follow{display:flex;align-items:center;gap:14px;font:12px/1.5 Poppins,sans-serif;text-transform:uppercase;letter-spacing:.16em;padding-bottom:12px;border-bottom:1px solid #9d623d60;transition:border-color .3s}
+.ribbon-follow svg{width:22px;height:22px}
+.ribbon-handle{font:11px/1.5 Lato,sans-serif;letter-spacing:.1em;margin-top:12px;color:#9d623d}
+.ribbon-instagram:hover .ribbon-follow{border-color:#713506}
+.ribbon-dialog{position:fixed;inset:0;max-width:94vw;max-height:94svh;padding:0;border:0;background:transparent;overflow:visible}
+.ribbon-dialog::backdrop{background:#24170eed}
+.ribbon-dialog img{max-width:90vw;max-height:88svh;object-fit:contain}
+.ribbon-close{position:absolute;right:6px;top:6px;width:44px;height:44px;border:0;border-radius:50%;background:#fcf9f3;color:#713506;font-size:32px;cursor:pointer}
+@media(max-width:640px){.restaurant-page .restaurant-menu-actions{margin-top:64px!important}.ribbon-row{--photo-width:160px;--photo-height:210px;margin-bottom:14px}.ribbon-row-2{--photo-width:220px;--photo-height:310px}.ribbon-set{gap:14px;padding-right:14px}.ribbon-invitation{font-size:42px}.ribbon-follow{font-size:10px;gap:10px;letter-spacing:.1em}}
+@media(prefers-reduced-motion:reduce){.ribbon-track{animation:none}.ribbon-row{overflow-x:auto}.ribbon-set[aria-hidden]{display:none}.ribbon-pause{display:none}}
