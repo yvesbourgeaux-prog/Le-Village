@@ -165,8 +165,8 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
   head=head.replace('home-20261001c','resto-20261001d')
   head+='<link rel="stylesheet" href="/assets/css/restaurant.css?v=resto-20261001d"><script defer src="/assets/js/restaurant.js?v=resto-20261001d"></script>'
  if slug==HOTEL_SLUG:
-  head=head.replace('home-20261001c','hotel-20261001')
-  head+='<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><link rel="stylesheet" href="/assets/css/hotel.css?v=hotel-20261001">'
+  head=head.replace('home-20261001c','hotel-20261001b')
+  head+='<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><link rel="stylesheet" href="/assets/css/hotel.css?v=hotel-20261001b">'
  selected_header=(ROOT/'tools/home-header.html').read_text() if modern else HEADER
  if slug in (RESTAURANT_SLUG,HOTEL_SLUG):selected_header=selected_header.replace(' aria-current="page"','')
  if slug==HOTEL_SLUG:selected_header=selected_header.replace('class="book-button" href="/reserver"','class="book-button" href="#reservation"')
