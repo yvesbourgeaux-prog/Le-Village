@@ -147,7 +147,8 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
  head+=''.join(f'<script defer src="/assets/js/{uid}.js"></script>' for uid in jsids)
  home_footer=''
  if not slug:
-  head+='<link rel="stylesheet" href="/assets/css/home.css"><script defer src="/assets/js/home.js"></script>'
+  head=head.replace('/assets/css/blocks.css', '/assets/css/blocks.css?v=home-20261001')
+  head+='<link rel="stylesheet" href="/assets/css/home.css?v=home-20261001"><script defer src="/assets/js/home.js"></script>'
   contact=s.select_one('#village-acces-prestige-block')
   if contact:home_footer=str(contact.parent.extract())
   home_footer='<footer aria-label="Nous retrouver">'+home_footer+EXTRA_FOOT+'<p class="home-credit">© 2026 Le Grimaldi by Le Village · <a href="mailto:contact@legrimaldibylevillage.fr">Nous écrire</a> · Réalisation <a href="https://viralyagency.fr/">Viraly Agency</a></p></footer>'
