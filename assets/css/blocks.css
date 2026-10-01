@@ -1965,11 +1965,11 @@
     }
 
 
-    #lv-78f4935d406b { scroll-behavior: smooth; }
-    #lv-78f4935d406b { margin: 0; padding: 0; background-color: #fcf9f3; color: #713506; }
+    #lv-78deed0afd80 { scroll-behavior: smooth; }
+    #lv-78deed0afd80 { margin: 0; padding: 0; background-color: #fcf9f3; color: #713506; }
 
     /* --- LETTRINE PREMIUM --- */
-    #lv-78f4935d406b .drop-cap-hotel::first-letter {
+    #lv-78deed0afd80 .drop-cap-hotel::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -1979,7 +1979,7 @@
     }
 
     /* --- CADRE IMAGE (Type Tableau/Polaroïd) --- */
-    #lv-78f4935d406b .framed-image-container {
+    #lv-78deed0afd80 .framed-image-container {
         width: 100%;
         max-width: 480px;
         margin: 0 auto;
@@ -1988,13 +1988,13 @@
         border-radius: 4px;
         box-shadow: 0 20px 40px -10px rgba(113, 53, 6, 0.15);
     }
-    #lv-78f4935d406b .framed-image-inner {
+    #lv-78deed0afd80 .framed-image-inner {
         position: relative;
         width: 100%;
         overflow: hidden;
         border-radius: 2px;
     }
-    #lv-78f4935d406b .village-framed-img {
+    #lv-78deed0afd80 .village-framed-img {
         width: 100%;
         display: block;
         transition: transform 0.8s ease;
@@ -2002,22 +2002,22 @@
 
     /* Sur mobile : format d'origine de la photo (aucun rognage) */
     @media (max-width: 767px) {
-        #lv-78f4935d406b .framed-image-inner { aspect-ratio: auto; }
-        #lv-78f4935d406b .village-framed-img { height: auto; object-fit: contain; }
+        #lv-78deed0afd80 .framed-image-inner { aspect-ratio: auto; }
+        #lv-78deed0afd80 .village-framed-img { height: auto; object-fit: contain; }
     }
 
     /* Sur PC : photo ajustée en format paysage */
     @media (min-width: 768px) {
-        #lv-78f4935d406b .framed-image-inner { aspect-ratio: 4 / 3; }
-        #lv-78f4935d406b .village-framed-img { height: 100%; object-fit: cover; }
+        #lv-78deed0afd80 .framed-image-inner { aspect-ratio: 4 / 3; }
+        #lv-78deed0afd80 .village-framed-img { height: 100%; object-fit: cover; }
     }
 
-    #lv-78f4935d406b .framed-image-container:hover .village-framed-img {
+    #lv-78deed0afd80 .framed-image-container:hover .village-framed-img {
         transform: scale(1.05);
     }
 
     /* --- ÉCRIN WIDGET HOLIDU --- */
-    #lv-78f4935d406b .booking-card {
+    #lv-78deed0afd80 .booking-card {
         background-color: #ffffff;
         border: 1px solid rgba(113, 53, 6, 0.15);
         box-shadow: 0 25px 50px -12px rgba(113, 53, 6, 0.08);
@@ -2026,7 +2026,7 @@
     }
 
     /* Décoration section */
-    #lv-78f4935d406b .section-ornament {
+    #lv-78deed0afd80 .section-ornament {
         width: 40px;
         height: 1px;
         background-color: #9d623d;
@@ -2035,78 +2035,78 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-        #lv-78f4935d406b { scroll-behavior: auto; }
-        #lv-78f4935d406b .village-framed-img {
+        #lv-78deed0afd80 { scroll-behavior: auto; }
+        #lv-78deed0afd80 .village-framed-img {
             transition: none !important;
         }
     }
 
 
-    #lv-aadce0b8979e { margin: 0; padding: 0; background-color: #fcf9f3; color: #713506; }
+    #lv-0feef98b34b1 { margin: 0; padding: 0; background-color: #fcf9f3; color: #713506; }
 
     /* Décoration section */
-    #lv-aadce0b8979e .section-ornament {
+    #lv-0feef98b34b1 .section-ornament {
         width: 40px; height: 1px; background-color: #9d623d; margin: 0 auto 2.5rem auto; opacity: 0.5;
     }
 
     /* --- STYLE DE LA SECTION CARTE --- */
-    #lv-aadce0b8979e .map-preview-btn {
+    #lv-0feef98b34b1 .map-preview-btn {
         background: rgba(255, 255, 255, 0.85);
         backdrop-filter: blur(8px);
         border: 1px solid rgba(157, 98, 61, 0.4);
         color: #713506;
         transition: all 0.4s ease;
     }
-    #lv-aadce0b8979e .map-preview-btn:hover {
+    #lv-0feef98b34b1 .map-preview-btn:hover {
         background: #ffffff;
         transform: translateY(-2px) scale(1.05);
         box-shadow: 0 10px 25px -5px rgba(113, 53, 6, 0.2);
     }
 
     /* Modal Map Styles */
-    #lv-aadce0b8979e .lv-map-modal {
+    #lv-0feef98b34b1 .lv-map-modal {
         position: fixed; inset: 0; background: rgba(113, 53, 6, 0.85);
         display: none; align-items: center; justify-content: center; z-index: 9999; padding: 18px;
         backdrop-filter: blur(5px);
     }
-    #lv-aadce0b8979e .lv-map-modal.lv-open { display: flex; animation: fadeIn 0.3s ease; }
-    #lv-aadce0b8979e .lv-map-modal-inner {
+    #lv-0feef98b34b1 .lv-map-modal.lv-open { display: flex; animation: fadeIn 0.3s ease; }
+    #lv-0feef98b34b1 .lv-map-modal-inner {
         width: min(1420px, 100%); height: min(860px, 92vh);
         background: #fcf9f3; border-radius: 4px; overflow: hidden;
         box-shadow: 0 25px 50px rgba(0,0,0,0.4); position: relative; display: flex; flex-direction: column;
         border: 1px solid rgba(157, 98, 61, 0.3);
     }
     
-    #lv-aadce0b8979e .lv-pin {
+    #lv-0feef98b34b1 .lv-pin {
         width: 34px; height: 34px; border-radius: 999px; background: #ffffff;
         border: 2px solid #9d623d; box-shadow: 0 10px 18px rgba(113, 53, 6, 0.25);
         display: grid; place-items: center; transition: transform 0.3s ease;
     }
-    #lv-aadce0b8979e .lv-pin:hover { transform: scale(1.1); }
-    #lv-aadce0b8979e .lv-pin svg { width: 18px; height: 18px; fill: #9d623d; display: block; }
-    #lv-aadce0b8979e .lv-pin.main { background: #713506; border-color: #713506; }
-    #lv-aadce0b8979e .lv-pin.main svg { fill: #ffffff; }
+    #lv-0feef98b34b1 .lv-pin:hover { transform: scale(1.1); }
+    #lv-0feef98b34b1 .lv-pin svg { width: 18px; height: 18px; fill: #9d623d; display: block; }
+    #lv-0feef98b34b1 .lv-pin.main { background: #713506; border-color: #713506; }
+    #lv-0feef98b34b1 .lv-pin.main svg { fill: #ffffff; }
 
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 
-    #lv-82efaf4e48b1 { margin: 0; padding: 0; }
+    #lv-9c1effec98c1 { margin: 0; padding: 0; }
 
-    #lv-82efaf4e48b1 .hide-scroll {
+    #lv-9c1effec98c1 .hide-scroll {
         -ms-overflow-style: none;
         scrollbar-width: none;
     }
-    #lv-82efaf4e48b1 .hide-scroll::-webkit-scrollbar {
+    #lv-9c1effec98c1 .hide-scroll::-webkit-scrollbar {
         display: none;
     }
 
-    #lv-82efaf4e48b1 .village-img-wrapper {
+    #lv-9c1effec98c1 .village-img-wrapper {
         position: relative;
         overflow: hidden;
         border-radius: 2px;
     }
     
-    #lv-82efaf4e48b1 .village-img-wrapper::after {
+    #lv-9c1effec98c1 .village-img-wrapper::after {
         content: '';
         position: absolute;
         inset: 0;
@@ -2118,7 +2118,7 @@
         z-index: 10;
     }
     
-    #lv-82efaf4e48b1 .village-img-wrapper::before {
+    #lv-9c1effec98c1 .village-img-wrapper::before {
         content: '';
         position: absolute;
         inset: 0;
@@ -2128,20 +2128,20 @@
         z-index: 11;
     }
     
-    #lv-82efaf4e48b1 .group:hover .village-img-wrapper::after,#lv-82efaf4e48b1 
+    #lv-9c1effec98c1 .group:hover .village-img-wrapper::after,#lv-9c1effec98c1 
     .group:hover .village-img-wrapper::before {
         opacity: 0;
     }
 
-    #lv-82efaf4e48b1 .village-img {
+    #lv-9c1effec98c1 .village-img {
         transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         will-change: transform;
     }
-    #lv-82efaf4e48b1 .group:hover .village-img {
+    #lv-9c1effec98c1 .group:hover .village-img {
         transform: scale(1.05);
     }
 
-    #lv-82efaf4e48b1 .village-link-read {
+    #lv-9c1effec98c1 .village-link-read {
         color: #713506;
         text-decoration: none;
         font-weight: 500;
@@ -2155,7 +2155,7 @@
         transition: color 0.3s ease;
         margin-top: auto;
     }
-    #lv-82efaf4e48b1 .village-link-read::after {
+    #lv-9c1effec98c1 .village-link-read::after {
         content: "";
         position: absolute;
         left: 0;
@@ -2165,15 +2165,15 @@
         background: #9d623d;
         transition: width 0.4s ease;
     }
-    #lv-82efaf4e48b1 .group:hover .village-link-read {
+    #lv-9c1effec98c1 .group:hover .village-link-read {
         color: #9d623d;
     }
-    #lv-82efaf4e48b1 .group:hover .village-link-read::after {
+    #lv-9c1effec98c1 .group:hover .village-link-read::after {
         width: 100%;
     }
 
     /* Flèches visibles aussi sur mobile */
-    #lv-82efaf4e48b1 .blog-carousel-arrows {
+    #lv-9c1effec98c1 .blog-carousel-arrows {
         display: flex;
         gap: 14px;
         align-items: center;
@@ -2182,13 +2182,13 @@
     }
 
     @media (min-width: 768px) {
-        #lv-82efaf4e48b1 .blog-carousel-arrows {
+        #lv-9c1effec98c1 .blog-carousel-arrows {
             width: auto;
             justify-content: flex-end;
         }
     }
 
-    #lv-82efaf4e48b1 .blog-carousel-arrow {
+    #lv-9c1effec98c1 .blog-carousel-arrow {
         width: 44px;
         height: 44px;
         border-radius: 999px;
@@ -2202,14 +2202,14 @@
         box-shadow: 0 6px 18px rgba(113, 53, 6, 0.08);
     }
 
-    #lv-82efaf4e48b1 .blog-carousel-arrow:hover {
+    #lv-9c1effec98c1 .blog-carousel-arrow:hover {
         background: #713506;
         color: #ffffff;
         border-color: #713506;
     }
 
     @media (max-width: 767px) {
-        #lv-82efaf4e48b1 .blog-carousel-arrow {
+        #lv-9c1effec98c1 .blog-carousel-arrow {
             width: 42px;
             height: 42px;
             background: #ffffff;

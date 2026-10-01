@@ -1,0 +1,18 @@
+.hotel-page #main{padding-top:0}
+.hotel-page #village-hotel-top-block .hotel-hero{max-width:none;width:100%;height:88svh;min-height:680px;max-height:1000px;padding:160px 0 56px}
+.hotel-page .hotel-hero h1{color:white;font-size:clamp(64px,7.2vw,108px);text-shadow:0 2px 24px #23160d80}
+.hotel-page .hotel-hero .h1-location{color:white;font-size:clamp(12px,1.2vw,17px);letter-spacing:.12em}
+.hotel-page .hotel-hero p{color:white}
+.hotel-page .home-header:not(.is-scrolled){color:white}
+.hotel-page .home-header:not(.is-scrolled) .brand img{filter:brightness(0) invert(1)}
+.hotel-page .home-header:not(.is-scrolled) .menu-toggle span{background:white}
+.hotel-page .home-header:not(.is-scrolled) .book-button{border-color:white;color:white!important}
+.hotel-page .home-header:not(.is-scrolled) #site-nav.open{color:#713506}
+.hotel-page #presentation{margin-top:0}
+.hotel-page #lvOpenMap{width:100%;text-align:inherit;border:0;padding:0;background:none}
+.hotel-page #lvMapModal{z-index:10000}
+.hotel-page #lvLeafletMap{height:100%;min-height:300px;flex:1}
+.hotel-page #lvLeafletMap img{max-width:none}
+.hotel-page #village-hotel-bas-block .lv-map-modal-inner{height:min(860px,92svh)}
+.hotel-page #reservation{scroll-margin-top:110px}
+@media(max-width:640px){.hotel-page #village-hotel-top-block .hotel-hero{height:82svh;min-height:580px;padding-top:118px;padding-bottom:36px}.hotel-page .hotel-hero h1{font-size:60px}.hotel-page .hotel-hero p{font-size:11px;line-height:1.8;letter-spacing:.16em}.hotel-page .booking-card{padding:6px}.hotel-page #reservation{padding-left:12px;padding-right:12px}}
