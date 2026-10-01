@@ -35,3 +35,10 @@ Le site de préproduction porte `noindex,follow` dans chaque page. Ses URL canon
 ## Périmètre
 
 Les pages de chambres individuelles n'étaient pas dans l'archive. Le widget hôtel présente les disponibilités existantes. Les contenus historiques datés sont conservés comme archives ; leurs dates ne sont pas artificiellement actualisées.
+
+## Accueil — octobre 2026
+Les cinq blocs fournis sont conservés dans `tools/source-pages/index.json`. L’en-tête et les ajustements propres à l’accueil sont dans `tools/home-header.html`, `assets/css/home.css` et `assets/js/home.js`. La largeur de contenu est limitée à 1240 px ; la classe `hero-media` permet une future image/vidéo de couverture pleine largeur. Le bloc « Nous retrouver » constitue le pied de page de l’accueil, sans duplication. Les autres pages restent inchangées.
+
+SEO : un H1, sections H2, liens descriptifs vers la page restaurant, entités Restaurant et Hotel reliées à la page. Le domaine provisoire reste en noindex ; activer l’indexation uniquement lors de la mise en production sur le domaine canonique. L’article Halloween ajouté aux actualités pointe encore vers le site source, sa page n’étant pas encore migrée.
+
+Vérification : `NODE_PATH=/chemin/vers/node_modules node tools/check-home.cjs` (jsdom requis).

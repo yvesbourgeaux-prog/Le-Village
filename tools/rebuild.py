@@ -11,7 +11,7 @@ FOOD=ASSET+'683541319_18135204442554133_6532477583514750940_n-1---copie-uvBmAV0B
 PLACE=ASSET+'place-de-gaulle-haut-de-cagnes-YQfrbt7x9UtvMi0u.png'
 HOTEL='https://img.holidu.com/images/da29199d-ce71-4bc4-9ebc-179b92ee3630/l.avif'
 PAGES=[json.loads(p.read_text()) for p in sorted((ROOT/'tools/source-pages').glob('*.json'))]
-SEO_OVERRIDES={'': ('Le Grimaldi by Le Village | Hôtel & Restaurant à Cagnes', 'Restaurant bistronomique et hôtel de charme au Haut-de-Cagnes. Découvrez Le Grimaldi by Le Village, sur la place du Château à Cagnes-sur-Mer.'), 'le-village-restaurant-haut-de-cagnes-sur-mer': ('Restaurant Le Village | Haut-de-Cagnes, Cagnes-sur-Mer', 'Cuisine bistronomique méditerranéenne et terrasse sur la place du Château. Réservez votre table au restaurant Le Village, au Haut-de-Cagnes.'), 'hotel-cagnes-sur-mer-le-grimaldi': ('Hôtel Le Grimaldi | 5 chambres au Haut-de-Cagnes', 'Séjournez dans l’une des cinq chambres de charme du Grimaldi by Le Village, place du Château au Haut-de-Cagnes. Consultez les disponibilités en ligne.'), 'visiter-haut-de-cagnes': ('Visiter le Haut-de-Cagnes | Restaurant Le Village', None), 'espace-presse': ('Espace presse | Le Grimaldi by Le Village, Cagnes', 'Communiqués, dossier de presse et actualités du Grimaldi by Le Village : restaurant et hôtel de charme sur la place du Château au Haut-de-Cagnes.'), 'dossier-presse': ('Dossier de presse | Le Grimaldi by Le Village', 'Découvrez l’histoire, la cuisine et l’hôtellerie du Grimaldi by Le Village au Haut-de-Cagnes : présentation de la maison et informations pour la presse.'), 'jazz-gatsby-frankie-rochester-haut-de-cagnes': ('Soirée Gatsby au Haut-de-Cagnes | Restaurant Le Village', None), 'week-end-1er-mai-hotel-restaurant-cagnes-sur-mer': ('1er Mai au Haut-de-Cagnes | Presse Le Village', None), 'paques-2026-haut-de-cagnes-art-en-fete-dejeuner-le-village': ('Pâques & Art en Fête au Haut-de-Cagnes | Le Village', None), 'sunsets-chateau-haut-de-cagnes-dimanches-ete': ('Sunsets du Château au Haut-de-Cagnes | Le Village', None), 'haut-de-cagnes-art-en-fete-dejeuner-restaurant-le-village': ('Art en Fête au Haut-de-Cagnes | Déjeuner au Village', None), 'fete-sainte-lucie-haut-de-cagnes-cagnes-sur-mer': ('Sainte-Lucie au Haut-de-Cagnes | Restaurant Le Village', None), 'saint-valentin-2026-cagnes-sur-mer-concert-diner-hotel-le-grimaldi': ('Saint-Valentin à Cagnes-sur-Mer | Dîner & Hôtel Le Village', None), 'visite-prince-albert-2-monaco-restaurant-le-village-cagnes': ('Le Prince Albert II au restaurant Le Village | Cagnes', None), 'noel-haut-de-cagnes-restaurant-le-village': ('Noël au Haut-de-Cagnes | Restaurant Le Village', None)}
+SEO_OVERRIDES={'': ('Le Grimaldi by Le Village | Restaurant & Hôtel à Cagnes-sur-Mer', 'Restaurant bistronomique et hôtel de charme au Haut-de-Cagnes. Découvrez Le Grimaldi by Le Village, sur la place du Château à Cagnes-sur-Mer.'), 'le-village-restaurant-haut-de-cagnes-sur-mer': ('Restaurant Le Village | Haut-de-Cagnes, Cagnes-sur-Mer', 'Cuisine bistronomique méditerranéenne et terrasse sur la place du Château. Réservez votre table au restaurant Le Village, au Haut-de-Cagnes.'), 'hotel-cagnes-sur-mer-le-grimaldi': ('Hôtel Le Grimaldi | 5 chambres au Haut-de-Cagnes', 'Séjournez dans l’une des cinq chambres de charme du Grimaldi by Le Village, place du Château au Haut-de-Cagnes. Consultez les disponibilités en ligne.'), 'visiter-haut-de-cagnes': ('Visiter le Haut-de-Cagnes | Restaurant Le Village', None), 'espace-presse': ('Espace presse | Le Grimaldi by Le Village, Cagnes', 'Communiqués, dossier de presse et actualités du Grimaldi by Le Village : restaurant et hôtel de charme sur la place du Château au Haut-de-Cagnes.'), 'dossier-presse': ('Dossier de presse | Le Grimaldi by Le Village', 'Découvrez l’histoire, la cuisine et l’hôtellerie du Grimaldi by Le Village au Haut-de-Cagnes : présentation de la maison et informations pour la presse.'), 'jazz-gatsby-frankie-rochester-haut-de-cagnes': ('Soirée Gatsby au Haut-de-Cagnes | Restaurant Le Village', None), 'week-end-1er-mai-hotel-restaurant-cagnes-sur-mer': ('1er Mai au Haut-de-Cagnes | Presse Le Village', None), 'paques-2026-haut-de-cagnes-art-en-fete-dejeuner-le-village': ('Pâques & Art en Fête au Haut-de-Cagnes | Le Village', None), 'sunsets-chateau-haut-de-cagnes-dimanches-ete': ('Sunsets du Château au Haut-de-Cagnes | Le Village', None), 'haut-de-cagnes-art-en-fete-dejeuner-restaurant-le-village': ('Art en Fête au Haut-de-Cagnes | Déjeuner au Village', None), 'fete-sainte-lucie-haut-de-cagnes-cagnes-sur-mer': ('Sainte-Lucie au Haut-de-Cagnes | Restaurant Le Village', None), 'saint-valentin-2026-cagnes-sur-mer-concert-diner-hotel-le-grimaldi': ('Saint-Valentin à Cagnes-sur-Mer | Dîner & Hôtel Le Village', None), 'visite-prince-albert-2-monaco-restaurant-le-village-cagnes': ('Le Prince Albert II au restaurant Le Village | Cagnes', None), 'noel-haut-de-cagnes-restaurant-le-village': ('Noël au Haut-de-Cagnes | Restaurant Le Village', None)}
 for page in PAGES:
  if page["slug"] in SEO_OVERRIDES:
   title,description=SEO_OVERRIDES[page["slug"]];page["meta"]["title"]=title
@@ -97,6 +97,19 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
  if slug=='le-village-restaurant-haut-de-cagnes-sur-mer':
   s.h1.append(' Le Village')
   sub=s.new_tag('span');sub['class']='h1-location';sub.string='Restaurant au Haut-de-Cagnes, Cagnes-sur-Mer';s.h1.append(sub)
+ if not slug:
+  # Preserve the supplied layout while giving complete names to section headings.
+  for selector in ('#village-cta-block', '#village-acces-prestige-block'):
+   block=s.select_one(selector)
+   if block:
+    heading=block.find('h2');signature=heading.find_previous_sibling('span')
+    if signature:heading.insert(0,signature.extract())
+  for a in s.select('a[href="/automne-halloween-haut-de-cagnes"]'):
+   # This new article has not been migrated yet; keep the source destination.
+   a['href']=BASE+'/automne-halloween-haut-de-cagnes'
+  grid=s.select_one('#village-grid-navigation-block')
+  if grid:
+   for heading in grid.select('h3'):heading.name='p'
  # Progressively load embeds only after consent; a plain link remains usable.
  for iframe in s.select('iframe[src]'):
   src=iframe['src']
@@ -115,6 +128,9 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
  restaurant={'@type':'Restaurant','@id':BASE+'/#restaurant','name':'Restaurant Le Village','url':BASE+'/le-village-restaurant-haut-de-cagnes-sur-mer','telephone':'+33493200886','address':address,'servesCuisine':['Française','Méditerranéenne'],'hasMenu':BASE+'/la-carte','image':FALLBACK,'sameAs':['https://www.facebook.com/restaurantlevillagehdc','https://www.instagram.com/restaurantlevillagehdc/']}
  hotel={'@type':'Hotel','@id':BASE+'/#hotel','name':'Le Grimaldi by Le Village','url':BASE+'/hotel-cagnes-sur-mer-le-grimaldi','address':address,'numberOfRooms':5,'image':HOTEL}
  page={'@type':'WebPage','@id':canonical+'#webpage','url':canonical,'name':title,'description':description,'inLanguage':'fr-FR'}
+ if not slug:
+  page['about']=[{'@id':BASE+'/#restaurant'},{'@id':BASE+'/#hotel'}]
+  page['isPartOf']={'@id':BASE+'/#website'}
  graph=[page]
  if not slug:graph.extend([restaurant,hotel,{'@type':'WebSite','@id':BASE+'/#website','url':BASE+'/','name':'Le Grimaldi by Le Village','inLanguage':'fr-FR'}])
  elif slug=='hotel-cagnes-sur-mer-le-grimaldi':graph.append(hotel)
@@ -129,7 +145,14 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
  es=''.join(f'<script defer src="{html.escape(u,quote=True)}"></script>' for u in dict.fromkeys(external or []))
  head=f'''<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)}</title><meta name="description" content="{html.escape(description,quote=True)}"><link rel="canonical" href="{canonical}"><meta name="robots" content="noindex,follow"><meta name="theme-color" content="#fcf9f3"><meta property="og:type" content="{'article' if kind=='blog' else 'website'}"><meta property="og:title" content="{html.escape(title,quote=True)}"><meta property="og:description" content="{html.escape(description,quote=True)}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="{s.find('img').get('src',FALLBACK) if s.find('img') else FALLBACK}"><meta property="og:locale" content="fr_FR"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="{LOGO}"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="{html.escape(FONT,quote=True)}"><link rel="stylesheet" href="/assets/css/tailwind.css"><link rel="stylesheet" href="/assets/css/blocks.css"><link rel="stylesheet" href="/assets/css/site.css"><script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False)}</script>{es}<script defer src="/assets/js/site.js"></script>'''
  head+=''.join(f'<script defer src="/assets/js/{uid}.js"></script>' for uid in jsids)
- full=head+'</head><body>'+HEADER+'<main id="main">'+str(s)+'</main>'+footer+EXTRA_FOOT+'<div id="privacy-panel" class="privacy-panel" hidden><p>Les contenus externes (carte, vidéos et réservations) ne sont chargés qu’à votre demande.</p><button type="button" data-reset-consent>Réinitialiser mes choix</button><button type="button" data-close-privacy>Fermer</button></div></body></html>'
+ home_footer=''
+ if not slug:
+  head+='<link rel="stylesheet" href="/assets/css/home.css"><script defer src="/assets/js/home.js"></script>'
+  contact=s.select_one('#village-acces-prestige-block')
+  if contact:home_footer=str(contact.parent.extract())
+  home_footer='<footer aria-label="Nous retrouver">'+home_footer+EXTRA_FOOT+'<p class="home-credit">© 2026 Le Grimaldi by Le Village · <a href="mailto:contact@legrimaldibylevillage.fr">Nous écrire</a> · Réalisation <a href="https://viralyagency.fr/">Viraly Agency</a></p></footer>'
+ selected_header=(ROOT/'tools/home-header.html').read_text() if not slug else HEADER
+ full=head+'</head><body'+(' class="home-page"' if not slug else '')+'>'+selected_header+'<main id="main">'+str(s)+'</main>'+(home_footer if not slug else footer+EXTRA_FOOT)+'<div id="privacy-panel" class="privacy-panel" hidden><p>Les contenus externes (carte, vidéos et réservations) ne sont chargés qu’à votre demande.</p><button type="button" data-reset-consent>Réinitialiser mes choix</button><button type="button" data-close-privacy>Fermer</button></div></body></html>'
  path=ROOT/((slug+'.html') if slug else 'index.html');path.write_text(full)
  manifest.append({'path':'/'+slug,'file':path.name,'title':title,'kind':kind})
 for p in PAGES:

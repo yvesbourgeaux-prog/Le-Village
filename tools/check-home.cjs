@@ -1,0 +1,19 @@
+/* Run with NODE_PATH pointing to a directory containing jsdom. */
+const {JSDOM}=require('jsdom');
+const fs=require('node:fs');const path=require('node:path');const assert=require('node:assert/strict');
+const root=path.resolve(__dirname,'..');const dom=new JSDOM(fs.readFileSync(path.join(root,'index.html'),'utf8'),{url:'https://lightgoldenrodyellow-ant-571258.hostingersite.com/',runScripts:'outside-only'});
+const w=dom.window,d=w.document;
+w.eval(fs.readFileSync(path.join(root,'assets/js/site.js'),'utf8'));
+w.eval(fs.readFileSync(path.join(root,'assets/js/home.js'),'utf8'));
+assert.equal(d.querySelectorAll('h1').length,1);
+assert.equal(d.querySelectorAll('footer #village-acces-prestige-block').length,1);
+assert.equal(d.querySelectorAll('#village-acces-prestige-block').length,1);
+assert.equal(d.querySelectorAll('.header-actions svg').length,3);
+assert.equal(d.querySelector('meta[name="robots"]').content,'noindex,follow');
+const header=d.querySelector('.home-header');assert(!header.classList.contains('is-scrolled'));
+Object.defineProperty(w,'scrollY',{value:250,writable:true});w.dispatchEvent(new w.Event('scroll'));assert(header.classList.contains('is-scrolled'));
+w.scrollY=0;w.dispatchEvent(new w.Event('scroll'));assert(!header.classList.contains('is-scrolled'));
+const toggle=d.querySelector('.menu-toggle');toggle.click();assert.equal(toggle.getAttribute('aria-expanded'),'true');
+d.querySelector('#site-nav a').focus();d.dispatchEvent(new w.KeyboardEvent('keydown',{key:'Escape'}));assert.equal(toggle.getAttribute('aria-expanded'),'false');assert.equal(d.activeElement,toggle);
+const schema=JSON.parse(d.querySelector('script[type="application/ld+json"]').textContent);assert(schema['@graph'].some(n=>n['@type']==='Restaurant'));assert(schema['@graph'].some(n=>n['@type']==='Hotel'));
+console.log('Homepage: headings, footer, icons, scroll state, mobile menu and schema OK');dom.window.close();
