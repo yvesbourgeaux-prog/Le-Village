@@ -341,11 +341,11 @@
     #lv-43d114bf850c { margin: 0; padding: 0; }
 
 
-  #lv-811edbe64ed4 {
+  #lv-51265c5ff7d8 {
     scroll-behavior: smooth;
   }
 
-  #lv-811edbe64ed4 .lv-press-wrap {
+  #lv-51265c5ff7d8 .lv-press-wrap {
     position: relative;
     width: 100vw;
     max-width: 100vw;
@@ -356,7 +356,7 @@
     overflow: visible;
   }
 
-  #lv-811edbe64ed4 .lv-press-line {
+  #lv-51265c5ff7d8 .lv-press-line {
     position: absolute;
     left: 0;
     right: 0;
@@ -368,13 +368,13 @@
     z-index: 0;
   }
 
-  #lv-811edbe64ed4 .lv-header {
+  #lv-51265c5ff7d8 .lv-header {
     position: relative;
     z-index: 60;
     background: #fcf9f3;
   }
 
-  #lv-811edbe64ed4 .lv-header-inner {
+  #lv-51265c5ff7d8 .lv-header-inner {
     position: relative;
     display: flex;
     align-items: center;
@@ -382,26 +382,26 @@
     padding: 12px 16px;
   }
 
-  #lv-811edbe64ed4 .lv-header-left,#lv-811edbe64ed4 
-  .lv-header-center,#lv-811edbe64ed4 
+  #lv-51265c5ff7d8 .lv-header-left,#lv-51265c5ff7d8 
+  .lv-header-center,#lv-51265c5ff7d8 
   .lv-header-right {
     position: relative;
     z-index: 3;
     background: #fcf9f3;
   }
 
-  #lv-811edbe64ed4 .lv-header-left {
+  #lv-51265c5ff7d8 .lv-header-left {
     display: flex;
     align-items: center;
     gap: 12px;
     padding-right: 12px;
   }
 
-  #lv-811edbe64ed4 .lv-header-center {
+  #lv-51265c5ff7d8 .lv-header-center {
     padding: 0 16px;
   }
 
-  #lv-811edbe64ed4 .lv-header-right {
+  #lv-51265c5ff7d8 .lv-header-right {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -413,48 +413,48 @@
     font-size: 11px;
   }
 
-  #lv-811edbe64ed4 .lv-header-link,#lv-811edbe64ed4 
-  .lv-social-link,#lv-811edbe64ed4 
+  #lv-51265c5ff7d8 .lv-header-link,#lv-51265c5ff7d8 
+  .lv-social-link,#lv-51265c5ff7d8 
   .lv-menu-summary {
     color: #713506;
     text-decoration: none;
     transition: color 0.25s ease;
   }
 
-  #lv-811edbe64ed4 .lv-header-link:hover,#lv-811edbe64ed4 
-  .lv-social-link:hover,#lv-811edbe64ed4 
+  #lv-51265c5ff7d8 .lv-header-link:hover,#lv-51265c5ff7d8 
+  .lv-social-link:hover,#lv-51265c5ff7d8 
   .lv-menu-summary:hover {
     color: #9d623d;
   }
 
-  #lv-811edbe64ed4 .lv-socials {
+  #lv-51265c5ff7d8 .lv-socials {
     display: flex;
     align-items: center;
     gap: 10px;
   }
 
-  #lv-811edbe64ed4 .lv-logo {
+  #lv-51265c5ff7d8 .lv-logo {
     display: block;
     height: 230px;
     object-fit: contain;
   }
 
-  #lv-811edbe64ed4 .lv-menu-details {
+  #lv-51265c5ff7d8 .lv-menu-details {
     position: relative;
   }
 
-  #lv-811edbe64ed4 .lv-menu-summary {
+  #lv-51265c5ff7d8 .lv-menu-summary {
     list-style: none;
     display: flex;
     align-items: center;
     cursor: pointer;
   }
 
-  #lv-811edbe64ed4 .lv-menu-summary::-webkit-details-marker {
+  #lv-51265c5ff7d8 .lv-menu-summary::-webkit-details-marker {
     display: none;
   }
 
-  #lv-811edbe64ed4 .lv-menu-panel {
+  #lv-51265c5ff7d8 .lv-menu-panel {
     display: none;
     position: absolute;
     top: calc(100% + 14px);
@@ -466,11 +466,11 @@
     z-index: 80;
   }
 
-  #lv-811edbe64ed4 .lv-menu-details[open] .lv-menu-panel {
+  #lv-51265c5ff7d8 .lv-menu-details[open] .lv-menu-panel {
     display: block;
   }
 
-  #lv-811edbe64ed4 .lv-menu-panel a {
+  #lv-51265c5ff7d8 .lv-menu-panel a {
     display: block;
     padding: 14px 32px;
     color: #713506;
@@ -478,12 +478,12 @@
     transition: background 0.25s ease, color 0.25s ease;
   }
 
-  #lv-811edbe64ed4 .lv-menu-panel a:hover {
+  #lv-51265c5ff7d8 .lv-menu-panel a:hover {
     background: #f5f0ea;
     color: #9d623d;
   }
 
-  #lv-811edbe64ed4 .lv-hero {
+  #lv-51265c5ff7d8 .lv-hero {
     position: relative;
     width: 100%;
     min-height: 58vh;
@@ -494,14 +494,14 @@
     justify-content: center;
   }
 
-  #lv-811edbe64ed4 .lv-hero-bg {
+  #lv-51265c5ff7d8 .lv-hero-bg {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
   }
 
-  #lv-811edbe64ed4 .lv-hero-bg img {
+  #lv-51265c5ff7d8 .lv-hero-bg img {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -509,30 +509,30 @@
     object-fit: cover;
   }
 
-  #lv-811edbe64ed4 .lv-hero-img-desktop {
+  #lv-51265c5ff7d8 .lv-hero-img-desktop {
     display: block;
     object-position: center 34%;
   }
 
-  #lv-811edbe64ed4 .lv-hero-img-mobile {
+  #lv-51265c5ff7d8 .lv-hero-img-mobile {
     display: none;
     object-position: center 20%;
   }
 
-  #lv-811edbe64ed4 .lv-hero-overlay {
+  #lv-51265c5ff7d8 .lv-hero-overlay {
     position: absolute;
     inset: 0;
     background: rgba(113, 53, 6, 0.38);
   }
 
-  #lv-811edbe64ed4 .lv-hero-content {
+  #lv-51265c5ff7d8 .lv-hero-content {
     position: relative;
     z-index: 2;
     text-align: center;
     padding: 20px;
   }
 
-  #lv-811edbe64ed4 .lv-hero-title {
+  #lv-51265c5ff7d8 .lv-hero-title {
     margin: 0 0 16px;
     font-family: "Great Vibes", cursive;
     font-weight: 400;
@@ -542,7 +542,7 @@
     text-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
   }
 
-  #lv-811edbe64ed4 .lv-hero-subtitle {
+  #lv-51265c5ff7d8 .lv-hero-subtitle {
     margin: 0;
     font-family: "Lato", sans-serif;
     font-weight: 400;
@@ -552,7 +552,7 @@
     font-size: clamp(11px, 1.2vw, 16px);
   }
 
-  #lv-811edbe64ed4 .lv-subnav {
+  #lv-51265c5ff7d8 .lv-subnav {
     background: #713506;
     color: #f5f0ea;
     padding: 22px 16px;
@@ -560,7 +560,7 @@
     box-shadow: 0 8px 24px rgba(113, 53, 6, 0.12);
   }
 
-  #lv-811edbe64ed4 .lv-subnav ul {
+  #lv-51265c5ff7d8 .lv-subnav ul {
     list-style: none;
     margin: 0 auto;
     padding: 0;
@@ -576,79 +576,79 @@
     font-size: 12px;
   }
 
-  #lv-811edbe64ed4 .lv-subnav a {
+  #lv-51265c5ff7d8 .lv-subnav a {
     color: #f5f0ea;
     text-decoration: none;
     transition: color 0.25s ease;
   }
 
-  #lv-811edbe64ed4 .lv-subnav a:hover {
+  #lv-51265c5ff7d8 .lv-subnav a:hover {
     color: #9d623d;
   }
 
   @media (min-width: 768px) {
-    #lv-811edbe64ed4 .lv-header-inner {
+    #lv-51265c5ff7d8 .lv-header-inner {
       padding: 20px 40px;
     }
 
-    #lv-811edbe64ed4 .lv-logo {
+    #lv-51265c5ff7d8 .lv-logo {
       height: 240px;
     }
 
-    #lv-811edbe64ed4 .lv-header-left {
+    #lv-51265c5ff7d8 .lv-header-left {
       gap: 20px;
     }
 
-    #lv-811edbe64ed4 .lv-header-right {
+    #lv-51265c5ff7d8 .lv-header-right {
       gap: 20px;
       font-size: 12px;
     }
 
-    #lv-811edbe64ed4 .lv-hero {
+    #lv-51265c5ff7d8 .lv-hero {
       min-height: 72vh;
       height: 72vh;
     }
 
-    #lv-811edbe64ed4 .lv-subnav ul {
+    #lv-51265c5ff7d8 .lv-subnav ul {
       gap: 32px 64px;
       font-size: 13px;
     }
   }
 
   @media (min-width: 1024px) {
-    #lv-811edbe64ed4 .lv-header-inner {
+    #lv-51265c5ff7d8 .lv-header-inner {
       padding: 24px 56px;
     }
 
-    #lv-811edbe64ed4 .lv-logo {
+    #lv-51265c5ff7d8 .lv-logo {
       height: 288px;
     }
   }
 
   @media (min-width: 1280px) {
-    #lv-811edbe64ed4 .lv-logo {
+    #lv-51265c5ff7d8 .lv-logo {
       height: 320px;
     }
 
-    #lv-811edbe64ed4 .lv-hero {
+    #lv-51265c5ff7d8 .lv-hero {
       min-height: 76vh;
       height: 76vh;
     }
   }
 
   @media (max-width: 767px) {
-    #lv-811edbe64ed4 .lv-header-inner {
+    #lv-51265c5ff7d8 .lv-header-inner {
       padding: 7px 14px;
       gap: 4px;
     }
 
-    #lv-811edbe64ed4 .lv-header-left {
+    #lv-51265c5ff7d8 .lv-header-left {
       flex: 0 0 auto;
       gap: 0;
       padding-right: 0;
     }
 
-    #lv-811edbe64ed4 .lv-header-center {
+    #lv-51265c5ff7d8 .lv-header-center {
       flex: 1 1 auto;
       min-width: 0;
       display: flex;
@@ -656,51 +656,51 @@
       padding: 0 0 0 6px;
     }
 
-    #lv-811edbe64ed4 .lv-header-right,#lv-811edbe64ed4 
+    #lv-51265c5ff7d8 .lv-header-right,#lv-51265c5ff7d8 
     .lv-socials {
       display: none !important;
     }
 
-    #lv-811edbe64ed4 .lv-logo {
+    #lv-51265c5ff7d8 .lv-logo {
       height: 128px;
       max-width: 86vw;
     }
 
-    #lv-811edbe64ed4 .lv-menu-panel {
+    #lv-51265c5ff7d8 .lv-menu-panel {
       left: 0;
       width: calc(100vw - 24px);
     }
 
-    #lv-811edbe64ed4 .lv-hero {
+    #lv-51265c5ff7d8 .lv-hero {
       min-height: 70vh;
       height: 70vh;
     }
 
-    #lv-811edbe64ed4 .lv-hero-img-desktop {
+    #lv-51265c5ff7d8 .lv-hero-img-desktop {
       display: none;
     }
 
-    #lv-811edbe64ed4 .lv-hero-img-mobile {
+    #lv-51265c5ff7d8 .lv-hero-img-mobile {
       display: block;
       object-fit: cover;
       object-position: center 20%;
     }
 
-    #lv-811edbe64ed4 .lv-hero-title {
+    #lv-51265c5ff7d8 .lv-hero-title {
       font-size: clamp(56px, 14vw, 90px);
       margin-bottom: 10px;
     }
 
-    #lv-811edbe64ed4 .lv-hero-subtitle {
+    #lv-51265c5ff7d8 .lv-hero-subtitle {
       letter-spacing: 0.16em;
       font-size: 11px;
     }
 
-    #lv-811edbe64ed4 .lv-subnav {
+    #lv-51265c5ff7d8 .lv-subnav {
       padding: 16px 12px;
     }
 
-    #lv-811edbe64ed4 .lv-subnav ul {
+    #lv-51265c5ff7d8 .lv-subnav ul {
       gap: 16px 18px;
       letter-spacing: 0.12em;
       font-size: 10px;
@@ -708,10 +708,10 @@
   }
 
 
-    #lv-e90b73d4b021 { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-193d978ad2f1 { margin: 0; padding: 0; background-color: #fcf9f3; }
     
     /* Lettrine élégante pour le début du texte */
-    #lv-e90b73d4b021 .drop-cap::first-letter {
+    #lv-193d978ad2f1 .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5rem;
         float: left;
@@ -721,16 +721,16 @@
     }
 
 
-    #lv-3d26872be5d4 { margin: 0; padding: 0; }
+    #lv-e68faa1710c3 { margin: 0; padding: 0; }
 
     /* --- FILTRE ÉLÉGANT SANS BUG DE COULEUR (PALACE STYLE) --- */
-    #lv-3d26872be5d4 .village-img-wrapper {
+    #lv-e68faa1710c3 .village-img-wrapper {
         position: relative;
         overflow: hidden;
     }
     
     /* Calque de fusion cuivré signature (Archive) */
-    #lv-3d26872be5d4 .village-img-wrapper::after {
+    #lv-e68faa1710c3 .village-img-wrapper::after {
         content: '';
         position: absolute;
         inset: 0;
@@ -743,7 +743,7 @@
     }
     
     /* Voile de texture ancienne */
-    #lv-3d26872be5d4 .village-img-wrapper::before {
+    #lv-e68faa1710c3 .village-img-wrapper::before {
         content: '';
         position: absolute;
         inset: 0;
@@ -754,36 +754,36 @@
     }
     
     /* Déclenchement au SURVOL de la souris OU au SCROLL (.is-visible) */
-    #lv-3d26872be5d4 .group:hover .village-img-wrapper::after,#lv-3d26872be5d4 
-    .group:hover .village-img-wrapper::before,#lv-3d26872be5d4 
-    .group.is-visible .village-img-wrapper::after,#lv-3d26872be5d4 
+    #lv-e68faa1710c3 .group:hover .village-img-wrapper::after,#lv-e68faa1710c3 
+    .group:hover .village-img-wrapper::before,#lv-e68faa1710c3 
+    .group.is-visible .village-img-wrapper::after,#lv-e68faa1710c3 
     .group.is-visible .village-img-wrapper::before {
         opacity: 0;
     }
 
     /* Mouvement de l'image doux et luxueux */
-    #lv-3d26872be5d4 .village-img {
+    #lv-e68faa1710c3 .village-img {
         transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         will-change: transform;
     }
     
     /* Zoom au SURVOL ou au SCROLL */
-    #lv-3d26872be5d4 .group:hover .village-img,#lv-3d26872be5d4 
+    #lv-e68faa1710c3 .group:hover .village-img,#lv-e68faa1710c3 
     .group.is-visible .village-img {
         transform: scale(1.05);
     }
 
 
-    #lv-50ef8f374aca { margin: 0; padding: 0; }
+    #lv-4ec1f98c02f1 { margin: 0; padding: 0; }
     
     /* --- FILTRE ÉLÉGANT SANS BUG DE COULEUR (PALACE STYLE) --- */
-    #lv-50ef8f374aca .village-img-wrapper {
+    #lv-4ec1f98c02f1 .village-img-wrapper {
         position: relative;
         overflow: hidden;
     }
     
     /* Calque de fusion cuivré signature (Archive) */
-    #lv-50ef8f374aca .village-img-wrapper::after {
+    #lv-4ec1f98c02f1 .village-img-wrapper::after {
         content: '';
         position: absolute;
         inset: 0;
@@ -796,7 +796,7 @@
     }
     
     /* Voile de texture ancienne */
-    #lv-50ef8f374aca .village-img-wrapper::before {
+    #lv-4ec1f98c02f1 .village-img-wrapper::before {
         content: '';
         position: absolute;
         inset: 0;
@@ -807,30 +807,30 @@
     }
     
     /* Déclenchement au SURVOL de la souris OU au SCROLL (.is-visible) */
-    #lv-50ef8f374aca .group:hover .village-img-wrapper::after,#lv-50ef8f374aca 
-    .group:hover .village-img-wrapper::before,#lv-50ef8f374aca 
-    .group.is-visible .village-img-wrapper::after,#lv-50ef8f374aca 
+    #lv-4ec1f98c02f1 .group:hover .village-img-wrapper::after,#lv-4ec1f98c02f1 
+    .group:hover .village-img-wrapper::before,#lv-4ec1f98c02f1 
+    .group.is-visible .village-img-wrapper::after,#lv-4ec1f98c02f1 
     .group.is-visible .village-img-wrapper::before {
         opacity: 0;
     }
 
     /* Mouvement de l'image doux et luxueux */
-    #lv-50ef8f374aca .village-img {
+    #lv-4ec1f98c02f1 .village-img {
         transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         will-change: transform;
     }
     
     /* Zoom au SURVOL ou au SCROLL */
-    #lv-50ef8f374aca .group:hover .village-img,#lv-50ef8f374aca 
+    #lv-4ec1f98c02f1 .group:hover .village-img,#lv-4ec1f98c02f1 
     .group.is-visible .village-img {
         transform: scale(1.05);
     }
 
 
-    #lv-737133057412 { margin: 0; padding: 0; }
+    #lv-ff76e1ca2c29 { margin: 0; padding: 0; }
 
     /* --- CADRE VIDÉO FENÊTRE EN ARCHE ÉPURÉE --- */
-    #lv-737133057412 .arched-video-frame {
+    #lv-ff76e1ca2c29 .arched-video-frame {
         position: relative;
         background: #ffffff;
         padding: 10px;
@@ -844,18 +844,18 @@
     }
     
     /* Animation déclenchée au scroll */
-    #lv-737133057412 .arched-video-frame.is-visible {
+    #lv-ff76e1ca2c29 .arched-video-frame.is-visible {
         opacity: 1;
         transform: translateY(0);
     }
 
-    #lv-737133057412 .arched-video-frame:hover {
+    #lv-ff76e1ca2c29 .arched-video-frame:hover {
         transform: translateY(-8px);
         box-shadow: 0 30px 60px -15px rgba(113, 53, 6, 0.25);
     }
 
     /* La bordure cuivrée interne très fine et chic */
-    #lv-737133057412 .arched-video-frame::before {
+    #lv-ff76e1ca2c29 .arched-video-frame::before {
         content: '';
         position: absolute;
         top: 8px; bottom: 8px; left: 8px; right: 8px;
@@ -866,7 +866,7 @@
     }
 
     /* Masque intérieur */
-    #lv-737133057412 .video-mask {
+    #lv-ff76e1ca2c29 .video-mask {
         position: relative;
         width: 100%;
         aspect-ratio: 9/16;
@@ -875,7 +875,7 @@
         background-color: #000;
     }
     
-    #lv-737133057412 .video-mask video {
+    #lv-ff76e1ca2c29 .video-mask video {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -886,7 +886,7 @@
     }
 
     /* --- BOUTONS PREMIUM (GLASSMORPHISM) --- */
-    #lv-737133057412 .glass-btn {
+    #lv-ff76e1ca2c29 .glass-btn {
         background: rgba(255, 255, 255, 0.25);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
@@ -894,35 +894,35 @@
         color: #ffffff;
         transition: all 0.3s ease;
     }
-    #lv-737133057412 .glass-btn:hover {
+    #lv-ff76e1ca2c29 .glass-btn:hover {
         background: rgba(255, 255, 255, 0.9);
         color: #713506; /* Devient marron foncé au survol */
         transform: scale(1.1);
     }
 
     /* Contrôles cachés par défaut pour épurer l'image, visibles au survol */
-    #lv-737133057412 .video-controls {
+    #lv-ff76e1ca2c29 .video-controls {
         opacity: 0;
         transition: opacity 0.4s ease;
     }
-    #lv-737133057412 .arched-video-frame:hover .video-controls {
+    #lv-ff76e1ca2c29 .arched-video-frame:hover .video-controls {
         opacity: 1;
     }
 
 
-    #lv-84d40bd136ff { margin: 0; padding: 0; }
+    #lv-529601aa87ab { margin: 0; padding: 0; }
 
 
-    #lv-85d4bceb726a { margin: 0; padding: 0; }
+    #lv-45dceeab4d7e { margin: 0; padding: 0; }
     
     /* --- FILTRE ÉLÉGANT SANS BUG DE COULEUR (PALACE STYLE) --- */
-    #lv-85d4bceb726a .village-img-wrapper {
+    #lv-45dceeab4d7e .village-img-wrapper {
         position: relative;
         overflow: hidden;
     }
     
     /* Calque de fusion cuivré signature (Archive) */
-    #lv-85d4bceb726a .village-img-wrapper::after {
+    #lv-45dceeab4d7e .village-img-wrapper::after {
         content: '';
         position: absolute;
         inset: 0;
@@ -935,7 +935,7 @@
     }
     
     /* Voile de texture ancienne pour la profondeur */
-    #lv-85d4bceb726a .village-img-wrapper::before {
+    #lv-45dceeab4d7e .village-img-wrapper::before {
         content: '';
         position: absolute;
         inset: 0;
@@ -946,30 +946,30 @@
     }
     
     /* Déclenchement au SURVOL de la souris OU au SCROLL (.is-visible) */
-    #lv-85d4bceb726a .group:hover .village-img-wrapper::after,#lv-85d4bceb726a 
-    .group:hover .village-img-wrapper::before,#lv-85d4bceb726a 
-    .group.is-visible .village-img-wrapper::after,#lv-85d4bceb726a 
+    #lv-45dceeab4d7e .group:hover .village-img-wrapper::after,#lv-45dceeab4d7e 
+    .group:hover .village-img-wrapper::before,#lv-45dceeab4d7e 
+    .group.is-visible .village-img-wrapper::after,#lv-45dceeab4d7e 
     .group.is-visible .village-img-wrapper::before {
         opacity: 0;
     }
 
     /* Mouvement de l'image doux et luxueux */
-    #lv-85d4bceb726a .village-img {
+    #lv-45dceeab4d7e .village-img {
         transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         will-change: transform;
     }
     
     /* Zoom au SURVOL ou au SCROLL */
-    #lv-85d4bceb726a .group:hover .village-img,#lv-85d4bceb726a 
+    #lv-45dceeab4d7e .group:hover .village-img,#lv-45dceeab4d7e 
     .group.is-visible .village-img {
         transform: scale(1.05);
     }
 
 
-    #lv-f9c85bbb6b4a { margin: 0; padding: 0; }
+    #lv-03c1fedde22a { margin: 0; padding: 0; }
 
     /* --- DESIGN ARCHE SOBRE ET ÉLÉGANT --- */
-    #lv-f9c85bbb6b4a .mini-arched-video {
+    #lv-03c1fedde22a .mini-arched-video {
         position: relative;
         background: #ffffff; /* Passe-partout blanc pur et sobre */
         padding: 8px; /* Finesse du cadre */
@@ -984,18 +984,18 @@
         transform: translateY(20px);
     }
     
-    #lv-f9c85bbb6b4a .mini-arched-video.is-visible {
+    #lv-03c1fedde22a .mini-arched-video.is-visible {
         opacity: 1;
         transform: translateY(0);
     }
 
-    #lv-f9c85bbb6b4a .mini-arched-video:hover {
+    #lv-03c1fedde22a .mini-arched-video:hover {
         transform: translateY(-6px);
         box-shadow: 0 20px 40px -12px rgba(113, 53, 6, 0.18);
     }
 
     /* Liseré cuivré intérieur très discret */
-    #lv-f9c85bbb6b4a .mini-arched-video::before {
+    #lv-03c1fedde22a .mini-arched-video::before {
         content: '';
         position: absolute;
         top: 6px; bottom: 6px; left: 6px; right: 6px;
@@ -1006,7 +1006,7 @@
     }
 
     /* Masque de la vidéo */
-    #lv-f9c85bbb6b4a .mini-video-mask {
+    #lv-03c1fedde22a .mini-video-mask {
         position: relative;
         width: 100%;
         aspect-ratio: 9/16;
@@ -1015,7 +1015,7 @@
         background-color: #000;
     }
     
-    #lv-f9c85bbb6b4a .mini-video-mask video {
+    #lv-03c1fedde22a .mini-video-mask video {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -1025,7 +1025,7 @@
     }
 
     /* Voile sombre subtil en bas pour faire ressortir les boutons en verre au survol */
-    #lv-f9c85bbb6b4a .mini-video-mask::after {
+    #lv-03c1fedde22a .mini-video-mask::after {
         content: '';
         position: absolute;
         bottom: 0; left: 0; right: 0;
@@ -1036,12 +1036,12 @@
         opacity: 0;
         transition: opacity 0.4s ease;
     }
-    #lv-f9c85bbb6b4a .mini-arched-video:hover .mini-video-mask::after {
+    #lv-03c1fedde22a .mini-arched-video:hover .mini-video-mask::after {
         opacity: 1;
     }
 
     /* --- BOUTONS PREMIUM (GLASSMORPHISM) --- */
-    #lv-f9c85bbb6b4a .glass-btn-mini {
+    #lv-03c1fedde22a .glass-btn-mini {
         background: rgba(255, 255, 255, 0.25);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
@@ -1052,26 +1052,26 @@
         position: relative;
         z-index: 40;
     }
-    #lv-f9c85bbb6b4a .glass-btn-mini:hover {
+    #lv-03c1fedde22a .glass-btn-mini:hover {
         background: #ffffff;
         color: #713506;
         transform: scale(1.15);
     }
 
-    #lv-f9c85bbb6b4a .video-controls {
+    #lv-03c1fedde22a .video-controls {
         opacity: 0;
         transform: translateY(10px);
         transition: all 0.5s ease;
     }
-    #lv-f9c85bbb6b4a .mini-arched-video:hover .video-controls {
+    #lv-03c1fedde22a .mini-arched-video:hover .video-controls {
         opacity: 1;
         transform: translateY(0);
     }
 
 
-    #lv-2a438d69744f { margin: 0; padding: 0; }
+    #lv-a41c0fc2b7f1 { margin: 0; padding: 0; }
 
-    #lv-2a438d69744f .room-tabs-scroll {
+    #lv-a41c0fc2b7f1 .room-tabs-scroll {
         display: flex;
         gap: 14px;
         overflow-x: auto;
@@ -1083,21 +1083,21 @@
         justify-content: flex-start;
     }
 
-    #lv-2a438d69744f .room-tabs-scroll::-webkit-scrollbar {
+    #lv-a41c0fc2b7f1 .room-tabs-scroll::-webkit-scrollbar {
         display: none;
     }
 
-    #lv-2a438d69744f .vh-gallery-shell {
+    #lv-a41c0fc2b7f1 .vh-gallery-shell {
         width: 100%;
     }
 
-    #lv-2a438d69744f .vh-gallery-main-wrap {
+    #lv-a41c0fc2b7f1 .vh-gallery-main-wrap {
         position: relative;
         overflow: hidden;
         background: rgba(0, 0, 0, 0.08);
     }
 
-    #lv-2a438d69744f .vh-gallery-main-btn {
+    #lv-a41c0fc2b7f1 .vh-gallery-main-btn {
         width: 100%;
         border: 0;
         padding: 0;
@@ -1106,14 +1106,14 @@
         cursor: default;
     }
 
-    #lv-2a438d69744f .vh-gallery-main-image {
+    #lv-a41c0fc2b7f1 .vh-gallery-main-image {
         width: 100%;
         height: 320px;
         object-fit: cover;
         display: block;
     }
 
-    #lv-2a438d69744f .vh-gallery-arrow {
+    #lv-a41c0fc2b7f1 .vh-gallery-arrow {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -1133,19 +1133,19 @@
         backdrop-filter: blur(2px);
     }
 
-    #lv-2a438d69744f .vh-gallery-arrow:hover {
+    #lv-a41c0fc2b7f1 .vh-gallery-arrow:hover {
         background: rgba(255, 255, 255, 0.88);
     }
 
-    #lv-2a438d69744f .vh-gallery-arrow-left {
+    #lv-a41c0fc2b7f1 .vh-gallery-arrow-left {
         left: 10px;
     }
 
-    #lv-2a438d69744f .vh-gallery-arrow-right {
+    #lv-a41c0fc2b7f1 .vh-gallery-arrow-right {
         right: 10px;
     }
 
-    #lv-2a438d69744f .vh-gallery-counter {
+    #lv-a41c0fc2b7f1 .vh-gallery-counter {
         position: absolute;
         right: 12px;
         bottom: 12px;
@@ -1158,7 +1158,7 @@
         padding: 7px 10px;
     }
 
-    #lv-2a438d69744f .vh-gallery-thumbs {
+    #lv-a41c0fc2b7f1 .vh-gallery-thumbs {
         display: flex;
         gap: 10px;
         overflow-x: auto;
@@ -1167,11 +1167,11 @@
         padding-top: 14px;
     }
 
-    #lv-2a438d69744f .vh-gallery-thumbs::-webkit-scrollbar {
+    #lv-a41c0fc2b7f1 .vh-gallery-thumbs::-webkit-scrollbar {
         display: none;
     }
 
-    #lv-2a438d69744f .vh-thumb-btn {
+    #lv-a41c0fc2b7f1 .vh-thumb-btn {
         flex: 0 0 auto;
         width: 74px;
         height: 74px;
@@ -1184,54 +1184,54 @@
         cursor: pointer;
     }
 
-    #lv-2a438d69744f .vh-thumb-btn img {
+    #lv-a41c0fc2b7f1 .vh-thumb-btn img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
     }
 
-    #lv-2a438d69744f .vh-thumb-btn.is-active {
+    #lv-a41c0fc2b7f1 .vh-thumb-btn.is-active {
         opacity: 1;
         border-color: #9d623d;
         transform: translateY(-1px);
     }
 
-    #lv-2a438d69744f .vh-thumb-btn:hover {
+    #lv-a41c0fc2b7f1 .vh-thumb-btn:hover {
         opacity: 1;
     }
 
     @media (min-width: 768px) {
-        #lv-2a438d69744f .vh-gallery-main-image {
+        #lv-a41c0fc2b7f1 .vh-gallery-main-image {
             height: 460px;
         }
 
-        #lv-2a438d69744f .vh-thumb-btn {
+        #lv-a41c0fc2b7f1 .vh-thumb-btn {
             width: 90px;
             height: 90px;
         }
     }
 
     @media (min-width: 1024px) {
-        #lv-2a438d69744f .vh-gallery-main-image {
+        #lv-a41c0fc2b7f1 .vh-gallery-main-image {
             height: 520px;
         }
 
-        #lv-2a438d69744f .vh-gallery-arrow {
+        #lv-a41c0fc2b7f1 .vh-gallery-arrow {
             opacity: 0;
         }
 
-        #lv-2a438d69744f .vh-gallery-main-wrap:hover .vh-gallery-arrow {
+        #lv-a41c0fc2b7f1 .vh-gallery-main-wrap:hover .vh-gallery-arrow {
             opacity: 1;
         }
     }
 
     @media (max-width: 767px) {
-        #lv-2a438d69744f .vh-gallery-main-image {
+        #lv-a41c0fc2b7f1 .vh-gallery-main-image {
             height: 320px;
         }
 
-        #lv-2a438d69744f .vh-gallery-arrow {
+        #lv-a41c0fc2b7f1 .vh-gallery-arrow {
             opacity: 1;
             width: 32px;
             height: 32px;
@@ -1243,6 +1243,9 @@
 
 
     #lv-09f213954d45 { margin: 0; padding: 0; }
+
+
+    #lv-e4eeecc58faf { margin: 0; padding: 0; }
 
 
 #lv-46915d34a5d1 {

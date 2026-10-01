@@ -1,0 +1,17 @@
+/* Preserve the supplied dossier layout and original section spacing. */
+.dossier-page{--dossier-header-height:142px}
+.dossier-page #main{padding-top:var(--dossier-header-height)}
+.dossier-page #main>.lv-block:first-child{z-index:40}
+.dossier-page #main .lv-press-wrap{width:100%;max-width:100%;margin-inline:0}
+.dossier-page #dossier-header{position:fixed;inset:0 0 auto;z-index:100;background:#fcf9f3}
+.dossier-page #dossier-header .lv-logo{transition:height .25s}
+.dossier-page #dossier-header.is-scrolled .lv-logo{height:86px}
+.dossier-page #dossier-header.is-scrolled .lv-header-inner{padding-block:10px}
+.dossier-page #dossier-hero,.dossier-page #main .lv-subnav{width:calc(100% - 48px);max-width:1240px;margin-inline:auto}
+.dossier-page #main section[id]{scroll-margin-top:12px}
+.dossier-page #dossier-header .lv-menu-panel{max-height:calc(100dvh - 150px);overflow-y:auto}
+@media(min-width:768px){.dossier-page{--dossier-header-height:280px}}
+@media(min-width:1024px){.dossier-page{--dossier-header-height:336px}}
+@media(min-width:1280px){.dossier-page{--dossier-header-height:368px}}
+@media(max-width:767px){.dossier-page #dossier-hero,.dossier-page #main .lv-subnav{width:calc(100% - 32px)}}
+@media(prefers-reduced-motion:reduce){.dossier-page *, .dossier-page *::before,.dossier-page *::after{scroll-behavior:auto!important;transition:none!important}}
