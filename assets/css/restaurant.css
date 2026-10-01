@@ -28,8 +28,8 @@
 @media(prefers-reduced-motion:reduce){.restaurant-page .arched-video-frame{opacity:1;transform:none}}
 .restaurant-page #village-carte-block .restaurant-menu-actions{margin-top:88px!important;margin-bottom:12px}
 .restaurant-page #restaurant-ribbons{max-width:none;width:100%;padding:0;overflow:hidden}
-.ribbon-row{overflow:hidden;margin-bottom:22px;--photo-width:230px;--photo-height:300px;--ribbon-time:110s}
-.ribbon-row-2{--photo-width:310px;--photo-height:430px;--ribbon-time:190s}
+.ribbon-row{overflow:hidden;margin-bottom:22px;--photo-width:230px;--photo-height:300px;--ribbon-time:200s}
+.ribbon-row-2{--photo-width:310px;--photo-height:430px;--ribbon-time:340s}
 .ribbon-track{display:flex;width:max-content;animation:ribbon-move var(--ribbon-time) linear infinite}
 .ribbon-row-1 .ribbon-track{animation-direction:reverse}
 .ribbon-set{display:flex;gap:22px;padding-right:22px;flex:none}
@@ -52,3 +52,8 @@
 .ribbon-close{position:absolute;right:6px;top:6px;width:44px;height:44px;border:0;border-radius:50%;background:#fcf9f3;color:#713506;font-size:32px;cursor:pointer}
 @media(max-width:640px){.restaurant-page #village-carte-block .restaurant-menu-actions{margin-top:64px!important}.ribbon-row{--photo-width:160px;--photo-height:210px;margin-bottom:14px}.ribbon-row-2{--photo-width:220px;--photo-height:310px}.ribbon-set{gap:14px;padding-right:14px}.ribbon-invitation{font-size:42px}.ribbon-follow{font-size:10px;gap:10px;letter-spacing:.1em}}
 @media(prefers-reduced-motion:reduce){.ribbon-track{animation:none}.ribbon-row{overflow-x:auto}.ribbon-set[aria-hidden]{display:none}.ribbon-pause{display:none}}
+
+.restaurant-page #village-carte-block .menu-price{white-space:nowrap;flex-shrink:0}
+.restaurant-fixed-scene{width:100%;height:540px;background-image:url('/assets/images/restaurant-salle.webp');background-size:cover;background-position:center;background-attachment:fixed}
+@media(max-width:767px){.restaurant-fixed-scene{height:380px;background-attachment:scroll;background-position:65% center}}
+@media(prefers-reduced-motion:reduce){.restaurant-fixed-scene{background-attachment:scroll}}
