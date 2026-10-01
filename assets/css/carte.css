@@ -1,0 +1,34 @@
+/* A readable printed menu, with navigation below the shared fixed header. */
+.carte-page #village-entete-carte-block header{padding:42px 24px 44px}
+.carte-page #village-entete-carte-block h1{font-size:clamp(64px,8vw,96px);margin-bottom:24px}
+.carte-page #main>.carte-nav-wrapper{position:sticky;top:98px;z-index:40;background:rgba(252,249,243,.97);backdrop-filter:blur(10px);border-block:1px solid #71350620;margin-bottom:28px}
+.carte-page .carte-nav{max-width:1280px;margin:auto;display:flex;gap:24px;overflow-x:auto;padding:18px 24px;scrollbar-width:none}
+.carte-page .carte-nav::-webkit-scrollbar{display:none}
+.carte-page .carte-nav-link{flex:none;font:500 11px Poppins,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:#713506;text-decoration:none;padding-bottom:6px;border-bottom:1px solid transparent}
+.carte-page .carte-nav-link:hover,.carte-page .carte-nav-link:focus-visible{border-bottom-color:#9d623d}
+.carte-page .carte-content{max-width:768px;margin-inline:auto;padding:0 24px}
+.carte-page .carte-content section{padding:28px 0 32px;margin-bottom:0}
+.carte-page .lv-block [id]{scroll-margin-top:184px}
+.carte-page .carte-content h2{font-size:clamp(25px,3vw,36px);line-height:1.35;letter-spacing:.09em}
+.carte-page .dish-container{margin-bottom:32px}
+.carte-page .dish-header{gap:12px;align-items:baseline}
+.carte-page .dish-title{min-width:0}
+.carte-page .dish-dots{min-width:14px}
+.carte-page .dish-price{white-space:nowrap;flex-shrink:0}
+.carte-page .dish-en{color:#713506a8}
+.carte-page .menu-card .font-poppins{white-space:nowrap}
+.carte-page .carte-content .section-ornament{margin-bottom:40px}
+@media(min-width:1280px){.carte-page .carte-nav{justify-content:center}}
+@media(max-width:1199px){.carte-page #main>.carte-nav-wrapper{top:88px}}
+@media(max-width:640px){
+ .carte-page #village-entete-carte-block header{padding-top:28px;padding-bottom:34px}
+ .carte-page .carte-nav{padding:16px 22px;gap:22px}
+ .carte-page .carte-content{padding-inline:22px}
+ .carte-page .dish-header{gap:8px}
+ .carte-page .dish-title{font-size:18px}
+ .carte-page .dish-price{font-size:15px}
+ .carte-page .dish-dots{min-width:5px}
+ .carte-page .dish-desc,.carte-page .dish-en{padding-right:0}
+ .carte-page .carte-content section{padding-block:24px 28px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}

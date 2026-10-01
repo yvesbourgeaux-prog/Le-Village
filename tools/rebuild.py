@@ -89,11 +89,14 @@ footer,_=process(PAGES[0]['footer'],'footer')
 home_footer_block,_=process((ROOT/'tools/home-footer.html').read_text(),'home-footer')
 restaurant_footer_block,_=process(next(p['footer'] for p in PAGES if p['slug']==RESTAURANT_SLUG),'restaurant-footer')
 hotel_footer_block,_=process(next(p['footer'] for p in PAGES if p['slug']==HOTEL_SLUG),'hotel-footer')
+carte_footer_block,_=process(next(p['footer'] for p in PAGES if p['slug']=='la-carte'),'carte-footer')
 FONT='https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Poppins:wght@300;400;500;600&display=swap'
 manifest=[]
 def writepage(slug,meta,content,external=None,kind='default',date=None):
- modern=not slug or slug in (RESTAURANT_SLUG,HOTEL_SLUG)
+ modern=not slug or slug in (RESTAURANT_SLUG,HOTEL_SLUG,'la-carte')
  s=BeautifulSoup(content,'html.parser')
+ if slug=='la-carte':
+  nav=s.select_one('.carte-nav-wrapper');nav.extract();s.select_one('.lv-block').insert_after(nav)
  h=s.select('h1')
  if not h:
   h1=s.new_tag('h1');h1['class']='native-page-title';h1.string=meta['title'];s.insert(0,h1)
@@ -143,6 +146,22 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
   page['mainEntity']={'@id':BASE+'/#hotel'}
   hotel.update({'checkinTime':'16:00','checkoutTime':'10:00','petsAllowed':False})
  graph=[page]
+ if slug=='la-carte':
+  menu={'@type':'Menu','@id':canonical+'#menu','name':'La Carte du restaurant Le Village','url':canonical,'inLanguage':'fr','hasMenuSection':[]}
+  for section in s.select('section[id]'):
+   heading=section.find(['h2','h3'])
+   items=[]
+   for dish in section.select('.dish-container'):
+    name=dish.select_one('.dish-title');price=dish.select_one('.dish-price');desc=dish.select_one('.dish-desc')
+    if not name:continue
+    item={'@type':'MenuItem','name':name.get_text(' ',strip=True)}
+    if desc:item['description']=desc.get_text(' ',strip=True)
+    if price and re.fullmatch(r'\d+(?:,\d+)?\s*€',price.get_text(strip=True)):
+     item['offers']={'@type':'Offer','price':price.get_text(strip=True).replace('€','').strip().replace(',','.'),'priceCurrency':'EUR'}
+    items.append(item)
+   if heading and items:menu['hasMenuSection'].append({'@type':'MenuSection','name':heading.get_text(' ',strip=True),'hasMenuItem':items})
+  graph.append(menu);page['mainEntity']={'@id':canonical+'#menu'}
+
  if not slug:graph.extend([restaurant,hotel,{'@type':'WebSite','@id':BASE+'/#website','url':BASE+'/','name':'Le Grimaldi by Le Village','inLanguage':'fr-FR'}])
  elif slug=='hotel-cagnes-sur-mer-le-grimaldi':graph.append(hotel)
  elif slug in ['la-carte','le-village-restaurant-haut-de-cagnes-sur-mer']:graph.append(restaurant)
@@ -152,7 +171,7 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
   if s.find('img'):article['image']=s.find('img').get('src',FALLBACK)
   graph.append(article)
  if slug:graph.append({'@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':'Accueil','item':BASE+'/'},{'@type':'ListItem','position':2,'name':title,'item':canonical}]})
- jsids=list(dict.fromkeys(used_js.get(slug,[])+used_js.get('hotel-footer' if slug==HOTEL_SLUG else 'restaurant-footer' if slug==RESTAURANT_SLUG else 'home-footer' if not slug else 'footer',[])))
+ jsids=list(dict.fromkeys(used_js.get(slug,[])+used_js.get('carte-footer' if slug=='la-carte' else 'hotel-footer' if slug==HOTEL_SLUG else 'restaurant-footer' if slug==RESTAURANT_SLUG else 'home-footer' if not slug else 'footer',[])))
  es=''.join(f'<script defer src="{html.escape(u,quote=True)}"></script>' for u in dict.fromkeys(external or []))
  head=f'''<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)}</title><meta name="description" content="{html.escape(description,quote=True)}"><link rel="canonical" href="{canonical}"><meta name="robots" content="noindex,follow"><meta name="theme-color" content="#fcf9f3"><meta property="og:type" content="{'article' if kind=='blog' else 'website'}"><meta property="og:title" content="{html.escape(title,quote=True)}"><meta property="og:description" content="{html.escape(description,quote=True)}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="{s.find('img').get('src',FALLBACK) if s.find('img') else FALLBACK}"><meta property="og:locale" content="fr_FR"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="{LOGO}"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="{html.escape(FONT,quote=True)}"><link rel="stylesheet" href="/assets/css/tailwind.css"><link rel="stylesheet" href="/assets/css/blocks.css"><link rel="stylesheet" href="/assets/css/site.css"><script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False)}</script>{es}<script defer src="/assets/js/site.js"></script>'''
  head+=''.join(f'<script defer src="/assets/js/{uid}.js"></script>' for uid in jsids)
@@ -160,17 +179,20 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
  if modern:
   head=head.replace('/assets/css/blocks.css', '/assets/css/blocks.css?v=home-20261001c').replace('/assets/css/tailwind.css', '/assets/css/tailwind.css?v=home-20261001c').replace('/assets/js/site.js', '/assets/js/site.js?v=home-20261001c')
   head+='<link rel="stylesheet" href="/assets/css/home.css?v=home-20261001c"><script defer src="/assets/js/home.js?v=home-20261001c"></script><script id="zenchef-sdk" defer src="https://sdk.zenchef.com/v1/sdk.min.js"></script>'
-  home_footer=(hotel_footer_block if slug==HOTEL_SLUG else restaurant_footer_block if slug==RESTAURANT_SLUG else home_footer_block)+'<div class="zc-widget-config" data-restaurant="361354" data-lang="fr" data-primary-color="794116" data-open="false"></div>'
+  home_footer=(carte_footer_block if slug=='la-carte' else hotel_footer_block if slug==HOTEL_SLUG else restaurant_footer_block if slug==RESTAURANT_SLUG else home_footer_block)+'<div class="zc-widget-config" data-restaurant="361354" data-lang="fr" data-primary-color="794116" data-open="false"></div>'
  if slug==RESTAURANT_SLUG:
   head=head.replace('home-20261001c','resto-20261001d')
   head+='<link rel="stylesheet" href="/assets/css/restaurant.css?v=resto-20261001d"><script defer src="/assets/js/restaurant.js?v=resto-20261001d"></script>'
  if slug==HOTEL_SLUG:
   head=head.replace('home-20261001c','hotel-20261001b')
   head+='<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><link rel="stylesheet" href="/assets/css/hotel.css?v=hotel-20261001b">'
+ if slug=='la-carte':
+  head=head.replace('home-20261001c','carte-20261001a')
+  head+='<link rel="stylesheet" href="/assets/css/carte.css?v=carte-20261001a">'
  selected_header=(ROOT/'tools/home-header.html').read_text() if modern else HEADER
- if slug in (RESTAURANT_SLUG,HOTEL_SLUG):selected_header=selected_header.replace(' aria-current="page"','')
+ if slug in (RESTAURANT_SLUG,HOTEL_SLUG,'la-carte'):selected_header=selected_header.replace(' aria-current="page"','')
  if slug==HOTEL_SLUG:selected_header=selected_header.replace('class="book-button" href="/reserver"','class="book-button" href="#reservation"')
- full=head+'</head><body'+(' class="home-page hotel-page"' if slug==HOTEL_SLUG else ' class="home-page restaurant-page"' if slug==RESTAURANT_SLUG else ' class="home-page"' if not slug else '')+'>'+selected_header+'<main id="main">'+str(s)+'</main>'+(home_footer if modern else footer+EXTRA_FOOT)+'<div id="privacy-panel" class="privacy-panel" hidden><p>Vous pouvez réinitialiser ici les autorisations des vidéos intégrées. La carte et le module de réservation utilisent les services Google Maps et Zenchef.</p><button type="button" data-reset-consent>Réinitialiser mes choix</button><button type="button" data-close-privacy>Fermer</button></div></body></html>'
+ full=head+'</head><body'+(' class="home-page carte-page"' if slug=='la-carte' else ' class="home-page hotel-page"' if slug==HOTEL_SLUG else ' class="home-page restaurant-page"' if slug==RESTAURANT_SLUG else ' class="home-page"' if not slug else '')+'>'+selected_header+'<main id="main">'+str(s)+'</main>'+(home_footer if modern else footer+EXTRA_FOOT)+'<div id="privacy-panel" class="privacy-panel" hidden><p>Vous pouvez réinitialiser ici les autorisations des vidéos intégrées. La carte et le module de réservation utilisent les services Google Maps et Zenchef.</p><button type="button" data-reset-consent>Réinitialiser mes choix</button><button type="button" data-close-privacy>Fermer</button></div></body></html>'
  if not modern:full=full.replace('Vous pouvez réinitialiser ici les autorisations des vidéos intégrées. La carte et le module de réservation utilisent les services Google Maps et Zenchef.', 'Les contenus externes (carte, vidéos et réservations) ne sont chargés qu’à votre demande.')
  path=ROOT/((slug+'.html') if slug else 'index.html');path.write_text(full)
  manifest.append({'path':'/'+slug,'file':path.name,'title':title,'kind':kind})

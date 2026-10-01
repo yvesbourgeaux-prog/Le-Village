@@ -3268,13 +3268,13 @@
     }
 
 
-    #lv-bb812be61b04 { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-e85295065c8d { margin: 0; padding: 0; background-color: #fcf9f3; }
 
 
-    #lv-3c209cae58dd { margin: 0; padding: 0; background-color: #fcf9f3; scroll-behavior: smooth; }
+    #lv-d2adbefe20aa { margin: 0; padding: 0; background-color: #fcf9f3; scroll-behavior: smooth; }
 
     /* --- BANDEAU DE NAVIGATION (Sur une seule ligne avec scroll horizontal) --- */
-    #lv-3c209cae58dd .carte-nav-wrapper {
+    #lv-d2adbefe20aa .carte-nav-wrapper {
         position: sticky;
         top: 0;
         z-index: 50;
@@ -3284,7 +3284,7 @@
         margin-bottom: 40px;
     }
 
-    #lv-3c209cae58dd .carte-nav {
+    #lv-d2adbefe20aa .carte-nav {
         max-width: 1200px;
         margin: 0 auto;
         padding: 16px 20px;
@@ -3299,15 +3299,15 @@
     
     /* Centrer sur les grands écrans si l'espace le permet */
     @media (min-width: 1200px) {
-        #lv-3c209cae58dd .carte-nav { justify-content: center; }
+        #lv-d2adbefe20aa .carte-nav { justify-content: center; }
     }
 
     /* Cache la barre de scroll Chrome/Safari */
-    #lv-3c209cae58dd .carte-nav::-webkit-scrollbar { 
+    #lv-d2adbefe20aa .carte-nav::-webkit-scrollbar { 
         display: none; 
     }
 
-    #lv-3c209cae58dd .carte-nav-link {
+    #lv-d2adbefe20aa .carte-nav-link {
         font-family: 'Poppins', sans-serif;
         font-size: 13px;
         letter-spacing: 0.15em;
@@ -3321,11 +3321,11 @@
         transition: opacity 0.25s ease;
     }
 
-    #lv-3c209cae58dd .carte-nav-link:hover {
+    #lv-d2adbefe20aa .carte-nav-link:hover {
         opacity: 0.7;
     }
 
-    #lv-3c209cae58dd .carte-nav-link::after {
+    #lv-d2adbefe20aa .carte-nav-link::after {
         content: "";
         position: absolute;
         left: 50%;
@@ -3337,12 +3337,12 @@
         transform: translateX(-50%);
     }
 
-    #lv-3c209cae58dd .carte-nav-link:hover::after {
+    #lv-d2adbefe20aa .carte-nav-link:hover::after {
         width: 100%;
     }
 
     /* Ornement décoratif pour le titre Midi */
-    #lv-3c209cae58dd .section-ornament {
+    #lv-d2adbefe20aa .section-ornament {
         width: 40px;
         height: 1px;
         background-color: #9d623d;
@@ -3351,28 +3351,28 @@
     }
 
     /* --- STYLE ÉDITORIAL MENU (Effet papier ligné) --- */
-    #lv-3c209cae58dd .menu-card {
+    #lv-d2adbefe20aa .menu-card {
         background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(157, 98, 61, 0.1) 39px, rgba(157, 98, 61, 0.1) 40px);
         background-color: #ffffff;
         border: 1px solid rgba(113, 53, 6, 0.2);
     }
 
 
-    #lv-c58b3eb7a9ab { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-a19867ab302b { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- TYPOGRAPHIE DES PLATS --- */
-    #lv-c58b3eb7a9ab .dish-container {
+    #lv-a19867ab302b .dish-container {
         margin-bottom: 2rem;
         position: relative;
     }
-    #lv-c58b3eb7a9ab .dish-header {
+    #lv-a19867ab302b .dish-header {
         display: flex;
         justify-content: space-between;
         align-items: baseline;
         gap: 1rem;
         margin-bottom: 0.25rem;
     }
-    #lv-c58b3eb7a9ab .dish-title {
+    #lv-a19867ab302b .dish-title {
         font-family: 'Playfair Display', serif;
         font-size: 1.15rem;
         color: #713506;
@@ -3380,29 +3380,29 @@
         line-height: 1.3;
     }
     @media (min-width: 768px) {
-        #lv-c58b3eb7a9ab .dish-title { font-size: 1.3rem; }
+        #lv-a19867ab302b .dish-title { font-size: 1.3rem; }
     }
-    #lv-c58b3eb7a9ab .dish-dots {
+    #lv-a19867ab302b .dish-dots {
         flex-grow: 1;
         border-bottom: 1px dotted rgba(113, 53, 6, 0.3);
         position: relative;
         top: -6px;
     }
-    #lv-c58b3eb7a9ab .dish-price {
+    #lv-a19867ab302b .dish-price {
         font-family: 'Poppins', sans-serif;
         font-size: 1.1rem;
         color: #9d623d;
         font-weight: 500;
         white-space: nowrap;
     }
-    #lv-c58b3eb7a9ab .dish-desc {
+    #lv-a19867ab302b .dish-desc {
         font-family: 'Lato', sans-serif;
         font-size: 0.95rem;
         color: rgba(113, 53, 6, 0.85);
         line-height: 1.5;
         padding-right: 2rem; /* Espace sous le prix */
     }
-    #lv-c58b3eb7a9ab .dish-en {
+    #lv-a19867ab302b .dish-en {
         font-family: 'Lato', sans-serif;
         font-size: 0.8rem;
         color: rgba(113, 53, 6, 0.45);
@@ -3413,7 +3413,7 @@
     }
 
     /* Décoration sous le titre de section */
-    #lv-c58b3eb7a9ab .section-ornament {
+    #lv-a19867ab302b .section-ornament {
         width: 40px;
         height: 1px;
         background-color: #9d623d;
@@ -3422,21 +3422,21 @@
     }
 
 
-    #lv-4655f81acc04 { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-3409364f7bb9 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- TYPOGRAPHIE DES PLATS --- */
-    #lv-4655f81acc04 .dish-container {
+    #lv-3409364f7bb9 .dish-container {
         margin-bottom: 2rem;
         position: relative;
     }
-    #lv-4655f81acc04 .dish-header {
+    #lv-3409364f7bb9 .dish-header {
         display: flex;
         justify-content: space-between;
         align-items: baseline;
         gap: 1rem;
         margin-bottom: 0.25rem;
     }
-    #lv-4655f81acc04 .dish-title {
+    #lv-3409364f7bb9 .dish-title {
         font-family: 'Playfair Display', serif;
         font-size: 1.15rem;
         color: #713506;
@@ -3444,29 +3444,29 @@
         line-height: 1.3;
     }
     @media (min-width: 768px) {
-        #lv-4655f81acc04 .dish-title { font-size: 1.3rem; }
+        #lv-3409364f7bb9 .dish-title { font-size: 1.3rem; }
     }
-    #lv-4655f81acc04 .dish-dots {
+    #lv-3409364f7bb9 .dish-dots {
         flex-grow: 1;
         border-bottom: 1px dotted rgba(113, 53, 6, 0.3);
         position: relative;
         top: -6px;
     }
-    #lv-4655f81acc04 .dish-price {
+    #lv-3409364f7bb9 .dish-price {
         font-family: 'Poppins', sans-serif;
         font-size: 1.1rem;
         color: #9d623d;
         font-weight: 500;
         white-space: nowrap;
     }
-    #lv-4655f81acc04 .dish-desc {
+    #lv-3409364f7bb9 .dish-desc {
         font-family: 'Lato', sans-serif;
         font-size: 0.95rem;
         color: rgba(113, 53, 6, 0.85);
         line-height: 1.5;
         padding-right: 2rem; /* Espace sous le prix */
     }
-    #lv-4655f81acc04 .dish-en {
+    #lv-3409364f7bb9 .dish-en {
         font-family: 'Lato', sans-serif;
         font-size: 0.8rem;
         color: rgba(113, 53, 6, 0.45);
@@ -3477,7 +3477,7 @@
     }
 
     /* Décoration sous le titre de section */
-    #lv-4655f81acc04 .section-ornament {
+    #lv-3409364f7bb9 .section-ornament {
         width: 40px;
         height: 1px;
         background-color: #9d623d;
@@ -3486,21 +3486,21 @@
     }
 
 
-    #lv-00592823df97 { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-4cb055bcf56b { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- TYPOGRAPHIE DES PLATS --- */
-    #lv-00592823df97 .dish-container {
+    #lv-4cb055bcf56b .dish-container {
         margin-bottom: 2rem;
         position: relative;
     }
-    #lv-00592823df97 .dish-header {
+    #lv-4cb055bcf56b .dish-header {
         display: flex;
         justify-content: space-between;
         align-items: baseline;
         gap: 1rem;
         margin-bottom: 0.25rem;
     }
-    #lv-00592823df97 .dish-title {
+    #lv-4cb055bcf56b .dish-title {
         font-family: 'Playfair Display', serif;
         font-size: 1.15rem;
         color: #713506;
@@ -3508,29 +3508,29 @@
         line-height: 1.3;
     }
     @media (min-width: 768px) {
-        #lv-00592823df97 .dish-title { font-size: 1.3rem; }
+        #lv-4cb055bcf56b .dish-title { font-size: 1.3rem; }
     }
-    #lv-00592823df97 .dish-dots {
+    #lv-4cb055bcf56b .dish-dots {
         flex-grow: 1;
         border-bottom: 1px dotted rgba(113, 53, 6, 0.3);
         position: relative;
         top: -6px;
     }
-    #lv-00592823df97 .dish-price {
+    #lv-4cb055bcf56b .dish-price {
         font-family: 'Poppins', sans-serif;
         font-size: 1.1rem;
         color: #9d623d;
         font-weight: 500;
         white-space: nowrap;
     }
-    #lv-00592823df97 .dish-desc {
+    #lv-4cb055bcf56b .dish-desc {
         font-family: 'Lato', sans-serif;
         font-size: 0.95rem;
         color: rgba(113, 53, 6, 0.85);
         line-height: 1.5;
         padding-right: 2rem;
     }
-    #lv-00592823df97 .dish-en {
+    #lv-4cb055bcf56b .dish-en {
         font-family: 'Lato', sans-serif;
         font-size: 0.8rem;
         color: rgba(113, 53, 6, 0.45);
@@ -3541,7 +3541,7 @@
     }
 
     /* Décoration sous le titre de section */
-    #lv-00592823df97 .section-ornament {
+    #lv-4cb055bcf56b .section-ornament {
         width: 40px;
         height: 1px;
         background-color: #9d623d;
@@ -3550,21 +3550,21 @@
     }
 
 
-    #lv-558d2df7b744 { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-b804d4f6f17d { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- TYPOGRAPHIE DES PLATS --- */
-    #lv-558d2df7b744 .dish-container {
+    #lv-b804d4f6f17d .dish-container {
         margin-bottom: 2rem;
         position: relative;
     }
-    #lv-558d2df7b744 .dish-header {
+    #lv-b804d4f6f17d .dish-header {
         display: flex;
         justify-content: space-between;
         align-items: baseline;
         gap: 1rem;
         margin-bottom: 0.25rem;
     }
-    #lv-558d2df7b744 .dish-title {
+    #lv-b804d4f6f17d .dish-title {
         font-family: 'Playfair Display', serif;
         font-size: 1.15rem;
         color: #713506;
@@ -3572,29 +3572,29 @@
         line-height: 1.3;
     }
     @media (min-width: 768px) {
-        #lv-558d2df7b744 .dish-title { font-size: 1.3rem; }
+        #lv-b804d4f6f17d .dish-title { font-size: 1.3rem; }
     }
-    #lv-558d2df7b744 .dish-dots {
+    #lv-b804d4f6f17d .dish-dots {
         flex-grow: 1;
         border-bottom: 1px dotted rgba(113, 53, 6, 0.3);
         position: relative;
         top: -6px;
     }
-    #lv-558d2df7b744 .dish-price {
+    #lv-b804d4f6f17d .dish-price {
         font-family: 'Poppins', sans-serif;
         font-size: 1.1rem;
         color: #9d623d;
         font-weight: 500;
         white-space: nowrap;
     }
-    #lv-558d2df7b744 .dish-desc {
+    #lv-b804d4f6f17d .dish-desc {
         font-family: 'Lato', sans-serif;
         font-size: 0.95rem;
         color: rgba(113, 53, 6, 0.85);
         line-height: 1.5;
         padding-right: 2rem;
     }
-    #lv-558d2df7b744 .dish-en {
+    #lv-b804d4f6f17d .dish-en {
         font-family: 'Lato', sans-serif;
         font-size: 0.8rem;
         color: rgba(113, 53, 6, 0.45);
@@ -3605,7 +3605,7 @@
     }
 
     /* Décoration sous le titre de section */
-    #lv-558d2df7b744 .section-ornament {
+    #lv-b804d4f6f17d .section-ornament {
         width: 40px;
         height: 1px;
         background-color: #9d623d;
@@ -3614,21 +3614,21 @@
     }
 
 
-    #lv-ae7b2c48065a { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-0fbb41bdab83 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- TYPOGRAPHIE DES PLATS --- */
-    #lv-ae7b2c48065a .dish-container {
+    #lv-0fbb41bdab83 .dish-container {
         margin-bottom: 2rem;
         position: relative;
     }
-    #lv-ae7b2c48065a .dish-header {
+    #lv-0fbb41bdab83 .dish-header {
         display: flex;
         justify-content: space-between;
         align-items: baseline;
         gap: 1rem;
         margin-bottom: 0.25rem;
     }
-    #lv-ae7b2c48065a .dish-title {
+    #lv-0fbb41bdab83 .dish-title {
         font-family: 'Playfair Display', serif;
         font-size: 1.15rem;
         color: #713506;
@@ -3636,29 +3636,29 @@
         line-height: 1.3;
     }
     @media (min-width: 768px) {
-        #lv-ae7b2c48065a .dish-title { font-size: 1.3rem; }
+        #lv-0fbb41bdab83 .dish-title { font-size: 1.3rem; }
     }
-    #lv-ae7b2c48065a .dish-dots {
+    #lv-0fbb41bdab83 .dish-dots {
         flex-grow: 1;
         border-bottom: 1px dotted rgba(113, 53, 6, 0.3);
         position: relative;
         top: -6px;
     }
-    #lv-ae7b2c48065a .dish-price {
+    #lv-0fbb41bdab83 .dish-price {
         font-family: 'Poppins', sans-serif;
         font-size: 1.1rem;
         color: #9d623d;
         font-weight: 500;
         white-space: nowrap;
     }
-    #lv-ae7b2c48065a .dish-desc {
+    #lv-0fbb41bdab83 .dish-desc {
         font-family: 'Lato', sans-serif;
         font-size: 0.95rem;
         color: rgba(113, 53, 6, 0.85);
         line-height: 1.5;
         padding-right: 2rem;
     }
-    #lv-ae7b2c48065a .dish-en {
+    #lv-0fbb41bdab83 .dish-en {
         font-family: 'Lato', sans-serif;
         font-size: 0.8rem;
         color: rgba(113, 53, 6, 0.45);
@@ -3669,7 +3669,7 @@
     }
 
     /* Décoration sous le titre de section */
-    #lv-ae7b2c48065a .section-ornament {
+    #lv-0fbb41bdab83 .section-ornament {
         width: 40px;
         height: 1px;
         background-color: #9d623d;
@@ -3678,21 +3678,21 @@
     }
 
 
-    #lv-dc51ef5c32bf { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-7db686fe1362 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- TYPOGRAPHIE DES PLATS --- */
-    #lv-dc51ef5c32bf .dish-container {
+    #lv-7db686fe1362 .dish-container {
         margin-bottom: 2rem;
         position: relative;
     }
-    #lv-dc51ef5c32bf .dish-header {
+    #lv-7db686fe1362 .dish-header {
         display: flex;
         justify-content: space-between;
         align-items: baseline;
         gap: 1rem;
         margin-bottom: 0.25rem;
     }
-    #lv-dc51ef5c32bf .dish-title {
+    #lv-7db686fe1362 .dish-title {
         font-family: 'Playfair Display', serif;
         font-size: 1.15rem;
         color: #713506;
@@ -3700,29 +3700,29 @@
         line-height: 1.3;
     }
     @media (min-width: 768px) {
-        #lv-dc51ef5c32bf .dish-title { font-size: 1.3rem; }
+        #lv-7db686fe1362 .dish-title { font-size: 1.3rem; }
     }
-    #lv-dc51ef5c32bf .dish-dots {
+    #lv-7db686fe1362 .dish-dots {
         flex-grow: 1;
         border-bottom: 1px dotted rgba(113, 53, 6, 0.3);
         position: relative;
         top: -6px;
     }
-    #lv-dc51ef5c32bf .dish-price {
+    #lv-7db686fe1362 .dish-price {
         font-family: 'Poppins', sans-serif;
         font-size: 1.1rem;
         color: #9d623d;
         font-weight: 500;
         white-space: nowrap;
     }
-    #lv-dc51ef5c32bf .dish-desc {
+    #lv-7db686fe1362 .dish-desc {
         font-family: 'Lato', sans-serif;
         font-size: 0.95rem;
         color: rgba(113, 53, 6, 0.85);
         line-height: 1.5;
         padding-right: 2rem;
     }
-    #lv-dc51ef5c32bf .dish-en {
+    #lv-7db686fe1362 .dish-en {
         font-family: 'Lato', sans-serif;
         font-size: 0.8rem;
         color: rgba(113, 53, 6, 0.45);
@@ -3733,7 +3733,7 @@
     }
 
     /* Décoration sous le titre de section */
-    #lv-dc51ef5c32bf .section-ornament {
+    #lv-7db686fe1362 .section-ornament {
         width: 40px;
         height: 1px;
         background-color: #9d623d;
@@ -3742,21 +3742,21 @@
     }
 
 
-    #lv-55faa8a9f8c4 { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-d3a4073bebf8 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- TYPOGRAPHIE DES PLATS --- */
-    #lv-55faa8a9f8c4 .dish-container {
+    #lv-d3a4073bebf8 .dish-container {
         margin-bottom: 2rem;
         position: relative;
     }
-    #lv-55faa8a9f8c4 .dish-header {
+    #lv-d3a4073bebf8 .dish-header {
         display: flex;
         justify-content: space-between;
         align-items: baseline;
         gap: 1rem;
         margin-bottom: 0.25rem;
     }
-    #lv-55faa8a9f8c4 .dish-title {
+    #lv-d3a4073bebf8 .dish-title {
         font-family: 'Playfair Display', serif;
         font-size: 1.15rem;
         color: #713506;
@@ -3764,29 +3764,29 @@
         line-height: 1.3;
     }
     @media (min-width: 768px) {
-        #lv-55faa8a9f8c4 .dish-title { font-size: 1.3rem; }
+        #lv-d3a4073bebf8 .dish-title { font-size: 1.3rem; }
     }
-    #lv-55faa8a9f8c4 .dish-dots {
+    #lv-d3a4073bebf8 .dish-dots {
         flex-grow: 1;
         border-bottom: 1px dotted rgba(113, 53, 6, 0.3);
         position: relative;
         top: -6px;
     }
-    #lv-55faa8a9f8c4 .dish-price {
+    #lv-d3a4073bebf8 .dish-price {
         font-family: 'Poppins', sans-serif;
         font-size: 1.1rem;
         color: #9d623d;
         font-weight: 500;
         white-space: nowrap;
     }
-    #lv-55faa8a9f8c4 .dish-desc {
+    #lv-d3a4073bebf8 .dish-desc {
         font-family: 'Lato', sans-serif;
         font-size: 0.95rem;
         color: rgba(113, 53, 6, 0.85);
         line-height: 1.5;
         padding-right: 2rem;
     }
-    #lv-55faa8a9f8c4 .dish-en {
+    #lv-d3a4073bebf8 .dish-en {
         font-family: 'Lato', sans-serif;
         font-size: 0.8rem;
         color: rgba(113, 53, 6, 0.45);
@@ -3797,7 +3797,7 @@
     }
 
     /* Décoration sous le titre de section */
-    #lv-55faa8a9f8c4 .section-ornament {
+    #lv-d3a4073bebf8 .section-ornament {
         width: 40px;
         height: 1px;
         background-color: #9d623d;
@@ -3806,24 +3806,24 @@
     }
 
 
-    #lv-bd62718978f8 { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-00095b2fca4f { margin: 0; padding: 0; background-color: #fcf9f3; }
 
 
-    #lv-01fb1cc0d73a { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-a081e87230a4 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- TYPOGRAPHIE DES PLATS --- */
-    #lv-01fb1cc0d73a .dish-container {
+    #lv-a081e87230a4 .dish-container {
         margin-bottom: 2rem;
         position: relative;
     }
-    #lv-01fb1cc0d73a .dish-header {
+    #lv-a081e87230a4 .dish-header {
         display: flex;
         justify-content: space-between;
         align-items: baseline;
         gap: 1rem;
         margin-bottom: 0.25rem;
     }
-    #lv-01fb1cc0d73a .dish-title {
+    #lv-a081e87230a4 .dish-title {
         font-family: 'Playfair Display', serif;
         font-size: 1.15rem;
         color: #713506;
@@ -3831,29 +3831,29 @@
         line-height: 1.3;
     }
     @media (min-width: 768px) {
-        #lv-01fb1cc0d73a .dish-title { font-size: 1.3rem; }
+        #lv-a081e87230a4 .dish-title { font-size: 1.3rem; }
     }
-    #lv-01fb1cc0d73a .dish-dots {
+    #lv-a081e87230a4 .dish-dots {
         flex-grow: 1;
         border-bottom: 1px dotted rgba(113, 53, 6, 0.3);
         position: relative;
         top: -6px;
     }
-    #lv-01fb1cc0d73a .dish-price {
+    #lv-a081e87230a4 .dish-price {
         font-family: 'Poppins', sans-serif;
         font-size: 1.1rem;
         color: #9d623d;
         font-weight: 500;
         white-space: nowrap;
     }
-    #lv-01fb1cc0d73a .dish-desc {
+    #lv-a081e87230a4 .dish-desc {
         font-family: 'Lato', sans-serif;
         font-size: 0.95rem;
         color: rgba(113, 53, 6, 0.85);
         line-height: 1.5;
         padding-right: 2rem;
     }
-    #lv-01fb1cc0d73a .dish-en {
+    #lv-a081e87230a4 .dish-en {
         font-family: 'Lato', sans-serif;
         font-size: 0.8rem;
         color: rgba(113, 53, 6, 0.45);
@@ -3864,7 +3864,7 @@
     }
 
     /* Décoration sous le titre de section */
-    #lv-01fb1cc0d73a .section-ornament {
+    #lv-a081e87230a4 .section-ornament {
         width: 40px;
         height: 1px;
         background-color: #9d623d;
@@ -3873,21 +3873,21 @@
     }
 
 
-    #lv-43dac97d2ed2 { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-4eb36e143329 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- TYPOGRAPHIE DES BOISSONS --- */
-    #lv-43dac97d2ed2 .dish-container {
+    #lv-4eb36e143329 .dish-container {
         margin-bottom: 1.5rem;
         position: relative;
     }
-    #lv-43dac97d2ed2 .dish-header {
+    #lv-4eb36e143329 .dish-header {
         display: flex;
         justify-content: space-between;
         align-items: baseline;
         gap: 1rem;
         margin-bottom: 0.25rem;
     }
-    #lv-43dac97d2ed2 .dish-title {
+    #lv-4eb36e143329 .dish-title {
         font-family: 'Playfair Display', serif;
         font-size: 1.05rem; /* Légèrement plus petit pour les boissons */
         color: #713506;
@@ -3895,29 +3895,29 @@
         line-height: 1.3;
     }
     @media (min-width: 768px) {
-        #lv-43dac97d2ed2 .dish-title { font-size: 1.15rem; }
+        #lv-4eb36e143329 .dish-title { font-size: 1.15rem; }
     }
-    #lv-43dac97d2ed2 .dish-dots {
+    #lv-4eb36e143329 .dish-dots {
         flex-grow: 1;
         border-bottom: 1px dotted rgba(113, 53, 6, 0.3);
         position: relative;
         top: -6px;
     }
-    #lv-43dac97d2ed2 .dish-price {
+    #lv-4eb36e143329 .dish-price {
         font-family: 'Poppins', sans-serif;
         font-size: 1.05rem;
         color: #9d623d;
         font-weight: 500;
         white-space: nowrap;
     }
-    #lv-43dac97d2ed2 .dish-desc {
+    #lv-4eb36e143329 .dish-desc {
         font-family: 'Lato', sans-serif;
         font-size: 0.85rem;
         color: rgba(113, 53, 6, 0.85);
         line-height: 1.5;
         padding-right: 2rem;
     }
-    #lv-43dac97d2ed2 .dish-en {
+    #lv-4eb36e143329 .dish-en {
         font-family: 'Lato', sans-serif;
         font-size: 0.75rem;
         color: rgba(113, 53, 6, 0.45);
@@ -3928,7 +3928,7 @@
     }
 
     /* En-têtes de sous-catégories (Ex: Vins au verre, Spritz...) */
-    #lv-43dac97d2ed2 .drinks-category {
+    #lv-4eb36e143329 .drinks-category {
         font-family: 'Playfair Display', serif;
         font-size: 1.3rem;
         color: #713506;
@@ -3939,7 +3939,7 @@
     }
 
     /* --- CTA BLOCK --- */
-    #lv-43dac97d2ed2 .nav-links-village {
+    #lv-4eb36e143329 .nav-links-village {
         text-align: center !important;
         margin-top: 40px !important;
         margin-bottom: 40px !important;
@@ -3947,13 +3947,13 @@
         font-size: 14px !important;
         line-height: 1.4 !important;
     }
-    #lv-43dac97d2ed2 .nav-links-village .nav-col {
+    #lv-4eb36e143329 .nav-links-village .nav-col {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         gap: 16px !important;
     }
-    #lv-43dac97d2ed2 .nav-links-village .village-link {
+    #lv-4eb36e143329 .nav-links-village .village-link {
         color: #713506 !important;
         text-decoration: none !important;
         font-weight: 500 !important;
@@ -3966,7 +3966,7 @@
         font-size: 13px !important;
         transition: color 0.3s ease !important;
     }
-    #lv-43dac97d2ed2 .nav-links-village .village-link::after {
+    #lv-4eb36e143329 .nav-links-village .village-link::after {
         content: "" !important;
         position: absolute !important;
         left: 0 !important;
@@ -3976,23 +3976,23 @@
         background: #9d623d !important;
         transition: width .3s ease !important;
     }
-    #lv-43dac97d2ed2 .nav-links-village .village-link:hover { color: #9d623d !important; }
-    #lv-43dac97d2ed2 .nav-links-village .village-link:hover::after { width: 100% !important; }
+    #lv-4eb36e143329 .nav-links-village .village-link:hover { color: #9d623d !important; }
+    #lv-4eb36e143329 .nav-links-village .village-link:hover::after { width: 100% !important; }
 
 
-    #lv-c304e4a6822d { margin: 0; padding: 0; }
+    #lv-ede6b904b8fa { margin: 0; padding: 0; }
 
     /* Animation du lien itinéraire */
-    #lv-c304e4a6822d .btn-itineraire {
+    #lv-ede6b904b8fa .btn-itineraire {
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    #lv-c304e4a6822d .btn-itineraire:hover {
+    #lv-ede6b904b8fa .btn-itineraire:hover {
         letter-spacing: 0.2em;
         color: #713506;
     }
 
     /* Cadre de la carte : Ombre légère demandée */
-    #lv-c304e4a6822d .map-frame {
+    #lv-ede6b904b8fa .map-frame {
         position: relative;
         width: 100%;
         height: 500px;
@@ -4004,13 +4004,13 @@
     }
     
     @media (min-width: 768px) {
-        #lv-c304e4a6822d .map-frame {
+        #lv-ede6b904b8fa .map-frame {
             height: 600px;
         }
     }
 
     /* Le filtre signature sur la carte */
-    #lv-c304e4a6822d .map-sepia-overlay {
+    #lv-ede6b904b8fa .map-sepia-overlay {
         position: absolute;
         inset: 0;
         background: #f5f0ea;
@@ -4020,7 +4020,7 @@
         z-index: 5;
     }
 
-    #lv-c304e4a6822d .google-map-iframe {
+    #lv-ede6b904b8fa .google-map-iframe {
         width: 100%;
         height: 100%;
         filter: grayscale(1) contrast(1.05) brightness(1);
@@ -4028,7 +4028,7 @@
     }
 
     /* Décoration de fond subtile */
-    #lv-c304e4a6822d .bg-ornament {
+    #lv-ede6b904b8fa .bg-ornament {
         font-family: 'Playfair Display', serif;
         font-size: 15vw;
         color: rgba(113, 53, 6, 0.02);
@@ -4715,68 +4715,6 @@
             border-color: rgba(157, 98, 61, 0.45);
             box-shadow: 0 8px 20px rgba(113, 53, 6, 0.12);
         }
-    }
-
-
-    #lv-ede6b904b8fa { margin: 0; padding: 0; }
-
-    /* Animation du lien itinéraire */
-    #lv-ede6b904b8fa .btn-itineraire {
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    #lv-ede6b904b8fa .btn-itineraire:hover {
-        letter-spacing: 0.2em;
-        color: #713506;
-    }
-
-    /* Cadre de la carte : Ombre légère demandée */
-    #lv-ede6b904b8fa .map-frame {
-        position: relative;
-        width: 100%;
-        height: 500px;
-        overflow: hidden;
-        border-radius: 2px;
-        /* Ombre plus diffuse et légère */
-        box-shadow: 0 15px 45px -15px rgba(113, 53, 6, 0.12);
-        border: 1px solid rgba(157, 98, 61, 0.08);
-    }
-    
-    @media (min-width: 768px) {
-        #lv-ede6b904b8fa .map-frame {
-            height: 600px;
-        }
-    }
-
-    /* Le filtre signature sur la carte */
-    #lv-ede6b904b8fa .map-sepia-overlay {
-        position: absolute;
-        inset: 0;
-        background: #f5f0ea;
-        mix-blend-mode: multiply;
-        opacity: 0.4;
-        pointer-events: none;
-        z-index: 5;
-    }
-
-    #lv-ede6b904b8fa .google-map-iframe {
-        width: 100%;
-        height: 100%;
-        filter: grayscale(1) contrast(1.05) brightness(1);
-        border: 0;
-    }
-
-    /* Décoration de fond subtile */
-    #lv-ede6b904b8fa .bg-ornament {
-        font-family: 'Playfair Display', serif;
-        font-size: 15vw;
-        color: rgba(113, 53, 6, 0.02);
-        position: absolute;
-        top: 10%;
-        left: -5%;
-        pointer-events: none;
-        user-select: none;
-        z-index: 0;
-        white-space: nowrap;
     }
 
 
