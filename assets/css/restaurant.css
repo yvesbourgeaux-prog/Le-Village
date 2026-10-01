@@ -1,0 +1,28 @@
+/* Restaurant page: full-width hero, original spacing within each supplied section. */
+.restaurant-page #main{padding-top:0}
+.restaurant-page #village-resto-top-block .restaurant-hero{max-width:none;width:100%;height:640px;padding:160px 0 56px}
+.restaurant-page .restaurant-hero h1{font-size:clamp(58px,7.2vw,108px);color:white;text-shadow:0 2px 24px #23160d80}
+.restaurant-page .restaurant-hero .h1-location{color:#fff;font-size:clamp(12px,1.2vw,17px);letter-spacing:.12em}
+.restaurant-page .home-header:not(.is-scrolled){color:white}
+.restaurant-page .home-header:not(.is-scrolled) .brand img{filter:brightness(0) invert(1)}
+.restaurant-page .home-header:not(.is-scrolled) .menu-toggle span{background:white}
+.restaurant-page .home-header:not(.is-scrolled) .book-button{border-color:white;color:white!important}
+.restaurant-page .home-header:not(.is-scrolled) #site-nav.open{color:#713506}
+.restaurant-page .home-header:not(.is-scrolled) #site-nav>a:hover{color:inherit}
+.restaurant-page #village-carte-block>section{max-width:1240px}
+.restaurant-page .instagram-wall{max-width:1240px;margin:auto;padding:56px 24px}
+.restaurant-page .instagram-grid{max-width:1192px}
+.restaurant-page #village-ambiances-block h2>span{margin-top:8px}
+.restaurant-page #village-ambiances-block .cursor-pointer{cursor:default}
+.restaurant-page #village-resto-top-block .resto-subnav{max-width:1240px;margin-inline:auto}
+.restaurant-page #menuLightbox,.restaurant-page #lvLightbox{z-index:10000}
+.restaurant-page #menuLightbox:not(.hidden){display:flex}
+.restaurant-page #village-chef-block .video-controls{opacity:1}
+@media(max-width:640px){
+ .restaurant-page #village-resto-top-block .restaurant-hero{height:520px;padding-top:118px;padding-bottom:36px}
+ .restaurant-page .restaurant-hero h1{font-size:58px}
+ .restaurant-page .restaurant-hero .relative.z-10{margin-top:0}
+ .restaurant-page .restaurant-hero p{font-size:11px;letter-spacing:.16em;line-height:1.8}
+ .restaurant-page .instagram-wall{padding:36px 22px}
+}
+@media(prefers-reduced-motion:reduce){.restaurant-page .arched-video-frame{opacity:1;transform:none}}

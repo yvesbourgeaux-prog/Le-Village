@@ -99,6 +99,56 @@
     }
 
 
+    #lv-b46cfe6d9fd3 { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* Liens du menu principal */
+    #lv-b46cfe6d9fd3 .footer-nav-link {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 2px;
+        transition: color 0.3s ease;
+    }
+    #lv-b46cfe6d9fd3 .footer-nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 1px;
+        bottom: 0;
+        left: 50%;
+        background-color: #9d623d;
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+    #lv-b46cfe6d9fd3 .footer-nav-link:hover {
+        color: #9d623d;
+    }
+    #lv-b46cfe6d9fd3 .footer-nav-link:hover::after {
+        width: 100%;
+    }
+
+    /* Liens d'action (Réservations) */
+    #lv-b46cfe6d9fd3 .footer-action-link {
+        display: inline-block;
+        border-bottom: 1px solid rgba(113, 53, 6, 0.3);
+        padding-bottom: 4px;
+        transition: all 0.3s ease;
+    }
+    #lv-b46cfe6d9fd3 .footer-action-link:hover {
+        color: #9d623d;
+        border-color: #9d623d;
+        transform: translateY(-2px);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        #lv-b46cfe6d9fd3 .footer-nav-link,#lv-b46cfe6d9fd3 
+        .footer-nav-link::after,#lv-b46cfe6d9fd3 
+        .footer-action-link,#lv-b46cfe6d9fd3 
+        .tripadvisor-badge img {
+            transition: none !important;
+        }
+    }
+
+
     #lv-452a4a4cd6fa { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- CADRE VIDÉO FENÊTRE EN ARCHE ÉPURÉE --- */
@@ -3992,10 +4042,10 @@
     }
 
 
-    #lv-27f7eabb93f4 { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-6bf9f4904c56 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- SOUS-MENU DE NAVIGATION --- */
-    #lv-27f7eabb93f4 .resto-subnav {
+    #lv-6bf9f4904c56 .resto-subnav {
         max-width: 1100px;
         margin: 0 auto 20px;
         padding: 18px 20px 22px;
@@ -4005,7 +4055,7 @@
         flex-wrap: wrap;
         border-bottom: 1px solid rgba(113, 53, 6, 0.15);
     }
-    #lv-27f7eabb93f4 .resto-subnav-link {
+    #lv-6bf9f4904c56 .resto-subnav-link {
         font-family: 'Poppins', sans-serif;
         font-size: 13px;
         letter-spacing: 0.2em;
@@ -4017,10 +4067,10 @@
         font-weight: 500;
         transition: opacity 0.25s ease;
     }
-    #lv-27f7eabb93f4 .resto-subnav-link:hover {
+    #lv-6bf9f4904c56 .resto-subnav-link:hover {
         opacity: 0.7;
     }
-    #lv-27f7eabb93f4 .resto-subnav-link::after {
+    #lv-6bf9f4904c56 .resto-subnav-link::after {
         content: "";
         position: absolute;
         left: 50%;
@@ -4031,16 +4081,16 @@
         transition: width 0.3s ease;
         transform: translateX(-50%);
     }
-    #lv-27f7eabb93f4 .resto-subnav-link:hover::after {
+    #lv-6bf9f4904c56 .resto-subnav-link:hover::after {
         width: 100%;
     }
     @media (max-width: 700px) {
-        #lv-27f7eabb93f4 .resto-subnav { gap: 22px; padding: 12px 10px; }
-        #lv-27f7eabb93f4 .resto-subnav-link { font-size: 11px; }
+        #lv-6bf9f4904c56 .resto-subnav { gap: 22px; padding: 12px 10px; }
+        #lv-6bf9f4904c56 .resto-subnav-link { font-size: 11px; }
     }
 
     /* --- LETTRINE PREMIUM --- */
-    #lv-27f7eabb93f4 .drop-cap-resto::first-letter {
+    #lv-6bf9f4904c56 .drop-cap-resto::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -4050,7 +4100,7 @@
     }
 
     /* --- CADRE IMAGE (Type Tableau/Polaroïd) --- */
-    #lv-27f7eabb93f4 .framed-image-container {
+    #lv-6bf9f4904c56 .framed-image-container {
         width: 100%;
         max-width: 550px;
         margin: 0 auto;
@@ -4059,13 +4109,13 @@
         border-radius: 4px;
         box-shadow: 0 20px 40px -10px rgba(113, 53, 6, 0.15);
     }
-    #lv-27f7eabb93f4 .framed-image-inner {
+    #lv-6bf9f4904c56 .framed-image-inner {
         position: relative;
         width: 100%;
         overflow: hidden;
         border-radius: 2px;
     }
-    #lv-27f7eabb93f4 .village-framed-img {
+    #lv-6bf9f4904c56 .village-framed-img {
         width: 100%;
         display: block;
         transition: transform 0.8s ease;
@@ -4073,10 +4123,10 @@
     
     /* Sur Mobile : Format d'origine de la photo (aucun rognage) */
     @media (max-width: 767px) {
-        #lv-27f7eabb93f4 .framed-image-inner {
+        #lv-6bf9f4904c56 .framed-image-inner {
             aspect-ratio: auto;
         }
-        #lv-27f7eabb93f4 .village-framed-img {
+        #lv-6bf9f4904c56 .village-framed-img {
             height: auto;
             object-fit: contain;
         }
@@ -4084,39 +4134,39 @@
     
     /* Sur PC : Photo allongée (format portrait 4:5) pour l'équilibre de la grille */
     @media (min-width: 768px) {
-        #lv-27f7eabb93f4 .framed-image-inner {
+        #lv-6bf9f4904c56 .framed-image-inner {
             aspect-ratio: 4 / 5; 
         }
-        #lv-27f7eabb93f4 .village-framed-img {
+        #lv-6bf9f4904c56 .village-framed-img {
             height: 100%;
             object-fit: cover;
         }
     }
 
-    #lv-27f7eabb93f4 .framed-image-container:hover .village-framed-img {
+    #lv-6bf9f4904c56 .framed-image-container:hover .village-framed-img {
         transform: scale(1.05);
     }
 
     /* --- STYLES DES LIENS D'ACTION (CTA) --- */
-    #lv-27f7eabb93f4 .nav-links-village {
+    #lv-6bf9f4904c56 .nav-links-village {
         margin-top: 40px !important;
         font-family: 'Poppins', sans-serif !important;
         font-size: 14px !important;
         line-height: 1.8 !important;
     }
-    #lv-27f7eabb93f4 .nav-links-village .nav-col {
+    #lv-6bf9f4904c56 .nav-links-village .nav-col {
         display: flex !important;
         flex-direction: column !important;
         gap: 16px !important;
     }
     /* Sur desktop, aligné à gauche sous le texte. Sur mobile, centré. */
-    #lv-27f7eabb93f4 .nav-links-village .nav-col { align-items: flex-start !important; }
+    #lv-6bf9f4904c56 .nav-links-village .nav-col { align-items: flex-start !important; }
     @media (max-width: 1023px) {
-        #lv-27f7eabb93f4 .nav-links-village { text-align: center !important; }
-        #lv-27f7eabb93f4 .nav-links-village .nav-col { align-items: center !important; }
+        #lv-6bf9f4904c56 .nav-links-village { text-align: center !important; }
+        #lv-6bf9f4904c56 .nav-links-village .nav-col { align-items: center !important; }
     }
 
-    #lv-27f7eabb93f4 .nav-links-village .village-link {
+    #lv-6bf9f4904c56 .nav-links-village .village-link {
         color: #713506 !important;
         text-decoration: none !important;
         font-weight: 500 !important;
@@ -4128,7 +4178,7 @@
         font-size: 13px !important;
         transition: color 0.3s ease !important;
     }
-    #lv-27f7eabb93f4 .nav-links-village .village-link::after {
+    #lv-6bf9f4904c56 .nav-links-village .village-link::after {
         content: "" !important;
         position: absolute !important;
         left: 0 !important;
@@ -4138,18 +4188,18 @@
         background: #9d623d !important;
         transition: width .3s ease !important;
     }
-    #lv-27f7eabb93f4 .nav-links-village .village-link:hover {
+    #lv-6bf9f4904c56 .nav-links-village .village-link:hover {
         color: #9d623d !important;
     }
-    #lv-27f7eabb93f4 .nav-links-village .village-link:hover::after {
+    #lv-6bf9f4904c56 .nav-links-village .village-link:hover::after {
         width: 100% !important;
     }
 
 
-    #lv-3eacd26dadbd { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-0797d1e260a6 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-3eacd26dadbd .drop-cap-chef::first-letter {
+    #lv-0797d1e260a6 .drop-cap-chef::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -4159,7 +4209,7 @@
     }
 
     /* --- CADRE VIDÉO FENÊTRE EN ARCHE (TAILLE RÉDUITE) --- */
-    #lv-3eacd26dadbd .arched-video-frame {
+    #lv-0797d1e260a6 .arched-video-frame {
         position: relative;
         background: #ffffff;
         padding: 8px;
@@ -4178,17 +4228,17 @@
         flex-shrink: 0;
     }
     
-    #lv-3eacd26dadbd .arched-video-frame.is-visible {
+    #lv-0797d1e260a6 .arched-video-frame.is-visible {
         opacity: 1;
         transform: translateY(0);
     }
 
-    #lv-3eacd26dadbd .arched-video-frame:hover {
+    #lv-0797d1e260a6 .arched-video-frame:hover {
         transform: translateY(-6px);
         box-shadow: 0 25px 40px -12px rgba(113, 53, 6, 0.20);
     }
 
-    #lv-3eacd26dadbd .arched-video-frame::before {
+    #lv-0797d1e260a6 .arched-video-frame::before {
         content: '';
         position: absolute;
         top: 6px; bottom: 6px; left: 6px; right: 6px;
@@ -4198,7 +4248,7 @@
         z-index: 30;
     }
 
-    #lv-3eacd26dadbd .video-mask {
+    #lv-0797d1e260a6 .video-mask {
         position: relative;
         width: 100%;
         aspect-ratio: 9/16;
@@ -4207,7 +4257,7 @@
         background-color: #000;
     }
     
-    #lv-3eacd26dadbd .video-mask video {
+    #lv-0797d1e260a6 .video-mask video {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -4217,7 +4267,7 @@
     }
 
     /* --- BOUTONS PREMIUM (GLASSMORPHISM) --- */
-    #lv-3eacd26dadbd .glass-btn {
+    #lv-0797d1e260a6 .glass-btn {
         background: rgba(255, 255, 255, 0.25);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
@@ -4226,60 +4276,60 @@
         transition: all 0.3s ease;
         padding: 6px; /* Affiné pour les petits cadres */
     }
-    #lv-3eacd26dadbd .glass-btn:hover {
+    #lv-0797d1e260a6 .glass-btn:hover {
         background: rgba(255, 255, 255, 0.95);
         color: #713506;
         transform: scale(1.1);
     }
 
-    #lv-3eacd26dadbd .video-controls {
+    #lv-0797d1e260a6 .video-controls {
         opacity: 0;
         transition: opacity 0.4s ease;
     }
-    #lv-3eacd26dadbd .arched-video-frame:hover .video-controls {
+    #lv-0797d1e260a6 .arched-video-frame:hover .video-controls {
         opacity: 1;
     }
 
     /* --- SCROLL HORIZONTAL INVISIBLE POUR MOBILE --- */
-    #lv-3eacd26dadbd .hide-scrollbar::-webkit-scrollbar {
+    #lv-0797d1e260a6 .hide-scrollbar::-webkit-scrollbar {
         display: none;
     }
-    #lv-3eacd26dadbd .hide-scrollbar {
+    #lv-0797d1e260a6 .hide-scrollbar {
         -ms-overflow-style: none;
         scrollbar-width: none;
     }
 
-#lv-96e50a10b9de { margin: 0; padding: 0; background-color: #fcf9f3; }
+#lv-8e53510c4877 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- STYLE DU MENU "CARTE" --- */
-    #lv-96e50a10b9de .menu-card {
+    #lv-8e53510c4877 .menu-card {
         background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(157, 98, 61, 0.08) 39px, rgba(157, 98, 61, 0.08) 40px);
         background-color: #ffffff;
         border: 1px solid rgba(113, 53, 6, 0.15);
     }
 
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
-    #lv-96e50a10b9de .nav-links-village {
+    #lv-8e53510c4877 .nav-links-village {
         text-align: center !important;
         margin-top: 20px !important;
         font-family: 'Poppins', sans-serif !important;
         font-size: 16px !important;
         line-height: 1.4 !important;
     }
-    #lv-96e50a10b9de .nav-links-village .nav-col {
+    #lv-8e53510c4877 .nav-links-village .nav-col {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         gap: 12px !important;
     }
     @media (min-width: 768px) {
-        #lv-96e50a10b9de .nav-links-village .nav-col {
+        #lv-8e53510c4877 .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
             gap: 28px !important;
         }
     }
-    #lv-96e50a10b9de .nav-links-village .village-link {
+    #lv-8e53510c4877 .nav-links-village .village-link {
         color: #713506 !important;
         text-decoration: none !important;
         font-weight: 400 !important;
@@ -4292,7 +4342,7 @@
         font-size: 13px !important;
         transition: color 0.3s ease;
     }
-    #lv-96e50a10b9de .nav-links-village .village-link::after {
+    #lv-8e53510c4877 .nav-links-village .village-link::after {
         content: "" !important;
         position: absolute !important;
         left: 0 !important;
@@ -4302,15 +4352,15 @@
         background: #000 !important;
         transition: width .28s ease !important;
     }
-    #lv-96e50a10b9de .nav-links-village .village-link:hover::after {
+    #lv-8e53510c4877 .nav-links-village .village-link:hover::after {
         width: 100% !important;
     }
-    #lv-96e50a10b9de .nav-links-village .village-link:hover {
+    #lv-8e53510c4877 .nav-links-village .village-link:hover {
         color: #000 !important;
     }
 
     /* --- SLIDER INFINI (DESIGN "GALERIE D'ART") --- */
-    #lv-96e50a10b9de #lvSliderWrap {
+    #lv-8e53510c4877 #lvSliderWrap {
         overflow: hidden;
         padding: 40px 0 60px 0; /* Plus d'espace pour les ombres */
         background: transparent;
@@ -4318,15 +4368,15 @@
         /* Désactive le comportement par défaut de pull-to-refresh lors du drag tactile */
         touch-action: pan-y;
     }
-    #lv-96e50a10b9de #lvSliderTrack {
+    #lv-8e53510c4877 #lvSliderTrack {
         display: flex;
         will-change: transform;
         cursor: grab;
     }
-    #lv-96e50a10b9de #lvSliderTrack:active {
+    #lv-8e53510c4877 #lvSliderTrack:active {
         cursor: grabbing;
     }
-    #lv-96e50a10b9de .lvSlide {
+    #lv-8e53510c4877 .lvSlide {
         flex: 0 0 300px; /* Taille contrôlée */
         margin-right: 40px; /* Plus d'espacement entre les images */
         height: 420px;
@@ -4338,18 +4388,18 @@
         transition: transform 0.4s ease, box-shadow 0.4s ease;
         user-select: none;
     }
-    #lv-96e50a10b9de .lvSlide:hover {
+    #lv-8e53510c4877 .lvSlide:hover {
         transform: translateY(-8px);
         box-shadow: 0 25px 50px -15px rgba(113, 53, 6, 0.3);
     }
-    #lv-96e50a10b9de .lvSlideInner {
+    #lv-8e53510c4877 .lvSlideInner {
         width: 100%;
         height: 100%;
         overflow: hidden;
         border-radius: 1px;
         pointer-events: none; /* Évite les comportements parasites au touch */
     }
-    #lv-96e50a10b9de .lvSlide img {
+    #lv-8e53510c4877 .lvSlide img {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -4357,12 +4407,12 @@
         transition: transform 0.8s ease;
         pointer-events: none;
     }
-    #lv-96e50a10b9de .lvSlide:hover img {
+    #lv-8e53510c4877 .lvSlide:hover img {
         transform: scale(1.05); /* Zoom subtil au survol */
     }
 
     /* Flèches cuivrées fines et élégantes (inspirées du style Instagram discret) */
-    #lv-96e50a10b9de .lvArrow {
+    #lv-8e53510c4877 .lvArrow {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -4382,13 +4432,13 @@
         opacity: 0.55;
         transition: all 0.25s ease;
     }
-    #lv-96e50a10b9de .lvArrow:hover {
+    #lv-8e53510c4877 .lvArrow:hover {
         background: rgba(252, 249, 243, 0.75);
         color: #713506;
         opacity: 0.9;
         transform: translateY(-50%) scale(1.04);
     }
-    #lv-96e50a10b9de .lvArrow svg {
+    #lv-8e53510c4877 .lvArrow svg {
         width: 13px;
         height: 13px;
         stroke: currentColor;
@@ -4397,14 +4447,14 @@
         color: #713506;
         transition: color 0.3s ease;
     }
-    #lv-96e50a10b9de .lvArrow:hover svg {
+    #lv-8e53510c4877 .lvArrow:hover svg {
         color: #713506;
     }
-    #lv-96e50a10b9de #lvPrev { left: 20px; }
-    #lv-96e50a10b9de #lvNext { right: 20px; }
+    #lv-8e53510c4877 #lvPrev { left: 20px; }
+    #lv-8e53510c4877 #lvNext { right: 20px; }
 
     /* Lightbox */
-    #lv-96e50a10b9de #lvLightbox {
+    #lv-8e53510c4877 #lvLightbox {
         position: fixed;
         inset: 0;
         background: rgba(0,0,0,.88);
@@ -4415,8 +4465,8 @@
         z-index: 9999;
         cursor: zoom-out;
     }
-    #lv-96e50a10b9de #lvLightbox.is-open { display: flex; }
-    #lv-96e50a10b9de #lvLightboxImg {
+    #lv-8e53510c4877 #lvLightbox.is-open { display: flex; }
+    #lv-8e53510c4877 #lvLightboxImg {
         max-width: min(1100px, 92vw);
         max-height: 92vh;
         border-radius: 2px;
@@ -4424,7 +4474,7 @@
         cursor: default;
     }
 
-    #lv-96e50a10b9de .lvLightboxClose,#lv-96e50a10b9de 
+    #lv-8e53510c4877 .lvLightboxClose,#lv-8e53510c4877 
     .lvLightboxNav {
         position: absolute;
         color: #f5f0ea;
@@ -4436,20 +4486,20 @@
         transition: opacity 0.25s ease, color 0.25s ease;
     }
 
-    #lv-96e50a10b9de .lvLightboxClose:hover,#lv-96e50a10b9de 
+    #lv-8e53510c4877 .lvLightboxClose:hover,#lv-8e53510c4877 
     .lvLightboxNav:hover {
         opacity: 1;
         color: #9d623d;
     }
 
-    #lv-96e50a10b9de .lvLightboxClose {
+    #lv-8e53510c4877 .lvLightboxClose {
         top: 18px;
         right: 22px;
         font-size: 42px;
         line-height: 1;
     }
 
-    #lv-96e50a10b9de .lvLightboxNav {
+    #lv-8e53510c4877 .lvLightboxNav {
         top: 50%;
         transform: translateY(-50%);
         font-size: 56px;
@@ -4457,28 +4507,28 @@
         padding: 12px;
     }
 
-    #lv-96e50a10b9de #lvLightboxPrev { left: 18px; }
-    #lv-96e50a10b9de #lvLightboxNext { right: 18px; }
+    #lv-8e53510c4877 #lvLightboxPrev { left: 18px; }
+    #lv-8e53510c4877 #lvLightboxNext { right: 18px; }
 
     @media (max-width: 800px) {
-        #lv-96e50a10b9de .lvSlide { flex: 0 0 260px; height: 360px; margin-right: 20px; }
-        #lv-96e50a10b9de #lvPrev { left: 10px; }
-        #lv-96e50a10b9de #lvNext { right: 10px; }
-        #lv-96e50a10b9de .lvLightboxNav { font-size: 42px; }
+        #lv-8e53510c4877 .lvSlide { flex: 0 0 260px; height: 360px; margin-right: 20px; }
+        #lv-8e53510c4877 #lvPrev { left: 10px; }
+        #lv-8e53510c4877 #lvNext { right: 10px; }
+        #lv-8e53510c4877 .lvLightboxNav { font-size: 42px; }
     }
 
 
-    #lv-622799eb1914 { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-6b23a946a250 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- FILTRE ÉLÉGANT SANS BUG DE COULEUR (PALACE STYLE) --- */
-    #lv-622799eb1914 .village-img-wrapper {
+    #lv-6b23a946a250 .village-img-wrapper {
         position: relative;
         overflow: hidden;
         background-color: #713506; 
     }
     
     /* Calque de fusion cuivré signature (Archive) */
-    #lv-622799eb1914 .village-img-wrapper::after {
+    #lv-6b23a946a250 .village-img-wrapper::after {
         content: '';
         position: absolute;
         inset: 0;
@@ -4491,7 +4541,7 @@
     }
     
     /* Voile de profondeur */
-    #lv-622799eb1914 .village-img-wrapper::before {
+    #lv-6b23a946a250 .village-img-wrapper::before {
         content: '';
         position: absolute;
         inset: 0;
@@ -4502,40 +4552,169 @@
     }
     
     /* Transition d'apparition progressive au scroll (Staggering) */
-    #lv-622799eb1914 .scroll-anim-trigger.is-visible:nth-child(1) .village-img-wrapper::after,#lv-622799eb1914 
+    #lv-6b23a946a250 .scroll-anim-trigger.is-visible:nth-child(1) .village-img-wrapper::after,#lv-6b23a946a250 
     .scroll-anim-trigger.is-visible:nth-child(1) .village-img-wrapper::before {
         opacity: 0;
         transition-delay: 0.3s; /* La première commence après 300ms */
     }
 
-    #lv-622799eb1914 .scroll-anim-trigger.is-visible:nth-child(2) .village-img-wrapper::after,#lv-622799eb1914 
+    #lv-6b23a946a250 .scroll-anim-trigger.is-visible:nth-child(2) .village-img-wrapper::after,#lv-6b23a946a250 
     .scroll-anim-trigger.is-visible:nth-child(2) .village-img-wrapper::before {
         opacity: 0;
         transition-delay: 0.8s; /* La deuxième commence après 800ms */
     }
 
-    #lv-622799eb1914 .scroll-anim-trigger.is-visible:nth-child(3) .village-img-wrapper::after,#lv-622799eb1914 
+    #lv-6b23a946a250 .scroll-anim-trigger.is-visible:nth-child(3) .village-img-wrapper::after,#lv-6b23a946a250 
     .scroll-anim-trigger.is-visible:nth-child(3) .village-img-wrapper::before {
         opacity: 0;
         transition-delay: 1.3s; /* La troisième commence après 1.3s */
     }
 
     /* Au survol souris, la réaction est instantanée (0.4s) sans délai pour l'interactivité */
-    #lv-622799eb1914 .group:hover .village-img-wrapper::after,#lv-622799eb1914 
+    #lv-6b23a946a250 .group:hover .village-img-wrapper::after,#lv-6b23a946a250 
     .group:hover .village-img-wrapper::before {
         opacity: 0 !important;
         transition: opacity 0.4s ease-in-out !important;
         transition-delay: 0s !important;
     }
 
-    #lv-622799eb1914 .village-img {
+    #lv-6b23a946a250 .village-img {
         transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         will-change: transform;
     }
     
-    #lv-622799eb1914 .group:hover .village-img,#lv-622799eb1914 
+    #lv-6b23a946a250 .group:hover .village-img,#lv-6b23a946a250 
     .group.is-visible .village-img {
         transform: scale(1.05);
+    }
+
+
+    #lv-bc43c58131f1 { margin: 0; padding: 0; }
+
+    #lv-bc43c58131f1 .hide-scroll {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    #lv-bc43c58131f1 .hide-scroll::-webkit-scrollbar {
+        display: none;
+    }
+
+    #lv-bc43c58131f1 .village-img-wrapper {
+        position: relative;
+        overflow: hidden;
+        border-radius: 2px;
+    }
+    
+    #lv-bc43c58131f1 .village-img-wrapper::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: #9d623d;
+        mix-blend-mode: color;
+        opacity: 0.85;
+        transition: opacity 0.8s ease;
+        pointer-events: none;
+        z-index: 10;
+    }
+    
+    #lv-bc43c58131f1 .village-img-wrapper::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: rgba(113, 53, 6, 0.15); 
+        transition: opacity 0.8s ease;
+        pointer-events: none;
+        z-index: 11;
+    }
+    
+    #lv-bc43c58131f1 .group:hover .village-img-wrapper::after,#lv-bc43c58131f1 
+    .group:hover .village-img-wrapper::before {
+        opacity: 0;
+    }
+
+    #lv-bc43c58131f1 .village-img {
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: transform;
+    }
+    #lv-bc43c58131f1 .group:hover .village-img {
+        transform: scale(1.05);
+    }
+
+    #lv-bc43c58131f1 .village-link-read {
+        color: #713506;
+        text-decoration: none;
+        font-weight: 500;
+        display: inline-block;
+        position: relative;
+        padding-bottom: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 11px;
+        font-family: 'Poppins', sans-serif;
+        transition: color 0.3s ease;
+        margin-top: auto;
+    }
+    #lv-bc43c58131f1 .village-link-read::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 1px;
+        background: #9d623d;
+        transition: width 0.4s ease;
+    }
+    #lv-bc43c58131f1 .group:hover .village-link-read {
+        color: #9d623d;
+    }
+    #lv-bc43c58131f1 .group:hover .village-link-read::after {
+        width: 100%;
+    }
+
+    /* Flèches visibles aussi sur mobile */
+    #lv-bc43c58131f1 .blog-carousel-arrows {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    @media (min-width: 768px) {
+        #lv-bc43c58131f1 .blog-carousel-arrows {
+            width: auto;
+            justify-content: flex-end;
+        }
+    }
+
+    #lv-bc43c58131f1 .blog-carousel-arrow {
+        width: 44px;
+        height: 44px;
+        border-radius: 999px;
+        border: 1px solid rgba(113, 53, 6, 0.28);
+        background: rgba(252, 249, 243, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #713506;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 18px rgba(113, 53, 6, 0.08);
+    }
+
+    #lv-bc43c58131f1 .blog-carousel-arrow:hover {
+        background: #713506;
+        color: #ffffff;
+        border-color: #713506;
+    }
+
+    @media (max-width: 767px) {
+        #lv-bc43c58131f1 .blog-carousel-arrow {
+            width: 42px;
+            height: 42px;
+            background: #ffffff;
+            border-color: rgba(157, 98, 61, 0.45);
+            box-shadow: 0 8px 20px rgba(113, 53, 6, 0.12);
+        }
     }
 
 
