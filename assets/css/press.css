@@ -8,12 +8,6 @@
 .press-page #press-header.is-scrolled img{height:96px}
 .press-page #mobileMenu{max-height:calc(100dvh - 120px);overflow-y:auto}
 .press-page #menuBtn{min-width:44px;min-height:44px;display:flex;align-items:center}
-.press-page .press-intro{padding-bottom:48px}
-.press-page .press-intro>section:first-child{padding-top:44px}
-.press-page .press-intro>section:last-child{margin-top:64px}
-.press-page #communiques,.press-page #dossier-de-presse,.press-page #contact-presse{padding-top:64px;padding-bottom:64px;scroll-margin-top:132px}
-.press-page #communiques>div{max-width:1240px}
-.press-page #dossier-de-presse>div{max-width:1240px}
 .press-page footer img{max-width:100%}
 @media(max-width:1023px){.press-page{--press-header-height:240px}.press-page #press-header>div:first-child{min-height:240px}.press-page #press-header img{height:192px}}
 @media(max-width:767px){
@@ -26,9 +20,9 @@
  .press-page #press-header img{height:132px;width:130px}
  .press-page #press-header.is-scrolled>div:first-child{min-height:100px}
  .press-page #press-header.is-scrolled img{height:84px}
- .press-page .press-intro{padding-bottom:32px}
- .press-page .press-intro>section:first-child{padding-top:32px}
- .press-page .press-intro>section:last-child{margin-top:44px}
- .press-page #communiques,.press-page #dossier-de-presse,.press-page #contact-presse{padding-block:44px}
 }
 @media(prefers-reduced-motion:reduce){.press-page #press-header *,.press-page .collage-photo{transition:none!important}}
+
+/* Original press spacing and illustration treatment. */
+.press-page #communiques,.press-page #dossier-de-presse,.press-page #contact-presse{scroll-margin-top:132px}
+.press-page #dossier-de-presse img{mix-blend-mode:multiply;filter:brightness(1.05) contrast(1.1);opacity:1;box-shadow:none}
