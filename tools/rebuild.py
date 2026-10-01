@@ -157,8 +157,8 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
   head+='<link rel="stylesheet" href="/assets/css/home.css?v=home-20261001c"><script defer src="/assets/js/home.js?v=home-20261001c"></script><script id="zenchef-sdk" defer src="https://sdk.zenchef.com/v1/sdk.min.js"></script>'
   home_footer=(restaurant_footer_block if slug==RESTAURANT_SLUG else home_footer_block)+'<div class="zc-widget-config" data-restaurant="361354" data-lang="fr" data-primary-color="794116" data-open="false"></div>'
  if slug==RESTAURANT_SLUG:
-  head=head.replace('home-20261001c','resto-20261001b')
-  head+='<link rel="stylesheet" href="/assets/css/restaurant.css?v=resto-20261001b"><script defer src="/assets/js/restaurant.js?v=resto-20261001b"></script>'
+  head=head.replace('home-20261001c','resto-20261001c')
+  head+='<link rel="stylesheet" href="/assets/css/restaurant.css?v=resto-20261001c"><script defer src="/assets/js/restaurant.js?v=resto-20261001c"></script>'
  selected_header=(ROOT/'tools/home-header.html').read_text() if modern else HEADER
  if slug==RESTAURANT_SLUG:selected_header=selected_header.replace(' aria-current="page"','')
  full=head+'</head><body'+(' class="home-page restaurant-page"' if slug==RESTAURANT_SLUG else ' class="home-page"' if not slug else '')+'>'+selected_header+'<main id="main">'+str(s)+'</main>'+(home_footer if modern else footer+EXTRA_FOOT)+'<div id="privacy-panel" class="privacy-panel" hidden><p>Vous pouvez réinitialiser ici les autorisations des vidéos intégrées. La carte et le module de réservation utilisent les services Google Maps et Zenchef.</p><button type="button" data-reset-consent>Réinitialiser mes choix</button><button type="button" data-close-privacy>Fermer</button></div></body></html>'
