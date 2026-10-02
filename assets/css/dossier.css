@@ -33,3 +33,7 @@
 .dossier-page #main>.lv-block:has(>#village-chef-block)::before,
 .dossier-page #main>.lv-block:has(>#village-contact-block)::before{background:#fff}
 .dossier-page #main>.lv-block:has(>#village-hotel-block)::before{background:#713506}
+
+/* Align the chef portrait and text with the two-video composition. */
+.dossier-page #village-table-videos-block #table > .grid,
+.dossier-page #village-chef-block > section > .flex{width:100%;max-width:1024px;margin-inline:auto}

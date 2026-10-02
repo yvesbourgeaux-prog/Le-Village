@@ -206,8 +206,8 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
   head+='<link rel="stylesheet" href="/assets/css/press.css?v=presse-espaces-b"><script defer src="/assets/js/press.js?v=presse-20261001a"></script><script defer src="/assets/js/home.js?v=presse-20261001a"></script><script id="zenchef-sdk" defer src="https://sdk.zenchef.com/v1/sdk.min.js"></script>'
   press_footer+='<div class="zc-widget-config" data-restaurant="361354" data-lang="fr" data-primary-color="794116" data-open="false"></div>'
  if slug=='dossier-presse':
-  head=head.replace('/assets/css/blocks.css','/assets/css/blocks.css?v=dossier-20261002e').replace('/assets/css/tailwind.css','/assets/css/tailwind.css?v=dossier-20261002e')
-  head+='<link rel="stylesheet" href="/assets/css/dossier.css?v=dossier-20261002e"><script defer src="/assets/js/dossier.js?v=dossier-20261002e"></script><script defer src="/assets/js/home.js?v=dossier-20261002e"></script><script id="zenchef-sdk" defer src="https://sdk.zenchef.com/v1/sdk.min.js"></script>'
+  head=head.replace('/assets/css/blocks.css','/assets/css/blocks.css?v=dossier-20261002f').replace('/assets/css/tailwind.css','/assets/css/tailwind.css?v=dossier-20261002f')
+  head+='<link rel="stylesheet" href="/assets/css/dossier.css?v=dossier-20261002f"><script defer src="/assets/js/dossier.js?v=dossier-20261002f"></script><script defer src="/assets/js/home.js?v=dossier-20261002f"></script><script id="zenchef-sdk" defer src="https://sdk.zenchef.com/v1/sdk.min.js"></script>'
   press_footer+='<div class="zc-widget-config" data-restaurant="361354" data-lang="fr" data-primary-color="794116" data-open="false"></div>'
  selected_header=(ROOT/'tools/home-header.html').read_text() if modern else HEADER
  if slug in (RESTAURANT_SLUG,HOTEL_SLUG,'la-carte','visiter-haut-de-cagnes'):selected_header=selected_header.replace(' aria-current="page"','')
