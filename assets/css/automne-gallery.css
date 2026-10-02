@@ -1,0 +1,11 @@
+/* Pair each collage with a portrait, using two balanced rows. */
+#village-communique-automne-block article > section:last-child > .grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);grid-auto-rows:auto;gap:24px;align-items:stretch}
+#village-communique-automne-block article > section:last-child > .grid > div{grid-column:auto;grid-row:auto;padding:0;min-width:0;background:transparent;display:block}
+#village-communique-automne-block article > section:last-child > .grid > div:nth-child(1){aspect-ratio:523/475}
+#village-communique-automne-block article > section:last-child > .grid > div:nth-child(3){aspect-ratio:523/395}
+#village-communique-automne-block article > section:last-child > .grid img{width:100%;height:100%;object-fit:cover;display:block;filter:none}
+@media(max-width:767px){
+ #village-communique-automne-block article > section:last-child > .grid{grid-template-columns:minmax(0,1fr);gap:20px}
+ #village-communique-automne-block article > section:last-child > .grid > div{aspect-ratio:auto}
+ #village-communique-automne-block article > section:last-child > .grid img{height:auto;object-fit:contain}
+}
