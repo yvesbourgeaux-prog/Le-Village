@@ -16,11 +16,20 @@
 @media(max-width:767px){.dossier-page #dossier-hero,.dossier-page #main .lv-subnav{width:calc(100% - 32px)}}
 @media(prefers-reduced-motion:reduce){.dossier-page *, .dossier-page *::before,.dossier-page *::after{scroll-behavior:auto!important;transition:none!important}}
 /* Taller framed photograph with a gentle scroll movement. */
-.dossier-page #dossier-hero{height:auto;min-height:0;aspect-ratio:6 / 5}
-.dossier-page #dossier-hero .lv-hero-bg{inset:-70px 0;height:calc(100% + 140px);transform:translate3d(0,var(--hero-shift,0px),0);will-change:transform}
+.dossier-page #dossier-hero{height:auto;min-height:0;aspect-ratio:1 / 1}
+.dossier-page #dossier-hero .lv-hero-bg{inset:-100px 0;height:calc(100% + 200px);transform:translate3d(0,var(--hero-shift,0px),0);will-change:transform}
 .dossier-page #dossier-hero .lv-hero-bg img{object-position:center center}
-@media(max-width:767px){.dossier-page #dossier-hero{aspect-ratio:auto;height:88svh;min-height:540px}.dossier-page #dossier-hero .lv-hero-bg{inset:-35px 0;height:calc(100% + 70px)}}
+@media(max-width:767px){.dossier-page #dossier-hero{aspect-ratio:auto;height:110svh;min-height:640px}.dossier-page #dossier-hero .lv-hero-bg{inset:-35px 0;height:calc(100% + 70px)}}
 @media(prefers-reduced-motion:reduce){.dossier-page #dossier-hero .lv-hero-bg{transform:none;will-change:auto}}
 /* All editorial blocks share the same framed width as the hero. */
 .dossier-page #main>.lv-block:not(:first-child){width:calc(100% - 48px);max-width:1240px;margin-inline:auto}
 @media(max-width:767px){.dossier-page #main>.lv-block:not(:first-child){width:calc(100% - 32px)}}
+
+/* Extend each section colour behind the existing framed content. */
+.dossier-page{overflow-x:clip}
+.dossier-page #main>.lv-block:not(:first-child)::before{content:"";position:absolute;inset:0 auto 0 50%;width:100vw;transform:translateX(-50%);z-index:-1;background:#fcf9f3;pointer-events:none}
+.dossier-page #main>.lv-block:has(>#village-montmartre-block)::before{background:#f5f0ea}
+.dossier-page #main>.lv-block:has(>#village-table-videos-block)::before,
+.dossier-page #main>.lv-block:has(>#village-chef-block)::before,
+.dossier-page #main>.lv-block:has(>#village-contact-block)::before{background:#fff}
+.dossier-page #main>.lv-block:has(>#village-hotel-block)::before{background:#713506}

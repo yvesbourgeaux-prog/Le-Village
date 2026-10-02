@@ -9,8 +9,8 @@
   header.classList.toggle('is-scrolled',window.scrollY>24);
   if(!hero)return;
   const rect=hero.getBoundingClientRect();
-  const limit=window.innerWidth<768?35:70;
-  const shift=reduced.matches?0:Math.max(-limit,Math.min(limit,(window.innerHeight/2-rect.top-rect.height/2)*0.14));
+  const limit=window.innerWidth<768?35:100;
+  const shift=reduced.matches?0:Math.max(-limit,Math.min(limit,(window.innerHeight/2-rect.top-rect.height/2)*0.22));
   hero.style.setProperty('--hero-shift',shift.toFixed(2)+'px');
  };
  const update=()=>{if(!frame)frame=window.requestAnimationFrame(render);};
