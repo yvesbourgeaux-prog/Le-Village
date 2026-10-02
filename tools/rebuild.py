@@ -85,11 +85,13 @@ EXTRA_FOOT='<nav class="footer-extra" aria-label="Informations complémentaires"
 def instagram():
  photos=[FALLBACK,FOOD,ASSET+'572928136_18117010441554133_1923760437050638675_n-TvrQ6sg8lBtejgDd.jpg',ASSET+'551078697_18111392815554133_227775813467422912_n-Si2wTcuvWMJoKJbj.jpg',ASSET+'582793372_18118705186554133_7027943419963072274_n-6UgIiwaTzcedSzpl.jpg',ASSET+'559846321_18113516263554133_4733225079968164517_n-WVwm5HBlhXahGJZh.jpg']
  return '<section class="instagram-wall"><p class="eyebrow">La vie du Village</p><h2>Retrouvons-nous sur Instagram</h2><p>Une sélection de moments à partager. Retrouvez nos dernières publications sur Instagram.</p><div class="instagram-grid">'+''.join(f'<a href="https://www.instagram.com/restaurantlevillagehdc/" target="_blank" rel="noopener noreferrer" aria-label="Voir le compte Instagram du Village"><img src="{u}" alt="Un aperçu du restaurant Le Village" loading="lazy" decoding="async"></a>' for u in photos)+'</div><a class="book-button" href="https://www.instagram.com/restaurantlevillagehdc/" target="_blank" rel="noopener noreferrer">Suivre @restaurantlevillagehdc</a></section>'
-footer,_=process(PAGES[0]['footer'],'footer')
+footer,_=process(next(p['footer'] for p in PAGES if p['type']!='press-release'),'footer')
 home_footer_block,_=process((ROOT/'tools/home-footer.html').read_text(),'home-footer')
 restaurant_footer_block,_=process(next(p['footer'] for p in PAGES if p['slug']==RESTAURANT_SLUG),'restaurant-footer')
 hotel_footer_block,_=process(next(p['footer'] for p in PAGES if p['slug']==HOTEL_SLUG),'hotel-footer')
 carte_footer_block,_=process(next(p['footer'] for p in PAGES if p['slug']=='la-carte'),'carte-footer')
+release_header,_=process((ROOT/'tools/press-release-header.html').read_text(),'release-header')
+release_footer,_=process((ROOT/'tools/press-release-footer.html').read_text(),'release-footer')
 FONT='https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Poppins:wght@300;400;500;600&display=swap'
 manifest=[]
 def writepage(slug,meta,content,external=None,kind='default',date=None):
@@ -102,8 +104,7 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
   press_footer=str(s.select_one('#village-footer-block').find_parent(class_='lv-block').extract())
  if slug=='espace-presse':
   press_footer=str(s.find('footer').find_parent(class_='lv-block').extract())
-  for a in s.select('a[href]'):
-   if a['href'] in ['/automne-haut-de-cagnes','/ete-en-musique-jazz-cagnes-sur-mer']:a['href']=BASE+a['href']
+
  h=s.select('h1')
  if not h:
   h1=s.new_tag('h1');h1['class']='native-page-title';h1.string=meta['title'];s.insert(0,h1)
@@ -174,15 +175,16 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
  if not slug:graph.extend([restaurant,hotel,{'@type':'WebSite','@id':BASE+'/#website','url':BASE+'/','name':'Le Grimaldi by Le Village','inLanguage':'fr-FR'}])
  elif slug=='hotel-cagnes-sur-mer-le-grimaldi':graph.append(hotel)
  elif slug in ['la-carte','le-village-restaurant-haut-de-cagnes-sur-mer']:graph.append(restaurant)
- if kind=='blog':
-  article={'@type':'BlogPosting','headline':title,'description':description,'mainEntityOfPage':canonical,'author':{'@type':'Organization','name':'Le Grimaldi by Le Village'},'publisher':{'@type':'Organization','name':'Le Grimaldi by Le Village','logo':{'@type':'ImageObject','url':LOGO}}}
+ if kind in ('blog','press-release'):
+  article={'@type':'Article' if kind=='press-release' else 'BlogPosting','headline':title,'description':description,'mainEntityOfPage':canonical,'author':{'@type':'Organization','name':'Le Grimaldi by Le Village'},'publisher':{'@type':'Organization','name':'Le Grimaldi by Le Village','logo':{'@type':'ImageObject','url':LOGO}}}
   if date:article['datePublished']=date
   if s.find('img'):article['image']=s.find('img').get('src',FALLBACK)
   graph.append(article)
  if slug:graph.append({'@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':'Accueil','item':BASE+'/'},{'@type':'ListItem','position':2,'name':title,'item':canonical}]})
  jsids=list(dict.fromkeys(used_js.get(slug,[])+used_js.get('carte-footer' if slug=='la-carte' else 'hotel-footer' if slug==HOTEL_SLUG else 'restaurant-footer' if slug==RESTAURANT_SLUG else 'home-footer' if not slug or slug=='visiter-haut-de-cagnes' else 'footer',[])))
+ if kind=='press-release':jsids=list(dict.fromkeys(used_js.get(slug,[])+used_js.get('release-header',[])+used_js.get('release-footer',[])))
  es=''.join(f'<script defer src="{html.escape(u,quote=True)}"></script>' for u in dict.fromkeys(external or []))
- head=f'''<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)}</title><meta name="description" content="{html.escape(description,quote=True)}"><link rel="canonical" href="{canonical}"><meta name="robots" content="noindex,follow"><meta name="theme-color" content="#fcf9f3"><meta property="og:type" content="{'article' if kind=='blog' else 'website'}"><meta property="og:title" content="{html.escape(title,quote=True)}"><meta property="og:description" content="{html.escape(description,quote=True)}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="{s.find('img').get('src',FALLBACK) if s.find('img') else FALLBACK}"><meta property="og:locale" content="fr_FR"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="{LOGO}"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="{html.escape(FONT,quote=True)}"><link rel="stylesheet" href="/assets/css/tailwind.css"><link rel="stylesheet" href="/assets/css/blocks.css"><link rel="stylesheet" href="/assets/css/site.css"><script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False)}</script>{es}<script defer src="/assets/js/site.js"></script>'''
+ head=f'''<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)}</title><meta name="description" content="{html.escape(description,quote=True)}"><link rel="canonical" href="{canonical}"><meta name="robots" content="noindex,follow"><meta name="theme-color" content="#fcf9f3"><meta property="og:type" content="{'article' if kind in ('blog','press-release') else 'website'}"><meta property="og:title" content="{html.escape(title,quote=True)}"><meta property="og:description" content="{html.escape(description,quote=True)}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="{s.find('img').get('src',FALLBACK) if s.find('img') else FALLBACK}"><meta property="og:locale" content="fr_FR"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="{LOGO}"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="{html.escape(FONT,quote=True)}"><link rel="stylesheet" href="/assets/css/tailwind.css"><link rel="stylesheet" href="/assets/css/blocks.css"><link rel="stylesheet" href="/assets/css/site.css"><script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False)}</script>{es}<script defer src="/assets/js/site.js"></script>'''
  head+=''.join(f'<script defer src="/assets/js/{uid}.js"></script>' for uid in jsids)
  home_footer=''
  if modern:
@@ -214,7 +216,12 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
  if slug=='espace-presse':selected_header='<a class="skip-link" href="#communiques">Aller aux communiqués</a>'
  if slug=='dossier-presse':selected_header='<a class="skip-link" href="#histoire">Aller au dossier de presse</a>'
  if slug==HOTEL_SLUG:selected_header=selected_header.replace('class="book-button" href="/reserver"','class="book-button" href="#reservation"')
- full=head+'</head><body'+(' class="dossier-page"' if slug=='dossier-presse' else ' class="press-page"' if slug=='espace-presse' else ' class="home-page visit-page"' if slug=='visiter-haut-de-cagnes' else ' class="home-page carte-page"' if slug=='la-carte' else ' class="home-page hotel-page"' if slug==HOTEL_SLUG else ' class="home-page restaurant-page"' if slug==RESTAURANT_SLUG else ' class="home-page"' if not slug else '')+'>'+selected_header+'<main id="main">'+str(s)+'</main>'+(press_footer if slug in ('espace-presse','dossier-presse') else home_footer if modern else footer+EXTRA_FOOT)+'<div id="privacy-panel" class="privacy-panel" hidden><p>Vous pouvez réinitialiser ici les autorisations des vidéos intégrées. La carte et le module de réservation utilisent les services Google Maps et Zenchef.</p><button type="button" data-reset-consent>Réinitialiser mes choix</button><button type="button" data-close-privacy>Fermer</button></div></body></html>'
+ if kind=='press-release':
+  selected_header='<a class="skip-link" href="#main">Aller au communiqué</a>'+release_header
+  press_footer=release_footer
+  head+='<link rel="stylesheet" href="/assets/css/press.css?v=cp-20261002"><link rel="stylesheet" href="/assets/css/releases.css?v=cp-20261002"><script defer src="/assets/js/press.js?v=cp-20261002"></script>'
+  head=head.replace('/assets/css/blocks.css','/assets/css/blocks.css?v=cp-20261002').replace('/assets/css/tailwind.css','/assets/css/tailwind.css?v=cp-20261002')
+ full=head+'</head><body'+(' class="press-page release-page"' if kind=='press-release' else ' class="dossier-page"' if slug=='dossier-presse' else ' class="press-page"' if slug=='espace-presse' else ' class="home-page visit-page"' if slug=='visiter-haut-de-cagnes' else ' class="home-page carte-page"' if slug=='la-carte' else ' class="home-page hotel-page"' if slug==HOTEL_SLUG else ' class="home-page restaurant-page"' if slug==RESTAURANT_SLUG else ' class="home-page"' if not slug else '')+'>'+selected_header+'<main id="main">'+str(s)+'</main>'+(press_footer if kind=='press-release' or slug in ('espace-presse','dossier-presse') else home_footer if modern else footer+EXTRA_FOOT)+'<div id="privacy-panel" class="privacy-panel" hidden><p>Vous pouvez réinitialiser ici les autorisations des vidéos intégrées. La carte et le module de réservation utilisent les services Google Maps et Zenchef.</p><button type="button" data-reset-consent>Réinitialiser mes choix</button><button type="button" data-close-privacy>Fermer</button></div></body></html>'
  if not modern:full=full.replace('Vous pouvez réinitialiser ici les autorisations des vidéos intégrées. La carte et le module de réservation utilisent les services Google Maps et Zenchef.', 'Les contenus externes (carte, vidéos et réservations) ne sont chargés qu’à votre demande.')
  path=ROOT/((slug+'.html') if slug else 'index.html');path.write_text(full)
  manifest.append({'path':'/'+slug,'file':path.name,'title':title,'kind':kind})

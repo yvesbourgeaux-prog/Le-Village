@@ -40,9 +40,9 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-        #lv-86801dde34c6 .footer-nav-link,#lv-86801dde34c6 
-        .footer-nav-link::after,#lv-86801dde34c6 
-        .footer-action-link,#lv-86801dde34c6 
+        #lv-86801dde34c6 .footer-nav-link,#lv-86801dde34c6
+        .footer-nav-link::after,#lv-86801dde34c6
+        .footer-action-link,#lv-86801dde34c6
         .tripadvisor-badge img {
             transition: none !important;
         }
@@ -90,9 +90,9 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-        #lv-5a82e23671ce .footer-nav-link,#lv-5a82e23671ce 
-        .footer-nav-link::after,#lv-5a82e23671ce 
-        .footer-action-link,#lv-5a82e23671ce 
+        #lv-5a82e23671ce .footer-nav-link,#lv-5a82e23671ce
+        .footer-nav-link::after,#lv-5a82e23671ce
+        .footer-action-link,#lv-5a82e23671ce
         .tripadvisor-badge img {
             transition: none !important;
         }
@@ -140,12 +140,175 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-        #lv-b46cfe6d9fd3 .footer-nav-link,#lv-b46cfe6d9fd3 
-        .footer-nav-link::after,#lv-b46cfe6d9fd3 
-        .footer-action-link,#lv-b46cfe6d9fd3 
+        #lv-b46cfe6d9fd3 .footer-nav-link,#lv-b46cfe6d9fd3
+        .footer-nav-link::after,#lv-b46cfe6d9fd3
+        .footer-action-link,#lv-b46cfe6d9fd3
         .tripadvisor-badge img {
             transition: none !important;
         }
+    }
+
+
+    #lv-1b2beaab170b {
+      background-color: #fcf9f3;
+      color: #713506;
+      margin: 0;
+    }
+
+    #lv-1b2beaab170b .press-header-line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 1px;
+      background: rgba(113, 53, 6, 0.28);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    #lv-1b2beaab170b .header-safe {
+      position: relative;
+      z-index: 20;
+    }
+
+    #lv-1b2beaab170b .header-safe a,#lv-1b2beaab170b
+    .header-safe button {
+      position: relative;
+      z-index: 30;
+      pointer-events: auto;
+    }
+
+    /* --- COLLAGE STYLE "NEGRESCO" (IMAGES ENTIÈRES) --- */
+    #lv-1b2beaab170b .collage-container {
+      position: relative;
+      width: 100%;
+      max-width: 1050px;
+      margin: 0 auto;
+      aspect-ratio: 2 / 1; /* Format large pour laisser de l'espace aux photos */
+    }
+
+    #lv-1b2beaab170b .collage-photo {
+      position: absolute;
+      display: block;
+      box-shadow: 0 10px 40px -10px rgba(113, 53, 6, 0.15); /* Ombre douce et élégante */
+      transition: transform 0.4s ease;
+      will-change: transform;
+      user-select: none;
+      -webkit-user-drag: none;
+      /* Ajout du style tirage photo */
+      background-color: #ffffff;
+      padding: 8px 8px 24px 8px;
+    }
+
+    #lv-1b2beaab170b .collage-photo img {
+      width: 100%;
+      height: auto; /* Permet à l'image de s'afficher en entier sans être coupée */
+      display: block;
+    }
+
+    #lv-1b2beaab170b .collage-photo:hover {
+      transform: scale(1.05) translateY(-5px) !important;
+      z-index: 10 !important;
+      box-shadow: 0 20px 50px -12px rgba(113, 53, 6, 0.30);
+    }
+
+    /*
+       Répartition mathématique (100% de largeur) sans superposition :
+       Gauche: 0% à 26%
+       Espace: 4%
+       Centre: 30% à 68%
+       Espace: 4%
+       Droite: 72% à 100%
+    */
+
+    #lv-1b2beaab170b .img-left {
+      top: 20%;
+      left: 0%;
+      width: 26%;
+      transform: rotate(-3deg);
+      z-index: 2;
+    }
+
+    #lv-1b2beaab170b .img-center {
+      top: 0%;
+      left: 30%;
+      width: 38%;
+      transform: rotate(2deg);
+      z-index: 1;
+    }
+
+    #lv-1b2beaab170b .img-right {
+      top: 35%;
+      left: 72%;
+      width: 28%;
+      transform: rotate(-2deg);
+      z-index: 3;
+    }
+
+    @media (max-width: 991px) {
+      #lv-1b2beaab170b .collage-container {
+        max-width: 760px;
+        aspect-ratio: 16 / 12;
+      }
+    }
+
+    @media (max-width: 767px) {
+      /* Sur mobile, on désactive l'absolu pour un affichage propre en colonne */
+      #lv-1b2beaab170b .collage-container {
+        aspect-ratio: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+        padding-bottom: 2rem;
+      }
+      #lv-1b2beaab170b .collage-photo {
+        position: relative;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        width: 85% !important;
+      }
+      #lv-1b2beaab170b .img-left { transform: rotate(-2deg); }
+      #lv-1b2beaab170b .img-center { transform: rotate(2deg); }
+      #lv-1b2beaab170b .img-right { transform: rotate(-2deg); }
+    }
+
+
+    #lv-b8c283ffaa2e { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- LETTRINE (Drop Cap) --- */
+    #lv-b8c283ffaa2e .drop-cap::first-letter {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5.5rem;
+        float: left;
+        line-height: 0.85;
+        margin-right: 0.5rem;
+        color: #9d623d;
+    }
+
+    /* --- CADRE AFFICHE PREMIUM --- */
+    #lv-b8c283ffaa2e .premium-poster-frame {
+        background: #ffffff;
+        padding: 12px;
+        border: 1px solid rgba(113, 53, 6, 0.2);
+        box-shadow: 0 20px 40px -10px rgba(113, 53, 6, 0.10);
+        border-radius: 4px;
+        width: 100%;
+        max-width: 480px;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #lv-b8c283ffaa2e .premium-poster-frame::before {
+        content: '';
+        position: absolute;
+        top: 8px; bottom: 8px; left: 8px; right: 8px;
+        border: 1px solid rgba(157, 98, 61, 0.4);
+        pointer-events: none;
+        z-index: 30;
     }
 
 
@@ -231,7 +394,7 @@
         margin-right: 0.5rem;
         color: #9d623d;
     }
-    
+
     /* Style éditorial pour l'encart d'information */
     #lv-452a4a4cd6fa .info-card {
         background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(157, 98, 61, 0.1) 39px, rgba(157, 98, 61, 0.1) 40px);
@@ -240,9 +403,9 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-        #lv-452a4a4cd6fa .arched-video-frame,#lv-452a4a4cd6fa 
-        .glass-btn,#lv-452a4a4cd6fa 
-        .video-controls,#lv-452a4a4cd6fa 
+        #lv-452a4a4cd6fa .arched-video-frame,#lv-452a4a4cd6fa
+        .glass-btn,#lv-452a4a4cd6fa
+        .video-controls,#lv-452a4a4cd6fa
         .hover\:scale-105 {
             transition: none !important;
         }
@@ -382,8 +545,8 @@
     padding: 12px 16px;
   }
 
-  #lv-51265c5ff7d8 .lv-header-left,#lv-51265c5ff7d8 
-  .lv-header-center,#lv-51265c5ff7d8 
+  #lv-51265c5ff7d8 .lv-header-left,#lv-51265c5ff7d8
+  .lv-header-center,#lv-51265c5ff7d8
   .lv-header-right {
     position: relative;
     z-index: 3;
@@ -413,16 +576,16 @@
     font-size: 11px;
   }
 
-  #lv-51265c5ff7d8 .lv-header-link,#lv-51265c5ff7d8 
-  .lv-social-link,#lv-51265c5ff7d8 
+  #lv-51265c5ff7d8 .lv-header-link,#lv-51265c5ff7d8
+  .lv-social-link,#lv-51265c5ff7d8
   .lv-menu-summary {
     color: #713506;
     text-decoration: none;
     transition: color 0.25s ease;
   }
 
-  #lv-51265c5ff7d8 .lv-header-link:hover,#lv-51265c5ff7d8 
-  .lv-social-link:hover,#lv-51265c5ff7d8 
+  #lv-51265c5ff7d8 .lv-header-link:hover,#lv-51265c5ff7d8
+  .lv-social-link:hover,#lv-51265c5ff7d8
   .lv-menu-summary:hover {
     color: #9d623d;
   }
@@ -656,7 +819,7 @@
       padding: 0 0 0 6px;
     }
 
-    #lv-51265c5ff7d8 .lv-header-right,#lv-51265c5ff7d8 
+    #lv-51265c5ff7d8 .lv-header-right,#lv-51265c5ff7d8
     .lv-socials {
       display: none !important;
     }
@@ -709,7 +872,7 @@
 
 
     #lv-193d978ad2f1 { margin: 0; padding: 0; background-color: #fcf9f3; }
-    
+
     /* Lettrine élégante pour le début du texte */
     #lv-193d978ad2f1 .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
@@ -728,7 +891,7 @@
         position: relative;
         overflow: hidden;
     }
-    
+
     /* Calque de fusion cuivré signature (Archive) */
     #lv-e68faa1710c3 .village-img-wrapper::after {
         content: '';
@@ -741,22 +904,22 @@
         pointer-events: none;
         z-index: 10;
     }
-    
+
     /* Voile de texture ancienne */
     #lv-e68faa1710c3 .village-img-wrapper::before {
         content: '';
         position: absolute;
         inset: 0;
-        background-color: rgba(113, 53, 6, 0.15); 
+        background-color: rgba(113, 53, 6, 0.15);
         transition: opacity 0.8s ease;
         pointer-events: none;
         z-index: 11;
     }
-    
+
     /* Déclenchement au SURVOL de la souris OU au SCROLL (.is-visible) */
-    #lv-e68faa1710c3 .group:hover .village-img-wrapper::after,#lv-e68faa1710c3 
-    .group:hover .village-img-wrapper::before,#lv-e68faa1710c3 
-    .group.is-visible .village-img-wrapper::after,#lv-e68faa1710c3 
+    #lv-e68faa1710c3 .group:hover .village-img-wrapper::after,#lv-e68faa1710c3
+    .group:hover .village-img-wrapper::before,#lv-e68faa1710c3
+    .group.is-visible .village-img-wrapper::after,#lv-e68faa1710c3
     .group.is-visible .village-img-wrapper::before {
         opacity: 0;
     }
@@ -766,22 +929,22 @@
         transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         will-change: transform;
     }
-    
+
     /* Zoom au SURVOL ou au SCROLL */
-    #lv-e68faa1710c3 .group:hover .village-img,#lv-e68faa1710c3 
+    #lv-e68faa1710c3 .group:hover .village-img,#lv-e68faa1710c3
     .group.is-visible .village-img {
         transform: scale(1.05);
     }
 
 
     #lv-4ec1f98c02f1 { margin: 0; padding: 0; }
-    
+
     /* --- FILTRE ÉLÉGANT SANS BUG DE COULEUR (PALACE STYLE) --- */
     #lv-4ec1f98c02f1 .village-img-wrapper {
         position: relative;
         overflow: hidden;
     }
-    
+
     /* Calque de fusion cuivré signature (Archive) */
     #lv-4ec1f98c02f1 .village-img-wrapper::after {
         content: '';
@@ -794,22 +957,22 @@
         pointer-events: none;
         z-index: 10;
     }
-    
+
     /* Voile de texture ancienne */
     #lv-4ec1f98c02f1 .village-img-wrapper::before {
         content: '';
         position: absolute;
         inset: 0;
-        background-color: rgba(113, 53, 6, 0.15); 
+        background-color: rgba(113, 53, 6, 0.15);
         transition: opacity 0.8s ease;
         pointer-events: none;
         z-index: 11;
     }
-    
+
     /* Déclenchement au SURVOL de la souris OU au SCROLL (.is-visible) */
-    #lv-4ec1f98c02f1 .group:hover .village-img-wrapper::after,#lv-4ec1f98c02f1 
-    .group:hover .village-img-wrapper::before,#lv-4ec1f98c02f1 
-    .group.is-visible .village-img-wrapper::after,#lv-4ec1f98c02f1 
+    #lv-4ec1f98c02f1 .group:hover .village-img-wrapper::after,#lv-4ec1f98c02f1
+    .group:hover .village-img-wrapper::before,#lv-4ec1f98c02f1
+    .group.is-visible .village-img-wrapper::after,#lv-4ec1f98c02f1
     .group.is-visible .village-img-wrapper::before {
         opacity: 0;
     }
@@ -819,9 +982,9 @@
         transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         will-change: transform;
     }
-    
+
     /* Zoom au SURVOL ou au SCROLL */
-    #lv-4ec1f98c02f1 .group:hover .village-img,#lv-4ec1f98c02f1 
+    #lv-4ec1f98c02f1 .group:hover .village-img,#lv-4ec1f98c02f1
     .group.is-visible .village-img {
         transform: scale(1.05);
     }
@@ -842,7 +1005,7 @@
         opacity: 0;
         transform: translateY(40px); /* Pour l'animation d'apparition douce */
     }
-    
+
     /* Animation déclenchée au scroll */
     #lv-ff76e1ca2c29 .arched-video-frame.is-visible {
         opacity: 1;
@@ -874,7 +1037,7 @@
         overflow: hidden;
         background-color: #000;
     }
-    
+
     #lv-ff76e1ca2c29 .video-mask video {
         width: 100%;
         height: 100%;
@@ -914,13 +1077,13 @@
 
 
     #lv-45dceeab4d7e { margin: 0; padding: 0; }
-    
+
     /* --- FILTRE ÉLÉGANT SANS BUG DE COULEUR (PALACE STYLE) --- */
     #lv-45dceeab4d7e .village-img-wrapper {
         position: relative;
         overflow: hidden;
     }
-    
+
     /* Calque de fusion cuivré signature (Archive) */
     #lv-45dceeab4d7e .village-img-wrapper::after {
         content: '';
@@ -933,22 +1096,22 @@
         pointer-events: none;
         z-index: 10;
     }
-    
+
     /* Voile de texture ancienne pour la profondeur */
     #lv-45dceeab4d7e .village-img-wrapper::before {
         content: '';
         position: absolute;
         inset: 0;
-        background-color: rgba(113, 53, 6, 0.15); 
+        background-color: rgba(113, 53, 6, 0.15);
         transition: opacity 0.8s ease;
         pointer-events: none;
         z-index: 11;
     }
-    
+
     /* Déclenchement au SURVOL de la souris OU au SCROLL (.is-visible) */
-    #lv-45dceeab4d7e .group:hover .village-img-wrapper::after,#lv-45dceeab4d7e 
-    .group:hover .village-img-wrapper::before,#lv-45dceeab4d7e 
-    .group.is-visible .village-img-wrapper::after,#lv-45dceeab4d7e 
+    #lv-45dceeab4d7e .group:hover .village-img-wrapper::after,#lv-45dceeab4d7e
+    .group:hover .village-img-wrapper::before,#lv-45dceeab4d7e
+    .group.is-visible .village-img-wrapper::after,#lv-45dceeab4d7e
     .group.is-visible .village-img-wrapper::before {
         opacity: 0;
     }
@@ -958,9 +1121,9 @@
         transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         will-change: transform;
     }
-    
+
     /* Zoom au SURVOL ou au SCROLL */
-    #lv-45dceeab4d7e .group:hover .village-img,#lv-45dceeab4d7e 
+    #lv-45dceeab4d7e .group:hover .village-img,#lv-45dceeab4d7e
     .group.is-visible .village-img {
         transform: scale(1.05);
     }
@@ -979,11 +1142,11 @@
         overflow: hidden;
         transition: transform 0.5s ease, box-shadow 0.5s ease;
         margin: 10px auto 0;
-        max-width: 220px; 
+        max-width: 220px;
         opacity: 0;
         transform: translateY(20px);
     }
-    
+
     #lv-03c1fedde22a .mini-arched-video.is-visible {
         opacity: 1;
         transform: translateY(0);
@@ -1014,7 +1177,7 @@
         overflow: hidden;
         background-color: #000;
     }
-    
+
     #lv-03c1fedde22a .mini-video-mask video {
         width: 100%;
         height: 100%;
@@ -1377,7 +1540,7 @@
       z-index: 20;
     }
 
-    #lv-7372fa1e10f4 .header-safe a,#lv-7372fa1e10f4 
+    #lv-7372fa1e10f4 .header-safe a,#lv-7372fa1e10f4
     .header-safe button {
       position: relative;
       z-index: 30;
@@ -1418,7 +1581,7 @@
       box-shadow: 0 20px 50px -12px rgba(113, 53, 6, 0.30);
     }
 
-    /* 
+    /*
        Répartition mathématique (100% de largeur) sans superposition :
        Gauche: 0% à 26%
        Espace: 4%
@@ -1479,10 +1642,10 @@
       #lv-7372fa1e10f4 .img-center { transform: rotate(2deg); }
       #lv-7372fa1e10f4 .img-right { transform: rotate(-2deg); }
     }
-  
 
-        #lv-24fb6e930982 { margin: 0; padding: 0; background-color: #fcf9f3; }
-    
+
+        #lv-f20a9231e017 { margin: 0; padding: 0; background-color: #fcf9f3; }
+
 
         #lv-784edf0e382b .press-pdf-modal {
             position: fixed;
@@ -1553,7 +1716,89 @@
                 font-size: 22px;
             }
         }
-    
+
+
+    #lv-584111d5111f { margin: 0; padding: 0; background-color: #fcf9f3; }
+
+    /* --- LETTRINE (Drop Cap) --- */
+    #lv-584111d5111f .drop-cap::first-letter {
+        font-family: 'Great Vibes', cursive;
+        font-size: 5.5rem;
+        float: left;
+        line-height: 0.85;
+        margin-right: 0.5rem;
+        color: #9d623d;
+    }
+
+    /* --- CADRE AFFICHE PREMIUM --- */
+    #lv-584111d5111f .premium-poster-frame {
+        background: #ffffff;
+        padding: 12px;
+        border: 1px solid rgba(113, 53, 6, 0.2);
+        box-shadow: 0 20px 40px -10px rgba(113, 53, 6, 0.10);
+        border-radius: 4px;
+        width: 100%;
+        max-width: 480px;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #lv-584111d5111f .premium-poster-frame::before {
+        content: '';
+        position: absolute;
+        top: 8px; bottom: 8px; left: 8px; right: 8px;
+        border: 1px solid rgba(157, 98, 61, 0.4);
+        pointer-events: none;
+        z-index: 30;
+    }
+
+    /* --- LISTE PROGRAMMATION (Détails Accordéon) --- */
+    #lv-584111d5111f .prog-list details {
+        border-bottom: 1px solid rgba(113, 53, 6, 0.15);
+    }
+    #lv-584111d5111f .prog-list summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 16px 0;
+        font-family: 'Lato', sans-serif;
+        font-weight: 600;
+        color: #713506;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: color 0.3s ease;
+    }
+    #lv-584111d5111f .prog-list summary::-webkit-details-marker {
+        display: none;
+    }
+    #lv-584111d5111f .prog-list summary:hover {
+        color: #9d623d;
+    }
+    #lv-584111d5111f .prog-list summary::after {
+        content: '+';
+        font-size: 1.5rem;
+        font-weight: 300;
+        transition: transform 0.3s ease;
+    }
+    #lv-584111d5111f .prog-list details[open] summary::after {
+        transform: rotate(45deg);
+    }
+    #lv-584111d5111f .prog-list .prog-content {
+        padding-bottom: 16px;
+        color: rgba(113, 53, 6, 0.8);
+        font-family: 'Lato', sans-serif;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    #lv-584111d5111f .prog-theme {
+        display: inline-block;
+        font-family: 'Great Vibes', cursive;
+        color: #9d623d;
+        font-size: 1.4rem;
+        margin-top: 8px;
+    }
+
 #lv-1c9e2557b0a5 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
@@ -1565,7 +1810,7 @@
         margin-right: 0.5rem;
         color: #9d623d;
     }
-    
+
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
     #lv-1c9e2557b0a5 .nav-links-village {
         text-align: center !important;
@@ -1585,7 +1830,7 @@
         #lv-1c9e2557b0a5 .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
-            gap: 28px !important; 
+            gap: 28px !important;
         }
     }
     #lv-1c9e2557b0a5 .nav-links-village .village-link {
@@ -1692,7 +1937,7 @@
         margin-right: 0.5rem;
         color: #9d623d;
     }
-    
+
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
     #lv-6c90d994e64a .nav-links-village {
         text-align: center !important;
@@ -1712,7 +1957,7 @@
         #lv-6c90d994e64a .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
-            gap: 28px !important; 
+            gap: 28px !important;
         }
     }
     #lv-6c90d994e64a .nav-links-village .village-link {
@@ -1747,7 +1992,7 @@
         background-color: #ffffff;
         border: 1px solid rgba(113, 53, 6, 0.2);
     }
-    
+
     /* Conteneur image signature */
     #lv-6c90d994e64a .village-img-wrapper {
         position: relative;
@@ -1811,7 +2056,7 @@
         margin-right: 0.5rem;
         color: #9d623d;
     }
-    
+
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
     #lv-917dcc2f1e58 .nav-links-village {
         text-align: center !important;
@@ -1831,7 +2076,7 @@
         #lv-917dcc2f1e58 .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
-            gap: 28px !important; 
+            gap: 28px !important;
         }
     }
     #lv-917dcc2f1e58 .nav-links-village .village-link {
@@ -1885,7 +2130,7 @@
         margin-right: 0.5rem;
         color: #9d623d;
     }
-    
+
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
     #lv-04fe81cbd7bb .nav-links-village {
         text-align: center !important;
@@ -1905,7 +2150,7 @@
         #lv-04fe81cbd7bb .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
-            gap: 28px !important; 
+            gap: 28px !important;
         }
     }
     #lv-04fe81cbd7bb .nav-links-village .village-link {
@@ -1940,7 +2185,7 @@
         background-color: #ffffff;
         border: 1px solid rgba(113, 53, 6, 0.2);
     }
-    
+
     /* Conteneur Facebook responsif pour éviter le débordement sur petit mobile */
     #lv-04fe81cbd7bb .fb-embed-container {
         display: flex;
@@ -2067,7 +2312,7 @@
         box-shadow: 0 25px 50px rgba(0,0,0,0.4); position: relative; display: flex; flex-direction: column;
         border: 1px solid rgba(157, 98, 61, 0.3);
     }
-    
+
     #lv-9f6833c8e015 .lv-pin {
         width: 34px; height: 34px; border-radius: 999px; background: #ffffff;
         border: 2px solid #9d623d; box-shadow: 0 10px 18px rgba(113, 53, 6, 0.25);
@@ -2096,7 +2341,7 @@
         overflow: hidden;
         border-radius: 2px;
     }
-    
+
     #lv-9c1effec98c1 .village-img-wrapper::after {
         content: '';
         position: absolute;
@@ -2108,18 +2353,18 @@
         pointer-events: none;
         z-index: 10;
     }
-    
+
     #lv-9c1effec98c1 .village-img-wrapper::before {
         content: '';
         position: absolute;
         inset: 0;
-        background-color: rgba(113, 53, 6, 0.15); 
+        background-color: rgba(113, 53, 6, 0.15);
         transition: opacity 0.8s ease;
         pointer-events: none;
         z-index: 11;
     }
-    
-    #lv-9c1effec98c1 .group:hover .village-img-wrapper::after,#lv-9c1effec98c1 
+
+    #lv-9c1effec98c1 .group:hover .village-img-wrapper::after,#lv-9c1effec98c1
     .group:hover .village-img-wrapper::before {
         opacity: 0;
     }
@@ -2236,14 +2481,14 @@
         content: '';
         position: absolute;
         inset: 0;
-        background-color: rgba(113, 53, 6, 0.15); 
+        background-color: rgba(113, 53, 6, 0.15);
         transition: opacity 0.7s ease;
         pointer-events: none;
         z-index: 11;
     }
 
     /* Disparition nette des calques au survol */
-    #lv-92ecf4eb1f2f .group:hover .village-img-wrapper::after,#lv-92ecf4eb1f2f 
+    #lv-92ecf4eb1f2f .group:hover .village-img-wrapper::after,#lv-92ecf4eb1f2f
     .group:hover .village-img-wrapper::before {
         opacity: 0;
     }
@@ -2273,9 +2518,9 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-        #lv-92ecf4eb1f2f .village-img,#lv-92ecf4eb1f2f 
-        .village-img-wrapper::after,#lv-92ecf4eb1f2f 
-        .village-img-wrapper::before,#lv-92ecf4eb1f2f 
+        #lv-92ecf4eb1f2f .village-img,#lv-92ecf4eb1f2f
+        .village-img-wrapper::after,#lv-92ecf4eb1f2f
+        .village-img-wrapper::before,#lv-92ecf4eb1f2f
         .title-underline::after {
             transition: none !important;
         }
@@ -2304,7 +2549,7 @@
         box-shadow: 0 15px 45px -15px rgba(113, 53, 6, 0.12);
         border: 1px solid rgba(157, 98, 61, 0.08);
     }
-    
+
     @media (min-width: 768px) {
         #lv-1ccfb89f166e .map-frame {
             height: 600px;
@@ -2368,7 +2613,7 @@
     #lv-4386b1248bec .lv-ig-slides {
         position: relative;
         width: 100%;
-        aspect-ratio: 1 / 1; 
+        aspect-ratio: 1 / 1;
         overflow: hidden;
         border-radius: 2px;
     }
@@ -2417,8 +2662,8 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-        #lv-4386b1248bec .lv-ig-slide,#lv-4386b1248bec 
-        .lv-ig-dot,#lv-4386b1248bec 
+        #lv-4386b1248bec .lv-ig-slide,#lv-4386b1248bec
+        .lv-ig-dot,#lv-4386b1248bec
         .lv-ig-arrow {
             transition: none !important;
         }
@@ -2461,11 +2706,11 @@
     #lv-4386b1248bec .lv-ig-arrow-left { left: 10px; }
     #lv-4386b1248bec .lv-ig-arrow-right { right: 10px; }
 
-    #lv-4386b1248bec .lv-ig-arrow:hover { 
+    #lv-4386b1248bec .lv-ig-arrow:hover {
         background: rgba(252, 249, 243, 0.75);
         color: #713506;
         opacity: 0.9;
-        transform: translateY(-50%) scale(1.04); 
+        transform: translateY(-50%) scale(1.04);
     }
 
     #lv-4386b1248bec .nav-links-village {
@@ -2532,7 +2777,7 @@
     #lv-c11ba43e3783 .lv-ig-slides {
         position: relative;
         width: 100%;
-        aspect-ratio: 1 / 1; 
+        aspect-ratio: 1 / 1;
         overflow: hidden;
         border-radius: 2px;
     }
@@ -2640,30 +2885,30 @@
         position: relative;
         overflow: hidden;
     }
-    
+
     #lv-fd1810ecc350 .village-img-wrapper::after {
         content: '';
         position: absolute;
         inset: 0;
-        background-color: #9d623d; 
+        background-color: #9d623d;
         mix-blend-mode: color;
         opacity: 0.8;
         transition: opacity 0.8s ease;
         pointer-events: none;
         z-index: 10;
     }
-    
+
     #lv-fd1810ecc350 .village-img-wrapper::before {
         content: '';
         position: absolute;
         inset: 0;
-        background-color: rgba(113, 53, 6, 0.15); 
+        background-color: rgba(113, 53, 6, 0.15);
         transition: opacity 0.8s ease;
         pointer-events: none;
         z-index: 11;
     }
-    
-    #lv-fd1810ecc350 .group:hover .village-img-wrapper::after,#lv-fd1810ecc350 
+
+    #lv-fd1810ecc350 .group:hover .village-img-wrapper::after,#lv-fd1810ecc350
     .group:hover .village-img-wrapper::before {
         opacity: 0;
     }
@@ -2789,7 +3034,7 @@
         background: #ffffff;
         color: #713506;
     }
-    
+
     @media (max-width: 768px) {
         #lv-fd1810ecc350 .lv-ig-arrow { opacity: 0.9; }
     }
@@ -2810,7 +3055,7 @@
         overflow: hidden;
         border-radius: 2px;
     }
-    
+
     #lv-873f814e391f .village-img-wrapper::after {
         content: '';
         position: absolute;
@@ -2822,18 +3067,18 @@
         pointer-events: none;
         z-index: 10;
     }
-    
+
     #lv-873f814e391f .village-img-wrapper::before {
         content: '';
         position: absolute;
         inset: 0;
-        background-color: rgba(113, 53, 6, 0.15); 
+        background-color: rgba(113, 53, 6, 0.15);
         transition: opacity 0.8s ease;
         pointer-events: none;
         z-index: 11;
     }
-    
-    #lv-873f814e391f .group:hover .village-img-wrapper::after,#lv-873f814e391f 
+
+    #lv-873f814e391f .group:hover .village-img-wrapper::after,#lv-873f814e391f
     .group:hover .village-img-wrapper::before {
         opacity: 0;
     }
@@ -2925,7 +3170,7 @@
 
 
     #lv-b1bc89b1b497 { margin: 0; padding: 0; }
-    
+
     /* Grande guillemet décorative en arrière-plan de la carte */
     #lv-b1bc89b1b497 .quote-bg::before {
         content: '"';
@@ -3046,7 +3291,7 @@
         margin-right: 0.5rem;
         color: #9d623d;
     }
-    
+
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
     #lv-582b5edb21a2 .nav-links-village {
         text-align: center !important;
@@ -3066,7 +3311,7 @@
         #lv-582b5edb21a2 .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
-            gap: 28px !important; 
+            gap: 28px !important;
         }
     }
     #lv-582b5edb21a2 .nav-links-village .village-link {
@@ -3177,7 +3422,7 @@
         border: 1px solid rgba(245, 240, 234, 0.35);
         box-shadow: 0 22px 44px -18px rgba(64, 28, 4, 0.5);
     }
-    #lv-582b5edb21a2 .jazz-program-card::before,#lv-582b5edb21a2 
+    #lv-582b5edb21a2 .jazz-program-card::before,#lv-582b5edb21a2
     .jazz-program-card::after {
         content: '';
         position: absolute;
@@ -3287,15 +3532,15 @@
         -webkit-overflow-scrolling: touch; /* Défilement fluide sur iOS */
         scrollbar-width: none; /* Cache la barre de scroll Firefox */
     }
-    
+
     /* Centrer sur les grands écrans si l'espace le permet */
     @media (min-width: 1200px) {
         #lv-d2adbefe20aa .carte-nav { justify-content: center; }
     }
 
     /* Cache la barre de scroll Chrome/Safari */
-    #lv-d2adbefe20aa .carte-nav::-webkit-scrollbar { 
-        display: none; 
+    #lv-d2adbefe20aa .carte-nav::-webkit-scrollbar {
+        display: none;
     }
 
     #lv-d2adbefe20aa .carte-nav-link {
@@ -3993,7 +4238,7 @@
         box-shadow: 0 15px 45px -15px rgba(113, 53, 6, 0.12);
         border: 1px solid rgba(157, 98, 61, 0.08);
     }
-    
+
     @media (min-width: 768px) {
         #lv-ede6b904b8fa .map-frame {
             height: 600px;
@@ -4111,7 +4356,7 @@
         display: block;
         transition: transform 0.8s ease;
     }
-    
+
     /* Sur Mobile : Format d'origine de la photo (aucun rognage) */
     @media (max-width: 767px) {
         #lv-6bf9f4904c56 .framed-image-inner {
@@ -4122,11 +4367,11 @@
             object-fit: contain;
         }
     }
-    
+
     /* Sur PC : Photo allongée (format portrait 4:5) pour l'équilibre de la grille */
     @media (min-width: 768px) {
         #lv-6bf9f4904c56 .framed-image-inner {
-            aspect-ratio: 4 / 5; 
+            aspect-ratio: 4 / 5;
         }
         #lv-6bf9f4904c56 .village-framed-img {
             height: 100%;
@@ -4211,14 +4456,14 @@
         transition: transform 0.5s ease, box-shadow 0.5s ease;
         opacity: 0;
         transform: translateY(20px);
-        
+
         /* Ajustements pour l'intégration dans la colonne */
         width: 100%;
         min-width: 170px;
         max-width: 220px;
         flex-shrink: 0;
     }
-    
+
     #lv-0797d1e260a6 .arched-video-frame.is-visible {
         opacity: 1;
         transform: translateY(0);
@@ -4247,7 +4492,7 @@
         overflow: hidden;
         background-color: #000;
     }
-    
+
     #lv-0797d1e260a6 .video-mask video {
         width: 100%;
         height: 100%;
@@ -4465,7 +4710,7 @@
         cursor: default;
     }
 
-    #lv-056b84595d24 .lvLightboxClose,#lv-056b84595d24 
+    #lv-056b84595d24 .lvLightboxClose,#lv-056b84595d24
     .lvLightboxNav {
         position: absolute;
         color: #f5f0ea;
@@ -4477,7 +4722,7 @@
         transition: opacity 0.25s ease, color 0.25s ease;
     }
 
-    #lv-056b84595d24 .lvLightboxClose:hover,#lv-056b84595d24 
+    #lv-056b84595d24 .lvLightboxClose:hover,#lv-056b84595d24
     .lvLightboxNav:hover {
         opacity: 1;
         color: #9d623d;
@@ -4515,54 +4760,54 @@
     #lv-083f530b61a7 .village-img-wrapper {
         position: relative;
         overflow: hidden;
-        background-color: #713506; 
+        background-color: #713506;
     }
-    
+
     /* Calque de fusion cuivré signature (Archive) */
     #lv-083f530b61a7 .village-img-wrapper::after {
         content: '';
         position: absolute;
         inset: 0;
-        background-color: #9d623d; 
+        background-color: #9d623d;
         mix-blend-mode: color;
         opacity: 0.85;
         transition: opacity 1.8s cubic-bezier(0.25, 1, 0.5, 1); /* Transition lente et luxueuse */
         pointer-events: none;
         z-index: 10;
     }
-    
+
     /* Voile de profondeur */
     #lv-083f530b61a7 .village-img-wrapper::before {
         content: '';
         position: absolute;
         inset: 0;
-        background-color: rgba(113, 53, 6, 0.15); 
+        background-color: rgba(113, 53, 6, 0.15);
         transition: opacity 1.8s cubic-bezier(0.25, 1, 0.5, 1);
         pointer-events: none;
         z-index: 11;
     }
-    
+
     /* Transition d'apparition progressive au scroll (Staggering) */
-    #lv-083f530b61a7 .scroll-anim-trigger.is-visible:nth-child(1) .village-img-wrapper::after,#lv-083f530b61a7 
+    #lv-083f530b61a7 .scroll-anim-trigger.is-visible:nth-child(1) .village-img-wrapper::after,#lv-083f530b61a7
     .scroll-anim-trigger.is-visible:nth-child(1) .village-img-wrapper::before {
         opacity: 0;
         transition-delay: 0.3s; /* La première commence après 300ms */
     }
 
-    #lv-083f530b61a7 .scroll-anim-trigger.is-visible:nth-child(2) .village-img-wrapper::after,#lv-083f530b61a7 
+    #lv-083f530b61a7 .scroll-anim-trigger.is-visible:nth-child(2) .village-img-wrapper::after,#lv-083f530b61a7
     .scroll-anim-trigger.is-visible:nth-child(2) .village-img-wrapper::before {
         opacity: 0;
         transition-delay: 0.8s; /* La deuxième commence après 800ms */
     }
 
-    #lv-083f530b61a7 .scroll-anim-trigger.is-visible:nth-child(3) .village-img-wrapper::after,#lv-083f530b61a7 
+    #lv-083f530b61a7 .scroll-anim-trigger.is-visible:nth-child(3) .village-img-wrapper::after,#lv-083f530b61a7
     .scroll-anim-trigger.is-visible:nth-child(3) .village-img-wrapper::before {
         opacity: 0;
         transition-delay: 1.3s; /* La troisième commence après 1.3s */
     }
 
     /* Au survol souris, la réaction est instantanée (0.4s) sans délai pour l'interactivité */
-    #lv-083f530b61a7 .group:hover .village-img-wrapper::after,#lv-083f530b61a7 
+    #lv-083f530b61a7 .group:hover .village-img-wrapper::after,#lv-083f530b61a7
     .group:hover .village-img-wrapper::before {
         opacity: 0 !important;
         transition: opacity 0.4s ease-in-out !important;
@@ -4573,8 +4818,8 @@
         transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         will-change: transform;
     }
-    
-    #lv-083f530b61a7 .group:hover .village-img,#lv-083f530b61a7 
+
+    #lv-083f530b61a7 .group:hover .village-img,#lv-083f530b61a7
     .group.is-visible .village-img {
         transform: scale(1.05);
     }
@@ -4595,7 +4840,7 @@
         overflow: hidden;
         border-radius: 2px;
     }
-    
+
     #lv-bc43c58131f1 .village-img-wrapper::after {
         content: '';
         position: absolute;
@@ -4607,18 +4852,18 @@
         pointer-events: none;
         z-index: 10;
     }
-    
+
     #lv-bc43c58131f1 .village-img-wrapper::before {
         content: '';
         position: absolute;
         inset: 0;
-        background-color: rgba(113, 53, 6, 0.15); 
+        background-color: rgba(113, 53, 6, 0.15);
         transition: opacity 0.8s ease;
         pointer-events: none;
         z-index: 11;
     }
-    
-    #lv-bc43c58131f1 .group:hover .village-img-wrapper::after,#lv-bc43c58131f1 
+
+    #lv-bc43c58131f1 .group:hover .village-img-wrapper::after,#lv-bc43c58131f1
     .group:hover .village-img-wrapper::before {
         opacity: 0;
     }
@@ -4709,10 +4954,10 @@
     }
 
 
-    #lv-1ed452825e13 { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-64fd1ee6714c { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- CADRE VIDÉO FENÊTRE EN ARCHE ÉPURÉE --- */
-    #lv-1ed452825e13 .arched-video-frame {
+    #lv-64fd1ee6714c .arched-video-frame {
         position: relative;
         background: #ffffff;
         padding: 10px;
@@ -4724,15 +4969,15 @@
         opacity: 0;
         transform: translateY(40px);
     }
-    #lv-1ed452825e13 .arched-video-frame.is-visible {
+    #lv-64fd1ee6714c .arched-video-frame.is-visible {
         opacity: 1;
         transform: translateY(0);
     }
-    #lv-1ed452825e13 .arched-video-frame:hover {
+    #lv-64fd1ee6714c .arched-video-frame:hover {
         transform: translateY(-8px);
         box-shadow: 0 30px 60px -15px rgba(113, 53, 6, 0.25);
     }
-    #lv-1ed452825e13 .arched-video-frame::before {
+    #lv-64fd1ee6714c .arched-video-frame::before {
         content: '';
         position: absolute;
         top: 8px; bottom: 8px; left: 8px; right: 8px;
@@ -4741,7 +4986,7 @@
         pointer-events: none;
         z-index: 30;
     }
-    #lv-1ed452825e13 .video-mask {
+    #lv-64fd1ee6714c .video-mask {
         position: relative;
         width: 100%;
         aspect-ratio: 9/16;
@@ -4749,7 +4994,7 @@
         overflow: hidden;
         background-color: #000;
     }
-    #lv-1ed452825e13 .video-mask video {
+    #lv-64fd1ee6714c .video-mask video {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -4759,7 +5004,7 @@
     }
 
     /* --- BOUTONS PREMIUM (GLASSMORPHISM) --- */
-    #lv-1ed452825e13 .glass-btn {
+    #lv-64fd1ee6714c .glass-btn {
         background: rgba(255, 255, 255, 0.25);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
@@ -4767,21 +5012,21 @@
         color: #ffffff;
         transition: all 0.3s ease;
     }
-    #lv-1ed452825e13 .glass-btn:hover {
+    #lv-64fd1ee6714c .glass-btn:hover {
         background: rgba(255, 255, 255, 0.9);
         color: #713506;
         transform: scale(1.1);
     }
-    #lv-1ed452825e13 .video-controls {
+    #lv-64fd1ee6714c .video-controls {
         opacity: 0;
         transition: opacity 0.4s ease;
     }
-    #lv-1ed452825e13 .arched-video-frame:hover .video-controls {
+    #lv-64fd1ee6714c .arched-video-frame:hover .video-controls {
         opacity: 1;
     }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-1ed452825e13 .drop-cap::first-letter {
+    #lv-64fd1ee6714c .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -4801,7 +5046,7 @@
         margin-right: 0.5rem;
         color: #9d623d;
     }
-    
+
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
     #lv-922469db1f17 .nav-links-village {
         text-align: center !important;
@@ -4821,7 +5066,7 @@
         #lv-922469db1f17 .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
-            gap: 28px !important; 
+            gap: 28px !important;
         }
     }
     #lv-922469db1f17 .nav-links-village .village-link {
@@ -4875,7 +5120,7 @@
         margin-right: 0.5rem;
         color: #9d623d;
     }
-    
+
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
     #lv-a0a4b2d3fc19 .nav-links-village {
         text-align: center !important;
@@ -4895,7 +5140,7 @@
         #lv-a0a4b2d3fc19 .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
-            gap: 28px !important; 
+            gap: 28px !important;
         }
     }
     #lv-a0a4b2d3fc19 .nav-links-village .village-link {
@@ -4930,7 +5175,7 @@
         background-color: #ffffff;
         border: 1px solid rgba(113, 53, 6, 0.2);
     }
-    
+
     /* Conteneur Facebook responsif */
     #lv-a0a4b2d3fc19 .fb-embed-container {
         display: flex;
@@ -4947,10 +5192,10 @@
     }
 
 
-    #lv-d6e294100282 { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-cb2289967286 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- CADRE VIDÉO FENÊTRE EN ARCHE ÉPURÉE --- */
-    #lv-d6e294100282 .arched-video-frame {
+    #lv-cb2289967286 .arched-video-frame {
         position: relative;
         background: #ffffff;
         padding: 10px;
@@ -4962,15 +5207,15 @@
         opacity: 0;
         transform: translateY(40px);
     }
-    #lv-d6e294100282 .arched-video-frame.is-visible {
+    #lv-cb2289967286 .arched-video-frame.is-visible {
         opacity: 1;
         transform: translateY(0);
     }
-    #lv-d6e294100282 .arched-video-frame:hover {
+    #lv-cb2289967286 .arched-video-frame:hover {
         transform: translateY(-8px);
         box-shadow: 0 30px 60px -15px rgba(113, 53, 6, 0.25);
     }
-    #lv-d6e294100282 .arched-video-frame::before {
+    #lv-cb2289967286 .arched-video-frame::before {
         content: '';
         position: absolute;
         top: 8px; bottom: 8px; left: 8px; right: 8px;
@@ -4979,7 +5224,7 @@
         pointer-events: none;
         z-index: 30;
     }
-    #lv-d6e294100282 .video-mask {
+    #lv-cb2289967286 .video-mask {
         position: relative;
         width: 100%;
         aspect-ratio: 9/16;
@@ -4987,7 +5232,7 @@
         overflow: hidden;
         background-color: #000;
     }
-    #lv-d6e294100282 .video-mask video {
+    #lv-cb2289967286 .video-mask video {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -4997,7 +5242,7 @@
     }
 
     /* --- BOUTONS PREMIUM (GLASSMORPHISM) --- */
-    #lv-d6e294100282 .glass-btn {
+    #lv-cb2289967286 .glass-btn {
         background: rgba(255, 255, 255, 0.25);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
@@ -5005,21 +5250,21 @@
         color: #ffffff;
         transition: all 0.3s ease;
     }
-    #lv-d6e294100282 .glass-btn:hover {
+    #lv-cb2289967286 .glass-btn:hover {
         background: rgba(255, 255, 255, 0.9);
         color: #713506;
         transform: scale(1.1);
     }
-    #lv-d6e294100282 .video-controls {
+    #lv-cb2289967286 .video-controls {
         opacity: 0;
         transition: opacity 0.4s ease;
     }
-    #lv-d6e294100282 .arched-video-frame:hover .video-controls {
+    #lv-cb2289967286 .arched-video-frame:hover .video-controls {
         opacity: 1;
     }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-d6e294100282 .drop-cap::first-letter {
+    #lv-cb2289967286 .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -5039,7 +5284,7 @@
         margin-right: 0.5rem;
         color: #9d623d;
     }
-    
+
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
     #lv-c9de54853185 .nav-links-village {
         text-align: center !important;
@@ -5059,7 +5304,7 @@
         #lv-c9de54853185 .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
-            gap: 28px !important; 
+            gap: 28px !important;
         }
     }
     #lv-c9de54853185 .nav-links-village .village-link {
@@ -5096,7 +5341,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-        #lv-c9de54853185 .nav-links-village .village-link::after,#lv-c9de54853185 
+        #lv-c9de54853185 .nav-links-village .village-link::after,#lv-c9de54853185
         .hover\:scale-105 {
             transition: none !important;
         }
@@ -5113,7 +5358,7 @@
         margin-right: 0.5rem;
         color: #9d623d;
     }
-    
+
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
     #lv-e9d6310fd1a1 .nav-links-village {
         text-align: center !important;
@@ -5133,7 +5378,7 @@
         #lv-e9d6310fd1a1 .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
-            gap: 28px !important; 
+            gap: 28px !important;
         }
     }
     #lv-e9d6310fd1a1 .nav-links-village .village-link {
@@ -5228,7 +5473,7 @@
     #lv-e9d6310fd1a1 .poster-filter {
         filter: sepia(22%) contrast(1.04) opacity(0.94) grayscale(8%);
     }
-    
+
     /* Conteneur image signature en arche */
     #lv-e9d6310fd1a1 .arched-image-frame {
         position: relative;
@@ -5275,10 +5520,10 @@
     }
 
 
-    #lv-3c9f5c3dc9f6 { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-a72e8ccf36cc { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-3c9f5c3dc9f6 .drop-cap::first-letter {
+    #lv-a72e8ccf36cc .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -5287,37 +5532,27 @@
         color: #9d623d;
     }
 
-    /* --- INTÉGRATION FACEBOOK PREMIUM --- */
-    #lv-3c9f5c3dc9f6 .social-embed-container {
+    /* --- CADRE PHOTO PREMIUM (Pour remplacer Facebook) --- */
+    #lv-a72e8ccf36cc .premium-photo-frame {
         background: #ffffff;
-        padding: 10px;
+        padding: 12px;
         border: 1px solid rgba(113, 53, 6, 0.2);
         box-shadow: 0 20px 40px -10px rgba(113, 53, 6, 0.10);
-        transition: transform 0.4s ease, box-shadow 0.4s ease;
         border-radius: 4px;
         width: 100%;
-        max-width: 520px; /* Pour encadrer proprement l'iframe FB de 500px */
+        max-width: 520px;
         margin: 0 auto;
-    }
-    #lv-3c9f5c3dc9f6 .social-embed-container:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 25px 50px -12px rgba(113, 53, 6, 0.18);
-    }
-    
-    /* Conteneur responsive pour l'iframe */
-    #lv-3c9f5c3dc9f6 .fb-iframe-wrapper {
         position: relative;
-        width: 100%;
-        /* Ratio approximatif du post FB */
-        padding-bottom: 105%; 
         overflow: hidden;
     }
-    #lv-3c9f5c3dc9f6 .fb-iframe-wrapper iframe {
+
+    #lv-a72e8ccf36cc .premium-photo-frame::before {
+        content: '';
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        top: 8px; bottom: 8px; left: 8px; right: 8px;
+        border: 1px solid rgba(157, 98, 61, 0.4);
+        pointer-events: none;
+        z-index: 30;
     }
 
 #lv-f2d2d7895c25 { margin: 0; padding: 0; background-color: #fcf9f3; }
@@ -5331,7 +5566,7 @@
         margin-right: 0.5rem;
         color: #9d623d;
     }
-    
+
     /* Conteneur Facebook responsif */
     #lv-f2d2d7895c25 .fb-embed-container {
         display: flex;
@@ -5360,7 +5595,7 @@
         #lv-f2d2d7895c25 .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
-            gap: 28px !important; 
+            gap: 28px !important;
         }
     }
     #lv-f2d2d7895c25 .nav-links-village .village-link {
@@ -5450,7 +5685,7 @@
     #lv-b29b40547f04 .btn-luxury-text { position: relative; z-index: 1; display: flex; align-items: center; }
     #lv-b29b40547f04 .btn-luxury-arrow { margin-left: 12px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
     #lv-b29b40547f04 .btn-luxury:hover .btn-luxury-arrow { transform: translateX(6px); }
-    
+
     /* --- FILTRE CUIVRÉ SIGNATURE --- */
     #lv-b29b40547f04 .village-img-wrapper {
         position: relative;
@@ -5460,28 +5695,28 @@
     /* Calque Cuivré */
     #lv-b29b40547f04 .village-img-wrapper::after {
         content: ''; position: absolute; inset: 0;
-        background-color: #9d623d; mix-blend-mode: color; opacity: 0.85; 
+        background-color: #9d623d; mix-blend-mode: color; opacity: 0.85;
         transition: opacity 0.6s ease; pointer-events: none; z-index: 10;
     }
     /* Calque Profondeur */
     #lv-b29b40547f04 .village-img-wrapper::before {
         content: ''; position: absolute; inset: 0;
-        background-color: rgba(113, 53, 6, 0.15); 
+        background-color: rgba(113, 53, 6, 0.15);
         transition: opacity 0.6s ease; pointer-events: none; z-index: 11;
     }
     /* Estompage du filtre uniquement au Survol */
-    #lv-b29b40547f04 .group:hover .village-img-wrapper::after,#lv-b29b40547f04  
-    .group:hover .village-img-wrapper::before { 
-        opacity: 0; 
+    #lv-b29b40547f04 .group:hover .village-img-wrapper::after,#lv-b29b40547f04
+    .group:hover .village-img-wrapper::before {
+        opacity: 0;
     }
 
     /* Mouvement lent luxueux */
-    #lv-b29b40547f04 .village-img { 
-        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
-        will-change: transform; 
+    #lv-b29b40547f04 .village-img {
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: transform;
     }
-    #lv-b29b40547f04 .group:hover .village-img { 
-        transform: scale(1.05); 
+    #lv-b29b40547f04 .group:hover .village-img {
+        transform: scale(1.05);
     }
 
 
@@ -5496,7 +5731,7 @@
         margin-right: 0.5rem;
         color: #9d623d;
     }
-    
+
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
     #lv-26baac5e7dfc .nav-links-village {
         text-align: center !important;
@@ -5516,7 +5751,7 @@
         #lv-26baac5e7dfc .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
-            gap: 28px !important; 
+            gap: 28px !important;
         }
     }
     #lv-26baac5e7dfc .nav-links-village .village-link {
@@ -5551,7 +5786,7 @@
         background-color: #ffffff;
         border: 1px solid rgba(113, 53, 6, 0.2);
     }
-    
+
     /* Conteneur vidéo responsif */
     #lv-26baac5e7dfc .video-embed-container {
         display: flex;
@@ -5567,10 +5802,10 @@
     }
 
 
-    #lv-7ac2eb90a8f5 { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-560850986722 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-7ac2eb90a8f5 .drop-cap::first-letter {
+    #lv-560850986722 .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -5580,7 +5815,7 @@
     }
 
     /* --- IMAGE ENCADRÉE TYPE MENU (Cliquable) --- */
-    #lv-7ac2eb90a8f5 .menu-presentation-frame {
+    #lv-560850986722 .menu-presentation-frame {
         background: #ffffff;
         padding: 12px;
         border: 1px solid rgba(113, 53, 6, 0.15);
@@ -5592,22 +5827,22 @@
         display: block;
         text-decoration: none;
     }
-    #lv-7ac2eb90a8f5 .menu-presentation-frame:hover {
+    #lv-560850986722 .menu-presentation-frame:hover {
         transform: translateY(-5px);
         box-shadow: 0 30px 60px -15px rgba(113, 53, 6, 0.20);
     }
-    #lv-7ac2eb90a8f5 .menu-image-inner {
+    #lv-560850986722 .menu-image-inner {
         position: relative;
         width: 100%;
         overflow: hidden;
         border: 1px solid rgba(157, 98, 61, 0.3);
     }
-    #lv-7ac2eb90a8f5 .menu-image-inner img {
+    #lv-560850986722 .menu-image-inner img {
         width: 100%;
         display: block;
         transition: transform 0.8s ease;
     }
-    #lv-7ac2eb90a8f5 .menu-presentation-frame:hover .menu-image-inner img {
+    #lv-560850986722 .menu-presentation-frame:hover .menu-image-inner img {
         transform: scale(1.03);
     }
 
@@ -5622,7 +5857,7 @@
         margin-right: 0.5rem;
         color: #9d623d;
     }
-    
+
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
     #lv-ec06b7982f7d .nav-links-village {
         text-align: center !important;
@@ -5642,7 +5877,7 @@
         #lv-ec06b7982f7d .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
-            gap: 28px !important; 
+            gap: 28px !important;
         }
     }
     #lv-ec06b7982f7d .nav-links-village .village-link {
@@ -5677,7 +5912,7 @@
         overflow: hidden;
         border-radius: 2px;
     }
-    
+
     /* Image encadrée type Polaroïd */
     #lv-ec06b7982f7d .framed-image-container {
         width: 100%;

@@ -1,5 +1,11 @@
 [
   {
+    "path": "/automne-haut-de-cagnes",
+    "file": "automne-haut-de-cagnes.html",
+    "title": "Automne au Haut-de-Cagnes | Communiqué Le Village",
+    "kind": "press-release"
+  },
+  {
     "path": "/brunch-musical-cagnes-sur-mer-restaurant-le-village",
     "file": "brunch-musical-cagnes-sur-mer-restaurant-le-village.html",
     "title": "Brunch Musical de Printemps à Cagnes-sur-Mer | Le Village",
@@ -28,6 +34,12 @@
     "file": "espace-presse.html",
     "title": "Espace presse | Le Grimaldi by Le Village, Cagnes",
     "kind": "default"
+  },
+  {
+    "path": "/ete-en-musique-jazz-cagnes-sur-mer",
+    "file": "ete-en-musique-jazz-cagnes-sur-mer.html",
+    "title": "Jazz au Château 2026, Haut-de-Cagnes | Presse Le Village",
+    "kind": "press-release"
   },
   {
     "path": "/fete-de-la-musique-jazz-chateau-cagnes-sur-mer",
@@ -86,8 +98,8 @@
   {
     "path": "/naissance-le-grimaldi-by-le-village",
     "file": "naissance-le-grimaldi-by-le-village.html",
-    "title": "Naissance du Grimaldi by Le Village | Haut-de-Cagnes",
-    "kind": "default"
+    "title": "Naissance du Grimaldi by Le Village | Presse",
+    "kind": "press-release"
   },
   {
     "path": "/noel-haut-de-cagnes-restaurant-le-village",
@@ -104,8 +116,8 @@
   {
     "path": "/restaurant-le-village-feerie-de-noel-a-cagnes-sur-mer",
     "file": "restaurant-le-village-feerie-de-noel-a-cagnes-sur-mer.html",
-    "title": "Restaurant Le Village: Féerie de Noël à Cagnes-sur-Mer",
-    "kind": "default"
+    "title": "Noël au Haut-de-Cagnes | Communiqué Le Village",
+    "kind": "press-release"
   },
   {
     "path": "/saint-valentin-2026-cagnes-sur-mer-concert-diner-hotel-le-grimaldi",
@@ -122,8 +134,8 @@
   {
     "path": "/visite-de-sas-le-prince-albert-ii-de-monaco",
     "file": "visite-de-sas-le-prince-albert-ii-de-monaco.html",
-    "title": "Visite du Prince Albert II au Grimaldi | Haut-de-Cagnes",
-    "kind": "default"
+    "title": "Le Prince Albert II au Village | Communiqué de presse",
+    "kind": "press-release"
   },
   {
     "path": "/visite-prince-albert-2-monaco-restaurant-le-village-cagnes",
@@ -147,7 +159,7 @@
     "path": "/week-end-1er-mai-hotel-restaurant-cagnes-sur-mer",
     "file": "week-end-1er-mai-hotel-restaurant-cagnes-sur-mer.html",
     "title": "1er Mai au Haut-de-Cagnes | Presse Le Village",
-    "kind": "default"
+    "kind": "press-release"
   },
   {
     "path": "/week-end-jazz-boules-carrees-haut-de-cagnes",

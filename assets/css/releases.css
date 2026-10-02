@@ -1,0 +1,9 @@
+/* Press releases keep the press masthead, framed content and original spacing. */
+.release-page > .lv-block:has(#press-header){z-index:100}
+.release-page #main > .lv-block{max-width:1240px;width:calc(100% - 48px);margin-inline:auto}
+.release-page #main:has(#menuLightbox:not(.hidden)){position:relative;z-index:200}
+.release-page #menuLightbox{overscroll-behavior:contain}
+.release-page article{min-width:0}
+.release-page #main a{overflow-wrap:anywhere}
+@media(max-width:767px){.release-page #main > .lv-block{width:calc(100% - 32px)}}
+@media(prefers-reduced-motion:reduce){.release-page *{scroll-behavior:auto!important;transition:none!important}}
