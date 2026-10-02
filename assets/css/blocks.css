@@ -276,10 +276,10 @@
     }
   
 
-    #lv-9b98ca437a1a { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-00cef55f8b78 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-9b98ca437a1a .drop-cap::first-letter {
+    #lv-00cef55f8b78 .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -289,7 +289,7 @@
     }
 
     /* --- CADRE AFFICHE PREMIUM --- */
-    #lv-9b98ca437a1a .premium-poster-frame {
+    #lv-00cef55f8b78 .premium-poster-frame {
         background: #ffffff;
         padding: 12px;
         border: 1px solid rgba(113, 53, 6, 0.2);
@@ -302,7 +302,7 @@
         overflow: hidden;
     }
     
-    #lv-9b98ca437a1a .premium-poster-frame::before {
+    #lv-00cef55f8b78 .premium-poster-frame::before {
         content: '';
         position: absolute;
         top: 8px; bottom: 8px; left: 8px; right: 8px;
@@ -504,11 +504,11 @@
     #lv-43d114bf850c { margin: 0; padding: 0; }
 
 
-  #lv-51265c5ff7d8 {
+  #lv-c4d32621e90d {
     scroll-behavior: smooth;
   }
 
-  #lv-51265c5ff7d8 .lv-press-wrap {
+  #lv-c4d32621e90d .lv-press-wrap {
     position: relative;
     width: 100vw;
     max-width: 100vw;
@@ -519,7 +519,7 @@
     overflow: visible;
   }
 
-  #lv-51265c5ff7d8 .lv-press-line {
+  #lv-c4d32621e90d .lv-press-line {
     position: absolute;
     left: 0;
     right: 0;
@@ -531,13 +531,13 @@
     z-index: 0;
   }
 
-  #lv-51265c5ff7d8 .lv-header {
+  #lv-c4d32621e90d .lv-header {
     position: relative;
     z-index: 60;
     background: #fcf9f3;
   }
 
-  #lv-51265c5ff7d8 .lv-header-inner {
+  #lv-c4d32621e90d .lv-header-inner {
     position: relative;
     display: flex;
     align-items: center;
@@ -545,26 +545,26 @@
     padding: 12px 16px;
   }
 
-  #lv-51265c5ff7d8 .lv-header-left,#lv-51265c5ff7d8 
-  .lv-header-center,#lv-51265c5ff7d8 
+  #lv-c4d32621e90d .lv-header-left,#lv-c4d32621e90d 
+  .lv-header-center,#lv-c4d32621e90d 
   .lv-header-right {
     position: relative;
     z-index: 3;
     background: #fcf9f3;
   }
 
-  #lv-51265c5ff7d8 .lv-header-left {
+  #lv-c4d32621e90d .lv-header-left {
     display: flex;
     align-items: center;
     gap: 12px;
     padding-right: 12px;
   }
 
-  #lv-51265c5ff7d8 .lv-header-center {
+  #lv-c4d32621e90d .lv-header-center {
     padding: 0 16px;
   }
 
-  #lv-51265c5ff7d8 .lv-header-right {
+  #lv-c4d32621e90d .lv-header-right {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -576,48 +576,48 @@
     font-size: 11px;
   }
 
-  #lv-51265c5ff7d8 .lv-header-link,#lv-51265c5ff7d8 
-  .lv-social-link,#lv-51265c5ff7d8 
+  #lv-c4d32621e90d .lv-header-link,#lv-c4d32621e90d 
+  .lv-social-link,#lv-c4d32621e90d 
   .lv-menu-summary {
     color: #713506;
     text-decoration: none;
     transition: color 0.25s ease;
   }
 
-  #lv-51265c5ff7d8 .lv-header-link:hover,#lv-51265c5ff7d8 
-  .lv-social-link:hover,#lv-51265c5ff7d8 
+  #lv-c4d32621e90d .lv-header-link:hover,#lv-c4d32621e90d 
+  .lv-social-link:hover,#lv-c4d32621e90d 
   .lv-menu-summary:hover {
     color: #9d623d;
   }
 
-  #lv-51265c5ff7d8 .lv-socials {
+  #lv-c4d32621e90d .lv-socials {
     display: flex;
     align-items: center;
     gap: 10px;
   }
 
-  #lv-51265c5ff7d8 .lv-logo {
+  #lv-c4d32621e90d .lv-logo {
     display: block;
     height: 230px;
     object-fit: contain;
   }
 
-  #lv-51265c5ff7d8 .lv-menu-details {
+  #lv-c4d32621e90d .lv-menu-details {
     position: relative;
   }
 
-  #lv-51265c5ff7d8 .lv-menu-summary {
+  #lv-c4d32621e90d .lv-menu-summary {
     list-style: none;
     display: flex;
     align-items: center;
     cursor: pointer;
   }
 
-  #lv-51265c5ff7d8 .lv-menu-summary::-webkit-details-marker {
+  #lv-c4d32621e90d .lv-menu-summary::-webkit-details-marker {
     display: none;
   }
 
-  #lv-51265c5ff7d8 .lv-menu-panel {
+  #lv-c4d32621e90d .lv-menu-panel {
     display: none;
     position: absolute;
     top: calc(100% + 14px);
@@ -629,11 +629,11 @@
     z-index: 80;
   }
 
-  #lv-51265c5ff7d8 .lv-menu-details[open] .lv-menu-panel {
+  #lv-c4d32621e90d .lv-menu-details[open] .lv-menu-panel {
     display: block;
   }
 
-  #lv-51265c5ff7d8 .lv-menu-panel a {
+  #lv-c4d32621e90d .lv-menu-panel a {
     display: block;
     padding: 14px 32px;
     color: #713506;
@@ -641,12 +641,12 @@
     transition: background 0.25s ease, color 0.25s ease;
   }
 
-  #lv-51265c5ff7d8 .lv-menu-panel a:hover {
+  #lv-c4d32621e90d .lv-menu-panel a:hover {
     background: #f5f0ea;
     color: #9d623d;
   }
 
-  #lv-51265c5ff7d8 .lv-hero {
+  #lv-c4d32621e90d .lv-hero {
     position: relative;
     width: 100%;
     min-height: 58vh;
@@ -657,14 +657,14 @@
     justify-content: center;
   }
 
-  #lv-51265c5ff7d8 .lv-hero-bg {
+  #lv-c4d32621e90d .lv-hero-bg {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
   }
 
-  #lv-51265c5ff7d8 .lv-hero-bg img {
+  #lv-c4d32621e90d .lv-hero-bg img {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -672,30 +672,30 @@
     object-fit: cover;
   }
 
-  #lv-51265c5ff7d8 .lv-hero-img-desktop {
+  #lv-c4d32621e90d .lv-hero-img-desktop {
     display: block;
     object-position: center 34%;
   }
 
-  #lv-51265c5ff7d8 .lv-hero-img-mobile {
+  #lv-c4d32621e90d .lv-hero-img-mobile {
     display: none;
     object-position: center 20%;
   }
 
-  #lv-51265c5ff7d8 .lv-hero-overlay {
+  #lv-c4d32621e90d .lv-hero-overlay {
     position: absolute;
     inset: 0;
     background: rgba(113, 53, 6, 0.38);
   }
 
-  #lv-51265c5ff7d8 .lv-hero-content {
+  #lv-c4d32621e90d .lv-hero-content {
     position: relative;
     z-index: 2;
     text-align: center;
     padding: 20px;
   }
 
-  #lv-51265c5ff7d8 .lv-hero-title {
+  #lv-c4d32621e90d .lv-hero-title {
     margin: 0 0 16px;
     font-family: "Great Vibes", cursive;
     font-weight: 400;
@@ -705,7 +705,7 @@
     text-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
   }
 
-  #lv-51265c5ff7d8 .lv-hero-subtitle {
+  #lv-c4d32621e90d .lv-hero-subtitle {
     margin: 0;
     font-family: "Lato", sans-serif;
     font-weight: 400;
@@ -715,7 +715,7 @@
     font-size: clamp(11px, 1.2vw, 16px);
   }
 
-  #lv-51265c5ff7d8 .lv-subnav {
+  #lv-c4d32621e90d .lv-subnav {
     background: #713506;
     color: #f5f0ea;
     padding: 22px 16px;
@@ -723,7 +723,7 @@
     box-shadow: 0 8px 24px rgba(113, 53, 6, 0.12);
   }
 
-  #lv-51265c5ff7d8 .lv-subnav ul {
+  #lv-c4d32621e90d .lv-subnav ul {
     list-style: none;
     margin: 0 auto;
     padding: 0;
@@ -739,79 +739,79 @@
     font-size: 12px;
   }
 
-  #lv-51265c5ff7d8 .lv-subnav a {
+  #lv-c4d32621e90d .lv-subnav a {
     color: #f5f0ea;
     text-decoration: none;
     transition: color 0.25s ease;
   }
 
-  #lv-51265c5ff7d8 .lv-subnav a:hover {
+  #lv-c4d32621e90d .lv-subnav a:hover {
     color: #9d623d;
   }
 
   @media (min-width: 768px) {
-    #lv-51265c5ff7d8 .lv-header-inner {
+    #lv-c4d32621e90d .lv-header-inner {
       padding: 20px 40px;
     }
 
-    #lv-51265c5ff7d8 .lv-logo {
+    #lv-c4d32621e90d .lv-logo {
       height: 240px;
     }
 
-    #lv-51265c5ff7d8 .lv-header-left {
+    #lv-c4d32621e90d .lv-header-left {
       gap: 20px;
     }
 
-    #lv-51265c5ff7d8 .lv-header-right {
+    #lv-c4d32621e90d .lv-header-right {
       gap: 20px;
       font-size: 12px;
     }
 
-    #lv-51265c5ff7d8 .lv-hero {
+    #lv-c4d32621e90d .lv-hero {
       min-height: 72vh;
       height: 72vh;
     }
 
-    #lv-51265c5ff7d8 .lv-subnav ul {
+    #lv-c4d32621e90d .lv-subnav ul {
       gap: 32px 64px;
       font-size: 13px;
     }
   }
 
   @media (min-width: 1024px) {
-    #lv-51265c5ff7d8 .lv-header-inner {
+    #lv-c4d32621e90d .lv-header-inner {
       padding: 24px 56px;
     }
 
-    #lv-51265c5ff7d8 .lv-logo {
+    #lv-c4d32621e90d .lv-logo {
       height: 288px;
     }
   }
 
   @media (min-width: 1280px) {
-    #lv-51265c5ff7d8 .lv-logo {
+    #lv-c4d32621e90d .lv-logo {
       height: 320px;
     }
 
-    #lv-51265c5ff7d8 .lv-hero {
+    #lv-c4d32621e90d .lv-hero {
       min-height: 76vh;
       height: 76vh;
     }
   }
 
   @media (max-width: 767px) {
-    #lv-51265c5ff7d8 .lv-header-inner {
+    #lv-c4d32621e90d .lv-header-inner {
       padding: 7px 14px;
       gap: 4px;
     }
 
-    #lv-51265c5ff7d8 .lv-header-left {
+    #lv-c4d32621e90d .lv-header-left {
       flex: 0 0 auto;
       gap: 0;
       padding-right: 0;
     }
 
-    #lv-51265c5ff7d8 .lv-header-center {
+    #lv-c4d32621e90d .lv-header-center {
       flex: 1 1 auto;
       min-width: 0;
       display: flex;
@@ -819,51 +819,51 @@
       padding: 0 0 0 6px;
     }
 
-    #lv-51265c5ff7d8 .lv-header-right,#lv-51265c5ff7d8 
+    #lv-c4d32621e90d .lv-header-right,#lv-c4d32621e90d 
     .lv-socials {
       display: none !important;
     }
 
-    #lv-51265c5ff7d8 .lv-logo {
+    #lv-c4d32621e90d .lv-logo {
       height: 128px;
       max-width: 86vw;
     }
 
-    #lv-51265c5ff7d8 .lv-menu-panel {
+    #lv-c4d32621e90d .lv-menu-panel {
       left: 0;
       width: calc(100vw - 24px);
     }
 
-    #lv-51265c5ff7d8 .lv-hero {
+    #lv-c4d32621e90d .lv-hero {
       min-height: 70vh;
       height: 70vh;
     }
 
-    #lv-51265c5ff7d8 .lv-hero-img-desktop {
+    #lv-c4d32621e90d .lv-hero-img-desktop {
       display: none;
     }
 
-    #lv-51265c5ff7d8 .lv-hero-img-mobile {
+    #lv-c4d32621e90d .lv-hero-img-mobile {
       display: block;
       object-fit: cover;
       object-position: center 20%;
     }
 
-    #lv-51265c5ff7d8 .lv-hero-title {
+    #lv-c4d32621e90d .lv-hero-title {
       font-size: clamp(56px, 14vw, 90px);
       margin-bottom: 10px;
     }
 
-    #lv-51265c5ff7d8 .lv-hero-subtitle {
+    #lv-c4d32621e90d .lv-hero-subtitle {
       letter-spacing: 0.16em;
       font-size: 11px;
     }
 
-    #lv-51265c5ff7d8 .lv-subnav {
+    #lv-c4d32621e90d .lv-subnav {
       padding: 16px 12px;
     }
 
-    #lv-51265c5ff7d8 .lv-subnav ul {
+    #lv-c4d32621e90d .lv-subnav ul {
       gap: 16px 18px;
       letter-spacing: 0.12em;
       font-size: 10px;
@@ -871,10 +871,10 @@
   }
 
 
-    #lv-193d978ad2f1 { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-9b68755da18e { margin: 0; padding: 0; background-color: #fcf9f3; }
     
     /* Lettrine élégante pour le début du texte */
-    #lv-193d978ad2f1 .drop-cap::first-letter {
+    #lv-9b68755da18e .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5rem;
         float: left;
@@ -937,16 +937,16 @@
     }
 
 
-    #lv-4ec1f98c02f1 { margin: 0; padding: 0; }
+    #lv-58c2ec50de6e { margin: 0; padding: 0; }
     
     /* --- FILTRE ÉLÉGANT SANS BUG DE COULEUR (PALACE STYLE) --- */
-    #lv-4ec1f98c02f1 .village-img-wrapper {
+    #lv-58c2ec50de6e .village-img-wrapper {
         position: relative;
         overflow: hidden;
     }
     
     /* Calque de fusion cuivré signature (Archive) */
-    #lv-4ec1f98c02f1 .village-img-wrapper::after {
+    #lv-58c2ec50de6e .village-img-wrapper::after {
         content: '';
         position: absolute;
         inset: 0;
@@ -959,7 +959,7 @@
     }
     
     /* Voile de texture ancienne */
-    #lv-4ec1f98c02f1 .village-img-wrapper::before {
+    #lv-58c2ec50de6e .village-img-wrapper::before {
         content: '';
         position: absolute;
         inset: 0;
@@ -970,21 +970,21 @@
     }
     
     /* Déclenchement au SURVOL de la souris OU au SCROLL (.is-visible) */
-    #lv-4ec1f98c02f1 .group:hover .village-img-wrapper::after,#lv-4ec1f98c02f1 
-    .group:hover .village-img-wrapper::before,#lv-4ec1f98c02f1 
-    .group.is-visible .village-img-wrapper::after,#lv-4ec1f98c02f1 
+    #lv-58c2ec50de6e .group:hover .village-img-wrapper::after,#lv-58c2ec50de6e 
+    .group:hover .village-img-wrapper::before,#lv-58c2ec50de6e 
+    .group.is-visible .village-img-wrapper::after,#lv-58c2ec50de6e 
     .group.is-visible .village-img-wrapper::before {
         opacity: 0;
     }
 
     /* Mouvement de l'image doux et luxueux */
-    #lv-4ec1f98c02f1 .village-img {
+    #lv-58c2ec50de6e .village-img {
         transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         will-change: transform;
     }
     
     /* Zoom au SURVOL ou au SCROLL */
-    #lv-4ec1f98c02f1 .group:hover .village-img,#lv-4ec1f98c02f1 
+    #lv-58c2ec50de6e .group:hover .village-img,#lv-58c2ec50de6e 
     .group.is-visible .village-img {
         transform: scale(1.05);
     }
@@ -1517,13 +1517,13 @@
 
 
 
-    #lv-7372fa1e10f4 {
+    #lv-dd4ff477ae13 {
       background-color: #fcf9f3;
       color: #713506;
       margin: 0;
     }
 
-    #lv-7372fa1e10f4 .press-header-line {
+    #lv-dd4ff477ae13 .press-header-line {
       position: absolute;
       left: 0;
       right: 0;
@@ -1535,12 +1535,12 @@
       z-index: 0;
     }
 
-    #lv-7372fa1e10f4 .header-safe {
+    #lv-dd4ff477ae13 .header-safe {
       position: relative;
       z-index: 20;
     }
 
-    #lv-7372fa1e10f4 .header-safe a,#lv-7372fa1e10f4 
+    #lv-dd4ff477ae13 .header-safe a,#lv-dd4ff477ae13 
     .header-safe button {
       position: relative;
       z-index: 30;
@@ -1548,7 +1548,7 @@
     }
 
     /* --- COLLAGE STYLE "NEGRESCO" (IMAGES ENTIÈRES) --- */
-    #lv-7372fa1e10f4 .collage-container {
+    #lv-dd4ff477ae13 .collage-container {
       position: relative;
       width: 100%;
       max-width: 1050px;
@@ -1556,7 +1556,7 @@
       aspect-ratio: 2 / 1; /* Format large pour laisser de l'espace aux photos */
     }
 
-    #lv-7372fa1e10f4 .collage-photo {
+    #lv-dd4ff477ae13 .collage-photo {
       position: absolute;
       display: block;
       box-shadow: 0 10px 40px -10px rgba(113, 53, 6, 0.15); /* Ombre douce et élégante */
@@ -1569,13 +1569,13 @@
       padding: 8px 8px 24px 8px;
     }
 
-    #lv-7372fa1e10f4 .collage-photo img {
+    #lv-dd4ff477ae13 .collage-photo img {
       width: 100%;
       height: auto; /* Permet à l'image de s'afficher en entier sans être coupée */
       display: block;
     }
 
-    #lv-7372fa1e10f4 .collage-photo:hover {
+    #lv-dd4ff477ae13 .collage-photo:hover {
       transform: scale(1.05) translateY(-5px) !important;
       z-index: 10 !important;
       box-shadow: 0 20px 50px -12px rgba(113, 53, 6, 0.30);
@@ -1590,7 +1590,7 @@
        Droite: 72% à 100%
     */
 
-    #lv-7372fa1e10f4 .img-left {
+    #lv-dd4ff477ae13 .img-left {
       top: 20%;
       left: 0%;
       width: 26%;
@@ -1598,7 +1598,7 @@
       z-index: 2;
     }
 
-    #lv-7372fa1e10f4 .img-center {
+    #lv-dd4ff477ae13 .img-center {
       top: 0%;
       left: 30%;
       width: 38%;
@@ -1606,7 +1606,7 @@
       z-index: 1;
     }
 
-    #lv-7372fa1e10f4 .img-right {
+    #lv-dd4ff477ae13 .img-right {
       top: 35%;
       left: 72%;
       width: 28%;
@@ -1615,7 +1615,7 @@
     }
 
     @media (max-width: 991px) {
-      #lv-7372fa1e10f4 .collage-container {
+      #lv-dd4ff477ae13 .collage-container {
         max-width: 760px;
         aspect-ratio: 16 / 12;
       }
@@ -1623,7 +1623,7 @@
 
     @media (max-width: 767px) {
       /* Sur mobile, on désactive l'absolu pour un affichage propre en colonne */
-      #lv-7372fa1e10f4 .collage-container {
+      #lv-dd4ff477ae13 .collage-container {
         aspect-ratio: auto;
         display: flex;
         flex-direction: column;
@@ -1631,16 +1631,16 @@
         gap: 3rem;
         padding-bottom: 2rem;
       }
-      #lv-7372fa1e10f4 .collage-photo {
+      #lv-dd4ff477ae13 .collage-photo {
         position: relative;
         top: auto !important;
         left: auto !important;
         right: auto !important;
         width: 85% !important;
       }
-      #lv-7372fa1e10f4 .img-left { transform: rotate(-2deg); }
-      #lv-7372fa1e10f4 .img-center { transform: rotate(2deg); }
-      #lv-7372fa1e10f4 .img-right { transform: rotate(-2deg); }
+      #lv-dd4ff477ae13 .img-left { transform: rotate(-2deg); }
+      #lv-dd4ff477ae13 .img-center { transform: rotate(2deg); }
+      #lv-dd4ff477ae13 .img-right { transform: rotate(-2deg); }
     }
   
 
@@ -2045,10 +2045,10 @@
         position: relative;
     }
 
-#lv-917dcc2f1e58 { margin: 0; padding: 0; background-color: #fcf9f3; }
+#lv-fb4b776d917f { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-917dcc2f1e58 .drop-cap::first-letter {
+    #lv-fb4b776d917f .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -2058,7 +2058,7 @@
     }
     
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
-    #lv-917dcc2f1e58 .nav-links-village {
+    #lv-fb4b776d917f .nav-links-village {
         text-align: center !important;
         margin-top: 20px !important;
         margin-bottom: 20px !important;
@@ -2066,20 +2066,20 @@
         font-size: 16px !important;
         line-height: 1.4 !important;
     }
-    #lv-917dcc2f1e58 .nav-links-village .nav-col {
+    #lv-fb4b776d917f .nav-links-village .nav-col {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         gap: 12px !important;
     }
     @media (min-width: 768px) {
-        #lv-917dcc2f1e58 .nav-links-village .nav-col {
+        #lv-fb4b776d917f .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
             gap: 28px !important; 
         }
     }
-    #lv-917dcc2f1e58 .nav-links-village .village-link {
+    #lv-fb4b776d917f .nav-links-village .village-link {
         color: #713506 !important;
         text-decoration: none !important;
         font-weight: 500 !important;
@@ -2091,7 +2091,7 @@
         letter-spacing: 0.05em;
         font-size: 13px !important;
     }
-    #lv-917dcc2f1e58 .nav-links-village .village-link::after {
+    #lv-fb4b776d917f .nav-links-village .village-link::after {
         content: "" !important;
         position: absolute !important;
         left: 0 !important;
@@ -2101,19 +2101,19 @@
         background: #000 !important;
         transition: width .28s ease !important;
     }
-    #lv-917dcc2f1e58 .nav-links-village .village-link:hover::after {
+    #lv-fb4b776d917f .nav-links-village .village-link:hover::after {
         width: 100% !important;
     }
 
     /* Conteneur Facebook responsif */
-    #lv-917dcc2f1e58 .fb-embed-container {
+    #lv-fb4b776d917f .fb-embed-container {
         display: flex;
         justify-content: center;
         margin: 3rem 0;
         width: 100%;
         overflow: hidden;
     }
-    #lv-917dcc2f1e58 .fb-embed-container iframe {
+    #lv-fb4b776d917f .fb-embed-container iframe {
         max-width: 100%;
         border-radius: 4px;
         box-shadow: 0 10px 30px -10px rgba(113, 53, 6, 0.15);
@@ -2326,23 +2326,23 @@
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 
-    #lv-9c1effec98c1 { margin: 0; padding: 0; }
+    #lv-a750aa8784ea { margin: 0; padding: 0; }
 
-    #lv-9c1effec98c1 .hide-scroll {
+    #lv-a750aa8784ea .hide-scroll {
         -ms-overflow-style: none;
         scrollbar-width: none;
     }
-    #lv-9c1effec98c1 .hide-scroll::-webkit-scrollbar {
+    #lv-a750aa8784ea .hide-scroll::-webkit-scrollbar {
         display: none;
     }
 
-    #lv-9c1effec98c1 .village-img-wrapper {
+    #lv-a750aa8784ea .village-img-wrapper {
         position: relative;
         overflow: hidden;
         border-radius: 2px;
     }
     
-    #lv-9c1effec98c1 .village-img-wrapper::after {
+    #lv-a750aa8784ea .village-img-wrapper::after {
         content: '';
         position: absolute;
         inset: 0;
@@ -2354,7 +2354,7 @@
         z-index: 10;
     }
     
-    #lv-9c1effec98c1 .village-img-wrapper::before {
+    #lv-a750aa8784ea .village-img-wrapper::before {
         content: '';
         position: absolute;
         inset: 0;
@@ -2364,20 +2364,20 @@
         z-index: 11;
     }
     
-    #lv-9c1effec98c1 .group:hover .village-img-wrapper::after,#lv-9c1effec98c1 
+    #lv-a750aa8784ea .group:hover .village-img-wrapper::after,#lv-a750aa8784ea 
     .group:hover .village-img-wrapper::before {
         opacity: 0;
     }
 
-    #lv-9c1effec98c1 .village-img {
+    #lv-a750aa8784ea .village-img {
         transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         will-change: transform;
     }
-    #lv-9c1effec98c1 .group:hover .village-img {
+    #lv-a750aa8784ea .group:hover .village-img {
         transform: scale(1.05);
     }
 
-    #lv-9c1effec98c1 .village-link-read {
+    #lv-a750aa8784ea .village-link-read {
         color: #713506;
         text-decoration: none;
         font-weight: 500;
@@ -2391,7 +2391,7 @@
         transition: color 0.3s ease;
         margin-top: auto;
     }
-    #lv-9c1effec98c1 .village-link-read::after {
+    #lv-a750aa8784ea .village-link-read::after {
         content: "";
         position: absolute;
         left: 0;
@@ -2401,15 +2401,15 @@
         background: #9d623d;
         transition: width 0.4s ease;
     }
-    #lv-9c1effec98c1 .group:hover .village-link-read {
+    #lv-a750aa8784ea .group:hover .village-link-read {
         color: #9d623d;
     }
-    #lv-9c1effec98c1 .group:hover .village-link-read::after {
+    #lv-a750aa8784ea .group:hover .village-link-read::after {
         width: 100%;
     }
 
     /* Flèches visibles aussi sur mobile */
-    #lv-9c1effec98c1 .blog-carousel-arrows {
+    #lv-a750aa8784ea .blog-carousel-arrows {
         display: flex;
         gap: 14px;
         align-items: center;
@@ -2418,13 +2418,13 @@
     }
 
     @media (min-width: 768px) {
-        #lv-9c1effec98c1 .blog-carousel-arrows {
+        #lv-a750aa8784ea .blog-carousel-arrows {
             width: auto;
             justify-content: flex-end;
         }
     }
 
-    #lv-9c1effec98c1 .blog-carousel-arrow {
+    #lv-a750aa8784ea .blog-carousel-arrow {
         width: 44px;
         height: 44px;
         border-radius: 999px;
@@ -2438,14 +2438,14 @@
         box-shadow: 0 6px 18px rgba(113, 53, 6, 0.08);
     }
 
-    #lv-9c1effec98c1 .blog-carousel-arrow:hover {
+    #lv-a750aa8784ea .blog-carousel-arrow:hover {
         background: #713506;
         color: #ffffff;
         border-color: #713506;
     }
 
     @media (max-width: 767px) {
-        #lv-9c1effec98c1 .blog-carousel-arrow {
+        #lv-a750aa8784ea .blog-carousel-arrow {
             width: 42px;
             height: 42px;
             background: #ffffff;
@@ -2455,16 +2455,16 @@
     }
 
 
-    #lv-92ecf4eb1f2f { margin: 0; padding: 0; }
+    #lv-820f9052b072 { margin: 0; padding: 0; }
 
     /* --- FILTRE ÉLÉGANT SANS BUG DE COULEUR (PALACE STYLE) --- */
-    #lv-92ecf4eb1f2f .village-img-wrapper {
+    #lv-820f9052b072 .village-img-wrapper {
         position: relative;
         overflow: hidden;
     }
 
     /* Calque de fusion cuivré signature (Archive) */
-    #lv-92ecf4eb1f2f .village-img-wrapper::after {
+    #lv-820f9052b072 .village-img-wrapper::after {
         content: '';
         position: absolute;
         inset: 0;
@@ -2477,7 +2477,7 @@
     }
 
     /* Voile de profondeur */
-    #lv-92ecf4eb1f2f .village-img-wrapper::before {
+    #lv-820f9052b072 .village-img-wrapper::before {
         content: '';
         position: absolute;
         inset: 0;
@@ -2488,22 +2488,22 @@
     }
 
     /* Disparition nette des calques au survol */
-    #lv-92ecf4eb1f2f .group:hover .village-img-wrapper::after,#lv-92ecf4eb1f2f 
+    #lv-820f9052b072 .group:hover .village-img-wrapper::after,#lv-820f9052b072 
     .group:hover .village-img-wrapper::before {
         opacity: 0;
     }
 
     /* Mouvement de l'image (Plus lent pour le luxe) */
-    #lv-92ecf4eb1f2f .village-img {
+    #lv-820f9052b072 .village-img {
         transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
         will-change: transform;
     }
-    #lv-92ecf4eb1f2f .group:hover .village-img {
+    #lv-820f9052b072 .group:hover .village-img {
         transform: translateY(-12px);
     }
 
     /* Soulignement Poppins animé */
-    #lv-92ecf4eb1f2f .title-underline::after {
+    #lv-820f9052b072 .title-underline::after {
         content: "";
         position: absolute;
         left: 0;
@@ -2513,14 +2513,14 @@
         background: #713506;
         transition: width 0.4s ease;
     }
-    #lv-92ecf4eb1f2f .group:hover .title-underline::after {
+    #lv-820f9052b072 .group:hover .title-underline::after {
         width: 100%;
     }
 
     @media (prefers-reduced-motion: reduce) {
-        #lv-92ecf4eb1f2f .village-img,#lv-92ecf4eb1f2f 
-        .village-img-wrapper::after,#lv-92ecf4eb1f2f 
-        .village-img-wrapper::before,#lv-92ecf4eb1f2f 
+        #lv-820f9052b072 .village-img,#lv-820f9052b072 
+        .village-img-wrapper::after,#lv-820f9052b072 
+        .village-img-wrapper::before,#lv-820f9052b072 
         .title-underline::after {
             transition: none !important;
         }
@@ -2878,15 +2878,15 @@
     }
 
 
-    #lv-fd1810ecc350 { margin: 0; padding: 0; }
+    #lv-b0e7e7d7a8d6 { margin: 0; padding: 0; }
 
     /* --- FILTRE ÉLÉGANT (SANS BUG DE COULEUR AU SURVOL) --- */
-    #lv-fd1810ecc350 .village-img-wrapper {
+    #lv-b0e7e7d7a8d6 .village-img-wrapper {
         position: relative;
         overflow: hidden;
     }
     
-    #lv-fd1810ecc350 .village-img-wrapper::after {
+    #lv-b0e7e7d7a8d6 .village-img-wrapper::after {
         content: '';
         position: absolute;
         inset: 0;
@@ -2898,7 +2898,7 @@
         z-index: 10;
     }
     
-    #lv-fd1810ecc350 .village-img-wrapper::before {
+    #lv-b0e7e7d7a8d6 .village-img-wrapper::before {
         content: '';
         position: absolute;
         inset: 0;
@@ -2908,27 +2908,27 @@
         z-index: 11;
     }
     
-    #lv-fd1810ecc350 .group:hover .village-img-wrapper::after,#lv-fd1810ecc350 
+    #lv-b0e7e7d7a8d6 .group:hover .village-img-wrapper::after,#lv-b0e7e7d7a8d6 
     .group:hover .village-img-wrapper::before {
         opacity: 0;
     }
 
-    #lv-fd1810ecc350 .village-img {
+    #lv-b0e7e7d7a8d6 .village-img {
         transition: transform 0.8s ease;
         will-change: transform;
     }
 
-    #lv-fd1810ecc350 .group:hover .village-img {
+    #lv-b0e7e7d7a8d6 .group:hover .village-img {
         transform: scale(1.05);
     }
 
     /* --- STYLES DU CARROUSEL --- */
-    #lv-fd1810ecc350 .lv-ig-carousel {
+    #lv-b0e7e7d7a8d6 .lv-ig-carousel {
         width: 100%;
         margin: 0 auto;
     }
 
-    #lv-fd1810ecc350 .lv-ig-slides {
+    #lv-b0e7e7d7a8d6 .lv-ig-slides {
         position: relative;
         width: 100%;
         aspect-ratio: 4 / 5;
@@ -2936,7 +2936,7 @@
         border-radius: 2px;
     }
 
-    #lv-fd1810ecc350 .lv-ig-slide {
+    #lv-b0e7e7d7a8d6 .lv-ig-slide {
         position: absolute;
         inset: 0;
         opacity: 0;
@@ -2946,14 +2946,14 @@
         z-index: 1;
     }
 
-    #lv-fd1810ecc350 .lv-ig-slide.lv-active {
+    #lv-b0e7e7d7a8d6 .lv-ig-slide.lv-active {
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
         z-index: 2;
     }
 
-    #lv-fd1810ecc350 .lv-ig-slide img {
+    #lv-b0e7e7d7a8d6 .lv-ig-slide img {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -2961,14 +2961,14 @@
     }
 
     /* Slide vidéo Facebook */
-    #lv-fd1810ecc350 .lv-video-slide {
+    #lv-b0e7e7d7a8d6 .lv-video-slide {
         background: #000;
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    #lv-fd1810ecc350 .lv-video-slide iframe {
+    #lv-b0e7e7d7a8d6 .lv-video-slide iframe {
         width: 100%;
         height: 100%;
         border: none;
@@ -2977,7 +2977,7 @@
     }
 
     /* Navigation */
-    #lv-fd1810ecc350 .lv-ig-dots {
+    #lv-b0e7e7d7a8d6 .lv-ig-dots {
         position: absolute;
         bottom: 14px;
         left: 0;
@@ -2988,7 +2988,7 @@
         z-index: 20;
     }
 
-    #lv-fd1810ecc350 .lv-ig-dot {
+    #lv-b0e7e7d7a8d6 .lv-ig-dot {
         width: 6px;
         height: 6px;
         border-radius: 50%;
@@ -2997,13 +2997,13 @@
         transition: all 0.25s ease;
     }
 
-    #lv-fd1810ecc350 .lv-ig-dot.lv-active {
+    #lv-b0e7e7d7a8d6 .lv-ig-dot.lv-active {
         width: 16px;
         border-radius: 999px;
         background: #ffffff;
     }
 
-    #lv-fd1810ecc350 .lv-ig-arrow {
+    #lv-b0e7e7d7a8d6 .lv-ig-arrow {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -3025,38 +3025,38 @@
         opacity: 0;
     }
 
-    #lv-fd1810ecc350 .group:hover .lv-ig-arrow { opacity: 1; }
+    #lv-b0e7e7d7a8d6 .group:hover .lv-ig-arrow { opacity: 1; }
 
-    #lv-fd1810ecc350 .lv-ig-arrow-left { left: 8px; }
-    #lv-fd1810ecc350 .lv-ig-arrow-right { right: 8px; }
+    #lv-b0e7e7d7a8d6 .lv-ig-arrow-left { left: 8px; }
+    #lv-b0e7e7d7a8d6 .lv-ig-arrow-right { right: 8px; }
 
-    #lv-fd1810ecc350 .lv-ig-arrow:hover {
+    #lv-b0e7e7d7a8d6 .lv-ig-arrow:hover {
         background: #ffffff;
         color: #713506;
     }
     
     @media (max-width: 768px) {
-        #lv-fd1810ecc350 .lv-ig-arrow { opacity: 0.9; }
+        #lv-b0e7e7d7a8d6 .lv-ig-arrow { opacity: 0.9; }
     }
 
 
-    #lv-873f814e391f { margin: 0; padding: 0; }
+    #lv-9378cc044ace { margin: 0; padding: 0; }
 
-    #lv-873f814e391f .hide-scroll {
+    #lv-9378cc044ace .hide-scroll {
         -ms-overflow-style: none;
         scrollbar-width: none;
     }
-    #lv-873f814e391f .hide-scroll::-webkit-scrollbar {
+    #lv-9378cc044ace .hide-scroll::-webkit-scrollbar {
         display: none;
     }
 
-    #lv-873f814e391f .village-img-wrapper {
+    #lv-9378cc044ace .village-img-wrapper {
         position: relative;
         overflow: hidden;
         border-radius: 2px;
     }
     
-    #lv-873f814e391f .village-img-wrapper::after {
+    #lv-9378cc044ace .village-img-wrapper::after {
         content: '';
         position: absolute;
         inset: 0;
@@ -3068,7 +3068,7 @@
         z-index: 10;
     }
     
-    #lv-873f814e391f .village-img-wrapper::before {
+    #lv-9378cc044ace .village-img-wrapper::before {
         content: '';
         position: absolute;
         inset: 0;
@@ -3078,20 +3078,20 @@
         z-index: 11;
     }
     
-    #lv-873f814e391f .group:hover .village-img-wrapper::after,#lv-873f814e391f 
+    #lv-9378cc044ace .group:hover .village-img-wrapper::after,#lv-9378cc044ace 
     .group:hover .village-img-wrapper::before {
         opacity: 0;
     }
 
-    #lv-873f814e391f .village-img {
+    #lv-9378cc044ace .village-img {
         transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         will-change: transform;
     }
-    #lv-873f814e391f .group:hover .village-img {
+    #lv-9378cc044ace .group:hover .village-img {
         transform: scale(1.05);
     }
 
-    #lv-873f814e391f .village-link-read {
+    #lv-9378cc044ace .village-link-read {
         color: #713506;
         text-decoration: none;
         font-weight: 500;
@@ -3105,7 +3105,7 @@
         transition: color 0.3s ease;
         margin-top: auto;
     }
-    #lv-873f814e391f .village-link-read::after {
+    #lv-9378cc044ace .village-link-read::after {
         content: "";
         position: absolute;
         left: 0;
@@ -3115,15 +3115,15 @@
         background: #9d623d;
         transition: width 0.4s ease;
     }
-    #lv-873f814e391f .group:hover .village-link-read {
+    #lv-9378cc044ace .group:hover .village-link-read {
         color: #9d623d;
     }
-    #lv-873f814e391f .group:hover .village-link-read::after {
+    #lv-9378cc044ace .group:hover .village-link-read::after {
         width: 100%;
     }
 
     /* Flèches visibles aussi sur mobile */
-    #lv-873f814e391f .blog-carousel-arrows {
+    #lv-9378cc044ace .blog-carousel-arrows {
         display: flex;
         gap: 14px;
         align-items: center;
@@ -3132,13 +3132,13 @@
     }
 
     @media (min-width: 768px) {
-        #lv-873f814e391f .blog-carousel-arrows {
+        #lv-9378cc044ace .blog-carousel-arrows {
             width: auto;
             justify-content: flex-end;
         }
     }
 
-    #lv-873f814e391f .blog-carousel-arrow {
+    #lv-9378cc044ace .blog-carousel-arrow {
         width: 44px;
         height: 44px;
         border-radius: 999px;
@@ -3152,14 +3152,14 @@
         box-shadow: 0 6px 18px rgba(113, 53, 6, 0.08);
     }
 
-    #lv-873f814e391f .blog-carousel-arrow:hover {
+    #lv-9378cc044ace .blog-carousel-arrow:hover {
         background: #713506;
         color: #ffffff;
         border-color: #713506;
     }
 
     @media (max-width: 767px) {
-        #lv-873f814e391f .blog-carousel-arrow {
+        #lv-9378cc044ace .blog-carousel-arrow {
             width: 42px;
             height: 42px;
             background: #ffffff;
@@ -4754,17 +4754,17 @@
     }
 
 
-    #lv-083f530b61a7 { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-a3e03e94e4e9 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- FILTRE ÉLÉGANT SANS BUG DE COULEUR (PALACE STYLE) --- */
-    #lv-083f530b61a7 .village-img-wrapper {
+    #lv-a3e03e94e4e9 .village-img-wrapper {
         position: relative;
         overflow: hidden;
         background-color: #713506; 
     }
     
     /* Calque de fusion cuivré signature (Archive) */
-    #lv-083f530b61a7 .village-img-wrapper::after {
+    #lv-a3e03e94e4e9 .village-img-wrapper::after {
         content: '';
         position: absolute;
         inset: 0;
@@ -4777,7 +4777,7 @@
     }
     
     /* Voile de profondeur */
-    #lv-083f530b61a7 .village-img-wrapper::before {
+    #lv-a3e03e94e4e9 .village-img-wrapper::before {
         content: '';
         position: absolute;
         inset: 0;
@@ -4788,60 +4788,60 @@
     }
     
     /* Transition d'apparition progressive au scroll (Staggering) */
-    #lv-083f530b61a7 .scroll-anim-trigger.is-visible:nth-child(1) .village-img-wrapper::after,#lv-083f530b61a7 
+    #lv-a3e03e94e4e9 .scroll-anim-trigger.is-visible:nth-child(1) .village-img-wrapper::after,#lv-a3e03e94e4e9 
     .scroll-anim-trigger.is-visible:nth-child(1) .village-img-wrapper::before {
         opacity: 0;
         transition-delay: 0.3s; /* La première commence après 300ms */
     }
 
-    #lv-083f530b61a7 .scroll-anim-trigger.is-visible:nth-child(2) .village-img-wrapper::after,#lv-083f530b61a7 
+    #lv-a3e03e94e4e9 .scroll-anim-trigger.is-visible:nth-child(2) .village-img-wrapper::after,#lv-a3e03e94e4e9 
     .scroll-anim-trigger.is-visible:nth-child(2) .village-img-wrapper::before {
         opacity: 0;
         transition-delay: 0.8s; /* La deuxième commence après 800ms */
     }
 
-    #lv-083f530b61a7 .scroll-anim-trigger.is-visible:nth-child(3) .village-img-wrapper::after,#lv-083f530b61a7 
+    #lv-a3e03e94e4e9 .scroll-anim-trigger.is-visible:nth-child(3) .village-img-wrapper::after,#lv-a3e03e94e4e9 
     .scroll-anim-trigger.is-visible:nth-child(3) .village-img-wrapper::before {
         opacity: 0;
         transition-delay: 1.3s; /* La troisième commence après 1.3s */
     }
 
     /* Au survol souris, la réaction est instantanée (0.4s) sans délai pour l'interactivité */
-    #lv-083f530b61a7 .group:hover .village-img-wrapper::after,#lv-083f530b61a7 
+    #lv-a3e03e94e4e9 .group:hover .village-img-wrapper::after,#lv-a3e03e94e4e9 
     .group:hover .village-img-wrapper::before {
         opacity: 0 !important;
         transition: opacity 0.4s ease-in-out !important;
         transition-delay: 0s !important;
     }
 
-    #lv-083f530b61a7 .village-img {
+    #lv-a3e03e94e4e9 .village-img {
         transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         will-change: transform;
     }
     
-    #lv-083f530b61a7 .group:hover .village-img,#lv-083f530b61a7 
+    #lv-a3e03e94e4e9 .group:hover .village-img,#lv-a3e03e94e4e9 
     .group.is-visible .village-img {
         transform: scale(1.05);
     }
 
 
-    #lv-bc43c58131f1 { margin: 0; padding: 0; }
+    #lv-ab454dc8a343 { margin: 0; padding: 0; }
 
-    #lv-bc43c58131f1 .hide-scroll {
+    #lv-ab454dc8a343 .hide-scroll {
         -ms-overflow-style: none;
         scrollbar-width: none;
     }
-    #lv-bc43c58131f1 .hide-scroll::-webkit-scrollbar {
+    #lv-ab454dc8a343 .hide-scroll::-webkit-scrollbar {
         display: none;
     }
 
-    #lv-bc43c58131f1 .village-img-wrapper {
+    #lv-ab454dc8a343 .village-img-wrapper {
         position: relative;
         overflow: hidden;
         border-radius: 2px;
     }
     
-    #lv-bc43c58131f1 .village-img-wrapper::after {
+    #lv-ab454dc8a343 .village-img-wrapper::after {
         content: '';
         position: absolute;
         inset: 0;
@@ -4853,7 +4853,7 @@
         z-index: 10;
     }
     
-    #lv-bc43c58131f1 .village-img-wrapper::before {
+    #lv-ab454dc8a343 .village-img-wrapper::before {
         content: '';
         position: absolute;
         inset: 0;
@@ -4863,20 +4863,20 @@
         z-index: 11;
     }
     
-    #lv-bc43c58131f1 .group:hover .village-img-wrapper::after,#lv-bc43c58131f1 
+    #lv-ab454dc8a343 .group:hover .village-img-wrapper::after,#lv-ab454dc8a343 
     .group:hover .village-img-wrapper::before {
         opacity: 0;
     }
 
-    #lv-bc43c58131f1 .village-img {
+    #lv-ab454dc8a343 .village-img {
         transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         will-change: transform;
     }
-    #lv-bc43c58131f1 .group:hover .village-img {
+    #lv-ab454dc8a343 .group:hover .village-img {
         transform: scale(1.05);
     }
 
-    #lv-bc43c58131f1 .village-link-read {
+    #lv-ab454dc8a343 .village-link-read {
         color: #713506;
         text-decoration: none;
         font-weight: 500;
@@ -4890,7 +4890,7 @@
         transition: color 0.3s ease;
         margin-top: auto;
     }
-    #lv-bc43c58131f1 .village-link-read::after {
+    #lv-ab454dc8a343 .village-link-read::after {
         content: "";
         position: absolute;
         left: 0;
@@ -4900,15 +4900,15 @@
         background: #9d623d;
         transition: width 0.4s ease;
     }
-    #lv-bc43c58131f1 .group:hover .village-link-read {
+    #lv-ab454dc8a343 .group:hover .village-link-read {
         color: #9d623d;
     }
-    #lv-bc43c58131f1 .group:hover .village-link-read::after {
+    #lv-ab454dc8a343 .group:hover .village-link-read::after {
         width: 100%;
     }
 
     /* Flèches visibles aussi sur mobile */
-    #lv-bc43c58131f1 .blog-carousel-arrows {
+    #lv-ab454dc8a343 .blog-carousel-arrows {
         display: flex;
         gap: 14px;
         align-items: center;
@@ -4917,13 +4917,13 @@
     }
 
     @media (min-width: 768px) {
-        #lv-bc43c58131f1 .blog-carousel-arrows {
+        #lv-ab454dc8a343 .blog-carousel-arrows {
             width: auto;
             justify-content: flex-end;
         }
     }
 
-    #lv-bc43c58131f1 .blog-carousel-arrow {
+    #lv-ab454dc8a343 .blog-carousel-arrow {
         width: 44px;
         height: 44px;
         border-radius: 999px;
@@ -4937,14 +4937,14 @@
         box-shadow: 0 6px 18px rgba(113, 53, 6, 0.08);
     }
 
-    #lv-bc43c58131f1 .blog-carousel-arrow:hover {
+    #lv-ab454dc8a343 .blog-carousel-arrow:hover {
         background: #713506;
         color: #ffffff;
         border-color: #713506;
     }
 
     @media (max-width: 767px) {
-        #lv-bc43c58131f1 .blog-carousel-arrow {
+        #lv-ab454dc8a343 .blog-carousel-arrow {
             width: 42px;
             height: 42px;
             background: #ffffff;
@@ -4954,10 +4954,10 @@
     }
 
 
-    #lv-64fd1ee6714c { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-66473e75fc51 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- CADRE VIDÉO FENÊTRE EN ARCHE ÉPURÉE --- */
-    #lv-64fd1ee6714c .arched-video-frame {
+    #lv-66473e75fc51 .arched-video-frame {
         position: relative;
         background: #ffffff;
         padding: 10px;
@@ -4969,15 +4969,15 @@
         opacity: 0;
         transform: translateY(40px);
     }
-    #lv-64fd1ee6714c .arched-video-frame.is-visible {
+    #lv-66473e75fc51 .arched-video-frame.is-visible {
         opacity: 1;
         transform: translateY(0);
     }
-    #lv-64fd1ee6714c .arched-video-frame:hover {
+    #lv-66473e75fc51 .arched-video-frame:hover {
         transform: translateY(-8px);
         box-shadow: 0 30px 60px -15px rgba(113, 53, 6, 0.25);
     }
-    #lv-64fd1ee6714c .arched-video-frame::before {
+    #lv-66473e75fc51 .arched-video-frame::before {
         content: '';
         position: absolute;
         top: 8px; bottom: 8px; left: 8px; right: 8px;
@@ -4986,7 +4986,7 @@
         pointer-events: none;
         z-index: 30;
     }
-    #lv-64fd1ee6714c .video-mask {
+    #lv-66473e75fc51 .video-mask {
         position: relative;
         width: 100%;
         aspect-ratio: 9/16;
@@ -4994,7 +4994,7 @@
         overflow: hidden;
         background-color: #000;
     }
-    #lv-64fd1ee6714c .video-mask video {
+    #lv-66473e75fc51 .video-mask video {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -5004,7 +5004,7 @@
     }
 
     /* --- BOUTONS PREMIUM (GLASSMORPHISM) --- */
-    #lv-64fd1ee6714c .glass-btn {
+    #lv-66473e75fc51 .glass-btn {
         background: rgba(255, 255, 255, 0.25);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
@@ -5012,21 +5012,21 @@
         color: #ffffff;
         transition: all 0.3s ease;
     }
-    #lv-64fd1ee6714c .glass-btn:hover {
+    #lv-66473e75fc51 .glass-btn:hover {
         background: rgba(255, 255, 255, 0.9);
         color: #713506;
         transform: scale(1.1);
     }
-    #lv-64fd1ee6714c .video-controls {
+    #lv-66473e75fc51 .video-controls {
         opacity: 0;
         transition: opacity 0.4s ease;
     }
-    #lv-64fd1ee6714c .arched-video-frame:hover .video-controls {
+    #lv-66473e75fc51 .arched-video-frame:hover .video-controls {
         opacity: 1;
     }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-64fd1ee6714c .drop-cap::first-letter {
+    #lv-66473e75fc51 .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -5035,10 +5035,10 @@
         color: #9d623d;
     }
 
-#lv-922469db1f17 { margin: 0; padding: 0; background-color: #fcf9f3; }
+#lv-51c44270566f { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-922469db1f17 .drop-cap::first-letter {
+    #lv-51c44270566f .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -5048,7 +5048,7 @@
     }
     
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
-    #lv-922469db1f17 .nav-links-village {
+    #lv-51c44270566f .nav-links-village {
         text-align: center !important;
         margin-top: 20px !important;
         margin-bottom: 20px !important;
@@ -5056,20 +5056,20 @@
         font-size: 16px !important;
         line-height: 1.4 !important;
     }
-    #lv-922469db1f17 .nav-links-village .nav-col {
+    #lv-51c44270566f .nav-links-village .nav-col {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         gap: 12px !important;
     }
     @media (min-width: 768px) {
-        #lv-922469db1f17 .nav-links-village .nav-col {
+        #lv-51c44270566f .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
             gap: 28px !important; 
         }
     }
-    #lv-922469db1f17 .nav-links-village .village-link {
+    #lv-51c44270566f .nav-links-village .village-link {
         color: #713506 !important;
         text-decoration: none !important;
         font-weight: 500 !important;
@@ -5081,7 +5081,7 @@
         letter-spacing: 0.05em;
         font-size: 13px !important;
     }
-    #lv-922469db1f17 .nav-links-village .village-link::after {
+    #lv-51c44270566f .nav-links-village .village-link::after {
         content: "" !important;
         position: absolute !important;
         left: 0 !important;
@@ -5091,12 +5091,12 @@
         background: #000 !important;
         transition: width .28s ease !important;
     }
-    #lv-922469db1f17 .nav-links-village .village-link:hover::after {
+    #lv-51c44270566f .nav-links-village .village-link:hover::after {
         width: 100% !important;
     }
 
     /* Conteneur Reel Facebook responsif et élégant */
-    #lv-922469db1f17 .reel-embed-container {
+    #lv-51c44270566f .reel-embed-container {
         background: #ffffff;
         padding: 8px;
         border: 1px solid rgba(113, 53, 6, 0.1);
@@ -5105,7 +5105,7 @@
         display: inline-flex;
         transition: transform 0.4s ease;
     }
-    #lv-922469db1f17 .reel-embed-container:hover {
+    #lv-51c44270566f .reel-embed-container:hover {
         transform: translateY(-5px);
     }
 
@@ -5273,10 +5273,10 @@
         color: #9d623d;
     }
 
-#lv-c9de54853185 { margin: 0; padding: 0; background-color: #fcf9f3; }
+#lv-50cd003d062b { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-c9de54853185 .drop-cap::first-letter {
+    #lv-50cd003d062b .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -5286,7 +5286,7 @@
     }
     
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
-    #lv-c9de54853185 .nav-links-village {
+    #lv-50cd003d062b .nav-links-village {
         text-align: center !important;
         margin-top: 20px !important;
         margin-bottom: 20px !important;
@@ -5294,20 +5294,20 @@
         font-size: 16px !important;
         line-height: 1.4 !important;
     }
-    #lv-c9de54853185 .nav-links-village .nav-col {
+    #lv-50cd003d062b .nav-links-village .nav-col {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         gap: 12px !important;
     }
     @media (min-width: 768px) {
-        #lv-c9de54853185 .nav-links-village .nav-col {
+        #lv-50cd003d062b .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
             gap: 28px !important; 
         }
     }
-    #lv-c9de54853185 .nav-links-village .village-link {
+    #lv-50cd003d062b .nav-links-village .village-link {
         color: #713506 !important;
         text-decoration: none !important;
         font-weight: 500 !important;
@@ -5319,7 +5319,7 @@
         letter-spacing: 0.05em;
         font-size: 13px !important;
     }
-    #lv-c9de54853185 .nav-links-village .village-link::after {
+    #lv-50cd003d062b .nav-links-village .village-link::after {
         content: "" !important;
         position: absolute !important;
         left: 0 !important;
@@ -5329,19 +5329,19 @@
         background: #9d623d !important;
         transition: width .28s ease !important;
     }
-    #lv-c9de54853185 .nav-links-village .village-link:hover::after {
+    #lv-50cd003d062b .nav-links-village .village-link:hover::after {
         width: 100% !important;
     }
 
     /* Style éditorial pour les listes */
-    #lv-c9de54853185 .program-card {
+    #lv-50cd003d062b .program-card {
         background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(157, 98, 61, 0.1) 39px, rgba(157, 98, 61, 0.1) 40px);
         background-color: #ffffff;
         border: 1px solid rgba(113, 53, 6, 0.2);
     }
 
     @media (prefers-reduced-motion: reduce) {
-        #lv-c9de54853185 .nav-links-village .village-link::after,#lv-c9de54853185 
+        #lv-50cd003d062b .nav-links-village .village-link::after,#lv-50cd003d062b 
         .hover\:scale-105 {
             transition: none !important;
         }
@@ -5520,10 +5520,10 @@
     }
 
 
-    #lv-a72e8ccf36cc { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-7150e8dad0b6 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-a72e8ccf36cc .drop-cap::first-letter {
+    #lv-7150e8dad0b6 .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -5533,7 +5533,7 @@
     }
 
     /* --- CADRE PHOTO PREMIUM (Pour remplacer Facebook) --- */
-    #lv-a72e8ccf36cc .premium-photo-frame {
+    #lv-7150e8dad0b6 .premium-photo-frame {
         background: #ffffff;
         padding: 12px;
         border: 1px solid rgba(113, 53, 6, 0.2);
@@ -5546,7 +5546,7 @@
         overflow: hidden;
     }
     
-    #lv-a72e8ccf36cc .premium-photo-frame::before {
+    #lv-7150e8dad0b6 .premium-photo-frame::before {
         content: '';
         position: absolute;
         top: 8px; bottom: 8px; left: 8px; right: 8px;
@@ -5555,10 +5555,10 @@
         z-index: 30;
     }
 
-#lv-f2d2d7895c25 { margin: 0; padding: 0; background-color: #fcf9f3; }
+#lv-9e5786aa1e24 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-f2d2d7895c25 .drop-cap::first-letter {
+    #lv-9e5786aa1e24 .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -5568,7 +5568,7 @@
     }
     
     /* Conteneur Facebook responsif */
-    #lv-f2d2d7895c25 .fb-embed-container {
+    #lv-9e5786aa1e24 .fb-embed-container {
         display: flex;
         justify-content: center;
         margin: 3rem 0;
@@ -5577,7 +5577,7 @@
     }
 
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
-    #lv-f2d2d7895c25 .nav-links-village {
+    #lv-9e5786aa1e24 .nav-links-village {
         text-align: center !important;
         margin-top: 20px !important;
         margin-bottom: 20px !important;
@@ -5585,20 +5585,20 @@
         font-size: 16px !important;
         line-height: 1.4 !important;
     }
-    #lv-f2d2d7895c25 .nav-links-village .nav-col {
+    #lv-9e5786aa1e24 .nav-links-village .nav-col {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         gap: 12px !important;
     }
     @media (min-width: 768px) {
-        #lv-f2d2d7895c25 .nav-links-village .nav-col {
+        #lv-9e5786aa1e24 .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
             gap: 28px !important; 
         }
     }
-    #lv-f2d2d7895c25 .nav-links-village .village-link {
+    #lv-9e5786aa1e24 .nav-links-village .village-link {
         color: #713506 !important;
         text-decoration: none !important;
         font-weight: 500 !important;
@@ -5610,7 +5610,7 @@
         letter-spacing: 0.05em;
         font-size: 13px !important;
     }
-    #lv-f2d2d7895c25 .nav-links-village .village-link::after {
+    #lv-9e5786aa1e24 .nav-links-village .village-link::after {
         content: "" !important;
         position: absolute !important;
         left: 0 !important;
@@ -5620,15 +5620,15 @@
         background: #9d623d !important;
         transition: width .28s ease !important;
     }
-    #lv-f2d2d7895c25 .nav-links-village .village-link:hover::after {
+    #lv-9e5786aa1e24 .nav-links-village .village-link:hover::after {
         width: 100% !important;
     }
 
 
-    #lv-b29b40547f04 { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-bd5bd3149989 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-b29b40547f04 .drop-cap::first-letter {
+    #lv-bd5bd3149989 .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -5638,7 +5638,7 @@
     }
 
     /* --- CADRE EDITORIAL (Style Papier) --- */
-    #lv-b29b40547f04 .notebook-card {
+    #lv-bd5bd3149989 .notebook-card {
         background-color: #ffffff;
         background-image: repeating-linear-gradient(0deg, transparent, transparent 35px, rgba(157, 98, 61, 0.08) 35px, rgba(157, 98, 61, 0.08) 36px);
         border: 1px solid rgba(113, 53, 6, 0.15);
@@ -5646,7 +5646,7 @@
     }
 
     /* --- BOUTONS LUXE (CTA FINAUX) --- */
-    #lv-b29b40547f04 .btn-luxury {
+    #lv-bd5bd3149989 .btn-luxury {
         position: relative;
         display: inline-flex;
         align-items: center;
@@ -5666,7 +5666,7 @@
         cursor: pointer;
         box-shadow: 0 10px 20px -5px rgba(113, 53, 6, 0.08);
     }
-    #lv-b29b40547f04 .btn-luxury::before {
+    #lv-bd5bd3149989 .btn-luxury::before {
         content: '';
         position: absolute;
         inset: 0;
@@ -5676,54 +5676,54 @@
         transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 0;
     }
-    #lv-b29b40547f04 .btn-luxury:hover {
+    #lv-bd5bd3149989 .btn-luxury:hover {
         border-color: rgba(113, 53, 6, 0.6);
         box-shadow: 0 15px 30px -5px rgba(113, 53, 6, 0.15);
         transform: translateY(-2px);
     }
-    #lv-b29b40547f04 .btn-luxury:hover::before { transform: scaleY(1); }
-    #lv-b29b40547f04 .btn-luxury-text { position: relative; z-index: 1; display: flex; align-items: center; }
-    #lv-b29b40547f04 .btn-luxury-arrow { margin-left: 12px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
-    #lv-b29b40547f04 .btn-luxury:hover .btn-luxury-arrow { transform: translateX(6px); }
+    #lv-bd5bd3149989 .btn-luxury:hover::before { transform: scaleY(1); }
+    #lv-bd5bd3149989 .btn-luxury-text { position: relative; z-index: 1; display: flex; align-items: center; }
+    #lv-bd5bd3149989 .btn-luxury-arrow { margin-left: 12px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+    #lv-bd5bd3149989 .btn-luxury:hover .btn-luxury-arrow { transform: translateX(6px); }
     
     /* --- FILTRE CUIVRÉ SIGNATURE --- */
-    #lv-b29b40547f04 .village-img-wrapper {
+    #lv-bd5bd3149989 .village-img-wrapper {
         position: relative;
         overflow: hidden;
         background-color: #713506;
     }
     /* Calque Cuivré */
-    #lv-b29b40547f04 .village-img-wrapper::after {
+    #lv-bd5bd3149989 .village-img-wrapper::after {
         content: ''; position: absolute; inset: 0;
         background-color: #9d623d; mix-blend-mode: color; opacity: 0.85; 
         transition: opacity 0.6s ease; pointer-events: none; z-index: 10;
     }
     /* Calque Profondeur */
-    #lv-b29b40547f04 .village-img-wrapper::before {
+    #lv-bd5bd3149989 .village-img-wrapper::before {
         content: ''; position: absolute; inset: 0;
         background-color: rgba(113, 53, 6, 0.15); 
         transition: opacity 0.6s ease; pointer-events: none; z-index: 11;
     }
     /* Estompage du filtre uniquement au Survol */
-    #lv-b29b40547f04 .group:hover .village-img-wrapper::after,#lv-b29b40547f04  
+    #lv-bd5bd3149989 .group:hover .village-img-wrapper::after,#lv-bd5bd3149989  
     .group:hover .village-img-wrapper::before { 
         opacity: 0; 
     }
 
     /* Mouvement lent luxueux */
-    #lv-b29b40547f04 .village-img { 
+    #lv-bd5bd3149989 .village-img { 
         transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
         will-change: transform; 
     }
-    #lv-b29b40547f04 .group:hover .village-img { 
+    #lv-bd5bd3149989 .group:hover .village-img { 
         transform: scale(1.05); 
     }
 
 
-#lv-26baac5e7dfc { margin: 0; padding: 0; background-color: #fcf9f3; }
+#lv-aa5468e3541d { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-26baac5e7dfc .drop-cap::first-letter {
+    #lv-aa5468e3541d .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -5733,7 +5733,7 @@
     }
     
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
-    #lv-26baac5e7dfc .nav-links-village {
+    #lv-aa5468e3541d .nav-links-village {
         text-align: center !important;
         margin-top: 20px !important;
         margin-bottom: 20px !important;
@@ -5741,20 +5741,20 @@
         font-size: 16px !important;
         line-height: 1.4 !important;
     }
-    #lv-26baac5e7dfc .nav-links-village .nav-col {
+    #lv-aa5468e3541d .nav-links-village .nav-col {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         gap: 12px !important;
     }
     @media (min-width: 768px) {
-        #lv-26baac5e7dfc .nav-links-village .nav-col {
+        #lv-aa5468e3541d .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
             gap: 28px !important; 
         }
     }
-    #lv-26baac5e7dfc .nav-links-village .village-link {
+    #lv-aa5468e3541d .nav-links-village .village-link {
         color: #713506 !important;
         text-decoration: none !important;
         font-weight: 500 !important;
@@ -5766,7 +5766,7 @@
         letter-spacing: 0.05em;
         font-size: 13px !important;
     }
-    #lv-26baac5e7dfc .nav-links-village .village-link::after {
+    #lv-aa5468e3541d .nav-links-village .village-link::after {
         content: "" !important;
         position: absolute !important;
         left: 0 !important;
@@ -5776,19 +5776,19 @@
         background: #000 !important;
         transition: width .28s ease !important;
     }
-    #lv-26baac5e7dfc .nav-links-village .village-link:hover::after {
+    #lv-aa5468e3541d .nav-links-village .village-link:hover::after {
         width: 100% !important;
     }
 
     /* Style éditorial menu */
-    #lv-26baac5e7dfc .menu-card {
+    #lv-aa5468e3541d .menu-card {
         background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(157, 98, 61, 0.1) 39px, rgba(157, 98, 61, 0.1) 40px);
         background-color: #ffffff;
         border: 1px solid rgba(113, 53, 6, 0.2);
     }
     
     /* Conteneur vidéo responsif */
-    #lv-26baac5e7dfc .video-embed-container {
+    #lv-aa5468e3541d .video-embed-container {
         display: flex;
         justify-content: center;
         margin: 3rem 0;
@@ -5796,16 +5796,16 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-        #lv-26baac5e7dfc .nav-links-village .village-link::after {
+        #lv-aa5468e3541d .nav-links-village .village-link::after {
             transition: none !important;
         }
     }
 
 
-    #lv-560850986722 { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-8b1defdf69fe { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-560850986722 .drop-cap::first-letter {
+    #lv-8b1defdf69fe .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -5815,7 +5815,7 @@
     }
 
     /* --- IMAGE ENCADRÉE TYPE MENU (Cliquable) --- */
-    #lv-560850986722 .menu-presentation-frame {
+    #lv-8b1defdf69fe .menu-presentation-frame {
         background: #ffffff;
         padding: 12px;
         border: 1px solid rgba(113, 53, 6, 0.15);
@@ -5827,22 +5827,22 @@
         display: block;
         text-decoration: none;
     }
-    #lv-560850986722 .menu-presentation-frame:hover {
+    #lv-8b1defdf69fe .menu-presentation-frame:hover {
         transform: translateY(-5px);
         box-shadow: 0 30px 60px -15px rgba(113, 53, 6, 0.20);
     }
-    #lv-560850986722 .menu-image-inner {
+    #lv-8b1defdf69fe .menu-image-inner {
         position: relative;
         width: 100%;
         overflow: hidden;
         border: 1px solid rgba(157, 98, 61, 0.3);
     }
-    #lv-560850986722 .menu-image-inner img {
+    #lv-8b1defdf69fe .menu-image-inner img {
         width: 100%;
         display: block;
         transition: transform 0.8s ease;
     }
-    #lv-560850986722 .menu-presentation-frame:hover .menu-image-inner img {
+    #lv-8b1defdf69fe .menu-presentation-frame:hover .menu-image-inner img {
         transform: scale(1.03);
     }
 

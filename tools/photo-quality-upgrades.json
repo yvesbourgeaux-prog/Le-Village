@@ -1,0 +1,23 @@
+{
+  "replacements": {
+    "https://assets.zyrosite.com/gnKoPAn3rxzY53IR/image4-1Owzufa0HFgoYjc1.png": "/assets/images/enhanced/automne-ruelles.webp",
+    "https://assets.zyrosite.com/gnKoPAn3rxzY53IR/image2-dv10VYhxUYnOJvnI.png": "/assets/images/enhanced/automne-fontaine.webp",
+    "https://assets.zyrosite.com/gnKoPAn3rxzY53IR/490935715_18096532069554133_8717733356139315233_n-6ntZgcZZoxmJs8wl.jpg": "/assets/images/enhanced/cocktail-terrasse.webp",
+    "https://assets.zyrosite.com/gnKoPAn3rxzY53IR/621457604_18124613215554133_4679667972243817482_n-HVyXLx6jh0FKvfPG.jpg": "/assets/images/enhanced/salle-voutee.webp",
+    "https://assets.zyrosite.com/gnKoPAn3rxzY53IR/703259494_18136664518554133_6619495604491241963_n-3yjAmERH9tRWsFwV.jpg": "/assets/images/enhanced/salade-terrasse.webp",
+    "https://assets.zyrosite.com/gnKoPAn3rxzY53IR/488371696_18095818531554133_8304191921673601096_n-6gnFEvgtRNLRghHv.jpg": "/assets/images/enhanced/assiette-risotto.webp",
+    "https://assets.zyrosite.com/gnKoPAn3rxzY53IR/748740788_1009759625306939_2296296747972267665_n-KzxXdNNzOpo29ZUX.jpg": "/assets/images/enhanced/salade-tomates.webp",
+    "https://assets.zyrosite.com/gnKoPAn3rxzY53IR/626285517_18126899017554133_3600391897983015929_n-0155WIdX8xrtfjeV.jpg": "/assets/images/enhanced/poisson-maison.webp",
+    "https://assets.zyrosite.com/gnKoPAn3rxzY53IR/586912859_18118939840554133_648115278753464499_n-15UIJzvWv5mn2ja4.jpg": "/assets/images/enhanced/table-grimaldi.webp",
+    "https://assets.zyrosite.com/gnKoPAn3rxzY53IR/93d43268-c8a4-4ba2-8767-ff2c5cee8678-r9IP3uk3J0Z39XoD.jpg": "/assets/images/enhanced/terrasse-panorama.webp",
+    "https://assets.zyrosite.com/gnKoPAn3rxzY53IR/587307194_18118939780554133_7013423862896191887_n-pYF0xPTJVhvgdjTE.jpg": "https://assets.zyrosite.com/gnKoPAn3rxzY53IR/587307194_18118939780554133_7013423862896191887_n-X0VeUGp9vYleKwRl.jpg",
+    "https://lh3.googleusercontent.com/p/AF1QipN7AaDOwafUdzFxmzDS63gOcxt2pepd7nUWlqiI=s680-w680-h510-rw": "/assets/images/enhanced/original-0.webp",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Amedeo_Modigliani_-_Cypresses_and_Houses_at_Cagnes_%28Cypr%C3%A8s_et_maisons_%C3%A0_Cagnes%29_-_BF259_-_Barnes_Foundation.jpg/500px-Amedeo_Modigliani_-_Cypresses_and_Houses_at_Cagnes_%28Cypr%C3%A8s_et_maisons_%C3%A0_Cagnes%29_-_BF259_-_Barnes_Foundation.jpg": "/assets/images/enhanced/original-1.webp",
+    "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=384,fit=crop,q=100/gnKoPAn3rxzY53IR/fete_sainte_lucie_2025-17-JkFJFsEx1KCAP1Dc.webp": "/assets/images/enhanced/original-2.webp",
+    "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=384,fit=crop,q=100/gnKoPAn3rxzY53IR/illust_concert_saint_valentin_14_fevrier_2026-IuLfqEG9S4Mu4syg.webp": "/assets/images/enhanced/original-3.webp",
+    "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=512,fit=crop/gnKoPAn3rxzY53IR/eglise_notre_dame_protection-oex8yYOJbgYhxNiI.webp": "/assets/images/enhanced/original-4.webp",
+    "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=384,fit=crop,q=100/gnKoPAn3rxzY53IR/587712398_18120431521554133_4619749419016656000_n-WO7bRpnqWXffPuoB.jpg": "/assets/images/enhanced/original-5.webp"
+  },
+  "note": "AI images are restorations with reconstructed details; original URLs retained for rollback. Larger originals used when available.",
+  "prompt": "Conservative restoration: preserve framing, composition, subjects, colors and lighting; improve clarity and resolution only."
+}
