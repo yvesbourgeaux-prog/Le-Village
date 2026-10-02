@@ -39,9 +39,12 @@ Les pages de chambres individuelles n'étaient pas dans l'archive. Le widget hô
 ## Accueil — octobre 2026
 Les cinq blocs fournis sont conservés dans `tools/source-pages/index.json`. L’en-tête et les ajustements propres à l’accueil sont dans `tools/home-header.html`, `assets/css/home.css` et `assets/js/home.js`. La largeur de contenu est limitée à 1240 px ; la classe `hero-media` permet une future image/vidéo de couverture pleine largeur. Le bloc « Nous retrouver » constitue le pied de page de l’accueil, sans duplication. Les autres pages restent inchangées.
 
-SEO : un H1, sections H2, liens descriptifs vers la page restaurant, entités Restaurant et Hotel reliées à la page. Le domaine provisoire reste en noindex ; activer l’indexation uniquement lors de la mise en production sur le domaine canonique. L’article Halloween ajouté aux actualités pointe encore vers le site source, sa page n’étant pas encore migrée.
+SEO : un H1, sections H2, liens descriptifs vers la page restaurant, entités Restaurant et Hotel reliées à la page. Le domaine provisoire reste en noindex ; activer l’indexation uniquement lors de la mise en production sur le domaine canonique. L’article Halloween est intégré au site et les cartes d’actualités pointent vers les pages locales.
 
 Vérification : `NODE_PATH=/chemin/vers/node_modules node tools/check-home.cjs` (jsdom requis).
 
 ### Corrections du 1er octobre
 Le pied de page fourni est restauré dans `tools/home-footer.html`. Le carrousel Haut-de-Cagnes contient sept photos, sans vidéo Facebook. Google Maps se charge directement sur l’accueil. Le SDK Zenchef officiel gère le flotteur et les actions de réservation sur l’accueil ; les autres pages gardent leur module actuel. Le bouton du menu reprend une bordure brune avec un remplissage animé au survol.
+
+### Articles et actualités — 3 octobre 2026
+Les quinze blocs d’articles fournis sont intégrés aux sources et aux pages, dont la nouvelle page `/automne-halloween-haut-de-cagnes`. Le même bloc actualités, avec quinze cartes et leurs liens internes sans extension, est utilisé sur l’accueil, le restaurant et l’hôtel. Le brunch conserve son URL `/brunch-musical-cagnes-sur-mer-restaurant-le-village`. Les restaurations de photos existantes sont conservées. L’index des actualités et le sitemap incluent la nouvelle page. Les dates historiques restent celles des sources ; Halloween est classé en octobre 2026 sans inventer un jour de publication.

@@ -97,6 +97,7 @@ manifest=[]
 def writepage(slug,meta,content,external=None,kind='default',date=None):
  modern=not slug or slug in (RESTAURANT_SLUG,HOTEL_SLUG,'la-carte','visiter-haut-de-cagnes')
  s=BeautifulSoup(content,'html.parser')
+ for landmark in s.select('main'):landmark.name='div'
  if slug=='la-carte':
   nav=s.select_one('.carte-nav-wrapper');nav.extract();s.select_one('.lv-block').insert_after(nav)
  press_footer=''
@@ -120,9 +121,6 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
    if block:
     heading=block.find('h2');signature=heading.find_previous_sibling('span')
     if signature:heading.insert(0,signature.extract())
-  for a in s.select('a[href="/automne-halloween-haut-de-cagnes"]'):
-   # This new article has not been migrated yet; keep the source destination.
-   a['href']=BASE+'/automne-halloween-haut-de-cagnes'
   grid=s.select_one('#village-grid-navigation-block')
   if grid:
    for heading in grid.select('h3'):heading.name='p'
@@ -222,7 +220,7 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
   head+='<link rel="stylesheet" href="/assets/css/press.css?v=cp-20261002"><link rel="stylesheet" href="/assets/css/releases.css?v=cp-20261002"><script defer src="/assets/js/press.js?v=cp-20261002"></script>'
   head=head.replace('/assets/css/blocks.css','/assets/css/blocks.css?v=cp-20261002').replace('/assets/css/tailwind.css','/assets/css/tailwind.css?v=cp-20261002')
  if slug=='automne-haut-de-cagnes':head+='<link rel="stylesheet" href="/assets/css/automne-gallery.css?v=20261002b">'
- head=re.sub(r'/assets/css/blocks\.css(?:\?[^\"]*)?', '/assets/css/blocks.css?v=photos-20261002', head)
+ head=re.sub(r'/assets/css/blocks\.css(?:\?[^\"]*)?', '/assets/css/blocks.css?v=blog-20261003', head)
  full=head+'</head><body'+(' class="press-page release-page"' if kind=='press-release' else ' class="dossier-page"' if slug=='dossier-presse' else ' class="press-page"' if slug=='espace-presse' else ' class="home-page visit-page"' if slug=='visiter-haut-de-cagnes' else ' class="home-page carte-page"' if slug=='la-carte' else ' class="home-page hotel-page"' if slug==HOTEL_SLUG else ' class="home-page restaurant-page"' if slug==RESTAURANT_SLUG else ' class="home-page"' if not slug else '')+'>'+selected_header+'<main id="main">'+str(s)+'</main>'+(press_footer if kind=='press-release' or slug in ('espace-presse','dossier-presse') else home_footer if modern else footer+EXTRA_FOOT)+'<div id="privacy-panel" class="privacy-panel" hidden><p>Vous pouvez réinitialiser ici les autorisations des vidéos intégrées. La carte et le module de réservation utilisent les services Google Maps et Zenchef.</p><button type="button" data-reset-consent>Réinitialiser mes choix</button><button type="button" data-close-privacy>Fermer</button></div></body></html>'
  if not modern:full=full.replace('Vous pouvez réinitialiser ici les autorisations des vidéos intégrées. La carte et le module de réservation utilisent les services Google Maps et Zenchef.', 'Les contenus externes (carte, vidéos et réservations) ne sont chargés qu’à votre demande.')
  path=ROOT/((slug+'.html') if slug else 'index.html');path.write_text(full)
@@ -235,7 +233,7 @@ for p in PAGES:
    body,e=process(b['content'],slug);parts.append(body);ext+=e
  writepage(slug,p['meta'],''.join(parts),ext,p['type'],p.get('date'))
 # Accessible index of all blog articles, preserving their existing URLs.
-articles=[p for p in PAGES if p['type']=='blog'];articles.sort(key=lambda p:p.get('date',''),reverse=True)
+articles=[p for p in PAGES if p['type']=='blog'];articles.sort(key=lambda p:p.get('sortDate') or p.get('date') or '',reverse=True)
 cards=''
 for p in articles:
  soup=BeautifulSoup(''.join(b.get('content','') for b in p['blocks']),'html.parser');img=soup.find('img');src=img.get('src',FALLBACK) if img else FALLBACK

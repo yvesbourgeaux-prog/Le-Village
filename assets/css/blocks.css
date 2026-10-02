@@ -276,6 +276,124 @@
     }
   
 
+#lv-2245ee60793a {
+    margin: 0;
+    padding: 0;
+    background-color: #fcf9f3;
+}
+
+/* ===================================================================== */
+/* LETTRINE                                                              */
+/* ===================================================================== */
+#lv-2245ee60793a .drop-cap::first-letter {
+    font-family: 'Great Vibes', cursive;
+    font-size: 5.5rem;
+    float: left;
+    line-height: 0.85;
+    margin-right: 0.5rem;
+    color: #9d623d;
+}
+
+/* ===================================================================== */
+/* CTA / LIENS                                                           */
+/* ===================================================================== */
+#lv-2245ee60793a .nav-links-village {
+    text-align: center !important;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+}
+
+#lv-2245ee60793a .nav-links-village .nav-col {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
+@media (min-width: 768px) {
+    #lv-2245ee60793a .nav-links-village .nav-col {
+        flex-direction: row !important;
+        justify-content: center !important;
+        gap: 28px !important;
+    }
+}
+
+#lv-2245ee60793a .nav-links-village .village-link {
+    color: #713506 !important;
+    text-decoration: none !important;
+    font-weight: 500 !important;
+    display: inline-block !important;
+    position: relative !important;
+    padding-bottom: 3px !important;
+    white-space: nowrap !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 13px !important;
+}
+
+#lv-2245ee60793a .nav-links-village .village-link::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 0 !important;
+    height: 1px !important;
+    background: #9d623d !important;
+    transition: width .28s ease !important;
+}
+
+#lv-2245ee60793a .nav-links-village .village-link:hover::after {
+    width: 100% !important;
+}
+
+/* ===================================================================== */
+/* ENCART INFORMATIONS                                                   */
+/* ===================================================================== */
+#lv-2245ee60793a .info-card {
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 39px,
+            rgba(157,98,61,.08) 39px,
+            rgba(157,98,61,.08) 40px
+        );
+    background-color: #ffffff;
+    border: 1px solid rgba(113,53,6,.2);
+}
+
+/* ===================================================================== */
+/* BOUTONS DE PARTAGE                                                    */
+/* ===================================================================== */
+#lv-2245ee60793a .share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    color: #9d623d;
+    background-color: transparent;
+    transition: all 0.25s ease;
+}
+#lv-2245ee60793a .share-btn:hover {
+    color: #713506;
+    background-color: rgba(157, 98, 61, 0.1);
+    transform: translateY(-2px);
+}
+#lv-2245ee60793a .share-btn svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+/* Keep hotel invitations readable on their dark background. */
+#lv-2245ee60793a .bg-village-dark h2,#lv-2245ee60793a  .bg-village-dark a { color: #f5f0ea; }
+
+
     #lv-00cef55f8b78 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
@@ -312,10 +430,10 @@
     }
 
 
-    #lv-452a4a4cd6fa { margin: 0; padding: 0; background-color: #fcf9f3; }
+    #lv-1413f3f26d14 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- CADRE VIDÉO FENÊTRE EN ARCHE ÉPURÉE --- */
-    #lv-452a4a4cd6fa .arched-video-frame {
+    #lv-1413f3f26d14 .arched-video-frame {
         position: relative;
         background: #ffffff;
         padding: 10px;
@@ -329,15 +447,15 @@
         opacity: 0;
         transform: translateY(40px);
     }
-    #lv-452a4a4cd6fa .arched-video-frame.is-visible {
+    #lv-1413f3f26d14 .arched-video-frame.is-visible {
         opacity: 1;
         transform: translateY(0);
     }
-    #lv-452a4a4cd6fa .arched-video-frame:hover {
+    #lv-1413f3f26d14 .arched-video-frame:hover {
         transform: translateY(-8px);
         box-shadow: 0 30px 60px -15px rgba(113, 53, 6, 0.25);
     }
-    #lv-452a4a4cd6fa .arched-video-frame::before {
+    #lv-1413f3f26d14 .arched-video-frame::before {
         content: '';
         position: absolute;
         top: 8px; bottom: 8px; left: 8px; right: 8px;
@@ -346,7 +464,7 @@
         pointer-events: none;
         z-index: 30;
     }
-    #lv-452a4a4cd6fa .video-mask {
+    #lv-1413f3f26d14 .video-mask {
         position: relative;
         width: 100%;
         aspect-ratio: 9/16;
@@ -354,7 +472,7 @@
         overflow: hidden;
         background-color: #000;
     }
-    #lv-452a4a4cd6fa .video-mask video {
+    #lv-1413f3f26d14 .video-mask video {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -364,7 +482,7 @@
     }
 
     /* --- BOUTONS PREMIUM (GLASSMORPHISM) --- */
-    #lv-452a4a4cd6fa .glass-btn {
+    #lv-1413f3f26d14 .glass-btn {
         background: rgba(255, 255, 255, 0.25);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
@@ -372,21 +490,21 @@
         color: #ffffff;
         transition: all 0.3s ease;
     }
-    #lv-452a4a4cd6fa .glass-btn:hover {
+    #lv-1413f3f26d14 .glass-btn:hover {
         background: rgba(255, 255, 255, 0.9);
         color: #713506;
         transform: scale(1.1);
     }
-    #lv-452a4a4cd6fa .video-controls {
+    #lv-1413f3f26d14 .video-controls {
         opacity: 0;
         transition: opacity 0.4s ease;
     }
-    #lv-452a4a4cd6fa .arched-video-frame:hover .video-controls {
+    #lv-1413f3f26d14 .arched-video-frame:hover .video-controls {
         opacity: 1;
     }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-452a4a4cd6fa .drop-cap::first-letter {
+    #lv-1413f3f26d14 .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -396,20 +514,23 @@
     }
     
     /* Style éditorial pour l'encart d'information */
-    #lv-452a4a4cd6fa .info-card {
+    #lv-1413f3f26d14 .info-card {
         background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(157, 98, 61, 0.1) 39px, rgba(157, 98, 61, 0.1) 40px);
         background-color: #ffffff;
         border: 1px solid rgba(113, 53, 6, 0.2);
     }
 
     @media (prefers-reduced-motion: reduce) {
-        #lv-452a4a4cd6fa .arched-video-frame,#lv-452a4a4cd6fa 
-        .glass-btn,#lv-452a4a4cd6fa 
-        .video-controls,#lv-452a4a4cd6fa 
+        #lv-1413f3f26d14 .arched-video-frame,#lv-1413f3f26d14 
+        .glass-btn,#lv-1413f3f26d14 
+        .video-controls,#lv-1413f3f26d14 
         .hover\:scale-105 {
             transition: none !important;
         }
     }
+
+/* Keep hotel invitations readable on their dark background. */
+#lv-1413f3f26d14 .bg-village-dark h2,#lv-1413f3f26d14  .bg-village-dark a { color: #f5f0ea; }
 
 
     #lv-504180465d18 { margin: 0; padding: 0; background-color: #fcf9f3; }
@@ -1411,7 +1532,7 @@
     #lv-e4eeecc58faf { margin: 0; padding: 0; }
 
 
-#lv-46915d34a5d1 {
+#lv-36e5db5dbe46 {
     margin: 0;
     padding: 0;
     background-color: #fcf9f3;
@@ -1422,7 +1543,7 @@
 /* LETTRINE                                                              */
 /* ===================================================================== */
 
-#lv-46915d34a5d1 .drop-cap::first-letter {
+#lv-36e5db5dbe46 .drop-cap::first-letter {
     font-family: 'Great Vibes', cursive;
     font-size: 5.5rem;
     float: left;
@@ -1436,7 +1557,7 @@
 /* CTA / LIENS                                                           */
 /* ===================================================================== */
 
-#lv-46915d34a5d1 .nav-links-village {
+#lv-36e5db5dbe46 .nav-links-village {
     text-align: center !important;
     margin-top: 20px !important;
     margin-bottom: 20px !important;
@@ -1446,7 +1567,7 @@
 }
 
 
-#lv-46915d34a5d1 .nav-links-village .nav-col {
+#lv-36e5db5dbe46 .nav-links-village .nav-col {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
@@ -1456,7 +1577,7 @@
 
 @media (min-width: 768px) {
 
-    #lv-46915d34a5d1 .nav-links-village .nav-col {
+    #lv-36e5db5dbe46 .nav-links-village .nav-col {
         flex-direction: row !important;
         justify-content: center !important;
         gap: 28px !important;
@@ -1465,7 +1586,7 @@
 }
 
 
-#lv-46915d34a5d1 .nav-links-village .village-link {
+#lv-36e5db5dbe46 .nav-links-village .village-link {
     color: #713506 !important;
     text-decoration: none !important;
     font-weight: 500 !important;
@@ -1479,7 +1600,7 @@
 }
 
 
-#lv-46915d34a5d1 .nav-links-village .village-link::after {
+#lv-36e5db5dbe46 .nav-links-village .village-link::after {
     content: "" !important;
     position: absolute !important;
     left: 0 !important;
@@ -1491,7 +1612,7 @@
 }
 
 
-#lv-46915d34a5d1 .nav-links-village .village-link:hover::after {
+#lv-36e5db5dbe46 .nav-links-village .village-link:hover::after {
     width: 100% !important;
 }
 
@@ -1500,7 +1621,7 @@
 /* ENCART INFORMATIONS                                                   */
 /* ===================================================================== */
 
-#lv-46915d34a5d1 .info-card {
+#lv-36e5db5dbe46 .info-card {
 
     background-image:
         repeating-linear-gradient(
@@ -1515,6 +1636,9 @@
     border: 1px solid rgba(113,53,6,.2);
 }
 
+
+/* Keep hotel invitations readable on their dark background. */
+#lv-36e5db5dbe46 .bg-village-dark h2,#lv-36e5db5dbe46  .bg-village-dark a { color: #f5f0ea; }
 
 
     #lv-dd4ff477ae13 {
@@ -1799,10 +1923,10 @@
         margin-top: 8px;
     }
 
-#lv-1c9e2557b0a5 { margin: 0; padding: 0; background-color: #fcf9f3; }
+#lv-cd953b738eda { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-1c9e2557b0a5 .drop-cap::first-letter {
+    #lv-cd953b738eda .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -1812,7 +1936,7 @@
     }
     
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
-    #lv-1c9e2557b0a5 .nav-links-village {
+    #lv-cd953b738eda .nav-links-village {
         text-align: center !important;
         margin-top: 20px !important;
         margin-bottom: 20px !important;
@@ -1820,20 +1944,20 @@
         font-size: 16px !important;
         line-height: 1.4 !important;
     }
-    #lv-1c9e2557b0a5 .nav-links-village .nav-col {
+    #lv-cd953b738eda .nav-links-village .nav-col {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         gap: 12px !important;
     }
     @media (min-width: 768px) {
-        #lv-1c9e2557b0a5 .nav-links-village .nav-col {
+        #lv-cd953b738eda .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
             gap: 28px !important; 
         }
     }
-    #lv-1c9e2557b0a5 .nav-links-village .village-link {
+    #lv-cd953b738eda .nav-links-village .village-link {
         color: #713506 !important;
         text-decoration: none !important;
         font-weight: 500 !important;
@@ -1845,7 +1969,7 @@
         letter-spacing: 0.05em;
         font-size: 13px !important;
     }
-    #lv-1c9e2557b0a5 .nav-links-village .village-link::after {
+    #lv-cd953b738eda .nav-links-village .village-link::after {
         content: "" !important;
         position: absolute !important;
         left: 0 !important;
@@ -1855,12 +1979,12 @@
         background: #9d623d !important;
         transition: width .28s ease !important;
     }
-    #lv-1c9e2557b0a5 .nav-links-village .village-link:hover::after {
+    #lv-cd953b738eda .nav-links-village .village-link:hover::after {
         width: 100% !important;
     }
 
     /* --- CADRE VIDÉO FENÊTRE EN ARCHE ÉPURÉE --- */
-    #lv-1c9e2557b0a5 .arched-video-frame {
+    #lv-cd953b738eda .arched-video-frame {
         position: relative;
         background: #ffffff;
         padding: 10px;
@@ -1871,11 +1995,11 @@
         transition: transform 0.5s ease, box-shadow 0.5s ease;
         margin: 0 auto;
     }
-    #lv-1c9e2557b0a5 .arched-video-frame:hover {
+    #lv-cd953b738eda .arched-video-frame:hover {
         transform: translateY(-8px);
         box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.4);
     }
-    #lv-1c9e2557b0a5 .arched-video-frame::before {
+    #lv-cd953b738eda .arched-video-frame::before {
         content: '';
         position: absolute;
         top: 8px; bottom: 8px; left: 8px; right: 8px;
@@ -1884,7 +2008,7 @@
         pointer-events: none;
         z-index: 30;
     }
-    #lv-1c9e2557b0a5 .video-mask {
+    #lv-cd953b738eda .video-mask {
         position: relative;
         width: 100%;
         aspect-ratio: 9/16;
@@ -1895,7 +2019,7 @@
         justify-content: center;
         align-items: center;
     }
-    #lv-1c9e2557b0a5 .video-mask video {
+    #lv-cd953b738eda .video-mask video {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -1905,7 +2029,7 @@
     }
 
     /* --- BOUTONS PREMIUM (GLASSMORPHISM) --- */
-    #lv-1c9e2557b0a5 .glass-btn {
+    #lv-cd953b738eda .glass-btn {
         background: rgba(255, 255, 255, 0.25);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
@@ -1913,23 +2037,26 @@
         color: #ffffff;
         transition: all 0.3s ease;
     }
-    #lv-1c9e2557b0a5 .glass-btn:hover {
+    #lv-cd953b738eda .glass-btn:hover {
         background: #ffffff;
         color: #713506;
         transform: scale(1.1);
     }
-    #lv-1c9e2557b0a5 .video-controls {
+    #lv-cd953b738eda .video-controls {
         opacity: 0;
         transition: opacity 0.4s ease;
     }
-    #lv-1c9e2557b0a5 .arched-video-frame:hover .video-controls {
+    #lv-cd953b738eda .arched-video-frame:hover .video-controls {
         opacity: 1;
     }
 
-#lv-6c90d994e64a { margin: 0; padding: 0; background-color: #fcf9f3; }
+/* Keep hotel invitations readable on their dark background. */
+#lv-cd953b738eda .bg-village-dark h2,#lv-cd953b738eda  .bg-village-dark a { color: #f5f0ea; }
+
+#lv-ea40639001a7 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-6c90d994e64a .drop-cap::first-letter {
+    #lv-ea40639001a7 .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -1939,7 +2066,7 @@
     }
     
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
-    #lv-6c90d994e64a .nav-links-village {
+    #lv-ea40639001a7 .nav-links-village {
         text-align: center !important;
         margin-top: 20px !important;
         margin-bottom: 20px !important;
@@ -1947,20 +2074,20 @@
         font-size: 16px !important;
         line-height: 1.4 !important;
     }
-    #lv-6c90d994e64a .nav-links-village .nav-col {
+    #lv-ea40639001a7 .nav-links-village .nav-col {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         gap: 12px !important;
     }
     @media (min-width: 768px) {
-        #lv-6c90d994e64a .nav-links-village .nav-col {
+        #lv-ea40639001a7 .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
             gap: 28px !important; 
         }
     }
-    #lv-6c90d994e64a .nav-links-village .village-link {
+    #lv-ea40639001a7 .nav-links-village .village-link {
         color: #713506 !important;
         text-decoration: none !important;
         font-weight: 500 !important;
@@ -1972,7 +2099,7 @@
         letter-spacing: 0.05em;
         font-size: 13px !important;
     }
-    #lv-6c90d994e64a .nav-links-village .village-link::after {
+    #lv-ea40639001a7 .nav-links-village .village-link::after {
         content: "" !important;
         position: absolute !important;
         left: 0 !important;
@@ -1982,73 +2109,31 @@
         background: #9d623d !important;
         transition: width .28s ease !important;
     }
-    #lv-6c90d994e64a .nav-links-village .village-link:hover::after {
+    #lv-ea40639001a7 .nav-links-village .village-link:hover::after {
         width: 100% !important;
     }
 
     /* Style éditorial menu */
-    #lv-6c90d994e64a .menu-card {
+    #lv-ea40639001a7 .menu-card {
         background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(157, 98, 61, 0.1) 39px, rgba(157, 98, 61, 0.1) 40px);
         background-color: #ffffff;
         border: 1px solid rgba(113, 53, 6, 0.2);
     }
     
     /* Conteneur image signature */
-    #lv-6c90d994e64a .village-img-wrapper {
+    #lv-ea40639001a7 .village-img-wrapper {
         position: relative;
         overflow: hidden;
         border-radius: 2px;
     }
 
-    /* --- CADRE VIDÉO FENÊTRE EN ARCHE ÉPURÉE --- */
-    #lv-6c90d994e64a .arched-video-frame {
-        position: relative;
-        background: #ffffff;
-        padding: 10px;
-        border-radius: 140px 140px 0 0;
-        border: 1px solid #713506;
-        box-shadow: 0 25px 50px -12px rgba(113, 53, 6, 0.15);
-        overflow: hidden;
-        transition: transform 0.5s ease, box-shadow 0.5s ease;
-        margin: 0 auto;
-    }
-    #lv-6c90d994e64a .arched-video-frame:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 30px 60px -15px rgba(113, 53, 6, 0.25);
-    }
-    #lv-6c90d994e64a .arched-video-frame::before {
-        content: '';
-        position: absolute;
-        top: 8px; bottom: 8px; left: 8px; right: 8px;
-        border: 1px solid rgba(157, 98, 61, 0.6);
-        border-radius: 132px 132px 0 0;
-        pointer-events: none;
-        z-index: 30;
-    }
-    #lv-6c90d994e64a .video-mask {
-        position: relative;
-        width: 100%;
-        aspect-ratio: 9/16;
-        border-radius: 130px 130px 0 0;
-        overflow: hidden;
-        background-color: #f5f0ea;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    #lv-6c90d994e64a .video-mask iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-        display: block;
-        z-index: 10;
-        position: relative;
-    }
+/* Keep hotel invitations readable on their dark background. */
+#lv-ea40639001a7 .bg-village-dark h2,#lv-ea40639001a7  .bg-village-dark a { color: #f5f0ea; }
 
-#lv-fb4b776d917f { margin: 0; padding: 0; background-color: #fcf9f3; }
+#lv-e988a9d9bfda { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-fb4b776d917f .drop-cap::first-letter {
+    #lv-e988a9d9bfda .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -2058,7 +2143,7 @@
     }
     
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
-    #lv-fb4b776d917f .nav-links-village {
+    #lv-e988a9d9bfda .nav-links-village {
         text-align: center !important;
         margin-top: 20px !important;
         margin-bottom: 20px !important;
@@ -2066,20 +2151,20 @@
         font-size: 16px !important;
         line-height: 1.4 !important;
     }
-    #lv-fb4b776d917f .nav-links-village .nav-col {
+    #lv-e988a9d9bfda .nav-links-village .nav-col {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         gap: 12px !important;
     }
     @media (min-width: 768px) {
-        #lv-fb4b776d917f .nav-links-village .nav-col {
+        #lv-e988a9d9bfda .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
             gap: 28px !important; 
         }
     }
-    #lv-fb4b776d917f .nav-links-village .village-link {
+    #lv-e988a9d9bfda .nav-links-village .village-link {
         color: #713506 !important;
         text-decoration: none !important;
         font-weight: 500 !important;
@@ -2091,7 +2176,7 @@
         letter-spacing: 0.05em;
         font-size: 13px !important;
     }
-    #lv-fb4b776d917f .nav-links-village .village-link::after {
+    #lv-e988a9d9bfda .nav-links-village .village-link::after {
         content: "" !important;
         position: absolute !important;
         left: 0 !important;
@@ -2101,28 +2186,31 @@
         background: #000 !important;
         transition: width .28s ease !important;
     }
-    #lv-fb4b776d917f .nav-links-village .village-link:hover::after {
+    #lv-e988a9d9bfda .nav-links-village .village-link:hover::after {
         width: 100% !important;
     }
 
     /* Conteneur Facebook responsif */
-    #lv-fb4b776d917f .fb-embed-container {
+    #lv-e988a9d9bfda .fb-embed-container {
         display: flex;
         justify-content: center;
         margin: 3rem 0;
         width: 100%;
         overflow: hidden;
     }
-    #lv-fb4b776d917f .fb-embed-container iframe {
+    #lv-e988a9d9bfda .fb-embed-container iframe {
         max-width: 100%;
         border-radius: 4px;
         box-shadow: 0 10px 30px -10px rgba(113, 53, 6, 0.15);
     }
 
-#lv-04fe81cbd7bb { margin: 0; padding: 0; background-color: #fcf9f3; }
+/* Keep hotel invitations readable on their dark background. */
+#lv-e988a9d9bfda .bg-village-dark h2,#lv-e988a9d9bfda  .bg-village-dark a { color: #f5f0ea; }
+
+#lv-ca301500d887 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-04fe81cbd7bb .drop-cap::first-letter {
+    #lv-ca301500d887 .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -2132,7 +2220,7 @@
     }
     
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
-    #lv-04fe81cbd7bb .nav-links-village {
+    #lv-ca301500d887 .nav-links-village {
         text-align: center !important;
         margin-top: 20px !important;
         margin-bottom: 20px !important;
@@ -2140,20 +2228,20 @@
         font-size: 16px !important;
         line-height: 1.4 !important;
     }
-    #lv-04fe81cbd7bb .nav-links-village .nav-col {
+    #lv-ca301500d887 .nav-links-village .nav-col {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         gap: 12px !important;
     }
     @media (min-width: 768px) {
-        #lv-04fe81cbd7bb .nav-links-village .nav-col {
+        #lv-ca301500d887 .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
             gap: 28px !important; 
         }
     }
-    #lv-04fe81cbd7bb .nav-links-village .village-link {
+    #lv-ca301500d887 .nav-links-village .village-link {
         color: #713506 !important;
         text-decoration: none !important;
         font-weight: 500 !important;
@@ -2165,7 +2253,7 @@
         letter-spacing: 0.05em;
         font-size: 13px !important;
     }
-    #lv-04fe81cbd7bb .nav-links-village .village-link::after {
+    #lv-ca301500d887 .nav-links-village .village-link::after {
         content: "" !important;
         position: absolute !important;
         left: 0 !important;
@@ -2175,30 +2263,33 @@
         background: #9d623d !important;
         transition: width .28s ease !important;
     }
-    #lv-04fe81cbd7bb .nav-links-village .village-link:hover::after {
+    #lv-ca301500d887 .nav-links-village .village-link:hover::after {
         width: 100% !important;
     }
 
     /* Style éditorial menu */
-    #lv-04fe81cbd7bb .menu-card {
+    #lv-ca301500d887 .menu-card {
         background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(157, 98, 61, 0.1) 39px, rgba(157, 98, 61, 0.1) 40px);
         background-color: #ffffff;
         border: 1px solid rgba(113, 53, 6, 0.2);
     }
     
     /* Conteneur Facebook responsif pour éviter le débordement sur petit mobile */
-    #lv-04fe81cbd7bb .fb-embed-container {
+    #lv-ca301500d887 .fb-embed-container {
         display: flex;
         justify-content: center;
         margin: 3rem 0;
         width: 100%;
         overflow: hidden;
     }
-    #lv-04fe81cbd7bb .fb-embed-container iframe {
+    #lv-ca301500d887 .fb-embed-container iframe {
         max-width: 100%;
         border-radius: 4px;
         box-shadow: 0 10px 30px -10px rgba(113, 53, 6, 0.15);
     }
+
+/* Keep hotel invitations readable on their dark background. */
+#lv-ca301500d887 .bg-village-dark h2,#lv-ca301500d887  .bg-village-dark a { color: #f5f0ea; }
 
 
     #lv-78deed0afd80 { scroll-behavior: smooth; }
@@ -3040,135 +3131,6 @@
     }
 
 
-    #lv-9378cc044ace { margin: 0; padding: 0; }
-
-    #lv-9378cc044ace .hide-scroll {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-    #lv-9378cc044ace .hide-scroll::-webkit-scrollbar {
-        display: none;
-    }
-
-    #lv-9378cc044ace .village-img-wrapper {
-        position: relative;
-        overflow: hidden;
-        border-radius: 2px;
-    }
-    
-    #lv-9378cc044ace .village-img-wrapper::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background-color: #9d623d;
-        mix-blend-mode: color;
-        opacity: 0.85;
-        transition: opacity 0.8s ease;
-        pointer-events: none;
-        z-index: 10;
-    }
-    
-    #lv-9378cc044ace .village-img-wrapper::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background-color: rgba(113, 53, 6, 0.15); 
-        transition: opacity 0.8s ease;
-        pointer-events: none;
-        z-index: 11;
-    }
-    
-    #lv-9378cc044ace .group:hover .village-img-wrapper::after,#lv-9378cc044ace 
-    .group:hover .village-img-wrapper::before {
-        opacity: 0;
-    }
-
-    #lv-9378cc044ace .village-img {
-        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        will-change: transform;
-    }
-    #lv-9378cc044ace .group:hover .village-img {
-        transform: scale(1.05);
-    }
-
-    #lv-9378cc044ace .village-link-read {
-        color: #713506;
-        text-decoration: none;
-        font-weight: 500;
-        display: inline-block;
-        position: relative;
-        padding-bottom: 4px;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        font-size: 11px;
-        font-family: 'Poppins', sans-serif;
-        transition: color 0.3s ease;
-        margin-top: auto;
-    }
-    #lv-9378cc044ace .village-link-read::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 0;
-        height: 1px;
-        background: #9d623d;
-        transition: width 0.4s ease;
-    }
-    #lv-9378cc044ace .group:hover .village-link-read {
-        color: #9d623d;
-    }
-    #lv-9378cc044ace .group:hover .village-link-read::after {
-        width: 100%;
-    }
-
-    /* Flèches visibles aussi sur mobile */
-    #lv-9378cc044ace .blog-carousel-arrows {
-        display: flex;
-        gap: 14px;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-    }
-
-    @media (min-width: 768px) {
-        #lv-9378cc044ace .blog-carousel-arrows {
-            width: auto;
-            justify-content: flex-end;
-        }
-    }
-
-    #lv-9378cc044ace .blog-carousel-arrow {
-        width: 44px;
-        height: 44px;
-        border-radius: 999px;
-        border: 1px solid rgba(113, 53, 6, 0.28);
-        background: rgba(252, 249, 243, 0.9);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #713506;
-        transition: all 0.3s ease;
-        box-shadow: 0 6px 18px rgba(113, 53, 6, 0.08);
-    }
-
-    #lv-9378cc044ace .blog-carousel-arrow:hover {
-        background: #713506;
-        color: #ffffff;
-        border-color: #713506;
-    }
-
-    @media (max-width: 767px) {
-        #lv-9378cc044ace .blog-carousel-arrow {
-            width: 42px;
-            height: 42px;
-            background: #ffffff;
-            border-color: rgba(157, 98, 61, 0.45);
-            box-shadow: 0 8px 20px rgba(113, 53, 6, 0.12);
-        }
-    }
-
-
     #lv-b1bc89b1b497 { margin: 0; padding: 0; }
     
     /* Grande guillemet décorative en arrière-plan de la carte */
@@ -3280,10 +3242,10 @@
         transform: translateX(6px);
     }
 
-#lv-582b5edb21a2 { margin: 0; padding: 0; background-color: #fcf9f3; }
+#lv-1d245c032596 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-582b5edb21a2 .drop-cap::first-letter {
+    #lv-1d245c032596 .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -3293,7 +3255,7 @@
     }
     
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
-    #lv-582b5edb21a2 .nav-links-village {
+    #lv-1d245c032596 .nav-links-village {
         text-align: center !important;
         margin-top: 20px !important;
         margin-bottom: 20px !important;
@@ -3301,20 +3263,20 @@
         font-size: 16px !important;
         line-height: 1.4 !important;
     }
-    #lv-582b5edb21a2 .nav-links-village .nav-col {
+    #lv-1d245c032596 .nav-links-village .nav-col {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         gap: 12px !important;
     }
     @media (min-width: 768px) {
-        #lv-582b5edb21a2 .nav-links-village .nav-col {
+        #lv-1d245c032596 .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
             gap: 28px !important; 
         }
     }
-    #lv-582b5edb21a2 .nav-links-village .village-link {
+    #lv-1d245c032596 .nav-links-village .village-link {
         color: #713506 !important;
         text-decoration: none !important;
         font-weight: 500 !important;
@@ -3326,7 +3288,7 @@
         letter-spacing: 0.05em;
         font-size: 13px !important;
     }
-    #lv-582b5edb21a2 .nav-links-village .village-link::after {
+    #lv-1d245c032596 .nav-links-village .village-link::after {
         content: "" !important;
         position: absolute !important;
         left: 0 !important;
@@ -3336,12 +3298,12 @@
         background: #9d623d !important;
         transition: width .28s ease !important;
     }
-    #lv-582b5edb21a2 .nav-links-village .village-link:hover::after {
+    #lv-1d245c032596 .nav-links-village .village-link:hover::after {
         width: 100% !important;
     }
 
     /* --- CADRE VIDÉO FENÊTRE EN ARCHE ÉPURÉE --- */
-    #lv-582b5edb21a2 .arched-video-frame {
+    #lv-1d245c032596 .arched-video-frame {
         position: relative;
         background: #ffffff;
         padding: 10px;
@@ -3352,11 +3314,11 @@
         transition: transform 0.5s ease, box-shadow 0.5s ease;
         margin: 0 auto;
     }
-    #lv-582b5edb21a2 .arched-video-frame:hover {
+    #lv-1d245c032596 .arched-video-frame:hover {
         transform: translateY(-8px);
         box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.4);
     }
-    #lv-582b5edb21a2 .arched-video-frame::before {
+    #lv-1d245c032596 .arched-video-frame::before {
         content: '';
         position: absolute;
         top: 8px; bottom: 8px; left: 8px; right: 8px;
@@ -3365,7 +3327,7 @@
         pointer-events: none;
         z-index: 30;
     }
-    #lv-582b5edb21a2 .video-mask {
+    #lv-1d245c032596 .video-mask {
         position: relative;
         width: 100%;
         aspect-ratio: 9/16;
@@ -3376,7 +3338,7 @@
         justify-content: center;
         align-items: center;
     }
-    #lv-582b5edb21a2 .video-mask video {
+    #lv-1d245c032596 .video-mask video {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -3386,7 +3348,7 @@
     }
 
     /* --- BOUTONS PREMIUM (GLASSMORPHISM) --- */
-    #lv-582b5edb21a2 .glass-btn {
+    #lv-1d245c032596 .glass-btn {
         background: rgba(255, 255, 255, 0.25);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
@@ -3394,35 +3356,35 @@
         color: #ffffff;
         transition: all 0.3s ease;
     }
-    #lv-582b5edb21a2 .glass-btn:hover {
+    #lv-1d245c032596 .glass-btn:hover {
         background: #ffffff;
         color: #713506;
         transform: scale(1.1);
     }
-    #lv-582b5edb21a2 .video-controls {
+    #lv-1d245c032596 .video-controls {
         opacity: 0;
         transition: opacity 0.4s ease;
     }
-    #lv-582b5edb21a2 .arched-video-frame:hover .video-controls {
+    #lv-1d245c032596 .arched-video-frame:hover .video-controls {
         opacity: 1;
     }
 
     /* Style encart info */
-    #lv-582b5edb21a2 .info-card {
+    #lv-1d245c032596 .info-card {
         background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(157, 98, 61, 0.1) 39px, rgba(157, 98, 61, 0.1) 40px);
         background-color: #ffffff;
         border: 1px solid rgba(113, 53, 6, 0.2);
     }
 
     /* --- ENCADRÉ MAILLAGE INTERNE : PROGRAMME JAZZ AU CHÂTEAU --- */
-    #lv-582b5edb21a2 .jazz-program-card {
+    #lv-1d245c032596 .jazz-program-card {
         position: relative;
         overflow: hidden;
         background: linear-gradient(135deg, rgba(113, 53, 6, 0.98), rgba(157, 98, 61, 0.92));
         border: 1px solid rgba(245, 240, 234, 0.35);
         box-shadow: 0 22px 44px -18px rgba(64, 28, 4, 0.5);
     }
-    #lv-582b5edb21a2 .jazz-program-card::before,#lv-582b5edb21a2 
+    #lv-1d245c032596 .jazz-program-card::before,#lv-1d245c032596 
     .jazz-program-card::after {
         content: '';
         position: absolute;
@@ -3430,19 +3392,19 @@
         border-radius: 999px;
         pointer-events: none;
     }
-    #lv-582b5edb21a2 .jazz-program-card::before {
+    #lv-1d245c032596 .jazz-program-card::before {
         width: 280px;
         height: 280px;
         top: -155px;
         right: -80px;
     }
-    #lv-582b5edb21a2 .jazz-program-card::after {
+    #lv-1d245c032596 .jazz-program-card::after {
         width: 180px;
         height: 180px;
         bottom: -120px;
         left: -60px;
     }
-    #lv-582b5edb21a2 .program-link-btn {
+    #lv-1d245c032596 .program-link-btn {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -3458,14 +3420,14 @@
         padding: 15px 22px;
         transition: transform .28s ease, background-color .28s ease, color .28s ease;
     }
-    #lv-582b5edb21a2 .program-link-btn:hover {
+    #lv-1d245c032596 .program-link-btn:hover {
         transform: translateY(-3px);
         background: #f5f0ea;
         color: #713506;
     }
 
     /* --- VIDÉO YOUTUBE INTÉGRÉE AU DESIGN ÉDITORIAL --- */
-    #lv-582b5edb21a2 .youtube-showcase {
+    #lv-1d245c032596 .youtube-showcase {
         position: relative;
         background: #ffffff;
         padding: 10px;
@@ -3475,11 +3437,11 @@
         overflow: hidden;
         transition: transform .5s ease, box-shadow .5s ease;
     }
-    #lv-582b5edb21a2 .youtube-showcase:hover {
+    #lv-1d245c032596 .youtube-showcase:hover {
         transform: translateY(-6px);
         box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.35);
     }
-    #lv-582b5edb21a2 .youtube-showcase::before {
+    #lv-1d245c032596 .youtube-showcase::before {
         content: '';
         position: absolute;
         inset: 8px;
@@ -3488,7 +3450,7 @@
         pointer-events: none;
         z-index: 2;
     }
-    #lv-582b5edb21a2 .youtube-ratio {
+    #lv-1d245c032596 .youtube-ratio {
         position: relative;
         width: 100%;
         aspect-ratio: 16 / 9;
@@ -3496,12 +3458,15 @@
         border-radius: 34px 34px 0 0;
         background: #1d0c02;
     }
-    #lv-582b5edb21a2 .youtube-ratio iframe {
+    #lv-1d245c032596 .youtube-ratio iframe {
         width: 100%;
         height: 100%;
         border: 0;
         display: block;
     }
+
+/* Keep hotel invitations readable on their dark background. */
+#lv-1d245c032596 .bg-village-dark h2,#lv-1d245c032596  .bg-village-dark a { color: #f5f0ea; }
 
 
     #lv-e85295065c8d { margin: 0; padding: 0; background-color: #fcf9f3; }
@@ -4825,135 +4790,6 @@
     }
 
 
-    #lv-ab454dc8a343 { margin: 0; padding: 0; }
-
-    #lv-ab454dc8a343 .hide-scroll {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-    #lv-ab454dc8a343 .hide-scroll::-webkit-scrollbar {
-        display: none;
-    }
-
-    #lv-ab454dc8a343 .village-img-wrapper {
-        position: relative;
-        overflow: hidden;
-        border-radius: 2px;
-    }
-    
-    #lv-ab454dc8a343 .village-img-wrapper::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background-color: #9d623d;
-        mix-blend-mode: color;
-        opacity: 0.85;
-        transition: opacity 0.8s ease;
-        pointer-events: none;
-        z-index: 10;
-    }
-    
-    #lv-ab454dc8a343 .village-img-wrapper::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background-color: rgba(113, 53, 6, 0.15); 
-        transition: opacity 0.8s ease;
-        pointer-events: none;
-        z-index: 11;
-    }
-    
-    #lv-ab454dc8a343 .group:hover .village-img-wrapper::after,#lv-ab454dc8a343 
-    .group:hover .village-img-wrapper::before {
-        opacity: 0;
-    }
-
-    #lv-ab454dc8a343 .village-img {
-        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        will-change: transform;
-    }
-    #lv-ab454dc8a343 .group:hover .village-img {
-        transform: scale(1.05);
-    }
-
-    #lv-ab454dc8a343 .village-link-read {
-        color: #713506;
-        text-decoration: none;
-        font-weight: 500;
-        display: inline-block;
-        position: relative;
-        padding-bottom: 4px;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        font-size: 11px;
-        font-family: 'Poppins', sans-serif;
-        transition: color 0.3s ease;
-        margin-top: auto;
-    }
-    #lv-ab454dc8a343 .village-link-read::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 0;
-        height: 1px;
-        background: #9d623d;
-        transition: width 0.4s ease;
-    }
-    #lv-ab454dc8a343 .group:hover .village-link-read {
-        color: #9d623d;
-    }
-    #lv-ab454dc8a343 .group:hover .village-link-read::after {
-        width: 100%;
-    }
-
-    /* Flèches visibles aussi sur mobile */
-    #lv-ab454dc8a343 .blog-carousel-arrows {
-        display: flex;
-        gap: 14px;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-    }
-
-    @media (min-width: 768px) {
-        #lv-ab454dc8a343 .blog-carousel-arrows {
-            width: auto;
-            justify-content: flex-end;
-        }
-    }
-
-    #lv-ab454dc8a343 .blog-carousel-arrow {
-        width: 44px;
-        height: 44px;
-        border-radius: 999px;
-        border: 1px solid rgba(113, 53, 6, 0.28);
-        background: rgba(252, 249, 243, 0.9);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #713506;
-        transition: all 0.3s ease;
-        box-shadow: 0 6px 18px rgba(113, 53, 6, 0.08);
-    }
-
-    #lv-ab454dc8a343 .blog-carousel-arrow:hover {
-        background: #713506;
-        color: #ffffff;
-        border-color: #713506;
-    }
-
-    @media (max-width: 767px) {
-        #lv-ab454dc8a343 .blog-carousel-arrow {
-            width: 42px;
-            height: 42px;
-            background: #ffffff;
-            border-color: rgba(157, 98, 61, 0.45);
-            box-shadow: 0 8px 20px rgba(113, 53, 6, 0.12);
-        }
-    }
-
-
     #lv-66473e75fc51 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- CADRE VIDÉO FENÊTRE EN ARCHE ÉPURÉE --- */
@@ -5035,10 +4871,10 @@
         color: #9d623d;
     }
 
-#lv-51c44270566f { margin: 0; padding: 0; background-color: #fcf9f3; }
+#lv-c0612f3715b6 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-51c44270566f .drop-cap::first-letter {
+    #lv-c0612f3715b6 .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -5048,7 +4884,7 @@
     }
     
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
-    #lv-51c44270566f .nav-links-village {
+    #lv-c0612f3715b6 .nav-links-village {
         text-align: center !important;
         margin-top: 20px !important;
         margin-bottom: 20px !important;
@@ -5056,20 +4892,20 @@
         font-size: 16px !important;
         line-height: 1.4 !important;
     }
-    #lv-51c44270566f .nav-links-village .nav-col {
+    #lv-c0612f3715b6 .nav-links-village .nav-col {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         gap: 12px !important;
     }
     @media (min-width: 768px) {
-        #lv-51c44270566f .nav-links-village .nav-col {
+        #lv-c0612f3715b6 .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
             gap: 28px !important; 
         }
     }
-    #lv-51c44270566f .nav-links-village .village-link {
+    #lv-c0612f3715b6 .nav-links-village .village-link {
         color: #713506 !important;
         text-decoration: none !important;
         font-weight: 500 !important;
@@ -5081,7 +4917,7 @@
         letter-spacing: 0.05em;
         font-size: 13px !important;
     }
-    #lv-51c44270566f .nav-links-village .village-link::after {
+    #lv-c0612f3715b6 .nav-links-village .village-link::after {
         content: "" !important;
         position: absolute !important;
         left: 0 !important;
@@ -5091,12 +4927,12 @@
         background: #000 !important;
         transition: width .28s ease !important;
     }
-    #lv-51c44270566f .nav-links-village .village-link:hover::after {
+    #lv-c0612f3715b6 .nav-links-village .village-link:hover::after {
         width: 100% !important;
     }
 
     /* Conteneur Reel Facebook responsif et élégant */
-    #lv-51c44270566f .reel-embed-container {
+    #lv-c0612f3715b6 .reel-embed-container {
         background: #ffffff;
         padding: 8px;
         border: 1px solid rgba(113, 53, 6, 0.1);
@@ -5105,14 +4941,17 @@
         display: inline-flex;
         transition: transform 0.4s ease;
     }
-    #lv-51c44270566f .reel-embed-container:hover {
+    #lv-c0612f3715b6 .reel-embed-container:hover {
         transform: translateY(-5px);
     }
 
-#lv-a0a4b2d3fc19 { margin: 0; padding: 0; background-color: #fcf9f3; }
+/* Keep hotel invitations readable on their dark background. */
+#lv-c0612f3715b6 .bg-village-dark h2,#lv-c0612f3715b6  .bg-village-dark a { color: #f5f0ea; }
+
+#lv-8004462f0b4b { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-a0a4b2d3fc19 .drop-cap::first-letter {
+    #lv-8004462f0b4b .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -5122,7 +4961,7 @@
     }
     
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
-    #lv-a0a4b2d3fc19 .nav-links-village {
+    #lv-8004462f0b4b .nav-links-village {
         text-align: center !important;
         margin-top: 20px !important;
         margin-bottom: 20px !important;
@@ -5130,20 +4969,20 @@
         font-size: 16px !important;
         line-height: 1.4 !important;
     }
-    #lv-a0a4b2d3fc19 .nav-links-village .nav-col {
+    #lv-8004462f0b4b .nav-links-village .nav-col {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         gap: 12px !important;
     }
     @media (min-width: 768px) {
-        #lv-a0a4b2d3fc19 .nav-links-village .nav-col {
+        #lv-8004462f0b4b .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
             gap: 28px !important; 
         }
     }
-    #lv-a0a4b2d3fc19 .nav-links-village .village-link {
+    #lv-8004462f0b4b .nav-links-village .village-link {
         color: #713506 !important;
         text-decoration: none !important;
         font-weight: 500 !important;
@@ -5155,7 +4994,7 @@
         letter-spacing: 0.05em;
         font-size: 13px !important;
     }
-    #lv-a0a4b2d3fc19 .nav-links-village .village-link::after {
+    #lv-8004462f0b4b .nav-links-village .village-link::after {
         content: "" !important;
         position: absolute !important;
         left: 0 !important;
@@ -5165,19 +5004,19 @@
         background: #9d623d !important;
         transition: width .28s ease !important;
     }
-    #lv-a0a4b2d3fc19 .nav-links-village .village-link:hover::after {
+    #lv-8004462f0b4b .nav-links-village .village-link:hover::after {
         width: 100% !important;
     }
 
     /* Style éditorial menu */
-    #lv-a0a4b2d3fc19 .menu-card {
+    #lv-8004462f0b4b .menu-card {
         background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(157, 98, 61, 0.1) 39px, rgba(157, 98, 61, 0.1) 40px);
         background-color: #ffffff;
         border: 1px solid rgba(113, 53, 6, 0.2);
     }
     
     /* Conteneur Facebook responsif */
-    #lv-a0a4b2d3fc19 .fb-embed-container {
+    #lv-8004462f0b4b .fb-embed-container {
         display: flex;
         justify-content: center;
         margin: 3rem 0;
@@ -5186,10 +5025,13 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-        #lv-a0a4b2d3fc19 .nav-links-village .village-link::after {
+        #lv-8004462f0b4b .nav-links-village .village-link::after {
             transition: none !important;
         }
     }
+
+/* Keep hotel invitations readable on their dark background. */
+#lv-8004462f0b4b .bg-village-dark h2,#lv-8004462f0b4b  .bg-village-dark a { color: #f5f0ea; }
 
 
     #lv-cb2289967286 { margin: 0; padding: 0; background-color: #fcf9f3; }
@@ -5273,10 +5115,10 @@
         color: #9d623d;
     }
 
-#lv-50cd003d062b { margin: 0; padding: 0; background-color: #fcf9f3; }
+#lv-a85b8d83a980 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-50cd003d062b .drop-cap::first-letter {
+    #lv-a85b8d83a980 .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -5286,7 +5128,7 @@
     }
     
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
-    #lv-50cd003d062b .nav-links-village {
+    #lv-a85b8d83a980 .nav-links-village {
         text-align: center !important;
         margin-top: 20px !important;
         margin-bottom: 20px !important;
@@ -5294,20 +5136,20 @@
         font-size: 16px !important;
         line-height: 1.4 !important;
     }
-    #lv-50cd003d062b .nav-links-village .nav-col {
+    #lv-a85b8d83a980 .nav-links-village .nav-col {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         gap: 12px !important;
     }
     @media (min-width: 768px) {
-        #lv-50cd003d062b .nav-links-village .nav-col {
+        #lv-a85b8d83a980 .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
             gap: 28px !important; 
         }
     }
-    #lv-50cd003d062b .nav-links-village .village-link {
+    #lv-a85b8d83a980 .nav-links-village .village-link {
         color: #713506 !important;
         text-decoration: none !important;
         font-weight: 500 !important;
@@ -5319,7 +5161,7 @@
         letter-spacing: 0.05em;
         font-size: 13px !important;
     }
-    #lv-50cd003d062b .nav-links-village .village-link::after {
+    #lv-a85b8d83a980 .nav-links-village .village-link::after {
         content: "" !important;
         position: absolute !important;
         left: 0 !important;
@@ -5329,28 +5171,31 @@
         background: #9d623d !important;
         transition: width .28s ease !important;
     }
-    #lv-50cd003d062b .nav-links-village .village-link:hover::after {
+    #lv-a85b8d83a980 .nav-links-village .village-link:hover::after {
         width: 100% !important;
     }
 
     /* Style éditorial pour les listes */
-    #lv-50cd003d062b .program-card {
+    #lv-a85b8d83a980 .program-card {
         background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(157, 98, 61, 0.1) 39px, rgba(157, 98, 61, 0.1) 40px);
         background-color: #ffffff;
         border: 1px solid rgba(113, 53, 6, 0.2);
     }
 
     @media (prefers-reduced-motion: reduce) {
-        #lv-50cd003d062b .nav-links-village .village-link::after,#lv-50cd003d062b 
+        #lv-a85b8d83a980 .nav-links-village .village-link::after,#lv-a85b8d83a980 
         .hover\:scale-105 {
             transition: none !important;
         }
     }
 
-#lv-e9d6310fd1a1 { margin: 0; padding: 0; background-color: #fcf9f3; }
+/* Keep hotel invitations readable on their dark background. */
+#lv-a85b8d83a980 .bg-village-dark h2,#lv-a85b8d83a980  .bg-village-dark a { color: #f5f0ea; }
+
+#lv-d30773ef3e19 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-e9d6310fd1a1 .drop-cap::first-letter {
+    #lv-d30773ef3e19 .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -5360,7 +5205,7 @@
     }
     
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
-    #lv-e9d6310fd1a1 .nav-links-village {
+    #lv-d30773ef3e19 .nav-links-village {
         text-align: center !important;
         margin-top: 20px !important;
         margin-bottom: 20px !important;
@@ -5368,20 +5213,20 @@
         font-size: 16px !important;
         line-height: 1.4 !important;
     }
-    #lv-e9d6310fd1a1 .nav-links-village .nav-col {
+    #lv-d30773ef3e19 .nav-links-village .nav-col {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         gap: 12px !important;
     }
     @media (min-width: 768px) {
-        #lv-e9d6310fd1a1 .nav-links-village .nav-col {
+        #lv-d30773ef3e19 .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
             gap: 28px !important; 
         }
     }
-    #lv-e9d6310fd1a1 .nav-links-village .village-link {
+    #lv-d30773ef3e19 .nav-links-village .village-link {
         color: #713506 !important;
         text-decoration: none !important;
         font-weight: 500 !important;
@@ -5393,7 +5238,7 @@
         letter-spacing: 0.05em;
         font-size: 13px !important;
     }
-    #lv-e9d6310fd1a1 .nav-links-village .village-link::after {
+    #lv-d30773ef3e19 .nav-links-village .village-link::after {
         content: "" !important;
         position: absolute !important;
         left: 0 !important;
@@ -5403,19 +5248,19 @@
         background: #9d623d !important;
         transition: width .28s ease !important;
     }
-    #lv-e9d6310fd1a1 .nav-links-village .village-link:hover::after {
+    #lv-d30773ef3e19 .nav-links-village .village-link:hover::after {
         width: 100% !important;
     }
 
     /* Style éditorial encart */
-    #lv-e9d6310fd1a1 .info-card {
+    #lv-d30773ef3e19 .info-card {
         background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(157, 98, 61, 0.08) 39px, rgba(157, 98, 61, 0.08) 40px);
         background-color: #ffffff;
         border: 1px solid rgba(113, 53, 6, 0.2);
     }
 
     /* --- PASSERELLE ÉDITORIALE : JAZZ AU CHÂTEAU --- */
-    #lv-e9d6310fd1a1 .jazz-weekly-note {
+    #lv-d30773ef3e19 .jazz-weekly-note {
         max-width: 760px;
         margin: -8px auto 48px;
         padding: 20px 0 21px;
@@ -5423,7 +5268,7 @@
         border-top: 1px solid rgba(113, 53, 6, 0.16);
         border-bottom: 1px solid rgba(113, 53, 6, 0.16);
     }
-    #lv-e9d6310fd1a1 .jazz-weekly-note .jazz-weekly-label {
+    #lv-d30773ef3e19 .jazz-weekly-note .jazz-weekly-label {
         margin: 0 0 7px;
         color: #9d623d;
         font-family: 'Poppins', sans-serif;
@@ -5433,14 +5278,14 @@
         line-height: 1.2;
         text-transform: uppercase;
     }
-    #lv-e9d6310fd1a1 .jazz-weekly-note .jazz-weekly-copy {
+    #lv-d30773ef3e19 .jazz-weekly-note .jazz-weekly-copy {
         margin: 0;
         color: rgba(113, 53, 6, 0.78);
         font-family: 'Lato', sans-serif;
         font-size: 14px;
         line-height: 1.6;
     }
-    #lv-e9d6310fd1a1 .jazz-weekly-note a {
+    #lv-d30773ef3e19 .jazz-weekly-note a {
         color: #713506;
         font-family: 'Playfair Display', serif;
         font-size: 16px;
@@ -5450,13 +5295,13 @@
         padding-bottom: 2px;
         transition: color .25s ease, border-color .25s ease;
     }
-    #lv-e9d6310fd1a1 .jazz-weekly-note a:hover {
+    #lv-d30773ef3e19 .jazz-weekly-note a:hover {
         color: #9d623d;
         border-color: #9d623d;
     }
 
     /* --- CADRE VISUEL DE L'OPENING SESSION --- */
-    #lv-e9d6310fd1a1 .poster-frame {
+    #lv-d30773ef3e19 .poster-frame {
         background: #ffffff;
         padding: 10px;
         border: 1px solid rgba(113, 53, 6, 0.15);
@@ -5466,16 +5311,16 @@
         max-width: 230px;
         margin: 0 auto;
     }
-    #lv-e9d6310fd1a1 .poster-frame:hover {
+    #lv-d30773ef3e19 .poster-frame:hover {
         transform: rotate(0deg) translateY(-5px);
         box-shadow: 0 24px 42px -14px rgba(113, 53, 6, 0.24);
     }
-    #lv-e9d6310fd1a1 .poster-filter {
+    #lv-d30773ef3e19 .poster-filter {
         filter: sepia(22%) contrast(1.04) opacity(0.94) grayscale(8%);
     }
     
-    /* Conteneur image signature en arche */
-    #lv-e9d6310fd1a1 .arched-image-frame {
+    /* --- CADRE VIDÉO FENÊTRE EN ARCHE ÉPURÉE --- */
+    #lv-d30773ef3e19 .arched-video-frame {
         position: relative;
         background: #ffffff;
         padding: 10px;
@@ -5487,11 +5332,11 @@
         margin: 0 auto;
         max-width: 320px;
     }
-    #lv-e9d6310fd1a1 .arched-image-frame:hover {
+    #lv-d30773ef3e19 .arched-video-frame:hover {
         transform: translateY(-8px);
         box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.4);
     }
-    #lv-e9d6310fd1a1 .arched-image-frame::before {
+    #lv-d30773ef3e19 .arched-video-frame::before {
         content: '';
         position: absolute;
         top: 8px; bottom: 8px; left: 8px; right: 8px;
@@ -5500,24 +5345,50 @@
         pointer-events: none;
         z-index: 30;
     }
-    #lv-e9d6310fd1a1 .image-mask {
+    #lv-d30773ef3e19 .video-mask {
         position: relative;
         width: 100%;
         aspect-ratio: 9/16;
         border-radius: 130px 130px 0 0;
         overflow: hidden;
         background-color: #000000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-    #lv-e9d6310fd1a1 .image-mask img {
+    #lv-d30773ef3e19 .video-mask video {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
-        transition: transform 0.8s ease;
+        z-index: 10;
+        position: relative;
     }
-    #lv-e9d6310fd1a1 .arched-image-frame:hover .image-mask img {
-        transform: scale(1.05);
+
+    /* --- BOUTONS PREMIUM (GLASSMORPHISM) --- */
+    #lv-d30773ef3e19 .glass-btn {
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        color: #ffffff;
+        transition: all 0.3s ease;
     }
+    #lv-d30773ef3e19 .glass-btn:hover {
+        background: #ffffff;
+        color: #713506;
+        transform: scale(1.1);
+    }
+    #lv-d30773ef3e19 .video-controls {
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+    #lv-d30773ef3e19 .arched-video-frame:hover .video-controls {
+        opacity: 1;
+    }
+
+/* Keep hotel invitations readable on their dark background. */
+#lv-d30773ef3e19 .bg-village-dark h2,#lv-d30773ef3e19  .bg-village-dark a { color: #f5f0ea; }
 
 
     #lv-7150e8dad0b6 { margin: 0; padding: 0; background-color: #fcf9f3; }
@@ -5555,10 +5426,10 @@
         z-index: 30;
     }
 
-#lv-9e5786aa1e24 { margin: 0; padding: 0; background-color: #fcf9f3; }
+#lv-cdc2f7142cd7 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-9e5786aa1e24 .drop-cap::first-letter {
+    #lv-cdc2f7142cd7 .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -5568,7 +5439,7 @@
     }
     
     /* Conteneur Facebook responsif */
-    #lv-9e5786aa1e24 .fb-embed-container {
+    #lv-cdc2f7142cd7 .fb-embed-container {
         display: flex;
         justify-content: center;
         margin: 3rem 0;
@@ -5577,7 +5448,7 @@
     }
 
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
-    #lv-9e5786aa1e24 .nav-links-village {
+    #lv-cdc2f7142cd7 .nav-links-village {
         text-align: center !important;
         margin-top: 20px !important;
         margin-bottom: 20px !important;
@@ -5585,20 +5456,20 @@
         font-size: 16px !important;
         line-height: 1.4 !important;
     }
-    #lv-9e5786aa1e24 .nav-links-village .nav-col {
+    #lv-cdc2f7142cd7 .nav-links-village .nav-col {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         gap: 12px !important;
     }
     @media (min-width: 768px) {
-        #lv-9e5786aa1e24 .nav-links-village .nav-col {
+        #lv-cdc2f7142cd7 .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
             gap: 28px !important; 
         }
     }
-    #lv-9e5786aa1e24 .nav-links-village .village-link {
+    #lv-cdc2f7142cd7 .nav-links-village .village-link {
         color: #713506 !important;
         text-decoration: none !important;
         font-weight: 500 !important;
@@ -5610,7 +5481,7 @@
         letter-spacing: 0.05em;
         font-size: 13px !important;
     }
-    #lv-9e5786aa1e24 .nav-links-village .village-link::after {
+    #lv-cdc2f7142cd7 .nav-links-village .village-link::after {
         content: "" !important;
         position: absolute !important;
         left: 0 !important;
@@ -5620,9 +5491,12 @@
         background: #9d623d !important;
         transition: width .28s ease !important;
     }
-    #lv-9e5786aa1e24 .nav-links-village .village-link:hover::after {
+    #lv-cdc2f7142cd7 .nav-links-village .village-link:hover::after {
         width: 100% !important;
     }
+
+/* Keep hotel invitations readable on their dark background. */
+#lv-cdc2f7142cd7 .bg-village-dark h2,#lv-cdc2f7142cd7  .bg-village-dark a { color: #f5f0ea; }
 
 
     #lv-bd5bd3149989 { margin: 0; padding: 0; background-color: #fcf9f3; }
@@ -5720,10 +5594,10 @@
     }
 
 
-#lv-aa5468e3541d { margin: 0; padding: 0; background-color: #fcf9f3; }
+#lv-b53078b59817 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-aa5468e3541d .drop-cap::first-letter {
+    #lv-b53078b59817 .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -5733,7 +5607,7 @@
     }
     
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
-    #lv-aa5468e3541d .nav-links-village {
+    #lv-b53078b59817 .nav-links-village {
         text-align: center !important;
         margin-top: 20px !important;
         margin-bottom: 20px !important;
@@ -5741,20 +5615,20 @@
         font-size: 16px !important;
         line-height: 1.4 !important;
     }
-    #lv-aa5468e3541d .nav-links-village .nav-col {
+    #lv-b53078b59817 .nav-links-village .nav-col {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         gap: 12px !important;
     }
     @media (min-width: 768px) {
-        #lv-aa5468e3541d .nav-links-village .nav-col {
+        #lv-b53078b59817 .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
             gap: 28px !important; 
         }
     }
-    #lv-aa5468e3541d .nav-links-village .village-link {
+    #lv-b53078b59817 .nav-links-village .village-link {
         color: #713506 !important;
         text-decoration: none !important;
         font-weight: 500 !important;
@@ -5766,7 +5640,7 @@
         letter-spacing: 0.05em;
         font-size: 13px !important;
     }
-    #lv-aa5468e3541d .nav-links-village .village-link::after {
+    #lv-b53078b59817 .nav-links-village .village-link::after {
         content: "" !important;
         position: absolute !important;
         left: 0 !important;
@@ -5776,19 +5650,19 @@
         background: #000 !important;
         transition: width .28s ease !important;
     }
-    #lv-aa5468e3541d .nav-links-village .village-link:hover::after {
+    #lv-b53078b59817 .nav-links-village .village-link:hover::after {
         width: 100% !important;
     }
 
     /* Style éditorial menu */
-    #lv-aa5468e3541d .menu-card {
+    #lv-b53078b59817 .menu-card {
         background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(157, 98, 61, 0.1) 39px, rgba(157, 98, 61, 0.1) 40px);
         background-color: #ffffff;
         border: 1px solid rgba(113, 53, 6, 0.2);
     }
     
     /* Conteneur vidéo responsif */
-    #lv-aa5468e3541d .video-embed-container {
+    #lv-b53078b59817 .video-embed-container {
         display: flex;
         justify-content: center;
         margin: 3rem 0;
@@ -5796,10 +5670,13 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-        #lv-aa5468e3541d .nav-links-village .village-link::after {
+        #lv-b53078b59817 .nav-links-village .village-link::after {
             transition: none !important;
         }
     }
+
+/* Keep hotel invitations readable on their dark background. */
+#lv-b53078b59817 .bg-village-dark h2,#lv-b53078b59817  .bg-village-dark a { color: #f5f0ea; }
 
 
     #lv-8b1defdf69fe { margin: 0; padding: 0; background-color: #fcf9f3; }
@@ -5846,10 +5723,10 @@
         transform: scale(1.03);
     }
 
-#lv-ec06b7982f7d { margin: 0; padding: 0; background-color: #fcf9f3; }
+#lv-98666c11f5a2 { margin: 0; padding: 0; background-color: #fcf9f3; }
 
     /* --- LETTRINE (Drop Cap) --- */
-    #lv-ec06b7982f7d .drop-cap::first-letter {
+    #lv-98666c11f5a2 .drop-cap::first-letter {
         font-family: 'Great Vibes', cursive;
         font-size: 5.5rem;
         float: left;
@@ -5859,7 +5736,7 @@
     }
     
     /* --- STYLES OBLIGATOIRES POUR LE BLOC DE LIENS (CTA) --- */
-    #lv-ec06b7982f7d .nav-links-village {
+    #lv-98666c11f5a2 .nav-links-village {
         text-align: center !important;
         margin-top: 20px !important;
         margin-bottom: 20px !important;
@@ -5867,20 +5744,20 @@
         font-size: 16px !important;
         line-height: 1.4 !important;
     }
-    #lv-ec06b7982f7d .nav-links-village .nav-col {
+    #lv-98666c11f5a2 .nav-links-village .nav-col {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         gap: 12px !important;
     }
     @media (min-width: 768px) {
-        #lv-ec06b7982f7d .nav-links-village .nav-col {
+        #lv-98666c11f5a2 .nav-links-village .nav-col {
             flex-direction: row !important;
             justify-content: center !important;
             gap: 28px !important; 
         }
     }
-    #lv-ec06b7982f7d .nav-links-village .village-link {
+    #lv-98666c11f5a2 .nav-links-village .village-link {
         color: #713506 !important;
         text-decoration: none !important;
         font-weight: 500 !important;
@@ -5892,7 +5769,7 @@
         letter-spacing: 0.05em;
         font-size: 13px !important;
     }
-    #lv-ec06b7982f7d .nav-links-village .village-link::after {
+    #lv-98666c11f5a2 .nav-links-village .village-link::after {
         content: "" !important;
         position: absolute !important;
         left: 0 !important;
@@ -5902,19 +5779,19 @@
         background: #9d623d !important;
         transition: width .28s ease !important;
     }
-    #lv-ec06b7982f7d .nav-links-village .village-link:hover::after {
+    #lv-98666c11f5a2 .nav-links-village .village-link:hover::after {
         width: 100% !important;
     }
 
     /* Cadre d'image immersif */
-    #lv-ec06b7982f7d .village-img-wrapper {
+    #lv-98666c11f5a2 .village-img-wrapper {
         position: relative;
         overflow: hidden;
         border-radius: 2px;
     }
     
     /* Image encadrée type Polaroïd */
-    #lv-ec06b7982f7d .framed-image-container {
+    #lv-98666c11f5a2 .framed-image-container {
         width: 100%;
         max-width: 480px;
         margin: 0 auto;
@@ -5924,29 +5801,32 @@
         box-shadow: 0 20px 40px -10px rgba(113, 53, 6, 0.15);
         transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
-    #lv-ec06b7982f7d .framed-image-container:hover {
+    #lv-98666c11f5a2 .framed-image-container:hover {
         transform: translateY(-5px);
         box-shadow: 0 25px 50px -12px rgba(113, 53, 6, 0.20);
     }
-    #lv-ec06b7982f7d .framed-image-inner {
+    #lv-98666c11f5a2 .framed-image-inner {
         position: relative;
         width: 100%;
         overflow: hidden;
         border-radius: 2px;
     }
-    #lv-ec06b7982f7d .village-framed-img {
+    #lv-98666c11f5a2 .village-framed-img {
         width: 100%;
         display: block;
         transition: transform 0.8s ease;
     }
-    #lv-ec06b7982f7d .framed-image-container:hover .village-framed-img {
+    #lv-98666c11f5a2 .framed-image-container:hover .village-framed-img {
         transform: scale(1.02);
     }
 
     /* Style éditorial menu */
-    #lv-ec06b7982f7d .menu-card {
+    #lv-98666c11f5a2 .menu-card {
         background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(157, 98, 61, 0.1) 39px, rgba(157, 98, 61, 0.1) 40px);
         background-color: #ffffff;
         border: 1px solid rgba(113, 53, 6, 0.2);
     }
+
+/* Keep hotel invitations readable on their dark background. */
+#lv-98666c11f5a2 .bg-village-dark h2,#lv-98666c11f5a2  .bg-village-dark a { color: #f5f0ea; }
 
