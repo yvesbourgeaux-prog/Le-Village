@@ -49,16 +49,16 @@
 .common-header-page .home-header .book-button:hover,.common-header-page .home-header .book-button:focus-visible{color:#fff!important}
 
 /* Article covers extend behind the shared navigation. */
-.common-header-page:has(#main [id^="village-blog-"]) #main{padding-top:0}
-.common-header-page:has(#main [id^="village-blog-"]) #main [id^="village-blog-"]>:is(header,section):first-child{height:auto;min-height:max(600px,78svh);padding:184px 0 90px}
-.common-header-page:has(#main [id^="village-blog-"]) #main [id^="village-blog-"]>:is(header,section):first-child>.relative{margin-top:0}
-.common-header-page:has(#main [id^="village-blog-"]) .home-header:not(.is-scrolled):not(:has(.menu-toggle[aria-expanded="true"])){background:transparent;border-color:transparent;box-shadow:none;color:#fff}
-.common-header-page:has(#main [id^="village-blog-"]) .home-header:not(.is-scrolled):not(:has(.menu-toggle[aria-expanded="true"])) .brand img{filter:brightness(0) invert(1)}
-.common-header-page:has(#main [id^="village-blog-"]) .home-header:not(.is-scrolled):not(:has(.menu-toggle[aria-expanded="true"])) .menu-toggle span{background:#fff}
-.common-header-page:has(#main [id^="village-blog-"]) .home-header:not(.is-scrolled):not(:has(.menu-toggle[aria-expanded="true"])) #site-nav>a:hover{color:#ffffffb3}
-.common-header-page:has(#main [id^="village-blog-"]) .home-header:not(.is-scrolled):not(:has(.menu-toggle[aria-expanded="true"])) .book-button{color:#fff!important;border-color:#fff}
-.common-header-page:has(#main [id^="village-blog-"]) .home-header:not(.is-scrolled):not(:has(.menu-toggle[aria-expanded="true"])) .book-button::before{background:#fff}
-.common-header-page:has(#main [id^="village-blog-"]) .home-header:not(.is-scrolled):not(:has(.menu-toggle[aria-expanded="true"])) .book-button:hover,.common-header-page:has(#main [id^="village-blog-"]) .home-header:not(.is-scrolled):not(:has(.menu-toggle[aria-expanded="true"])) .book-button:focus-visible{color:#713506!important}
+.common-header-page:not(.home-page):has(#main [id^="village-blog-"]) #main{padding-top:0}
+.common-header-page:not(.home-page):has(#main [id^="village-blog-"]) #main [id^="village-blog-"]>:is(header,section):first-child{height:auto;min-height:max(600px,78svh);padding:184px 0 90px}
+.common-header-page:not(.home-page):has(#main [id^="village-blog-"]) #main [id^="village-blog-"]>:is(header,section):first-child>.relative{margin-top:0}
+.common-header-page:not(.home-page):has(#main [id^="village-blog-"]) .home-header:not(.is-scrolled):not(:has(.menu-toggle[aria-expanded="true"])){background:transparent;border-color:transparent;box-shadow:none;color:#fff}
+.common-header-page:not(.home-page):has(#main [id^="village-blog-"]) .home-header:not(.is-scrolled):not(:has(.menu-toggle[aria-expanded="true"])) .brand img{filter:brightness(0) invert(1)}
+.common-header-page:not(.home-page):has(#main [id^="village-blog-"]) .home-header:not(.is-scrolled):not(:has(.menu-toggle[aria-expanded="true"])) .menu-toggle span{background:#fff}
+.common-header-page:not(.home-page):has(#main [id^="village-blog-"]) .home-header:not(.is-scrolled):not(:has(.menu-toggle[aria-expanded="true"])) #site-nav>a:hover{color:#ffffffb3}
+.common-header-page:not(.home-page):has(#main [id^="village-blog-"]) .home-header:not(.is-scrolled):not(:has(.menu-toggle[aria-expanded="true"])) .book-button{color:#fff!important;border-color:#fff}
+.common-header-page:not(.home-page):has(#main [id^="village-blog-"]) .home-header:not(.is-scrolled):not(:has(.menu-toggle[aria-expanded="true"])) .book-button::before{background:#fff}
+.common-header-page:not(.home-page):has(#main [id^="village-blog-"]) .home-header:not(.is-scrolled):not(:has(.menu-toggle[aria-expanded="true"])) .book-button:hover,.common-header-page:not(.home-page):has(#main [id^="village-blog-"]) .home-header:not(.is-scrolled):not(:has(.menu-toggle[aria-expanded="true"])) .book-button:focus-visible{color:#713506!important}
 @media(max-width:1199px){
- .common-header-page:has(#main [id^="village-blog-"]) #main [id^="village-blog-"]>:is(header,section):first-child{min-height:620px;padding:184px 0 76px}
+ .common-header-page:not(.home-page):has(#main [id^="village-blog-"]) #main [id^="village-blog-"]>:is(header,section):first-child{min-height:620px;padding:184px 0 76px}
 }

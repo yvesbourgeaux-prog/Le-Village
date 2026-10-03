@@ -22,4 +22,4 @@ $document = $data[$slug] ?? '';
 define('LV_PRESS_PAGE', true);
 require_once __DIR__ . '/press-downloads.php';
 $document = lvPressDownloadButtons($document, $slug, $lang);
-echo preg_replace('~/assets/css/navigation\.css\?v=[^"\s<>]*~', '/assets/css/navigation.css?v=20261003-articles1', $document);
+echo preg_replace('~/assets/css/navigation\.css\?v=[^"\s<>]*~', '/assets/css/navigation.css?v=20261003-home-spacing1', $document);
