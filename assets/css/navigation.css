@@ -27,12 +27,22 @@
  body:has(.home-header .menu-toggle[aria-expanded="true"]){overflow:hidden}
 }
 
-/* The public header keeps the same colors on hotel, restaurant and visit pages. */
-.common-header-page .home-header:not(.is-scrolled){color:#713506}
-.common-header-page .home-header:not(.is-scrolled) .brand img{filter:none}
-.common-header-page .home-header:not(.is-scrolled) .menu-toggle span{background:#713506}
-.common-header-page .home-header:not(.is-scrolled) .book-button{border-color:#713506;color:#713506!important}
+/* Light lettering over the hotel/restaurant/visit hero; brown on solid menus. */
+.home-header.is-scrolled{color:#713506}
+.home-header.is-scrolled .brand img{filter:none}
+.home-header.is-scrolled .menu-toggle span{background:#713506}
+.home-header.is-scrolled .book-button{border-color:#713506;color:#713506!important}
+@media(min-width:1200px){
+ :is(.hotel-page,.restaurant-page,.visit-page) .home-header:not(.is-scrolled) #site-nav>a:hover{color:#ffffffb3}
+ :is(.hotel-page,.restaurant-page,.visit-page) .home-header:not(.is-scrolled) .book-button::before{background:#fff}
+ :is(.hotel-page,.restaurant-page,.visit-page) .home-header:not(.is-scrolled) .book-button:hover,
+ :is(.hotel-page,.restaurant-page,.visit-page) .home-header:not(.is-scrolled) .book-button:focus-visible{color:#713506!important}
+}
 @media(max-width:1199px){
+ .common-header-page .home-header:not(.is-scrolled){color:#713506}
+ .common-header-page .home-header:not(.is-scrolled) .brand img{filter:none}
+ .common-header-page .home-header:not(.is-scrolled) .menu-toggle span{background:#713506}
+ .common-header-page .home-header:not(.is-scrolled) .book-button{border-color:#713506;color:#713506!important}
  .common-header-page .home-header .mobile-extra .book-button{color:#fff!important}
  .carte-page #main>.carte-nav-wrapper{top:150px}
 }

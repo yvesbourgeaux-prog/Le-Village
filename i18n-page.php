@@ -17,4 +17,6 @@ if (!isset($data[$slug])) { http_response_code(404); $slug = '404'; }
 header('Content-Type: text/html; charset=UTF-8');
 header('Content-Language: ' . $lang);
 header('Cache-Control: public, max-age=300');
-echo $data[$slug] ?? '';
+// Refresh the shared stylesheet in existing language packs as well as new builds.
+$document = $data[$slug] ?? '';
+echo str_replace('/assets/css/navigation.css?v=20261003"', '/assets/css/navigation.css?v=20261003-colors1"', $document);
