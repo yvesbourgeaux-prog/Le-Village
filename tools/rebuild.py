@@ -12,6 +12,8 @@ FALLBACK=ASSET+'548927768_18110917903554133_6103352769976099505_n-tx4bw2LvKuuQwa
 FOOD=ASSET+'683541319_18135204442554133_6532477583514750940_n-1---copie-uvBmAV0Bzjs06QXw.jpg'
 PLACE=ASSET+'place-de-gaulle-haut-de-cagnes-YQfrbt7x9UtvMi0u.png'
 HOTEL='https://img.holidu.com/images/da29199d-ce71-4bc4-9ebc-179b92ee3630/l.avif'
+IMAGE_UPGRADES=json.loads((ROOT/'tools/article-image-upgrades.json').read_text())
+HD_IMAGES={r['output']:r for r in IMAGE_UPGRADES['images']}
 PAGES=[json.loads(p.read_text()) for p in sorted((ROOT/'tools/source-pages').glob('*.json'))]
 SEO_OVERRIDES={'': ('Le Grimaldi by Le Village | Restaurant & Hôtel à Cagnes-sur-Mer', 'Restaurant bistronomique et hôtel de charme au Haut-de-Cagnes. Découvrez Le Grimaldi by Le Village, sur la place du Château à Cagnes-sur-Mer.'), 'le-village-restaurant-haut-de-cagnes-sur-mer': ('Restaurant à Cagnes-sur-Mer, Haut-de-Cagnes | Le Village', 'Cuisine bistronomique méditerranéenne et terrasse sur la place du Château. Réservez votre table au restaurant Le Village, au Haut-de-Cagnes.'), 'hotel-cagnes-sur-mer-le-grimaldi': ('Hôtel Le Grimaldi | 5 chambres au Haut-de-Cagnes', 'Séjournez dans l’une des cinq chambres de charme du Grimaldi by Le Village, place du Château au Haut-de-Cagnes. Consultez les disponibilités en ligne.'), 'visiter-haut-de-cagnes': ('Visiter le Haut-de-Cagnes | Village, Château & Restaurant', None), 'espace-presse': ('Espace presse | Le Grimaldi by Le Village, Cagnes', 'Communiqués, dossier de presse et actualités du Grimaldi by Le Village : restaurant et hôtel de charme sur la place du Château au Haut-de-Cagnes.'), 'dossier-presse': ('Dossier de presse | Le Grimaldi by Le Village', 'Découvrez l’histoire, la cuisine et l’hôtellerie du Grimaldi by Le Village au Haut-de-Cagnes : présentation de la maison et informations pour la presse.'), 'jazz-gatsby-frankie-rochester-haut-de-cagnes': ('Soirée Gatsby au Haut-de-Cagnes | Restaurant Le Village', None), 'week-end-1er-mai-hotel-restaurant-cagnes-sur-mer': ('1er Mai au Haut-de-Cagnes | Presse Le Village', None), 'paques-2026-haut-de-cagnes-art-en-fete-dejeuner-le-village': ('Pâques & Art en Fête au Haut-de-Cagnes | Le Village', None), 'sunsets-chateau-haut-de-cagnes-dimanches-ete': ('Sunsets du Château au Haut-de-Cagnes | Le Village', None), 'haut-de-cagnes-art-en-fete-dejeuner-restaurant-le-village': ('Art en Fête au Haut-de-Cagnes | Déjeuner au Village', None), 'fete-sainte-lucie-haut-de-cagnes-cagnes-sur-mer': ('Sainte-Lucie au Haut-de-Cagnes | Restaurant Le Village', None), 'saint-valentin-2026-cagnes-sur-mer-concert-diner-hotel-le-grimaldi': ('Saint-Valentin à Cagnes-sur-Mer | Dîner & Hôtel Le Village', None), 'visite-prince-albert-2-monaco-restaurant-le-village-cagnes': ('Le Prince Albert II au restaurant Le Village | Cagnes', None), 'noel-haut-de-cagnes-restaurant-le-village': ('Noël au Haut-de-Cagnes | Restaurant Le Village', None)}
 for page in PAGES:
@@ -97,6 +99,22 @@ manifest=[]
 def writepage(slug,meta,content,external=None,kind='default',date=None):
  modern=not slug or slug in (RESTAURANT_SLUG,HOTEL_SLUG,'la-carte','visiter-haut-de-cagnes')
  s=BeautifulSoup(content,'html.parser')
+ # Enhance the same source images; preserve their layout and original source URLs.
+ for img in s.select('img[src]'):
+  original=img['src']; enhanced=IMAGE_UPGRADES['replacements'].get(original)
+  if not enhanced:continue
+  img['src']=enhanced
+  asset=HD_IMAGES[enhanced]
+  img['srcset']=', '.join(f"{v['url']} {v['width']}w" for v in asset['variants'])
+  if img.find_parent(id='blog-track'):
+   img['sizes']='(min-width: 768px) 380px, 280px'
+  elif img.find_parent(class_='rounded-full'):
+   img['sizes']='(min-width: 768px) 224px, 192px'
+  elif 'absolute' in img.get('class',[]):
+   img['sizes']='100vw'
+  else:
+   img['sizes']='(min-width: 1024px) 768px, 100vw'
+  img['width'],img['height']=asset['after']
  for landmark in s.select('main'):landmark.name='div'
  if slug=='la-carte':
   nav=s.select_one('.carte-nav-wrapper');nav.extract();s.select_one('.lv-block').insert_after(nav)

@@ -1,0 +1,293 @@
+{
+  "replacements": {
+    "https://assets.zyrosite.com/gnKoPAn3rxzY53IR/unnamed-Z7vMbS6pur50Yf6Y.jpg": "/assets/images/articles-hd/affiche-automne-hd.webp",
+    "https://assets.zyrosite.com/gnKoPAn3rxzY53IR/781979663_2466712613819834_5807660955380806455_n-bRPAoGJLCplIkoyi.jpg": "/assets/images/articles-hd/affiche-boules-carrees-hd.webp",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97fosUI-nLICTwl_ReaxC5tJviwA0on4OmZE37HkmoJ-Vc0G7UJNY7DjJ&s=10": "/assets/images/articles-hd/affiche-familles-en-fete-hd.webp",
+    "https://assets.zyrosite.com/gnKoPAn3rxzY53IR/image3-pN3gMmzm8GXBQra6.png": "/assets/images/articles-hd/automne-chapelle-montage-hd.webp",
+    "https://img.holidu.com/images/7fc89fff-1302-41ed-99da-c1cd50d52ee9/m.jpg": "/assets/images/articles-hd/chambre-grimaldi-1-hd.webp",
+    "https://img.holidu.com/images/7035f3c1-d952-43c9-9cdd-d553b622db8a/m.jpg": "/assets/images/articles-hd/chambre-grimaldi-2-hd.webp",
+    "https://img.holidu.com/images/631d8a75-b674-4abe-a363-ac1e84929434/m.jpg": "/assets/images/articles-hd/chambre-grimaldi-3-hd.webp",
+    "https://img.holidu.com/images/12689214-8a28-411b-b50e-160829238ec3/m.jpg": "/assets/images/articles-hd/chambre-grimaldi-4-hd.webp",
+    "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1024,h=683,fit=crop/gnKoPAn3rxzY53IR/640136904_18127511677554133_5954049839880848320_n-tcU4AMFCNN7oxGpO.jpg": "/assets/images/articles-hd/visite-prince-albert-hd.webp",
+    "https://assets.zyrosite.com/gnKoPAn3rxzY53IR/640938174_1260531962954474_68224900729298719_n-o26yI8piBx9wxHrU.jpg": "/assets/images/articles-hd/affiche-art-en-fete-hd.webp"
+  },
+  "images": [
+    {
+      "source": "https://assets.zyrosite.com/gnKoPAn3rxzY53IR/unnamed-Z7vMbS6pur50Yf6Y.jpg",
+      "output": "/assets/images/articles-hd/affiche-automne-hd.webp",
+      "before": [
+        452,
+        640
+      ],
+      "after": [
+        1054,
+        1492
+      ],
+      "method": "conservative AI restoration",
+      "bytes": 566534,
+      "variants": [
+        {
+          "url": "/assets/images/articles-hd/affiche-automne-hd-480.webp",
+          "width": 480
+        },
+        {
+          "url": "/assets/images/articles-hd/affiche-automne-hd-960.webp",
+          "width": 960
+        },
+        {
+          "url": "/assets/images/articles-hd/affiche-automne-hd.webp",
+          "width": 1054
+        }
+      ]
+    },
+    {
+      "source": "https://assets.zyrosite.com/gnKoPAn3rxzY53IR/781979663_2466712613819834_5807660955380806455_n-bRPAoGJLCplIkoyi.jpg",
+      "output": "/assets/images/articles-hd/affiche-boules-carrees-hd.webp",
+      "before": [
+        526,
+        934
+      ],
+      "after": [
+        941,
+        1672
+      ],
+      "method": "conservative AI restoration",
+      "bytes": 362358,
+      "variants": [
+        {
+          "url": "/assets/images/articles-hd/affiche-boules-carrees-hd-480.webp",
+          "width": 480
+        },
+        {
+          "url": "/assets/images/articles-hd/affiche-boules-carrees-hd.webp",
+          "width": 941
+        }
+      ]
+    },
+    {
+      "source": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ97fosUI-nLICTwl_ReaxC5tJviwA0on4OmZE37HkmoJ-Vc0G7UJNY7DjJ&s=10",
+      "output": "/assets/images/articles-hd/affiche-familles-en-fete-hd.webp",
+      "before": [
+        300,
+        450
+      ],
+      "after": [
+        1024,
+        1536
+      ],
+      "method": "conservative AI restoration",
+      "bytes": 465354,
+      "variants": [
+        {
+          "url": "/assets/images/articles-hd/affiche-familles-en-fete-hd-480.webp",
+          "width": 480
+        },
+        {
+          "url": "/assets/images/articles-hd/affiche-familles-en-fete-hd-960.webp",
+          "width": 960
+        },
+        {
+          "url": "/assets/images/articles-hd/affiche-familles-en-fete-hd.webp",
+          "width": 1024
+        }
+      ]
+    },
+    {
+      "source": "https://assets.zyrosite.com/gnKoPAn3rxzY53IR/image3-pN3gMmzm8GXBQra6.png",
+      "output": "/assets/images/articles-hd/automne-chapelle-montage-hd.webp",
+      "before": [
+        523,
+        395
+      ],
+      "after": [
+        1444,
+        1089
+      ],
+      "method": "previously approved restoration of the same source image",
+      "bytes": 572520,
+      "variants": [
+        {
+          "url": "/assets/images/articles-hd/automne-chapelle-montage-hd-480.webp",
+          "width": 480
+        },
+        {
+          "url": "/assets/images/articles-hd/automne-chapelle-montage-hd-960.webp",
+          "width": 960
+        },
+        {
+          "url": "/assets/images/articles-hd/automne-chapelle-montage-hd.webp",
+          "width": 1444
+        }
+      ]
+    },
+    {
+      "source": "https://img.holidu.com/images/7fc89fff-1302-41ed-99da-c1cd50d52ee9/m.jpg",
+      "output": "/assets/images/articles-hd/chambre-grimaldi-1-hd.webp",
+      "before": [
+        720,
+        480
+      ],
+      "after": [
+        1350,
+        900
+      ],
+      "method": "larger original of the identical photograph",
+      "bytes": 227856,
+      "variants": [
+        {
+          "url": "/assets/images/articles-hd/chambre-grimaldi-1-hd-480.webp",
+          "width": 480
+        },
+        {
+          "url": "/assets/images/articles-hd/chambre-grimaldi-1-hd-960.webp",
+          "width": 960
+        },
+        {
+          "url": "/assets/images/articles-hd/chambre-grimaldi-1-hd.webp",
+          "width": 1350
+        }
+      ]
+    },
+    {
+      "source": "https://img.holidu.com/images/7035f3c1-d952-43c9-9cdd-d553b622db8a/m.jpg",
+      "output": "/assets/images/articles-hd/chambre-grimaldi-2-hd.webp",
+      "before": [
+        720,
+        480
+      ],
+      "after": [
+        1350,
+        900
+      ],
+      "method": "larger original of the identical photograph",
+      "bytes": 160924,
+      "variants": [
+        {
+          "url": "/assets/images/articles-hd/chambre-grimaldi-2-hd-480.webp",
+          "width": 480
+        },
+        {
+          "url": "/assets/images/articles-hd/chambre-grimaldi-2-hd-960.webp",
+          "width": 960
+        },
+        {
+          "url": "/assets/images/articles-hd/chambre-grimaldi-2-hd.webp",
+          "width": 1350
+        }
+      ]
+    },
+    {
+      "source": "https://img.holidu.com/images/631d8a75-b674-4abe-a363-ac1e84929434/m.jpg",
+      "output": "/assets/images/articles-hd/chambre-grimaldi-3-hd.webp",
+      "before": [
+        720,
+        480
+      ],
+      "after": [
+        1350,
+        900
+      ],
+      "method": "larger original of the identical photograph",
+      "bytes": 266772,
+      "variants": [
+        {
+          "url": "/assets/images/articles-hd/chambre-grimaldi-3-hd-480.webp",
+          "width": 480
+        },
+        {
+          "url": "/assets/images/articles-hd/chambre-grimaldi-3-hd-960.webp",
+          "width": 960
+        },
+        {
+          "url": "/assets/images/articles-hd/chambre-grimaldi-3-hd.webp",
+          "width": 1350
+        }
+      ]
+    },
+    {
+      "source": "https://img.holidu.com/images/12689214-8a28-411b-b50e-160829238ec3/m.jpg",
+      "output": "/assets/images/articles-hd/chambre-grimaldi-4-hd.webp",
+      "before": [
+        720,
+        480
+      ],
+      "after": [
+        1350,
+        900
+      ],
+      "method": "larger original of the identical photograph",
+      "bytes": 266772,
+      "variants": [
+        {
+          "url": "/assets/images/articles-hd/chambre-grimaldi-4-hd-480.webp",
+          "width": 480
+        },
+        {
+          "url": "/assets/images/articles-hd/chambre-grimaldi-4-hd-960.webp",
+          "width": 960
+        },
+        {
+          "url": "/assets/images/articles-hd/chambre-grimaldi-4-hd.webp",
+          "width": 1350
+        }
+      ]
+    },
+    {
+      "source": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1024,h=683,fit=crop/gnKoPAn3rxzY53IR/640136904_18127511677554133_5954049839880848320_n-tcU4AMFCNN7oxGpO.jpg",
+      "output": "/assets/images/articles-hd/visite-prince-albert-hd.webp",
+      "before": [
+        811,
+        540
+      ],
+      "after": [
+        1537,
+        1023
+      ],
+      "method": "conservative AI restoration",
+      "bytes": 328002,
+      "variants": [
+        {
+          "url": "/assets/images/articles-hd/visite-prince-albert-hd-480.webp",
+          "width": 480
+        },
+        {
+          "url": "/assets/images/articles-hd/visite-prince-albert-hd-960.webp",
+          "width": 960
+        },
+        {
+          "url": "/assets/images/articles-hd/visite-prince-albert-hd.webp",
+          "width": 1537
+        }
+      ]
+    },
+    {
+      "source": "https://assets.zyrosite.com/gnKoPAn3rxzY53IR/640938174_1260531962954474_68224900729298719_n-o26yI8piBx9wxHrU.jpg",
+      "output": "/assets/images/articles-hd/affiche-art-en-fete-hd.webp",
+      "before": [
+        509,
+        720
+      ],
+      "after": [
+        1054,
+        1492
+      ],
+      "method": "conservative AI restoration",
+      "bytes": 508928,
+      "variants": [
+        {
+          "url": "/assets/images/articles-hd/affiche-art-en-fete-hd-480.webp",
+          "width": 480
+        },
+        {
+          "url": "/assets/images/articles-hd/affiche-art-en-fete-hd-960.webp",
+          "width": 960
+        },
+        {
+          "url": "/assets/images/articles-hd/affiche-art-en-fete-hd.webp",
+          "width": 1054
+        }
+      ]
+    }
+  ],
+  "note": "Same source images enhanced; original source URLs preserved. AI restoration may reconstruct fine details. No layout or cropping changes."
+}
