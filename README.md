@@ -4,7 +4,7 @@ Site HTML/CSS/JavaScript pour Hostinger Apache/LiteSpeed. Le contenu est rendu d
 
 ## Déploiement
 
-Déployer la branche `main` à la racine `public_html` du domaine `lightgoldenrodyellow-ant-571258.hostingersite.com`. Aucun npm ni Python n'est nécessaire sur l'hébergement. `.htaccess` dessert les URL sans extension et bloque l'accès aux sources de construction. Ne pas placer le dépôt dans un sous-dossier de public_html.
+Déployer la branche `main` à la racine `public_html` du domaine `legrimaldibylevillage.com`. Aucun npm ni Python n'est nécessaire sur l'hébergement. `.htaccess` dessert les URL sans extension et bloque l'accès aux sources de construction. Ne pas placer le dépôt dans un sous-dossier de public_html.
 
 ## Reconstruction
 
@@ -30,7 +30,7 @@ Instagram est remplacé par une galerie de photos du restaurant et un lien vers 
 
 ## Passage au domaine définitif
 
-Le site de préproduction porte `noindex,follow` dans chaque page. Ses URL canoniques et son sitemap ciblent le domaine officiel actuel pour éviter la duplication. Lors du basculement définitif : remplacer la valeur robots dans `tools/rebuild.py` par `index,follow`, reconstruire, vérifier les redirections et déclarer le sitemap officiel dans Search Console. Conserver le noindex conditionnel du domaine provisoire dans `.htaccess`.
+Le domaine définitif `legrimaldibylevillage.com` est raccordé depuis le 3 octobre 2026. Les pages publiques portent `index,follow`, sauf la page 404. Les URL canoniques, les variantes de langue et le sitemap ciblent ce domaine. Le domaine provisoire garde sa protection HTTP noindex conditionnelle dans `.htaccess`. Le sitemap est annoncé dans robots.txt ; sa déclaration dans Search Console reste à réaliser depuis le compte du propriétaire.
 
 ## Périmètre
 
