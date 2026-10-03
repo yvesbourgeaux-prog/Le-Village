@@ -73,7 +73,7 @@ def build(manifest, base):
         style = s.new_tag('link', rel='stylesheet', href='/assets/css/languages.css?v=20261003')
         style['data-lv-language-resource'] = ''
         s.head.append(style)
-        behavior = s.new_tag('script', src='/assets/js/languages.js?v=20261003', defer='')
+        behavior = s.new_tag('script', src='/assets/js/languages.js?v=' + ('20261003-holidu1' if slug == 'hotel-cagnes-sur-mer-le-grimaldi' else '20261003'), defer='')
         behavior['data-lv-language-resource'] = ''
         s.head.append(behavior)
         for old in s.select('link[rel="alternate"][hreflang]'): old.decompose()

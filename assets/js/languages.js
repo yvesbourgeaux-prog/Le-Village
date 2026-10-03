@@ -1,6 +1,24 @@
 /* A discreet, persistent override; primary translations are already in the HTML. */
 (() => {
  const locales=['fr','en','sv','da','nl','de','it','es','ja','zh-CN'];
+ // Holidu's widget reads ?language= before the browser's preferred language.
+ // Its current supported set differs from the site's prepared translations.
+ const holiduLanguages=['en','de','es','pt','fr','it','el','nl','hr'];
+ function syncHoliduLanguage(){
+  const selected=(document.documentElement.lang||'fr').toLowerCase().split('-')[0];
+  const language=holiduLanguages.includes(selected)?selected:'en';
+  for(const frame of document.querySelectorAll('iframe[src]')){
+   try{
+    const url=new URL(frame.getAttribute('src'),location.href);
+    if(url.hostname!=='widget.holiduhost.com'||!url.pathname.startsWith('/widget/'))continue;
+    if(url.searchParams.get('language')===language)continue;
+    url.searchParams.set('language',language);
+    frame.src=url.href;
+   }catch{}
+  }
+ }
+ syncHoliduLanguage();
+ new MutationObserver(syncHoliduLanguage).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
  const current=document.documentElement.dataset.siteLocale||'fr';
  const slug=document.documentElement.dataset.pageSlug||'';
  const path=code=>(code==='fr'?'':'/'+code)+(slug?'/'+slug:'/');
