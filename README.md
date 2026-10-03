@@ -64,3 +64,9 @@ La traduction des autres langues est préparée dans `api/translate.php` mais d�
 
 ### Langue Holidu — 3 octobre 2026
 Le module hôtel reçoit `?language=` correspondant à la langue affichée sur le site, y compris après un choix manuel qui diffère de la langue du navigateur. `assets/js/languages.js` conserve les autres paramètres de l’iframe et réagit aussi aux changements de langue sans navigation. Le module actuel prend en charge en/de/es/pt/fr/it/el/nl/hr ; les autres langues du site utilisent l’anglais pour la réservation hôtel. Paramètre vérifié sur le module réel avec un en-tête navigateur espagnol et des réponses anglaise, française et allemande.
+
+### Communiqués en PDF
+
+Les six communiqués proposent un dossier presse et un téléchargement PDF A4. Les PDF français sont dans `assets/pdf/communiques/`. Les pages traduites précisent la langue du PDF. `press-downloads.php` adapte les boutons des packs de traduction existants.
+
+Régénération : `python tools/build-press-pdfs.py` (ReportLab, BeautifulSoup, Pillow). Les polices Lato et Playfair sont embarquées avec leurs licences OFL dans `tools/pdf-fonts/`.

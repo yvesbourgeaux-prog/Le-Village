@@ -19,4 +19,7 @@ header('Content-Language: ' . $lang);
 header('Cache-Control: public, max-age=300');
 // Refresh the shared stylesheet in existing language packs as well as new builds.
 $document = $data[$slug] ?? '';
+define('LV_PRESS_PAGE', true);
+require_once __DIR__ . '/press-downloads.php';
+$document = lvPressDownloadButtons($document, $slug, $lang);
 echo preg_replace('~/assets/css/navigation\.css\?v=[^"\s<>]*~', '/assets/css/navigation.css?v=20261003-articles1', $document);
