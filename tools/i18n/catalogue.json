@@ -66,15 +66,15 @@
     "zh-CN": "Le Grimaldi 酒店"
   },
   "Réserver": {
-    "en": "Book now",
-    "sv": "Boka nu",
-    "da": "Book nu",
-    "nl": "Reserveer nu",
-    "de": "Jetzt buchen",
-    "it": "Prenota ora",
-    "es": "Reservar ahora",
-    "ja": "今すぐ予約",
-    "zh-CN": "立即预订"
+    "en": "Book",
+    "sv": "Boka",
+    "da": "Book",
+    "nl": "Reserveer",
+    "de": "Reservieren",
+    "it": "Prenota",
+    "es": "Reservar",
+    "ja": "予約",
+    "zh-CN": "预订"
   },
   "Événements & Carnet de Bord": {
     "en": "Events & Logbook",

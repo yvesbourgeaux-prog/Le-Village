@@ -19,6 +19,9 @@ header('Content-Language: ' . $lang);
 header('Cache-Control: public, max-age=300');
 // Refresh the shared stylesheet in existing language packs as well as new builds.
 $document = $data[$slug] ?? '';
+// Keep the short booking label in prebuilt translations.
+$bookingLabels = ["en" =>  "Book", "sv" =>  "Boka", "da" =>  "Book", "nl" =>  "Reserveer", "de" =>  "Reservieren", "it" =>  "Prenota", "es" =>  "Reservar", "ja" =>  "予約", "zh-CN" =>  "预订"];
+$document = preg_replace_callback('~(<span\b[^>]*data-i18n=[^>]*c9f6b527c374d720[^>]*>)[^<]*(</span>)~u', static fn($m) => $m[1] . ($bookingLabels[$lang] ?? 'Réserver') . $m[2], $document);
 define('LV_PRESS_PAGE', true);
 require_once __DIR__ . '/press-downloads.php';
 $document = lvPressDownloadButtons($document, $slug, $lang);
