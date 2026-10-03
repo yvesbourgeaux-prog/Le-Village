@@ -62,3 +62,12 @@
 @media(max-width:1199px){
  .common-header-page:not(.home-page):has(#main [id^="village-blog-"]) #main [id^="village-blog-"]>:is(header,section):first-child{min-height:620px;padding:184px 0 76px}
 }
+
+/* Mobile video covers on restaurant and hotel pages only. */
+@media(max-width:1199px){
+ :is(.restaurant-page,.hotel-page) #main{padding-top:0}
+ :is(.restaurant-page,.hotel-page) .home-header:not(.is-scrolled):not(:has(.menu-toggle[aria-expanded="true"])){background:transparent;border-color:transparent;box-shadow:none;color:#fff}
+ :is(.restaurant-page,.hotel-page) .home-header:not(.is-scrolled):not(:has(.menu-toggle[aria-expanded="true"])) .brand img{filter:brightness(0) invert(1)}
+ :is(.restaurant-page,.hotel-page) .home-header:not(.is-scrolled):not(:has(.menu-toggle[aria-expanded="true"])) .menu-toggle span{background:#fff}
+ :is(.restaurant-page,.hotel-page) :is(.restaurant-hero,.hotel-hero){min-height:620px;padding-top:150px}
+}

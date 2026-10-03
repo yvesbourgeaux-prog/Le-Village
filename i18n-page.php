@@ -25,4 +25,4 @@ $document = preg_replace_callback('~(<span\b[^>]*data-i18n=[^>]*c9f6b527c374d720
 define('LV_PRESS_PAGE', true);
 require_once __DIR__ . '/press-downloads.php';
 $document = lvPressDownloadButtons($document, $slug, $lang);
-echo preg_replace('~/assets/css/navigation\.css\?v=[^"\s<>]*~', '/assets/css/navigation.css?v=20261003-home-spacing1', $document);
+echo preg_replace('~/assets/css/navigation\.css\?v=[^"\s<>]*~', '/assets/css/navigation.css?v=20261003-mobile-video1', $document);
