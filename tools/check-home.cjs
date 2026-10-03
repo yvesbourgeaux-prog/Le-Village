@@ -5,6 +5,7 @@ const root=path.resolve(__dirname,'..');const dom=new JSDOM(fs.readFileSync(path
 const w=dom.window,d=w.document;
 w.eval(fs.readFileSync(path.join(root,'assets/js/site.js'),'utf8'));
 w.eval(fs.readFileSync(path.join(root,'assets/js/home.js'),'utf8'));
+w.eval(fs.readFileSync(path.join(root,'assets/js/zenchef.js'),'utf8'));
 assert.equal(d.querySelectorAll('h1').length,1);
 assert.equal(d.querySelectorAll('#village-centered-footer footer').length,1);
 assert(d.querySelector('#village-acces-prestige-block iframe[src*="google.com/maps"]'));

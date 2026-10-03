@@ -1,0 +1,39 @@
+/* Shared navigation, including the original mobile layout. */
+.common-header-page:not(.home-page) #main{padding-top:172px}
+.home-header .book-button{min-width:128px;padding:11px 18px}
+@media(max-width:1199px){
+ .common-header-page #main{padding-top:150px}
+ .home-header,.home-header.is-scrolled{background:#fcf9f3;border-bottom-color:transparent;box-shadow:none}
+ .home-header .header-inner,.home-header.is-scrolled .header-inner{grid-template-columns:44px 1fr 44px;min-height:150px;gap:0;padding:0 14px}
+ .home-header .brand,.home-header.is-scrolled .brand{width:150px;height:150px;margin:auto;grid-column:2;grid-row:1}
+ .home-header .brand img,.home-header.is-scrolled .brand img{width:150px;height:150px;max-width:none}
+ .home-header .header-actions{display:none}
+ .home-header .menu-toggle{grid-column:1;grid-row:1;align-items:flex-start;gap:6px}
+ .home-header .menu-toggle span{width:24px;transition:transform .2s,opacity .2s}
+ .home-header .menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+ .home-header .menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+ .home-header .menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+ .home-header #site-nav,.home-header.is-scrolled #site-nav{padding:36px 20px 16px;gap:22px;max-height:calc(100dvh - 150px);border:0;box-shadow:none;background:#fcf9f3}
+ .home-header #site-nav>a{font-size:16px;line-height:22px}
+ .home-header .mobile-extra{display:grid;grid-template-columns:repeat(3,28px);justify-content:center;align-items:center;gap:18px 10px;margin-top:0}
+ .home-header .mobile-extra .social,.home-header .mobile-extra .phone{display:inline-flex;width:28px;height:28px}
+ .home-header .mobile-extra svg{width:26px;height:26px}
+ .home-header .mobile-extra .book-button{grid-column:1/-1;justify-self:center;margin:0;width:146px;min-width:146px;padding:15px 18px;background:#713506;color:#fff!important;font-size:14px;line-height:20px}
+}
+@media(max-width:1199px){
+ .home-header .brand img,.home-header.is-scrolled .brand img{width:130px;height:130px}
+ .home-header #site-nav,.home-header.is-scrolled #site-nav{min-height:calc(100dvh - 150px);justify-content:flex-start}
+ .home-header .mobile-extra .book-button{padding-block:14px}
+ body:has(.home-header .menu-toggle[aria-expanded="true"]){overflow:hidden}
+}
+
+/* The public header keeps the same colors on hotel, restaurant and visit pages. */
+.common-header-page .home-header:not(.is-scrolled){color:#713506}
+.common-header-page .home-header:not(.is-scrolled) .brand img{filter:none}
+.common-header-page .home-header:not(.is-scrolled) .menu-toggle span{background:#713506}
+.common-header-page .home-header:not(.is-scrolled) .book-button{border-color:#713506;color:#713506!important}
+@media(max-width:1199px){
+ .common-header-page .home-header .mobile-extra .book-button{color:#fff!important}
+ .carte-page #main>.carte-nav-wrapper{top:150px}
+}
+.common-header-page .home-header .book-button:hover,.common-header-page .home-header .book-button:focus-visible{color:#fff!important}

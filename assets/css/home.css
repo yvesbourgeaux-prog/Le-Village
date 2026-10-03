@@ -1,4 +1,4 @@
-/* Homepage refinement. Other pages retain their current templates. */
+/* Common site header and homepage refinement. */
 .home-page{--content-width:1240px}
 .home-header{position:fixed;inset:0 0 auto;background:transparent;border-color:transparent;transition:background .3s,box-shadow .3s,border-color .3s}
 .home-header .header-inner{max-width:var(--content-width);min-height:172px;padding:0 24px;grid-template-columns:1fr 200px 1fr;gap:24px;transition:min-height .3s}

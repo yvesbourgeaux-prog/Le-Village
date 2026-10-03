@@ -97,6 +97,7 @@ release_footer,_=process((ROOT/'tools/press-release-footer.html').read_text(),'r
 FONT='https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Poppins:wght@300;400;500;600&display=swap'
 manifest=[]
 def writepage(slug,meta,content,external=None,kind='default',date=None):
+ common_header=kind!='press-release' and slug not in ('espace-presse','dossier-presse')
  modern=not slug or slug in (RESTAURANT_SLUG,HOTEL_SLUG,'la-carte','visiter-haut-de-cagnes')
  s=BeautifulSoup(content,'html.parser')
  # Enhance the same source images; preserve their layout and original source URLs.
@@ -202,10 +203,11 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
  es=''.join(f'<script defer src="{html.escape(u,quote=True)}"></script>' for u in dict.fromkeys(external or []))
  head=f'''<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)}</title><meta name="description" content="{html.escape(description,quote=True)}"><link rel="canonical" href="{canonical}"><meta name="robots" content="noindex,follow"><meta name="theme-color" content="#fcf9f3"><meta property="og:type" content="{'article' if kind in ('blog','press-release') else 'website'}"><meta property="og:title" content="{html.escape(title,quote=True)}"><meta property="og:description" content="{html.escape(description,quote=True)}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="{s.find('img').get('src',FALLBACK) if s.find('img') else FALLBACK}"><meta property="og:locale" content="fr_FR"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="{LOGO}"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="{html.escape(FONT,quote=True)}"><link rel="stylesheet" href="/assets/css/tailwind.css"><link rel="stylesheet" href="/assets/css/blocks.css"><link rel="stylesheet" href="/assets/css/site.css"><script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False)}</script>{es}<script defer src="/assets/js/site.js"></script>'''
  head+=''.join(f'<script defer src="/assets/js/{uid}.js"></script>' for uid in jsids)
+ if common_header:
+  head+='<link rel="stylesheet" href="/assets/css/home.css?v=menu-20261003"><script defer src="/assets/js/home.js?v=menu-20261003"></script>'
  home_footer=''
  if modern:
   head=head.replace('/assets/css/blocks.css', '/assets/css/blocks.css?v=home-20261001c').replace('/assets/css/tailwind.css', '/assets/css/tailwind.css?v=home-20261001c').replace('/assets/js/site.js', '/assets/js/site.js?v=home-20261001c')
-  head+='<link rel="stylesheet" href="/assets/css/home.css?v=home-20261001c"><script defer src="/assets/js/home.js?v=home-20261001c"></script><script id="zenchef-sdk" defer src="https://sdk.zenchef.com/v1/sdk.min.js"></script>'
   home_footer=(carte_footer_block if slug=='la-carte' else hotel_footer_block if slug==HOTEL_SLUG else restaurant_footer_block if slug==RESTAURANT_SLUG else home_footer_block)+'<div class="zc-widget-config" data-restaurant="361354" data-lang="fr" data-primary-color="794116" data-open="false"></div>'
  if slug==RESTAURANT_SLUG:
   head=head.replace('home-20261001c','resto-20261001d')
@@ -227,11 +229,11 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
   head=head.replace('/assets/css/blocks.css','/assets/css/blocks.css?v=dossier-20261002f').replace('/assets/css/tailwind.css','/assets/css/tailwind.css?v=dossier-20261002f')
   head+='<link rel="stylesheet" href="/assets/css/dossier.css?v=dossier-20261002f"><script defer src="/assets/js/dossier.js?v=dossier-20261002f"></script><script defer src="/assets/js/home.js?v=dossier-20261002f"></script><script id="zenchef-sdk" defer src="https://sdk.zenchef.com/v1/sdk.min.js"></script>'
   press_footer+='<div class="zc-widget-config" data-restaurant="361354" data-lang="fr" data-primary-color="794116" data-open="false"></div>'
- selected_header=(ROOT/'tools/home-header.html').read_text() if modern else HEADER
- if slug in (RESTAURANT_SLUG,HOTEL_SLUG,'la-carte','visiter-haut-de-cagnes'):selected_header=selected_header.replace(' aria-current="page"','')
+ selected_header=(ROOT/'tools/home-header.html').read_text() if common_header else HEADER
+ if slug:selected_header=selected_header.replace(' aria-current="page"','')
  if slug=='espace-presse':selected_header='<a class="skip-link" href="#communiques">Aller aux communiqués</a>'
  if slug=='dossier-presse':selected_header='<a class="skip-link" href="#histoire">Aller au dossier de presse</a>'
- if slug==HOTEL_SLUG:selected_header=selected_header.replace('class="book-button" href="/reserver"','class="book-button" href="#reservation"')
+
  if kind=='press-release':
   selected_header='<a class="skip-link" href="#main">Aller au communiqué</a>'+release_header
   press_footer=release_footer
@@ -239,7 +241,15 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
   head=head.replace('/assets/css/blocks.css','/assets/css/blocks.css?v=cp-20261002').replace('/assets/css/tailwind.css','/assets/css/tailwind.css?v=cp-20261002')
  if slug=='automne-haut-de-cagnes':head+='<link rel="stylesheet" href="/assets/css/automne-gallery.css?v=20261002b">'
  head=re.sub(r'/assets/css/blocks\.css(?:\?[^\"]*)?', '/assets/css/blocks.css?v=blog-20261003', head)
+ if common_header:head+='<link rel="stylesheet" href="/assets/css/navigation.css?v=20261003">'
+ head=re.sub(r'<script[^>]*src="/assets/js/home\.js[^"]*"[^>]*></script>', '', head) if not common_header else head
+ head=re.sub(r'<script[^>]*id="zenchef-sdk"[^>]*></script>', '', head)
+ head+='<script defer src="/assets/js/zenchef.js?v=20261003"></script><script id="zenchef-sdk" defer src="https://sdk.zenchef.com/v1/sdk.min.js"></script>'
  full=head+'</head><body'+(' class="press-page release-page"' if kind=='press-release' else ' class="dossier-page"' if slug=='dossier-presse' else ' class="press-page"' if slug=='espace-presse' else ' class="home-page visit-page"' if slug=='visiter-haut-de-cagnes' else ' class="home-page carte-page"' if slug=='la-carte' else ' class="home-page hotel-page"' if slug==HOTEL_SLUG else ' class="home-page restaurant-page"' if slug==RESTAURANT_SLUG else ' class="home-page"' if not slug else '')+'>'+selected_header+'<main id="main">'+str(s)+'</main>'+(press_footer if kind=='press-release' or slug in ('espace-presse','dossier-presse') else home_footer if modern else footer+EXTRA_FOOT)+'<div id="privacy-panel" class="privacy-panel" hidden><p>Vous pouvez réinitialiser ici les autorisations des vidéos intégrées. La carte et le module de réservation utilisent les services Google Maps et Zenchef.</p><button type="button" data-reset-consent>Réinitialiser mes choix</button><button type="button" data-close-privacy>Fermer</button></div></body></html>'
+ if common_header:
+  full=re.sub(r'<body(?: class="([^"]*)")?>', lambda m: '<body class="'+((m[1]+' ') if m[1] else '')+'common-header-page">', full, count=1)
+ if 'class="zc-widget-config"' not in full:
+  full=full.replace('</body>', '<div class="zc-widget-config" data-restaurant="361354" data-lang="fr" data-primary-color="794116" data-open="false"></div></body>')
  if not modern:full=full.replace('Vous pouvez réinitialiser ici les autorisations des vidéos intégrées. La carte et le module de réservation utilisent les services Google Maps et Zenchef.', 'Les contenus externes (carte, vidéos et réservations) ne sont chargés qu’à votre demande.')
  path=ROOT/((slug+'.html') if slug else 'index.html');path.write_text(full)
  manifest.append({'path':'/'+slug,'file':path.name,'title':title,'kind':kind})
