@@ -16,7 +16,7 @@
   const el=e.target?.closest?.('a, [role="link"], button');if(!el)return;
   const href=el.getAttribute('href')||el.dataset.href||el.dataset.url;if(!href)return;
   let u;try{u=new URL(href,location.href);}catch{return;}
-  if(u.origin!==location.origin||!(u.pathname==='/reserver'||u.searchParams.get('zc')==='open'))return;
+  if(u.origin!==location.origin||!(u.pathname.replace(/^\/(?:en|sv|da|nl|de|it|es|ja|zh-CN)(?=\/|$)/,'')==='/reserver'||u.searchParams.get('zc')==='open'))return;
   if(e.cancelable)e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();openBooking();
  }
  document.addEventListener('pointerdown',intercept,{capture:true,passive:false});

@@ -1,0 +1,13 @@
+.language-footer{display:flex;justify-content:center;padding:12px 20px 28px;font:12px Poppins,sans-serif;color:#9d623d}
+.language-footer details{position:relative;text-align:center;max-width:100%}
+.language-footer summary{cursor:pointer;list-style:none;text-decoration:underline;text-underline-offset:4px;padding:8px}
+.language-footer summary::-webkit-details-marker{display:none}
+.language-options{display:flex;justify-content:center;flex-wrap:wrap;gap:12px 18px;margin:12px auto 0;max-width:680px}
+.language-options a[aria-current="true"]{font-weight:600;color:#713506}
+.language-options button{font:inherit;text-decoration:underline;text-underline-offset:3px}
+.language-footer select{font:inherit;max-width:100%;background:#fcf9f3;border:1px solid #71350640;padding:8px;color:#713506}
+.language-status{max-width:680px;font:12px/1.6 Lato,sans-serif;margin:12px auto}
+:lang(ja) h1,:lang(zh-CN) h1,:lang(ja) .font-cursive,:lang(zh-CN) .font-cursive{font-family:Georgia,'Yu Mincho','Hiragino Mincho ProN','Noto Serif CJK SC',serif!important;letter-spacing:normal}
+
+html:not([lang="fr"]) :is(h1,h2,h3,.font-cursive){overflow-wrap:anywhere}
+.language-footer details{width:min(680px,100%)}

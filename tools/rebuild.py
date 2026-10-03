@@ -276,3 +276,6 @@ for uid,code in scripts.items():(ROOT/'assets/js'/f'{uid}.js').write_text(code)
 (ROOT/'tools/image-replacements.json').write_text(json.dumps(replacements,indent=2))
 (ROOT/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+BASE+m['path']+'</loc></url>' for m in manifest if m['path']!='/404')+'</urlset>')
 print('Built',len(manifest),'pages;',len(css_blocks),'scoped styles;',len(scripts),'scripts; replaced',len(replacements),'image references.')
+
+from localize import build as build_languages
+build_languages(manifest, BASE)
