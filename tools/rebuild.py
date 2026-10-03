@@ -241,7 +241,7 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
   head=head.replace('/assets/css/blocks.css','/assets/css/blocks.css?v=cp-20261002').replace('/assets/css/tailwind.css','/assets/css/tailwind.css?v=cp-20261002')
  if slug=='automne-haut-de-cagnes':head+='<link rel="stylesheet" href="/assets/css/automne-gallery.css?v=20261002b">'
  head=re.sub(r'/assets/css/blocks\.css(?:\?[^\"]*)?', '/assets/css/blocks.css?v=blog-20261003', head)
- if common_header:head+='<link rel="stylesheet" href="/assets/css/navigation.css?v=20261003-colors1">'
+ if common_header:head+='<link rel="stylesheet" href="/assets/css/navigation.css?v=20261003-articles1">'
  head=re.sub(r'<script[^>]*src="/assets/js/home\.js[^"]*"[^>]*></script>', '', head) if not common_header else head
  head=re.sub(r'<script[^>]*id="zenchef-sdk"[^>]*></script>', '', head)
  head+='<script defer src="/assets/js/zenchef.js?v=20261003"></script><script id="zenchef-sdk" defer src="https://sdk.zenchef.com/v1/sdk.min.js"></script>'
