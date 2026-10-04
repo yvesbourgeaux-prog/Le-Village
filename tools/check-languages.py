@@ -1,9 +1,13 @@
 """Check published language packs, booking configuration and internal links."""
-import gzip, json
+import gzip, json, re
 from pathlib import Path
 from urllib.parse import urlsplit
 from bs4 import BeautifulSoup
 root=Path(__file__).resolve().parents[1]
+catalogue=json.loads((root/'tools/i18n/catalogue.json').read_text())
+for source, translations in catalogue.items():
+    for locale, translated in translations.items():
+        assert not re.search(r'^\s*\d{2}:\d{2}\)\s*|\b124;|⁇|�|\[\[BRAND', translated), (locale, source, 'translation artifact')
 manifest=json.loads((root/'tools/manifest.json').read_text())
 langs=['fr','en','sv','da','nl','de','it','es','ja','zh-CN','nb','ru','pl']
 fr={p['path'].lstrip('/'):BeautifulSoup((root/p['file']).read_text(),'html.parser') for p in manifest}
@@ -12,6 +16,7 @@ for lang in langs:
     assert pages.keys()==fr.keys()
     for slug,soup in pages.items():
         assert soup.html['lang']==lang
+        assert not re.search(r'(?:(?<=\>)|(?<=\"))\s*\d{2}:\d{2}\)\s*', str(soup)), (lang,slug,'rendered timestamp')
         assert len(soup.select('.zc-widget-config'))==1
         assert soup.select_one('.zc-widget-config')['data-restaurant']=='361354'
         assert len(soup.select('script[src*="sdk.zenchef.com"]'))==1
