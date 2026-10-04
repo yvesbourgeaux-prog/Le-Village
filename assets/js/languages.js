@@ -1,6 +1,6 @@
 /* A discreet, persistent override; primary translations are already in the HTML. */
 (() => {
- const locales=['fr','en','sv','da','nl','de','it','es','ja','zh-CN'];
+ const locales=['fr','en','sv','da','nl','de','it','es','ja','zh-CN','nb','ru','pl'];
  // Holidu's widget reads ?language= before the browser's preferred language.
  // Its current supported set differs from the site's prepared translations.
  const holiduLanguages=['en','de','es','pt','fr','it','el','nl','hr'];
@@ -22,7 +22,7 @@
  const current=document.documentElement.dataset.siteLocale||'fr';
  const slug=document.documentElement.dataset.pageSlug||'';
  const path=code=>(code==='fr'?'':'/'+code)+(slug?'/'+slug:'/');
- const normalize=value=>{const code=String(value||'').replace('_','-').toLowerCase();return code.startsWith('zh')?'zh-CN':code.split('-')[0];};
+ const normalize=value=>{const code=String(value||'').replace('_','-').toLowerCase();return code.startsWith('zh')?'zh-CN':/^(no|nn)(-|$)/.test(code)?'nb':code.split('-')[0];};
  const save=code=>{try{if(code)localStorage.setItem('lv-language',code);else localStorage.removeItem('lv-language');}catch{}};
  document.addEventListener('click',e=>{
   const link=e.target.closest('[data-language]');
@@ -33,8 +33,8 @@
    location.assign(path(code)+location.search+location.hash);
   }
  });
- const openLabels={fr:'Ouvrir le menu',en:'Open menu',sv:'Öppna menyn',da:'Åbn menuen',nl:'Menu openen',de:'Menü öffnen',it:'Apri il menu',es:'Abrir el menú',ja:'メニューを開く','zh-CN':'打开菜单'};
- const closeLabels={fr:'Fermer le menu',en:'Close menu',sv:'Stäng menyn',da:'Luk menuen',nl:'Menu sluiten',de:'Menü schließen',it:'Chiudi il menu',es:'Cerrar el menú',ja:'メニューを閉じる','zh-CN':'关闭菜单'};
+ const openLabels={fr:'Ouvrir le menu',en:'Open menu',sv:'Öppna menyn',da:'Åbn menuen',nl:'Menu openen',de:'Menü öffnen',it:'Apri il menu',es:'Abrir el menú',ja:'メニューを開く','zh-CN':'打开菜单',nb:'Åpne meny',ru:'Открыть меню',pl:'Otwórz menu'};
+ const closeLabels={fr:'Fermer le menu',en:'Close menu',sv:'Stäng menyn',da:'Luk menuen',nl:'Menu sluiten',de:'Menü schließen',it:'Chiudi il menu',es:'Cerrar el menú',ja:'メニューを閉じる','zh-CN':'关闭菜单',nb:'Lukk meny',ru:'Закрыть меню',pl:'Zamknij menu'};
  const menu=document.querySelector('.menu-toggle,#menuBtn');
  if(menu){
   const update=()=>{const label=(menu.getAttribute('aria-expanded')==='true'?closeLabels:openLabels)[document.documentElement.lang]||openLabels.en;if(menu.getAttribute('aria-label')!==label)menu.setAttribute('aria-label',label);};

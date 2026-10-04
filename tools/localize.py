@@ -1,13 +1,13 @@
 """Build localized pages from the same French HTML and a checked translation catalogue."""
-import copy, gzip, hashlib, html, json, re
+import copy, gzip, hashlib, html, json, os, re
 from pathlib import Path
 from bs4 import BeautifulSoup, Comment, Doctype, NavigableString
 
 ROOT = Path(__file__).resolve().parents[1]
-LANGS = ['fr', 'en', 'sv', 'da', 'nl', 'de', 'it', 'es', 'ja', 'zh-CN']
-NAMES = ['Français', 'English', 'Svenska', 'Dansk', 'Nederlands', 'Deutsch', 'Italiano', 'Español', '日本語', '中文']
-LABELS = dict(zip(LANGS, ['Langue', 'Language', 'Språk', 'Sprog', 'Taal', 'Sprache', 'Lingua', 'Idioma', '言語', '语言']))
-AUTO = dict(zip(LANGS, ['Automatique (navigateur)', 'Automatic (browser)', 'Automatiskt (webbläsare)', 'Automatisk (browser)', 'Automatisch (browser)', 'Automatisch (Browser)', 'Automatico (browser)', 'Automático (navegador)', '自動（ブラウザ）', '自动（浏览器）']))
+LANGS = ['fr', 'en', 'sv', 'da', 'nl', 'de', 'it', 'es', 'ja', 'zh-CN', 'nb', 'ru', 'pl']
+NAMES = ['Français', 'English', 'Svenska', 'Dansk', 'Nederlands', 'Deutsch', 'Italiano', 'Español', '日本語', '中文', 'Norsk', 'Русский', 'Polski']
+LABELS = dict(zip(LANGS, ['Langue', 'Language', 'Språk', 'Sprog', 'Taal', 'Sprache', 'Lingua', 'Idioma', '言語', '语言', 'Språk', 'Язык', 'Język']))
+AUTO = dict(zip(LANGS, ['Automatique (navigateur)', 'Automatic (browser)', 'Automatiskt (webbläsare)', 'Automatisk (browser)', 'Automatisch (browser)', 'Automatisch (Browser)', 'Automatico (browser)', 'Automático (navegador)', '自動（ブラウザ）', '自动（浏览器）', 'Automatisk (nettleser)', 'Автоматически (браузер)', 'Automatycznie (przeglądarka)']))
 BRANDS = ['Le Grimaldi by Le Village', 'Le Grimaldi', 'Le Village', 'Haut-de-Cagnes', 'Cagnes-sur-Mer']
 
 def key(text):
@@ -30,7 +30,8 @@ def footer(lang, slug):
 
 def build(manifest, base):
     catalog = json.loads((ROOT / 'tools/i18n/catalogue.json').read_text())
-    prepared = {lang: {} for lang in LANGS[1:]}
+    selected = set(filter(None, os.environ.get('LV_ONLY_LANGS', '').split(',')))
+    prepared = {lang: {} for lang in LANGS[1:] if not selected or lang in selected}
     (ROOT / 'i18n/pages').mkdir(parents=True, exist_ok=True)
     (ROOT / 'i18n/catalogs').mkdir(parents=True, exist_ok=True)
     (ROOT / 'assets/i18n').mkdir(parents=True, exist_ok=True)
@@ -64,16 +65,17 @@ def build(manifest, base):
                     mapping['a']['content'] = key(text)
             if mapping['t'] or mapping['a']:
                 tag['data-i18n'] = json.dumps(mapping, separators=(',', ':'))
-        (ROOT / 'i18n/catalogs' / ((slug or 'index') + '.json')).write_text(json.dumps(source, ensure_ascii=False))
+        if not selected:
+            (ROOT / 'i18n/catalogs' / ((slug or 'index') + '.json')).write_text(json.dumps(source, ensure_ascii=False))
         # Run before deferred embeds to avoid loading them once in the wrong language.
-        routing = s.new_tag('script', src='/assets/js/language-route.js?v=20261003')
+        routing = s.new_tag('script', src='/assets/js/language-route.js?v=20261004-13')
         routing['data-lv-language-resource'] = ''
         viewport = s.select_one('meta[name="viewport"]')
         viewport.insert_after(routing)
-        style = s.new_tag('link', rel='stylesheet', href='/assets/css/languages.css?v=20261003')
+        style = s.new_tag('link', rel='stylesheet', href='/assets/css/languages.css?v=20261004-13')
         style['data-lv-language-resource'] = ''
         s.head.append(style)
-        behavior = s.new_tag('script', src='/assets/js/languages.js?v=' + ('20261003-holidu1' if slug == 'hotel-cagnes-sur-mer-le-grimaldi' else '20261003'), defer='')
+        behavior = s.new_tag('script', src='/assets/js/languages.js?v=20261004-13', defer='')
         behavior['data-lv-language-resource'] = ''
         s.head.append(behavior)
         for old in s.select('link[rel="alternate"][hreflang]'): old.decompose()
@@ -81,6 +83,8 @@ def build(manifest, base):
             s.head.append(s.new_tag('link', rel='alternate', hreflang=lang, href=base + url(lang, slug)))
         s.head.append(s.new_tag('link', rel='alternate', hreflang='x-default', href=base + url('fr', slug)))
         for lang in LANGS:
+            if selected and lang != 'fr' and lang not in selected:
+                continue
             localized = copy.deepcopy(s)
             localized.html['lang'] = lang
             localized.html['data-site-locale'] = lang
@@ -96,7 +100,7 @@ def build(manifest, base):
                     tag[attr] = original if lang == 'fr' else catalog[original][lang]
             localized.select_one('link[rel="canonical"]')['href'] = base + url(lang, slug)
             for tag in localized.select('meta[property="og:url"]'): tag['content'] = base + url(lang, slug)
-            for tag in localized.select('meta[property="og:locale"]'): tag['content'] = {'fr':'fr_FR', 'en':'en_GB', 'sv':'sv_SE', 'da':'da_DK', 'nl':'nl_NL', 'de':'de_DE', 'it':'it_IT', 'es':'es_ES', 'ja':'ja_JP', 'zh-CN':'zh_CN'}[lang]
+            for tag in localized.select('meta[property="og:locale"]'): tag['content'] = {'fr':'fr_FR', 'en':'en_GB', 'sv':'sv_SE', 'da':'da_DK', 'nl':'nl_NL', 'de':'de_DE', 'it':'it_IT', 'es':'es_ES', 'ja':'ja_JP', 'zh-CN':'zh_CN', 'nb':'nb_NO', 'ru':'ru_RU', 'pl':'pl_PL'}[lang]
             widget = localized.select_one('.zc-widget-config')
             if widget: widget['data-lang'] = lang.split('-')[0]
             for tag in localized.select('a[href]'):
@@ -123,7 +127,8 @@ def build(manifest, base):
                 script.string=json.dumps(translate_schema(graph), ensure_ascii=False)
             localized.body.append(BeautifulSoup(footer(lang, slug), 'html.parser'))
             document=str(localized)
-            if lang == 'fr': (ROOT / page['file']).write_text(document)
+            if lang == 'fr':
+                if not selected: (ROOT / page['file']).write_text(document)
             else: prepared[lang][slug] = document
     for lang, pages in prepared.items():
         payload=json.dumps(pages, ensure_ascii=False, separators=(',', ':')).encode()
@@ -131,7 +136,8 @@ def build(manifest, base):
         dictionary={key(original): translated[lang] for original, translated in catalog.items()}
         (ROOT / 'assets/i18n' / (lang + '.json')).write_text(json.dumps(dictionary, ensure_ascii=False, separators=(',', ':')))
     # French strings are the authoritative source for dynamic visitor translations.
-    (ROOT / 'assets/i18n/fr.json').write_text(json.dumps({key(t):t for t in catalog}, ensure_ascii=False, separators=(',', ':')))
+    if not selected:
+        (ROOT / 'assets/i18n/fr.json').write_text(json.dumps({key(t):t for t in catalog}, ensure_ascii=False, separators=(',', ':')))
     sitemap='<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+base+url(lang,m['path'].lstrip('/'))+'</loc></url>' for m in manifest if m['path']!='/404' for lang in LANGS)+'</urlset>'
     (ROOT/'sitemap.xml').write_text(sitemap)
     print('Localized', len(manifest), 'pages in', len(LANGS), 'languages.')

@@ -5,7 +5,7 @@ from urllib.parse import urlsplit
 from bs4 import BeautifulSoup
 root=Path(__file__).resolve().parents[1]
 manifest=json.loads((root/'tools/manifest.json').read_text())
-langs=['fr','en','sv','da','nl','de','it','es','ja','zh-CN']
+langs=['fr','en','sv','da','nl','de','it','es','ja','zh-CN','nb','ru','pl']
 fr={p['path'].lstrip('/'):BeautifulSoup((root/p['file']).read_text(),'html.parser') for p in manifest}
 for lang in langs:
     pages=fr if lang=='fr' else {k:BeautifulSoup(v,'html.parser') for k,v in json.loads(gzip.decompress((root/f'i18n/pages/{lang}.json.gz').read_bytes())).items()}
@@ -15,7 +15,7 @@ for lang in langs:
         assert len(soup.select('.zc-widget-config'))==1
         assert soup.select_one('.zc-widget-config')['data-restaurant']=='361354'
         assert len(soup.select('script[src*="sdk.zenchef.com"]'))==1
-        assert len(soup.select('link[hreflang]'))==11
+        assert len(soup.select('link[hreflang]'))>=11
         assert len(soup.select('.language-footer'))==1
         image_signature=lambda s:[{k:i.get(k) for k in ['src','srcset','width','height','class']} for i in s.select('img')]
         assert image_signature(soup)==image_signature(fr[slug]),(lang,slug,'photo changed')

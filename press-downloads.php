@@ -4,7 +4,7 @@ if (!defined('LV_PRESS_PAGE')) { http_response_code(404); exit; }
 function lvPressDownloadButtons(string $document, string $slug, string $lang): string {
     $releases = json_decode(file_get_contents(__DIR__ . '/tools/press-pdfs.json'), true);
     if (!in_array($slug, array_column($releases, 'slug'), true)) return $document;
-    $labels = json_decode('{"fr": ["Dossier de Presse", "Télécharger le communiqué (PDF)"], "en": ["Press Kit", "Download PDF (French)"], "sv": ["Pressmapp", "Ladda ner PDF (franska)"], "da": ["Pressekit", "Download PDF (fransk)"], "nl": ["Persmap", "PDF downloaden (Frans)"], "de": ["Pressemappe", "PDF herunterladen (Französisch)"], "it": ["Kit stampa", "Scarica il PDF (francese)"], "es": ["Kit de prensa", "Descargar PDF (francés)"], "ja": ["プレスキット", "PDFをダウンロード（フランス語）"], "zh-CN": ["新闻资料包", "下载PDF（法语）"]}', true);
+    $labels = json_decode('{"fr": ["Dossier de Presse", "Télécharger le communiqué (PDF)"], "en": ["Press Kit", "Download PDF (French)"], "sv": ["Pressmapp", "Ladda ner PDF (franska)"], "da": ["Pressekit", "Download PDF (fransk)"], "nl": ["Persmap", "PDF downloaden (Frans)"], "de": ["Pressemappe", "PDF herunterladen (Französisch)"], "it": ["Kit stampa", "Scarica il PDF (francese)"], "es": ["Kit de prensa", "Descargar PDF (francés)"], "ja": ["プレスキット", "PDFをダウンロード（フランス語）"], "zh-CN": ["新闻资料包", "下载PDF（法语）"], "nb": ["Pressemappe", "Last ned PDF (fransk)"], "ru": ["Пресс-кит", "Скачать PDF (на французском)"], "pl": ["Materiały prasowe", "Pobierz PDF (po francusku)"]}', true);
     $start = strpos($document, '<article');
     $end = strpos($document, '</article>', $start ?: 0);
     if ($start === false || $end === false) return $document;

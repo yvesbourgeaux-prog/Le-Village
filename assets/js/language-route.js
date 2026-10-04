@@ -1,7 +1,7 @@
 /* Pick the visitor's preferred language before loading page widgets. */
 (() => {
- const available=['fr','en','sv','da','nl','de','it','es','ja','zh-CN'];
- const normalize=value=>{const code=String(value||'').replace('_','-').toLowerCase();return code.startsWith('zh')?'zh-CN':code.split('-')[0];};
+ const available=['fr','en','sv','da','nl','de','it','es','ja','zh-CN','nb','ru','pl'];
+ const normalize=value=>{const code=String(value||'').replace('_','-').toLowerCase();return code.startsWith('zh')?'zh-CN':/^(no|nn)(-|$)/.test(code)?'nb':code.split('-')[0];};
  let saved='';try{saved=localStorage.getItem('lv-language')||'';}catch{}
  const first=location.pathname.split('/')[1];
  window.lvLocale=available.includes(first)?first:'fr';

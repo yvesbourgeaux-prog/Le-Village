@@ -2,7 +2,7 @@ Options -Indexes -MultiViews
 DirectoryIndex index.html
 RewriteEngine On
 RewriteRule ^i18n/(?:pages|catalogs)(?:/|$) - [F,L]
-RewriteRule ^(?:en|sv|da|nl|de|it|es|ja|zh-CN)(?:/.*)?$ i18n-page.php [L]
+RewriteRule ^(?:en|sv|da|nl|de|it|es|ja|zh-CN|nb|ru|pl)(?:/.*)?$ i18n-page.php [L]
 RewriteRule ^(?:tools|node_modules|\.git)(?:/|$) - [F,L]
 RewriteRule ^(?:package(?:-lock)?\.json|tailwind\.config\.cjs|README\.md)$ - [F,L]
 RewriteCond %{REQUEST_FILENAME} !-f

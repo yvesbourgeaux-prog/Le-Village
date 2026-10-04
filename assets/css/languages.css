@@ -8,6 +8,7 @@
 .language-footer select{font:inherit;max-width:100%;background:#fcf9f3;border:1px solid #71350640;padding:8px;color:#713506}
 .language-status{max-width:680px;font:12px/1.6 Lato,sans-serif;margin:12px auto}
 :lang(ja) h1,:lang(zh-CN) h1,:lang(ja) .font-cursive,:lang(zh-CN) .font-cursive{font-family:Georgia,'Yu Mincho','Hiragino Mincho ProN','Noto Serif CJK SC',serif!important;letter-spacing:normal}
+:lang(ru) h1,:lang(ru) .font-cursive{font-family:Georgia,'Times New Roman',serif!important;letter-spacing:normal}
 
 html:not([lang="fr"]) :is(h1,h2,h3,.font-cursive){overflow-wrap:anywhere}
 .language-footer details{width:min(680px,100%)}
