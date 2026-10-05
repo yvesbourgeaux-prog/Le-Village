@@ -40,4 +40,5 @@ if (!str_contains($document, 'hreflang="nb"')) {
 }
 $document = preg_replace('~/assets/css/languages\.css\?v=[^"\s<>]*~', '/assets/css/languages.css?v=20261004-13', $document);
 $document = preg_replace('~/assets/js/(language-route|languages)\.js\?v=[^"\s<>]*~', '/assets/js/$1.js?v=20261004-13', $document);
+$document = preg_replace('~/assets/js/site\.js(?:\?v=[^"\s<>]*)?~', '/assets/js/site.js?v=20261005-ga1', $document);
 echo preg_replace('~/assets/css/navigation\.css\?v=[^"\s<>]*~', '/assets/css/navigation.css?v=20261003-mobile-video1', $document);
