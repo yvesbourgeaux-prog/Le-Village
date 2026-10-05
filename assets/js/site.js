@@ -21,3 +21,7 @@ bookingDialog.querySelector('button').addEventListener('click',()=>bookingDialog
 document.addEventListener('click',event=>{const a=event.target.closest('a[href="/reserver"]');if(!a||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;event.preventDefault();const frame=bookingDialog.querySelector('iframe');if(!frame.src)frame.src='https://bookings.zenchef.com/results?sdk=1&withCloseButton=1&rid=361354&lang=fr&primaryColor=794116&showCollapsed=1';bookingDialog.showModal();});
 }
 if(document.getElementById('lvLeafletMap')){const link=document.createElement('link');link.rel='stylesheet';link.href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';document.head.append(link);}
+
+// Optional audience measurement shared by French and prebuilt translated pages.
+(() => {if(document.querySelector('script[data-lv-analytics]'))return;const s=document.createElement('script');s.dataset.lvAnalytics='';s.src='/assets/js/analytics.js?v=20261005-1';s.async=true;document.head.append(s);})();
+
