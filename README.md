@@ -1,5 +1,8 @@
 # Le Grimaldi by Le Village — site autonome
 
+### Audit Ahrefs — 5 octobre 2026
+Les descriptions revues sont dans `tools/seo-metadata.json`. Le générateur de langues les applique après traduction aux descriptions HTML, Open Graph et aux descriptions de page des données structurées. `python tools/apply-seo-metadata.py` met à jour les pages existantes sans reconstruire leur corps. Les dates historiques sont conservées ; les descriptions chinoises et japonaises ne sont pas allongées pour atteindre un seuil occidental. La variante www redirige en 301 vers le domaine canonique, en conservant chemins et paramètres.
+
 Site HTML/CSS/JavaScript pour Hostinger Apache/LiteSpeed. Le contenu est rendu dans les pages HTML, sans iframe de mise en page ni dépendance au constructeur Hostinger. Les 26 pages transmises sont conservées, avec un index d'articles, une page de réservation et une page 404.
 
 ## Déploiement

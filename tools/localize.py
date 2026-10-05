@@ -30,6 +30,11 @@ def footer(lang, slug):
 
 def build(manifest, base):
     catalog = json.loads((ROOT / 'tools/i18n/catalogue.json').read_text())
+    # Keep reviewed SEO descriptions across rebuilds, independently of the text catalogue.
+    from importlib.util import spec_from_file_location, module_from_spec
+    seo_spec = spec_from_file_location('lv_seo_metadata', ROOT / 'tools/apply-seo-metadata.py')
+    seo = module_from_spec(seo_spec)
+    seo_spec.loader.exec_module(seo)
     selected = set(filter(None, os.environ.get('LV_ONLY_LANGS', '').split(',')))
     prepared = {lang: {} for lang in LANGS[1:] if not selected or lang in selected}
     (ROOT / 'i18n/pages').mkdir(parents=True, exist_ok=True)
@@ -127,6 +132,9 @@ def build(manifest, base):
                 script.string=json.dumps(translate_schema(graph), ensure_ascii=False)
             localized.body.append(BeautifulSoup(footer(lang, slug), 'html.parser'))
             document=str(localized)
+            description = seo.METADATA.get(slug, {}).get(lang)
+            if description:
+                document = seo.apply(document, description)
             if lang == 'fr':
                 if not selected: (ROOT / page['file']).write_text(document)
             else: prepared[lang][slug] = document
