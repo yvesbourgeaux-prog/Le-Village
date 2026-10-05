@@ -54,16 +54,16 @@
  // Window capture runs before the Zenchef document interceptor; deduplicate touch/click.
  function interaction(e){
   if(!granted)return;const el=e.target?.closest?.('a,button,[role="link"]');if(!el)return;
-  const href=el.getAttribute('href')||el.dataset.href||el.dataset.url||'';let url;try{url=new URL(href,location.href);}catch{return;}
+  const href=el.getAttribute('href')||el.dataset.href||el.dataset.url||'';if(!href)return;let url;try{url=new URL(href,location.href);}catch{return;}
   const p=url.pathname.replace(/^\/(en|sv|da|nl|de|it|es|ja|zh-CN|nb|ru|pl)(?=\/|$)/,'');
   let action='';
   if(url.protocol==='tel:')action='phone_click';
   else if(url.protocol==='mailto:')action='email_click';
   else if(url.origin===location.origin&&(p==='/reserver'||url.searchParams.get('zc')==='open'||url.hash==='#zc-action-open'))action='restaurant_booking_click';
   else if(/(^|\.)zenchef\.com$/.test(url.hostname))action='restaurant_booking_click';
-  else if(p==='/hotel-cagnes-sur-mer-le-grimaldi'&&url.hash==='#reservation')action='hotel_booking_click';
+  else if(url.origin===location.origin&&p==='/hotel-cagnes-sur-mer-le-grimaldi'&&(url.hash==='#reservation'||/réserver|book a room|reserveer|boka|prenota|reservar|reservieren|reserver|bestill|rezerw|бронир|заброни|予約|预订|预约/i.test(el.getAttribute('aria-label')||el.textContent||'')))action='hotel_booking_click';
   else if(/(^|\.)(booking\.com|book-secure\.com|reservit\.com|mews\.com)$/.test(url.hostname))action='hotel_booking_click';
-  else if(p==='/la-carte')action='menu_click';
+  else if(url.origin===location.origin&&p==='/la-carte'&&!url.hash)action='menu_click';
   if(!action)return;const fingerprint=action+href;const now=Date.now();if(fingerprint===lastAction&&now-lastTime<1000)return;lastAction=fingerprint;lastTime=now;track(action,{destination_type:action.startsWith('hotel')?'hotel':action.startsWith('restaurant')?'restaurant':'contact_or_menu'});
  }
  window.addEventListener('pointerdown',interaction,true);window.addEventListener('click',interaction,true);
