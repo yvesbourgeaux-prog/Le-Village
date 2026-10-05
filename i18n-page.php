@@ -19,6 +19,16 @@ header('Content-Language: ' . $lang);
 header('Cache-Control: public, max-age=300');
 // Refresh the shared stylesheet in existing language packs as well as new builds.
 $document = $data[$slug] ?? '';
+// This legacy press page has conflicting April/May dates; keep its snippets neutral.
+if ($slug === 'brunch-musical-cagnes-sur-mer') {
+    $ambiguousDates = ['en' => 'April 26 ', 'sv' => ' den 26 april', 'da' => ' den 26. april', 'nl' => ' op 26 april', 'de' => ' am 26. April', 'it' => ' del 26 aprile', 'es' => ' del 26 de abril', 'nb' => ' 26. april', 'ru' => ' 26 апреля', 'pl' => ' 26 kwietnia'];
+    $headParts = explode('</head>', $document, 2);
+    if (isset($headParts[1], $ambiguousDates[$lang])) {
+        $headParts[0] = str_replace($ambiguousDates[$lang], '', $headParts[0]);
+        $document = implode('</head>', $headParts);
+    }
+}
+
 // Keep the short booking label in prebuilt translations.
 $bookingLabels = ["en" => "Book", "sv" => "Boka", "da" => "Book", "nl" => "Reserveer", "de" => "Reservieren", "it" => "Prenota", "es" => "Reservar", "ja" => "予約", "zh-CN" => "预订", "nb" => "Reserver", "ru" => "Забронировать", "pl" => "Zarezerwuj"];
 $document = preg_replace_callback('~(<span\b[^>]*data-i18n=[^>]*c9f6b527c374d720[^>]*>)[^<]*(</span>)~u', static fn($m) => $m[1] . ($bookingLabels[$lang] ?? 'Réserver') . $m[2], $document);
@@ -43,3 +53,4 @@ $document = preg_replace('~/assets/js/(language-route|languages)\.js\?v=[^"\s<>]
 $document = preg_replace('~/assets/js/site\.js(?:\?v=[^"\s<>]*)?~', '/assets/js/site.js?v=20261005-ga1', $document);
 $document = preg_replace('~/assets/js/zenchef\.js(?:\?v=[^"\s<>]*)?~', '/assets/js/zenchef.js?v=20261005-13', $document);
 echo preg_replace('~/assets/css/navigation\.css\?v=[^"\s<>]*~', '/assets/css/navigation.css?v=20261003-mobile-video1', $document);
+
