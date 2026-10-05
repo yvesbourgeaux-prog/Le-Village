@@ -35,6 +35,9 @@ def build(manifest, base):
     seo_spec = spec_from_file_location('lv_seo_metadata', ROOT / 'tools/apply-seo-metadata.py')
     seo = module_from_spec(seo_spec)
     seo_spec.loader.exec_module(seo)
+    delivery_spec = spec_from_file_location('lv_page_delivery', ROOT / 'tools/page-delivery.py')
+    delivery = module_from_spec(delivery_spec)
+    delivery_spec.loader.exec_module(delivery)
     selected = set(filter(None, os.environ.get('LV_ONLY_LANGS', '').split(',')))
     prepared = {lang: {} for lang in LANGS[1:] if not selected or lang in selected}
     (ROOT / 'i18n/pages').mkdir(parents=True, exist_ok=True)
@@ -131,7 +134,7 @@ def build(manifest, base):
                     return value
                 script.string=json.dumps(translate_schema(graph), ensure_ascii=False)
             localized.body.append(BeautifulSoup(footer(lang, slug), 'html.parser'))
-            document=str(localized)
+            document=delivery.apply(str(localized), lang, slug)
             description = seo.METADATA.get(slug, {}).get(lang)
             if description:
                 document = seo.apply(document, description)

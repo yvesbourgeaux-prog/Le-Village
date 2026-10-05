@@ -19,6 +19,8 @@ header('Content-Language: ' . $lang);
 header('Cache-Control: public, max-age=300');
 // Refresh the shared stylesheet in existing language packs as well as new builds.
 $document = $data[$slug] ?? '';
+require_once __DIR__ . '/page-delivery.php';
+$document = lvPageDelivery($document, $lang, $slug);
 // This legacy press page has conflicting April/May dates; keep its snippets neutral.
 if ($slug === 'brunch-musical-cagnes-sur-mer') {
     $ambiguousDates = ['en' => 'April 26 ', 'sv' => ' den 26 april', 'da' => ' den 26. april', 'nl' => ' op 26 april', 'de' => ' am 26. April', 'it' => ' del 26 aprile', 'es' => ' del 26 de abril', 'nb' => ' 26. april', 'ru' => ' 26 апреля', 'pl' => ' 26 kwietnia'];
@@ -50,7 +52,7 @@ if (!str_contains($document, 'hreflang="nb"')) {
 }
 $document = preg_replace('~/assets/css/languages\.css\?v=[^"\s<>]*~', '/assets/css/languages.css?v=20261004-13', $document);
 $document = preg_replace('~/assets/js/(language-route|languages)\.js\?v=[^"\s<>]*~', '/assets/js/$1.js?v=20261004-13', $document);
-$document = preg_replace('~/assets/js/site\.js(?:\?v=[^"\s<>]*)?~', '/assets/js/site.js?v=20261005-ga1', $document);
+$document = preg_replace('~/assets/js/site\.js(?:\?v=[^"\s<>]*)?~', '/assets/js/site.js?v=20261006-perf1', $document);
 $document = preg_replace('~/assets/js/zenchef\.js(?:\?v=[^"\s<>]*)?~', '/assets/js/zenchef.js?v=20261005-13', $document);
 echo preg_replace('~/assets/css/navigation\.css\?v=[^"\s<>]*~', '/assets/css/navigation.css?v=20261003-mobile-video1', $document);
 

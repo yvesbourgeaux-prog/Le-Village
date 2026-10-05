@@ -9,7 +9,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeMenu();documen
 for(const a of nav.querySelectorAll('a'))if(a.pathname===location.pathname)a.setAttribute('aria-current','page');
 }
 const fallback='https://assets.zyrosite.com/gnKoPAn3rxzY53IR/548927768_18110917903554133_6103352769976099505_n-tx4bw2LvKuuQwaTd.jpg';
-document.addEventListener('error',event=>{const img=event.target;if(img.tagName==='IMG'&&!img.dataset.fallback){img.dataset.fallback='true';img.src=fallback;img.alt='Terrasse du restaurant Le Village au Haut-de-Cagnes';}},true);
+document.addEventListener('error',event=>{const img=event.target;if(img.tagName==='IMG'&&img.dataset.lvOriginalSrc&&!img.dataset.lvOriginalTried){img.dataset.lvOriginalTried='true';img.removeAttribute('srcset');img.removeAttribute('sizes');img.src=img.dataset.lvOriginalSrc;return;}if(img.tagName==='IMG'&&!img.dataset.fallback){img.dataset.fallback='true';img.src=fallback;img.alt='Terrasse du restaurant Le Village au Haut-de-Cagnes';}},true);
 function loadEmbed(container){const frame=container.querySelector('iframe[data-consent-src]');if(!frame)return;const url=new URL(frame.dataset.consentSrc,location.href);if(url.hostname.endsWith('youtube.com'))url.searchParams.set('origin',location.origin);frame.src=url.href;frame.hidden=false;container.querySelector('.embed-notice').hidden=true;}
 document.addEventListener('click',event=>{const load=event.target.closest('[data-load-embed]');if(load)loadEmbed(load.closest('.embed-consent'));if(event.target.closest('[data-cookie-settings]'))document.getElementById('privacy-panel').hidden=false;if(event.target.closest('[data-close-privacy]'))document.getElementById('privacy-panel').hidden=true;if(event.target.closest('[data-reset-consent]')){for(const f of document.querySelectorAll('iframe[data-consent-src]')){f.removeAttribute('src');f.hidden=true;f.closest('.embed-consent').querySelector('.embed-notice').hidden=false;}document.getElementById('privacy-panel').hidden=true;}});
 // Old reservation links remain valid after migration.
@@ -24,4 +24,5 @@ if(document.getElementById('lvLeafletMap')){const link=document.createElement('l
 
 // Optional audience measurement shared by French and prebuilt translated pages.
 (() => {if(document.querySelector('script[data-lv-analytics]'))return;const s=document.createElement('script');s.dataset.lvAnalytics='';s.src='/assets/js/analytics.js?v=20261005-1';s.async=true;document.head.append(s);})();
+
 

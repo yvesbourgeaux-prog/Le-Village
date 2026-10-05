@@ -1,5 +1,8 @@
 # Le Grimaldi by Le Village — site autonome
 
+### Livraison des images — 6 octobre 2026
+Les images sources Zyrosite sont conservées, avec variantes responsives (480–2560 px, qualité 85 et format automatique). Le logo utilise des variantes de 200/400 px. La même règle est appliquée hors ligne par `tools/page-delivery.py` et aux packs existants par `page-delivery.php`. En cas d’échec du CDN, le script partagé réessaie l’image originale. Le générateur des langues réapplique ces règles. Le titre du communiqué de brunch est corrigé au 24 mai 2026 d’après les textes fournis fin avril et en mai ; les titres revus sont dans `tools/page-adjustments.json`.
+
 ### Audit Ahrefs — 5 octobre 2026
 Les descriptions revues sont dans `tools/seo-metadata.json`. Le générateur de langues les applique après traduction aux descriptions HTML, Open Graph et aux descriptions de page des données structurées. `python tools/apply-seo-metadata.py` met à jour les pages existantes sans reconstruire leur corps. Les dates historiques sont conservées ; les descriptions chinoises et japonaises ne sont pas allongées pour atteindre un seuil occidental. La variante www redirige en 301 vers le domaine canonique, en conservant chemins et paramètres.
 
