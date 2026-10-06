@@ -31,7 +31,7 @@ def apply(document, lang='fr', slug=''):
             return opening + html.escape(heading) + '</h1>'
         document, count = re.subn(r'(<h1\b[^>]*>).*?</h1>', h1, document, count=1, flags=re.S)
         assert count == 1, (lang, slug, 'Missing heading')
-    return document.replace("/assets/js/site.js?v=20261005-ga1", "/assets/js/site.js?v=20261006-perf1")
+    return document.replace("/assets/js/site.js?v=20261005-ga1", "/assets/js/site.js?v=20261006-gtm1")
 
 if __name__ == '__main__':
     for path in ROOT.glob('*.html'):
