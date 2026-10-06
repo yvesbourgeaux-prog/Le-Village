@@ -211,7 +211,7 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
   home_footer=(carte_footer_block if slug=='la-carte' else hotel_footer_block if slug==HOTEL_SLUG else restaurant_footer_block if slug==RESTAURANT_SLUG else home_footer_block)+'<div class="zc-widget-config" data-restaurant="361354" data-lang="fr" data-primary-color="794116" data-open="false"></div>'
  if slug==RESTAURANT_SLUG:
   head=head.replace('home-20261001c','resto-20261001d')
-  head+='<link rel="stylesheet" href="/assets/css/restaurant.css?v=resto-20261001d"><script defer src="/assets/js/restaurant.js?v=resto-20261001d"></script>'
+  head+='<link rel="stylesheet" href="/assets/css/restaurant.css?v=20261006-lieu"><script defer src="/assets/js/restaurant.js?v=resto-20261001d"></script>'
  if slug==HOTEL_SLUG:
   head=head.replace('home-20261001c','hotel-20261001b')
   head+='<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><link rel="stylesheet" href="/assets/css/hotel.css?v=hotel-20261001b">'

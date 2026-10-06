@@ -17,7 +17,7 @@
 .restaurant-page #village-resto-top-block .resto-subnav{max-width:1240px;margin-inline:auto}
 .restaurant-page #menuLightbox,.restaurant-page #lvLightbox{z-index:10000}
 .restaurant-page #menuLightbox:not(.hidden){display:flex}
-.restaurant-page #village-chef-block .video-controls{opacity:1}
+.restaurant-page #village-table-videos-block .video-controls{opacity:1}
 @media(max-width:640px){
  .restaurant-page #village-resto-top-block .restaurant-hero{height:82svh;min-height:600px;max-height:850px;padding-top:118px;padding-bottom:36px}
  .restaurant-page .restaurant-hero h1{font-size:58px}
