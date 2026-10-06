@@ -5,13 +5,11 @@ function closeMenu(){nav.classList.remove('open');menu.setAttribute('aria-expand
 if(menu&&nav){
 menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Fermer le menu':'Ouvrir le menu');});
 nav.addEventListener('click',e=>{if(e.target.closest('a'))closeMenu();});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeMenu();document.getElementById('privacy-panel').hidden=true;}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeMenu();window.lvPrivacy?.close();}});
 for(const a of nav.querySelectorAll('a'))if(a.pathname===location.pathname)a.setAttribute('aria-current','page');
 }
 const fallback='https://assets.zyrosite.com/gnKoPAn3rxzY53IR/548927768_18110917903554133_6103352769976099505_n-tx4bw2LvKuuQwaTd.jpg';
 document.addEventListener('error',event=>{const img=event.target;if(img.tagName==='IMG'&&img.dataset.lvOriginalSrc&&!img.dataset.lvOriginalTried){img.dataset.lvOriginalTried='true';img.removeAttribute('srcset');img.removeAttribute('sizes');img.src=img.dataset.lvOriginalSrc;return;}if(img.tagName==='IMG'&&!img.dataset.fallback){img.dataset.fallback='true';img.src=fallback;img.alt='Terrasse du restaurant Le Village au Haut-de-Cagnes';}},true);
-function loadEmbed(container){const frame=container.querySelector('iframe[data-consent-src]');if(!frame)return;const url=new URL(frame.dataset.consentSrc,location.href);if(url.hostname.endsWith('youtube.com'))url.searchParams.set('origin',location.origin);frame.src=url.href;frame.hidden=false;container.querySelector('.embed-notice').hidden=true;}
-document.addEventListener('click',event=>{const load=event.target.closest('[data-load-embed]');if(load)loadEmbed(load.closest('.embed-consent'));if(event.target.closest('[data-cookie-settings]'))document.getElementById('privacy-panel').hidden=false;if(event.target.closest('[data-close-privacy]'))document.getElementById('privacy-panel').hidden=true;if(event.target.closest('[data-reset-consent]')){for(const f of document.querySelectorAll('iframe[data-consent-src]')){f.removeAttribute('src');f.hidden=true;f.closest('.embed-consent').querySelector('.embed-notice').hidden=false;}document.getElementById('privacy-panel').hidden=true;}});
 // Old reservation links remain valid after migration.
 if(!document.querySelector('.zc-widget-config')&&(new URLSearchParams(location.search).get('zc')==='open'||location.hash==='#zc-action-open'))location.replace('/reserver');
 // Preserve the original one-click restaurant booking overlay, with usable fallbacks.
@@ -22,7 +20,10 @@ document.addEventListener('click',event=>{const a=event.target.closest('a[href="
 }
 if(document.getElementById('lvLeafletMap')){const link=document.createElement('link');link.rel='stylesheet';link.href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';document.head.append(link);}
 
-// Optional audience measurement shared by French and prebuilt translated pages.
-(() => {if(document.querySelector('script[data-lv-analytics]'))return;const s=document.createElement('script');s.dataset.lvAnalytics='';s.src='/assets/js/analytics.js?v=20261006-gtm1';s.async=true;document.head.append(s);})();
-
-
+// Load the local consent manager before the optional analytics engine.
+(() => {
+ if(document.querySelector('script[data-lv-privacy]'))return;
+ const s=document.createElement('script');s.dataset.lvPrivacy='';s.src='/assets/js/privacy.js?v=20261006-privacy1';
+ s.onload=()=>{const a=document.createElement('script');a.src='/assets/js/analytics.js?v=20261006-privacy1';a.dataset.lvAnalytics='';document.head.append(a);};
+ document.head.append(s);
+})();

@@ -31,6 +31,10 @@ def apply(document, lang='fr', slug=''):
             return opening + html.escape(heading) + '</h1>'
         document, count = re.subn(r'(<h1\b[^>]*>).*?</h1>', h1, document, count=1, flags=re.S)
         assert count == 1, (lang, slug, 'Missing heading')
+    from importlib.util import spec_from_file_location, module_from_spec
+    spec=spec_from_file_location('lv_privacy_delivery', ROOT / 'tools/privacy-delivery.py')
+    module=module_from_spec(spec); spec.loader.exec_module(module)
+    document=module.apply(document)
     return document.replace("/assets/js/site.js?v=20261005-ga1", "/assets/js/site.js?v=20261006-gtm1")
 
 if __name__ == '__main__':
