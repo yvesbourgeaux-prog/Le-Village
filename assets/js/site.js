@@ -23,6 +23,6 @@ document.addEventListener('click',event=>{const a=event.target.closest('a[href="
 if(document.getElementById('lvLeafletMap')){const link=document.createElement('link');link.rel='stylesheet';link.href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';document.head.append(link);}
 
 // Optional audience measurement shared by French and prebuilt translated pages.
-(() => {if(document.querySelector('script[data-lv-analytics]'))return;const s=document.createElement('script');s.dataset.lvAnalytics='';s.src='/assets/js/analytics.js?v=20261005-1';s.async=true;document.head.append(s);})();
+(() => {if(document.querySelector('script[data-lv-analytics]'))return;const s=document.createElement('script');s.dataset.lvAnalytics='';s.src='/assets/js/analytics.js?v=20261006-gtm1';s.async=true;document.head.append(s);})();
 
 
