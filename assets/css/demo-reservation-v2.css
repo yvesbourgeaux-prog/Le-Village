@@ -1,3 +1,12 @@
+:root{--brown:#713506;--brown2:#8b4a19;--paper:#fffdf9;--ink:#34251d;--muted:#8a786b;--line:#e8ddd2;--green:#2f9d68}
+#lv-demo-app .primary{background:#713506;color:white;border:0;border-radius:10px;padding:12px 17px;cursor:pointer;font:700 13px Lato,sans-serif}
+#lv-demo-app .primary.small{padding:10px 14px}
+#lv-demo-app .secondary{background:white;color:#713506;border:1px solid #d6c5b6;border-radius:9px;padding:12px;cursor:pointer}
+#lv-demo-app .admin-shell .eyebrow{margin:0 0 10px;text-transform:uppercase;letter-spacing:.17em;font-size:11px;font-weight:700;color:#a36a43}
+#lv-demo-app .admin-shell button,#lv-demo-app .admin-shell input,#lv-demo-app .admin-shell select,#lv-demo-app .admin-shell textarea{font-family:Lato,sans-serif}
+#lv-demo-app .admin-shell .search{border:1px solid #e8ddd2;padding:11px;border-radius:10px;background:white}
+#lv-demo-app .admin-shell .admin-nav button{color:#f2e7df}
+#lv-demo-app .admin-shell .admin-nav button.is-active{background:#ffffff26;color:white}
 /* Private Le Village prototype. All public-site overrides are opt-in. */
 body.lv-demo-admin{background:#f7f4f0!important}
 body.lv-demo-admin > :not(#lv-demo-app):not(script){display:none!important}
