@@ -91,7 +91,7 @@ document.addEventListener('click',e=>{
 $('[data-close-booking]',root).onclick=()=>bookingDialog.close();
 bookingDialog.addEventListener('close',()=>{bookingDialog.classList.remove('is-contact')});
 function bookingSummary(){
- return '<div class="booking-intro"><p>Pas de disponibilité en ligne ?<br>Appelez-nous au <a href="'+PHONE_LINK+'">'+PHONE_DISPLAY+'</a>.</p><p class="greeting">À très bientôt !</p></div>';
+ return '<div class="booking-intro"><p>Pas de disponibilité en ligne ?<br>Appelez-nous au <a href="'+PHONE_LINK+'">'+PHONE_DISPLAY+'</a>.</p></div>';
 }
 function acc(label,num,value,opened,inner,section){
  return '<section class="demo-accordion '+(opened?'is-open':'')+'" data-section="'+section+'"><button type="button" class="demo-acc-title" data-expand="'+section+'" aria-expanded="'+(opened?'true':'false')+'"><span class="acc-index">'+num+'</span><span class="acc-value">'+(value?value:label)+'</span><span class="chevron" aria-hidden="true"></span></button><div class="demo-acc-body" '+(!opened?'hidden':'')+'><div class="demo-acc-inner">'+inner+'</div></div></section>';
@@ -138,51 +138,45 @@ function attachBookingCalendar(){
  $$('[data-calendar-nav]',content).forEach(b=>b.onclick=()=>{booking.month=new Date(booking.month.getFullYear(),booking.month.getMonth()+Number(b.dataset.calendarNav),1);renderBooking()});
  $$('[data-date-select]',content).forEach(b=>b.onclick=()=>{booking.date=b.dataset.dateSelect;booking.month=new Date(booking.date+'T12:00:00');booking.expanded='time';booking.showCalendar=false;booking.service=null;booking.time=null;renderBooking()});
 }
+let bookingPanelAnimation;
+function transitionBooking(change){
+ const oldHeight=bookingDialog.open?bookingDialog.getBoundingClientRect().height:0;
+ change();
+ renderBooking();
+ if(!bookingDialog.open||!oldHeight)return;
+ const endHeight=bookingDialog.getBoundingClientRect().height;
+ if(!Number.isFinite(endHeight)||Math.abs(endHeight-oldHeight)<3)return;
+ const reduced=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+ if(reduced||!bookingDialog.animate)return;
+ bookingPanelAnimation?.cancel();
+ bookingPanelAnimation=bookingDialog.animate(
+  [{height:oldHeight+'px'},{height:endHeight+'px'}],
+  {duration:400,easing:'cubic-bezier(.22,1,.36,1)'}
+ );
+}
 function renderBooking(){
  bookingDialog.classList.remove('is-contact');
  const guest=acc('Couverts','01',booking.pax+' couvert'+(booking.pax>1?'s':''),booking.expanded==='pax',renderParty(),'pax');
  const date=acc('Date','02',booking.date?esc(dateShort(booking.date)):'Choisir',booking.expanded==='date',renderDates(),'date');
  const time=acc('Horaire','03',booking.time?esc(booking.time):'',booking.expanded==='time',renderTime(),'time');
  content.innerHTML='<div class="booking-main">'+bookingSummary()+guest+date+time+'</div><div class="demo-book-footer"><button type="button" data-confirm-time '+(!booking.time?'disabled':'')+'>Réserver</button><div class="demo-demo-label">Démonstration : aucune réservation réelle transmise</div></div>';
- $$('[data-expand]',content).forEach(b=>b.onclick=()=>{
- const section=b.dataset.expand;
- if(booking.expanded===section)return;
- const previous=content.querySelector('.demo-accordion.is-open');
- const next=b.closest('.demo-accordion');
- const oldBody=previous?.querySelector('.demo-acc-body');
- const newBody=next?.querySelector('.demo-acc-body');
- booking.expanded=section;
- if(!newBody){renderBooking();return}
- const reduce=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
- const duration=reduce?0:290;
- if(previous&&previous!==next){
-  previous.classList.remove('is-open');previous.querySelector('.demo-acc-title').setAttribute('aria-expanded','false');
-  const h=oldBody?.scrollHeight||0;
-  if(oldBody){oldBody.style.height=h+'px';oldBody.style.opacity='1';oldBody.style.overflow='hidden';requestAnimationFrame(()=>{
-   oldBody.style.transition='height '+duration+'ms cubic-bezier(.22,1,.36,1),opacity '+duration+'ms ease';
-   oldBody.style.height='0px';oldBody.style.opacity='0';
-  });setTimeout(()=>{oldBody.hidden=true;oldBody.style.cssText='';},duration+25)}
- }
- next.classList.add('is-open');b.setAttribute('aria-expanded','true');newBody.hidden=false;
- const target=newBody.scrollHeight;newBody.style.height='0px';newBody.style.opacity='0';newBody.style.overflow='hidden';
- requestAnimationFrame(()=>{
-  newBody.style.transition='height '+duration+'ms cubic-bezier(.22,1,.36,1),opacity '+duration+'ms ease';
-  newBody.style.height=target+'px';newBody.style.opacity='1';
+ $('[data-expand]',content).forEach(b=>b.onclick=()=>{
+  const section=b.dataset.expand;
+  if(booking.expanded===section)return;
+  transitionBooking(()=>{booking.expanded=section});
  });
- setTimeout(()=>{newBody.style.cssText='';if(section==='date')attachBookingCalendar();},duration+25);
-});
  $$('[data-pax]',content).forEach(b=>b.onclick=()=>{
   const n=Number(b.dataset.pax);
   if(n>Math.min(6,Math.max(1,settings.maxParty))){$('#demo-big-party-slot',content).innerHTML='<div class="demo-big-party">'+esc(settings.largeMessage)+'<a href="'+PHONE_LINK+'">'+PHONE_DISPLAY+'</a></div>';return}
-  booking.pax=n;booking.time=null;booking.service=null;
+  transitionBooking(()=>{booking.pax=n;booking.time=null;booking.service=null;
   if(!dayAvailable(booking.date,n))booking.date=nextAvailable(todayISO(),n);
-  booking.month=new Date(booking.date+'T12:00:00');booking.expanded='date';booking.showCalendar=false;renderBooking();
+  booking.month=new Date(booking.date+'T12:00:00');booking.expanded='date';booking.showCalendar=false;});
  });
- $('[data-other-date]',content)?.addEventListener('click',()=>{booking.showCalendar=!booking.showCalendar;booking.month=new Date(booking.date+'T12:00:00');renderBooking();if(booking.showCalendar){const calendar=$('.demo-month-head',content);calendar?.scrollIntoView({block:'nearest',behavior:'smooth'})}});
+ $('[data-other-date]',content)?.addEventListener('click',()=>{transitionBooking(()=>{booking.showCalendar=!booking.showCalendar;booking.month=new Date(booking.date+'T12:00:00')});if(booking.showCalendar){const calendar=$('.demo-month-head',content);calendar?.scrollIntoView({block:'nearest',behavior:'smooth'})}});
  $$('[data-calendar-nav]',content).forEach(b=>b.onclick=()=>{booking.month=new Date(booking.month.getFullYear(),booking.month.getMonth()+Number(b.dataset.calendarNav),1);renderBooking();$('#booking-month-calendar',content)?.scrollIntoView({block:'nearest',behavior:'instant'})});
  $$('[data-date-select]',content).forEach(b=>b.onclick=()=>{booking.date=b.dataset.dateSelect;booking.month=new Date(booking.date+'T12:00:00');booking.expanded='time';booking.showCalendar=false;booking.service=null;booking.time=null;renderBooking()});
- $$('[data-service-toggle]',content).forEach(b=>b.onclick=()=>{const service=b.dataset.serviceToggle;booking.service=booking.service===service?null:service;booking.time=null;renderBooking()});
- $$('[data-time-select]',content).forEach(b=>b.onclick=()=>{booking.time=b.dataset.timeSelect;renderBooking()});
+ $$('[data-service-toggle]',content).forEach(b=>b.onclick=()=>{const service=b.dataset.serviceToggle;transitionBooking(()=>{booking.service=booking.service===service?null:service;booking.time=null})});
+ $$('[data-time-select]',content).forEach(b=>b.onclick=()=>{transitionBooking(()=>{booking.time=b.dataset.timeSelect})});
  $('[data-confirm-time]',content).onclick=()=>{if(booking.time)renderContact()};
 }
 function renderContact(){
