@@ -171,10 +171,34 @@ function confirmBooking(form){
  content.innerHTML='<div class="demo-success"><div class="success-symbol">✓</div><h2>Réservation enregistrée</h2><p>'+esc(first)+', votre démonstration de réservation est prête.</p><p><strong>'+esc(dateLong(booking.date))+' à '+esc(booking.time)+'</strong> · '+booking.pax+' couvert'+(booking.pax>1?'s':'')+'</p><p>Elle apparaît dans le back-office de ce navigateur uniquement. Aucun email ni SMS envoyé.</p><button type="button" class="demo-submit" data-demo-done>Terminer</button></div>';
  $('[data-demo-done]',content).onclick=()=>bookingDialog.close();
 }
+function renderWeekStrip(){
+ const selected=new Date(selectedAdminDate+'T12:00:00');
+ const monday=new Date(selected);
+ monday.setDate(selected.getDate()-((selected.getDay()+6)%7));
+ const names=['lun.','mar.','mer.','jeu.','ven.','sam.','dim.'];
+ let html='';
+ for(let i=0;i<7;i++){
+  const date=new Date(monday);date.setDate(monday.getDate()+i);
+  const iso=asLocalISO(date);
+  const rs=reservations.filter(r=>r.date===iso&&r.status!=='cancelled');
+  const lunch=rs.filter(r=>r.service==='lunch').reduce((sum,r)=>sum+r.pax,0);
+  const dinner=rs.filter(r=>r.service==='dinner').reduce((sum,r)=>sum+r.pax,0);
+  html+='<button type="button" class="week-day '+(iso===selectedAdminDate?'is-selected':'')+'" data-week-day="'+iso+'" aria-label="'+esc(dateLong(iso))+', '+(lunch+dinner)+' couverts">'
+   +'<span class="week-day-name">'+names[i]+'</span><strong>'+date.getDate()+'</strong>'
+   +'<span class="week-day-total">'+(lunch+dinner?lunch+dinner+' cv.':'—')+'</span>'
+   +'<span class="week-day-bars"><i style="--fill:'+Math.min(lunch/24,1)*100+'%"></i><i style="--fill:'+Math.min(dinner/30,1)*100+'%"></i></span></button>';
+ }
+ $('#admin-week-strip').innerHTML=html;
+ $('[data-week-day]').forEach(b=>b.onclick=()=>{
+  selectedAdminDate=b.dataset.weekDay;
+  calendarCursor=new Date(selectedAdminDate+'T12:00:00');
+  renderAdmin();
+ });
+}
 function renderAdmin(){
  $('#admin-date').value=selectedAdminDate;
  $('#admin-date-title').textContent=fmtDate(selectedAdminDate,true);
- renderCalendar();renderReservations();renderClients();renderSettings();
+ renderWeekStrip();renderCalendar();renderReservations();renderClients();renderSettings();
 }
 $('#admin-date').addEventListener('change',e=>{selectedAdminDate=e.target.value;calendarCursor=new Date(selectedAdminDate+'T12:00:00');renderAdmin()});
 $$('[data-day-shift]').forEach(b=>b.addEventListener('click',()=>{
@@ -185,6 +209,12 @@ $('[data-admin-today]')?.addEventListener('click',()=>{
  selectedAdminDate=todayISO();calendarCursor=new Date(selectedAdminDate+'T12:00:00');renderAdmin();
 });
 $('#reservation-search')?.addEventListener('input',renderReservations);
+$('[data-toggle-admin-calendar]')?.addEventListener('click',e=>{
+ const panel=$('.calendar-panel');
+ const opened=panel.classList.toggle('is-expanded');
+ e.currentTarget.setAttribute('aria-expanded',String(opened));
+ e.currentTarget.textContent=opened?'Masquer le mois':'Voir le mois';
+});
 $$('[data-admin-tab]').forEach(b=>b.onclick=()=>{$$('[data-admin-tab]').forEach(x=>x.classList.toggle('is-active',x===b));$$('.admin-tab').forEach(t=>{const yes=t.id==='admin-'+b.dataset.adminTab;t.hidden=!yes;t.classList.toggle('is-active',yes)});if(b.dataset.adminTab==='clients')renderClients();if(b.dataset.adminTab==='settings')renderSettings()});
 $$('[data-service-filter]').forEach(b=>b.onclick=()=>{serviceFilter=b.dataset.serviceFilter;$$('[data-service-filter]').forEach(x=>x.classList.toggle('is-active',x===b));renderReservations()});
 $$('[data-month]').forEach(b=>b.onclick=()=>{calendarCursor.setMonth(calendarCursor.getMonth()+Number(b.dataset.month));renderCalendar()});
@@ -208,7 +238,7 @@ function renderCalendar(){
   selectedAdminDate=button.dataset.adminDay;
   $('#admin-date').value=selectedAdminDate;
   $('#admin-date-title').textContent=fmtDate(selectedAdminDate,true);
-  renderCalendar();renderReservations();
+  renderWeekStrip();renderCalendar();renderReservations();
   if(window.innerWidth<901)$('.reservations-panel')?.scrollIntoView({block:'start',behavior:'smooth'});
  });
 }
