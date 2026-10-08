@@ -177,7 +177,7 @@ function renderAdmin(){
  renderCalendar();renderReservations();renderClients();renderSettings();
 }
 $('#admin-date').addEventListener('change',e=>{selectedAdminDate=e.target.value;calendarCursor=new Date(selectedAdminDate+'T12:00:00');renderAdmin()});
-$('[data-day-shift]').forEach(b=>b.addEventListener('click',()=>{
+$$('[data-day-shift]').forEach(b=>b.addEventListener('click',()=>{
  selectedAdminDate=addDays(selectedAdminDate,Number(b.dataset.dayShift));
  calendarCursor=new Date(selectedAdminDate+'T12:00:00');renderAdmin();
 }));
