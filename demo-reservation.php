@@ -80,11 +80,12 @@ $demo = <<<'DEMO_HTML'
         <button data-go="showcase">Voir le module client</button>
       </aside>
       <div class="admin-main">
-        <div class="demo-admin-warning">PROTOTYPE — Les réservations et réglages sont enregistrés uniquement dans ce navigateur. Aucune donnée n’est envoyée au restaurant.</div><div id="admin-planning" class="admin-tab is-active">
+        <div id="admin-planning" class="admin-tab is-active">
           <div class="admin-head">
-            <div><p class="eyebrow">LE VILLAGE · GESTION DES TABLES</p><h1 id="admin-date-title">Aujourd’hui</h1><p class="admin-head-caption">Vue unifiée du calendrier et des réservations</p></div>
+            <div><p class="eyebrow">BONJOUR ET BIENVENUE</p><h1>Vos réservations</h1><p class="admin-head-caption" id="admin-date-title">Aujourd’hui</p></div>
             <div class="admin-head-actions"><button type="button" class="day-nav" data-day-shift="-1" aria-label="Jour précédent">‹</button><input id="admin-date" type="date" aria-label="Date du planning"><button type="button" class="day-nav" data-day-shift="1" aria-label="Jour suivant">›</button><button type="button" class="today-link" data-admin-today>Aujourd’hui</button><button type="button" class="primary small" data-new-reservation>Nouvelle réservation</button></div>
           </div>
+          <div id="admin-week-strip" class="admin-week-strip" aria-label="Choisir un jour de la semaine"></div>
           <div class="kpi-row">
             <article><span>Couverts</span><strong id="kpi-covers">0</strong></article>
             <article><span>Réservations</span><strong id="kpi-bookings">0</strong></article>
@@ -93,7 +94,7 @@ $demo = <<<'DEMO_HTML'
           </div>
           <div class="admin-grid">
             <section class="calendar-panel">
-              <div class="panel-title"><h2>Calendrier des services</h2><div><button data-month="-1">‹</button><strong id="month-title"></strong><button data-month="1">›</button></div></div>
+              <div class="panel-title"><h2>Calendrier du mois</h2><button type="button" class="calendar-toggle" data-toggle-admin-calendar aria-expanded="false">Voir le mois</button><div><button data-month="-1">‹</button><strong id="month-title"></strong><button data-month="1">›</button></div></div>
               <div class="calendar-week"><span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span></div>
               <div id="admin-calendar" class="admin-calendar"></div><p class="admin-calendar-help">Touchez une date pour afficher les réservations du jour.</p>
             </section>
@@ -105,12 +106,12 @@ $demo = <<<'DEMO_HTML'
         </div>
 
         <div id="admin-clients" class="admin-tab" hidden>
-          <div class="admin-head"><div><p class="eyebrow">RELATION CLIENT</p><h1>Fichier clients</h1><p class="admin-head-caption">Coordonnées et historique réunis sur une fiche</p></div><input id="client-search" class="search" placeholder="Rechercher un client…"></div>
+          <div class="admin-head"><div><p class="eyebrow">RELATION CLIENT</p><h1>Fichier clients</h1><p class="admin-head-caption">Retrouvez les habitudes et l’historique de vos habitués.</p></div><input id="client-search" class="search" placeholder="Rechercher un client…"></div>
           <div id="client-list" class="client-list"></div>
         </div>
 
         <div id="admin-settings" class="admin-tab" hidden>
-          <div class="admin-head"><div><p class="eyebrow">CONFIGURATION DES SERVICES</p><h1>Paramètres de réservation</h1><p class="admin-head-caption">Ajustez les plages horaires et les capacités de chaque service</p></div><button id="save-settings" class="primary small">Enregistrer</button></div>
+          <div class="admin-head"><div><p class="eyebrow">CONFIGURATION DES SERVICES</p><h1>Paramètres de réservation</h1><p class="admin-head-caption">Choisissez quand vous accueillez vos clients, en toute simplicité.</p></div><button id="save-settings" class="primary small">Enregistrer</button></div>
           <div class="settings-grid">
             <section class="settings-card"><h2>Capacité & règles</h2>
               <label>Maximum en ligne par réservation<input id="set-max-party" type="number" min="1" max="6"></label>
@@ -123,6 +124,7 @@ $demo = <<<'DEMO_HTML'
           </div>
         </div>
       </div>
+      <p class="demo-admin-warning">Démonstration privée · Données fictives enregistrées dans ce navigateur uniquement.</p>
     </section>
 
   <button type="button" class="booking-float" data-open-booking>Réserver une table</button>
