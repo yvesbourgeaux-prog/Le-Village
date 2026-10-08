@@ -256,3 +256,14 @@ body.lv-demo-admin #lv-demo-app .admin-calendar .calendar-day:after{display:none
  body.lv-demo-admin #lv-demo-app .calendar-toggle{min-width:92px!important;padding:8px!important}
  body.lv-demo-admin #lv-demo-app .week-day{flex-basis:68px!important}
 }
+
+/* Larger restaurant emblem and polished animated panel from the reference video. */
+#lv-demo-app .booking-dialog[open]:not(.is-contact) .booking-top{height:65px!important;min-height:65px!important;flex-basis:65px!important}
+#lv-demo-app .booking-dialog[open]:not(.is-contact) .booking-top img{width:54px!important;height:54px!important;object-fit:contain!important;opacity:1!important}
+#lv-demo-app .booking-dialog[open]:not(.is-contact) .booking-top>span{top:25px!important}
+#lv-demo-app .booking-dialog[open]:not(.is-contact) .booking-top button{top:13px!important}
+#lv-demo-app .booking-dialog[open]:not(.is-contact) .booking-content{max-height:calc(100dvh - 85px)!important}
+#lv-demo-app .booking-dialog[open]:not(.is-contact) .booking-main{max-height:calc(100dvh - 176px)!important}
+#lv-demo-app .demo-acc-inner{animation:lv-content-reveal .38s cubic-bezier(.22,1,.36,1) both}
+@keyframes lv-content-reveal{from{opacity:0;transform:translateY(-9px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){#lv-demo-app .demo-acc-inner{animation:none}}
