@@ -102,8 +102,21 @@ document.addEventListener('click',e=>{
   e.preventDefault();e.stopImmediatePropagation();openBooking();
  }
 },true);
-$('[data-close-booking]',root).onclick=()=>bookingDialog.close();
-bookingDialog.addEventListener('close',()=>{bookingDialog.classList.remove('is-contact')});
+function closeBooking(){
+ if(!bookingDialog.open||bookingDialog.dataset.closing==='1')return;
+ const reduce=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+ if(reduce||!bookingDialog.animate){bookingDialog.close();return}
+ bookingDialog.dataset.closing='1';
+ const compact=!bookingDialog.classList.contains('is-contact');
+ const frames=compact
+  ?[{opacity:1,transform:'translateY(0) scale(1)'},{opacity:0,transform:'translateY(22px) scale(.975)'}]
+  :[{opacity:1},{opacity:0}];
+ const anim=bookingDialog.animate(frames,{duration:230,easing:'cubic-bezier(.4,0,1,1)',fill:'forwards'});
+ anim.addEventListener('finish',()=>bookingDialog.close(),{once:true});
+}
+$('[data-close-booking]',root).onclick=closeBooking;
+bookingDialog.addEventListener('click',e=>{if(e.target===bookingDialog)closeBooking()});
+bookingDialog.addEventListener('close',()=>{bookingDialog.classList.remove('is-contact');delete bookingDialog.dataset.closing});
 function bookingSummary(){
  return '<div class="booking-intro"><p>Pas de disponibilité en ligne ?<br>Appelez-nous au <a href="'+PHONE_LINK+'">'+PHONE_DISPLAY+'</a>.</p></div>';
 }
@@ -239,8 +252,14 @@ content.addEventListener('click',event=>{
   booking.date=button.dataset.dateSelect;
   booking.month=new Date(booking.date+'T12:00:00');
   booking.service=null;booking.time=null;booking.showCalendar=false;
-  updateBookingChoices({date:true,time:true});
+  // Prepare the next service without destroying the open calendar:
+  // its current nodes must stay mounted until the closing animation finishes.
+  updateBookingChoices({time:true});
   booking.expanded='time';syncBookingView();
+  const selectedDate=booking.date;
+  window.setTimeout(()=>{
+   if(booking.date===selectedDate&&booking.expanded!=='date')updateBookingChoices({date:true});
+  },455);
   return;
  }
  if(button.hasAttribute('data-service-toggle')){
