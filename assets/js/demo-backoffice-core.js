@@ -10,12 +10,23 @@ const id=()=>String(Date.now())+Math.random().toString(36).slice(2,6);
 const names=['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
 const today=()=>{const d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,10)};
 const formVals=form=>Object.fromEntries(new FormData(form));
-let week=load('week',names.map((name,i)=>({lunch:{on:true,start:'12:00',end:'14:30',interval:30,capacity:24},dinner:{on:true,start:'19:00',end:'21:00',interval:30,capacity:30}})));
+let week=load('week',names.map((name,i)=>({lunch:{on:true,restaurantOpen:true,start:'12:00',end:'14:30',interval:30,capacity:24},dinner:{on:true,restaurantOpen:true,start:'19:00',end:'21:00',interval:30,capacity:30}})));
 if(!Array.isArray(week)||week.length!==7)week=names.map(()=>({lunch:{on:true,start:'12:00',end:'14:30',interval:30,capacity:24},dinner:{on:true,start:'19:00',end:'21:00',interval:30,capacity:30}}));
 let closures=load('closures',[]),specials=load('specials',[]),additionalClients=load('clients',[]),users=load('users',[{id:'manager',name:'Responsable Le Village',email:'responsable@example.com',role:'Gérant'}]),prefs=load('prefs',{sender:'Le Village',reply:'demo@example.com',smsFrom:'09:00',smsUntil:'20:00'});
-const eventOn=(rule,date)=>{if(rule.repeat==='once')return rule.date===date;const d=new Date(date+'T12:00:00'),r=new Date(rule.date+'T12:00:00');return rule.repeat==='weekly'?d.getDay()===Number(rule.weekday):rule.repeat==='monthly'?d.getDate()===r.getDate():rule.repeat==='yearly'?d.getDate()===r.getDate()&&d.getMonth()===r.getMonth():false};
+const eventOn=(rule,date)=>{
+ if(rule.repeat==='once')return rule.date===date;
+ const d=new Date(date+'T12:00:00'),r=new Date(rule.date+'T12:00:00');
+ if(rule.repeat==='weekly')return d.getDay()===Number(rule.weekday);
+ if(rule.repeat==='monthly'){
+  if(!rule.ordinal)return d.getDate()===r.getDate();
+  if(d.getDay()!==Number(rule.weekday))return false;
+  const ordinal=Number(rule.ordinal),max=new Date(d.getFullYear(),d.getMonth()+1,0).getDate();
+  return ordinal===-1?d.getDate()+7>max:Math.ceil(d.getDate()/7)===ordinal;
+ }
+ return rule.repeat==='yearly'&&d.getDate()===r.getDate()&&d.getMonth()===r.getMonth();
+};
 const closed=date=>closures.some(c=>c.block&&c.start<=date&&date<=c.end);
-function config(date,service){if(closed(date))return {on:false,capacity:0};const custom=specials.find(e=>e.service===service&&eventOn(e,date));return custom?{...custom,on:true,capacity:Number(custom.capacity)}:week[new Date(date+'T12:00:00').getDay()][service]}
+function config(date,service){if(closed(date))return {on:false,capacity:0};const custom=specials.find(e=>e.service===service&&eventOn(e,date));return custom?{...custom,on:true,capacity:Number(custom.capacity)}:(()=>{const r=week[new Date(date+'T12:00:00').getDay()][service];return {...r,on:r.on!==false&&r.restaurantOpen!==false}})()}
 const serviceTimes=(date,service)=>{
  if(!date)return[];
  const c=config(date,service);if(!c.on||!c.start||!c.end)return[];
@@ -151,10 +162,10 @@ function renderSchedule(){
  list('#lv-special-list',specials,'special');list('#lv-closure-list',closures,'closure');
 }
 register('schedule',renderSchedule);
-$('#lv-schedule-week').addEventListener('change',e=>{const n=e.target,k=n.dataset.field,day=Number(n.dataset.day),svc=n.dataset.service;if(!Number.isInteger(day)||!svc||!k)return;week[day][svc][k]=k==='on'?n.checked:['interval','capacity'].includes(k)?Number(n.value):n.value});
+$('#lv-schedule-week').addEventListener('change',e=>{const n=e.target,k=n.dataset.field,day=Number(n.dataset.day),svc=n.dataset.service;if(!Number.isInteger(day)||!svc||!k)return;week[day][svc][k]=['on','restaurantOpen'].includes(k)?n.checked:['interval','capacity'].includes(k)?Number(n.value):n.value});
 $('#lv-save-schedule').onclick=()=>{save('week',week);api.refresh();renderSchedule();notify('Horaires enregistrés dans la démo.')};
-$('#lv-special-form').addEventListener('submit',e=>{e.preventDefault();const v=formVals(e.target);if(v.start>v.end){notify('Vérifiez les horaires.');return}specials.push({...v,id:id(),weekday:Number(v.weekday),capacity:Number(v.capacity),interval:Number(v.interval)});save('specials',specials);api.refresh();e.target.reset();renderSchedule();notify('Service spécial ajouté.')});
-$('#lv-closure-form').addEventListener('submit',e=>{e.preventDefault();const v=formVals(e.target);if(v.start>v.end){notify('Vérifiez les dates.');return}closures.push({...v,id:id(),block:e.target.elements.block.checked});save('closures',closures);api.refresh();e.target.reset();renderSchedule();notify('Fermeture enregistrée.')});
+$('#lv-special-form').addEventListener('submit',e=>{e.preventDefault();const v=formVals(e.target);if(v.start>v.end){notify('Vérifiez les horaires.');return}specials.push({...v,id:id(),weekday:Number(v.weekday),ordinal:Number(v.ordinal),capacity:Number(v.capacity),interval:Number(v.interval)});save('specials',specials);api.refresh();e.target.reset();renderSchedule();notify('Service spécial ajouté.')});
+$('#lv-closure-form').addEventListener('submit',e=>{e.preventDefault();const v=formVals(e.target);if(v.start>v.end){notify('Vérifiez les dates.');return}closures.push({...v,id:id(),block:e.target.elements.block.checked,hours:e.target.elements.hours?.checked??false,banner:e.target.elements.banner?.checked??false});save('closures',closures);api.refresh();e.target.reset();renderSchedule();notify('Fermeture enregistrée.')});
 $('#admin-schedule').addEventListener('click',e=>{const b=e.target.closest('[data-remove]');if(!b)return;if(b.dataset.remove==='special'){specials=specials.filter(v=>v.id!==b.dataset.id);save('specials',specials)}else{closures=closures.filter(v=>v.id!==b.dataset.id);save('closures',closures)}api.refresh();renderSchedule()});
 function manualReservation(){
  let dialog=document.createElement('dialog');dialog.className='lv-client-editor lv-manual-dialog';
