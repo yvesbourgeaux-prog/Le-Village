@@ -174,7 +174,7 @@ function renderBooking(){
  const date=acc('Date','02',booking.date?esc(dateShort(booking.date)):'Choisir',booking.expanded==='date',renderDates(),'date');
  const time=acc('Horaire','03',booking.time?esc(booking.time):'',booking.expanded==='time',renderTime(),'time');
  content.innerHTML='<div class="booking-main">'+bookingSummary()+guest+date+time+'</div><div class="demo-book-footer"><button type="button" data-confirm-time '+(!booking.time?'disabled':'')+'>Réserver</button><div class="demo-demo-label">Démonstration : aucune réservation réelle transmise</div></div>';
- $('[data-expand]',content).forEach(b=>b.onclick=()=>{
+ $$('[data-expand]',content).forEach(b=>b.onclick=()=>{
   const section=b.dataset.expand;
   if(booking.expanded===section)return;
   transitionBooking(()=>{booking.expanded=section});
