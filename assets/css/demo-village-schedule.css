@@ -1,0 +1,183 @@
+/* Le Village — horaires & disponibilités, familiar Ramen Tes Sushis workflow,
+   adapted to the restaurant's warm editorial identity. */
+body.lv-demo-admin #lv-demo-app #admin-schedule{--sched-ink:#443e39;--sched-muted:#918a83;--sched-line:#e8e1d9;--sched-accent:#a47a55}
+body.lv-demo-admin #lv-demo-app #admin-schedule #lv-schedule-week{
+ display:flex!important;flex-direction:column!important;grid-template-columns:none!important;
+ gap:12px!important;margin:0 0 24px!important;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-day{
+ display:block;width:100%;min-width:0;background:white;
+ border:1px solid #eae5df;border-radius:13px;box-shadow:0 4px 18px #55462c0a;overflow:hidden;
+ transition:border-color .2s,box-shadow .2s;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-day.is-expanded{
+ border-color:#d9c8b7;box-shadow:0 8px 24px #6f4c2810;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-day-head{
+ display:flex;align-items:center;gap:17px;padding:14px 19px;min-height:74px;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-day-name{
+ font:700 15px Lato,Arial,sans-serif;color:#454039;text-transform:uppercase;
+ min-width:86px;letter-spacing:.025em;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-day-switch{
+ display:inline-flex;align-items:center;gap:9px;flex:0 0 auto;cursor:pointer;
+ font:500 12px Lato,sans-serif;color:#6c6259;white-space:nowrap;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-day-switch input{
+ position:absolute;opacity:0;width:1px;height:1px;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-switch-track{
+ position:relative;display:block;width:39px;height:23px;border-radius:999px;
+ background:#c6c7c5;transition:background .22s ease;flex:0 0 39px;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-switch-track:before{
+ content:'';position:absolute;width:17px;height:17px;top:3px;left:3px;background:white;
+ border-radius:50%;box-shadow:0 1px 3px #21140822;transition:transform .22s ease;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-day-switch input:checked+.lv-rts-switch-track{background:#a87953}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-day-switch input:checked+.lv-rts-switch-track:before{transform:translateX(16px)}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-day-switch input:focus-visible+.lv-rts-switch-track{outline:3px solid #ddc4ac;outline-offset:2px}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-day-preview{
+ flex:1 1 250px;min-width:0;color:#8d8278;font:400 12px/1.45 Lato,sans-serif;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-day.is-off .lv-rts-day-preview{color:#b5ada6}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-day-toggle{
+ display:inline-flex;align-items:center;justify-content:end;gap:9px;
+ flex:0 0 auto;margin-left:auto;padding:10px 3px;border:0;background:none;
+ color:#a47a55;cursor:pointer;font:700 12px Lato,sans-serif;min-width:83px;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-day-toggle:hover{color:#775333}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-chevron{
+ display:block;flex:0 0 8px;width:8px;height:8px;border-right:1.5px solid currentColor;
+ border-bottom:1.5px solid currentColor;transform:rotate(45deg);
+ transition:transform .25s ease;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .is-expanded>.lv-rts-day-head .lv-rts-chevron{transform:rotate(225deg)}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-day-content{
+ border-top:1px solid #eee7df;padding:25px 22px 23px;background:#fffdfa;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule [hidden]{display:none!important}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-maxparty{
+ margin:0 0 27px;max-width:640px;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-maxparty label{
+ display:flex;flex-direction:column;align-items:start;gap:9px;
+ font:700 11px Lato,sans-serif;letter-spacing:.08em;
+ color:#8c8278;text-transform:uppercase;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-maxparty input{
+ width:98px;height:44px;padding:10px 12px;border:1px solid #ddd7d0;border-radius:8px;
+ color:#4f4841;background:white;font:600 15px Lato,sans-serif;letter-spacing:0;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-maxparty p{
+ max-width:610px;color:#94877c;font:400 12px/1.6 Lato,sans-serif;margin:9px 0 0;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-services{display:grid;gap:11px}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-service{
+ border:1px solid #e9e1d8;border-radius:10px;background:#fff;overflow:hidden;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-service.is-expanded{border-color:#d8c5b3}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-service-summary{
+ display:flex;align-items:center;gap:20px;width:100%;min-height:62px;
+ padding:15px 18px;border:0;background:white;text-align:left;cursor:pointer;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-service-summary:hover{background:#fcf9f5}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-service-summary strong{
+ color:#55493e;font:700 14px Lato,sans-serif;min-width:48px;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-service-summary span{
+ flex:1;color:#8b8077;font:400 12px/1.5 Lato,sans-serif;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-service-summary em{
+ font:600 12px Lato,sans-serif;font-style:normal;color:#b18a68;white-space:nowrap;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-service-content{
+ border-top:1px solid #eee5dc;padding:20px 19px 22px;background:#fff;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-channel-checks{
+ display:flex;flex-wrap:wrap;align-items:center;gap:13px 28px;margin-bottom:21px;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-check{
+ display:flex!important;flex-direction:row!important;align-items:center;gap:8px;
+ color:#72665b;font:600 12px Lato,sans-serif;cursor:pointer;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-check input{width:17px;height:17px;accent-color:#a47a55;cursor:pointer}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-field-grid{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 16px;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-field{
+ display:flex;flex-direction:column;gap:7px;min-width:0;
+ color:#7f756a;font:600 12px Lato,sans-serif;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-field :is(input,select){
+ width:100%;height:44px;border:1px solid #e2dcd4;border-radius:7px;
+ background:#faf8f5;color:#494039;padding:10px 12px;
+ font:500 13px Lato,sans-serif;outline:none;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-field :is(input,select):focus,
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-slot :is(input,select):focus{
+ border-color:#ad8a6c;box-shadow:0 0 0 2px #c4a28122;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-hint{
+ color:#a3978b;font:400 12px/1.6 Lato,sans-serif;margin:14px 0 8px;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-arrivals{
+ color:#5f564e;font:500 12px/1.6 Lato,sans-serif;margin:10px 0 18px;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-slot-editor{
+ margin-top:12px;border-top:1px solid #f0eae3;padding-top:12px;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-slots-toggle{
+ display:flex;gap:9px;align-items:center;background:transparent;border:0;
+ color:#715945;font:600 12px Lato,sans-serif;cursor:pointer;padding:8px 0;
+ text-align:left;width:100%;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-arrow{
+ width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;
+ border-top:6px solid #a77a59;transition:transform .22s ease;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-slot-editor.is-open .lv-rts-arrow{transform:rotate(180deg)}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-slot-content{padding-top:12px}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-slot-grid{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-slot{
+ display:grid;grid-template-columns:1fr 1fr;column-gap:10px;row-gap:9px;align-items:end;
+ padding:15px 13px;border:1px solid #ece5dd;border-radius:9px;background:#fdfaf6;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-slot strong{
+ grid-column:1/-1;color:#785d46;font:700 13px Lato,sans-serif;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-slot label{
+ min-width:0;display:flex;flex-direction:column;gap:6px;
+ color:#9a8f84;font:500 11px/1.25 Lato,sans-serif;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-slot input{
+ width:100%;height:39px;border:1px solid #e6ded5;border-radius:7px;
+ color:#4c433d;background:#fff;padding:8px 9px;font:600 12px Lato,sans-serif;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-day-content .lv-rts-service :is(button,input,select){touch-action:manipulation}
+@media(max-width:790px){
+ body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-day-head{
+  display:grid;grid-template-columns:auto minmax(0,1fr) auto;
+  gap:7px 10px;min-height:84px;padding:12px 14px;
+ }
+ body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-day-name{min-width:0;grid-column:1;grid-row:1}
+ body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-day-switch{grid-column:2;grid-row:1}
+ body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-day-preview{grid-column:1/3;grid-row:2;font-size:11px}
+ body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-day-toggle{grid-column:3;grid-row:1/3;font-size:0;min-width:33px}
+ body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-day-toggle .lv-rts-chevron{width:10px;height:10px}
+ body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-day-content{padding:17px 12px}
+ body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-service-summary{gap:10px;padding:13px 12px}
+ body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-service-summary strong{min-width:36px}
+ body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-service-summary span{font-size:11px}
+ body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-service-content{padding:16px 12px}
+}
+@media(max-width:430px){
+ body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-field-grid{gap:12px 9px}
+ body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-field{font-size:11px}
+ body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-slot-grid{grid-template-columns:1fr}
+ body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-service-summary{flex-wrap:wrap}
+ body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-service-summary em{margin-left:auto}
+}
