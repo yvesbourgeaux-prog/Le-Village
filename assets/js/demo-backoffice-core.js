@@ -255,8 +255,8 @@ function serviceEditor(dayIndex,service){
 }
 function renderSchedule(){
  const target=$('#lv-schedule-week');if(!target)return;
- target.innerHTML=names.map((name,i)=>{
-  const day=week[i],expanded=openedDays.has(i),active=day.active!==false;
+ target.innerHTML=[1,2,3,4,5,6,0].map(i=>{
+  const name=names[i],day=week[i],expanded=openedDays.has(i),active=day.active!==false;
   return '<article class="lv-rts-day '+(expanded?'is-expanded ':'')+(active?'':'is-off')+'" data-rts-day="'+i+'">'
    +'<header class="lv-rts-day-head"><strong class="lv-rts-day-name">'+name+'</strong>'
    +'<label class="lv-rts-day-switch"><input type="checkbox" role="switch" aria-label="Activer '+name+'" data-day="'+i+'" data-field="active" '+(active?'checked':'')+'><span class="lv-rts-switch-track" aria-hidden="true"></span><span>'+(active?'Jour actif':'Jour fermé')+'</span></label>'
