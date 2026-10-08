@@ -40,7 +40,7 @@ function renderSegments(){
   const current=select.value;
   Array.from(select.querySelectorAll('[data-stored-segment]')).forEach(o=>o.remove());
   segments.forEach(seg=>{const option=document.createElement('option');option.value='seg:'+seg.id;option.textContent=seg.name;option.dataset.storedSegment='';select.append(option)});
-  if(Array.from(select.options).some(o=>o.value===current))select.value=current;
+  if(Array.from(select.options||[]).some(o=>o.value===current))select.value=current;
  });
 }
 register('segments',renderSegments);
