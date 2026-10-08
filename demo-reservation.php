@@ -62,8 +62,9 @@ $head = '<meta name="robots" content="noindex,nofollow,noarchive"/><title>Démo 
  . '<link href="/assets/css/demo-reservation-experience.css?v=20261008-motion8" rel="stylesheet"/>'
  . '<link rel="stylesheet" href="/assets/css/demo-backoffice.css?v=20261008-rts2"/>'
  . '<link rel="stylesheet" href="/assets/css/demo-village-friendly.css?v=20261009-ux3"/>'
- . '<script defer src="/assets/js/demo-reservation.js?v=20261008-motion8"></script>'
- . '<script defer src="/assets/js/demo-backoffice-core.js?v=20261009-ux3"></script>'
+ . '<link rel="stylesheet" href="/assets/css/demo-village-schedule.css?v=20261009-weekly1"/>'
+ . '<script defer src="/assets/js/demo-reservation.js?v=20261009-weekly1"></script>'
+ . '<script defer src="/assets/js/demo-backoffice-core.js?v=20261009-weekly1"></script>'
  . '<script defer src="/assets/js/demo-backoffice-comms.js?v=20261009-ux3"></script>'
  . '<script defer src="/assets/js/demo-booking-launcher.js?v=20261009-ux3"></script>';// Update the consent panel copy: the private demo never uses Zenchef.
 $site = str_replace('La carte et le module de réservation utilisent les services Google Maps et Zenchef.', 'La carte utilise Google Maps. La réservation est simulée localement sur cette page.', $site);
