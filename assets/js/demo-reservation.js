@@ -39,17 +39,20 @@ function effectiveTimes(date,service){
  if(window.lvDemoSchedule)return window.lvDemoSchedule.getTimes(date,service);
  return service==='lunch'?settings.lunchTimes:settings.dinnerTimes;
 }
-function effectiveCapacity(date,service){
- if(window.lvDemoSchedule)return window.lvDemoSchedule.getCapacity(date,service);
+function effectiveCapacity(date,service,time){
+ if(window.lvDemoSchedule)return window.lvDemoSchedule.getCapacity(date,service,time);
  return Number(service==='lunch'?settings.lunchCap:settings.dinnerCap)||0;
+}
+function effectiveMaxParty(date,service,time){
+ return window.lvDemoSchedule?.getMaxParty?.(date,service,time)??6;
 }
 function slotAvailable(date,service,time,pax){
  if(!dayOpen(date)||!time||!effectiveTimes(date,service).includes(time))return false;
  const at=new Date(date+'T'+time+':00').getTime();
  if(at<Date.now()+settings.notice*60000)return false;
  const taken=reservations.filter(r=>r.date===date&&r.service===service&&r.time===time&&r.status!=='cancelled').reduce((sum,r)=>sum+r.pax,0);
- const cap=effectiveCapacity(date,service);
- return taken+pax<=cap;
+ const cap=effectiveCapacity(date,service,time);
+ return pax<=effectiveMaxParty(date,service,time)&&taken+pax<=cap;
 }
 function dayAvailable(iso,pax=2){
  return dayOpen(iso)&&['lunch','dinner'].some(service=>effectiveTimes(iso,service).some(time=>slotAvailable(iso,service,time,pax)));
