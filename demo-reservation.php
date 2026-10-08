@@ -54,6 +54,7 @@ $site = preg_replace('~<div\\b[^>]*\\bclass=["\\x27][^"\\x27]*\\bzc-widget-confi
 $site = preg_replace('~<link\\b[^>]*\\bhref=["\\x27][^"\\x27]*(?:automne-popup|languages)\\.css[^"\\x27]*["\\x27][^>]*>~i', '', $site);
 $site = preg_replace('~<link\\b[^>]*\\brel=["\\x27]canonical["\\x27][^>]*>~i', '', $site);
 $site = preg_replace('~<meta\\b[^>]*\\bname=["\\x27]robots["\\x27][^>]*>~i', '', $site);
+$site = preg_replace('~<title\\b[^>]*>.*?</title>~is', '', $site);
 $head = '<meta name="robots" content="noindex,nofollow,noarchive"/><title>Démo privée — Le Village</title>'
  . '<link href="/assets/css/demo-reservation.css?v=20261009-2" rel="stylesheet"/>'
  . '<link href="/assets/css/demo-reservation-v2.css?v=20261009-2" rel="stylesheet"/>'
@@ -110,7 +111,7 @@ $demo = <<<'DEMO_HTML'
           <div class="admin-head"><div><p class="eyebrow">Configuration</p><h1>Paramètres de réservation</h1></div><button id="save-settings" class="primary small">Enregistrer</button></div>
           <div class="settings-grid">
             <section class="settings-card"><h2>Capacité & règles</h2>
-              <label>Maximum en ligne par réservation<input id="set-max-party" type="number" min="1" max="20"></label>
+              <label>Maximum en ligne par réservation<input id="set-max-party" type="number" min="1" max="6"></label>
               <label>Délai minimum avant réservation<select id="set-notice"><option value="0">Immédiat</option><option value="60">1 heure</option><option value="120">2 heures</option><option value="240">4 heures</option><option value="1440">24 heures</option></select></label>
               <label><span>Message 7 personnes et +</span><textarea id="set-large-message" rows="3"></textarea></label>
             </section>
