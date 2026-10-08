@@ -67,7 +67,10 @@ def process(raw,page):
  for n in s.select('iframe'):
   n['loading']='lazy'
   if not n.get('title'):n['title']='Localisation du restaurant' if 'google' in n.get('src','') else 'Contenu intégré'
- for n in s.select('video'):n['preload']='metadata';n['poster']=n.get('poster',FALLBACK)
+ for n in s.select('video'):
+  n['preload']='metadata'
+  # Do not inject a generic poster: it flashes before the actual video frame loads.
+  n.attrs.pop('poster',None)
  handlers=[]
  for n in s.find_all():
   for attr in list(n.attrs):
