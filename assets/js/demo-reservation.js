@@ -99,7 +99,7 @@ function acc(label,num,value,opened,inner,section){
 function renderParty(){
  let h='<div class="demo-party-options">';
  for(let n=1;n<=Math.min(6,Math.max(1,settings.maxParty));n++)h+='<button type="button" class="demo-option '+(booking.pax===n?'is-selected':'')+'" data-pax="'+n+'">'+n+'</button>';
- h+='<button type="button" class="demo-option" data-pax="7">'+(settings.maxParty>=6?'7+':(settings.maxParty+1)+'+')+'</button></div>';
+ h+='<button type="button" class="demo-option" data-pax="7">'+'7+'+'</button></div>';
  return h+'<div id="demo-big-party-slot"></div>';
 }
 function renderBookingCalendar(){
@@ -167,6 +167,7 @@ function confirmBooking(form){
  if(!first||!last||!phone||!email||!form.has('consent'))return;
  const r={id:'r'+Date.now(),date:booking.date,time:booking.time,service:booking.service,pax:booking.pax,first,last,phone,email,note,status:'confirmed',created:'Module démo'};
  reservations.push(r);save('lv-demo-reservations-v2',reservations);
+ if(document.body.classList.contains('lv-demo-admin'))renderAdmin();
  content.innerHTML='<div class="demo-success"><div class="success-symbol">✓</div><h2>Réservation enregistrée</h2><p>'+esc(first)+', votre démonstration de réservation est prête.</p><p><strong>'+esc(dateLong(booking.date))+' à '+esc(booking.time)+'</strong> · '+booking.pax+' couvert'+(booking.pax>1?'s':'')+'</p><p>Elle apparaît dans le back-office de ce navigateur uniquement. Aucun email ni SMS envoyé.</p><button type="button" class="demo-submit" data-demo-done>Terminer</button></div>';
  $('[data-demo-done]',content).onclick=()=>bookingDialog.close();
 }
