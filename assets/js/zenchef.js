@@ -26,7 +26,13 @@
   const href=el.getAttribute('href')||el.dataset.href||el.dataset.url;if(!href)return;
   let u;try{u=new URL(href,location.href);}catch{return;}
   if(u.origin!==location.origin||!(u.pathname.replace(/^\/(?:en|sv|da|nl|de|it|es|ja|zh-CN|nb|ru|pl)(?=\/|$)/,'')==='/reserver'||u.searchParams.get('zc')==='open'))return;
-  e.preventDefault();e.stopImmediatePropagation();open();
+  e.preventDefault();e.stopImmediatePropagation();
+  // A modal dialog lives in the browser top layer: dismiss it before opening Zenchef.
+  const autumnPopup=el.closest('.lv-autumn-dialog');
+  if(autumnPopup?.open){
+   autumnPopup.close();
+   requestAnimationFrame(open);
+  }else open();
  }
  document.addEventListener('click',intercept,true);
  const u=new URL(location.href);
