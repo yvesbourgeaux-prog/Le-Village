@@ -56,7 +56,7 @@ $site = preg_replace('~<link\\b[^>]*\\brel=["\\x27]canonical["\\x27][^>]*>~i', '
 $site = preg_replace('~<meta\\b[^>]*\\bname=["\\x27]robots["\\x27][^>]*>~i', '', $site);
 $site = preg_replace('~<title\\b[^>]*>.*?</title>~is', '', $site);
 $head = '<meta name="robots" content="noindex,nofollow,noarchive"/><title>Démo privée — Le Village</title>'
- . '<link href="/assets/css/demo-reservation.css?v=20261009-2" rel="stylesheet"/>'
+ . '<link href="/assets/css/demo-reservation-admin.css?v=20261009-3" rel="stylesheet"/>'
  . '<link href="/assets/css/demo-reservation-v2.css?v=20261009-2" rel="stylesheet"/>'
  . '<script defer src="/assets/js/demo-reservation.js?v=20261009-2"></script>';
 $site = str_replace('</head>', $head . '</head>', $site);
