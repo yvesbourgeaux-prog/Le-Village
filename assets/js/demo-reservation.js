@@ -176,6 +176,14 @@ function renderAdmin(){
  renderCalendar();renderReservations();renderClients();renderSettings();
 }
 $('#admin-date').addEventListener('change',e=>{selectedAdminDate=e.target.value;calendarCursor=new Date(selectedAdminDate+'T12:00:00');renderAdmin()});
+$('[data-day-shift]').forEach(b=>b.addEventListener('click',()=>{
+ selectedAdminDate=addDays(selectedAdminDate,Number(b.dataset.dayShift));
+ calendarCursor=new Date(selectedAdminDate+'T12:00:00');renderAdmin();
+}));
+$('[data-admin-today]')?.addEventListener('click',()=>{
+ selectedAdminDate=todayISO();calendarCursor=new Date(selectedAdminDate+'T12:00:00');renderAdmin();
+});
+$('#reservation-search')?.addEventListener('input',renderReservations);
 $$('[data-admin-tab]').forEach(b=>b.onclick=()=>{$$('[data-admin-tab]').forEach(x=>x.classList.toggle('is-active',x===b));$$('.admin-tab').forEach(t=>{const yes=t.id==='admin-'+b.dataset.adminTab;t.hidden=!yes;t.classList.toggle('is-active',yes)});if(b.dataset.adminTab==='clients')renderClients();if(b.dataset.adminTab==='settings')renderSettings()});
 $$('[data-service-filter]').forEach(b=>b.onclick=()=>{serviceFilter=b.dataset.serviceFilter;$$('[data-service-filter]').forEach(x=>x.classList.toggle('is-active',x===b));renderReservations()});
 $$('[data-month]').forEach(b=>b.onclick=()=>{calendarCursor.setMonth(calendarCursor.getMonth()+Number(b.dataset.month));renderCalendar()});
@@ -184,16 +192,54 @@ $('[data-new-reservation]').onclick=openBooking;
 function renderCalendar(){
  $('#month-title').textContent=monthName(calendarCursor);
  const y=calendarCursor.getFullYear(),m=calendarCursor.getMonth(),first=new Date(y,m,1),last=new Date(y,m+1,0),start=(first.getDay()+6)%7;
- let h='';for(let i=0;i<start;i++)h+='<span></span>';
- for(let d=1;d<=last.getDate();d++){const dt=new Date(y,m,d),iso=dt.toISOString().slice(0,10),has=reservations.some(r=>r.date===iso);h+='<button class="'+(iso===selectedAdminDate?'is-selected ':'')+(has?'has-booking':'')+'" data-admin-day="'+iso+'">'+d+'</button>'}
- $('#admin-calendar').innerHTML=h;
- $$('[data-admin-day]').forEach(b=>b.onclick=()=>{selectedAdminDate=b.dataset.adminDay;$('#admin-date').value=selectedAdminDate;$('#admin-date-title').textContent=fmtDate(selectedAdminDate,true);renderCalendar();renderReservations()});
+ let cells='';for(let i=0;i<start;i++)cells+='<span class="calendar-empty" aria-hidden="true"></span>';
+ for(let day=1;day<=last.getDate();day++){
+  const iso=asLocalISO(new Date(y,m,day)),onDay=reservations.filter(r=>r.date===iso&&r.status!=='cancelled');
+  const lunch=onDay.filter(r=>r.service==='lunch').reduce((sum,r)=>sum+r.pax,0),dinner=onDay.filter(r=>r.service==='dinner').reduce((sum,r)=>sum+r.pax,0);
+  const covers=lunch+dinner,isToday=iso===todayISO();
+  cells+='<button type="button" class="calendar-day '+(iso===selectedAdminDate?'is-selected ':'')+(covers?'has-booking ':'')+(isToday?'is-today':'')+'" data-admin-day="'+iso+'" aria-label="'+esc(dateLong(iso))+', '+covers+' couverts">'
+  +'<span class="calendar-day-number">'+day+'</span>'
+  +(covers?'<span class="calendar-covers">'+covers+' cv.</span>':'<span class="calendar-covers is-empty">—</span>')
+  +'<span class="calendar-day-services"><i class="'+(lunch?'has-lunch':'')+'"></i><i class="'+(dinner?'has-dinner':'')+'"></i></span></button>';
+ }
+ $('#admin-calendar').innerHTML=cells;
+ $$('[data-admin-day]').forEach(button=>button.onclick=()=>{
+  selectedAdminDate=button.dataset.adminDay;
+  $('#admin-date').value=selectedAdminDate;
+  $('#admin-date-title').textContent=fmtDate(selectedAdminDate,true);
+  renderCalendar();renderReservations();
+  if(window.innerWidth<901)$('.reservations-panel')?.scrollIntoView({block:'start',behavior:'smooth'});
+ });
 }
 function renderReservations(){
- const all=reservations.filter(r=>r.date===selectedAdminDate),active=all.filter(r=>r.status!=='cancelled'),list=all.filter(r=>serviceFilter==='all'||r.service===serviceFilter);
- $('#kpi-covers').textContent=active.reduce((s,r)=>s+r.pax,0);$('#kpi-bookings').textContent=active.length;$('#kpi-lunch').textContent=active.filter(r=>r.service==='lunch').reduce((s,r)=>s+r.pax,0);$('#kpi-dinner').textContent=active.filter(r=>r.service==='dinner').reduce((s,r)=>s+r.pax,0);
- $('#reservation-list').innerHTML=list.length?list.sort((a,b)=>a.time.localeCompare(b.time)).map(r=>'<article class="reservation-card" data-res-id="'+r.id+'"><div class="time">'+esc(r.time)+'</div><div><strong>'+esc(r.last.toUpperCase())+' '+esc(r.first)+'</strong><small>'+(r.status==='cancelled'?'Annulée':(r.note?'Note : '+esc(r.note):r.service==='lunch'?'Déjeuner':'Dîner'))+'</small></div><span class="pax-badge">🍴 '+r.pax+'</span></article>').join(''):'<div class="empty-state">Aucune réservation sur ce service.</div>';
+ const all=reservations.filter(r=>r.date===selectedAdminDate);
+ const active=all.filter(r=>r.status!=='cancelled');
+ const lunch=active.filter(r=>r.service==='lunch'),dinner=active.filter(r=>r.service==='dinner');
+ const coverCount=items=>items.reduce((sum,r)=>sum+r.pax,0);
+ $('#kpi-covers').textContent=coverCount(active);
+ $('#kpi-bookings').textContent=active.length;
+ $('#kpi-lunch').textContent=coverCount(lunch);
+ $('#kpi-dinner').textContent=coverCount(dinner);
+ const qs=($('#reservation-search')?.value||'').toLowerCase().trim();
+ const filtered=all.filter(r=>(serviceFilter==='all'||r.service===serviceFilter)&&(!qs||[r.first,r.last,r.phone,r.email,r.time].join(' ').toLowerCase().includes(qs)));
+ $$('[data-service-filter]').forEach(b=>{
+  const service=b.dataset.serviceFilter;
+  const count=service==='all'?active.length:active.filter(r=>r.service===service).length;
+  b.textContent=(service==='all'?'Tous':service==='lunch'?'Déjeuner':'Dîner')+' ('+count+')';
+ });
+ const sumLabel=(name,items)=>'<div class="service-summary-item"><span>'+name+'</span><strong>'+coverCount(items)+' <small>couverts</small></strong><small>'+items.length+' réservation'+(items.length>1?'s':'')+'</small></div>';
+ $('#service-summary').innerHTML=sumLabel('Déjeuner',lunch)+sumLabel('Dîner',dinner);
+ const group=(service,name)=>{
+  const data=filtered.filter(r=>r.service===service).sort((x,y)=>x.time.localeCompare(y.time));
+  if(!data.length)return '';
+  return '<div class="reservation-group"><div class="reservation-group-head"><span>'+name+'</span><small>'+coverCount(data.filter(r=>r.status!=='cancelled'))+' couverts</small></div>'
+  +data.map(r=>'<button type="button" class="reservation-card '+(r.status==='cancelled'?'is-cancelled':'')+'" data-res-id="'+esc(r.id)+'">'
+   +'<div class="time">'+esc(r.time)+'</div><div class="reservation-guest"><strong>'+esc(r.last.toUpperCase())+' '+esc(r.first)+'</strong><small>'+(r.status==='cancelled'?'Annulée':r.note?'Note : '+esc(r.note):'Confirmée')+'</small></div>'
+   +'<span class="pax-badge">'+r.pax+' <small>pers.</small></span></button>').join('')+'</div>';
+ };
+ $('#reservation-list').innerHTML=filtered.length?group('lunch','Déjeuner')+group('dinner','Dîner'):'<div class="empty-state"><strong>Aucune réservation</strong><p>Pas de réservation pour cette sélection.</p><button type="button" class="secondary" data-new-reservation-empty>Ajouter une réservation</button></div>';
  $$('[data-res-id]').forEach(el=>el.onclick=()=>openDetail(el.dataset.resId));
+ $('[data-new-reservation-empty]')?.addEventListener('click',openBooking);
 }
 function openDetail(id){
  const r=reservations.find(x=>x.id===id);if(!r)return;
