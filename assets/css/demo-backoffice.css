@@ -1,0 +1,125 @@
+/* Village Manager • private demonstration • separate from the public restaurant */
+body.lv-demo-admin #lv-demo-app {--vl-ink:#2b3841;--vl-sub:#7a858e;--vl-line:#e5e9eb;--vl-page:#f7f8f9;--vl-accent:#396075;--vl-highlight:#fff8f1;font:14px/1.5 Lato,Arial,sans-serif;color:var(--vl-ink)}
+body.lv-demo-admin #lv-demo-app .admin-shell{display:grid!important;grid-template-columns:248px minmax(0,1fr)!important;background:var(--vl-page)!important;min-height:100dvh!important}
+body.lv-demo-admin #lv-demo-app .admin-nav{width:248px!important;height:100dvh!important;max-height:100dvh!important;min-height:0!important;overflow-y:auto!important;overflow-x:hidden!important;display:flex!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;position:sticky!important;top:0!important;gap:0!important;margin:0!important;padding:23px 14px 18px!important;border-right:1px solid var(--vl-line)!important;border-bottom:0!important;background:#fff!important;box-shadow:none!important}
+body.lv-demo-admin #lv-demo-app .admin-logo{margin:0 0 26px!important;padding:0 7px!important;display:flex!important;gap:10px!important;align-items:center!important;flex:0 0 auto!important}
+body.lv-demo-admin #lv-demo-app .admin-logo span{display:grid!important;place-items:center!important;width:40px!important;height:40px!important;background:#f5eae1!important;color:#65422c!important;border:0!important;border-radius:12px!important;font:700 15px 'Playfair Display',serif!important}
+body.lv-demo-admin #lv-demo-app .admin-logo b{display:block;font:700 17px 'Playfair Display',Georgia,serif!important;color:#3b3835!important}
+body.lv-demo-admin #lv-demo-app .admin-logo small{display:block!important;font:400 10px Lato,sans-serif!important;color:#939aa0!important;letter-spacing:.02em}
+body.lv-demo-admin #lv-demo-app .lv-extra-menu{display:flex;flex:1;flex-direction:column;gap:1px;min-height:0}
+body.lv-demo-admin #lv-demo-app .lv-menu-label{display:block;padding:17px 13px 7px;color:#a0a9b0;font:700 10px Lato,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+body.lv-demo-admin #lv-demo-app .lv-menu-entry{display:flex;flex-direction:column;min-width:0}
+body.lv-demo-admin #lv-demo-app .admin-nav .lv-menu-btn{width:100%!important;margin:0!important;padding:10px 13px!important;border:0!important;border-radius:9px!important;text-align:left!important;background:transparent!important;color:#5d6871!important;white-space:nowrap!important;font:600 13px Lato,sans-serif!important;min-height:40px!important;cursor:pointer!important}
+body.lv-demo-admin #lv-demo-app .admin-nav .lv-menu-btn:hover{background:#f4f6f7!important;color:#304354!important}
+body.lv-demo-admin #lv-demo-app .admin-nav .lv-menu-btn.is-active{background:#edf3f6!important;color:#315c71!important;font-weight:700!important}
+body.lv-demo-admin #lv-demo-app .lv-extra-nav-bottom{display:grid;gap:5px;border-top:1px solid #e9edee;padding-top:13px;margin-top:16px}
+body.lv-demo-admin #lv-demo-app .admin-nav .lv-extra-nav-bottom button,body.lv-demo-admin #lv-demo-app .admin-nav .lv-extra-nav-bottom a{display:block;width:100%!important;text-align:left!important;border:0!important;text-decoration:none!important;padding:10px 12px!important;color:#697983!important;font:600 12px Lato,sans-serif!important;border-radius:9px;background:none!important;cursor:pointer}
+body.lv-demo-admin #lv-demo-app .admin-nav .lv-extra-nav-bottom button:hover,body.lv-demo-admin #lv-demo-app .admin-nav .lv-extra-nav-bottom a:hover{background:#f4f5f6!important}
+body.lv-demo-admin #lv-demo-app .admin-main{min-width:0!important;width:100%!important;max-width:1440px!important;margin:0 auto!important;padding:36px clamp(16px,3vw,46px) 65px!important}
+body.lv-demo-admin #lv-demo-app .lv-extra-screen[hidden]{display:none!important}
+body.lv-demo-admin #lv-demo-app .lv-extra-screen{background:transparent!important}
+body.lv-demo-admin #lv-demo-app .lv-screen-head{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin:0 0 25px}
+body.lv-demo-admin #lv-demo-app .lv-screen-head span{display:block;font:700 10px Lato,sans-serif;color:#9a9fa2;letter-spacing:.1em;margin-bottom:9px}
+body.lv-demo-admin #lv-demo-app .lv-screen-head h1{font:700 clamp(27px,3vw,36px) Lato,Arial,sans-serif!important;letter-spacing:-.025em!important;color:#293d49!important;margin:0 0 7px}
+body.lv-demo-admin #lv-demo-app .lv-screen-head p{font:400 14px/1.6 Lato,Arial,sans-serif;color:#75838a;margin:0;max-width:600px}
+body.lv-demo-admin #lv-demo-app .lv-paper{background:#fff;border:1px solid #e6eaed;border-radius:16px;padding:23px;box-shadow:0 6px 26px #2b3b4e09;min-width:0}
+body.lv-demo-admin #lv-demo-app .lv-paper h2{font:700 19px Lato,Arial,sans-serif!important;color:#364b57!important;letter-spacing:-.012em;margin:0 0 20px}
+body.lv-demo-admin #lv-demo-app .lv-paper p{color:#7a858c}
+body.lv-demo-admin #lv-demo-app .lv-two-col{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}
+body.lv-demo-admin #lv-demo-app .lv-stack{display:grid;gap:16px}
+body.lv-demo-admin #lv-demo-app .lv-narrow{max-width:650px}
+body.lv-demo-admin #lv-demo-app .lv-form{display:grid;gap:15px}
+body.lv-demo-admin #lv-demo-app .lv-form label,body.lv-demo-admin #lv-demo-app .lv-client-filter label{display:grid;gap:7px;font:700 12px Lato,sans-serif!important;color:#596872}
+body.lv-demo-admin #lv-demo-app .lv-form input:not([type=checkbox]),body.lv-demo-admin #lv-demo-app .lv-form select,body.lv-demo-admin #lv-demo-app .lv-form textarea,body.lv-demo-admin #lv-demo-app .lv-client-filter select{width:100%;min-width:0;font:400 13px Lato,Arial,sans-serif!important;border:1px solid #dce3e6;border-radius:10px;background:#fff;padding:11px 12px;color:#374550;outline:none}
+body.lv-demo-admin #lv-demo-app .lv-form :is(input,select,textarea):focus{border-color:#6891a5;box-shadow:0 0 0 3px #6891a51e}
+body.lv-demo-admin #lv-demo-app .lv-form textarea{resize:vertical;line-height:1.5}
+body.lv-demo-admin #lv-demo-app .lv-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+body.lv-demo-admin #lv-demo-app .lv-button-row{display:flex;flex-wrap:wrap;gap:9px;align-items:center}
+body.lv-demo-admin #lv-demo-app .lv-action{background:#345e73!important;color:white!important;border:1px solid #345e73!important;border-radius:10px!important;font:700 12px Lato,sans-serif!important;min-height:42px!important;padding:11px 16px!important;cursor:pointer!important;text-align:center!important}
+body.lv-demo-admin #lv-demo-app .lv-action:hover{background:#274a5d!important}
+body.lv-demo-admin #lv-demo-app .lv-soft-button{background:#fff!important;color:#496472!important;border:1px solid #dce4e8!important;border-radius:10px!important;font:700 12px Lato,sans-serif!important;min-height:40px!important;padding:9px 14px!important;cursor:pointer!important}
+body.lv-demo-admin #lv-demo-app .lv-soft-button:hover{background:#f5f8fa!important}
+body.lv-demo-admin #lv-demo-app .lv-text-action{border:0;background:transparent;color:#426779;font:700 12px Lato,sans-serif;padding:8px;cursor:pointer;white-space:nowrap}
+body.lv-demo-admin #lv-demo-app .lv-help,body.lv-demo-admin #lv-demo-app .lv-muted{color:#93a0a5;font:400 12px/1.6 Lato,sans-serif;margin:6px 0}
+body.lv-demo-admin #lv-demo-app .lv-check{display:flex!important;flex-direction:row!important;align-items:center!important;gap:9px!important;font-weight:600!important;cursor:pointer}
+body.lv-demo-admin #lv-demo-app .lv-check input{accent-color:#406e82;width:16px;height:16px;margin:0}
+body.lv-demo-admin #lv-demo-app .lv-demo-notice{border-radius:11px;background:#eff5f7;border:1px solid #e0ebf0;color:#5c7886;padding:11px 15px;font:400 12px/1.5 Lato,sans-serif;margin:-6px 0 19px}
+body.lv-demo-admin #lv-demo-app .lv-week-list{display:grid;gap:10px;margin-bottom:25px}
+body.lv-demo-admin #lv-demo-app .lv-weekday{border:1px solid #e3e8eb;border-radius:13px;background:white;box-shadow:0 4px 16px #263b4e06;overflow:hidden}
+body.lv-demo-admin #lv-demo-app .lv-weekday>summary{padding:16px 21px;cursor:pointer;display:flex;justify-content:space-between;gap:15px;align-items:center;list-style:none}
+body.lv-demo-admin #lv-demo-app .lv-weekday>summary::-webkit-details-marker{display:none}
+body.lv-demo-admin #lv-demo-app .lv-weekday>summary:after{content:'⌄';color:#67808a;font-size:20px}
+body.lv-demo-admin #lv-demo-app .lv-weekday[open]>summary:after{transform:rotate(180deg)}
+body.lv-demo-admin #lv-demo-app .lv-weekday>summary strong{color:#3d5663;font:700 15px Lato,sans-serif}
+body.lv-demo-admin #lv-demo-app .lv-weekday>summary span{margin-left:auto;color:#7b8d94;font-size:12px}
+body.lv-demo-admin #lv-demo-app .lv-week-service{padding:17px 20px;border-top:1px solid #edf1f2;display:grid;gap:12px}
+body.lv-demo-admin #lv-demo-app .lv-week-service .lv-form-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+body.lv-demo-admin #lv-demo-app .lv-week-service label:not(.lv-check){display:grid;gap:5px;font-size:11px;color:#7d8990}
+body.lv-demo-admin #lv-demo-app .lv-week-service :is(input,select){border:1px solid #e1e7e9;border-radius:8px;background:#fafbfc;padding:9px;max-width:100%;font:400 12px Lato,sans-serif}
+body.lv-demo-admin #lv-demo-app .lv-item{padding:14px 2px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #edf0f2}
+body.lv-demo-admin #lv-demo-app .lv-item strong{display:block;color:#3e5561;font-size:13px}
+body.lv-demo-admin #lv-demo-app .lv-item small{display:block;margin-top:4px;color:#8a989e;font-size:11px;max-width:420px;white-space:normal}
+body.lv-demo-admin #lv-demo-app .lv-item:last-child{border-bottom:0}
+body.lv-demo-admin #lv-demo-app .lv-client-filter{display:flex;flex-wrap:wrap;align-items:end;gap:12px;margin:12px 0 20px}
+body.lv-demo-admin #lv-demo-app .lv-client-filter label{min-width:155px}
+body.lv-demo-admin #lv-demo-app .lv-client-card{display:flex;align-items:center;gap:14px;min-height:77px;background:#fff;border:1px solid #e8ebed;border-radius:13px;margin:9px 0;padding:12px 16px}
+body.lv-demo-admin #lv-demo-app .lv-avatar{width:42px;height:42px;display:grid;place-items:center;border-radius:50%;background:#eaf0f2;color:#527081;flex:0 0 42px;font:700 12px Lato,sans-serif}
+body.lv-demo-admin #lv-demo-app .lv-client-card>div{min-width:0;flex:1}
+body.lv-demo-admin #lv-demo-app .lv-client-card strong{display:block;font:700 14px Lato,sans-serif;color:#3f505a}
+body.lv-demo-admin #lv-demo-app .lv-client-card small{display:block;font:400 12px Lato,sans-serif;color:#8d9aa1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body.lv-demo-admin #lv-demo-app .lv-pill{background:#f0f4f6;border-radius:99px;padding:7px 10px;color:#657d89;font:600 11px Lato,sans-serif;white-space:nowrap}
+body.lv-demo-admin #lv-demo-app .lv-empty{padding:22px;border:1px dashed #e0e6e9;border-radius:11px;text-align:center;color:#83939b;font-size:13px}
+body.lv-demo-admin #lv-demo-app .lv-preview{border:1px solid #e5ebee;border-radius:12px;background:#fafcfd;min-height:190px;padding:20px;line-height:1.7;overflow-wrap:anywhere}
+body.lv-demo-admin #lv-demo-app .lv-preview-title{font-weight:700;color:#334952;font-size:15px}
+body.lv-demo-admin #lv-demo-app .lv-preview-preheader{font-size:12px;color:#92a2a8;margin:7px 0 20px}
+body.lv-demo-admin #lv-demo-app .lv-preview-content{color:#4d626d;font-size:14px;line-height:1.7}
+body.lv-demo-admin #lv-demo-app .lv-export-list{display:grid;align-items:start;gap:10px}
+body.lv-demo-admin #lv-demo-app .lv-automation-list{display:grid;gap:12px;margin-bottom:20px}
+body.lv-demo-admin #lv-demo-app .lv-automation{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid #e8ebed;border-radius:14px;padding:18px 20px}
+body.lv-demo-admin #lv-demo-app .lv-automation-mark{display:grid;place-items:center;flex:0 0 48px;height:48px;border-radius:12px;background:#edf3f5;font:700 12px Lato,sans-serif;color:#557184}
+body.lv-demo-admin #lv-demo-app .lv-automation-copy{flex:1;min-width:0}
+body.lv-demo-admin #lv-demo-app .lv-automation-copy strong{display:block;font-size:14px;color:#374b56}
+body.lv-demo-admin #lv-demo-app .lv-automation-copy span,body.lv-demo-admin #lv-demo-app .lv-automation-copy small{display:block;color:#95a1a8;font-size:12px;margin-top:3px}
+body.lv-demo-admin #lv-demo-app .lv-automation button{align-self:center}
+body.lv-demo-admin #lv-demo-app .lv-switch{position:relative;width:43px;height:25px;flex:0 0 43px}
+body.lv-demo-admin #lv-demo-app .lv-switch input{opacity:0;position:absolute;inset:0;width:100%;height:100%;cursor:pointer;z-index:1}
+body.lv-demo-admin #lv-demo-app .lv-switch span{display:block;width:43px;height:25px;background:#d5dee2;border-radius:99px;transition:.2s}
+body.lv-demo-admin #lv-demo-app .lv-switch span:after{content:'';position:absolute;left:3px;top:3px;width:19px;height:19px;border-radius:50%;background:#fff;box-shadow:0 1px 4px #2222;transition:.2s}
+body.lv-demo-admin #lv-demo-app .lv-switch input:checked+span{background:#568b80}
+body.lv-demo-admin #lv-demo-app .lv-switch input:checked+span:after{transform:translateX(18px)}
+body.lv-demo-admin #lv-demo-app .lv-client-editor{width:min(580px,calc(100vw - 20px));max-height:90dvh;border:0;border-radius:17px;box-shadow:0 20px 70px #344e6055;padding:25px;overflow-y:auto}
+body.lv-demo-admin #lv-demo-app .lv-editor-head{display:flex;justify-content:space-between;align-items:center}
+body.lv-demo-admin #lv-demo-app .lv-editor-head h2{font:700 21px Lato,sans-serif}
+#lv-extra-message{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#334c5b;color:#fff;border-radius:11px;padding:12px 20px;z-index:12000;box-shadow:0 9px 30px #22354630;transition:opacity .25s,transform .25s}
+#lv-extra-message.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:1080px){body.lv-demo-admin #lv-demo-app .lv-two-col{grid-template-columns:1fr}body.lv-demo-admin #lv-demo-app .lv-week-service .lv-form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:790px){
+ body.lv-demo-admin #lv-demo-app .admin-shell{display:block!important}
+ body.lv-demo-admin #lv-demo-app .admin-nav{position:sticky!important;top:0!important;z-index:100!important;display:block!important;width:100%!important;height:auto!important;max-height:none!important;overflow:visible!important;padding:10px 12px!important;border-bottom:1px solid #e6e9ed!important;border-right:0!important}
+ body.lv-demo-admin #lv-demo-app .admin-logo{margin:0!important;padding:0 2px!important}
+ body.lv-demo-admin #lv-demo-app .admin-logo span{width:33px!important;height:33px!important}
+ body.lv-demo-admin #lv-demo-app .admin-logo b{font-size:16px!important}
+ body.lv-demo-admin #lv-demo-app .admin-logo small{font-size:9px!important}
+ body.lv-demo-admin #lv-demo-app .lv-extra-menu{display:flex;flex-direction:row;gap:4px;overflow-x:auto;scrollbar-width:thin;margin:9px -12px -9px;padding:0 12px 9px}
+ body.lv-demo-admin #lv-demo-app .lv-menu-entry{flex:0 0 auto}
+ body.lv-demo-admin #lv-demo-app .lv-menu-label{display:none}
+ body.lv-demo-admin #lv-demo-app .admin-nav .lv-menu-btn{min-height:37px!important;width:auto!important;padding:9px 12px!important;font-size:12px!important}
+ body.lv-demo-admin #lv-demo-app .lv-extra-nav-bottom{display:none}
+ body.lv-demo-admin #lv-demo-app .admin-main{padding:24px 13px 80px!important}
+ body.lv-demo-admin #lv-demo-app .lv-screen-head{gap:15px}
+ body.lv-demo-admin #lv-demo-app .lv-screen-head h1{font-size:29px!important}
+ body.lv-demo-admin #lv-demo-app .lv-paper{padding:17px}
+ body.lv-demo-admin #lv-demo-app .lv-weekday>summary{padding:14px 15px}
+ body.lv-demo-admin #lv-demo-app .lv-week-service{padding:14px}
+}
+@media(max-width:470px){
+ body.lv-demo-admin #lv-demo-app .lv-form-grid{grid-template-columns:1fr 1fr;gap:9px}
+ body.lv-demo-admin #lv-demo-app .lv-week-service .lv-form-grid{grid-template-columns:1fr 1fr}
+ body.lv-demo-admin #lv-demo-app .lv-automation{gap:9px;flex-wrap:wrap;padding:15px}
+ body.lv-demo-admin #lv-demo-app .lv-automation-mark{display:none}
+ body.lv-demo-admin #lv-demo-app .lv-client-card{gap:8px;padding:10px}
+ body.lv-demo-admin #lv-demo-app .lv-avatar{flex-basis:32px;width:32px;height:32px}
+ body.lv-demo-admin #lv-demo-app .lv-client-card .lv-pill{display:none}
+ body.lv-demo-admin #lv-demo-app .lv-client-filter{gap:9px}
+ body.lv-demo-admin #lv-demo-app .lv-client-filter label{flex:1;min-width:135px}
+}
