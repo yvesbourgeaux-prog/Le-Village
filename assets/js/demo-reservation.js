@@ -80,10 +80,16 @@ function go(view){
 }
 $$('#lv-demo-app [data-go]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();go(b.dataset.go)}));
 function openBooking(){
- resetBooking();bookingDialog.classList.remove('is-contact');
- renderBooking();bookingDialog.showModal();
+ if(!bookingDialog||!content)throw new Error('Booking elements missing');
+ if(bookingDialog.open)return;
+ resetBooking();
+ bookingDialog.classList.remove('is-contact');
+ renderBooking();
+ bookingDialog.showModal();
 }
-$$('#lv-demo-app [data-open-booking]').forEach(b=>b.addEventListener('click',openBooking));
+window.lvDemoBookingOpen=openBooking;
+// The independent booking launcher handles the public-facing booking buttons.
+// Keeping this callable even if the management UI fails prevents a dead reservation button.
 // Use the exact restaurant page, while replacing every public restaurant booking trigger.
 document.addEventListener('click',e=>{
  if(e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;
@@ -348,4 +354,5 @@ window.lvDemoBO={
  openBooking
 };
 go('showcase');
+window.lvDemoBookingReady=true;
 })();
