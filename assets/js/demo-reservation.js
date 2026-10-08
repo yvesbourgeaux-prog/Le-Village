@@ -108,7 +108,7 @@ function bookingSummary(){
  return '<div class="booking-intro"><p>Pas de disponibilité en ligne ?<br>Appelez-nous au <a href="'+PHONE_LINK+'">'+PHONE_DISPLAY+'</a>.</p></div>';
 }
 function acc(label,num,value,opened,inner,section){
- return '<section class="demo-accordion '+(opened?'is-open':'')+'" data-section="'+section+'"><button type="button" class="demo-acc-title" data-expand="'+section+'" aria-expanded="'+(opened?'true':'false')+'"><span class="acc-index">'+num+'</span><span class="acc-value">'+(value?value:label)+'</span><span class="chevron" aria-hidden="true"></span></button><div class="demo-acc-body" '+(!opened?'hidden':'')+'><div class="demo-acc-inner">'+inner+'</div></div></section>';
+ return '<section class="demo-accordion '+(opened?'is-open':'')+'" data-section="'+section+'"><button type="button" class="demo-acc-title" data-expand="'+section+'" aria-expanded="'+(opened?'true':'false')+'"><span class="acc-index">'+num+'</span><span class="acc-value">'+(value||label)+'</span><span class="chevron" aria-hidden="true"></span></button><div class="demo-acc-body"><div class="demo-acc-inner">'+inner+'</div></div></section>';
 }
 function renderParty(){
  let h='<div class="demo-party-options">';
@@ -129,11 +129,11 @@ function renderBookingCalendar(){
  return '<div class="demo-month-head"><button type="button" data-calendar-nav="-1" '+(!canBack?'disabled':'')+' aria-label="Mois précédent">‹</button><strong>'+esc(monthName(d))+'</strong><button type="button" data-calendar-nav="1" '+(!canForward?'disabled':'')+' aria-label="Mois suivant">›</button></div><div class="demo-calendar-week"><span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span></div><div class="demo-calendar-days">'+cells+'</div>';
 }
 function renderDates(){
- const twoDates=firstTwoDates();
+ const dates=firstTwoDates();
  let h='<p class="demo-next-availability"><span>Prochaine disponibilité</span></p><div class="demo-date-tabs">';
- for(const d of twoDates)h+='<button type="button" data-date-select="'+d+'" class="demo-date-choice '+(booking.date===d?'is-selected':'')+'"><strong>'+esc(dateShort(d))+'</strong><small>'+esc(describeQuickDate(d))+'</small></button>';
- h+='<button type="button" data-other-date class="demo-date-choice '+(booking.showCalendar?'is-selected':'')+'"><strong>Autre</strong><small>Choisir une date</small></button></div>';
- if(booking.showCalendar)h+='<div class="demo-calendar-shell" id="booking-month-calendar">'+renderBookingCalendar()+'</div>';
+ for(const d of dates)h+='<button type="button" data-date-select="'+d+'" class="demo-date-choice '+(booking.date===d?'is-selected':'')+'"><strong>'+esc(dateShort(d))+'</strong><small>'+esc(describeQuickDate(d))+'</small></button>';
+ h+='<button type="button" data-other-date aria-expanded="'+(booking.showCalendar?'true':'false')+'" class="demo-date-choice '+(booking.showCalendar?'is-selected':'')+'"><strong>Autre</strong><small>Choisir une date</small></button></div>';
+ h+='<div class="demo-calendar-shell '+(booking.showCalendar?'is-visible':'')+'" id="booking-month-calendar"><div class="demo-calendar-content">'+renderBookingCalendar()+'</div></div>';
  return h;
 }
 function renderTime(){
@@ -141,32 +141,58 @@ function renderTime(){
   const isLunch=service==='lunch',open=booking.service===service;
   const times=effectiveTimes(booking.date,service);
   const slots=times.map(t=>({time:t,available:slotAvailable(booking.date,service,t,booking.pax)}));
-  const h='<section class="demo-service-row"><button type="button" class="demo-service-toggle" data-service-toggle="'+service+'" aria-expanded="'+(open?'true':'false')+'"><span>'+(isLunch?'Déjeuner':'Dîner')+'<small>'+(open?'Sélectionnez votre heure':'Voir les horaires disponibles')+'</small></span><span class="chevron" style="transform:rotate('+(open?'225':'45')+'deg)"></span></button>';
-  if(!open)return h+'</section>';
-  return h+'<div class="demo-service-times">'+(slots.some(x=>x.available)?slots.map(x=>'<button type="button" class="demo-time-choice '+(booking.time===x.time?'is-selected':'')+'" data-time-select="'+x.time+'" '+(!x.available?'disabled':'')+'><span class="slot-dot"></span>'+esc(x.time)+(booking.time===x.time?' · sélectionné':'')+'</button>').join(''):'<div class="demo-big-party">Aucun créneau disponible pour ce service. Essayez une autre date.</div>')+'</div></section>';
+  const buttons=slots.some(x=>x.available)
+   ?slots.map(x=>'<button type="button" class="demo-time-choice '+(booking.time===x.time&&open?'is-selected':'')+'" data-time-select="'+x.time+'" '+(!x.available?'disabled':'')+'><span class="slot-dot"></span>'+esc(x.time)+'</button>').join('')
+   :'<div class="demo-big-party">Aucun créneau disponible pour ce service. Essayez une autre date.</div>';
+  return '<section class="demo-service-row '+(open?'is-open':'')+'" data-booking-service="'+service+'">'
+   +'<button type="button" class="demo-service-toggle" data-service-toggle="'+service+'" aria-expanded="'+(open?'true':'false')+'"><span>'+(isLunch?'Déjeuner':'Dîner')+'<small>Voir les horaires disponibles</small></span><span class="chevron"></span></button>'
+   +'<div class="demo-service-times"><div class="demo-service-inner">'+buttons+'</div></div></section>';
  }).join('')+'</div>';
 }
-function attachBookingCalendar(){
- // Calendar remains usable when its section was opened by an animated accordion.
- $$('[data-other-date]',content).forEach(b=>b.onclick=()=>{booking.showCalendar=!booking.showCalendar;booking.month=new Date(booking.date+'T12:00:00');renderBooking()});
- $$('[data-calendar-nav]',content).forEach(b=>b.onclick=()=>{booking.month=new Date(booking.month.getFullYear(),booking.month.getMonth()+Number(b.dataset.calendarNav),1);renderBooking()});
- $$('[data-date-select]',content).forEach(b=>b.onclick=()=>{booking.date=b.dataset.dateSelect;booking.month=new Date(booking.date+'T12:00:00');booking.expanded='time';booking.showCalendar=false;booking.service=null;booking.time=null;renderBooking()});
+// Keep accordion nodes mounted. The old full innerHTML redraw on every click
+// prevented CSS transitions and made the panel snap instead of growing upwards.
+function syncBookingView(){
+ const sections={pax:booking.pax+' couvert'+(booking.pax>1?'s':''),date:booking.date?dateShort(booking.date):'Date',time:booking.time||'Horaire'};
+ Object.entries(sections).forEach(([key,label])=>{
+  const section=content.querySelector('.demo-accordion[data-section="'+key+'"]');
+  if(!section)return;
+  const open=booking.expanded===key;
+  section.classList.toggle('is-open',open);
+  section.querySelector('[data-expand]').setAttribute('aria-expanded',String(open));
+  section.querySelector('.acc-value').textContent=label;
+ });
+ $$('[data-pax]',content).forEach(button=>button.classList.toggle('is-selected',Number(button.dataset.pax)===booking.pax));
+ const calendar=$('#booking-month-calendar',content);
+ calendar?.classList.toggle('is-visible',booking.showCalendar);
+ const other=$('[data-other-date]',content);
+ other?.classList.toggle('is-selected',booking.showCalendar);
+ other?.setAttribute('aria-expanded',String(booking.showCalendar));
+ $$('[data-booking-service]',content).forEach(row=>{
+  const open=row.dataset.bookingService===booking.service;
+  row.classList.toggle('is-open',open);
+  row.querySelector('[data-service-toggle]').setAttribute('aria-expanded',String(open));
+  const label=row.querySelector('.demo-service-toggle small');
+  if(label)label.textContent=open?'Sélectionnez votre heure':'Voir les horaires disponibles';
+  $$('[data-time-select]',row).forEach(button=>button.classList.toggle('is-selected',open&&button.dataset.timeSelect===booking.time));
+ });
+ const submit=$('[data-confirm-time]',content);
+ if(submit)submit.disabled=!booking.time;
 }
-let bookingPanelAnimation;
-function transitionBooking(change){
- const oldHeight=bookingDialog.open?bookingDialog.getBoundingClientRect().height:0;
- change();
- renderBooking();
- if(!bookingDialog.open||!oldHeight)return;
- const endHeight=bookingDialog.getBoundingClientRect().height;
- if(!Number.isFinite(endHeight)||Math.abs(endHeight-oldHeight)<3)return;
- const reduced=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
- if(reduced||!bookingDialog.animate)return;
- bookingPanelAnimation?.cancel();
- bookingPanelAnimation=bookingDialog.animate(
-  [{height:oldHeight+'px'},{height:endHeight+'px'}],
-  {duration:400,easing:'cubic-bezier(.22,1,.36,1)'}
- );
+function updateBookingChoices({date=false,time=false,calendar=false}={}){
+ const dateBody=$('.demo-accordion[data-section="date"] .demo-acc-inner',content);
+ const timeBody=$('.demo-accordion[data-section="time"] .demo-acc-inner',content);
+ if(date&&dateBody)dateBody.innerHTML=renderDates();
+ if(time&&timeBody)timeBody.innerHTML=renderTime();
+ if(calendar){
+  const calendarContent=$('#booking-month-calendar .demo-calendar-content',content);
+  if(calendarContent)calendarContent.innerHTML=renderBookingCalendar();
+ }
+ syncBookingView();
+}
+function setBookingSection(section){
+ // The height changes naturally during CSS grid track transitions.
+ booking.expanded=booking.expanded===section?null:section;
+ syncBookingView();
 }
 function renderBooking(){
  bookingDialog.classList.remove('is-contact');
@@ -174,25 +200,62 @@ function renderBooking(){
  const date=acc('Date','02',booking.date?esc(dateShort(booking.date)):'Choisir',booking.expanded==='date',renderDates(),'date');
  const time=acc('Horaire','03',booking.time?esc(booking.time):'',booking.expanded==='time',renderTime(),'time');
  content.innerHTML='<div class="booking-main">'+bookingSummary()+guest+date+time+'</div><div class="demo-book-footer"><button type="button" data-confirm-time '+(!booking.time?'disabled':'')+'>Réserver</button><div class="demo-demo-label">Démonstration : aucune réservation réelle transmise</div></div>';
- $$('[data-expand]',content).forEach(b=>b.onclick=()=>{
-  const section=b.dataset.expand;
-  if(booking.expanded===section)return;
-  transitionBooking(()=>{booking.expanded=section});
- });
- $$('[data-pax]',content).forEach(b=>b.onclick=()=>{
-  const n=Number(b.dataset.pax);
-  if(n>Math.min(6,Math.max(1,settings.maxParty))){$('#demo-big-party-slot',content).innerHTML='<div class="demo-big-party">'+esc(settings.largeMessage)+'<a href="'+PHONE_LINK+'">'+PHONE_DISPLAY+'</a></div>';return}
-  transitionBooking(()=>{booking.pax=n;booking.time=null;booking.service=null;
-  if(!dayAvailable(booking.date,n))booking.date=nextAvailable(todayISO(),n);
-  booking.month=new Date(booking.date+'T12:00:00');booking.expanded='date';booking.showCalendar=false;});
- });
- $('[data-other-date]',content)?.addEventListener('click',()=>{transitionBooking(()=>{booking.showCalendar=!booking.showCalendar;booking.month=new Date(booking.date+'T12:00:00')});if(booking.showCalendar){const calendar=$('.demo-month-head',content);calendar?.scrollIntoView({block:'nearest',behavior:'smooth'})}});
- $$('[data-calendar-nav]',content).forEach(b=>b.onclick=()=>{booking.month=new Date(booking.month.getFullYear(),booking.month.getMonth()+Number(b.dataset.calendarNav),1);renderBooking();$('#booking-month-calendar',content)?.scrollIntoView({block:'nearest',behavior:'instant'})});
- $$('[data-date-select]',content).forEach(b=>b.onclick=()=>{booking.date=b.dataset.dateSelect;booking.month=new Date(booking.date+'T12:00:00');booking.expanded='time';booking.showCalendar=false;booking.service=null;booking.time=null;renderBooking()});
- $$('[data-service-toggle]',content).forEach(b=>b.onclick=()=>{const service=b.dataset.serviceToggle;transitionBooking(()=>{booking.service=booking.service===service?null:service;booking.time=null})});
- $$('[data-time-select]',content).forEach(b=>b.onclick=()=>{transitionBooking(()=>{booking.time=b.dataset.timeSelect})});
- $('[data-confirm-time]',content).onclick=()=>{if(booking.time)renderContact()};
+ syncBookingView();
 }
+// Event delegation is attached once, so no click handlers vanish after updating a section.
+content.addEventListener('click',event=>{
+ const button=event.target.closest('button');
+ if(!button||!content.contains(button))return;
+ if(button.hasAttribute('data-expand')){setBookingSection(button.dataset.expand);return}
+ if(button.hasAttribute('data-pax')){
+  const count=Number(button.dataset.pax);
+  if(count>6||count>settings.maxParty){
+   const slot=$('#demo-big-party-slot',content);
+   if(slot)slot.innerHTML='<div class="demo-big-party">'+esc(settings.largeMessage)+'<a href="'+PHONE_LINK+'">'+PHONE_DISPLAY+'</a></div>';
+   return;
+  }
+  booking.pax=count;booking.time=null;booking.service=null;
+  if(!dayAvailable(booking.date,count))booking.date=nextAvailable(todayISO(),count);
+  booking.month=new Date(booking.date+'T12:00:00');
+  booking.showCalendar=false;
+  updateBookingChoices({date:true,time:true});
+  booking.expanded='date';syncBookingView();
+  return;
+ }
+ if(button.hasAttribute('data-other-date')){
+  booking.showCalendar=!booking.showCalendar;
+  booking.month=new Date((booking.date||todayISO())+'T12:00:00');
+  updateBookingChoices({calendar:true});
+  if(booking.showCalendar){
+   window.setTimeout(()=>$('#booking-month-calendar',content)?.scrollIntoView({block:'nearest',behavior:'smooth'}),220);
+  }
+  return;
+ }
+ if(button.hasAttribute('data-calendar-nav')){
+  booking.month=new Date(booking.month.getFullYear(),booking.month.getMonth()+Number(button.dataset.calendarNav),1);
+  updateBookingChoices({calendar:true});return;
+ }
+ if(button.hasAttribute('data-date-select')){
+  booking.date=button.dataset.dateSelect;
+  booking.month=new Date(booking.date+'T12:00:00');
+  booking.service=null;booking.time=null;booking.showCalendar=false;
+  updateBookingChoices({date:true,time:true});
+  booking.expanded='time';syncBookingView();
+  return;
+ }
+ if(button.hasAttribute('data-service-toggle')){
+  const service=button.dataset.serviceToggle;
+  booking.service=booking.service===service?null:service;
+  booking.time=null;
+  syncBookingView();
+  return;
+ }
+ if(button.hasAttribute('data-time-select')){
+  booking.time=button.dataset.timeSelect;
+  syncBookingView();return;
+ }
+ if(button.hasAttribute('data-confirm-time')&&booking.time){renderContact();return}
+});
 function renderContact(){
  bookingDialog.classList.add('is-contact');
  content.innerHTML='<div class="demo-contact-layout"><div class="demo-contact-left"><button type="button" class="demo-contact-back" data-back-to-booking>‹ Modifier ma réservation</button><h2 class="demo-contact-title">Vos coordonnées</h2><p class="demo-contact-sub">Quelques informations suffisent pour finaliser votre demande. Pour la démonstration, utilisez des coordonnées fictives.</p><form id="demo-contact-form"><div class="demo-contact-grid"><label>Prénom *<input name="first" autocomplete="off" maxlength="70" required placeholder="Votre prénom"></label><label>Nom *<input name="last" autocomplete="off" maxlength="70" required placeholder="Votre nom"></label><label>Téléphone *<input name="phone" type="tel" maxlength="30" required placeholder="+33 6…"></label><label>Email *<input name="email" type="email" maxlength="150" required placeholder="vous@exemple.fr"></label><label class="is-wide">Informations utiles (facultatif)<textarea name="note" rows="3" maxlength="500" placeholder="Allergie, anniversaire, poussette, demande particulière…"></textarea></label></div><label class="demo-consent"><input name="consent" type="checkbox" required><span>J’accepte l’utilisation de ces informations pour cette réservation de démonstration. Aucune demande n’est envoyée au restaurant.</span></label><button type="submit" class="demo-submit">Confirmer cette réservation</button><p class="demo-validation" id="demo-contact-error" aria-live="polite"></p></form></div><aside class="demo-contact-summary"><h3>Votre réservation</h3><p><span>Date</span><strong>'+esc(dateLong(booking.date))+'</strong></p><p><span>Service</span><strong>'+(booking.service==='lunch'?'Déjeuner':'Dîner')+'</strong></p><p><span>Horaire</span><strong>'+esc(booking.time)+'</strong></p><p><span>Personnes</span><strong>'+booking.pax+'</strong></p><address>Le Village · 4 place du Château<br>06800 Cagnes-sur-Mer</address></aside></div>';
