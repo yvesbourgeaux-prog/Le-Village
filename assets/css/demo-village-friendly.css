@@ -257,3 +257,33 @@ body.lv-demo-admin #lv-demo-app .lv-extra-screen .lv-two-col{gap:15px}
  body.lv-demo-admin #lv-demo-app .lv-paper{padding:17px!important}
  body.lv-demo-admin #lv-demo-app .lv-week-service .lv-form-grid{grid-template-columns:1fr 1fr!important}
 }
+
+/* Communication starts with welcoming actions, not intimidating editor grids. */
+body.lv-demo-admin #lv-demo-app .lv-compose-fold{
+ display:block;min-width:0;border:1px solid #ebdfcf;border-radius:16px;
+ background:linear-gradient(140deg,#fffdf9,#fbf6f0);
+ overflow:hidden;align-self:start;
+}
+body.lv-demo-admin #lv-demo-app .lv-compose-fold>summary{
+ list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;
+ min-height:100px;padding:20px 21px;transition:background .2s;
+}
+body.lv-demo-admin #lv-demo-app .lv-compose-fold>summary::-webkit-details-marker{display:none}
+body.lv-demo-admin #lv-demo-app .lv-compose-fold>summary:hover{background:#fbf2e6}
+body.lv-demo-admin #lv-demo-app .lv-compose-plus{
+ display:grid;place-items:center;flex:0 0 42px;width:42px;height:42px;
+ background:#f0e5d8;border-radius:13px;color:#9c7752;font:300 26px Lato,sans-serif;
+}
+body.lv-demo-admin #lv-demo-app .lv-compose-fold>summary strong{display:block;font:700 14px Lato,sans-serif;color:#6b5039}
+body.lv-demo-admin #lv-demo-app .lv-compose-fold>summary small{display:block;margin-top:5px;font:400 12px/1.45 Lato,sans-serif;color:#9c8f82}
+body.lv-demo-admin #lv-demo-app .lv-compose-fold[open]>summary{border-bottom:1px solid #eee2d5}
+body.lv-demo-admin #lv-demo-app .lv-compose-fold[open]>summary .lv-compose-plus{transform:rotate(45deg)}
+body.lv-demo-admin #lv-demo-app .lv-compose-fold>.lv-form{padding:20px;box-shadow:none!important;border:0!important;border-radius:0!important;background:#fff!important}
+body.lv-demo-admin #lv-demo-app #admin-communication>.lv-subnav{margin-bottom:16px!important}
+body.lv-demo-admin #lv-demo-app #admin-communication .lv-two-col{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)!important;align-items:start}
+body.lv-demo-admin #lv-demo-app #admin-templates>.lv-two-col{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)!important}
+body.lv-demo-admin #lv-demo-app .lv-compose-fold:not([open]){box-shadow:0 9px 26px #8568460e}
+@media(max-width:1150px){
+ body.lv-demo-admin #lv-demo-app #admin-communication .lv-two-col,
+ body.lv-demo-admin #lv-demo-app #admin-templates>.lv-two-col{grid-template-columns:1fr!important}
+}
