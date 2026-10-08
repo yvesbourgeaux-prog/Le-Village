@@ -190,16 +190,27 @@ function renderCalendar(){
  $$('[data-admin-day]').forEach(b=>b.onclick=()=>{selectedAdminDate=b.dataset.adminDay;$('#admin-date').value=selectedAdminDate;$('#admin-date-title').textContent=fmtDate(selectedAdminDate,true);renderCalendar();renderReservations()});
 }
 function renderReservations(){
- const all=reservations.filter(r=>r.date===selectedAdminDate),list=all.filter(r=>serviceFilter==='all'||r.service===serviceFilter);
- $('#kpi-covers').textContent=all.reduce((s,r)=>s+r.pax,0);$('#kpi-bookings').textContent=all.length;$('#kpi-lunch').textContent=all.filter(r=>r.service==='lunch').reduce((s,r)=>s+r.pax,0);$('#kpi-dinner').textContent=all.filter(r=>r.service==='dinner').reduce((s,r)=>s+r.pax,0);
- $('#reservation-list').innerHTML=list.length?list.sort((a,b)=>a.time.localeCompare(b.time)).map(r=>'<article class="reservation-card" data-res-id="'+r.id+'"><div class="time">'+esc(r.time)+'</div><div><strong>'+esc(r.last.toUpperCase())+' '+esc(r.first)+'</strong><small>'+(r.note?'💬 '+esc(r.note):r.service==='lunch'?'Déjeuner':'Dîner')+'</small></div><span class="pax-badge">🍴 '+r.pax+'</span></article>').join(''):'<div class="empty-state">Aucune réservation sur ce service.</div>';
+ const all=reservations.filter(r=>r.date===selectedAdminDate),active=all.filter(r=>r.status!=='cancelled'),list=all.filter(r=>serviceFilter==='all'||r.service===serviceFilter);
+ $('#kpi-covers').textContent=active.reduce((s,r)=>s+r.pax,0);$('#kpi-bookings').textContent=active.length;$('#kpi-lunch').textContent=active.filter(r=>r.service==='lunch').reduce((s,r)=>s+r.pax,0);$('#kpi-dinner').textContent=active.filter(r=>r.service==='dinner').reduce((s,r)=>s+r.pax,0);
+ $('#reservation-list').innerHTML=list.length?list.sort((a,b)=>a.time.localeCompare(b.time)).map(r=>'<article class="reservation-card" data-res-id="'+r.id+'"><div class="time">'+esc(r.time)+'</div><div><strong>'+esc(r.last.toUpperCase())+' '+esc(r.first)+'</strong><small>'+(r.status==='cancelled'?'Annulée':(r.note?'Note : '+esc(r.note):r.service==='lunch'?'Déjeuner':'Dîner'))+'</small></div><span class="pax-badge">🍴 '+r.pax+'</span></article>').join(''):'<div class="empty-state">Aucune réservation sur ce service.</div>';
  $$('[data-res-id]').forEach(el=>el.onclick=()=>openDetail(el.dataset.resId));
 }
 function openDetail(id){
  const r=reservations.find(x=>x.id===id);if(!r)return;
  const prev=reservations.filter(x=>x.email===r.email||x.phone===r.phone);
- $('#detail-content').innerHTML='<div class="detail-wrap"><div class="detail-head"><div><p class="eyebrow">Réservation confirmée</p><h2>'+esc(r.first)+' '+esc(r.last)+'</h2></div><button data-close-detail>×</button></div><div class="detail-meta"><div><span>Date</span><strong>'+esc(fmtDate(r.date))+'</strong></div><div><span>Horaire</span><strong>'+esc(r.time)+'</strong></div><div><span>Couverts</span><strong>'+r.pax+'</strong></div></div><div class="detail-section"><h3>Coordonnées</h3><p>📞 <a href="tel:'+esc(r.phone.replace(/\s/g,''))+'">'+esc(r.phone)+'</a><br>✉️ <a href="mailto:'+esc(r.email)+'">'+esc(r.email)+'</a></p></div><div class="detail-section"><h3>Note de réservation</h3><p>'+(r.note?esc(r.note):'Aucune note')+'</p></div><div class="detail-section"><h3>Historique client</h3><p><strong>'+prev.length+'</strong> réservation'+(prev.length>1?'s':'')+' dans cette démonstration.</p></div></div>';
- $('#detail-dialog').showModal();$('[data-close-detail]').onclick=()=>$('#detail-dialog').close();
+ const confirmed=prev.filter(x=>x.status!=='cancelled').length,cancelled=prev.filter(x=>x.status==='cancelled').length;
+ $('#detail-content').innerHTML='<div class="demo-detail"><header class="demo-detail-top"><div><small>'+(r.status==='cancelled'?'ANNULÉE':'CONFIRMÉE')+'</small><h2>'+esc(r.first)+' '+esc(r.last)+'</h2></div><button type="button" data-close-detail aria-label="Fermer">×</button></header><nav class="demo-detail-tabs"><button class="is-active" type="button" data-detail-tab="reservation">Réservation</button><button type="button" data-detail-tab="client">Client</button></nav><section class="demo-detail-body" id="detail-reservation"><div class="demo-detail-facts"><div><label>Date</label><strong>'+esc(fmtDate(r.date,true))+'</strong></div><div><label>Horaire</label><strong>'+esc(r.time)+'</strong></div><div><label>Nombre de couverts</label><strong>'+r.pax+'</strong></div><div><label>Service</label><strong>'+(r.service==='lunch'?'Déjeuner':'Dîner')+'</strong></div></div><div class="demo-detail-section"><h3>Note de réservation</h3><p>'+(r.note?esc(r.note):'Aucune demande particulière')+'</p></div><div class="demo-detail-section"><h3>Statut</h3><p>'+(r.status==='cancelled'?'Réservation annulée':'Réservation confirmée')+'</p><button type="button" class="demo-status-button" data-toggle-status>'+(r.status==='cancelled'?'Réactiver cette réservation':'Annuler cette réservation')+'</button></div></section><section class="demo-detail-body" id="detail-client" hidden><div class="demo-client-stats"><div><small>Réservations</small><strong>'+confirmed+'</strong></div><div><small>Annulées</small><strong>'+cancelled+'</strong></div><div><small>No-show</small><strong>0</strong></div></div><div class="demo-detail-section"><h3>Informations client</h3><p><strong>'+esc(r.first)+' '+esc(r.last)+'</strong></p><p>Téléphone : <a href="tel:'+esc(r.phone.replace(/\\s/g,''))+'">'+esc(r.phone)+'</a></p><p>Email : <a href="mailto:'+esc(r.email)+'">'+esc(r.email)+'</a></p></div><div class="demo-detail-section"><h3>Historique</h3><p>'+prev.length+' réservation'+(prev.length>1?'s':'')+' enregistrée'+(prev.length>1?'s':'')+' dans cette démonstration.</p></div></section></div>';
+ $('#detail-dialog').showModal();
+ $('[data-close-detail]').onclick=()=>$('#detail-dialog').close();
+ $$('[data-detail-tab]').forEach(button=>button.onclick=()=>{
+  $$('[data-detail-tab]').forEach(b=>b.classList.toggle('is-active',b===button));
+  $('#detail-reservation').hidden=button.dataset.detailTab!=='reservation';
+  $('#detail-client').hidden=button.dataset.detailTab!=='client';
+ });
+ $('[data-toggle-status]').onclick=()=>{
+  r.status=r.status==='cancelled'?'confirmed':'cancelled';save('lv-demo-reservations-v2',reservations);
+  $('#detail-dialog').close();renderReservations();renderClients();renderCalendar();
+ };
 }
 function renderClients(){
  const q=($('#client-search')?.value||'').toLowerCase(),map=new Map();
