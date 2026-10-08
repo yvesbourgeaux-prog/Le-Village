@@ -9,6 +9,7 @@ let templates=load('templates',[
  {id:'sms-remind',name:'Rappel de réservation',channel:'sms',subject:'',body:'Bonjour {prénom}, nous vous attendons demain à {heure} au Village. À bientôt !'}
 ]);
 let campaigns=load('campaigns',[]);
+let segments=load('segments',[]);
 let automations=load('automations',[
  {id:'rule-confirm',name:'Confirmation de réservation',channel:'email',timing:'À la réservation',template:'mail-confirm',enabled:true},
  {id:'rule-reminder',name:'Rappel de la réservation',channel:'sms',timing:'La veille',template:'sms-remind',enabled:false},
@@ -16,13 +17,40 @@ let automations=load('automations',[
 ]);
 const countRecipients=(segment,channel)=>{
  const cs=allClients();
+ const saved=segment.startsWith('seg:')?segments.find(s=>s.id===segment.slice(4)):null;
  return cs.filter(c=>{
-  if(segment==='visited'&&!(c.visits>0))return false;
-  if(segment==='email'&&!c.consentEmail)return false;
-  if(segment==='sms'&&!c.consentSms)return false;
+  if(channel==='email'&&!c.consentEmail||channel==='sms'&&!c.consentSms)return false;
+  if(saved){
+   if(saved.consent==='email'&&!c.consentEmail||saved.consent==='sms'&&!c.consentSms)return false;
+   if(saved.activity==='visited'&&!(c.visits>0)||saved.activity==='new'&&c.visits>0)return false;
+   if(saved.tag&&!(c.tags||'').toLowerCase().includes(saved.tag.toLowerCase()))return false;
+  }else if(segment==='visited'&&!(c.visits>0))return false;
+  else if(segment==='email'&&!c.consentEmail||segment==='sms'&&!c.consentSms)return false;
   return channel==='email'?Boolean(c.email):Boolean(c.phone);
  }).length;
 };
+function renderSegments(){
+ $('#lv-segment-list').innerHTML=segments.length?segments.map(seg=>
+  '<div class="lv-item"><div><strong>'+esc(seg.name)+'</strong><small>'+esc(seg.activity)+' · '+esc(seg.consent)+' · '+esc(seg.tag||'Tous les tags')+'</small></div><button type="button" class="lv-text-action" data-delete-segment="'+esc(seg.id)+'">Retirer</button></div>'
+ ).join(''):'<div class="lv-empty">Aucun segment enregistré.</div>';
+ ['email','sms'].forEach(channel=>{
+  const select=$('#lv-'+channel+'-form [name="segment"]');
+  if(!select)return;
+  const current=select.value;
+  Array.from(select.querySelectorAll('[data-stored-segment]')).forEach(o=>o.remove());
+  segments.forEach(seg=>{const option=document.createElement('option');option.value='seg:'+seg.id;option.textContent=seg.name;option.dataset.storedSegment='';select.append(option)});
+  if(Array.from(select.options).some(o=>o.value===current))select.value=current;
+ });
+}
+register('segments',renderSegments);
+$('#lv-segment-form').addEventListener('submit',e=>{
+ e.preventDefault();segments.push({id:id(),...formVals(e.target)});save('segments',segments);e.target.reset();renderSegments();notify('Segment ajouté dans la démo.');
+});
+$('#lv-segment-list').addEventListener('click',e=>{
+ const b=e.target.closest('[data-delete-segment]');if(!b)return;
+ segments=segments.filter(seg=>seg.id!==b.dataset.deleteSegment);
+ save('segments',segments);renderSegments();notify('Segment supprimé.');
+});
 function options(channel){return '<option value="">Choisir un modèle…</option>'+templates.filter(t=>t.channel===channel).map(t=>'<option value="'+esc(t.id)+'">'+esc(t.name)+'</option>').join('')}
 function renderTemplates(){
  $('#lv-template-list').innerHTML=templates.length?templates.map(t=>
@@ -73,8 +101,8 @@ function renderCampaigns(channel){
   '<div class="lv-item"><div><strong>'+esc(c.name||'Campagne sans nom')+'</strong><small>'+esc(c.subject||c.body.slice(0,55))+' · '+esc(c.status)+'</small></div><button type="button" class="lv-text-action" data-delete-campaign="'+esc(c.id)+'">Retirer</button></div>'
  ).join(''):'<div class="lv-empty">Aucune campagne enregistrée.</div>';
 }
-register('email',()=>{renderTemplates();updatePreview();renderCampaigns('email')});
-register('sms',()=>{renderTemplates();updateSmsCount();renderCampaigns('sms')});
+register('email',()=>{renderSegments();renderTemplates();updatePreview();renderCampaigns('email')});
+register('sms',()=>{renderSegments();renderTemplates();updateSmsCount();renderCampaigns('sms')});
 ['email','sms'].forEach(channel=>{
  const form=$('#lv-'+channel+'-form');
  form.addEventListener('click',e=>{
