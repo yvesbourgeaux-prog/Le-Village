@@ -369,7 +369,7 @@ body.lv-demo-admin #lv-demo-app .admin-calendar .calendar-day:after{display:none
    The module is not visible until the user clicks its launcher. */
 #lv-demo-app .booking-dialog[open]:not(.is-contact){
  animation:none!important;
- transform:none!important;
+ transform:none;
  opacity:1;
  transform-origin:100% 100%;
 }
