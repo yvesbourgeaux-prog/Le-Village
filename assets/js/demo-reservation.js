@@ -189,7 +189,7 @@ function renderWeekStrip(){
    +'<span class="week-day-bars"><i style="--fill:'+Math.min(lunch/24,1)*100+'%"></i><i style="--fill:'+Math.min(dinner/30,1)*100+'%"></i></span></button>';
  }
  $('#admin-week-strip').innerHTML=html;
- $('[data-week-day]').forEach(b=>b.onclick=()=>{
+ $$('[data-week-day]').forEach(b=>b.onclick=()=>{
   selectedAdminDate=b.dataset.weekDay;
   calendarCursor=new Date(selectedAdminDate+'T12:00:00');
   renderAdmin();
