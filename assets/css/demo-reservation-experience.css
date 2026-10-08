@@ -362,3 +362,30 @@ body.lv-demo-admin #lv-demo-app .admin-calendar .calendar-day:after{display:none
   animation:none!important;transition:none!important;
  }
 }
+
+
+/* Zenchef opening reference, 08 Oct 2026: short horizontal slide from right,
+   fading into a bottom-right anchored compact box. No zoom or vertical reveal.
+   The module is not visible until the user clicks its launcher. */
+#lv-demo-app .booking-dialog[open]:not(.is-contact){
+ animation:none!important;
+ transform:none!important;
+ opacity:1;
+ transform-origin:100% 100%;
+}
+#lv-demo-app .booking-dialog[open].is-opening:not(.is-contact){
+ animation:lv-zenchef-opening-slide 310ms cubic-bezier(.2,.78,.28,1) both!important;
+ will-change:transform,opacity;
+}
+@keyframes lv-zenchef-opening-slide{
+ 0%{opacity:0;transform:translate3d(56px,0,0)}
+ 30%{opacity:.5;transform:translate3d(31px,0,0)}
+ 70%{opacity:.96;transform:translate3d(5px,0,0)}
+ 100%{opacity:1;transform:translate3d(0,0,0)}
+}
+@media(prefers-reduced-motion:reduce){
+ #lv-demo-app .booking-dialog[open].is-opening:not(.is-contact){
+  animation:none!important;
+  will-change:auto;
+ }
+}
