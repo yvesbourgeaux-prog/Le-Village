@@ -59,11 +59,11 @@ $head = '<meta name="robots" content="noindex,nofollow,noarchive"/><title>Démo 
  . '<link href="/assets/css/demo-reservation-admin.css?v=20261008-video-audit2" rel="stylesheet"/>'
  . '<link href="/assets/css/demo-reservation-v2.css?v=20261008-video-audit2" rel="stylesheet"/>'
  . '<link href="/assets/css/demo-reservation-refine.css?v=20261008-video-audit2" rel="stylesheet"/>'
- . '<link href="/assets/css/demo-reservation-experience.css?v=20261009-opening2" rel="stylesheet"/>'
+ . '<link href="/assets/css/demo-reservation-experience.css?v=20261009-opening3" rel="stylesheet"/>'
  . '<link rel="stylesheet" href="/assets/css/demo-backoffice.css?v=20261008-rts2"/>'
  . '<link rel="stylesheet" href="/assets/css/demo-village-friendly.css?v=20261009-ux3"/>'
  . '<link rel="stylesheet" href="/assets/css/demo-village-schedule.css?v=20261009-weekly2"/>'
- . '<script defer src="/assets/js/demo-reservation.js?v=20261009-opening2"></script>'
+ . '<script defer src="/assets/js/demo-reservation.js?v=20261009-opening3"></script>'
  . '<script defer src="/assets/js/demo-backoffice-core.js?v=20261009-weekly2"></script>'
  . '<script defer src="/assets/js/demo-backoffice-comms.js?v=20261009-ux3"></script>'
  . '<script defer src="/assets/js/demo-booking-launcher.js?v=20261009-ux3"></script>';// Update the consent panel copy: the private demo never uses Zenchef.
