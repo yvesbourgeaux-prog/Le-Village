@@ -73,17 +73,17 @@ $demo = <<<'DEMO_HTML'
   <div id="showcase" class="view is-active" aria-hidden="true"></div>
     <section id="admin" class="view admin-shell" hidden>
       <aside class="admin-nav">
-        <div class="admin-logo"><span>LV</span><b>Réservations</b></div>
-        <button data-admin-tab="planning" class="is-active">Planning</button>
-        <button data-admin-tab="clients">Clients</button>
-        <button data-admin-tab="settings">Paramètres</button>
+        <div class="admin-logo"><span>LV</span><div><b>Le Village</b><small>Espace réservations</small></div></div>
+        <button type="button" data-admin-tab="planning" class="is-active">Planning & réservations</button>
+        <button type="button" data-admin-tab="clients">Fichier clients</button>
+        <button type="button" data-admin-tab="settings">Paramètres</button>
         <button data-go="showcase">Voir le module client</button>
       </aside>
       <div class="admin-main">
         <div class="demo-admin-warning">PROTOTYPE — Les réservations et réglages sont enregistrés uniquement dans ce navigateur. Aucune donnée n’est envoyée au restaurant.</div><div id="admin-planning" class="admin-tab is-active">
           <div class="admin-head">
-            <div><p class="eyebrow">Planning & réservations</p><h1 id="admin-date-title">Aujourd’hui</h1></div>
-            <div class="admin-head-actions"><input id="admin-date" type="date"><button class="primary small" data-new-reservation>+ Réservation</button></div>
+            <div><p class="eyebrow">LE VILLAGE · GESTION DES TABLES</p><h1 id="admin-date-title">Aujourd’hui</h1><p class="admin-head-caption">Vue unifiée du calendrier et des réservations</p></div>
+            <div class="admin-head-actions"><button type="button" class="day-nav" data-day-shift="-1" aria-label="Jour précédent">‹</button><input id="admin-date" type="date" aria-label="Date du planning"><button type="button" class="day-nav" data-day-shift="1" aria-label="Jour suivant">›</button><button type="button" class="today-link" data-admin-today>Aujourd’hui</button><button type="button" class="primary small" data-new-reservation>Nouvelle réservation</button></div>
           </div>
           <div class="kpi-row">
             <article><span>Couverts</span><strong id="kpi-covers">0</strong></article>
@@ -93,24 +93,24 @@ $demo = <<<'DEMO_HTML'
           </div>
           <div class="admin-grid">
             <section class="calendar-panel">
-              <div class="panel-title"><h2>Calendrier</h2><div><button data-month="-1">‹</button><strong id="month-title"></strong><button data-month="1">›</button></div></div>
+              <div class="panel-title"><h2>Calendrier des services</h2><div><button data-month="-1">‹</button><strong id="month-title"></strong><button data-month="1">›</button></div></div>
               <div class="calendar-week"><span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span></div>
-              <div id="admin-calendar" class="admin-calendar"></div>
+              <div id="admin-calendar" class="admin-calendar"></div><p class="admin-calendar-help">Touchez une date pour afficher les réservations du jour.</p>
             </section>
             <section class="reservations-panel">
-              <div class="panel-title"><h2>Réservations du jour</h2><div class="service-filter"><button data-service-filter="all" class="is-active">Tous</button><button data-service-filter="lunch">Déjeuner</button><button data-service-filter="dinner">Dîner</button></div></div>
-              <div id="reservation-list" class="reservation-list"></div>
+              <div class="panel-title"><h2>Réservations du jour</h2><div class="service-filter" aria-label="Filtrer par service"><button data-service-filter="all" class="is-active">Tous</button><button data-service-filter="lunch">Déjeuner</button><button data-service-filter="dinner">Dîner</button></div></div>
+              <div id="service-summary" class="service-summary"></div><label class="admin-search-wrap"><span>Rechercher dans les réservations</span><input type="search" id="reservation-search" placeholder="Nom ou téléphone…" autocomplete="off"></label><div id="reservation-list" class="reservation-list"></div>
             </section>
           </div>
         </div>
 
         <div id="admin-clients" class="admin-tab" hidden>
-          <div class="admin-head"><div><p class="eyebrow">Fichier clients</p><h1>Clients</h1></div><input id="client-search" class="search" placeholder="Rechercher un client…"></div>
+          <div class="admin-head"><div><p class="eyebrow">RELATION CLIENT</p><h1>Fichier clients</h1><p class="admin-head-caption">Coordonnées et historique réunis sur une fiche</p></div><input id="client-search" class="search" placeholder="Rechercher un client…"></div>
           <div id="client-list" class="client-list"></div>
         </div>
 
         <div id="admin-settings" class="admin-tab" hidden>
-          <div class="admin-head"><div><p class="eyebrow">Configuration</p><h1>Paramètres de réservation</h1></div><button id="save-settings" class="primary small">Enregistrer</button></div>
+          <div class="admin-head"><div><p class="eyebrow">CONFIGURATION DES SERVICES</p><h1>Paramètres de réservation</h1><p class="admin-head-caption">Ajustez les plages horaires et les capacités de chaque service</p></div><button id="save-settings" class="primary small">Enregistrer</button></div>
           <div class="settings-grid">
             <section class="settings-card"><h2>Capacité & règles</h2>
               <label>Maximum en ligne par réservation<input id="set-max-party" type="number" min="1" max="6"></label>
