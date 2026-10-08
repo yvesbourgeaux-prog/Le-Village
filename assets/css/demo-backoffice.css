@@ -123,3 +123,20 @@ body.lv-demo-admin #lv-demo-app .lv-editor-head h2{font:700 21px Lato,sans-serif
  body.lv-demo-admin #lv-demo-app .lv-client-filter{gap:9px}
  body.lv-demo-admin #lv-demo-app .lv-client-filter label{flex:1;min-width:135px}
 }
+
+body.lv-demo-admin #lv-demo-app .lv-client-editor{width:min(610px,calc(100vw - 22px));max-width:none;max-height:90dvh;overflow-y:auto;border:0;border-radius:17px;box-shadow:0 25px 70px #223f4c44;background:#fff;color:#334651;padding:24px}
+body.lv-demo-admin #lv-demo-app .lv-client-editor .lv-editor-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:10px}
+body.lv-demo-admin #lv-demo-app .lv-client-editor h2{font:700 21px Lato,Arial,sans-serif;color:#334b58;margin:0}
+body.lv-demo-admin #lv-demo-app .lv-client-editor .lv-form{display:grid;gap:14px}
+body.lv-demo-admin #lv-demo-app .lv-client-history{display:grid;gap:6px}
+body.lv-demo-admin #lv-demo-app .lv-client-history>div{background:#f8fafb;border:1px solid #e9edef;border-radius:8px;padding:10px;font-size:12px;color:#687981}
+body.lv-demo-admin #lv-demo-app .lv-manual-dialog{width:min(660px,calc(100vw - 22px))}
+body.lv-demo-admin #lv-demo-app .lv-panel-eyebrow{font:700 10px Lato,sans-serif;color:#a2aab0;letter-spacing:.1em}
+@media(max-width:790px){
+ body.lv-demo-admin #lv-demo-app .lv-extra-nav-bottom{display:flex;flex-direction:row;border:0;padding-top:0;margin:8px 0 0;gap:6px}
+ body.lv-demo-admin #lv-demo-app .admin-nav .lv-extra-nav-bottom button,body.lv-demo-admin #lv-demo-app .admin-nav .lv-extra-nav-bottom a{width:auto!important;padding:5px 9px!important;font-size:10px!important;color:#8a979e!important}
+}
+@media(max-width:490px){
+ body.lv-demo-admin #lv-demo-app .lv-client-editor{padding:17px}
+ body.lv-demo-admin #lv-demo-app .lv-client-editor .lv-form-grid{grid-template-columns:1fr}
+}
