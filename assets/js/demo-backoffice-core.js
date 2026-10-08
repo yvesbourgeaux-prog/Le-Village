@@ -211,39 +211,65 @@ $('.demo-switchbar [data-go="admin"]')?.addEventListener('click',()=>show('plann
 const renderers={};const render=name=>{if(renderers[name])renderers[name]()};
 const register=(name,fn)=>{renderers[name]=fn};
 window.lvBOExtra={register,render,show,esc,notify,id,allClients,formVals,load,save,prefs:()=>prefs};
-function renderSchedule(){
- const target=$('#lv-schedule-week');
- target.innerHTML=names.map((name,i)=>{
-  const ss=['lunch','dinner'].map(service=>{
-   const c=week[i][service];
-   return '<div class="lv-week-service"><label class="lv-check"><input type="checkbox" data-day="'+i+'" data-service="'+service+'" data-field="on" '+(c.on?'checked':'')+'><strong>'+(service==='lunch'?'Déjeuner':'Dîner')+'</strong></label><div class="lv-form-grid"><label>Début<input type="time" data-day="'+i+'" data-service="'+service+'" data-field="start" value="'+esc(c.start)+'"></label><label>Fin<input type="time" data-day="'+i+'" data-service="'+service+'" data-field="end" value="'+esc(c.end)+'"></label><label>Intervalle<select data-day="'+i+'" data-service="'+service+'" data-field="interval">'+[15,30,60].map(n=>'<option value="'+n+'" '+(Number(c.interval)===n?'selected':'')+'>'+n+' min</option>').join('')+'</select></label><label>Couverts / créneau<input type="number" min="0" data-day="'+i+'" data-service="'+service+'" data-field="capacity" value="'+esc(c.capacity)+'"></label></div></div>';
-  }).join('');
-  return '<details class="lv-weekday" '+(i===new Date().getDay()?'open':'')+'><summary><strong>'+name+'</strong><span>'+[week[i].lunch.on?'Midi':'',week[i].dinner.on?'Soir':''].filter(Boolean).join(' · ')+'</span></summary>'+ss+'</details>';
+// The schedule mirrors the familiar Ramen workflow: day, service, then each arrival.
+const openedDays=new Set(),openedServices=new Set(),openedSlots=new Set();
+const maxValue=(v,limit=6)=>Math.max(1,Math.min(limit,Number(v)||limit));
+const timeOptions=cfg=>{
+ const start=toMinutes(cfg.start),end=toMinutes(cfg.end),step=Number(cfg.interval)||30;
+ if(!Number.isFinite(start)||!Number.isFinite(end)||start>end)return[];
+ const arr=[];
+ for(let t=start;t<=end&&arr.length<48;t+=step){
+  arr.push(String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0'));
+ }
+ return arr;
+};
+function daySummary(day){
+ const parts=['lunch','dinner'].map(s=>{
+  const cfg=day[s];
+  if(!day.active||!cfg.on||cfg.restaurantOpen===false)return null;
+  return (s==='lunch'?'Midi':'Soir')+' : '+cfg.open+'–'+cfg.close;
+ }).filter(Boolean);
+ return parts.length?parts.join(' · '):'Aucune réservation ouverte';
+}
+function serviceEditor(dayIndex,service){
+ const day=week[dayIndex],cfg=day[service],id=dayIndex+'-'+service;
+ const expanded=openedServices.has(id),times=timeOptions(cfg),title=service==='lunch'?'Midi':'Soir';
+ const choice=(key,type,label,value,extra='')=>'<label class="lv-rts-field">'+label+'<input type="'+type+'" data-day="'+dayIndex+'" data-service="'+service+'" data-field="'+key+'" value="'+esc(value)+'" '+extra+'></label>';
+ const check=(key,label,enabled)=>'<label class="lv-rts-check"><input type="checkbox" data-day="'+dayIndex+'" data-service="'+service+'" data-field="'+key+'" '+(enabled?'checked':'')+'>'+label+'</label>';
+ const slotRows=times.map(time=>{
+  const override=cfg.perSlot?.[time]||{};
+  const cap=override.capacity??cfg.capacity,pax=override.maxParty??day.maxParty;
+  return '<div class="lv-rts-slot"><strong>'+esc(time)+'</strong><label>Capacité du créneau<input type="number" data-slot-field="capacity" data-day="'+dayIndex+'" data-service="'+service+'" data-time="'+time+'" min="0" max="300" value="'+esc(cap)+'"></label><label>Personnes par réservation<input type="number" data-slot-field="maxParty" data-day="'+dayIndex+'" data-service="'+service+'" data-time="'+time+'" min="1" max="'+day.maxParty+'" value="'+esc(Math.min(day.maxParty,pax))+'"></label></div>';
  }).join('');
- // Visual-first service cards: only the selected day reveals its detailed fields.
- Array.from(target.querySelectorAll('.lv-weekday')).forEach((row,i)=>{
-  const summary=row.querySelector('summary'),day=week[i];
-  if(summary){
-   const serviceLabel=(type,title)=>{
-    const cfg=day[type];
-    return cfg.on&&cfg.restaurantOpen!==false
-     ?'<span class="lv-service-chip">'+title+' <b>'+esc(cfg.start)+' – '+esc(cfg.end)+'</b></span>'
-     :'<span class="lv-service-chip is-off">'+title+' fermé</span>';
-   };
-   summary.innerHTML='<span class="lv-day-monogram">'+names[i].slice(0,2)+'</span><span class="lv-day-description"><strong>'+names[i]+'</strong><span class="lv-day-preview">'+serviceLabel('lunch','Midi')+serviceLabel('dinner','Soir')+'</span></span><span class="lv-expand-hint">Modifier</span>';
-  }
-  Array.from(row.querySelectorAll('.lv-week-service')).forEach((serviceEl,j)=>{
-   const type=j===0?'lunch':'dinner',cfg=day[type];
-   const label=serviceEl.querySelector('.lv-check');
-   if(!label||serviceEl.querySelector('[data-field="restaurantOpen"]'))return;
-   const open=document.createElement('label');open.className='lv-check lv-restaurant-open';
-   open.innerHTML='<input type="checkbox" data-day="'+i+'" data-service="'+type+'" data-field="restaurantOpen" '+(cfg.restaurantOpen!==false?'checked':'')+'> Restaurant ouvert';
-   label.insertAdjacentElement('afterend',open);
-   label.appendChild(document.createTextNode(' · Réservations'));
-  });
- });
- const list=(sel,items,kind)=>{$(sel).innerHTML=items.length?items.map(it=>'<div class="lv-item"><div><strong>'+esc(it.name)+'</strong><small>'+(kind==='special'?esc(it.repeat)+' · '+esc(it.start)+'–'+esc(it.end):esc(it.start)+' → '+esc(it.end))+'</small></div><button type="button" class="lv-text-action" data-remove="'+kind+'" data-id="'+esc(it.id)+'">Retirer</button></div>').join(''):'<p class="lv-muted">Aucun élément enregistré.</p>'};
- list('#lv-special-list',specials,'special');list('#lv-closure-list',closures,'closure');
+ const intervalSelect='<label class="lv-rts-field">Une réservation toutes les<select data-day="'+dayIndex+'" data-service="'+service+'" data-field="interval">'+[15,30,60].map(n=>'<option value="'+n+'" '+(Number(cfg.interval)===n?'selected':'')+'>'+n+' minutes</option>').join('')+'</select></label>';
+ return '<section class="lv-rts-service '+(expanded?'is-expanded':'')+'" data-rts-service="'+id+'">'
+  +'<button type="button" class="lv-rts-service-summary" data-open-service="'+id+'" aria-expanded="'+expanded+'"><strong>'+title+'</strong><span>Arrivées '+esc(cfg.start)+'–'+esc(cfg.end)+' · toutes les '+esc(cfg.interval)+' minutes</span><em>'+(expanded?'Terminer':'Modifier')+'</em></button>'
+  +'<div class="lv-rts-service-content" '+(expanded?'':'hidden')+'>'
+  +'<div class="lv-rts-channel-checks">'+check('restaurantOpen','Sur place',cfg.restaurantOpen!==false)+check('on','Réservations habituelles',cfg.on!==false)+'</div>'
+  +'<div class="lv-rts-field-grid">'+choice('open','time','Ouverture',cfg.open)+choice('close','time','Fermeture',cfg.close)+choice('start','time','Première arrivée',cfg.start)+choice('end','time','Dernière arrivée',cfg.end)+intervalSelect+choice('capacity','number','Capacité totale du créneau',cfg.capacity,'min="0" max="300"')+'</div>'
+  +'<p class="lv-rts-hint">Limite à chaque heure d’arrivée. Pensez aux clients encore à table des créneaux précédents.</p>'
+  +'<p class="lv-rts-arrivals">Arrivées : '+(times.length?times.join(' · '):'Aucun horaire pour les paramètres choisis')+'</p>'
+  +'<div class="lv-rts-slot-editor '+(openedSlots.has(id)?'is-open':'')+'"><button type="button" data-open-slots="'+id+'" aria-expanded="'+openedSlots.has(id)+'" class="lv-rts-slots-toggle"><span class="lv-rts-arrow"></span>Adapter la capacité et la taille des réservations par heure</button>'
+  +'<div class="lv-rts-slot-content" '+(openedSlots.has(id)?'':'hidden')+'><div class="lv-rts-slot-grid">'+(slotRows||'<p>Aucun horaire. Vérifiez les heures d’arrivée.</p>')+'</div></div></div>'
+  +'</div></section>';
+}
+function renderSchedule(){
+ const target=$('#lv-schedule-week');if(!target)return;
+ target.innerHTML=names.map((name,i)=>{
+  const day=week[i],expanded=openedDays.has(i),active=day.active!==false;
+  return '<article class="lv-rts-day '+(expanded?'is-expanded ':'')+(active?'':'is-off')+'" data-rts-day="'+i+'">'
+   +'<header class="lv-rts-day-head"><strong class="lv-rts-day-name">'+name+'</strong>'
+   +'<label class="lv-rts-day-switch"><input type="checkbox" role="switch" aria-label="Activer '+name+'" data-day="'+i+'" data-field="active" '+(active?'checked':'')+'><span class="lv-rts-switch-track" aria-hidden="true"></span><span>'+(active?'Jour actif':'Jour fermé')+'</span></label>'
+   +'<span class="lv-rts-day-preview">'+esc(daySummary(day))+'</span><button type="button" class="lv-rts-day-toggle" aria-expanded="'+expanded+'" data-open-day="'+i+'" aria-label="'+(expanded?'Refermer':'Modifier')+' '+name+'"><span>'+ (expanded?'Refermer':'Modifier')+'</span><span class="lv-rts-chevron" aria-hidden="true"></span></button></header>'
+   +'<div class="lv-rts-day-content" '+(expanded?'':'hidden')+'>'
+   +'<div class="lv-rts-maxparty"><label>Personnes maximum par réservation — toute la journée<input type="number" min="1" max="6" data-day="'+i+'" data-field="maxParty" value="'+day.maxParty+'"></label><p>Applique cette limite au midi, au soir et aux événements de ce jour. Les exceptions par heure peuvent ensuite être ajustées.</p></div>'
+   +'<div class="lv-rts-services">'+serviceEditor(i,'lunch')+serviceEditor(i,'dinner')+'</div></div></article>';
+ }).join('');
+ const renderList=(selector,rows,kind)=>{
+  $(selector).innerHTML=rows.length?rows.map(r=>'<div class="lv-item"><div><strong>'+esc(r.name)+'</strong><small>'+esc(kind==='special'?r.repeat+' · '+r.start+'–'+r.end:r.start+' → '+r.end)+'</small></div><button type="button" class="lv-text-action" data-remove="'+kind+'" data-id="'+esc(r.id)+'">Retirer</button></div>').join(''):'<p class="lv-muted">Aucune période enregistrée.</p>';
+ };
+ renderList('#lv-special-list',specials,'special');
+ renderList('#lv-closure-list',closures,'closure');
 }
 // Forms for exceptional dates stay folded away until requested.
 const scheduleArea=$('#admin-schedule');
@@ -271,8 +297,62 @@ if(closure&&!closure.querySelector('[name="reopen"]')){
  closure.querySelector('[name="block"]')?.closest('label')?.insertAdjacentHTML('afterend','<label class="lv-check"><input type="checkbox" name="hours" checked> Signaler la fermeture dans la démo</label><label class="lv-check"><input type="checkbox" name="banner"> Prévoir un bandeau d’information (simulation)</label>');
 }
 register('schedule',renderSchedule);
-$('#lv-schedule-week').addEventListener('change',e=>{const n=e.target,k=n.dataset.field,day=Number(n.dataset.day),svc=n.dataset.service;if(!Number.isInteger(day)||!svc||!k)return;week[day][svc][k]=['on','restaurantOpen'].includes(k)?n.checked:['interval','capacity'].includes(k)?Number(n.value):n.value});
-$('#lv-save-schedule').onclick=()=>{save('week',week);api.refresh();renderSchedule();notify('Horaires enregistrés dans la démo.')};
+const weekEl=$('#lv-schedule-week');
+weekEl.addEventListener('click',event=>{
+ const dayButton=event.target.closest('[data-open-day]');
+ if(dayButton){
+  const day=Number(dayButton.dataset.openDay);openedDays.has(day)?openedDays.delete(day):openedDays.add(day);renderSchedule();return;
+ }
+ const serviceButton=event.target.closest('[data-open-service]');
+ if(serviceButton){
+  const key=serviceButton.dataset.openService;
+  openedServices.has(key)?openedServices.delete(key):openedServices.add(key);renderSchedule();return;
+ }
+ const slotButton=event.target.closest('[data-open-slots]');
+ if(slotButton){
+  const key=slotButton.dataset.openSlots;
+  openedSlots.has(key)?openedSlots.delete(key):openedSlots.add(key);renderSchedule();
+ }
+});
+weekEl.addEventListener('change',event=>{
+ const input=event.target,dayIndex=Number(input.dataset.day);
+ if(!Number.isInteger(dayIndex)||dayIndex<0||dayIndex>6)return;
+ const day=week[dayIndex],service=input.dataset.service;
+ if(input.dataset.slotField){
+  if(!service||!input.dataset.time)return;
+  const cfg=day[service],time=input.dataset.time;
+  const slot=cfg.perSlot[time]||{capacity:cfg.capacity,maxParty:day.maxParty};
+  slot[input.dataset.slotField]=input.dataset.slotField==='maxParty'?Math.min(day.maxParty,maxValue(input.value)):Math.max(0,Number(input.value)||0);
+  cfg.perSlot[time]=slot;
+  return;
+ }
+ const field=input.dataset.field;
+ if(!field)return;
+ if(field==='active'){day.active=input.checked;renderSchedule();return}
+ if(field==='maxParty'){
+  day.maxParty=maxValue(input.value);
+  for(const kind of ['lunch','dinner']){
+   for(const value of Object.values(day[kind].perSlot)){value.maxParty=Math.min(day.maxParty,maxValue(value.maxParty))}
+  }
+  renderSchedule();return;
+ }
+ if(!service||!day[service])return;
+ const cfg=day[service];
+ cfg[field]=['restaurantOpen','on'].includes(field)?input.checked:['interval','capacity'].includes(field)?Math.max(0,Number(input.value)||0):input.value;
+ renderSchedule();
+});
+$('#lv-save-schedule').onclick=()=>{
+ const errors=[];
+ week.forEach((day,i)=>['lunch','dinner'].forEach(service=>{
+  const cfg=day[service];
+  if(toMinutes(cfg.open)>toMinutes(cfg.close)||toMinutes(cfg.start)>toMinutes(cfg.end)||
+    toMinutes(cfg.start)<toMinutes(cfg.open)||toMinutes(cfg.end)>toMinutes(cfg.close)){
+   errors.push(names[i]+' ('+(service==='lunch'?'midi':'soir')+')');
+  }
+ }));
+ if(errors.length){notify('Vérifiez l’ouverture et les heures d’arrivée pour : '+errors.join(', '));return}
+ save('week',week);api.refresh();renderSchedule();notify('Planning enregistré dans la démo.');
+};
 $('#lv-special-form').addEventListener('submit',e=>{e.preventDefault();const v=formVals(e.target);if(v.start>v.end){notify('Vérifiez les horaires.');return}specials.push({...v,id:id(),weekday:Number(v.weekday),ordinal:Number(v.ordinal),capacity:Number(v.capacity),interval:Number(v.interval)});save('specials',specials);api.refresh();e.target.reset();renderSchedule();notify('Service spécial ajouté.')});
 $('#lv-closure-form').addEventListener('submit',e=>{e.preventDefault();const v=formVals(e.target);if(v.start>v.end){notify('Vérifiez les dates.');return}closures.push({...v,id:id(),block:e.target.elements.block.checked,hours:e.target.elements.hours?.checked??false,banner:e.target.elements.banner?.checked??false});save('closures',closures);api.refresh();e.target.reset();renderSchedule();notify('Fermeture enregistrée.')});
 $('#admin-schedule').addEventListener('click',e=>{const b=e.target.closest('[data-remove]');if(!b)return;if(b.dataset.remove==='special'){specials=specials.filter(v=>v.id!==b.dataset.id);save('specials',specials)}else{closures=closures.filter(v=>v.id!==b.dataset.id);save('closures',closures)}api.refresh();renderSchedule()});
