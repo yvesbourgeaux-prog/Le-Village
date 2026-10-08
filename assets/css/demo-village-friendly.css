@@ -1,0 +1,259 @@
+/* Le Village / Restaurant Manager — friendly private demo design.
+   Brand-neutral hospitality surfaces, warm paper and subtle Grimaldi accents. */
+body.lv-demo-admin #lv-demo-app{
+ --lv-cream:#faf8f4;--lv-white:#fff;--lv-ink:#353735;--lv-muted:#85877f;
+ --lv-border:#ece9e3;--lv-bronze:#956640;--lv-pale:#f2e8dc;
+ color:var(--lv-ink)!important;font:400 14px/1.5 Lato,Arial,sans-serif!important;
+}
+body.lv-demo-admin{background:#faf8f4!important}
+body.lv-demo-admin #lv-demo-app .admin-shell{background:#faf8f4!important}
+body.lv-demo-admin #lv-demo-app .admin-nav{
+ background:#fff!important;border-right:1px solid var(--lv-border)!important;
+ padding:30px 19px 22px!important;width:260px!important;
+ box-shadow:none!important;
+}
+body.lv-demo-admin #lv-demo-app .admin-shell{grid-template-columns:260px minmax(0,1fr)!important}
+body.lv-demo-admin #lv-demo-app .admin-logo{
+ align-items:center!important;gap:12px!important;margin:0 0 30px!important;padding:0 7px!important;
+}
+body.lv-demo-admin #lv-demo-app .admin-logo span{
+ background:#f3ede5!important;color:#815933!important;
+ border:1px solid #e9ddce!important;box-shadow:none!important;
+ width:46px!important;height:46px!important;border-radius:13px!important;
+ font:600 20px 'Playfair Display',Georgia,serif!important;
+}
+body.lv-demo-admin #lv-demo-app .admin-logo b{
+ font:600 19px 'Playfair Display',Georgia,serif!important;color:#4f382b!important;white-space:nowrap;
+}
+body.lv-demo-admin #lv-demo-app .admin-logo small{
+ color:#a29b91!important;font:400 11px Lato,sans-serif!important;margin-top:3px;
+}
+body.lv-demo-admin #lv-demo-app .lv-welcome{
+ margin:0 7px 13px!important;color:#ab9c8c;font:700 10px Lato,sans-serif!important;
+ text-transform:uppercase;letter-spacing:.12em;
+}
+body.lv-demo-admin #lv-demo-app .lv-extra-menu{display:grid!important;flex:0 0 auto;gap:9px!important}
+body.lv-demo-admin #lv-demo-app .lv-menu-entry{width:100%}
+body.lv-demo-admin #lv-demo-app .lv-menu-entry .lv-menu-btn{
+ display:flex!important;align-items:center!important;gap:12px!important;
+ width:100%!important;padding:14px 13px!important;min-height:49px!important;
+ border-radius:12px!important;background:#fff!important;border:1px solid transparent!important;
+ color:#6a645e!important;font:700 13px Lato,sans-serif!important;white-space:normal!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-menu-entry .lv-menu-btn:hover{
+ background:#faf7f3!important;border-color:#eee7dd!important;color:#624a37!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-menu-entry .lv-menu-btn.is-active{
+ background:#f5eee5!important;border-color:#e9d9c8!important;color:#724f30!important;
+ box-shadow:none!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-main-nav-number{
+ display:grid;place-items:center;flex:0 0 27px;width:27px;height:27px;
+ border-radius:9px;background:#f5f2ee;color:#a4a09a;font:700 10px Lato,sans-serif;
+}
+body.lv-demo-admin #lv-demo-app .lv-menu-btn.is-active .lv-main-nav-number{background:#ead8c5;color:#805938}
+body.lv-demo-admin #lv-demo-app .admin-main{
+ max-width:1370px!important;padding:39px clamp(19px,3vw,48px) 65px!important;
+}
+body.lv-demo-admin #lv-demo-app .admin-head h1{
+ color:#4b4139!important;font:600 clamp(30px,3vw,39px)/1.12 'Playfair Display',Georgia,serif!important;
+ letter-spacing:-.015em!important;
+}
+body.lv-demo-admin #lv-demo-app .admin-head .eyebrow{color:#b6a797!important;font-size:10px!important}
+body.lv-demo-admin #lv-demo-app .admin-head-caption{color:#8d8881!important;font:400 13px Lato,sans-serif!important}
+body.lv-demo-admin #lv-demo-app .admin-week-strip{gap:10px!important}
+body.lv-demo-admin #lv-demo-app .week-day{
+ border-radius:16px!important;border:1px solid #eee9e2!important;
+ background:#fff!important;box-shadow:0 5px 20px #5d493409!important;
+ color:#52483e!important;min-height:112px!important;
+}
+body.lv-demo-admin #lv-demo-app .week-day strong{font:600 25px 'Playfair Display',Georgia,serif!important}
+body.lv-demo-admin #lv-demo-app .week-day.is-selected{
+ background:#ecf1f1!important;border-color:#becfcb!important;
+ color:#3f6258!important;box-shadow:0 4px 18px #4b73621c!important;
+}
+body.lv-demo-admin #lv-demo-app .week-day.is-selected .week-day-name,
+body.lv-demo-admin #lv-demo-app .week-day.is-selected .week-day-total{color:#5f8278!important}
+body.lv-demo-admin #lv-demo-app .week-day-bars{display:none!important}
+body.lv-demo-admin #lv-demo-app .panel-title h2{
+ color:#4e443b!important;font:600 21px 'Playfair Display',Georgia,serif!important;
+}
+body.lv-demo-admin #lv-demo-app .reservations-panel,
+body.lv-demo-admin #lv-demo-app .calendar-panel,
+body.lv-demo-admin #lv-demo-app .lv-paper{
+ border-radius:18px!important;border:1px solid #eee9e3!important;
+ background:#fff!important;box-shadow:0 10px 36px #543e2310!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-screen-head{margin:2px 0 20px!important}
+body.lv-demo-admin #lv-demo-app .lv-screen-head span{font-size:10px!important;color:#b3a597!important;letter-spacing:.12em!important}
+body.lv-demo-admin #lv-demo-app .lv-screen-head h1{
+ color:#4b4139!important;
+ font:600 clamp(29px,3vw,39px)/1.15 'Playfair Display',Georgia,serif!important;
+ letter-spacing:-.02em!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-screen-head p{
+ max-width:690px!important;color:#8b857f!important;font-size:14px!important;margin-top:9px!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-screen-head .lv-action{
+ border-color:#a2764c!important;background:#a2764c!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-subnav{
+ display:flex;gap:7px;flex-wrap:wrap;align-items:center;padding:5px;
+ background:#f3f0ec;border:1px solid #ece6df;border-radius:13px;
+ width:max-content;max-width:100%;margin:3px 0 23px;overflow-x:auto;
+}
+body.lv-demo-admin #lv-demo-app .lv-subnav button{
+ border:0;background:transparent;white-space:nowrap;padding:10px 14px;
+ border-radius:9px;cursor:pointer;font:700 12px Lato,sans-serif;
+ color:#888078;transition:background .2s,color .2s,box-shadow .2s;
+}
+body.lv-demo-admin #lv-demo-app .lv-subnav button:hover{background:#fffaf5;color:#73553b}
+body.lv-demo-admin #lv-demo-app .lv-subnav button.is-active{
+ background:#fff!important;color:#6f4b2d!important;
+ box-shadow:0 2px 11px #51412e13;
+}
+body.lv-demo-admin #lv-demo-app .lv-subview[hidden],
+body.lv-demo-admin #lv-demo-app .lv-extra-screen[hidden]{display:none!important}
+body.lv-demo-admin #lv-demo-app #admin-communication>.lv-extra-screen>.lv-screen-head{display:none!important}
+body.lv-demo-admin #lv-demo-app #admin-communication .lv-communication-hint{
+ background:linear-gradient(90deg,#f6f1ea,#fdfaf6);border:1px solid #eee3d5;
+ border-radius:15px;padding:17px 21px;margin:0 0 18px;color:#857666;
+ font:400 13px Lato,sans-serif;
+}
+body.lv-demo-admin #lv-demo-app .lv-paper{padding:25px!important}
+body.lv-demo-admin #lv-demo-app .lv-paper h2{font:600 21px 'Playfair Display',Georgia,serif!important;color:#544435!important}
+body.lv-demo-admin #lv-demo-app .lv-action{
+ background:#9d754e!important;border:1px solid #9d754e!important;color:#fff!important;
+ border-radius:11px!important;font:700 12px Lato,sans-serif!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-action:hover{background:#87613d!important;border-color:#87613d!important}
+body.lv-demo-admin #lv-demo-app .lv-soft-button{
+ color:#735840!important;border-color:#e8ded2!important;background:#fff!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-demo-notice{
+ background:#f8f7f3!important;color:#8b8174!important;border-color:#eeeae3!important;
+ font-size:12px!important;border-radius:13px!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-form label{color:#76736e!important;font-size:12px!important}
+body.lv-demo-admin #lv-demo-app .lv-form input:not([type=checkbox]),
+body.lv-demo-admin #lv-demo-app .lv-form textarea,
+body.lv-demo-admin #lv-demo-app .lv-form select{
+ border-color:#e7e0d8!important;background:#fff!important;
+ border-radius:11px!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-form input:focus,
+body.lv-demo-admin #lv-demo-app .lv-form textarea:focus{
+ border-color:#b59a79!important;box-shadow:0 0 0 3px #d2bb9e24!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-week-list{
+ display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:12px!important;margin-bottom:26px!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-weekday{
+ border:1px solid #eae6df!important;border-radius:17px!important;
+ box-shadow:0 5px 21px #6148270b!important;
+ background:#fff!important;min-width:0!important;overflow:hidden;
+}
+body.lv-demo-admin #lv-demo-app .lv-weekday>summary{
+ display:flex!important;gap:13px!important;align-items:center!important;
+ min-height:93px!important;padding:17px!important;list-style:none!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-weekday>summary:after{
+ content:'⌄'!important;order:4;transform:none;margin-left:2px;
+ color:#b09f90!important;font-size:23px!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-weekday[open]>summary:after{transform:rotate(180deg)!important}
+body.lv-demo-admin #lv-demo-app .lv-day-monogram{
+ width:44px;height:44px;display:grid;place-items:center;flex:0 0 44px;
+ background:#f1eee9;border-radius:13px;color:#9c744d;
+ text-transform:uppercase;font:700 12px Lato,sans-serif;
+}
+body.lv-demo-admin #lv-demo-app .lv-day-description{flex:1;display:grid;gap:5px;min-width:0}
+body.lv-demo-admin #lv-demo-app .lv-day-description strong{font:700 14px Lato,sans-serif!important;color:#524b42!important}
+body.lv-demo-admin #lv-demo-app .lv-day-preview{display:flex;flex-wrap:wrap;gap:5px 7px}
+body.lv-demo-admin #lv-demo-app .lv-service-chip{
+ display:inline-block;border:1px solid #ece8df;background:#faf9f6;
+ border-radius:999px;padding:3px 7px;color:#8a8175;
+ font:400 10px/1.4 Lato,sans-serif;white-space:nowrap;
+}
+body.lv-demo-admin #lv-demo-app .lv-service-chip b{font-weight:600;color:#736659}
+body.lv-demo-admin #lv-demo-app .lv-service-chip.is-off{opacity:.55}
+body.lv-demo-admin #lv-demo-app .lv-expand-hint{font:700 11px Lato,sans-serif;color:#a88a6d;white-space:nowrap}
+body.lv-demo-admin #lv-demo-app .lv-week-service{background:#fdfcfb!important;padding:17px!important}
+body.lv-demo-admin #lv-demo-app .lv-week-service .lv-check{
+ display:flex!important;align-items:center!important;gap:8px!important;font-size:12px!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-restaurant-open{margin-top:-3px;margin-bottom:2px!important;color:#9b8e82}
+body.lv-demo-admin #lv-demo-app .lv-week-service .lv-form-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+body.lv-demo-admin #lv-demo-app .lv-week-service .lv-form-grid label{font-size:11px!important}
+body.lv-demo-admin #lv-demo-app .lv-week-service .lv-form-grid :is(input,select){background:#fff!important;border-color:#e9e3dc!important;border-radius:8px!important}
+body.lv-demo-admin #lv-demo-app .lv-action-fold{
+ margin:13px 0 16px;border:1px solid #eadfce;border-radius:14px;background:#fdfaf5;overflow:hidden;
+}
+body.lv-demo-admin #lv-demo-app .lv-action-fold>summary{
+ list-style:none;cursor:pointer;display:flex;gap:12px;align-items:center;
+ padding:15px 17px;
+}
+body.lv-demo-admin #lv-demo-app .lv-action-fold>summary::-webkit-details-marker{display:none}
+body.lv-demo-admin #lv-demo-app .lv-fold-plus{
+ display:grid;place-items:center;width:33px;height:33px;border-radius:50%;
+ background:#f0e5d6;color:#9e7651;font:400 23px Lato,sans-serif;
+}
+body.lv-demo-admin #lv-demo-app .lv-action-fold>summary strong{display:block;color:#66503b;font-size:13px}
+body.lv-demo-admin #lv-demo-app .lv-action-fold>summary small{display:block;color:#9a9086;font-size:11px;margin-top:3px}
+body.lv-demo-admin #lv-demo-app .lv-action-fold[open]>summary{border-bottom:1px solid #eadfce}
+body.lv-demo-admin #lv-demo-app .lv-action-fold>.lv-form{padding:18px!important}
+body.lv-demo-admin #lv-demo-app .lv-client-card{background:#fff!important;border-color:#eee8df!important;border-radius:15px!important}
+body.lv-demo-admin #lv-demo-app .lv-avatar{background:#f1eae1!important;color:#96724c!important}
+body.lv-demo-admin #lv-demo-app .lv-client-card strong{color:#57514b!important}
+body.lv-demo-admin #lv-demo-app .lv-client-card .lv-pill{background:#f7f5f0;color:#95877b}
+body.lv-demo-admin #lv-demo-app .lv-preview{background:#fdfaf5!important;border-color:#eee8df!important}
+body.lv-demo-admin #lv-demo-app .lv-automation{border-color:#eee9e3!important;background:white!important}
+body.lv-demo-admin #lv-demo-app .lv-automation-mark{background:#f0e6d9;color:#8b6f56}
+body.lv-demo-admin #lv-demo-app .lv-switch input:checked+span{background:#89a898!important}
+body.lv-demo-admin #lv-demo-app .lv-switch span{background:#deded9}
+body.lv-demo-admin #lv-demo-app .lv-client-filter{margin:17px 0}
+body.lv-demo-admin #lv-demo-app #admin-communication .lv-extra-screen{padding-top:0}
+body.lv-demo-admin #lv-demo-app #admin-settings>.lv-subnav{margin-top:0}
+body.lv-demo-admin #lv-demo-app #admin-clients>.lv-subnav{margin-top:0}
+body.lv-demo-admin #lv-demo-app .lv-extra-screen .lv-two-col{gap:15px}
+@media(max-width:1250px){
+ body.lv-demo-admin #lv-demo-app .lv-week-list{grid-template-columns:1fr}
+}
+@media(max-width:900px){
+ body.lv-demo-admin #lv-demo-app .admin-shell{display:block!important}
+ body.lv-demo-admin #lv-demo-app .admin-nav{
+  position:sticky!important;top:0!important;z-index:99!important;
+  display:block!important;width:100%!important;height:auto!important;max-height:none!important;
+  padding:11px 15px 0!important;border-right:0!important;border-bottom:1px solid #eee7dd!important;
+ }
+ body.lv-demo-admin #lv-demo-app .admin-logo{margin:0 0 10px!important;padding:0!important}
+ body.lv-demo-admin #lv-demo-app .lv-welcome{display:none}
+ body.lv-demo-admin #lv-demo-app .lv-extra-menu{
+  display:flex!important;flex-direction:row!important;gap:6px!important;
+  overflow-x:auto!important;padding:0 0 10px!important;scrollbar-width:none;
+ }
+ body.lv-demo-admin #lv-demo-app .lv-menu-entry{flex:0 0 auto}
+ body.lv-demo-admin #lv-demo-app .lv-menu-entry .lv-menu-btn{
+  width:auto!important;min-height:38px!important;white-space:nowrap!important;
+  font-size:12px!important;padding:9px 12px!important;border-radius:9px!important;
+ }
+ body.lv-demo-admin #lv-demo-app .lv-main-nav-number{display:none}
+ body.lv-demo-admin #lv-demo-app .lv-extra-nav-bottom{display:none!important}
+ body.lv-demo-admin #lv-demo-app .admin-main{padding:22px 15px 80px!important}
+ body.lv-demo-admin #lv-demo-app .lv-week-list{grid-template-columns:1fr!important}
+ body.lv-demo-admin #lv-demo-app .lv-subnav{flex-wrap:nowrap!important;max-width:100%!important;overflow-x:auto!important;scrollbar-width:thin}
+}
+@media(max-width:580px){
+ body.lv-demo-admin #lv-demo-app .admin-main{padding:18px 12px 85px!important}
+ body.lv-demo-admin #lv-demo-app .lv-subnav{margin-bottom:18px!important}
+ body.lv-demo-admin #lv-demo-app .lv-subnav button{font-size:11px!important;padding:9px 12px!important}
+ body.lv-demo-admin #lv-demo-app .lv-screen-head h1{font-size:30px!important}
+ body.lv-demo-admin #lv-demo-app .lv-weekday>summary{min-height:85px!important;padding:13px!important;gap:9px!important}
+ body.lv-demo-admin #lv-demo-app .lv-day-monogram{width:36px;height:36px;flex-basis:36px;border-radius:10px}
+ body.lv-demo-admin #lv-demo-app .lv-day-preview{gap:5px}
+ body.lv-demo-admin #lv-demo-app .lv-service-chip{font-size:9px!important;padding:3px 6px}
+ body.lv-demo-admin #lv-demo-app .lv-expand-hint{display:none}
+ body.lv-demo-admin #lv-demo-app .lv-paper{padding:17px!important}
+ body.lv-demo-admin #lv-demo-app .lv-week-service .lv-form-grid{grid-template-columns:1fr 1fr!important}
+}
