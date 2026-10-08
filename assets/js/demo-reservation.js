@@ -14,13 +14,13 @@ const save=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
 let settings={...defaults,...load('lv-demo-settings',{})};
 const seedDate=todayISO();
 const seed=[
-{id:'r1',date:seedDate,time:'12:30',service:'lunch',pax:2,first:'Claire',last:'Martin',phone:'06 12 34 56 78',email:'claire.martin@example.com',note:'Table au calme si possible',status:'confirmed',created:'Démo'},
-{id:'r2',date:seedDate,time:'13:30',service:'lunch',pax:4,first:'Julien',last:'Rossi',phone:'06 44 20 31 09',email:'julien.rossi@example.com',note:'Anniversaire',status:'confirmed',created:'Démo'},
-{id:'r3',date:seedDate,time:'19:00',service:'dinner',pax:5,first:'Alexander',last:'Tandberg',phone:'+46 76 186 14 86',email:'tandberg.a@gmail.com',note:'',status:'confirmed',created:'Démo'},
-{id:'r4',date:seedDate,time:'19:30',service:'dinner',pax:2,first:'Christelle',last:'Gerussi',phone:'06 10 20 30 40',email:'christelle.g@example.com',note:'Sans gluten',status:'confirmed',created:'Démo'},
-{id:'r5',date:addDays(seedDate,1),time:'20:00',service:'dinner',pax:2,first:'Emma',last:'Bernard',phone:'06 55 61 10 22',email:'emma@example.com',note:'Terrasse',status:'confirmed',created:'Démo'}
+{id:'r1',date:seedDate,time:'12:30',service:'lunch',pax:2,first:'Camille',last:'Laurent',phone:'06 00 00 00 01',email:'camille@example.com',note:'Table au calme si possible',status:'confirmed',created:'Exemple fictif'},
+{id:'r2',date:seedDate,time:'13:30',service:'lunch',pax:4,first:'Thomas',last:'Moreau',phone:'06 00 00 00 02',email:'thomas@example.com',note:'Anniversaire',status:'confirmed',created:'Exemple fictif'},
+{id:'r3',date:seedDate,time:'19:00',service:'dinner',pax:5,first:'Marie',last:'Petit',phone:'06 00 00 00 03',email:'marie@example.com',note:'',status:'confirmed',created:'Exemple fictif'},
+{id:'r4',date:seedDate,time:'19:30',service:'dinner',pax:2,first:'Lucas',last:'Dubois',phone:'06 00 00 00 04',email:'lucas@example.com',note:'Sans gluten',status:'confirmed',created:'Exemple fictif'},
+{id:'r5',date:addDays(seedDate,1),time:'20:00',service:'dinner',pax:2,first:'Emma',last:'Bernard',phone:'06 00 00 00 05',email:'emma@example.com',note:'Terrasse',status:'confirmed',created:'Exemple fictif'}
 ];
-let reservations=load('lv-demo-reservations',null);if(!reservations){reservations=seed;save('lv-demo-reservations',reservations)}
+let reservations=load('lv-demo-reservations-v2',null);if(!reservations){reservations=seed;save('lv-demo-reservations-v2',reservations)}
 let selectedAdminDate=todayISO(),calendarCursor=new Date(selectedAdminDate+'T12:00:00'),serviceFilter='all';
 
 const bookingDialog=$('#booking-dialog'),content=$('#booking-content');
@@ -98,8 +98,8 @@ function acc(label,num,value,opened,inner,section){
 }
 function renderParty(){
  let h='<div class="demo-party-options">';
- for(let n=1;n<=6;n++)h+='<button type="button" class="demo-option '+(booking.pax===n?'is-selected':'')+'" data-pax="'+n+'">'+n+'</button>';
- h+='<button type="button" class="demo-option" data-pax="7">7+</button></div>';
+ for(let n=1;n<=Math.min(6,Math.max(1,settings.maxParty));n++)h+='<button type="button" class="demo-option '+(booking.pax===n?'is-selected':'')+'" data-pax="'+n+'">'+n+'</button>';
+ h+='<button type="button" class="demo-option" data-pax="7">'+(settings.maxParty>=6?'7+':(settings.maxParty+1)+'+')+'</button></div>';
  return h+'<div id="demo-big-party-slot"></div>';
 }
 function renderCalendar(){
@@ -141,7 +141,7 @@ function renderBooking(){
  $$('[data-expand]',content).forEach(b=>b.onclick=()=>{booking.expanded=b.dataset.expand;renderBooking()});
  $$('[data-pax]',content).forEach(b=>b.onclick=()=>{
   const n=Number(b.dataset.pax);
-  if(n>6){$('#demo-big-party-slot',content).innerHTML='<div class="demo-big-party">'+esc(settings.largeMessage)+'<a href="'+PHONE_LINK+'">'+PHONE_DISPLAY+'</a></div>';return}
+  if(n>Math.min(6,Math.max(1,settings.maxParty))){$('#demo-big-party-slot',content).innerHTML='<div class="demo-big-party">'+esc(settings.largeMessage)+'<a href="'+PHONE_LINK+'">'+PHONE_DISPLAY+'</a></div>';return}
   booking.pax=n;booking.time=null;booking.service=null;
   if(!dayAvailable(booking.date,n))booking.date=nextAvailable(todayISO(),n);
   booking.month=new Date(booking.date+'T12:00:00');booking.expanded='date';booking.showCalendar=false;renderBooking();
@@ -166,7 +166,7 @@ function confirmBooking(form){
  const first=String(form.get('first')||'').trim(),last=String(form.get('last')||'').trim(),phone=String(form.get('phone')||'').trim(),email=String(form.get('email')||'').trim(),note=String(form.get('note')||'').trim();
  if(!first||!last||!phone||!email||!form.has('consent'))return;
  const r={id:'r'+Date.now(),date:booking.date,time:booking.time,service:booking.service,pax:booking.pax,first,last,phone,email,note,status:'confirmed',created:'Module démo'};
- reservations.push(r);save('lv-demo-reservations',reservations);
+ reservations.push(r);save('lv-demo-reservations-v2',reservations);
  content.innerHTML='<div class="demo-success"><div class="success-symbol">✓</div><h2>Réservation enregistrée</h2><p>'+esc(first)+', votre démonstration de réservation est prête.</p><p><strong>'+esc(dateLong(booking.date))+' à '+esc(booking.time)+'</strong> · '+booking.pax+' couvert'+(booking.pax>1?'s':'')+'</p><p>Elle apparaît dans le back-office de ce navigateur uniquement. Aucun email ni SMS envoyé.</p><button type="button" class="demo-submit" data-demo-done>Terminer</button></div>';
  $('[data-demo-done]',content).onclick=()=>bookingDialog.close();
 }
@@ -213,6 +213,6 @@ function renderSettings(){
  $('#set-max-party').value=settings.maxParty;$('#set-notice').value=String(settings.notice);$('#set-large-message').value=settings.largeMessage;$('#set-lunch-times').value=settings.lunchTimes.join(', ');$('#set-dinner-times').value=settings.dinnerTimes.join(', ');$('#set-lunch-cap').value=settings.lunchCap;$('#set-dinner-cap').value=settings.dinnerCap;
  const names=['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];$('#weekday-settings').innerHTML=names.map((n,i)=>'<label><input type="checkbox" value="'+i+'" '+(settings.weekdays.includes(i)?'checked':'')+'> '+n+'</label>').join('');
 }
-$('#save-settings').onclick=()=>{settings={...settings,maxParty:Number($('#set-max-party').value)||6,notice:Number($('#set-notice').value)||0,largeMessage:$('#set-large-message').value.trim()||defaults.largeMessage,lunchTimes:$('#set-lunch-times').value.split(',').map(s=>s.trim()).filter(Boolean),dinnerTimes:$('#set-dinner-times').value.split(',').map(s=>s.trim()).filter(Boolean),lunchCap:Number($('#set-lunch-cap').value)||24,dinnerCap:Number($('#set-dinner-cap').value)||30,weekdays:$$('#weekday-settings input:checked').map(i=>Number(i.value))};save('lv-demo-settings',settings);alert('Paramètres enregistrés pour la démonstration.')};
+$('#save-settings').onclick=()=>{settings={...settings,maxParty:Math.min(6,Math.max(1,Number($('#set-max-party').value)||6)),notice:Number($('#set-notice').value)||0,largeMessage:$('#set-large-message').value.trim()||defaults.largeMessage,lunchTimes:$('#set-lunch-times').value.split(',').map(s=>s.trim()).filter(Boolean),dinnerTimes:$('#set-dinner-times').value.split(',').map(s=>s.trim()).filter(Boolean),lunchCap:Number($('#set-lunch-cap').value)||24,dinnerCap:Number($('#set-dinner-cap').value)||30,weekdays:$$('#weekday-settings input:checked').map(i=>Number(i.value))};save('lv-demo-settings',settings);alert('Paramètres enregistrés pour la démonstration.')};
 go('showcase');
 })();
