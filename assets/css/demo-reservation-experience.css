@@ -192,3 +192,67 @@ body.lv-demo-admin #lv-demo-app .demo-switchbar{display:none!important}
  #lv-demo-app .admin-head h1{font-size:29px!important}
  #lv-demo-app .service-summary-item strong{font-size:19px!important}
 }
+
+
+/* 2026-10-08: calmer typography, genuinely animated accordions, approachable day planner. */
+#lv-demo-app .booking-dialog,#lv-demo-app .booking-dialog button,#lv-demo-app .booking-dialog input{font-family:Lato,Arial,sans-serif!important;font-weight:400;letter-spacing:.005em}
+#lv-demo-app .booking-intro{font-size:13px!important;line-height:1.65!important}
+#lv-demo-app .demo-acc-title{font-size:14px!important;font-weight:600!important;letter-spacing:.01em!important}
+#lv-demo-app .demo-acc-title .acc-value{font-size:14px!important;font-weight:600!important}
+#lv-demo-app .demo-acc-title .acc-value strong{font-weight:600!important}
+#lv-demo-app .demo-acc-title .chevron{transition:transform .31s cubic-bezier(.22,1,.36,1)!important}
+#lv-demo-app .demo-acc-body[hidden]{display:none!important}
+#lv-demo-app .demo-acc-body{will-change:height,opacity;animation:none!important}
+#lv-demo-app .demo-acc-inner{padding:0;min-height:0}
+#lv-demo-app .demo-service-toggle{font-size:13px!important;font-weight:600!important}
+#lv-demo-app .demo-time-choice{font-size:13px!important;font-weight:500!important}
+#lv-demo-app .demo-option{font-weight:600!important}
+#lv-demo-app .booking-dialog[open]:not(.is-contact){transition:height .3s cubic-bezier(.22,1,.36,1),max-height .3s!important}
+#lv-demo-app .booking-dialog .demo-date-choice strong{font-weight:600}
+#lv-demo-app .booking-dialog .demo-book-footer button{font-weight:700!important}
+body.lv-demo-admin{background:#f7f8f9!important}
+body.lv-demo-admin #lv-demo-app .admin-shell{background:#f7f8f9!important;color:#2b3540!important}
+body.lv-demo-admin #lv-demo-app .admin-nav{background:#fff!important;border-bottom-color:#e8eaed!important}
+body.lv-demo-admin #lv-demo-app .admin-logo b{color:#333942!important;font-family:Lato,Arial,sans-serif!important;font-size:17px!important;font-weight:700!important}
+body.lv-demo-admin #lv-demo-app .admin-logo span{background:#f3f4f5!important;color:#4a5058!important;font-family:Lato,Arial,sans-serif!important}
+body.lv-demo-admin #lv-demo-app .admin-nav button{color:#505961!important}
+body.lv-demo-admin #lv-demo-app .admin-nav button.is-active{background:#edf1f4!important;border-color:#e0e5e9!important;color:#243f50!important}
+body.lv-demo-admin #lv-demo-app .admin-head h1{font:700 clamp(27px,3vw,36px) Lato,Arial,sans-serif!important;color:#2e3740!important;letter-spacing:-.025em}
+body.lv-demo-admin #lv-demo-app .admin-head .eyebrow{color:#a0a5aa!important;letter-spacing:.08em!important}
+body.lv-demo-admin #lv-demo-app .admin-head-caption{color:#717b83!important}
+body.lv-demo-admin #lv-demo-app .week-day{border-color:#e6e9ec!important;background:#fff!important;color:#3f4b53!important;box-shadow:none!important}
+body.lv-demo-admin #lv-demo-app .week-day.is-selected{background:#183e55!important;color:#fff!important;border-color:#183e55!important;box-shadow:0 7px 18px #183e551e!important}
+body.lv-demo-admin #lv-demo-app .week-day.is-selected .week-day-name,body.lv-demo-admin #lv-demo-app .week-day.is-selected .week-day-total{color:#fff!important}
+body.lv-demo-admin #lv-demo-app .week-day-bars{display:none!important}
+body.lv-demo-admin #lv-demo-app .calendar-day-services{display:none!important}
+body.lv-demo-admin #lv-demo-app .admin-calendar .calendar-day{border-color:#e9eaec!important;background:#fff!important;min-height:61px!important}
+body.lv-demo-admin #lv-demo-app .admin-calendar .calendar-day.is-selected{border-color:#183e55!important;background:#eaf1f5!important}
+body.lv-demo-admin #lv-demo-app .calendar-day-number{color:#36444f!important}
+body.lv-demo-admin #lv-demo-app .calendar-covers{color:#818b93!important}
+body.lv-demo-admin #lv-demo-app .calendar-panel,body.lv-demo-admin #lv-demo-app .reservations-panel,body.lv-demo-admin #lv-demo-app .settings-card{border-color:#e8ecee!important;box-shadow:none!important}
+body.lv-demo-admin #lv-demo-app .panel-title h2,body.lv-demo-admin #lv-demo-app .settings-card h2{font:700 18px Lato,Arial,sans-serif!important;color:#33404a!important}
+body.lv-demo-admin #lv-demo-app .service-summary-item{background:#f9fafb!important;border:1px solid #e8ebee!important;border-left:1px solid #e8ebee!important}
+body.lv-demo-admin #lv-demo-app .service-summary-item strong{color:#263a47!important}
+body.lv-demo-admin #lv-demo-app .service-summary-item>span{color:#66727a!important}
+body.lv-demo-admin #lv-demo-app .reservation-group-head span{color:#586873!important}
+body.lv-demo-admin #lv-demo-app .reservation-card{border-color:#edf0f2!important;box-shadow:none!important}
+body.lv-demo-admin #lv-demo-app .reservation-card .time{color:#304f62!important}
+body.lv-demo-admin #lv-demo-app .pax-badge{background:#eff4f6!important;color:#32576b!important}
+body.lv-demo-admin #lv-demo-app .service-filter button{background:white!important;border-color:#e5e8eb!important;color:#616c73!important}
+body.lv-demo-admin #lv-demo-app .service-filter button.is-active{background:#183e55!important;border-color:#183e55!important;color:white!important}
+body.lv-demo-admin #lv-demo-app .admin-head-actions .primary{background:#183e55!important}
+body.lv-demo-admin #lv-demo-app .admin-head-actions .today-link,body.lv-demo-admin #lv-demo-app .admin-head-actions .day-nav{color:#3a5260!important;border-color:#e5e8eb!important}
+body.lv-demo-admin #lv-demo-app .admin-head-actions input{border-color:#e5e8eb!important}
+body.lv-demo-admin #lv-demo-app .calendar-toggle{display:inline-flex!important;align-items:center!important;justify-content:center!important;flex:0 0 auto!important;white-space:nowrap!important;width:auto!important;min-width:100px!important;max-width:none!important;line-height:1.2!important;font:600 12px Lato,Arial,sans-serif!important;padding:9px 12px!important;color:#3d5664!important;background:#f2f5f7!important;border-color:#e2e7e9!important}
+body.lv-demo-admin #lv-demo-app .calendar-panel .panel-title{display:flex!important;flex-wrap:wrap!important;align-items:center!important;justify-content:space-between!important;gap:9px!important}
+body.lv-demo-admin #lv-demo-app .calendar-panel .panel-title h2{flex:1 1 150px!important;min-width:0!important}
+body.lv-demo-admin #lv-demo-app .calendar-panel .panel-title>div{order:3;width:100%!important;justify-content:center!important}
+body.lv-demo-admin #lv-demo-app .calendar-panel:not(.is-expanded) .panel-title>div{display:none!important}
+body.lv-demo-admin #lv-demo-app .admin-calendar .calendar-day:after{display:none!important}
+@media(max-width:500px){
+ body.lv-demo-admin #lv-demo-app .calendar-panel{min-height:0!important}
+ body.lv-demo-admin #lv-demo-app .calendar-panel .panel-title{margin:0!important}
+ body.lv-demo-admin #lv-demo-app .calendar-panel.is-expanded .panel-title{margin-bottom:14px!important}
+ body.lv-demo-admin #lv-demo-app .calendar-toggle{min-width:92px!important;padding:8px!important}
+ body.lv-demo-admin #lv-demo-app .week-day{flex-basis:68px!important}
+}
