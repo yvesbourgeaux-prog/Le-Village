@@ -96,6 +96,44 @@ $('#lv-save-schedule').onclick=()=>{save('week',week);api.refresh();renderSchedu
 $('#lv-special-form').addEventListener('submit',e=>{e.preventDefault();const v=formVals(e.target);if(v.start>v.end){notify('Vérifiez les horaires.');return}specials.push({...v,id:id(),weekday:Number(v.weekday),capacity:Number(v.capacity),interval:Number(v.interval)});save('specials',specials);api.refresh();e.target.reset();renderSchedule();notify('Service spécial ajouté.')});
 $('#lv-closure-form').addEventListener('submit',e=>{e.preventDefault();const v=formVals(e.target);if(v.start>v.end){notify('Vérifiez les dates.');return}closures.push({...v,id:id(),block:e.target.elements.block.checked});save('closures',closures);api.refresh();e.target.reset();renderSchedule();notify('Fermeture enregistrée.')});
 $('#admin-schedule').addEventListener('click',e=>{const b=e.target.closest('[data-remove]');if(!b)return;if(b.dataset.remove==='special'){specials=specials.filter(v=>v.id!==b.dataset.id);save('specials',specials)}else{closures=closures.filter(v=>v.id!==b.dataset.id);save('closures',closures)}api.refresh();renderSchedule()});
+function manualReservation(){
+ let dialog=document.createElement('dialog');dialog.className='lv-client-editor lv-manual-dialog';
+ dialog.innerHTML='<form class="lv-form" id="lv-manual-form"><div class="lv-editor-head"><div><span class="lv-panel-eyebrow">CAHIER DE RÉSERVATIONS</span><h2>Ajouter une réservation</h2></div><button type="button" data-close-manual class="lv-soft-button" aria-label="Fermer">×</button></div><p class="lv-help">Ajout manuel pour le personnel, jusqu’à 50 couverts. Aucune confirmation externe n’est envoyée.</p><div class="lv-form-grid"><label>Prénom<input name="first" required autocomplete="off"></label><label>Nom<input name="last" required autocomplete="off"></label><label>Téléphone<input name="phone" type="tel" required autocomplete="off"></label><label>E-mail<input name="email" type="email" autocomplete="off"></label><label>Date<input name="date" type="date" required></label><label>Service<select name="service"><option value="lunch">Déjeuner</option><option value="dinner">Dîner</option></select></label><label>Heure d’arrivée<select name="time" required></select></label><label>Couverts<input type="number" name="pax" min="1" max="50" value="2" required></label></div><div id="lv-manual-client-match" class="lv-help"></div><label>Note interne<textarea rows="3" name="note" placeholder="Allergies, terrasse, anniversaire…"></textarea></label><label class="lv-check"><input type="checkbox" name="confirmEmail" disabled> Confirmation par e-mail (disponible après raccordement)</label><div class="lv-button-row"><button type="submit" class="lv-action">Enregistrer dans le planning</button><button type="button" class="lv-soft-button" data-close-manual>Annuler</button></div></form>';
+ app.append(dialog);dialog.showModal();dialog.addEventListener('close',()=>dialog.remove());
+ const frm=dialog.querySelector('form');
+ frm.elements.date.value=today();
+ const updateTimes=()=>{
+  const date=frm.elements.date.value,service=frm.elements.service.value;
+  let options=serviceTimes(date,service);
+  if(!options.length)options=service==='lunch'?['12:00','12:30','13:00','13:30']:['19:00','19:30','20:00','20:30'];
+  frm.elements.time.innerHTML=options.map(t=>'<option value="'+esc(t)+'">'+esc(t)+'</option>').join('');
+ };
+ const showMatch=()=>{
+  const name=(frm.elements.first.value+' '+frm.elements.last.value).trim().toLowerCase();
+  const email=frm.elements.email.value.trim().toLowerCase();
+  const phone=frm.elements.phone.value.replace(/\s/g,'');
+  const c=allClients().find(v=>(email&&v.email?.toLowerCase()===email)||(phone&&v.phone?.replace(/\s/g,'')===phone)||(name.length>5&&(v.first+' '+v.last).toLowerCase()===name));
+  $('#lv-manual-client-match',dialog).textContent=c?'Client déjà présent dans la démo · '+(c.visits||0)+' visite(s)':'';
+ };
+ [frm.elements.date,frm.elements.service].forEach(el=>el.addEventListener('change',updateTimes));
+ ['first','last','email','phone'].forEach(n=>frm.elements[n].addEventListener('input',showMatch));
+ dialog.querySelectorAll('[data-close-manual]').forEach(b=>b.addEventListener('click',()=>dialog.close()));
+ updateTimes();
+ frm.addEventListener('submit',e=>{
+  e.preventDefault();if(!frm.reportValidity())return;
+  const v=formVals(frm);
+  const item={id:'staff-'+id(),date:v.date,time:v.time,service:v.service,pax:Number(v.pax),first:v.first.trim(),last:v.last.trim(),phone:v.phone.trim(),email:(v.email||'').trim(),note:v.note||'',status:'confirmed',created:'Ajout manuel de démonstration'};
+  api.setReservations([...api.getReservations(),item]);
+  api.setDate(v.date);
+  dialog.close();show('planning');notify('Réservation ajoutée au planning de la démo.');
+ });
+}
+document.addEventListener('click',e=>{
+ if(!document.body.classList.contains('lv-demo-admin'))return;
+ const button=e.target.closest('[data-new-reservation], [data-new-reservation-empty]');
+ if(!button||!app.contains(button))return;
+ e.preventDefault();e.stopImmediatePropagation();manualReservation();
+},true);
 function renderClients(){
  const q=($('#client-search')?.value||'').toLowerCase(),freq=$('#lv-client-freq')?.value||'all',consent=$('#lv-client-consent')?.value||'all';
  const found=allClients().filter(c=>{const v=Number(c.visits)||0;return [c.first,c.last,c.email,c.phone,c.tags].join(' ').toLowerCase().includes(q)&&(freq==='all'||freq==='never'&&v===0||freq==='1'&&v===1||freq==='2-3'&&v>=2&&v<=3||freq==='4+'&&v>=4)&&(consent==='all'||consent==='email'&&c.consentEmail||consent==='sms'&&c.consentSms||consent==='none'&&!c.consentEmail&&!c.consentSms)});
