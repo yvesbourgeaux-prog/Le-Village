@@ -17,6 +17,7 @@ let automations=load('automations',[
 ]);
 const countRecipients=(segment,channel)=>{
  const cs=allClients();
+ segment=String(segment||'all');
  const saved=segment.startsWith('seg:')?segments.find(s=>s.id===segment.slice(4)):null;
  return cs.filter(c=>{
   if(channel==='email'&&!c.consentEmail||channel==='sms'&&!c.consentSms)return false;
@@ -89,7 +90,7 @@ function updatePreview(){
  $('#lv-email-preview').innerHTML='<div class="lv-preview-title">'+esc(v.subject||'Objet de votre e-mail')+'</div><div class="lv-preview-preheader">'+esc(v.preheader||'Aperçu du message')+'</div><div class="lv-preview-content">'+body+'</div><p class="lv-help">Simulation, aucun envoi.</p>';
 }
 function updateSmsCount(){
- const f=$('#lv-sms-form'),v=formVals(f),chars=v.body.length,parts=chars<=160?1:Math.ceil(chars/153);
+ const f=$('#lv-sms-form'),v=formVals(f),chars=String(v.body||'').length,parts=chars<=160?1:Math.ceil(chars/153);
  $('#lv-sms-count').textContent=chars+' caractère(s) · '+parts+' SMS / destinataire · '+countRecipients(v.segment,'sms')+' destinataire(s) de démonstration';
 }
 $('#lv-email-form').addEventListener('input',updatePreview);
