@@ -60,7 +60,10 @@ $head = '<meta name="robots" content="noindex,nofollow,noarchive"/><title>Démo 
  . '<link href="/assets/css/demo-reservation-v2.css?v=20261008-video-audit2" rel="stylesheet"/>'
  . '<link href="/assets/css/demo-reservation-refine.css?v=20261008-video-audit2" rel="stylesheet"/>'
  . '<link href="/assets/css/demo-reservation-experience.css?v=20261008-motion7" rel="stylesheet"/>'
- . '<script defer src="/assets/js/demo-reservation.js?v=20261008-motion7"></script>';// Update the consent panel copy: the private demo never uses Zenchef.
+ . '<link rel="stylesheet" href="/assets/css/demo-backoffice.css?v=20261008-rts1"/>'
+ . '<script defer src="/assets/js/demo-reservation.js?v=20261008-rts1"></script>'
+ . '<script defer src="/assets/js/demo-backoffice-core.js?v=20261008-rts1"></script>'
+ . '<script defer src="/assets/js/demo-backoffice-comms.js?v=20261008-rts1"></script>';// Update the consent panel copy: the private demo never uses Zenchef.
 $site = str_replace('La carte et le module de réservation utilisent les services Google Maps et Zenchef.', 'La carte utilise Google Maps. La réservation est simulée localement sur cette page.', $site);
 $site = str_replace('</head>', $head . '</head>', $site);
 $demo = <<<'DEMO_HTML'
