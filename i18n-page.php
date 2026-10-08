@@ -31,6 +31,12 @@ if ($slug === 'brunch-musical-cagnes-sur-mer') {
     }
 }
 
+// Remove stale generic video posters from prebuilt language packs.
+// They can flash for a split second before the real video frame appears.
+$document = preg_replace_callback('~<video\\b[^>]*>~i', static function ($match) {
+    return preg_replace('~\\s+poster=(?:"[^"]*"|\\x27[^\\x27]*\\x27)~i', '', $match[0]);
+}, $document);
+
 // Keep the short booking label in prebuilt translations.
 $bookingLabels = ["en" => "Book", "sv" => "Boka", "da" => "Book", "nl" => "Reserveer", "de" => "Reservieren", "it" => "Prenota", "es" => "Reservar", "ja" => "予約", "zh-CN" => "预订", "nb" => "Reserver", "ru" => "Забронировать", "pl" => "Zarezerwuj"];
 $document = preg_replace_callback('~(<span\b[^>]*data-i18n=[^>]*c9f6b527c374d720[^>]*>)[^<]*(</span>)~u', static fn($m) => $m[1] . ($bookingLabels[$lang] ?? 'Réserver') . $m[2], $document);
