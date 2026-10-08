@@ -287,3 +287,21 @@ body.lv-demo-admin #lv-demo-app .lv-compose-fold:not([open]){box-shadow:0 9px 26
  body.lv-demo-admin #lv-demo-app #admin-communication .lv-two-col,
  body.lv-demo-admin #lv-demo-app #admin-templates>.lv-two-col{grid-template-columns:1fr!important}
 }
+
+/* Connect the familiar reservation planner to the restaurant's own identity. */
+body.lv-demo-admin #lv-demo-app .admin-head-actions .primary{background:#9a7751!important;border-color:#9a7751!important;color:white!important}
+body.lv-demo-admin #lv-demo-app .admin-head-actions .today-link,
+body.lv-demo-admin #lv-demo-app .admin-head-actions .day-nav{
+ color:#7d6c5b!important;border-color:#e8e0d8!important;background:white!important;
+}
+body.lv-demo-admin #lv-demo-app .service-filter button.is-active{
+ background:#e9e2d9!important;border-color:#e2d7ca!important;color:#69533d!important;
+}
+body.lv-demo-admin #lv-demo-app .service-filter button:not(.is-active){color:#857c73!important;border-color:#eee8e0!important}
+body.lv-demo-admin #lv-demo-app .reservation-card .time{color:#846143!important}
+body.lv-demo-admin #lv-demo-app .pax-badge{background:#f7f1e9!important;color:#826243!important}
+body.lv-demo-admin #lv-demo-app .reservation-group-head span{color:#9b8164!important}
+body.lv-demo-admin #lv-demo-app .lv-screen-head .lv-action{background:#9a7751!important}
+body.lv-demo-admin #lv-demo-app .calendar-day-services{display:none!important}
+body.lv-demo-admin #lv-demo-app .admin-calendar .calendar-day:after{display:none!important}
+body.lv-demo-admin #lv-demo-app .calendar-toggle{white-space:nowrap!important;flex-shrink:0!important;min-width:105px!important}
