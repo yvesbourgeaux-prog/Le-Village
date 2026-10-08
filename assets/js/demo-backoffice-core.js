@@ -31,23 +31,17 @@ function allClients(){
 }
 function notify(msg){let n=$('#lv-extra-message');if(!n){n=document.createElement('div');n.id='lv-extra-message';document.body.append(n)}n.textContent=msg;n.classList.add('show');setTimeout(()=>n.classList.remove('show'),3200)}
 const pages=[
- ['planning','Vos réservations','Réservations'],
- ['schedule','Jours & horaires','Réservations'],
- ['clients','Clients','Clients'],
- ['segments','Segments clients','Clients'],
- ['email','E-mails','Communication'],
- ['sms','SMS','Communication'],
- ['automations','Automatisations','Communication'],
- ['templates','Modèles','Communication'],
- ['data','Importer / exporter','Gestion'],
- ['users','Équipe','Gestion'],
- ['account','Compte','Gestion']
+ ['planning','Réservations'],
+ ['schedule','Horaires & disponibilités'],
+ ['clients','Clients'],
+ ['communication','Communication'],
+ ['settings','Réglages']
 ];
 const nav=$('.admin-nav',app),main=$('.admin-main',app);
 if(!nav||!main)return;
 let active='planning';
-nav.innerHTML='<div class="admin-logo"><span>LV</span><div><b>Le Village</b><small>Espace de gestion · Démo</small></div></div><div class="lv-extra-menu">'
- +pages.map((p,i)=>'<div class="lv-menu-entry">'+(i===0||pages[i-1][2]!==p[2]?'<span class="lv-menu-label">'+p[2]+'</span>':'')+'<button type="button" class="lv-menu-btn '+(i===0?'is-active':'')+'" data-lv-nav="'+p[0]+'">'+p[1]+'</button></div>').join('')
+nav.innerHTML='<div class="admin-logo"><span>LV</span><div><b>Le Village</b><small>Votre espace de gestion</small></div></div><p class="lv-welcome">Bienvenue au Village</p><div class="lv-extra-menu">'
+ +pages.map((p,i)=>'<div class="lv-menu-entry"><button type="button" class="lv-menu-btn '+(i===0?'is-active':'')+'" data-lv-nav="'+p[0]+'"><span class="lv-main-nav-number">0'+(i+1)+'</span>'+p[1]+'</button></div>').join('')
  +'</div><div class="lv-extra-nav-bottom"><button type="button" id="lv-return-site">Voir le site démo</button><a href="/demo-reservation?logout=1">Déconnexion</a></div>';
 const panel=(id,html)=>main.insertAdjacentHTML('beforeend','<section class="admin-tab lv-extra-screen" hidden id="admin-'+id+'">'+html+'</section>');
 panel('schedule','<div class="lv-screen-head"><div><span>ORGANISATION</span><h1>Jours & horaires</h1><p>Gérez vos services, jours spéciaux et fermetures.</p></div><button class="lv-action" id="lv-save-schedule">Enregistrer les horaires</button></div><div class="lv-week-list" id="lv-schedule-week"></div><div class="lv-duo"><article class="lv-paper"><h2>Jours spéciaux</h2><form class="lv-form" id="lv-special-form"><label>Nom du service<input name="name" required placeholder="Brunch du dimanche"></label><div class="lv-form-grid"><label>Répétition<select name="repeat"><option value="once">Date unique</option><option value="weekly">Chaque semaine</option><option value="monthly">Chaque mois</option><option value="yearly">Chaque année</option></select></label><label>Date de référence<input name="date" type="date" required></label><label>Jour hebdomadaire<select name="weekday">'+names.map((v,i)=>'<option value="'+i+'">'+v+'</option>').join('')+'</select></label><label>Service<select name="service"><option value="lunch">Déjeuner</option><option value="dinner">Dîner</option></select></label><label>Début<input name="start" type="time" value="12:00" required></label><label>Dernière arrivée<input name="end" type="time" value="14:30" required></label><label>Intervalle<select name="interval"><option value="15">15 min</option><option value="30" selected>30 min</option><option value="60">60 min</option></select></label><label>Couverts / créneau<input name="capacity" type="number" min="0" value="20" required></label></div><button class="lv-action" type="submit">Ajouter le service</button></form><div id="lv-special-list"></div></article><article class="lv-paper"><h2>Fermetures exceptionnelles</h2><form id="lv-closure-form" class="lv-form"><label>Motif<input name="name" placeholder="Congés annuels" required></label><div class="lv-form-grid"><label>Du<input name="start" type="date" required></label><label>Au<input name="end" type="date" required></label></div><label class="lv-check"><input type="checkbox" name="block" checked> Bloquer les réservations</label><button type="submit" class="lv-action">Ajouter la fermeture</button></form><div id="lv-closure-list"></div></article></div>');
@@ -59,6 +53,7 @@ panel('templates','<div class="lv-screen-head"><div><span>COMMUNICATION</span><h
 panel('data','<div class="lv-screen-head"><div><span>DONNÉES</span><h1>Importer / exporter</h1><p>Retrouvez facilement vos données de démonstration.</p></div></div><div class="lv-demo-notice">Les imports ne touchent aucune donnée réelle du restaurant.</div><div class="lv-duo"><article class="lv-paper lv-form"><h2>Importer des clients</h2><p>Fichier CSV avec prénom, nom, e-mail et téléphone.</p><label>Fichier CSV<input type="file" accept=".csv,text/csv" id="lv-csv-file"></label><div id="lv-import-preview"></div><button type="button" class="lv-action" id="lv-import-confirm" hidden>Importer dans la démo</button></article><article class="lv-paper"><h2>Exporter vos données</h2><div class="lv-export-list"><button class="lv-soft-button" data-export="clients">Clients (CSV)</button><button class="lv-soft-button" data-export="reservations">Réservations (CSV)</button><button class="lv-soft-button" data-export="settings">Réglages (JSON)</button></div></article></div>');
 panel('users','<div class="lv-screen-head"><div><span>ORGANISATION</span><h1>L’équipe</h1><p>Préparez les profils des collaborateurs.</p></div></div><div class="lv-demo-notice">Les profils ajoutés ne donnent aucun accès réel.</div><div class="lv-duo"><article class="lv-paper"><h2>Les profils</h2><div id="lv-users-list"></div></article><form class="lv-paper lv-form" id="lv-user-form"><h2>Ajouter un profil de test</h2><label>Nom<input name="name" required></label><label>E-mail<input name="email" type="email" required></label><label>Rôle<select name="role"><option>Gérant</option><option>Responsable</option><option>Accueil</option></select></label><button class="lv-action" type="submit">Ajouter</button></form></div>');
 panel('account','<div class="lv-screen-head"><div><span>PRÉFÉRENCES</span><h1>Compte</h1><p>Les réglages généraux de votre espace.</p></div></div><form class="lv-paper lv-form lv-narrow" id="lv-account-form"><h2>Informations du restaurant</h2><label>Nom de l’expéditeur<input name="sender" required></label><label>E-mail de réponse<input name="reply" type="email"></label><label>Fuseau horaire<select name="timezone"><option>Europe/Paris</option></select></label><div class="lv-form-grid"><label>SMS à partir de<input name="smsFrom" type="time"></label><label>SMS jusqu’à<input name="smsUntil" type="time"></label></div><button class="lv-action" type="submit">Enregistrer</button><p class="lv-help">Les clés API restent hors de cette démonstration.</p></form>');
+panel('communication','<div class="lv-screen-head"><div><span>GARDER LE LIEN</span><h1>Communication</h1><p>Vos campagnes, messages et rappels dans un seul espace.</p></div></div><div class="lv-communication-hint">Créez vos messages, choisissez les bons clients et préparez vos envois en toute simplicité.</div><div id="lv-communication-content"></div>');
 const clientsPanel=$('#admin-clients',app);
 if(clientsPanel){
  clientsPanel.querySelector('.admin-head-actions')?.remove();
@@ -67,12 +62,75 @@ if(clientsPanel){
  const list=$('#client-list',clientsPanel);
  if(list)list.insertAdjacentHTML('beforebegin','<div class="lv-client-filter"><label>Fréquentation<select id="lv-client-freq"><option value="all">Tous</option><option value="never">Jamais venu</option><option value="1">1 visite</option><option value="2-3">2 à 3 visites</option><option value="4+">4 visites et +</option></select></label><label>Consentements<select id="lv-client-consent"><option value="all">Tous</option><option value="email">E-mail autorisé</option><option value="sms">SMS autorisé</option><option value="none">Aucun</option></select></label><button type="button" class="lv-soft-button" data-export="clients">Exporter CSV</button></div><div id="lv-client-cards"></div>');
 }
+// Related screens stay in one place instead of being separate administrative sections.
+const subChoices={
+ clients:[['directory','Mes clients'],['segments','Groupes de clients']],
+ communication:[['email','E-mails'],['sms','SMS'],['templates','Mes modèles'],['automations','Messages automatiques']],
+ settings:[['reservation','Réservation en ligne'],['data','Données'],['users','Équipe'],['account','Compte']]
+};
+const currentSub={clients:'directory',communication:'email',settings:'reservation'};
+for(const [group,options] of Object.entries(subChoices)){
+ const parent=$('#admin-'+group,app);
+ if(!parent)throw Error('Missing demo area: '+group);
+ const original=document.createElement('div');
+ original.id='lv-'+group+'-original';
+ if(group!=='communication'){
+  while(parent.firstChild)original.appendChild(parent.firstChild);
+ }
+ const bar=document.createElement('div');
+ bar.className='lv-subnav';
+ bar.setAttribute('role','tablist');
+ bar.setAttribute('aria-label',group==='communication'?'Communication':group==='clients'?'Clients':'Réglages');
+ bar.innerHTML=options.map(([id,label],i)=>'<button type="button" role="tab" data-lv-subgroup="'+group+'" data-lv-sub="'+id+'" aria-selected="'+(i===0?'true':'false')+'" class="'+(i===0?'is-active':'')+'">'+label+'</button>').join('');
+ if(group==='communication'){
+  const intro=parent.querySelector('.lv-screen-head');
+  intro?.insertAdjacentElement('afterend',bar);
+ }else{parent.appendChild(bar);original.className='lv-subview';parent.appendChild(original)}
+ for(const [id] of options){
+  if(id==='directory'||id==='reservation')continue;
+  const child=$('#admin-'+id,app);
+  if(!child)throw Error('Missing management subsection: '+id);
+  child.classList.add('lv-subview');
+  child.dataset.lvSubsection=id;
+  parent.appendChild(child);
+ }
+}
+function switchSub(group,name){
+ const options=subChoices[group];
+ if(!options)return;
+ currentSub[group]=name;
+ const parent=$('#admin-'+group,app);
+ $$('[data-lv-subgroup="'+group+'"]',parent).forEach(b=>{
+  const selected=b.dataset.lvSub===name;
+  b.classList.toggle('is-active',selected);
+  b.setAttribute('aria-selected',String(selected));
+ });
+ const root=$('#lv-'+group+'-original',parent);
+ if(root)root.hidden=name!==(group==='clients'?'directory':'reservation');
+ for(const [id] of options){
+  if(id==='directory'||id==='reservation')continue;
+  const pane=$('#admin-'+id,parent);
+  if(pane)pane.hidden=id!==name;
+ }
+ if(group==='clients'&&name==='directory'){renderClients();return}
+ if(group==='settings'&&name==='reservation'){api.refresh();return}
+ render(name);
+}
 function show(name){
- active=name;$$('.admin-tab',app).forEach(p=>{p.hidden=p.id!==('admin-'+name)});
+ active=name;
+ // Hide only primary navigation panels, never their nested subsections.
+ Array.from(main.children).filter(p=>p.classList.contains('admin-tab')).forEach(p=>{p.hidden=p.id!=='admin-'+name});
  $$('[data-lv-nav]',nav).forEach(b=>b.classList.toggle('is-active',b.dataset.lvNav===name));
- if(name==='planning')api.refresh();else if(name==='clients'){api.refresh();renderClients()}else render(name);
+ if(name==='planning')api.refresh();
+ else if(name==='schedule')render('schedule');
+ else if(subChoices[name])switchSub(name,currentSub[name]);
  if(window.innerWidth<800)window.scrollTo({top:0,behavior:'smooth'});
 }
+main.addEventListener('click',e=>{
+ const button=e.target.closest('[data-lv-subgroup][data-lv-sub]');
+ if(!button)return;
+ switchSub(button.dataset.lvSubgroup,button.dataset.lvSub);
+});
 nav.addEventListener('click',e=>{const b=e.target.closest('[data-lv-nav]');if(b)show(b.dataset.lvNav)});
 const back=document.createElement('div');back.className='lv-extra-nav-bottom';back.innerHTML='<button type="button" id="lv-back-to-site">Voir le site démo</button><a href="/demo-reservation?logout=1">Déconnexion</a>';nav.append(back);
 $('#lv-back-to-site').onclick=()=>$('.demo-switchbar [data-go="showcase"]')?.click();
