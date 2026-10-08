@@ -389,3 +389,5 @@ body.lv-demo-admin #lv-demo-app .admin-calendar .calendar-day:after{display:none
   will-change:auto;
  }
 }
+
+#lv-demo-app .booking-dialog:not(.is-contact)::backdrop{background:transparent!important;backdrop-filter:none!important}
