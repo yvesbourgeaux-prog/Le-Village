@@ -181,3 +181,18 @@ body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-day-content .lv-rts-serv
  body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-service-summary{flex-wrap:wrap}
  body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-service-summary em{margin-left:auto}
 }
+
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-explanation{
+ display:block;margin:0 0 20px;padding:16px 20px;
+ background:#f5f0e8;border:1px solid #e8dbc9;border-radius:10px;
+ color:#675747;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-explanation strong{
+ display:block;font:700 13px Lato,Arial,sans-serif;margin:0 0 5px;color:#675037;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-explanation p{
+ margin:0;font:400 12px/1.55 Lato,Arial,sans-serif;color:#93816f;
+}
+@media(max-width:580px){
+ body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-explanation{padding:13px 14px;margin-bottom:15px}
+}
