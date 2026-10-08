@@ -10,8 +10,27 @@ const id=()=>String(Date.now())+Math.random().toString(36).slice(2,6);
 const names=['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
 const today=()=>{const d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,10)};
 const formVals=form=>Object.fromEntries(new FormData(form));
-let week=load('week',names.map((name,i)=>({lunch:{on:true,restaurantOpen:true,start:'12:00',end:'14:30',interval:30,capacity:24},dinner:{on:true,restaurantOpen:true,start:'19:00',end:'21:00',interval:30,capacity:30}})));
-if(!Array.isArray(week)||week.length!==7)week=names.map(()=>({lunch:{on:true,start:'12:00',end:'14:30',interval:30,capacity:24},dinner:{on:true,start:'19:00',end:'21:00',interval:30,capacity:30}}));
+// Sample Village hours for this private demonstration; all times are editable.
+const defaultService=service=>service==='lunch'
+ ?{on:true,restaurantOpen:true,open:'12:00',close:'15:00',start:'12:00',end:'14:30',interval:30,capacity:24,perSlot:{}}
+ :{on:true,restaurantOpen:true,open:'19:00',close:'22:00',start:'19:00',end:'21:00',interval:30,capacity:30,perSlot:{}};
+const defaultDay=()=>({active:true,maxParty:6,lunch:defaultService('lunch'),dinner:defaultService('dinner')});
+const toMinutes=t=>/^\d{2}:\d{2}$/.test(t||'')?Number(t.slice(0,2))*60+Number(t.slice(3)):NaN;
+const normalizeService=(service,data)=>{
+ const defaults=defaultService(service),merged={...defaults,...data};
+ merged.open=data?.open||data?.start||defaults.open;
+ merged.close=data?.close|| (service==='lunch'?'15:00':'22:00');
+ merged.perSlot=(data?.perSlot&&typeof data.perSlot==='object'&&!Array.isArray(data.perSlot))?data.perSlot:{};
+ merged.interval=[15,30,60].includes(Number(merged.interval))?Number(merged.interval):30;
+ merged.capacity=Math.max(0,Number(merged.capacity)||0);
+ return merged;
+};
+const rawWeek=load('week',Array.from({length:7},defaultDay));
+let week=Array.from({length:7},(_,day)=>{
+ const data=Array.isArray(rawWeek)?rawWeek[day]:null;
+ return {active:data?.active!==false,maxParty:Math.min(6,Math.max(1,Number(data?.maxParty)||6)),
+  lunch:normalizeService('lunch',data?.lunch),dinner:normalizeService('dinner',data?.dinner)};
+});
 let closures=load('closures',[]),specials=load('specials',[]),additionalClients=load('clients',[]),users=load('users',[{id:'manager',name:'Responsable Le Village',email:'responsable@example.com',role:'Gérant'}]),prefs=load('prefs',{sender:'Le Village',reply:'demo@example.com',smsFrom:'09:00',smsUntil:'20:00'});
 const eventOn=(rule,date)=>{
  if(rule.repeat==='once')return rule.date===date;
@@ -26,15 +45,41 @@ const eventOn=(rule,date)=>{
  return rule.repeat==='yearly'&&d.getDate()===r.getDate()&&d.getMonth()===r.getMonth();
 };
 const closed=date=>closures.some(c=>c.block&&c.start<=date&&date<=c.end);
-function config(date,service){if(closed(date))return {on:false,capacity:0};const custom=specials.find(e=>e.service===service&&eventOn(e,date));return custom?{...custom,on:true,capacity:Number(custom.capacity)}:(()=>{const r=week[new Date(date+'T12:00:00').getDay()][service];return {...r,on:r.on!==false&&r.restaurantOpen!==false}})()}
+function config(date,service){
+ const day=week[new Date(date+'T12:00:00').getDay()];
+ if(!day.active||closed(date))return {...day[service],on:false,capacity:0,perSlot:{}};
+ const custom=specials.find(e=>e.service===service&&eventOn(e,date));
+ if(custom)return {...day[service],...custom,on:true,capacity:Number(custom.capacity),perSlot:{},maxParty:day.maxParty};
+ const regular=day[service];
+ return {...regular,on:regular.on!==false&&regular.restaurantOpen!==false,maxParty:day.maxParty};
+}
 const serviceTimes=(date,service)=>{
  if(!date)return[];
- const c=config(date,service);if(!c.on||!c.start||!c.end)return[];
- const toMin=t=>Number(t.slice(0,2))*60+Number(t.slice(3,5));
- const st=toMin(c.start),en=toMin(c.end),step=Math.max(15,Number(c.interval)||30);if(st>en)return[];
- const a=[];for(let t=st;t<=en&&a.length<48;t+=step)a.push(String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0'));return a;
+ const c=config(date,service);
+ if(!c.on||!c.start||!c.end)return[];
+ const start=toMinutes(c.start),end=toMinutes(c.end),open=toMinutes(c.open),close=toMinutes(c.close);
+ const step=Number(c.interval)||30;
+ if(!Number.isFinite(start)||!Number.isFinite(end)||start>end||start<open||end>close)return[];
+ const times=[];
+ for(let min=start;min<=end&&times.length<48;min+=step){
+  times.push(String(Math.floor(min/60)).padStart(2,'0')+':'+String(min%60).padStart(2,'0'));
+ }
+ return times;
 };
-window.lvDemoSchedule={getTimes:serviceTimes,getCapacity:(date,svc)=>Math.max(0,Number(config(date,svc).capacity)||0),isDayOpen:date=>!closed(date)&&['lunch','dinner'].some(s=>serviceTimes(date,s).length)};
+function slotRules(date,service,time){
+ const c=config(date,service);
+ const override=c.perSlot?.[time]||{};
+ return {
+  capacity:Math.max(0,Number(override.capacity??c.capacity)||0),
+  maxParty:Math.max(1,Math.min(6,Number(override.maxParty??c.maxParty)||6))
+ };
+}
+window.lvDemoSchedule={
+ getTimes:serviceTimes,
+ getCapacity:(date,service,time)=>time?slotRules(date,service,time).capacity:Math.max(0,Number(config(date,service).capacity)||0),
+ getMaxParty:(date,service,time)=>slotRules(date,service,time).maxParty,
+ isDayOpen:date=>!closed(date)&&['lunch','dinner'].some(service=>serviceTimes(date,service).length>0)
+};
 function allClients(){
  const map=new Map();
  api.getReservations().forEach(r=>{const key=(r.email||r.phone||r.first+r.last).toLowerCase();if(!map.has(key))map.set(key,{id:'r'+r.id,first:r.first,last:r.last,email:r.email,phone:r.phone,visits:0,last:r.date,consentEmail:false,consentSms:false,tags:''});const c=map.get(key);if(r.status!=='cancelled')c.visits++;if(r.date>c.last)c.last=r.date});
