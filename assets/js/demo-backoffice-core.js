@@ -127,6 +127,23 @@ function switchSub(group,name){
  if(group==='settings'&&name==='reservation'){api.refresh();return}
  render(name);
 }
+// Progressive disclosure: the owner sees helpful actions, not a wall of forms.
+for(const [selector,label,description] of [
+ ['#lv-email-form','Créer une campagne e-mail','Une invitation, une actualité ou une nouvelle carte'],
+ ['#lv-sms-form','Rédiger un SMS','Un message court pour vos clients'],
+ ['#lv-template-form','Créer un modèle','Gagner du temps avec un message prêt à réutiliser'],
+ ['#lv-automation-form','Créer un message automatique','Préparer un rappel ou un remerciement']
+]){
+ const form=$(selector,app);
+ if(!form)continue;
+ const details=document.createElement('details');
+ details.className='lv-compose-fold';
+ const title=document.createElement('summary');
+ title.innerHTML='<span class="lv-compose-plus">+</span><span><strong>'+label+'</strong><small>'+description+'</small></span>';
+ form.before(details);
+ details.append(title,form);
+}
+// Avoid multiple competing headlines inside the single Communication area.
 function show(name){
  active=name;
  // Hide only primary navigation panels, never their nested subsections.
