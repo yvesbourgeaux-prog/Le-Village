@@ -102,7 +102,7 @@ function renderParty(){
  h+='<button type="button" class="demo-option" data-pax="7">'+(settings.maxParty>=6?'7+':(settings.maxParty+1)+'+')+'</button></div>';
  return h+'<div id="demo-big-party-slot"></div>';
 }
-function renderCalendar(){
+function renderBookingCalendar(){
  const d=booking.month||new Date(booking.date+'T12:00:00'),year=d.getFullYear(),month=d.getMonth(),start=(new Date(year,month,1).getDay()+6)%7;
  const monthEnd=new Date(year,month+1,0).getDate();
  let cells='';for(let n=0;n<start;n++)cells+='<span></span>';
@@ -119,7 +119,7 @@ function renderDates(){
  let h='<p class="demo-next-availability"><span>Prochaine disponibilité</span></p><div class="demo-date-tabs">';
  for(const d of twoDates)h+='<button type="button" data-date-select="'+d+'" class="demo-date-choice '+(booking.date===d?'is-selected':'')+'"><strong>'+esc(dateShort(d))+'</strong><small>'+esc(describeQuickDate(d))+'</small></button>';
  h+='<button type="button" data-other-date class="demo-date-choice '+(booking.showCalendar?'is-selected':'')+'"><strong>Autre</strong><small>Choisir une date</small></button></div>';
- if(booking.showCalendar)h+=renderCalendar();
+ if(booking.showCalendar)h+=renderBookingCalendar();
  return h;
 }
 function renderTime(){
@@ -146,7 +146,7 @@ function renderBooking(){
   if(!dayAvailable(booking.date,n))booking.date=nextAvailable(todayISO(),n);
   booking.month=new Date(booking.date+'T12:00:00');booking.expanded='date';booking.showCalendar=false;renderBooking();
  });
- $('[data-other-date]',content)?.addEventListener('click',()=>{booking.showCalendar=!booking.showCalendar;booking.month=new Date(booking.date+'T12:00:00');renderBooking()});
+ $('[data-other-date]',content)?.addEventListener('click',()=>{booking.showCalendar=!booking.showCalendar;booking.month=new Date(booking.date+'T12:00:00');renderBooking();if(booking.showCalendar){const calendar=$('.demo-month-head',content);calendar?.scrollIntoView({block:'nearest',behavior:'smooth'})}});
  $$('[data-calendar-nav]',content).forEach(b=>b.onclick=()=>{booking.month=new Date(booking.month.getFullYear(),booking.month.getMonth()+Number(b.dataset.calendarNav),1);renderBooking()});
  $$('[data-date-select]',content).forEach(b=>b.onclick=()=>{booking.date=b.dataset.dateSelect;booking.month=new Date(booking.date+'T12:00:00');booking.expanded='time';booking.showCalendar=false;booking.service=null;booking.time=null;renderBooking()});
  $$('[data-service-toggle]',content).forEach(b=>b.onclick=()=>{const service=b.dataset.serviceToggle;booking.service=booking.service===service?null:service;booking.time=null;renderBooking()});
