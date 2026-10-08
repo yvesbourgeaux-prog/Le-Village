@@ -1,0 +1,140 @@
+(()=>{
+'use strict';
+const app=document.getElementById('lv-demo-app'),api=window.lvDemoBO;
+if(!app||!api)return;
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=v=>String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const load=(k,defaultValue)=>{try{return JSON.parse(localStorage.getItem('lv-extra-'+k))??defaultValue}catch{return defaultValue}};
+const save=(k,v)=>{try{localStorage.setItem('lv-extra-'+k,JSON.stringify(v))}catch{}};
+const id=()=>String(Date.now())+Math.random().toString(36).slice(2,6);
+const names=['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
+const today=()=>{const d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,10)};
+const formVals=form=>Object.fromEntries(new FormData(form));
+let week=load('week',names.map((name,i)=>({lunch:{on:true,start:'12:00',end:'14:30',interval:30,capacity:24},dinner:{on:true,start:'19:00',end:'21:00',interval:30,capacity:30}})));
+let closures=load('closures',[]),specials=load('specials',[]),additionalClients=load('clients',[]),users=load('users',[{id:'manager',name:'Responsable Le Village',email:'responsable@example.com',role:'Gérant'}]),prefs=load('prefs',{sender:'Le Village',reply:'demo@example.com',smsFrom:'09:00',smsUntil:'20:00'});
+const eventOn=(rule,date)=>{if(rule.repeat==='once')return rule.date===date;const d=new Date(date+'T12:00:00'),r=new Date(rule.date+'T12:00:00');return rule.repeat==='weekly'?d.getDay()===Number(rule.weekday):rule.repeat==='monthly'?d.getDate()===r.getDate():rule.repeat==='yearly'?d.getDate()===r.getDate()&&d.getMonth()===r.getMonth():false};
+const closed=date=>closures.some(c=>c.block&&c.start<=date&&date<=c.end);
+function config(date,service){if(closed(date))return {on:false,capacity:0};const custom=specials.find(e=>e.service===service&&eventOn(e,date));return custom?{...custom,on:true,capacity:Number(custom.capacity)}:week[new Date(date+'T12:00:00').getDay()][service]}
+const serviceTimes=(date,service)=>{
+ if(!date)return[];
+ const c=config(date,service);if(!c.on||!c.start||!c.end)return[];
+ const toMin=t=>Number(t.slice(0,2))*60+Number(t.slice(3,5));
+ const st=toMin(c.start),en=toMin(c.end),step=Math.max(15,Number(c.interval)||30);if(st>en)return[];
+ const a=[];for(let t=st;t<=en&&a.length<48;t+=step)a.push(String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0'));return a;
+};
+window.lvDemoSchedule={getTimes:serviceTimes,getCapacity:(date,svc)=>Math.max(0,Number(config(date,svc).capacity)||0),isDayOpen:date=>!closed(date)&&['lunch','dinner'].some(s=>serviceTimes(date,s).length)};
+function allClients(){
+ const map=new Map();
+ api.getReservations().forEach(r=>{const key=(r.email||r.phone||r.first+r.last).toLowerCase();if(!map.has(key))map.set(key,{id:'r'+r.id,first:r.first,last:r.last,email:r.email,phone:r.phone,visits:0,last:r.date,consentEmail:false,consentSms:false,tags:''});const c=map.get(key);if(r.status!=='cancelled')c.visits++;if(r.date>c.last)c.last=r.date});
+ additionalClients.forEach(c=>{const key=(c.email||c.phone||c.first+c.last).toLowerCase();map.set(key,{...map.get(key),...c})});return Array.from(map.values());
+}
+function notify(msg){let n=$('#lv-extra-message');if(!n){n=document.createElement('div');n.id='lv-extra-message';document.body.append(n)}n.textContent=msg;n.classList.add('show');setTimeout(()=>n.classList.remove('show'),3200)}
+const pages=[
+ ['planning','Vos réservations','Réservations'],
+ ['schedule','Jours & horaires','Réservations'],
+ ['clients','Clients','Clients'],
+ ['email','E-mails','Communication'],
+ ['sms','SMS','Communication'],
+ ['automations','Automatisations','Communication'],
+ ['templates','Modèles','Communication'],
+ ['data','Importer / exporter','Gestion'],
+ ['users','Équipe','Gestion'],
+ ['account','Compte','Gestion']
+];
+const nav=$('.admin-nav',app),main=$('.admin-main',app);
+if(!nav||!main)return;
+let active='planning';
+nav.innerHTML='<div class="admin-logo"><span>LV</span><div><b>Le Village</b><small>Espace de gestion · Démo</small></div></div><div class="lv-extra-menu">'
+ +pages.map((p,i)=>'<div class="lv-menu-entry">'+(i===0||pages[i-1][2]!==p[2]?'<span class="lv-menu-label">'+p[2]+'</span>':'')+'<button type="button" class="lv-menu-btn '+(i===0?'is-active':'')+'" data-lv-nav="'+p[0]+'">'+p[1]+'</button></div>').join('')
+ +'</div><div class="lv-extra-nav-bottom"><button type="button" id="lv-return-site">Voir le site démo</button><a href="/demo-reservation?logout=1">Déconnexion</a></div>';
+const panel=(id,html)=>main.insertAdjacentHTML('beforeend','<section class="admin-tab lv-extra-screen" hidden id="admin-'+id+'">'+html+'</section>');
+panel('schedule','<div class="lv-screen-head"><div><span>ORGANISATION</span><h1>Jours & horaires</h1><p>Gérez vos services, jours spéciaux et fermetures.</p></div><button class="lv-action" id="lv-save-schedule">Enregistrer les horaires</button></div><div class="lv-week-list" id="lv-schedule-week"></div><div class="lv-duo"><article class="lv-paper"><h2>Jours spéciaux</h2><form class="lv-form" id="lv-special-form"><label>Nom du service<input name="name" required placeholder="Brunch du dimanche"></label><div class="lv-form-grid"><label>Répétition<select name="repeat"><option value="once">Date unique</option><option value="weekly">Chaque semaine</option><option value="monthly">Chaque mois</option><option value="yearly">Chaque année</option></select></label><label>Date de référence<input name="date" type="date" required></label><label>Jour hebdomadaire<select name="weekday">'+names.map((v,i)=>'<option value="'+i+'">'+v+'</option>').join('')+'</select></label><label>Service<select name="service"><option value="lunch">Déjeuner</option><option value="dinner">Dîner</option></select></label><label>Début<input name="start" type="time" value="12:00" required></label><label>Dernière arrivée<input name="end" type="time" value="14:30" required></label><label>Intervalle<select name="interval"><option value="15">15 min</option><option value="30" selected>30 min</option><option value="60">60 min</option></select></label><label>Couverts / créneau<input name="capacity" type="number" min="0" value="20" required></label></div><button class="lv-action" type="submit">Ajouter le service</button></form><div id="lv-special-list"></div></article><article class="lv-paper"><h2>Fermetures exceptionnelles</h2><form id="lv-closure-form" class="lv-form"><label>Motif<input name="name" placeholder="Congés annuels" required></label><div class="lv-form-grid"><label>Du<input name="start" type="date" required></label><label>Au<input name="end" type="date" required></label></div><label class="lv-check"><input type="checkbox" name="block" checked> Bloquer les réservations</label><button type="submit" class="lv-action">Ajouter la fermeture</button></form><div id="lv-closure-list"></div></article></div>');
+panel('email','<div class="lv-screen-head"><div><span>COMMUNICATION</span><h1>Campagnes e-mail</h1><p>Préparez, prévisualisez et simulez vos campagnes.</p></div></div><div class="lv-demo-notice">Aucun message réel ne sera envoyé dans cette démonstration.</div><div class="lv-duo"><form class="lv-paper lv-form" id="lv-email-form"><h2>Nouvel e-mail</h2><label>Nom interne<input name="name" required></label><label>Destinataires<select name="segment"><option value="all">Tous les contacts de la démo</option><option value="visited">Clients déjà venus</option><option value="email">Consentement e-mail</option></select></label><label>Objet<input name="subject" required maxlength="140"></label><label>Texte de prévisualisation<input name="preheader" maxlength="180"></label><label>Message<textarea name="body" required rows="10" placeholder="Bonjour {prénom}, ..."></textarea></label><label>Insérer un modèle<select id="lv-email-template"><option value="">Choisir un modèle</option></select></label><div id="lv-email-count"></div><div class="lv-button-row"><button type="button" data-comms="draft" class="lv-soft-button">Brouillon</button><button type="button" data-comms="test" class="lv-soft-button">Aperçu test</button><button type="button" data-comms="schedule" class="lv-soft-button">Programmer (simulation)</button><button type="button" data-comms="send" class="lv-action">Simuler l’envoi</button></div></form><div class="lv-stack"><article class="lv-paper"><h2>Aperçu</h2><div id="lv-email-preview" class="lv-preview">Rédigez votre message pour afficher l’aperçu.</div></article><article class="lv-paper"><h2>Historique des campagnes</h2><div id="lv-email-history"></div></article></div></div>');
+panel('sms','<div class="lv-screen-head"><div><span>COMMUNICATION</span><h1>Campagnes SMS</h1><p>Messages courts, consentements et historique.</p></div></div><div class="lv-demo-notice">Simulation uniquement, aucun SMS envoyé.</div><div class="lv-duo"><form class="lv-paper lv-form" id="lv-sms-form"><h2>Nouveau SMS</h2><label>Nom de la campagne<input name="name" required></label><label>Destinataires<select name="segment"><option value="all">Tous les contacts de la démo</option><option value="visited">Clients déjà venus</option><option value="sms">Consentement SMS</option></select></label><label>Message<textarea name="body" maxlength="918" rows="7" required></textarea></label><label>Insérer un modèle<select id="lv-sms-template"><option value="">Choisir un modèle</option></select></label><div class="lv-button-row" id="lv-sms-count"></div><div class="lv-button-row"><button type="button" data-comms="draft" class="lv-soft-button">Brouillon</button><button type="button" data-comms="test" class="lv-soft-button">Aperçu test</button><button type="button" data-comms="schedule" class="lv-soft-button">Programmer (simulation)</button><button type="button" data-comms="send" class="lv-action">Simuler l’envoi</button></div></form><article class="lv-paper"><h2>Historique SMS</h2><div id="lv-sms-history"></div></article></div>');
+panel('automations','<div class="lv-screen-head"><div><span>PARCOURS CLIENT</span><h1>Automatisations</h1><p>Préparez vos confirmations, rappels et remerciements.</p></div></div><div class="lv-demo-notice">Les scénarios sont fictifs. Les interrupteurs ne déclenchent aucun envoi.</div><div class="lv-automation-list" id="lv-automation-list"></div><form class="lv-paper lv-form lv-narrow" id="lv-automation-form"><h2>Ajouter un scénario</h2><div class="lv-form-grid"><label>Nom<input name="name" required></label><label>Moment<select name="timing"><option>À la réservation</option><option>La veille</option><option>Le lendemain</option><option>7 jours après</option></select></label><label>Canal<select name="channel"><option value="email">E-mail</option><option value="sms">SMS</option></select></label><label>Modèle<select name="template" id="lv-automation-template"><option value="">Aucun</option></select></label></div><button class="lv-action" type="submit">Ajouter à la démo</button></form>');
+panel('templates','<div class="lv-screen-head"><div><span>COMMUNICATION</span><h1>Modèles</h1><p>Des messages faciles à réutiliser.</p></div></div><div class="lv-duo"><form class="lv-paper lv-form" id="lv-template-form"><h2>Créer ou modifier un modèle</h2><input type="hidden" name="id"><label>Nom<input name="name" required></label><label>Canal<select name="channel"><option value="email">E-mail</option><option value="sms">SMS</option></select></label><label>Objet<input name="subject"></label><label>Message<textarea name="body" rows="9" required></textarea></label><p class="lv-help">Variables : {prénom}, {date}, {heure}.</p><div class="lv-button-row"><button class="lv-action" type="submit">Enregistrer</button><button class="lv-soft-button" type="reset">Nouveau modèle</button></div></form><article class="lv-paper"><h2>Modèles enregistrés</h2><div id="lv-template-list"></div></article></div>');
+panel('data','<div class="lv-screen-head"><div><span>DONNÉES</span><h1>Importer / exporter</h1><p>Retrouvez facilement vos données de démonstration.</p></div></div><div class="lv-demo-notice">Les imports ne touchent aucune donnée réelle du restaurant.</div><div class="lv-duo"><article class="lv-paper lv-form"><h2>Importer des clients</h2><p>Fichier CSV avec prénom, nom, e-mail et téléphone.</p><label>Fichier CSV<input type="file" accept=".csv,text/csv" id="lv-csv-file"></label><div id="lv-import-preview"></div><button type="button" class="lv-action" id="lv-import-confirm" hidden>Importer dans la démo</button></article><article class="lv-paper"><h2>Exporter vos données</h2><div class="lv-export-list"><button class="lv-soft-button" data-export="clients">Clients (CSV)</button><button class="lv-soft-button" data-export="reservations">Réservations (CSV)</button><button class="lv-soft-button" data-export="settings">Réglages (JSON)</button></div></article></div>');
+panel('users','<div class="lv-screen-head"><div><span>ORGANISATION</span><h1>L’équipe</h1><p>Préparez les profils des collaborateurs.</p></div></div><div class="lv-demo-notice">Les profils ajoutés ne donnent aucun accès réel.</div><div class="lv-duo"><article class="lv-paper"><h2>Les profils</h2><div id="lv-users-list"></div></article><form class="lv-paper lv-form" id="lv-user-form"><h2>Ajouter un profil de test</h2><label>Nom<input name="name" required></label><label>E-mail<input name="email" type="email" required></label><label>Rôle<select name="role"><option>Gérant</option><option>Responsable</option><option>Accueil</option></select></label><button class="lv-action" type="submit">Ajouter</button></form></div>');
+panel('account','<div class="lv-screen-head"><div><span>PRÉFÉRENCES</span><h1>Compte</h1><p>Les réglages généraux de votre espace.</p></div></div><form class="lv-paper lv-form lv-narrow" id="lv-account-form"><h2>Informations du restaurant</h2><label>Nom de l’expéditeur<input name="sender" required></label><label>E-mail de réponse<input name="reply" type="email"></label><label>Fuseau horaire<select name="timezone"><option>Europe/Paris</option></select></label><div class="lv-form-grid"><label>SMS à partir de<input name="smsFrom" type="time"></label><label>SMS jusqu’à<input name="smsUntil" type="time"></label></div><button class="lv-action" type="submit">Enregistrer</button><p class="lv-help">Les clés API restent hors de cette démonstration.</p></form>');
+const clientsPanel=$('#admin-clients',app);
+if(clientsPanel){
+ clientsPanel.querySelector('.admin-head-actions')?.remove();
+ const header=clientsPanel.querySelector('.admin-head');
+ if(header)header.insertAdjacentHTML('beforeend','<button type="button" class="lv-action" id="lv-add-client">Ajouter un client</button>');
+ const list=$('#client-list',clientsPanel);
+ if(list)list.insertAdjacentHTML('beforebegin','<div class="lv-client-filter"><label>Fréquentation<select id="lv-client-freq"><option value="all">Tous</option><option value="never">Jamais venu</option><option value="1">1 visite</option><option value="2-3">2 à 3 visites</option><option value="4+">4 visites et +</option></select></label><label>Consentements<select id="lv-client-consent"><option value="all">Tous</option><option value="email">E-mail autorisé</option><option value="sms">SMS autorisé</option><option value="none">Aucun</option></select></label><button type="button" class="lv-soft-button" data-export="clients">Exporter CSV</button></div><div id="lv-client-cards"></div>');
+}
+function show(name){
+ active=name;$$('.admin-tab',app).forEach(p=>{p.hidden=p.id!==('admin-'+name)});
+ $$('[data-lv-nav]',nav).forEach(b=>b.classList.toggle('is-active',b.dataset.lvNav===name));
+ if(name==='planning')api.refresh();else if(name==='clients'){api.refresh();renderClients()}else render(name);
+ if(window.innerWidth<800)window.scrollTo({top:0,behavior:'smooth'});
+}
+nav.addEventListener('click',e=>{const b=e.target.closest('[data-lv-nav]');if(b)show(b.dataset.lvNav)});
+const back=document.createElement('div');back.className='lv-extra-nav-bottom';back.innerHTML='<button type="button" id="lv-back-to-site">Voir le site démo</button><a href="/demo-reservation?logout=1">Déconnexion</a>';nav.append(back);
+$('#lv-back-to-site').onclick=()=>$('.demo-switchbar [data-go="showcase"]')?.click();
+$('.demo-switchbar [data-go="admin"]')?.addEventListener('click',()=>show('planning'));
+const renderers={};const render=name=>{if(renderers[name])renderers[name]()};
+const register=(name,fn)=>{renderers[name]=fn};
+window.lvBOExtra={register,render,show,esc,notify,id,allClients,formVals,load,save,prefs:()=>prefs};
+function renderSchedule(){
+ const target=$('#lv-schedule-week');
+ target.innerHTML=names.map((name,i)=>{
+  const ss=['lunch','dinner'].map(service=>{
+   const c=week[i][service];
+   return '<div class="lv-week-service"><label class="lv-check"><input type="checkbox" data-day="'+i+'" data-service="'+service+'" data-field="on" '+(c.on?'checked':'')+'><strong>'+(service==='lunch'?'Déjeuner':'Dîner')+'</strong></label><div class="lv-form-grid"><label>Début<input type="time" data-day="'+i+'" data-service="'+service+'" data-field="start" value="'+esc(c.start)+'"></label><label>Fin<input type="time" data-day="'+i+'" data-service="'+service+'" data-field="end" value="'+esc(c.end)+'"></label><label>Intervalle<select data-day="'+i+'" data-service="'+service+'" data-field="interval">'+[15,30,60].map(n=>'<option value="'+n+'" '+(Number(c.interval)===n?'selected':'')+'>'+n+' min</option>').join('')+'</select></label><label>Couverts / créneau<input type="number" min="0" data-day="'+i+'" data-service="'+service+'" data-field="capacity" value="'+esc(c.capacity)+'"></label></div></div>';
+  }).join('');
+  return '<details class="lv-weekday" '+(i===new Date().getDay()?'open':'')+'><summary><strong>'+name+'</strong><span>'+[week[i].lunch.on?'Midi':'',week[i].dinner.on?'Soir':''].filter(Boolean).join(' · ')+'</span></summary>'+ss+'</details>';
+ }).join('');
+ const list=(sel,items,kind)=>{$(sel).innerHTML=items.length?items.map(it=>'<div class="lv-item"><div><strong>'+esc(it.name)+'</strong><small>'+(kind==='special'?esc(it.repeat)+' · '+esc(it.start)+'–'+esc(it.end):esc(it.start)+' → '+esc(it.end))+'</small></div><button type="button" class="lv-text-action" data-remove="'+kind+'" data-id="'+esc(it.id)+'">Retirer</button></div>').join(''):'<p class="lv-muted">Aucun élément enregistré.</p>'};
+ list('#lv-special-list',specials,'special');list('#lv-closure-list',closures,'closure');
+}
+register('schedule',renderSchedule);
+$('#lv-schedule-week').addEventListener('change',e=>{const n=e.target,k=n.dataset.field,day=Number(n.dataset.day),svc=n.dataset.service;if(!Number.isInteger(day)||!svc||!k)return;week[day][svc][k]=k==='on'?n.checked:['interval','capacity'].includes(k)?Number(n.value):n.value});
+$('#lv-save-schedule').onclick=()=>{save('week',week);api.refresh();renderSchedule();notify('Horaires enregistrés dans la démo.')};
+$('#lv-special-form').addEventListener('submit',e=>{e.preventDefault();const v=formVals(e.target);if(v.start>v.end){notify('Vérifiez les horaires.');return}specials.push({...v,id:id(),weekday:Number(v.weekday),capacity:Number(v.capacity),interval:Number(v.interval)});save('specials',specials);api.refresh();e.target.reset();renderSchedule();notify('Service spécial ajouté.')});
+$('#lv-closure-form').addEventListener('submit',e=>{e.preventDefault();const v=formVals(e.target);if(v.start>v.end){notify('Vérifiez les dates.');return}closures.push({...v,id:id(),block:e.target.elements.block.checked});save('closures',closures);api.refresh();e.target.reset();renderSchedule();notify('Fermeture enregistrée.')});
+$('#admin-schedule').addEventListener('click',e=>{const b=e.target.closest('[data-remove]');if(!b)return;if(b.dataset.remove==='special'){specials=specials.filter(v=>v.id!==b.dataset.id);save('specials',specials)}else{closures=closures.filter(v=>v.id!==b.dataset.id);save('closures',closures)}api.refresh();renderSchedule()});
+function renderClients(){
+ const q=($('#client-search')?.value||'').toLowerCase(),freq=$('#lv-client-freq')?.value||'all',consent=$('#lv-client-consent')?.value||'all';
+ const found=allClients().filter(c=>{const v=Number(c.visits)||0;return [c.first,c.last,c.email,c.phone,c.tags].join(' ').toLowerCase().includes(q)&&(freq==='all'||freq==='never'&&v===0||freq==='1'&&v===1||freq==='2-3'&&v>=2&&v<=3||freq==='4+'&&v>=4)&&(consent==='all'||consent==='email'&&c.consentEmail||consent==='sms'&&c.consentSms||consent==='none'&&!c.consentEmail&&!c.consentSms)});
+ $('#client-list').hidden=true;
+ $('#lv-client-cards').innerHTML=found.length?found.map(c=>'<div class="lv-client-card"><span class="lv-avatar">'+esc((c.first||'?')[0]) +esc((c.last||'?')[0])+'</span><div><strong>'+esc(c.first)+' '+esc(c.last)+'</strong><small>'+esc(c.email||c.phone||'Aucune coordonnée')+'</small></div><span class="lv-pill">'+(c.visits||0)+' visite(s)</span><button class="lv-soft-button" data-open-client="'+esc(c.id)+'">Voir</button></div>').join(''):'<div class="lv-empty">Aucun client pour cette recherche.</div>';
+}
+['client-search','lv-client-freq','lv-client-consent'].forEach(k=>$('#'+k)?.addEventListener(k==='client-search'?'input':'change',renderClients));
+$('#lv-add-client').onclick=()=>clientEditor();
+$('#lv-client-cards').addEventListener('click',e=>{const b=e.target.closest('[data-open-client]');if(b){const c=allClients().find(it=>it.id===b.dataset.openClient);if(c)clientEditor(c)}});
+function clientEditor(c){
+ const data=c||{id:id(),first:'',last:'',email:'',phone:'',tags:'',consentEmail:false,consentSms:false,visits:0};
+ let dialog=document.createElement('dialog');dialog.className='lv-client-editor';
+ dialog.innerHTML='<form class="lv-form" method="dialog"><div class="lv-editor-head"><h2>Fiche client</h2><button value="cancel" aria-label="Fermer" class="lv-soft-button">×</button></div><div class="lv-form-grid"><label>Prénom<input name="first" required value="'+esc(data.first)+'"></label><label>Nom<input name="last" required value="'+esc(data.last)+'"></label><label>E-mail<input name="email" type="email" value="'+esc(data.email)+'"></label><label>Téléphone<input name="phone" type="tel" value="'+esc(data.phone)+'"></label></div><label>Tags<input name="tags" value="'+esc(data.tags||'')+'"></label><label class="lv-check"><input type="checkbox" name="consentEmail" '+(data.consentEmail?'checked':'')+'> Consentement e-mail</label><label class="lv-check"><input type="checkbox" name="consentSms" '+(data.consentSms?'checked':'')+'> Consentement SMS</label><p class="lv-help">'+(data.visits||0)+' visite(s) dans cette démo.</p><button type="button" class="lv-action" id="lv-save-client">Enregistrer</button></form>';
+ document.body.append(dialog);dialog.showModal();dialog.addEventListener('close',()=>dialog.remove());
+ dialog.querySelector('#lv-save-client').onclick=()=>{const f=dialog.querySelector('form');if(!f.reportValidity())return;const v={...data,...formVals(f),consentEmail:f.elements.consentEmail.checked,consentSms:f.elements.consentSms.checked};const i=additionalClients.findIndex(d=>d.id===data.id);if(i<0)additionalClients.push(v);else additionalClients[i]=v;save('clients',additionalClients);dialog.close();renderClients();notify('Client enregistré.')};
+}
+function download(name,text,type){const blob=new Blob([text],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function exportData(kind){
+ if(kind==='settings'){download('village-demo-reglages.json',JSON.stringify({week,closures,specials,prefs},null,2),'application/json');return}
+ const data=kind==='clients'?allClients():api.getReservations();if(!data.length){notify('Aucune donnée à exporter.');return}
+ const cols=[...new Set(data.flatMap(v=>Object.keys(v)))],encode=v=>'"'+String(v??'').replace(/"/g,'""')+'"';
+ const csv='\uFEFF'+cols.map(encode).join(';')+'\r\n'+data.map(r=>cols.map(k=>encode(r[k])).join(';')).join('\r\n');
+ download('village-demo-'+kind+'.csv',csv,'text/csv;charset=utf-8');
+}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-export]');if(b&&app.contains(b))exportData(b.dataset.export)});
+let parsed=[];
+function parseCsv(text){
+ const lines=text.replace(/^\uFEFF/,'').trim().split(/\r?\n/);if(lines.length<2)return[];
+ const sep=lines[0].includes(';')?';':',';
+ function row(line){let out=[],value='',quoted=false;for(let i=0;i<line.length;i++){const c=line[i];if(c==='"'&&quoted&&line[i+1]==='"'){value+='"';i++}else if(c==='"')quoted=!quoted;else if(c===sep&&!quoted){out.push(value);value=''}else value+=c}out.push(value);return out}
+ const names=row(lines[0]).map(v=>v.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim());
+ return lines.slice(1,501).map(l=>{const vals=row(l),a={};names.forEach((n,i)=>a[n]=vals[i]||'');return {id:id(),first:a.prenom||a.firstname||'',last:a.nom||a.lastname||'',email:a.email||a['e-mail']||'',phone:a.telephone||a.phone||'',visits:0,consentEmail:false,consentSms:false}}).filter(c=>c.first||c.last||c.email||c.phone);
+}
+$('#lv-csv-file').addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;if(file.size>1000000){notify('Fichier de plus de 1 Mo refusé.');return}parsed=parseCsv(await file.text());$('#lv-import-preview').textContent=parsed.length+' client(s) reconnus.';$('#lv-import-confirm').hidden=!parsed.length});
+$('#lv-import-confirm').onclick=()=>{additionalClients.push(...parsed);save('clients',additionalClients);parsed=[];$('#lv-import-confirm').hidden=true;$('#lv-import-preview').textContent='Contacts ajoutés à la démo.';notify('Import effectué.')};
+function renderUsers(){$('#lv-users-list').innerHTML=users.map(u=>'<div class="lv-item"><div><strong>'+esc(u.name)+'</strong><small>'+esc(u.role)+' · '+esc(u.email)+'</small></div>'+(u.id==='manager'?'':'<button class="lv-text-action" data-delete-user="'+esc(u.id)+'">Retirer</button>')+'</div>').join('')}
+register('users',renderUsers);
+$('#lv-user-form').addEventListener('submit',e=>{e.preventDefault();users.push({...formVals(e.target),id:id()});save('users',users);e.target.reset();renderUsers();notify('Profil fictif ajouté.')});
+$('#lv-users-list').addEventListener('click',e=>{const b=e.target.closest('[data-delete-user]');if(!b)return;users=users.filter(u=>u.id!==b.dataset.deleteUser);save('users',users);renderUsers()});
+function renderAccount(){const f=$('#lv-account-form');Object.entries(prefs).forEach(([k,v])=>{if(f.elements[k])f.elements[k].value=v})}
+register('account',renderAccount);
+$('#lv-account-form').addEventListener('submit',e=>{e.preventDefault();prefs=formVals(e.target);save('prefs',prefs);notify('Préférences enregistrées.')});
+})();
