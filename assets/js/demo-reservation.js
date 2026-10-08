@@ -119,7 +119,7 @@ function renderDates(){
  let h='<p class="demo-next-availability"><span>Prochaine disponibilité</span></p><div class="demo-date-tabs">';
  for(const d of twoDates)h+='<button type="button" data-date-select="'+d+'" class="demo-date-choice '+(booking.date===d?'is-selected':'')+'"><strong>'+esc(dateShort(d))+'</strong><small>'+esc(describeQuickDate(d))+'</small></button>';
  h+='<button type="button" data-other-date class="demo-date-choice '+(booking.showCalendar?'is-selected':'')+'"><strong>Autre</strong><small>Choisir une date</small></button></div>';
- if(booking.showCalendar)h+=renderBookingCalendar();
+ if(booking.showCalendar)h+='<div class="demo-calendar-shell" id="booking-month-calendar">'+renderBookingCalendar()+'</div>';
  return h;
 }
 function renderTime(){
@@ -147,7 +147,7 @@ function renderBooking(){
   booking.month=new Date(booking.date+'T12:00:00');booking.expanded='date';booking.showCalendar=false;renderBooking();
  });
  $('[data-other-date]',content)?.addEventListener('click',()=>{booking.showCalendar=!booking.showCalendar;booking.month=new Date(booking.date+'T12:00:00');renderBooking();if(booking.showCalendar){const calendar=$('.demo-month-head',content);calendar?.scrollIntoView({block:'nearest',behavior:'smooth'})}});
- $$('[data-calendar-nav]',content).forEach(b=>b.onclick=()=>{booking.month=new Date(booking.month.getFullYear(),booking.month.getMonth()+Number(b.dataset.calendarNav),1);renderBooking()});
+ $('[data-calendar-nav]',content).forEach(b=>b.onclick=()=>{booking.month=new Date(booking.month.getFullYear(),booking.month.getMonth()+Number(b.dataset.calendarNav),1);renderBooking();$('#booking-month-calendar',content)?.scrollIntoView({block:'nearest',behavior:'instant'})});
  $$('[data-date-select]',content).forEach(b=>b.onclick=()=>{booking.date=b.dataset.dateSelect;booking.month=new Date(booking.date+'T12:00:00');booking.expanded='time';booking.showCalendar=false;booking.service=null;booking.time=null;renderBooking()});
  $$('[data-service-toggle]',content).forEach(b=>b.onclick=()=>{const service=b.dataset.serviceToggle;booking.service=booking.service===service?null:service;booking.time=null;renderBooking()});
  $$('[data-time-select]',content).forEach(b=>b.onclick=()=>{booking.time=b.dataset.timeSelect;renderBooking()});
