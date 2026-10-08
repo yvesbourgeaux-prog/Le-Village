@@ -71,7 +71,7 @@ function slotRules(date,service,time){
  const override=c.perSlot?.[time]||{};
  return {
   capacity:Math.max(0,Number(override.capacity??c.capacity)||0),
-  maxParty:Math.max(1,Math.min(6,Number(override.maxParty??c.maxParty)||6))
+  maxParty:Math.max(1,Math.min(6,Number(c.maxParty)||6,Number(override.maxParty??c.maxParty)||6))
  };
 }
 window.lvDemoSchedule={
