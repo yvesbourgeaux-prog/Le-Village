@@ -26,22 +26,9 @@ if ($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['password'])) {
   $error='Mot de passe incorrect.';
 }
 $ok=!empty($_SESSION['lv_demo_ok']);
-?><!doctype html>
-<html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="robots" content="noindex,nofollow,noarchive">
-<meta name="theme-color" content="#713506">
-<title>Prototype réservation — Le Village</title>
-<link rel="icon" href="https://assets.zyrosite.com/gnKoPAn3rxzY53IR/chatgpt-image-22-nov.-2025-00_40_31-YvUWBeCav31wXD3h.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/demo-reservation.css?v=20261008-1">
-</head>
-<body>
-<?php if (!$ok): ?>
+
+if (!$ok) {
+?><!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><title>Accès privé — Démo réservation Le Village</title><link href="/assets/css/demo-reservation.css?v=20261008-1" rel="stylesheet"></head><body>
 <main class="demo-lock">
   <form method="post" class="demo-lock-card" autocomplete="off">
     <img src="https://assets.zyrosite.com/gnKoPAn3rxzY53IR/chatgpt-image-22-nov.-2025-00_40_31-YvUWBeCav31wXD3h.png" alt="Le Grimaldi by Le Village">
@@ -53,29 +40,34 @@ $ok=!empty($_SESSION['lv_demo_ok']);
     <button type="submit">Accéder à la démo</button>
   </form>
 </main>
-<?php else: ?>
+</body></html><?php
+  exit;
+}
+// Render the actual restaurant page, never an iframe or a second marketing page.
+// The static source is local and remains in sync with the production restaurant design.
+$site = file_get_contents(__DIR__ . '/le-village-restaurant-haut-de-cagnes-sur-mer.html');
+if ($site === false) { http_response_code(503); exit('Page temporairement indisponible'); }
+// Do not initialize Zenchef, the language redirect, or the seasonal modal on this demo.
+$site = preg_replace('~<script\\b[^>]*\\bsrc=["\\x27][^"\\x27]*/assets/js/(?:zenchef|languages|language-route|automne-popup)\\.js[^"\\x27]*["\\x27][^>]*>\\s*</script>~i', '', $site);
+$site = preg_replace('~<script\\b[^>]*\\bsrc=["\\x27]https://sdk\\.zenchef\\.com/[^"\\x27]*["\\x27][^>]*>\\s*</script>~i', '', $site);
+$site = preg_replace('~<div\\b[^>]*\\bclass=["\\x27][^"\\x27]*\\bzc-widget-config\\b[^"\\x27]*["\\x27][^>]*>\\s*</div>~i', '', $site);
+$site = preg_replace('~<link\\b[^>]*\\bhref=["\\x27][^"\\x27]*(?:automne-popup|languages)\\.css[^"\\x27]*["\\x27][^>]*>~i', '', $site);
+$site = preg_replace('~<link\\b[^>]*\\brel=["\\x27]canonical["\\x27][^>]*>~i', '', $site);
+$site = preg_replace('~<meta\\b[^>]*\\bname=["\\x27]robots["\\x27][^>]*>~i', '', $site);
+$head = '<meta name="robots" content="noindex,nofollow,noarchive"/><title>Démo privée — Le Village</title>'
+ . '<link href="/assets/css/demo-reservation.css?v=20261009-2" rel="stylesheet"/>'
+ . '<link href="/assets/css/demo-reservation-v2.css?v=20261009-2" rel="stylesheet"/>'
+ . '<script defer src="/assets/js/demo-reservation.js?v=20261009-2"></script>';
+$site = str_replace('</head>', $head . '</head>', $site);
+$demo = <<<'DEMO_HTML'
 <div id="lv-demo-app" class="demo-app">
-  <header class="demo-topbar">
-    <a class="demo-brand" href="#" data-go="showcase"><img src="https://assets.zyrosite.com/gnKoPAn3rxzY53IR/chatgpt-image-22-nov.-2025-00_40_31-YvUWBeCav31wXD3h.png" alt=""><span><strong>Le Village</strong><small>Prototype réservation</small></span></a>
-    <nav><button data-go="showcase" class="is-active">Côté client</button><button data-go="admin">Back-office</button><a href="?logout=1">Quitter</a></nav>
-  </header>
-
-  <main>
-    <section id="showcase" class="view is-active demo-showcase">
-      <div class="showcase-copy">
-        <p class="eyebrow">Expérience de réservation maison</p>
-        <h1>Réserver au Village,<br>simplement.</h1>
-        <p>Une expérience directe, élégante et pensée pour le restaurant. Sans intermédiaire, avec les mêmes repères que le module actuel mais un parcours plus clair.</p>
-        <button class="primary" data-open-booking>Réserver une table</button>
-        <button class="secondary" data-go="admin">Voir le back-office</button>
-      </div>
-      <div class="showcase-card">
-        <p>Place du Château · Haut-de-Cagnes</p>
-        <h2>Le Village</h2>
-        <span>Déjeuner & dîner</span>
-      </div>
-    </section>
-
+  <div class="demo-switchbar" role="navigation" aria-label="Navigation du prototype">
+    <span class="demo-private-tag">PROTOTYPE PRIVÉ</span>
+    <button type="button" data-go="showcase" class="is-active">Site restaurant</button>
+    <button type="button" data-go="admin">Back-office</button>
+    <a href="/demo-reservation?logout=1" aria-label="Se déconnecter">Quitter</a>
+  </div>
+  <div id="showcase" class="view is-active" aria-hidden="true"></div>
     <section id="admin" class="view admin-shell" hidden>
       <aside class="admin-nav">
         <div class="admin-logo"><span>LV</span><b>Réservations</b></div>
@@ -85,7 +77,7 @@ $ok=!empty($_SESSION['lv_demo_ok']);
         <button data-go="showcase">Voir le module client</button>
       </aside>
       <div class="admin-main">
-        <div id="admin-planning" class="admin-tab is-active">
+        <div class="demo-admin-warning">PROTOTYPE — Les réservations et réglages sont enregistrés uniquement dans ce navigateur. Aucune donnée n’est envoyée au restaurant.</div><div id="admin-planning" class="admin-tab is-active">
           <div class="admin-head">
             <div><p class="eyebrow">Planning & réservations</p><h1 id="admin-date-title">Aujourd’hui</h1></div>
             <div class="admin-head-actions"><input id="admin-date" type="date"><button class="primary small" data-new-reservation>+ Réservation</button></div>
@@ -129,20 +121,19 @@ $ok=!empty($_SESSION['lv_demo_ok']);
         </div>
       </div>
     </section>
-  </main>
 
-  <button class="booking-float" data-open-booking><span>Réserver</span></button>
-
-  <dialog id="booking-dialog" class="booking-dialog">
-    <form method="dialog" class="booking-card">
-      <header><img src="https://assets.zyrosite.com/gnKoPAn3rxzY53IR/chatgpt-image-22-nov.-2025-00_40_31-YvUWBeCav31wXD3h.png" alt=""><button value="cancel" aria-label="Fermer">×</button></header>
-      <div id="booking-progress" class="booking-progress"></div>
+  <button type="button" class="booking-float" data-open-booking>Réserver une table</button>
+  <dialog id="booking-dialog" class="booking-dialog" aria-label="Réserver une table au Village">
+    <div class="booking-card">
+      <header class="booking-top">
+        <img src="https://assets.zyrosite.com/gnKoPAn3rxzY53IR/chatgpt-image-22-nov.-2025-00_40_31-YvUWBeCav31wXD3h.png" alt="Le Village"/>
+        <span>FR</span><button type="button" data-close-booking aria-label="Fermer la réservation">×</button>
+      </header>
       <div id="booking-content" class="booking-content"></div>
-    </form>
+    </div>
   </dialog>
-
-  <dialog id="detail-dialog" class="detail-dialog"><div id="detail-content"></div></dialog>
+  <dialog id="detail-dialog" class="detail-dialog" aria-label="Détail de la réservation"><div id="detail-content"></div></dialog>
 </div>
-<script defer src="/assets/js/demo-reservation.js?v=20261008-1"></script>
-<?php endif; ?>
-</body></html>
+DEMO_HTML;
+$site = str_replace('</body>', $demo . '</body>', $site);
+echo $site;
