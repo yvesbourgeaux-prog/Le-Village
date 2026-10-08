@@ -5,6 +5,8 @@ RewriteEngine On
 RewriteCond %{HTTP_HOST} ^www\.legrimaldibylevillage\.com$ [NC]
 RewriteRule ^ https://legrimaldibylevillage.com%{REQUEST_URI} [R=301,L,NE]
 RewriteRule ^lhotel-le-grimaldi/?$ /hotel-cagnes-sur-mer-le-grimaldi [R=301,L]
+# Private reservation prototype (password protected, noindex headers in PHP).
+RewriteRule ^demo-reservation/?$ demo-reservation.php [L]
 RewriteRule ^i18n/(?:pages|catalogs)(?:/|$) - [F,L]
 RewriteRule ^(?:en|sv|da|nl|de|it|es|ja|zh-CN|nb|ru|pl)(?:/.*)?$ i18n-page.php [L]
 RewriteRule ^(?:tools|node_modules|\.git)(?:/|$) - [F,L]
