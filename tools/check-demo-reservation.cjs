@@ -55,5 +55,14 @@ assert.match(booking,/effectiveMaxParty\(date,service,time\)/);
 assert.doesNotMatch(scheduleJS,/À emporter|Livraison/);
 assert.match(scheduleCSS,/\.lv-rts-day/);
 console.log('PASS weekly reservation schedule, restaurant service editors and per-slot limits');
+// The initial page must not open a dialog. A user click animates from the right.
+assert.match(booking,/expanded:null,showCalendar:false/);
+assert.match(booking,/bookingDialog\.classList\.add\('is-opening'\)/);
+assert.match(booking,/bookingDialog\.showModal\(\)/);
+assert.match(booking,/bookingDialog\.classList\.remove\('is-contact','is-opening'\)/);
+assert.match(animationCSS,/lv-zenchef-opening-slide 310ms/);
+assert.match(animationCSS,/translate3d\(56px,0,0\)/);
+assert.match(animationCSS,/booking-dialog:not\(\.is-contact\)::backdrop\{background:transparent!important/);
+console.log('PASS user-triggered compact booking entry');
 console.log('PASS persistent animated booking sections and compact opening');
 console.log('PASS protected demo page, assets and offline-only configuration');
