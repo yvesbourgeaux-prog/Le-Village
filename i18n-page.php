@@ -53,8 +53,17 @@ if (!str_contains($document, 'hreflang="nb"')) {
 $document = preg_replace('~/assets/css/languages\.css\?v=[^"\s<>]*~', '/assets/css/languages.css?v=20261004-13', $document);
 $document = preg_replace('~/assets/js/(language-route|languages)\.js\?v=[^"\s<>]*~', '/assets/js/$1.js?v=20261004-13', $document);
 $document = preg_replace('~/assets/js/site\.js(?:\?v=[^"\s<>]*)?~', '/assets/js/site.js?v=20261006-gtm1', $document);
-$document = preg_replace('~/assets/js/zenchef\.js(?:\?v=[^"\s<>]*)?~', '/assets/js/zenchef.js?v=20261005-13', $document);
+$document = preg_replace('~/assets/js/zenchef\.js(?:\?v=[^"\s<>]*)?~', '/assets/js/zenchef.js?v=20261008-autumn-fix1', $document);
 require_once __DIR__ . '/privacy-delivery.php';
 $document = lvPrivacyDelivery($document);
+// Add the seasonal popup on localized home and restaurant pages, including older language packs.
+if ($slug === '' || $slug === 'le-village-restaurant-haut-de-cagnes-sur-mer') {
+    // Avoid duplicate assets if a localized pack is rebuilt with the popup already included.
+    $document = preg_replace('~<link\\b[^>]*automne-popup\\.css[^>]*>~i', '', $document);
+    $document = preg_replace('~<script\\b[^>]*automne-popup\\.js[^>]*>\\s*</script>~i', '', $document);
+    $assets = '<link rel="stylesheet" href="/assets/css/automne-popup.css?v=20261008-i18n1"/>'
+        . '<script defer src="/assets/js/automne-popup.js?v=20261008-i18n1"></script>';
+    $document = str_replace('</head>', $assets . '</head>', $document);
+}
 echo preg_replace('~/assets/css/navigation\.css\?v=[^"\s<>]*~', '/assets/css/navigation.css?v=20261003-mobile-video1', $document);
 
