@@ -134,9 +134,9 @@ function renderTime(){
 }
 function attachBookingCalendar(){
  // Calendar remains usable when its section was opened by an animated accordion.
- $('[data-other-date]',content).forEach(b=>b.onclick=()=>{booking.showCalendar=!booking.showCalendar;booking.month=new Date(booking.date+'T12:00:00');renderBooking()});
- $('[data-calendar-nav]',content).forEach(b=>b.onclick=()=>{booking.month=new Date(booking.month.getFullYear(),booking.month.getMonth()+Number(b.dataset.calendarNav),1);renderBooking()});
- $('[data-date-select]',content).forEach(b=>b.onclick=()=>{booking.date=b.dataset.dateSelect;booking.month=new Date(booking.date+'T12:00:00');booking.expanded='time';booking.showCalendar=false;booking.service=null;booking.time=null;renderBooking()});
+ $$('[data-other-date]',content).forEach(b=>b.onclick=()=>{booking.showCalendar=!booking.showCalendar;booking.month=new Date(booking.date+'T12:00:00');renderBooking()});
+ $$('[data-calendar-nav]',content).forEach(b=>b.onclick=()=>{booking.month=new Date(booking.month.getFullYear(),booking.month.getMonth()+Number(b.dataset.calendarNav),1);renderBooking()});
+ $$('[data-date-select]',content).forEach(b=>b.onclick=()=>{booking.date=b.dataset.dateSelect;booking.month=new Date(booking.date+'T12:00:00');booking.expanded='time';booking.showCalendar=false;booking.service=null;booking.time=null;renderBooking()});
 }
 function renderBooking(){
  bookingDialog.classList.remove('is-contact');
@@ -144,7 +144,7 @@ function renderBooking(){
  const date=acc('Date','02',booking.date?esc(dateShort(booking.date)):'Choisir',booking.expanded==='date',renderDates(),'date');
  const time=acc('Horaire','03',booking.time?esc(booking.time):'',booking.expanded==='time',renderTime(),'time');
  content.innerHTML='<div class="booking-main">'+bookingSummary()+guest+date+time+'</div><div class="demo-book-footer"><button type="button" data-confirm-time '+(!booking.time?'disabled':'')+'>Réserver</button><div class="demo-demo-label">Démonstration : aucune réservation réelle transmise</div></div>';
- $('[data-expand]',content).forEach(b=>b.onclick=()=>{
+ $$('[data-expand]',content).forEach(b=>b.onclick=()=>{
  const section=b.dataset.expand;
  if(booking.expanded===section)return;
  const previous=content.querySelector('.demo-accordion.is-open');
