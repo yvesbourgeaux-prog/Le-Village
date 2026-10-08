@@ -69,17 +69,10 @@ function describeQuickDate(iso){
  const diff=dateDiff(todayISO(),iso);
  return diff===0?"Aujourd'hui":diff===1?'Demain':diff===2?'Dans 2 jours':'Dans '+diff+' jours';
 }
-let booking={pax:2,date:null,service:null,time:null,expanded:null,showCalendar:false,month:null,contact:false};
+let booking={pax:2,date:null,service:null,time:null,expanded:'date',showCalendar:false,month:null,contact:false};
 function resetBooking(){
  const date=nextAvailable(todayISO(),2);
- // Zenchef's opening state in the reference: all three sections collapsed,
- // with the next actually available date and time already selected.
- let service=null,time=null;
- for(const candidate of ['lunch','dinner']){
-  const first=effectiveTimes(date,candidate).find(slot=>slotAvailable(date,candidate,slot,2));
-  if(first){service=candidate;time=first;break}
- }
- booking={pax:2,date,service,time,expanded:null,showCalendar:false,month:new Date(date+'T12:00:00'),contact:false};
+ booking={pax:2,date,service:null,time:null,expanded:'date',showCalendar:false,month:new Date(date+'T12:00:00'),contact:false};
 }
 function go(view){
  document.body.classList.toggle('lv-demo-admin',view==='admin');
@@ -93,11 +86,8 @@ function openBooking(){
  if(!bookingDialog||!content)throw new Error('Booking elements missing');
  if(bookingDialog.open)return;
  resetBooking();
- bookingDialog.classList.remove('is-contact','is-opening');
+ bookingDialog.classList.remove('is-contact');
  renderBooking();
- // Reveal the compact panel upwards from its bottom-right anchor.
- const reduce=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
- if(!reduce)bookingDialog.classList.add('is-opening');
  bookingDialog.showModal();
 }
 window.lvDemoBookingOpen=openBooking;
@@ -129,15 +119,7 @@ function closeBooking(){
 }
 $('[data-close-booking]',root).onclick=closeBooking;
 bookingDialog.addEventListener('click',e=>{if(e.target===bookingDialog)closeBooking()});
-bookingDialog.addEventListener('animationend',event=>{
- if(event.target===bookingDialog&&event.animationName==='lv-demo-opening-unfold'){
-  bookingDialog.classList.remove('is-opening');
- }
-});
-bookingDialog.addEventListener('close',()=>{
- bookingDialog.classList.remove('is-contact','is-opening');
- delete bookingDialog.dataset.closing;
-});
+bookingDialog.addEventListener('close',()=>{bookingDialog.classList.remove('is-contact');delete bookingDialog.dataset.closing});
 function bookingSummary(){
  return '<div class="booking-intro"><p>Pas de disponibilité en ligne ?<br>Appelez-nous au <a href="'+PHONE_LINK+'">'+PHONE_DISPLAY+'</a>.</p></div>';
 }
