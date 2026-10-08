@@ -33,18 +33,26 @@ const dateDiff=(a,b)=>Math.round((new Date(b+'T12:00:00')-new Date(a+'T12:00:00'
 function dayOpen(iso){
  if(!/^\d{4}-\d{2}-\d{2}$/.test(iso))return false;
  const date=new Date(iso+'T12:00:00');
- return iso>=todayISO()&&settings.weekdays.includes(date.getDay())&&dateDiff(todayISO(),iso)<=365;
+ return iso>=todayISO()&&dateDiff(todayISO(),iso)<=365&&(window.lvDemoSchedule?window.lvDemoSchedule.isDayOpen(iso):settings.weekdays.includes(date.getDay()));
+}
+function effectiveTimes(date,service){
+ if(window.lvDemoSchedule)return window.lvDemoSchedule.getTimes(date,service);
+ return service==='lunch'?settings.lunchTimes:settings.dinnerTimes;
+}
+function effectiveCapacity(date,service){
+ if(window.lvDemoSchedule)return window.lvDemoSchedule.getCapacity(date,service);
+ return Number(service==='lunch'?settings.lunchCap:settings.dinnerCap)||0;
 }
 function slotAvailable(date,service,time,pax){
- if(!dayOpen(date)||!time)return false;
+ if(!dayOpen(date)||!time||!effectiveTimes(date,service).includes(time))return false;
  const at=new Date(date+'T'+time+':00').getTime();
  if(at<Date.now()+settings.notice*60000)return false;
  const taken=reservations.filter(r=>r.date===date&&r.service===service&&r.time===time&&r.status!=='cancelled').reduce((sum,r)=>sum+r.pax,0);
- const cap=Number(service==='lunch'?settings.lunchCap:settings.dinnerCap)||0;
+ const cap=effectiveCapacity(date,service);
  return taken+pax<=cap;
 }
 function dayAvailable(iso,pax=2){
- return dayOpen(iso)&&['lunch','dinner'].some(service=>(service==='lunch'?settings.lunchTimes:settings.dinnerTimes).some(time=>slotAvailable(iso,service,time,pax)));
+ return dayOpen(iso)&&['lunch','dinner'].some(service=>effectiveTimes(iso,service).some(time=>slotAvailable(iso,service,time,pax)));
 }
 function nextAvailable(after=todayISO(),pax=2){
  for(let i=0;i<120;i++){const d=addDays(after,i);if(dayAvailable(d,pax))return d}
@@ -125,7 +133,7 @@ function renderDates(){
 function renderTime(){
  return '<div class="demo-service-list">'+['lunch','dinner'].map(service=>{
   const isLunch=service==='lunch',open=booking.service===service;
-  const times=isLunch?settings.lunchTimes:settings.dinnerTimes;
+  const times=effectiveTimes(booking.date,service);
   const slots=times.map(t=>({time:t,available:slotAvailable(booking.date,service,t,booking.pax)}));
   const h='<section class="demo-service-row"><button type="button" class="demo-service-toggle" data-service-toggle="'+service+'" aria-expanded="'+(open?'true':'false')+'"><span>'+(isLunch?'Déjeuner':'Dîner')+'<small>'+(open?'Sélectionnez votre heure':'Voir les horaires disponibles')+'</small></span><span class="chevron" style="transform:rotate('+(open?'225':'45')+'deg)"></span></button>';
   if(!open)return h+'</section>';
@@ -328,5 +336,16 @@ function renderSettings(){
  const names=['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];$('#weekday-settings').innerHTML=names.map((n,i)=>'<label><input type="checkbox" value="'+i+'" '+(settings.weekdays.includes(i)?'checked':'')+'> '+n+'</label>').join('');
 }
 $('#save-settings').onclick=()=>{settings={...settings,maxParty:Math.min(6,Math.max(1,Number($('#set-max-party').value)||6)),notice:Number($('#set-notice').value)||0,largeMessage:$('#set-large-message').value.trim()||defaults.largeMessage,lunchTimes:$('#set-lunch-times').value.split(',').map(s=>s.trim()).filter(Boolean),dinnerTimes:$('#set-dinner-times').value.split(',').map(s=>s.trim()).filter(Boolean),lunchCap:Number($('#set-lunch-cap').value)||24,dinnerCap:Number($('#set-dinner-cap').value)||30,weekdays:$$('#weekday-settings input:checked').map(i=>Number(i.value))};save('lv-demo-settings',settings);alert('Paramètres enregistrés pour la démonstration.')};
+// Shared demo-only interface for the optional management features. No server storage.
+window.lvDemoBO={
+ getReservations:()=>reservations,
+ setReservations:items=>{reservations=items;save('lv-demo-reservations-v2',reservations);renderAdmin()},
+ getSettings:()=>settings,
+ updateSettings:partial=>{settings={...settings,...partial};save('lv-demo-settings',settings);renderAdmin()},
+ refresh:()=>renderAdmin(),
+ setDate:iso=>{selectedAdminDate=iso;calendarCursor=new Date(iso+'T12:00:00');renderAdmin()},
+ openDetail,
+ openBooking
+};
 go('showcase');
 })();
