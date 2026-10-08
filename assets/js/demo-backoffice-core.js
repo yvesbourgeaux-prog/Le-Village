@@ -158,8 +158,55 @@ function renderSchedule(){
   }).join('');
   return '<details class="lv-weekday" '+(i===new Date().getDay()?'open':'')+'><summary><strong>'+name+'</strong><span>'+[week[i].lunch.on?'Midi':'',week[i].dinner.on?'Soir':''].filter(Boolean).join(' · ')+'</span></summary>'+ss+'</details>';
  }).join('');
+ // Visual-first service cards: only the selected day reveals its detailed fields.
+ Array.from(target.querySelectorAll('.lv-weekday')).forEach((row,i)=>{
+  const summary=row.querySelector('summary'),day=week[i];
+  if(summary){
+   const serviceLabel=(type,title)=>{
+    const cfg=day[type];
+    return cfg.on&&cfg.restaurantOpen!==false
+     ?'<span class="lv-service-chip">'+title+' <b>'+esc(cfg.start)+' – '+esc(cfg.end)+'</b></span>'
+     :'<span class="lv-service-chip is-off">'+title+' fermé</span>';
+   };
+   summary.innerHTML='<span class="lv-day-monogram">'+names[i].slice(0,2)+'</span><span class="lv-day-description"><strong>'+names[i]+'</strong><span class="lv-day-preview">'+serviceLabel('lunch','Midi')+serviceLabel('dinner','Soir')+'</span></span><span class="lv-expand-hint">Modifier</span>';
+  }
+  Array.from(row.querySelectorAll('.lv-week-service')).forEach((serviceEl,j)=>{
+   const type=j===0?'lunch':'dinner',cfg=day[type];
+   const label=serviceEl.querySelector('.lv-check');
+   if(!label||serviceEl.querySelector('[data-field="restaurantOpen"]'))return;
+   const open=document.createElement('label');open.className='lv-check lv-restaurant-open';
+   open.innerHTML='<input type="checkbox" data-day="'+i+'" data-service="'+type+'" data-field="restaurantOpen" '+(cfg.restaurantOpen!==false?'checked':'')+'> Restaurant ouvert';
+   label.insertAdjacentElement('afterend',open);
+   label.appendChild(document.createTextNode(' · Réservations'));
+  });
+ });
  const list=(sel,items,kind)=>{$(sel).innerHTML=items.length?items.map(it=>'<div class="lv-item"><div><strong>'+esc(it.name)+'</strong><small>'+(kind==='special'?esc(it.repeat)+' · '+esc(it.start)+'–'+esc(it.end):esc(it.start)+' → '+esc(it.end))+'</small></div><button type="button" class="lv-text-action" data-remove="'+kind+'" data-id="'+esc(it.id)+'">Retirer</button></div>').join(''):'<p class="lv-muted">Aucun élément enregistré.</p>'};
  list('#lv-special-list',specials,'special');list('#lv-closure-list',closures,'closure');
+}
+// Forms for exceptional dates stay folded away until requested.
+const scheduleArea=$('#admin-schedule');
+for(const [key,title,detail] of [
+ ['lv-special-form','Ajouter un service spécial','Brunch, soirée, événement récurrent'],
+ ['lv-closure-form','Prévoir une fermeture','Congés ou fermeture exceptionnelle']
+]){
+ const form=$('#'+key,scheduleArea);
+ if(!form)continue;
+ const section=document.createElement('details');
+ section.className='lv-action-fold';
+ const summary=document.createElement('summary');
+ summary.innerHTML='<span class="lv-fold-plus">+</span><span><strong>'+title+'</strong><small>'+detail+'</small></span>';
+ form.before(section);section.append(summary,form);
+}
+const special=$('#lv-special-form',scheduleArea);
+const recurrence=special?.querySelector('[name="repeat"]');
+const recurrentDate=special?.querySelector('[name="weekday"]')?.closest('label');
+if(recurrentDate&&!special.querySelector('[name="ordinal"]')){
+ recurrentDate.insertAdjacentHTML('afterend','<label>Dans le mois<select name="ordinal"><option value="1">Premier</option><option value="2">Deuxième</option><option value="3">Troisième</option><option value="4">Quatrième</option><option value="-1">Dernier</option></select></label>');
+}
+const closure=$('#lv-closure-form',scheduleArea);
+if(closure&&!closure.querySelector('[name="reopen"]')){
+ closure.querySelector('.lv-form-grid')?.insertAdjacentHTML('beforeend','<label>Date de réouverture prévue<input type="date" name="reopen"></label>');
+ closure.querySelector('[name="block"]')?.closest('label')?.insertAdjacentHTML('afterend','<label class="lv-check"><input type="checkbox" name="hours" checked> Signaler la fermeture dans la démo</label><label class="lv-check"><input type="checkbox" name="banner"> Prévoir un bandeau d’information (simulation)</label>');
 }
 register('schedule',renderSchedule);
 $('#lv-schedule-week').addEventListener('change',e=>{const n=e.target,k=n.dataset.field,day=Number(n.dataset.day),svc=n.dataset.service;if(!Number.isInteger(day)||!svc||!k)return;week[day][svc][k]=['on','restaurantOpen'].includes(k)?n.checked:['interval','capacity'].includes(k)?Number(n.value):n.value});
