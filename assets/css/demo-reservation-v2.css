@@ -1,0 +1,114 @@
+/* Private Le Village prototype. All public-site overrides are opt-in. */
+body.lv-demo-admin{background:#f7f4f0!important}
+body.lv-demo-admin > :not(#lv-demo-app):not(script){display:none!important}
+#lv-demo-app .view[hidden],#lv-demo-app .admin-tab[hidden]{display:none!important}
+#lv-demo-app .demo-switchbar{position:fixed;left:16px;bottom:18px;z-index:1000;display:flex;gap:4px;align-items:center;flex-wrap:wrap;padding:7px;background:#fffefb;box-shadow:0 9px 36px #24130744;border:1px solid #e6d8ca;border-radius:15px;font-family:Lato,sans-serif}
+#lv-demo-app .demo-switchbar button,#lv-demo-app .demo-switchbar a{border:0;background:transparent;text-decoration:none;color:#713506;border-radius:9px;padding:10px 12px;font:700 12px Lato,sans-serif;cursor:pointer}
+#lv-demo-app .demo-switchbar button.is-active{background:#713506;color:white}
+#lv-demo-app .demo-private-tag{font:700 9px Lato,sans-serif;letter-spacing:.08em;color:#a57958;padding:0 8px}
+#lv-demo-app .booking-float{position:fixed;right:20px;bottom:20px;z-index:900;border:1px solid #fff4e9;border-radius:999px;background:#713506;color:white;padding:17px 26px;box-shadow:0 8px 24px #401a0780;font:700 14px Lato,sans-serif;cursor:pointer;transition:transform .2s,background .2s}
+#lv-demo-app .booking-float:hover{background:#96572c;transform:translateY(-2px)}
+body.lv-demo-admin #lv-demo-app .booking-float{display:none!important}
+body.lv-demo-admin #lv-demo-app .demo-switchbar{top:12px;bottom:auto;left:auto;right:18px}
+#lv-demo-app .booking-dialog{position:fixed;inset:0 0 0 auto;margin:0;width:min(380px,100%);height:100dvh;max-height:100dvh;max-width:none;background:#783e18;color:white;border:0;border-radius:0;overflow:hidden;padding:0;box-shadow:-12px 0 55px #2615096e;font:14px Lato,sans-serif}
+#lv-demo-app .booking-dialog:not([open]){display:none}
+#lv-demo-app .booking-dialog::backdrop{background:#180d076e;backdrop-filter:none}
+#lv-demo-app .booking-card{display:flex;flex-direction:column;height:100%;min-height:0;margin:0;background:#783e18}
+#lv-demo-app .booking-top{height:47px;min-height:47px;background:#783e18;display:flex;align-items:center;justify-content:center;position:relative;padding:4px 18px;border:0}
+#lv-demo-app .booking-top img{width:31px;height:31px;object-fit:contain;filter:brightness(0) invert(1);opacity:.83}
+#lv-demo-app .booking-top>span{position:absolute;right:56px;top:17px;color:white;font:700 12px Lato,sans-serif}
+#lv-demo-app .booking-top button{position:absolute;top:5px;right:9px;width:40px;height:40px;background:transparent;border:0;color:white;font-size:25px;cursor:pointer}
+#lv-demo-app .booking-content{padding:0;overflow:hidden;max-height:none;flex:1;min-height:0;display:flex;flex-direction:column}
+#lv-demo-app .booking-main{overflow:auto;flex:1;min-height:0;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#ae815f #783e18}
+#lv-demo-app .booking-intro{text-align:center;padding:10px 18px 17px;color:white;font:400 13px/1.55 Lato,sans-serif}
+#lv-demo-app .booking-intro p{margin:0 0 10px}
+#lv-demo-app .booking-intro a{font-weight:700;color:white;text-decoration:none}
+#lv-demo-app .booking-intro .greeting{margin-top:14px;margin-bottom:0}
+#lv-demo-app .demo-accordion{border-top:1px solid #ffffff45}
+#lv-demo-app .demo-acc-title{width:100%;background:transparent;border:0;color:white;text-align:left;display:flex;align-items:center;gap:9px;padding:16px 13px;cursor:pointer;font:700 15px Lato,sans-serif}
+#lv-demo-app .demo-acc-title .acc-index{display:grid;place-items:center;width:22px;height:22px;border:1px solid #ffffffb8;border-radius:6px;font-size:11px;font-weight:700;flex-shrink:0}
+#lv-demo-app .demo-acc-title .acc-value{flex:1}
+#lv-demo-app .chevron{width:8px;height:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin-right:9px;transition:transform .2s}
+#lv-demo-app .demo-accordion.is-open>.demo-acc-title .chevron{transform:rotate(225deg)}
+#lv-demo-app .demo-acc-body{padding:2px 12px 17px}
+#lv-demo-app .demo-party-options{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}
+#lv-demo-app .demo-option{border:1px solid #e7d3c3;background:transparent;border-radius:8px;min-height:53px;display:flex;align-items:center;justify-content:center;color:white;font:700 14px Lato,sans-serif;cursor:pointer}
+#lv-demo-app .demo-option:hover,#lv-demo-app .demo-date-choice:hover,#lv-demo-app .demo-time-choice:hover{background:#aa7049}
+#lv-demo-app .demo-option.is-selected,#lv-demo-app .demo-date-choice.is-selected,#lv-demo-app .demo-time-choice.is-selected{background:white;color:#713506;border-color:white}
+#lv-demo-app .demo-option:disabled,#lv-demo-app .demo-time-choice:disabled{opacity:.4;cursor:not-allowed}
+#lv-demo-app .demo-big-party{background:#ffffff17;padding:14px;border-radius:10px;margin-top:12px;font-size:13px;line-height:1.55}
+#lv-demo-app .demo-big-party a{display:block;color:white;font-weight:800;text-decoration:underline;margin-top:8px;font-size:17px}
+#lv-demo-app .demo-next-availability{font-size:12px;color:#fff;text-align:center;margin:6px 0 14px}
+#lv-demo-app .demo-next-availability span{display:inline-block;padding:5px 13px;background:#af7b53;border-radius:99px;letter-spacing:.04em;font-weight:700}
+#lv-demo-app .demo-date-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+#lv-demo-app .demo-date-choice{display:flex;min-height:88px;flex-direction:column;justify-content:center;align-items:center;gap:5px;background:transparent;color:white;border:1px solid #e8d1be;border-radius:8px;padding:8px 3px;font:700 13px Lato,sans-serif;cursor:pointer}
+#lv-demo-app .demo-date-choice small{font-size:12px;font-weight:400}
+#lv-demo-app .demo-date-choice svg{width:24px;height:24px}
+#lv-demo-app .demo-month-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 0 13px}
+#lv-demo-app .demo-month-head button{background:#ffffff14;border:1px solid #ffffff84;border-radius:7px;min-width:39px;height:39px;color:white;font-size:22px;cursor:pointer}
+#lv-demo-app .demo-month-head button:disabled{opacity:.35;cursor:not-allowed}
+#lv-demo-app .demo-calendar-week,#lv-demo-app .demo-calendar-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));text-align:center;gap:3px}
+#lv-demo-app .demo-calendar-week span{font-size:11px;color:#e7cdb9;padding:7px 0}
+#lv-demo-app .demo-calendar-days button{width:100%;aspect-ratio:1;border-radius:50%;border:1px solid #f4dbc8;background:transparent;color:white;cursor:pointer;font:700 12px Lato,sans-serif}
+#lv-demo-app .demo-calendar-days button:hover:not(:disabled){background:#ab7752}
+#lv-demo-app .demo-calendar-days button.is-selected{background:white;color:#713506}
+#lv-demo-app .demo-calendar-days button:disabled{color:#c9a68b;border-color:transparent;opacity:.6;cursor:not-allowed}
+#lv-demo-app .demo-service-row{border-top:1px solid #ffffff45;padding:0 2px}
+#lv-demo-app .demo-service-toggle{display:flex;align-items:center;justify-content:space-between;background:none;border:0;color:white;width:100%;text-align:left;padding:15px 4px;font:700 14px Lato,sans-serif;cursor:pointer}
+#lv-demo-app .demo-service-toggle small{display:block;line-height:1.4;font-weight:400;font-size:12px;color:#ecc9b1;margin-top:4px}
+#lv-demo-app .demo-service-times{display:grid;gap:5px;padding:0 0 12px}
+#lv-demo-app .demo-time-choice{display:flex;align-items:center;min-height:43px;background:transparent;color:white;border:1px solid #e9c6ae;border-radius:8px;text-align:left;padding:0 13px;gap:10px;font:600 13px Lato,sans-serif;cursor:pointer}
+#lv-demo-app .demo-time-choice .slot-dot{width:9px;height:9px;border-radius:50%;background:#55d085;flex-shrink:0}
+#lv-demo-app .demo-time-choice.is-selected .slot-dot{background:#713506}
+#lv-demo-app .demo-book-footer{padding:12px 10px 17px;background:#783e18;border-top:1px solid #ffffff4a;flex-shrink:0}
+#lv-demo-app .demo-book-footer button{width:100%;background:white;color:#713506;border:0;border-radius:8px;min-height:44px;font:700 14px Lato,sans-serif;cursor:pointer}
+#lv-demo-app .demo-book-footer button:disabled{background:#ac7956;color:#ebd1c0;cursor:not-allowed}
+#lv-demo-app .demo-demo-label{font-size:10px;text-align:center;padding:6px;color:#dabb9f}
+#lv-demo-app .booking-dialog.is-contact{inset:3vh auto auto 50%;transform:translateX(-50%);width:min(960px,calc(100% - 24px));height:min(800px,94dvh);max-height:94dvh;background:#fff;color:#34251d;border-radius:13px;box-shadow:0 20px 70px #1e100980}
+#lv-demo-app .booking-dialog.is-contact .booking-card{background:white}
+#lv-demo-app .booking-dialog.is-contact .booking-top{background:#783e18;min-height:49px}
+#lv-demo-app .booking-dialog.is-contact .booking-content{background:#fff;overflow-y:auto}
+#lv-demo-app .demo-contact-layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(250px,.95fr);gap:30px;padding:25px 28px 30px}
+#lv-demo-app .demo-contact-title{font:600 25px 'Playfair Display',serif;color:#713506;margin:0 0 7px}
+#lv-demo-app .demo-contact-sub{font-size:13px;color:#817065;margin:0 0 22px;line-height:1.5}
+#lv-demo-app .demo-contact-back{background:none;border:0;color:#713506;padding:3px 0;cursor:pointer;font-size:13px;margin:0 0 14px}
+#lv-demo-app .demo-contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+#lv-demo-app .demo-contact-grid label{font-size:13px;font-weight:700;color:#554940}
+#lv-demo-app .demo-contact-grid label.is-wide{grid-column:1/-1}
+#lv-demo-app .demo-contact-grid input,#lv-demo-app .demo-contact-grid textarea{width:100%;border:1px solid #d8cec6;border-radius:8px;background:white;padding:12px 13px;font:400 14px Lato,sans-serif;margin-top:6px;outline:none}
+#lv-demo-app .demo-contact-grid input:focus,#lv-demo-app .demo-contact-grid textarea:focus{border-color:#713506;box-shadow:0 0 0 2px #7135061c}
+#lv-demo-app .demo-contact-summary{background:#f8f5f2;border:1px solid #e5ddd7;border-radius:15px;padding:18px;align-self:start}
+#lv-demo-app .demo-contact-summary h3{font:600 19px 'Playfair Display',serif;color:#713506;margin:0 0 14px}
+#lv-demo-app .demo-contact-summary p{border-top:1px solid #e7ddd4;margin:0;padding:12px 0;display:flex;justify-content:space-between;gap:18px;font-size:13px}
+#lv-demo-app .demo-contact-summary p strong{font-size:14px}
+#lv-demo-app .demo-contact-summary address{font-style:normal;color:#6f6258;font-size:12px;line-height:1.6;margin-top:8px}
+#lv-demo-app .demo-consent{font:400 12px/1.5 Lato,sans-serif;color:#6b6058;display:flex;gap:10px;align-items:start;margin-top:17px}
+#lv-demo-app .demo-consent input{margin:2px 0}
+#lv-demo-app .demo-submit{background:#713506;color:white;border:none;border-radius:9px;padding:14px 24px;font:700 14px Lato,sans-serif;cursor:pointer;margin-top:15px}
+#lv-demo-app .demo-submit:hover{background:#91572d}
+#lv-demo-app .demo-validation{font-size:12px;color:#ad3827;margin:10px 0}
+#lv-demo-app .demo-success{text-align:center;padding:50px 20px;color:#34251d}
+#lv-demo-app .demo-success .success-symbol{width:65px;height:65px;display:grid;place-items:center;border-radius:50%;background:#e1f0e7;color:#208750;font:700 31px Lato,sans-serif;margin:0 auto 18px}
+#lv-demo-app .demo-success h2{font:600 30px 'Playfair Display',serif;color:#713506}
+#lv-demo-app .demo-admin-warning{border:1px solid #ecd5b9;background:#fff7ed;color:#734321;border-radius:10px;padding:12px 15px;font-size:12px;margin-bottom:16px}
+#lv-demo-app .admin-shell{min-height:100dvh;padding-top:0}
+#lv-demo-app .admin-main{padding-top:78px}
+#lv-demo-app .client-row small{display:block;font-size:12px;color:#817065;margin-top:5px}
+@media(max-width:740px){
+ #lv-demo-app .demo-switchbar{left:10px;bottom:10px;max-width:calc(100vw - 20px)}
+ #lv-demo-app .demo-private-tag{display:none}
+ #lv-demo-app .demo-switchbar button,#lv-demo-app .demo-switchbar a{padding:9px 8px;font-size:11px}
+ #lv-demo-app .booking-float{bottom:65px;right:10px;padding:14px 18px}
+ #lv-demo-app .booking-dialog{width:100%;height:100dvh;max-height:100dvh}
+ #lv-demo-app .booking-intro{padding:8px 12px 13px}
+ #lv-demo-app .demo-acc-title{padding:13px 11px}
+ #lv-demo-app .demo-acc-body{padding:3px 9px 12px}
+ #lv-demo-app .booking-dialog.is-contact{inset:0;width:100%;height:100dvh;max-height:100dvh;transform:none;border-radius:0}
+ #lv-demo-app .demo-contact-layout{grid-template-columns:1fr;gap:14px;padding:18px}
+ #lv-demo-app .demo-contact-summary{order:-1}
+ #lv-demo-app .demo-contact-grid{grid-template-columns:1fr 1fr;gap:12px}
+ #lv-demo-app .demo-contact-summary p{padding:7px 0}
+ body.lv-demo-admin #lv-demo-app .demo-switchbar{top:auto;bottom:8px;right:8px;left:8px}
+ #lv-demo-app .admin-main{padding-top:20px;padding-bottom:95px}
+}
+@media(max-width:390px){#lv-demo-app .demo-contact-grid{grid-template-columns:1fr}#lv-demo-app .demo-contact-grid label.is-wide{grid-column:auto}}
