@@ -121,3 +121,28 @@ body.lv-demo-admin #lv-demo-app .demo-switchbar{top:12px;bottom:auto;left:auto;r
  #lv-demo-app .admin-main{padding-top:20px;padding-bottom:95px}
 }
 @media(max-width:390px){#lv-demo-app .demo-contact-grid{grid-template-columns:1fr}#lv-demo-app .demo-contact-grid label.is-wide{grid-column:auto}}
+
+#lv-demo-app .detail-dialog{max-width:min(610px,calc(100vw - 24px));width:610px;max-height:88dvh;overflow:auto;border-radius:16px;padding:0}
+#lv-demo-app .demo-detail-top{display:flex;align-items:center;justify-content:space-between;background:#713506;color:white;padding:23px 24px;gap:15px}
+#lv-demo-app .demo-detail-top h2{margin:4px 0 0;font:600 26px 'Playfair Display',serif;color:white}
+#lv-demo-app .demo-detail-top small{color:#e9c8b1;letter-spacing:.1em;font:700 10px Lato,sans-serif}
+#lv-demo-app .demo-detail-top button{background:#ffffff19;border:1px solid #ffffff55;color:white;width:38px;height:38px;border-radius:50%;font:25px Lato,sans-serif;cursor:pointer}
+#lv-demo-app .demo-detail-tabs{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #e7dfd8;background:white}
+#lv-demo-app .demo-detail-tabs button{border:0;border-bottom:3px solid transparent;background:white;padding:14px;color:#79685d;font:700 13px Lato,sans-serif;cursor:pointer}
+#lv-demo-app .demo-detail-tabs button.is-active{color:#713506;border-bottom-color:#713506}
+#lv-demo-app .demo-detail-body{padding:22px 24px;color:#3a2a22}
+#lv-demo-app .demo-detail-body[hidden]{display:none}
+#lv-demo-app .demo-detail-facts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#lv-demo-app .demo-detail-facts>div{background:#f8f4f0;border:1px solid #ebdfd5;border-radius:11px;padding:14px}
+#lv-demo-app .demo-detail-facts label{display:block;color:#8e7969;font:400 12px Lato,sans-serif;margin-bottom:6px}
+#lv-demo-app .demo-detail-facts strong{font:700 14px Lato,sans-serif}
+#lv-demo-app .demo-detail-section{border-top:1px solid #ebdfd5;margin-top:18px;padding-top:15px}
+#lv-demo-app .demo-detail-section h3{font:700 14px Lato,sans-serif;color:#713506;margin:0 0 8px}
+#lv-demo-app .demo-detail-section p{font:400 13px/1.7 Lato,sans-serif;margin:7px 0}
+#lv-demo-app .demo-detail-section a{color:#713506}
+#lv-demo-app .demo-status-button{border:1px solid #d1b29a;border-radius:8px;padding:10px 13px;background:white;color:#713506;font:700 12px Lato,sans-serif;cursor:pointer}
+#lv-demo-app .demo-client-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+#lv-demo-app .demo-client-stats>div{border:1px solid #ebdfd5;border-radius:10px;padding:14px;text-align:center}
+#lv-demo-app .demo-client-stats small{display:block;color:#887468;font:400 12px Lato,sans-serif}
+#lv-demo-app .demo-client-stats strong{display:block;font:700 27px Lato,sans-serif;color:#713506;margin-top:6px}
+@media(max-width:500px){#lv-demo-app .detail-dialog{width:100vw;max-width:100vw;max-height:100dvh;height:100dvh;border-radius:0}#lv-demo-app .demo-detail-top{padding:18px}#lv-demo-app .demo-detail-body{padding:15px}#lv-demo-app .demo-detail-facts{grid-template-columns:1fr 1fr}}
