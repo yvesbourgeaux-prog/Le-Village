@@ -22,66 +22,154 @@ const seed=[
 ];
 let reservations=load('lv-demo-reservations',null);if(!reservations){reservations=seed;save('lv-demo-reservations',reservations)}
 let selectedAdminDate=todayISO(),calendarCursor=new Date(selectedAdminDate+'T12:00:00'),serviceFilter='all';
-let booking={step:1,pax:null,date:null,service:null,time:null,contact:{}};
-const bookingDialog=$('#booking-dialog'),content=$('#booking-content'),progress=$('#booking-progress');
 
-function go(view){$$('[data-go]').forEach(b=>b.classList.toggle('is-active',b.dataset.go===view));$$('.view').forEach(v=>{const active=v.id===view;v.hidden=!active;v.classList.toggle('is-active',active)});if(view==='admin'){renderAdmin();$('.booking-float').hidden=true}else $('.booking-float').hidden=false}
-$$('[data-go]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();go(b.dataset.go)}));
-
-function openBooking(){booking={step:1,pax:null,date:null,service:null,time:null,contact:{}};renderBooking();bookingDialog.showModal()}
-$$('[data-open-booking]').forEach(b=>b.addEventListener('click',openBooking));
-bookingDialog.addEventListener('close',()=>{});
-function summary(){
- const items=[];
- if(booking.pax)items.push('<button data-edit="1">🍴 '+booking.pax+' couvert'+(booking.pax>1?'s':'')+'</button>');
- if(booking.date)items.push('<button data-edit="2">📅 '+esc(fmtDate(booking.date))+'</button>');
- if(booking.service)items.push('<button data-edit="3">'+(booking.service==='lunch'?'☀️ Déjeuner':'🌙 Dîner')+'</button>');
- if(booking.time)items.push('<button data-edit="4">◷ '+esc(booking.time)+'</button>');
- return items.length?'<div class="summary-strip">'+items.join('')+'</div>':'';
+const bookingDialog=$('#booking-dialog'),content=$('#booking-content');
+const two=n=>String(n).padStart(2,'0');
+const asLocalISO=d=>d.getFullYear()+'-'+two(d.getMonth()+1)+'-'+two(d.getDate());
+const weekdayNames=['Dim.','Lun.','Mar.','Mer.','Jeu.','Ven.','Sam.'];
+const dateLong=iso=>new Intl.DateTimeFormat('fr-FR',{weekday:'long',day:'numeric',month:'long'}).format(new Date(iso+'T12:00:00'));
+const dateShort=iso=>new Intl.DateTimeFormat('fr-FR',{weekday:'short',day:'numeric',month:'short'}).format(new Date(iso+'T12:00:00'));
+const dateDiff=(a,b)=>Math.round((new Date(b+'T12:00:00')-new Date(a+'T12:00:00'))/86400000);
+function dayOpen(iso){
+ if(!/^\d{4}-\d{2}-\d{2}$/.test(iso))return false;
+ const date=new Date(iso+'T12:00:00');
+ return iso>=todayISO()&&settings.weekdays.includes(date.getDay())&&dateDiff(todayISO(),iso)<=365;
+}
+function slotAvailable(date,service,time,pax){
+ if(!dayOpen(date)||!time)return false;
+ const at=new Date(date+'T'+time+':00').getTime();
+ if(at<Date.now()+settings.notice*60000)return false;
+ const taken=reservations.filter(r=>r.date===date&&r.service===service&&r.time===time&&r.status!=='cancelled').reduce((sum,r)=>sum+r.pax,0);
+ const cap=Number(service==='lunch'?settings.lunchCap:settings.dinnerCap)||0;
+ return taken+pax<=cap;
+}
+function dayAvailable(iso,pax=2){
+ return dayOpen(iso)&&['lunch','dinner'].some(service=>(service==='lunch'?settings.lunchTimes:settings.dinnerTimes).some(time=>slotAvailable(iso,service,time,pax)));
+}
+function nextAvailable(after=todayISO(),pax=2){
+ for(let i=0;i<120;i++){const d=addDays(after,i);if(dayAvailable(d,pax))return d}
+ return after;
+}
+function firstTwoDates(){
+ const a=nextAvailable(todayISO(),booking.pax),b=nextAvailable(addDays(a,1),booking.pax);
+ return [a,b];
+}
+function describeQuickDate(iso){
+ const diff=dateDiff(todayISO(),iso);
+ return diff===0?"Aujourd'hui":diff===1?'Demain':diff===2?'Dans 2 jours':'Dans '+diff+' jours';
+}
+let booking={pax:2,date:null,service:null,time:null,expanded:'date',showCalendar:false,month:null,contact:false};
+function resetBooking(){
+ const date=nextAvailable(todayISO(),2);
+ booking={pax:2,date,service:null,time:null,expanded:'date',showCalendar:false,month:new Date(date+'T12:00:00'),contact:false};
+}
+function go(view){
+ document.body.classList.toggle('lv-demo-admin',view==='admin');
+ $$('#lv-demo-app [data-go]').forEach(b=>b.classList.toggle('is-active',b.dataset.go===view));
+ $$('#lv-demo-app .view').forEach(v=>{const active=v.id===view;v.hidden=!active;v.classList.toggle('is-active',active)});
+ if(view==='admin'){renderAdmin();$('.booking-float',root).hidden=true}
+ else $('.booking-float',root).hidden=false;
+}
+$$('#lv-demo-app [data-go]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();go(b.dataset.go)}));
+function openBooking(){
+ resetBooking();bookingDialog.classList.remove('is-contact');
+ renderBooking();bookingDialog.showModal();
+}
+$$('#lv-demo-app [data-open-booking]').forEach(b=>b.addEventListener('click',openBooking));
+// Use the exact restaurant page, while replacing every public restaurant booking trigger.
+document.addEventListener('click',e=>{
+ if(e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;
+ const a=e.target.closest('a[href],button[data-href]');
+ if(!a||root.contains(a))return;
+ const href=a.getAttribute('href')||a.dataset.href||'';
+ let u;try{u=new URL(href,location.href)}catch{return}
+ const path=u.pathname.replace(/\/$/,'');
+ if(u.origin===location.origin&&(path==='/reserver'||u.searchParams.get('zc')==='open')){
+  e.preventDefault();e.stopImmediatePropagation();openBooking();
+ }
+},true);
+$('[data-close-booking]',root).onclick=()=>bookingDialog.close();
+bookingDialog.addEventListener('close',()=>{bookingDialog.classList.remove('is-contact')});
+function bookingSummary(){
+ return '<div class="booking-intro"><p>Pas de disponibilité en ligne ?<br>Appelez-nous au <a href="'+PHONE_LINK+'">'+PHONE_DISPLAY+'</a>.</p><p class="greeting">À très bientôt !</p></div>';
+}
+function acc(label,num,value,opened,inner,section){
+ return '<section class="demo-accordion '+(opened?'is-open':'')+'"><button type="button" class="demo-acc-title" data-expand="'+section+'" aria-expanded="'+(opened?'true':'false')+'"><span class="acc-index">'+num+'</span><span class="acc-value">'+label+(value?' <strong>'+value+'</strong>':'')+'</span><span class="chevron" aria-hidden="true"></span></button>'+(opened?'<div class="demo-acc-body">'+inner+'</div>':'')+'</section>';
+}
+function renderParty(){
+ let h='<div class="demo-party-options">';
+ for(let n=1;n<=6;n++)h+='<button type="button" class="demo-option '+(booking.pax===n?'is-selected':'')+'" data-pax="'+n+'">'+n+'</button>';
+ h+='<button type="button" class="demo-option" data-pax="7">7+</button></div>';
+ return h+'<div id="demo-big-party-slot"></div>';
+}
+function renderCalendar(){
+ const d=booking.month||new Date(booking.date+'T12:00:00'),year=d.getFullYear(),month=d.getMonth(),start=(new Date(year,month,1).getDay()+6)%7;
+ const monthEnd=new Date(year,month+1,0).getDate();
+ let cells='';for(let n=0;n<start;n++)cells+='<span></span>';
+ for(let n=1;n<=monthEnd;n++){
+  const iso=asLocalISO(new Date(year,month,n)),available=dayAvailable(iso,booking.pax);
+  cells+='<button type="button" '+(available?'data-date-select="'+iso+'"':'disabled')+' class="'+(booking.date===iso?'is-selected':'')+'" aria-label="'+esc(dateLong(iso))+'">'+n+'</button>';
+ }
+ const canBack=new Date(year,month,1)>new Date(new Date().getFullYear(),new Date().getMonth(),1);
+ const canForward=dateDiff(todayISO(),asLocalISO(new Date(year,month+1,1)))<365;
+ return '<div class="demo-month-head"><button type="button" data-calendar-nav="-1" '+(!canBack?'disabled':'')+' aria-label="Mois précédent">‹</button><strong>'+esc(monthName(d))+'</strong><button type="button" data-calendar-nav="1" '+(!canForward?'disabled':'')+' aria-label="Mois suivant">›</button></div><div class="demo-calendar-week"><span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span></div><div class="demo-calendar-days">'+cells+'</div>';
+}
+function renderDates(){
+ const twoDates=firstTwoDates();
+ let h='<p class="demo-next-availability"><span>Prochaine disponibilité</span></p><div class="demo-date-tabs">';
+ for(const d of twoDates)h+='<button type="button" data-date-select="'+d+'" class="demo-date-choice '+(booking.date===d?'is-selected':'')+'"><strong>'+esc(dateShort(d))+'</strong><small>'+esc(describeQuickDate(d))+'</small></button>';
+ h+='<button type="button" data-other-date class="demo-date-choice '+(booking.showCalendar?'is-selected':'')+'"><strong>Autre</strong><small>Choisir une date</small></button></div>';
+ if(booking.showCalendar)h+=renderCalendar();
+ return h;
+}
+function renderTime(){
+ return '<div class="demo-service-list">'+['lunch','dinner'].map(service=>{
+  const isLunch=service==='lunch',open=booking.service===service;
+  const times=isLunch?settings.lunchTimes:settings.dinnerTimes;
+  const slots=times.map(t=>({time:t,available:slotAvailable(booking.date,service,t,booking.pax)}));
+  const h='<section class="demo-service-row"><button type="button" class="demo-service-toggle" data-service-toggle="'+service+'" aria-expanded="'+(open?'true':'false')+'"><span>'+(isLunch?'Déjeuner':'Dîner')+'<small>'+(open?'Sélectionnez votre heure':'Voir les horaires disponibles')+'</small></span><span class="chevron" style="transform:rotate('+(open?'225':'45')+'deg)"></span></button>';
+  if(!open)return h+'</section>';
+  return h+'<div class="demo-service-times">'+(slots.some(x=>x.available)?slots.map(x=>'<button type="button" class="demo-time-choice '+(booking.time===x.time?'is-selected':'')+'" data-time-select="'+x.time+'" '+(!x.available?'disabled':'')+'><span class="slot-dot"></span>'+esc(x.time)+(booking.time===x.time?' · sélectionné':'')+'</button>').join(''):'<div class="demo-big-party">Aucun créneau disponible pour ce service. Essayez une autre date.</div>')+'</div></section>';
+ }).join('')+'</div>';
 }
 function renderBooking(){
- progress.style.setProperty('--progress',(booking.step/5*100)+'%');
- let html='<section class="book-step">'+summary();
- if(booking.step===1){
-  html+='<h2>Combien serez-vous ?</h2><p class="lead">Choisissez le nombre de personnes.</p><div class="party-grid">';
-  for(let i=1;i<=settings.maxParty;i++)html+='<button type="button" data-pax="'+i+'" class="'+(booking.pax===i?'is-active':'')+'">'+i+'</button>';
-  html+='<button type="button" data-pax="7+">7+</button></div><div id="large-party-slot"></div>';
- } else if(booking.step===2){
-  html+='<h2>Quelle date vous convient ?</h2><p class="lead">Choisissez une date disponible.</p>'+quickDates()+calendarMarkup();
- } else if(booking.step===3){
-  html+='<h2>Quel service ?</h2><p class="lead">Choisissez d’abord le déjeuner ou le dîner.</p><div class="service-list"><button type="button" class="service-card" data-service="lunch"><div><strong>Déjeuner</strong><span>'+settings.lunchTimes[0]+' — '+settings.lunchTimes.at(-1)+'</span></div><b>→</b></button><button type="button" class="service-card" data-service="dinner"><div><strong>Dîner</strong><span>'+settings.dinnerTimes[0]+' — '+settings.dinnerTimes.at(-1)+'</span></div><b>→</b></button></div>';
- } else if(booking.step===4){
-  const times=booking.service==='lunch'?settings.lunchTimes:settings.dinnerTimes;
-  html+='<h2>Choisissez votre horaire</h2><p class="lead">'+(booking.service==='lunch'?'Déjeuner':'Dîner')+' · '+esc(fmtDate(booking.date,true))+'</p><div class="times-grid">'+times.map(t=>'<button type="button" class="time-button '+(booking.time===t?'is-active':'')+'" data-time="'+esc(t)+'">'+esc(t)+'</button>').join('')+'</div>';
- } else {
-  html+='<h2>Vos coordonnées</h2><p class="lead">Plus rapide et plus lisible : uniquement les informations utiles à votre réservation.</p><div class="contact-grid"><label>Prénom<input id="book-first" autocomplete="given-name" required></label><label>Nom<input id="book-last" autocomplete="family-name" required></label><label>Téléphone<input id="book-phone" type="tel" autocomplete="tel" required></label><label>Email<input id="book-email" type="email" autocomplete="email" required></label><label class="full">Une demande particulière ? <span style="font-weight:400">(facultatif)</span><textarea id="book-note" rows="3" placeholder="Allergie, poussette, occasion particulière…"></textarea></label></div><label class="consent"><input id="book-consent" type="checkbox" required> <span>J’accepte que mes informations soient utilisées pour gérer cette réservation.</span></label><div class="booking-actions"><button type="button" class="secondary" data-back>Retour</button><button type="button" class="primary" data-confirm>Confirmer la réservation</button></div>';
+ bookingDialog.classList.remove('is-contact');
+ const guest=acc('Couverts','01',booking.pax+' couvert'+(booking.pax>1?'s':''),booking.expanded==='pax',renderParty(),'pax');
+ const date=acc('Date','02',booking.date?esc(dateShort(booking.date)):'Choisir',booking.expanded==='date',renderDates(),'date');
+ const time=acc('Horaire','03',booking.time?esc(booking.time):'',booking.expanded==='time',renderTime(),'time');
+ content.innerHTML='<div class="booking-main">'+bookingSummary()+guest+date+time+'</div><div class="demo-book-footer"><button type="button" data-confirm-time '+(!booking.time?'disabled':'')+'>Réserver</button><div class="demo-demo-label">Démonstration : aucune réservation réelle transmise</div></div>';
+ $$('[data-expand]',content).forEach(b=>b.onclick=()=>{booking.expanded=b.dataset.expand;renderBooking()});
+ $$('[data-pax]',content).forEach(b=>b.onclick=()=>{
+  const n=Number(b.dataset.pax);
+  if(n>6){$('#demo-big-party-slot',content).innerHTML='<div class="demo-big-party">'+esc(settings.largeMessage)+'<a href="'+PHONE_LINK+'">'+PHONE_DISPLAY+'</a></div>';return}
+  booking.pax=n;booking.time=null;booking.service=null;
+  if(!dayAvailable(booking.date,n))booking.date=nextAvailable(todayISO(),n);
+  booking.month=new Date(booking.date+'T12:00:00');booking.expanded='date';booking.showCalendar=false;renderBooking();
+ });
+ $('[data-other-date]',content)?.addEventListener('click',()=>{booking.showCalendar=!booking.showCalendar;booking.month=new Date(booking.date+'T12:00:00');renderBooking()});
+ $$('[data-calendar-nav]',content).forEach(b=>b.onclick=()=>{booking.month=new Date(booking.month.getFullYear(),booking.month.getMonth()+Number(b.dataset.calendarNav),1);renderBooking()});
+ $$('[data-date-select]',content).forEach(b=>b.onclick=()=>{booking.date=b.dataset.dateSelect;booking.month=new Date(booking.date+'T12:00:00');booking.expanded='time';booking.showCalendar=false;booking.service=null;booking.time=null;renderBooking()});
+ $$('[data-service-toggle]',content).forEach(b=>b.onclick=()=>{const service=b.dataset.serviceToggle;booking.service=booking.service===service?null:service;booking.time=null;renderBooking()});
+ $$('[data-time-select]',content).forEach(b=>b.onclick=()=>{booking.time=b.dataset.timeSelect;renderBooking()});
+ $('[data-confirm-time]',content).onclick=()=>{if(booking.time)renderContact()};
+}
+function renderContact(){
+ bookingDialog.classList.add('is-contact');
+ content.innerHTML='<div class="demo-contact-layout"><div class="demo-contact-left"><button type="button" class="demo-contact-back" data-back-to-booking>‹ Modifier ma réservation</button><h2 class="demo-contact-title">Vos coordonnées</h2><p class="demo-contact-sub">Quelques informations suffisent pour finaliser votre demande. Pour la démonstration, utilisez des coordonnées fictives.</p><form id="demo-contact-form"><div class="demo-contact-grid"><label>Prénom *<input name="first" autocomplete="off" maxlength="70" required placeholder="Votre prénom"></label><label>Nom *<input name="last" autocomplete="off" maxlength="70" required placeholder="Votre nom"></label><label>Téléphone *<input name="phone" type="tel" maxlength="30" required placeholder="+33 6…"></label><label>Email *<input name="email" type="email" maxlength="150" required placeholder="vous@exemple.fr"></label><label class="is-wide">Informations utiles (facultatif)<textarea name="note" rows="3" maxlength="500" placeholder="Allergie, anniversaire, poussette, demande particulière…"></textarea></label></div><label class="demo-consent"><input name="consent" type="checkbox" required><span>J’accepte l’utilisation de ces informations pour cette réservation de démonstration. Aucune demande n’est envoyée au restaurant.</span></label><button type="submit" class="demo-submit">Confirmer cette réservation</button><p class="demo-validation" id="demo-contact-error" aria-live="polite"></p></form></div><aside class="demo-contact-summary"><h3>Votre réservation</h3><p><span>Date</span><strong>'+esc(dateLong(booking.date))+'</strong></p><p><span>Service</span><strong>'+(booking.service==='lunch'?'Déjeuner':'Dîner')+'</strong></p><p><span>Horaire</span><strong>'+esc(booking.time)+'</strong></p><p><span>Personnes</span><strong>'+booking.pax+'</strong></p><address>Le Village · 4 place du Château<br>06800 Cagnes-sur-Mer</address></aside></div>';
+ $('[data-back-to-booking]',content).onclick=renderBooking;
+ $('#demo-contact-form',content).addEventListener('submit',e=>{e.preventDefault();confirmBooking(new FormData(e.currentTarget))});
+}
+function confirmBooking(form){
+ if(!slotAvailable(booking.date,booking.service,booking.time,booking.pax)){
+  $('#demo-contact-error',content).textContent='Ce créneau n’est plus disponible dans la démo. Merci d’en choisir un autre.';return;
  }
- html+='</section>';content.innerHTML=html;
- $$('[data-edit]',content).forEach(b=>b.onclick=()=>{booking.step=Number(b.dataset.edit);if(booking.step<=4)booking.time=null;if(booking.step<=3)booking.service=null;if(booking.step<=2)booking.date=null;renderBooking()});
- $$('[data-pax]',content).forEach(b=>b.onclick=()=>{if(b.dataset.pax==='7+'){const slot=$('#large-party-slot',content);slot.innerHTML='<div class="large-party">'+esc(settings.largeMessage)+'<br><a href="'+PHONE_LINK+'">📞 '+PHONE_DISPLAY+'</a></div>';return}booking.pax=Number(b.dataset.pax);booking.step=2;renderBooking()});
- $$('[data-date]',content).forEach(b=>b.onclick=()=>{booking.date=b.dataset.date;booking.step=3;renderBooking()});
- $$('[data-service]',content).forEach(b=>b.onclick=()=>{booking.service=b.dataset.service;booking.step=4;renderBooking()});
- $$('[data-time]',content).forEach(b=>b.onclick=()=>{booking.time=b.dataset.time;booking.step=5;renderBooking()});
- $('[data-back]',content)?.addEventListener('click',()=>{booking.step=4;renderBooking()});
- $('[data-confirm]',content)?.addEventListener('click',confirmBooking);
-}
-function quickDates(){return '<div class="quick-dates">'+[0,1,2].map(n=>{const d=addDays(todayISO(),n);return '<button type="button" class="date-option" data-date="'+d+'"><small>'+(n===0?"Aujourd’hui":n===1?'Demain':'Après-demain')+'</small><br>'+esc(fmtDate(d))+'</button>'}).join('')+'</div>'}
-function calendarMarkup(){
- const base=new Date((booking.date||todayISO())+'T12:00:00'),y=base.getFullYear(),m=base.getMonth(),first=new Date(y,m,1),last=new Date(y,m+1,0),start=(first.getDay()+6)%7;
- let cells='';for(let i=0;i<start;i++)cells+='<span></span>';
- for(let day=1;day<=last.getDate();day++){const d=new Date(y,m,day),iso=d.toISOString().slice(0,10),open=settings.weekdays.includes(d.getDay())&&iso>=todayISO();cells+='<button type="button" '+(open?'data-date="'+iso+'"':'disabled')+' class="'+(open?'available ':'')+(booking.date===iso?'is-active':'')+'">'+day+'</button>'}
- return '<div class="calendar-box"><div class="calendar-head"><button type="button" disabled>‹</button><strong>'+esc(monthName(base))+'</strong><button type="button" disabled>›</button></div><div class="mini-week"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div><div class="mini-cal">'+cells+'</div></div>';
-}
-function confirmBooking(){
- const first=$('#book-first').value.trim(),last=$('#book-last').value.trim(),phone=$('#book-phone').value.trim(),email=$('#book-email').value.trim(),note=$('#book-note').value.trim(),consent=$('#book-consent').checked;
- if(!first||!last||!phone||!email||!consent){alert('Merci de compléter les champs obligatoires.');return}
+ const first=String(form.get('first')||'').trim(),last=String(form.get('last')||'').trim(),phone=String(form.get('phone')||'').trim(),email=String(form.get('email')||'').trim(),note=String(form.get('note')||'').trim();
+ if(!first||!last||!phone||!email||!form.has('consent'))return;
  const r={id:'r'+Date.now(),date:booking.date,time:booking.time,service:booking.service,pax:booking.pax,first,last,phone,email,note,status:'confirmed',created:'Module démo'};
  reservations.push(r);save('lv-demo-reservations',reservations);
- progress.style.setProperty('--progress','100%');
- content.innerHTML='<div class="success-card"><div class="success-icon">✓</div><h2>Table réservée</h2><p><strong>'+esc(first)+', votre réservation est bien enregistrée.</strong></p><p>'+esc(fmtDate(booking.date,true))+' à '+esc(booking.time)+' · '+booking.pax+' couvert'+(booking.pax>1?'s':'')+'</p><p>Une confirmation peut être envoyée automatiquement par email ou SMS dans la future version.</p><button class="primary" type="button" data-close-success>Terminer</button></div>';
- $('[data-close-success]',content).onclick=()=>bookingDialog.close();
+ content.innerHTML='<div class="demo-success"><div class="success-symbol">✓</div><h2>Réservation enregistrée</h2><p>'+esc(first)+', votre démonstration de réservation est prête.</p><p><strong>'+esc(dateLong(booking.date))+' à '+esc(booking.time)+'</strong> · '+booking.pax+' couvert'+(booking.pax>1?'s':'')+'</p><p>Elle apparaît dans le back-office de ce navigateur uniquement. Aucun email ni SMS envoyé.</p><button type="button" class="demo-submit" data-demo-done>Terminer</button></div>';
+ $('[data-demo-done]',content).onclick=()=>bookingDialog.close();
 }
-
 function renderAdmin(){
  $('#admin-date').value=selectedAdminDate;
  $('#admin-date-title').textContent=fmtDate(selectedAdminDate,true);
