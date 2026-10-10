@@ -10,6 +10,8 @@ body.lv-demo-admin #lv-demo-app .lv-meta-summary span,.lv-meta-platform header>d
 body.lv-demo-admin #lv-demo-app .lv-meta-summary h2{font:600 clamp(21px,2.2vw,28px) 'Playfair Display',serif;color:var(--meta-ink);margin:0 0 7px}
 body.lv-demo-admin #lv-demo-app .lv-meta-summary p{color:var(--meta-soft);font:400 13px/1.55 Lato,sans-serif;margin:0}
 body.lv-demo-admin #lv-demo-app .lv-meta-summary small{white-space:nowrap;color:#a19488;font:600 11px Lato,sans-serif}
+body.lv-demo-admin #lv-demo-app .lv-meta-summary-side{display:grid;justify-items:end;gap:10px}
+body.lv-demo-admin #lv-demo-app .lv-meta-connect{display:inline-flex;align-items:center;justify-content:center;padding:10px 15px;border-radius:9px;background:#76583f;color:#fff;text-decoration:none;font:700 11px Lato,sans-serif;white-space:nowrap}
 body.lv-demo-admin #lv-demo-app .lv-meta-grid-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 body.lv-demo-admin #lv-demo-app .lv-meta-platform{min-width:0;border:1px solid var(--meta-line);border-radius:18px;background:#fff;padding:23px;box-shadow:0 8px 30px #50351c0c}
 body.lv-demo-admin #lv-demo-app .lv-meta-platform>header{display:flex;align-items:center;gap:13px}
@@ -44,4 +46,4 @@ body.lv-demo-admin #lv-demo-app .lv-meta-tooltip strong{font-size:11px}.lv-meta-
 body.lv-demo-admin #lv-demo-app .lv-meta-empty-chart,.lv-meta-loading{border:1px dashed #ded4c9;border-radius:12px;padding:34px;text-align:center;color:#978a7e;font:13px/1.5 Lato,sans-serif;background:#fdfaf6}
 body.lv-demo-admin #lv-demo-app .lv-meta-warning{margin:14px 0 0;padding:10px 12px;border-radius:9px;background:#fff7eb;color:#876b49;font:12px/1.45 Lato,sans-serif}
 @media(max-width:1050px){body.lv-demo-admin #lv-demo-app .lv-meta-grid-cards{grid-template-columns:1fr}}
-@media(max-width:620px){body.lv-demo-admin #lv-demo-app .lv-meta-summary{display:block;padding:20px}.lv-meta-summary small{display:block;margin-top:12px}body.lv-demo-admin #lv-demo-app .lv-meta-platform{padding:17px}body.lv-demo-admin #lv-demo-app .lv-meta-platform>header{flex-wrap:wrap}body.lv-demo-admin #lv-demo-app .lv-meta-status{margin-left:57px}body.lv-demo-admin #lv-demo-app .lv-meta-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}body.lv-demo-admin #lv-demo-app .lv-meta-chart svg{min-height:180px}}
+@media(max-width:620px){body.lv-demo-admin #lv-demo-app .lv-meta-summary{display:block;padding:20px}.lv-meta-summary small{display:block;margin-top:12px}body.lv-demo-admin #lv-demo-app .lv-meta-summary-side{justify-items:start;margin-top:13px}body.lv-demo-admin #lv-demo-app .lv-meta-platform{padding:17px}body.lv-demo-admin #lv-demo-app .lv-meta-platform>header{flex-wrap:wrap}body.lv-demo-admin #lv-demo-app .lv-meta-status{margin-left:57px}body.lv-demo-admin #lv-demo-app .lv-meta-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}body.lv-demo-admin #lv-demo-app .lv-meta-chart svg{min-height:180px}}
