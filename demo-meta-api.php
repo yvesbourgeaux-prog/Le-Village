@@ -191,11 +191,11 @@ function insightTotal(array $payload, string $metric): int|float|null {
     return null;
 }
 
-function chunkedInsightSeries(string $path, string $metric, array $params, array $range, string $token, array $config): array {
+function chunkedInsightSeries(string $path, string $metric, array $params, array $range, string $token, array $config, int $chunkDays = 90): array {
     $series = [];
     $cursor = $range['sinceDate'];
     while ($cursor < $range['untilDate']) {
-        $chunkEnd = $cursor->add(new DateInterval('P90D'));
+        $chunkEnd = $cursor->add(new DateInterval('P'.$chunkDays.'D'));
         if ($chunkEnd > $range['untilDate']) $chunkEnd = $range['untilDate'];
         $response = graphGet($path, $params + [
             'metric' => $metric,
@@ -229,11 +229,12 @@ function facebookRangeData(array $range, string $token, array $config): array {
 
 function instagramRangeData(array $range, string $token, array $config): array {
     $totals = ['reach' => 0, 'total_interactions' => 0, 'profile_views' => 0];
+    $windowSeries = [];
     $cursor = $range['sinceDate'];
     $totalsOk = true;
     $totalsCode = 0;
     while ($cursor < $range['untilDate']) {
-        $chunkEnd = $cursor->add(new DateInterval('P90D'));
+        $chunkEnd = $cursor->add(new DateInterval('P28D'));
         if ($chunkEnd > $range['untilDate']) $chunkEnd = $range['untilDate'];
         $response = graphGet((string)$config['instagram_id'].'/insights', [
             'metric' => 'reach,total_interactions,profile_views',
@@ -247,14 +248,15 @@ function instagramRangeData(array $range, string $token, array $config): array {
             $totalsCode = (int)($response['code'] ?? 0);
             break;
         }
-        foreach (array_keys($totals) as $metric) {
-            $totals[$metric] += numberOrNull(insightTotal($response['data'], $metric)) ?? 0;
-        }
+        foreach (array_keys($totals) as $metric) $totals[$metric] += numberOrNull(insightTotal($response['data'], $metric)) ?? 0;
+        $windowSeries[$chunkEnd->sub(new DateInterval('P1D'))->format('Y-m-d')] = numberOrNull(insightTotal($response['data'], 'reach')) ?? 0;
         $cursor = $chunkEnd;
     }
-    $reach = chunkedInsightSeries((string)$config['instagram_id'].'/insights', 'reach', [
-        'metric_type' => 'time_series',
-    ], $range, $token, $config);
+    $reach = $range['days'] > 90
+        ? ['ok' => $totalsOk, 'code' => $totalsCode, 'series' => $windowSeries]
+        : chunkedInsightSeries((string)$config['instagram_id'].'/insights', 'reach', [
+            'metric_type' => 'time_series',
+        ], $range, $token, $config, 28);
     return [
         'ok' => $totalsOk,
         'code' => $totalsCode ?: (int)($reach['code'] ?? 0),
