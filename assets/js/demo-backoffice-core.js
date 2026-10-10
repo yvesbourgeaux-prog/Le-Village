@@ -91,6 +91,7 @@ const pages=[
  ['schedule','Horaires & disponibilités'],
  ['clients','Clients'],
  ['communication','Communication'],
+ ['reputation','Avis & réputation'],
  ['settings','Réglages']
 ];
 const nav=$('.admin-nav',app),main=$('.admin-main',app);
@@ -110,6 +111,7 @@ panel('data','<div class="lv-screen-head"><div><span>DONNÉES</span><h1>Importer
 panel('users','<div class="lv-screen-head"><div><span>ORGANISATION</span><h1>L’équipe</h1><p>Préparez les profils des collaborateurs.</p></div></div><div class="lv-demo-notice">Les profils ajoutés ne donnent aucun accès réel.</div><div class="lv-duo"><article class="lv-paper"><h2>Les profils</h2><div id="lv-users-list"></div></article><form class="lv-paper lv-form" id="lv-user-form"><h2>Ajouter un profil de test</h2><label>Nom<input name="name" required></label><label>E-mail<input name="email" type="email" required></label><label>Rôle<select name="role"><option>Gérant</option><option>Responsable</option><option>Accueil</option></select></label><button class="lv-action" type="submit">Ajouter</button></form></div>');
 panel('account','<div class="lv-screen-head"><div><span>PRÉFÉRENCES</span><h1>Compte</h1><p>Les réglages généraux de votre espace.</p></div></div><form class="lv-paper lv-form lv-narrow" id="lv-account-form"><h2>Informations du restaurant</h2><label>Nom de l’expéditeur<input name="sender" required></label><label>E-mail de réponse<input name="reply" type="email"></label><label>Fuseau horaire<select name="timezone"><option>Europe/Paris</option></select></label><div class="lv-form-grid"><label>SMS à partir de<input name="smsFrom" type="time"></label><label>SMS jusqu’à<input name="smsUntil" type="time"></label></div><button class="lv-action" type="submit">Enregistrer</button><p class="lv-help">Les clés API restent hors de cette démonstration.</p></form>');
 panel('communication','<div class="lv-screen-head"><div><span>GARDER LE LIEN</span><h1>Communication</h1><p>Vos campagnes, messages et rappels dans un seul espace.</p></div></div><div class="lv-communication-hint">Créez vos messages, choisissez les bons clients et préparez vos envois en toute simplicité.</div><div id="lv-communication-content"></div>');
+panel('reputation','<div class="lv-screen-head"><div><span>VOTRE RÉPUTATION EN LIGNE</span><h1>Avis & réputation</h1><p>Google et Tripadvisor, réunis dans un espace simple pour suivre vos établissements.</p></div></div><div id="lv-reputation-root"></div>');
 const clientsPanel=$('#admin-clients',app);
 if(clientsPanel){
  clientsPanel.querySelector('.admin-head-actions')?.remove();
@@ -197,6 +199,7 @@ function show(name){
  if(name==='planning')api.refresh();
  else if(name==='schedule')render('schedule');
  else if(subChoices[name])switchSub(name,currentSub[name]);
+ else render(name);
  if(window.innerWidth<800)window.scrollTo({top:0,behavior:'smooth'});
 }
 main.addEventListener('click',e=>{
