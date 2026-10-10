@@ -1,8 +1,12 @@
 body.lv-demo-admin #lv-demo-app #admin-meta{--meta-ink:#514438;--meta-soft:#91857a;--meta-line:#ebe3da}
-body.lv-demo-admin #lv-demo-app .lv-meta-toolbar{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:18px}
-body.lv-demo-admin #lv-demo-app .lv-meta-period{display:inline-flex;padding:4px;border:1px solid #e8e0d6;background:#f4f1ed;border-radius:12px}
-body.lv-demo-admin #lv-demo-app .lv-meta-period button{border:0;background:transparent;border-radius:8px;padding:10px 17px;color:#897d72;font:700 12px Lato,sans-serif;cursor:pointer}
-body.lv-demo-admin #lv-demo-app .lv-meta-period button.is-active{background:#fff;color:#684a32;box-shadow:0 3px 10px #59412812}
+body.lv-demo-admin #lv-demo-app .lv-meta-toolbar{display:flex;justify-content:space-between;gap:15px;align-items:end;margin-bottom:18px}
+body.lv-demo-admin #lv-demo-app .lv-meta-filters{display:flex;align-items:end;gap:10px;flex-wrap:wrap}
+body.lv-demo-admin #lv-demo-app .lv-meta-filters label{display:grid;gap:5px}
+body.lv-demo-admin #lv-demo-app .lv-meta-filters label>span{color:#8d8074;font:700 10px Lato,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+body.lv-demo-admin #lv-demo-app .lv-meta-filters select,body.lv-demo-admin #lv-demo-app .lv-meta-filters input{height:40px;min-width:170px;border:1px solid #ddd2c5;background:#fff;color:#5f5146;padding:0 34px 0 12px;border-radius:9px;font:600 12px Lato,sans-serif;outline:none}
+body.lv-demo-admin #lv-demo-app .lv-meta-filters input{min-width:138px;padding-right:10px}
+body.lv-demo-admin #lv-demo-app .lv-meta-filters select:focus,body.lv-demo-admin #lv-demo-app .lv-meta-filters input:focus{border-color:#a98261;box-shadow:0 0 0 3px #a9826117}
+body.lv-demo-admin #lv-demo-app .lv-meta-apply{height:40px;border:0;background:#7a5a40;color:#fff;border-radius:9px;padding:0 17px;font:700 12px Lato,sans-serif;cursor:pointer}
 body.lv-demo-admin #lv-demo-app .lv-meta-refresh{border:1px solid #d7c4b1;background:#fff;color:#76583f;border-radius:10px;padding:11px 16px;font:700 12px Lato,sans-serif;cursor:pointer}
 body.lv-demo-admin #lv-demo-app .lv-meta-refresh:disabled{opacity:.55;cursor:wait}
 body.lv-demo-admin #lv-demo-app .lv-meta-summary{display:flex;justify-content:space-between;align-items:end;gap:24px;padding:24px 27px;margin-bottom:18px;border:1px solid var(--meta-line);border-radius:18px;background:linear-gradient(120deg,#fff 58%,#fbf6ef)}
@@ -26,6 +30,10 @@ body.lv-demo-admin #lv-demo-app .lv-meta-status.is-partial{border-color:#ead9b5;
 body.lv-demo-admin #lv-demo-app .lv-meta-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:20px 0}
 body.lv-demo-admin #lv-demo-app .lv-meta-kpi{display:flex;flex-direction:column;gap:6px;min-width:0;padding:13px 12px;border:1px solid #eee8e1;border-radius:11px;background:#fffdfa}
 body.lv-demo-admin #lv-demo-app .lv-meta-kpi strong{font:600 22px 'Playfair Display',serif;color:#5b4c3e}
+body.lv-demo-admin #lv-demo-app .lv-meta-kpi>div{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+body.lv-demo-admin #lv-demo-app .lv-meta-kpi em{font:700 10px Lato,sans-serif;color:#8b7e72;font-style:normal}
+body.lv-demo-admin #lv-demo-app .lv-meta-kpi em.is-up{color:#29815d}
+body.lv-demo-admin #lv-demo-app .lv-meta-kpi em.is-down{color:#b14f4a}
 body.lv-demo-admin #lv-demo-app .lv-meta-kpi span{color:#998e84;font:600 10px/1.25 Lato,sans-serif}
 body.lv-demo-admin #lv-demo-app .lv-meta-kpi.is-fb{border-top:3px solid #1877f2}
 body.lv-demo-admin #lv-demo-app .lv-meta-kpi.is-ig{border-top:3px solid #c13584}
@@ -46,4 +54,5 @@ body.lv-demo-admin #lv-demo-app .lv-meta-tooltip strong{font-size:11px}.lv-meta-
 body.lv-demo-admin #lv-demo-app .lv-meta-empty-chart,.lv-meta-loading{border:1px dashed #ded4c9;border-radius:12px;padding:34px;text-align:center;color:#978a7e;font:13px/1.5 Lato,sans-serif;background:#fdfaf6}
 body.lv-demo-admin #lv-demo-app .lv-meta-warning{margin:14px 0 0;padding:10px 12px;border-radius:9px;background:#fff7eb;color:#876b49;font:12px/1.45 Lato,sans-serif}
 @media(max-width:1050px){body.lv-demo-admin #lv-demo-app .lv-meta-grid-cards{grid-template-columns:1fr}}
+@media(max-width:760px){body.lv-demo-admin #lv-demo-app .lv-meta-toolbar{align-items:stretch;flex-direction:column}body.lv-demo-admin #lv-demo-app .lv-meta-filters{display:grid;grid-template-columns:1fr 1fr}body.lv-demo-admin #lv-demo-app .lv-meta-filters label:first-child,body.lv-demo-admin #lv-demo-app .lv-meta-compare{grid-column:1/-1}body.lv-demo-admin #lv-demo-app .lv-meta-filters select,body.lv-demo-admin #lv-demo-app .lv-meta-filters input{width:100%;min-width:0}body.lv-demo-admin #lv-demo-app .lv-meta-refresh,body.lv-demo-admin #lv-demo-app .lv-meta-apply{width:100%}}
 @media(max-width:620px){body.lv-demo-admin #lv-demo-app .lv-meta-summary{display:block;padding:20px}.lv-meta-summary small{display:block;margin-top:12px}body.lv-demo-admin #lv-demo-app .lv-meta-summary-side{justify-items:start;margin-top:13px}body.lv-demo-admin #lv-demo-app .lv-meta-platform{padding:17px}body.lv-demo-admin #lv-demo-app .lv-meta-platform>header{flex-wrap:wrap}body.lv-demo-admin #lv-demo-app .lv-meta-status{margin-left:57px}body.lv-demo-admin #lv-demo-app .lv-meta-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}body.lv-demo-admin #lv-demo-app .lv-meta-chart svg{min-height:180px}}
