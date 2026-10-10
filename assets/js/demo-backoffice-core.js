@@ -86,21 +86,28 @@ function allClients(){
  additionalClients.forEach(c=>{const key=(c.email||c.phone||c.first+c.last).toLowerCase();map.set(key,{...map.get(key),...c})});return Array.from(map.values());
 }
 function notify(msg){let n=$('#lv-extra-message');if(!n){n=document.createElement('div');n.id='lv-extra-message';document.body.append(n)}n.textContent=msg;n.classList.add('show');setTimeout(()=>n.classList.remove('show'),3200)}
-const pages=[
- ['planning','Réservations'],
- ['schedule','Horaires & disponibilités'],
- ['clients','Clients'],
- ['communication','Communication'],
- ['meta','Statistiques Meta'],
- ['reputation','Avis & réputation'],
- ['settings','Réglages']
+const sections=[
+ {label:'Pilotage',items:[['planning','Réservations','calendar'],['schedule','Jours & horaires','clock']]},
+ {label:'Clients',items:[['clients','Clients','users']]},
+ {label:'Communication',items:[['communication','Communication','send']]},
+ {label:'Configuration',items:[['settings','Réglages','sliders']]}
 ];
+const iconPaths={
+ calendar:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/>',
+ clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+ users:'<circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2M17 5a3 3 0 0 1 0 6M17 15a5 5 0 0 1 4 5"/>',
+ send:'<path d="M21 3 3 10l7 3 3 8 8-18ZM10 13l11-10"/>',
+ sliders:'<path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2" fill="currentColor"/><circle cx="16" cy="12" r="2" fill="currentColor"/><circle cx="10" cy="18" r="2" fill="currentColor"/>'
+};
+const navIcon=k=>'<svg class="lv-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+iconPaths[k]+'</svg>';
 const nav=$('.admin-nav',app),main=$('.admin-main',app);
 if(!nav||!main)return;
 let active='planning';
-nav.innerHTML='<div class="admin-logo"><span>LV</span><div><b>Le Village</b><small>Votre espace de gestion</small></div></div><p class="lv-welcome">Bienvenue au Village</p><div class="lv-extra-menu">'
- +pages.map((p,i)=>'<div class="lv-menu-entry"><button type="button" class="lv-menu-btn '+(i===0?'is-active':'')+'" data-lv-nav="'+p[0]+'"><span class="lv-main-nav-number">0'+(i+1)+'</span>'+p[1]+'</button></div>').join('')
+nav.innerHTML='<div class="admin-logo"><span>LV</span><div><b>Le Village</b><small>HAUT-DE-CAGNES</small></div></div><div class="lv-extra-menu">'
+ +sections.map(section=>'<div class="lv-nav-section"><p class="lv-menu-label">'+section.label+'</p>'
+ +section.items.map(p=>'<div class="lv-menu-entry"><button type="button" class="lv-menu-btn '+(p[0]==='planning'?'is-active':'')+'" data-lv-nav="'+p[0]+'">'+navIcon(p[2])+'<span>'+p[1]+'</span></button></div>').join('')+'</div>').join('')
  +'</div>';
+main.insertAdjacentHTML('afterbegin','<div class="lv-bo-topbar"><span class="lv-bo-topbar-name">LE VILLAGE <i>·</i> ESPACE DE GESTION</span><div class="lv-bo-topbar-actions"><span class="lv-bo-private">DÉMONSTRATION PRIVÉE</span><a href="/le-village-restaurant-haut-de-cagnes-sur-mer.html" target="_blank" rel="noopener noreferrer">VOIR LE SITE ↗</a></div></div>');
 const panel=(id,html)=>main.insertAdjacentHTML('beforeend','<section class="admin-tab lv-extra-screen" hidden id="admin-'+id+'">'+html+'</section>');
 panel('schedule','<div class="lv-screen-head"><div><span>ORGANISATION</span><h1>Jours & horaires</h1><p>Gérez vos services, jours spéciaux et fermetures.</p></div><button class="lv-action" id="lv-save-schedule">Enregistrer les horaires</button></div><div class="lv-rts-explanation"><strong>Places réservables par créneau</strong><p>Pour chaque heure d’arrivée, le site déduit les personnes déjà réservées à cette même heure. Il ne calcule pas les tables encore occupées par les créneaux précédents.</p></div><div class="lv-week-list" id="lv-schedule-week"></div><div class="lv-duo"><article class="lv-paper"><h2>Jours spéciaux</h2><form class="lv-form" id="lv-special-form"><label>Nom du service<input name="name" required placeholder="Brunch du dimanche"></label><div class="lv-form-grid"><label>Répétition<select name="repeat"><option value="once">Date unique</option><option value="weekly">Chaque semaine</option><option value="monthly">Chaque mois</option><option value="yearly">Chaque année</option></select></label><label>Date de référence<input name="date" type="date" required></label><label>Jour hebdomadaire<select name="weekday">'+names.map((v,i)=>'<option value="'+i+'">'+v+'</option>').join('')+'</select></label><label>Service<select name="service"><option value="lunch">Déjeuner</option><option value="dinner">Dîner</option></select></label><label>Début<input name="start" type="time" value="12:00" required></label><label>Dernière arrivée<input name="end" type="time" value="14:30" required></label><label>Intervalle<select name="interval"><option value="15">15 min</option><option value="30" selected>30 min</option><option value="60">60 min</option></select></label><label>Couverts / créneau<input name="capacity" type="number" min="0" value="20" required></label></div><button class="lv-action" type="submit">Ajouter le service</button></form><div id="lv-special-list"></div></article><article class="lv-paper"><h2>Fermetures exceptionnelles</h2><form id="lv-closure-form" class="lv-form"><label>Motif<input name="name" placeholder="Congés annuels" required></label><div class="lv-form-grid"><label>Du<input name="start" type="date" required></label><label>Au<input name="end" type="date" required></label></div><label class="lv-check"><input type="checkbox" name="block" checked> Bloquer les réservations</label><button type="submit" class="lv-action">Ajouter la fermeture</button></form><div id="lv-closure-list"></div></article></div>');
 panel('segments','<div class="lv-screen-head"><div><span>RELATION CLIENT</span><h1>Segments de clients</h1><p>Créez des groupes de contacts pour vos futures communications.</p></div></div><div class="lv-duo"><form class="lv-paper lv-form" id="lv-segment-form"><h2>Nouveau segment</h2><label>Nom du segment<input name="name" placeholder="Ex. Habitués du midi" required></label><label>Consentement<select name="consent"><option value="any">Peu importe</option><option value="email">E-mail accepté</option><option value="sms">SMS accepté</option></select></label><label>Fréquentation<select name="activity"><option value="all">Tous les clients</option><option value="visited">Déjà venu</option><option value="new">Aucune réservation</option></select></label><label>Tag client<input name="tag" placeholder="Ex. terrasse, VIP"></label><button class="lv-action" type="submit">Enregistrer le segment</button></form><article class="lv-paper"><h2>Segments enregistrés</h2><div id="lv-segment-list"></div></article></div>');
