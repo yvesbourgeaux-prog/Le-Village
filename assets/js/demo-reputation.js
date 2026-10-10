@@ -7,7 +7,8 @@ const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const profile={source:'google',entity:'restaurant',name:'Fiche Google du Village',type:'Établissement'};
 let filter='all',editing=false,loading=false;
 let cache=null;
-const links=extra.load('reputation-links',{google:{url:'',id:''}}),key='google';
+const storedLinks=extra.load('reputation-links',{google:{url:'',id:''}}),links={google:storedLinks?.google||{url:'',id:''}},key='google';
+extra.save('reputation-links',links);
 const official={google:'https://business.google.com/',docs:'https://developers.google.com/my-business/content/basic-setup'};
 function urlAllowed(value){
  if(!value)return '';
