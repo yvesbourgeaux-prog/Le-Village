@@ -228,22 +228,40 @@ function facebookRangeData(array $range, string $token, array $config): array {
 }
 
 function instagramRangeData(array $range, string $token, array $config): array {
-    $totals = graphGet((string)$config['instagram_id'].'/insights', [
-        'metric' => 'reach,total_interactions,profile_views',
-        'period' => 'day',
-        'metric_type' => 'total_value',
-        'since' => $range['since'],
-        'until' => $range['until'],
-    ], $token, $config);
+    $totals = ['reach' => 0, 'total_interactions' => 0, 'profile_views' => 0];
+    $cursor = $range['sinceDate'];
+    $totalsOk = true;
+    $totalsCode = 0;
+    while ($cursor < $range['untilDate']) {
+        $chunkEnd = $cursor->add(new DateInterval('P90D'));
+        if ($chunkEnd > $range['untilDate']) $chunkEnd = $range['untilDate'];
+        $response = graphGet((string)$config['instagram_id'].'/insights', [
+            'metric' => 'reach,total_interactions,profile_views',
+            'period' => 'day',
+            'metric_type' => 'total_value',
+            'since' => $cursor->format('Y-m-d'),
+            'until' => $chunkEnd->format('Y-m-d'),
+        ], $token, $config);
+        if (!($response['ok'] ?? false)) {
+            $totalsOk = false;
+            $totalsCode = (int)($response['code'] ?? 0);
+            break;
+        }
+        foreach (array_keys($totals) as $metric) {
+            $totals[$metric] += numberOrNull(insightTotal($response['data'], $metric)) ?? 0;
+        }
+        $cursor = $chunkEnd;
+    }
     $reach = chunkedInsightSeries((string)$config['instagram_id'].'/insights', 'reach', [
         'metric_type' => 'time_series',
     ], $range, $token, $config);
     return [
-        'ok' => ($totals['ok'] ?? false),
-        'code' => (int)($totals['code'] ?? $reach['code'] ?? 0),
-        'reach' => ($totals['ok'] ?? false) ? insightTotal($totals['data'], 'reach') : null,
-        'interactions' => ($totals['ok'] ?? false) ? insightTotal($totals['data'], 'total_interactions') : null,
-        'profileViews' => ($totals['ok'] ?? false) ? insightTotal($totals['data'], 'profile_views') : null,
+        'ok' => $totalsOk,
+        'code' => $totalsCode ?: (int)($reach['code'] ?? 0),
+        'reach' => $totalsOk ? $totals['reach'] : null,
+        'interactions' => $totalsOk ? $totals['total_interactions'] : null,
+        'profileViews' => $totalsOk ? $totals['profile_views'] : null,
+        'cumulativeWindows' => $range['days'] > 90,
         'series' => array_map(static fn(array $row) => ['date' => $row['date'], 'reach' => $row['m0']], mergeSeries($reach['series'] ?? [])),
     ];
 }
@@ -334,6 +352,7 @@ if ($instagramToken !== '') {
             'reach' => $instagramRange['reach'],
             'interactions' => $instagramRange['interactions'],
             'profileViews' => $instagramRange['profileViews'],
+            'cumulativeWindows' => $instagramRange['cumulativeWindows'],
             'series' => $instagramRange['series'],
             'comparison' => $instagramComparison,
         ];
