@@ -5,7 +5,7 @@ declare(strict_types=1);
  * Private, read-only reputation adapter for the Le Village demonstration.
  *
  * Credentials are read from server environment variables only. Never place
- * OAuth tokens or Tripadvisor API keys in HTML, JavaScript, Git, or localStorage.
+ * OAuth tokens or API keys in HTML, JavaScript, Git, or localStorage.
  * The demo uses a shared-password session and MUST NOT be used as a production
  * authentication mechanism for publishing owner responses.
  */
