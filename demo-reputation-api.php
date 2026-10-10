@@ -186,7 +186,7 @@ foreach (array_slice($reviewData['data'] ?? [], 0, 15) as $r) {
         'id' => (string)($r['id'] ?? ''),
         'author' => firstText($author) ?: (is_array($author) ? firstText($author['name'] ?? $author['username'] ?? null) : '') ?: 'Voyageur Tripadvisor',
         'rating' => asNumber($rating),
-        'date' => safeDate($r['published_date'] ?? $r['published_at'] ?? $r['date'] ?? null),
+        'date' => safeDate($r['publish_ts'] ?? $r['published_date'] ?? $r['published_at'] ?? $r['date'] ?? null),
         'title' => firstText($r['title'] ?? ''),
         'text' => firstText($r['text'] ?? $r['body'] ?? ''),
         'reply' => firstText($r['owner_response']['text'] ?? $r['owner_response'] ?? null),
@@ -201,7 +201,8 @@ $displayName = is_array($names) && $names ? firstText($names[0]) : (string)($det
 reply(200, [
     'status' => 'connected', 'source' => 'tripadvisor', 'entity' => $entity,
     'name' => $displayName, 'rating' => asNumber($overall),
-    'total' => isset($detail['num_reviews']) ? (int)$detail['num_reviews'] :
-        (isset($detail['review_count']) ? (int)$detail['review_count'] : null),
+    'total' => isset($detail['traveler_ratings']['overall']['count']) ? (int)$detail['traveler_ratings']['overall']['count'] :
+        (isset($detail['num_reviews']) ? (int)$detail['num_reviews'] :
+        (isset($detail['review_count']) ? (int)$detail['review_count'] : null)),
     'reviews' => $reviews, 'readOnly' => true,
 ]);
