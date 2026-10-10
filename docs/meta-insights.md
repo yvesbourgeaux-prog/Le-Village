@@ -4,7 +4,9 @@ La rubrique **Statistiques Meta** de `/demo-reservation` lit les indicateurs Fac
 
 ## Ce qui apparaît dans le back-office
 
-- période de 7, 30 ou 90 jours ;
+- périodes rapides de 7, 28, 90, 180 ou 365 jours ;
+- année en cours, année précédente ou dates personnalisées ;
+- comparaison avec la période précédente ou la même période de l’année précédente ;
 - Facebook : vues des contenus, interactions et abonnés ;
 - Instagram : comptes touchés, interactions, visites du profil et abonnés ;
 - courbes quotidiennes avec lecture au survol ;
@@ -27,6 +29,7 @@ Sur l’hébergement actuel, la page protégée `/demo-meta-setup.php` permet de
 - `demo-meta-api.php` exige la session privée de `/demo-reservation`.
 - L’endpoint accepte uniquement GET et ne publie rien sur Facebook ou Instagram.
 - Les jetons sont envoyés à Meta dans l’en-tête HTTPS `Authorization`, jamais dans les réponses au navigateur.
+- Les périodes longues sont découpées côté serveur en fenêtres de 90 jours, puis réunies avant affichage.
 - La page de configuration exige la session privée, protège son formulaire contre les requêtes tierces et ne réaffiche jamais le jeton.
 - Le cache ne contient que les statistiques normalisées et reste au-dessus de `public_html`.
 - Pour un usage durable, renouveler les jetons avant expiration ou mettre en place un flux OAuth serveur contrôlé.
