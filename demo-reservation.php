@@ -64,9 +64,9 @@ $head = '<meta name="robots" content="noindex,nofollow,noarchive"/><title>Démo 
  . '<link rel="stylesheet" href="/assets/css/demo-village-friendly.css?v=20261009-ux3"/>'
  . '<link rel="stylesheet" href="/assets/css/demo-village-schedule.css?v=20261009-weekly2"/>'
  . '<link rel="stylesheet" href="/assets/css/demo-meta.css?v=20261011-meta1"/>'
- . '<link rel="stylesheet" href="/assets/css/demo-village-redesign.css?v=20261011-style3"/>'
+ . '<link rel="stylesheet" href="/assets/css/demo-village-redesign.css?v=20261011-logo4"/>'
  . '<script defer src="/assets/js/demo-reservation.js?v=20261009-opening3"></script>'
- . '<script defer src="/assets/js/demo-backoffice-core.js?v=20261011-style3"></script>'
+ . '<script defer src="/assets/js/demo-backoffice-core.js?v=20261011-logo4"></script>'
  . '<script defer src="/assets/js/demo-backoffice-comms.js?v=20261009-ux3"></script>'
  . '<script defer src="/assets/js/demo-meta.js?v=20261011-meta1"></script>'
  . '<script defer src="/assets/js/demo-booking-launcher.js?v=20261009-ux3"></script>';// Update the consent panel copy: the private demo never uses Zenchef.
@@ -83,7 +83,7 @@ $demo = <<<'DEMO_HTML'
   <div id="showcase" class="view is-active" aria-hidden="true"></div>
     <section id="admin" class="view admin-shell" hidden>
       <aside class="admin-nav">
-        <div class="admin-logo"><span>LV</span><div><b>Le Village</b><small>Espace réservations</small></div></div>
+        <div class="admin-logo"><img src="https://assets.zyrosite.com/gnKoPAn3rxzY53IR/chatgpt-image-22-nov.-2025-00_40_31-YvUWBeCav31wXD3h.png" alt="Le Grimaldi × Le Village" width="112" height="112"></div>
         <button type="button" data-admin-tab="planning" class="is-active">Planning & réservations</button>
         <button type="button" data-admin-tab="clients">Fichier clients</button>
         <button type="button" data-admin-tab="settings">Paramètres</button>
