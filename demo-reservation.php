@@ -64,9 +64,9 @@ $head = '<meta name="robots" content="noindex,nofollow,noarchive"/><title>Démo 
  . '<link rel="stylesheet" href="/assets/css/demo-village-friendly.css?v=20261009-ux3"/>'
  . '<link rel="stylesheet" href="/assets/css/demo-village-schedule.css?v=20261009-weekly2"/>'
  . '<link rel="stylesheet" href="/assets/css/demo-meta.css?v=20261011-meta1"/>'
- . '<link rel="stylesheet" href="/assets/css/demo-village-redesign.css?v=20261011-logo4"/>'
+ . '<link rel="stylesheet" href="/assets/css/demo-village-redesign.css?v=20261011-modern5"/>'
  . '<script defer src="/assets/js/demo-reservation.js?v=20261009-opening3"></script>'
- . '<script defer src="/assets/js/demo-backoffice-core.js?v=20261011-logo4"></script>'
+ . '<script defer src="/assets/js/demo-backoffice-core.js?v=20261011-modern5"></script>'
  . '<script defer src="/assets/js/demo-backoffice-comms.js?v=20261009-ux3"></script>'
  . '<script defer src="/assets/js/demo-meta.js?v=20261011-meta1"></script>'
  . '<script defer src="/assets/js/demo-booking-launcher.js?v=20261009-ux3"></script>';// Update the consent panel copy: the private demo never uses Zenchef.
@@ -92,7 +92,7 @@ $demo = <<<'DEMO_HTML'
       <div class="admin-main">
         <div id="admin-planning" class="admin-tab is-active">
           <div class="admin-head">
-            <div><p class="eyebrow">BONJOUR ET BIENVENUE</p><h1>Vos réservations</h1><p class="admin-head-caption" id="admin-date-title">Aujourd’hui</p></div>
+            <div><p class="eyebrow">Aujourd’hui au Village</p><h1>Réservations</h1><p class="admin-head-caption" id="admin-date-title">Aujourd’hui</p></div>
             <div class="admin-head-actions"><button type="button" class="day-nav" data-day-shift="-1" aria-label="Jour précédent">‹</button><input id="admin-date" type="date" aria-label="Date du planning"><button type="button" class="day-nav" data-day-shift="1" aria-label="Jour suivant">›</button><button type="button" class="today-link" data-admin-today>Aujourd’hui</button><button type="button" class="primary small" data-new-reservation>Nouvelle réservation</button></div>
           </div>
           <div id="admin-week-strip" class="admin-week-strip" aria-label="Choisir un jour de la semaine"></div>
