@@ -16,8 +16,9 @@ function urlAllowed(value,source){
  if(!value)return '';
  try{const u=new URL(value);if(u.protocol!=='https:')return '';
   const host=u.hostname.toLowerCase();
-  const ok=source==='google'?(host==='google.com'||host.endsWith('.google.com')||['g.page','goo.gl','maps.app.goo.gl'].includes(host)):
-   (host==='tripadvisor.com'||host.endsWith('.tripadvisor.com'));
+  const officialDomain=(domain)=>host===domain||host.endsWith('.'+domain);
+  const ok=source==='google'?(officialDomain('google.com')||officialDomain('google.fr')||['g.page','goo.gl','maps.app.goo.gl'].includes(host)):
+   ['tripadvisor.com','tripadvisor.fr','tripadvisor.it','tripadvisor.de','tripadvisor.es','tripadvisor.nl','tripadvisor.co.uk'].some(officialDomain);
   return ok?u.href:'';
  }catch{return ''}
 }
