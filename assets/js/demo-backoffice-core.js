@@ -104,7 +104,7 @@ const navIcon=k=>'<svg class="lv-nav-icon" viewBox="0 0 24 24" fill="none" strok
 const nav=$('.admin-nav',app),main=$('.admin-main',app);
 if(!nav||!main)return;
 let active='planning';
-nav.innerHTML='<div class="admin-logo"><span>LV</span><div><b>Le Village</b><small>HAUT-DE-CAGNES</small></div></div><div class="lv-extra-menu">'
+nav.innerHTML='<div class="admin-logo"><img src="https://assets.zyrosite.com/gnKoPAn3rxzY53IR/chatgpt-image-22-nov.-2025-00_40_31-YvUWBeCav31wXD3h.png" alt="Le Grimaldi × Le Village" width="112" height="112"></div><div class="lv-extra-menu">'
  +sections.map(section=>'<div class="lv-nav-section"><p class="lv-menu-label">'+section.label+'</p>'
  +section.items.map(p=>'<div class="lv-menu-entry"><button type="button" class="lv-menu-btn '+(p[0]==='planning'?'is-active':'')+'" data-lv-nav="'+p[0]+'">'+navIcon(p[2])+'<span>'+p[1]+'</span></button></div>').join('')+'</div>').join('')
  +'</div>';
