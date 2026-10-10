@@ -29,7 +29,7 @@ Sur l’hébergement actuel, la page protégée `/demo-meta-setup.php` permet de
 - `demo-meta-api.php` exige la session privée de `/demo-reservation`.
 - L’endpoint accepte uniquement GET et ne publie rien sur Facebook ou Instagram.
 - Les jetons sont envoyés à Meta dans l’en-tête HTTPS `Authorization`, jamais dans les réponses au navigateur.
-- Les périodes longues sont découpées côté serveur en fenêtres de 90 jours, puis réunies avant affichage.
+- Les périodes longues sont découpées côté serveur (90 jours pour Facebook, 28 jours pour Instagram), puis réunies avant affichage.
 - La page de configuration exige la session privée, protège son formulaire contre les requêtes tierces et ne réaffiche jamais le jeton.
 - Le cache ne contient que les statistiques normalisées et reste au-dessus de `public_html`.
 - Pour un usage durable, renouveler les jetons avant expiration ou mettre en place un flux OAuth serveur contrôlé.
