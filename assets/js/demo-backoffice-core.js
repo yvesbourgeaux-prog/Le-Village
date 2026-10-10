@@ -87,7 +87,7 @@ function allClients(){
 }
 function notify(msg){let n=$('#lv-extra-message');if(!n){n=document.createElement('div');n.id='lv-extra-message';document.body.append(n)}n.textContent=msg;n.classList.add('show');setTimeout(()=>n.classList.remove('show'),3200)}
 const sections=[
- {label:'Pilotage',items:[['planning','Réservations','calendar'],['schedule','Jours & horaires','clock']]},
+ {label:'Pilotage',items:[['planning','Réservations','calendar'],['schedule','Jours & horaires','clock'],['meta','Statistiques','chart']]},
  {label:'Clients',items:[['clients','Clients','users']]},
  {label:'Communication',items:[['communication','Communication','send']]},
  {label:'Configuration',items:[['settings','Réglages','sliders']]}
@@ -95,6 +95,7 @@ const sections=[
 const iconPaths={
  calendar:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/>',
  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+ chart:'<path d="M4 20V11M10 20V5M16 20v-8M22 20V8M2 20h22"/>',
  users:'<circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2M17 5a3 3 0 0 1 0 6M17 15a5 5 0 0 1 4 5"/>',
  send:'<path d="M21 3 3 10l7 3 3 8 8-18ZM10 13l11-10"/>',
  sliders:'<path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2" fill="currentColor"/><circle cx="16" cy="12" r="2" fill="currentColor"/><circle cx="10" cy="18" r="2" fill="currentColor"/>'
