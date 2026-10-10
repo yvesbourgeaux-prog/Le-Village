@@ -34,8 +34,8 @@ function platformCard(kind,item){
  const chart=facebook?lineChart(series,'views','vues Facebook','#1877f2'):lineChart(series,'reach','comptes touchés sur Instagram','#c13584');
  return '<article class="lv-meta-platform"><header><div class="lv-meta-brand '+(facebook?'is-fb':'is-ig')+'">'+(facebook?'f':'◎')+'</div><div><span>'+(facebook?'FACEBOOK':'INSTAGRAM')+'</span><h2>'+esc(item?.name||(facebook?'Restaurant Le Village':'@restaurantlevillagehdc'))+'</h2></div>'+status(item)+'</header>'
   +(item?.message?'<p class="lv-meta-warning">'+esc(item.message)+'</p>':'')+'<div class="lv-meta-kpis">'+metrics+'</div>'
-  +(!facebook&&item?.cumulativeWindows?'<p class="lv-meta-note">Sur plus de 90 jours, la couverture Instagram est cumulée par tranches de 90 jours : une même personne peut apparaître dans plusieurs tranches.</p>':'')
-  +'<div class="lv-meta-chart-head"><strong>Évolution quotidienne</strong><span>'+esc(data?.range?.label||'Période choisie')+'</span></div>'+chart+'</article>';
+  +(!facebook&&item?.cumulativeWindows?'<p class="lv-meta-note">Sur plus de 90 jours, la couverture Instagram est cumulée par tranches de 28 jours : une même personne peut apparaître dans plusieurs tranches.</p>':'')
+  +'<div class="lv-meta-chart-head"><strong>'+(!facebook&&item?.cumulativeWindows?'Évolution par tranches de 28 jours':'Évolution quotidienne')+'</strong><span>'+esc(data?.range?.label||'Période choisie')+'</span></div>'+chart+'</article>';
 }
 function bindCharts(){
  root.querySelectorAll('.lv-meta-chart').forEach(chart=>{
