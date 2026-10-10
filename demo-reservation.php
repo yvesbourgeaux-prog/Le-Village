@@ -64,7 +64,7 @@ $head = '<meta name="robots" content="noindex,nofollow,noarchive"/><title>Démo 
  . '<link rel="stylesheet" href="/assets/css/demo-village-friendly.css?v=20261009-ux3"/>'
  . '<link rel="stylesheet" href="/assets/css/demo-village-schedule.css?v=20261009-weekly2"/>'
  . '<link rel="stylesheet" href="/assets/css/demo-meta.css?v=20261011-meta1"/>'
- . '<link rel="stylesheet" href="/assets/css/demo-village-redesign.css?v=20261011-fresh6"/>'
+ . '<link rel="stylesheet" href="/assets/css/demo-village-redesign.css?v=20261011-blush7"/>'
  . '<script defer src="/assets/js/demo-reservation.js?v=20261009-opening3"></script>'
  . '<script defer src="/assets/js/demo-backoffice-core.js?v=20261011-modern5"></script>'
  . '<script defer src="/assets/js/demo-backoffice-comms.js?v=20261009-ux3"></script>'
