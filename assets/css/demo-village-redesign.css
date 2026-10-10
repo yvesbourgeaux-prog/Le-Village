@@ -2,11 +2,11 @@
    Dernière feuille chargée : harmonise les modules existants. */
 body.lv-demo-admin #lv-demo-app{
  --bo-ink:#25282a;--bo-muted:#70777b;--bo-paper:#fff;
- --bo-canvas:#dfeeea;--bo-line:#d2e2dd;--bo-brand:#c95d43;
- --bo-brand-strong:#a94630;--bo-tint:#fff0e9;--bo-soft:#e8f4f0;
+ --bo-canvas:#f5e7e3;--bo-line:#eadbd5;--bo-brand:#c95d43;
+ --bo-brand-strong:#a94630;--bo-tint:#fff0e9;--bo-soft:#f8eeeb;
  color:var(--bo-ink)!important;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif!important;
 }
-body.lv-demo-admin{background:#dfeeea!important}
+body.lv-demo-admin{background:#f5e7e3!important}
 body.lv-demo-admin #lv-demo-app .admin-shell{
  display:grid!important;grid-template-columns:244px minmax(0,1fr)!important;
  min-height:100dvh!important;background:var(--bo-canvas)!important;
@@ -228,7 +228,7 @@ body.lv-demo-admin #lv-demo-app .lv-subnav button{
 }
 body.lv-demo-admin #lv-demo-app .lv-subnav button.is-active{background:#fff!important;color:#c95d43!important;box-shadow:none!important}
 body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-explanation{
- border-radius:3px!important;background:#eaf5f1!important;border-color:#cddfd9!important;
+ border-radius:3px!important;background:#fbf0ed!important;border-color:#eadbd5!important;
 }
 body.lv-demo-admin #lv-demo-app .lv-demo-notice{border-radius:3px!important}
 body.lv-demo-admin #lv-demo-app .lv-client-editor{border-radius:3px!important;color:var(--bo-ink)!important}
@@ -289,5 +289,5 @@ body.lv-demo-admin #lv-demo-app :is(button,a,summary):focus-visible{
 
 /* Cohérence des écrans secondaires : panneaux droits et accents frais. */
 body.lv-demo-admin #lv-demo-app :is(.lv-meta-platform,.lv-meta-kpi,.lv-meta-grid-cards>*,.lv-rts-service,.lv-rts-field,.lv-week-service,.lv-automation,.lv-item,.client-row,.lv-client-filter,.lv-demo-notice,.lv-preview,.lv-compose-fold,.lv-form input,.lv-form select,.lv-form textarea){border-radius:3px!important}
-body.lv-demo-admin #lv-demo-app :is(.lv-meta-platform,.lv-meta-kpi,.lv-automation,.lv-week-service,.client-row){box-shadow:none!important;border-color:#d2e2dd!important}
+body.lv-demo-admin #lv-demo-app :is(.lv-meta-platform,.lv-meta-kpi,.lv-automation,.lv-week-service,.client-row){box-shadow:none!important;border-color:#eadbd5!important}
 body.lv-demo-admin #lv-demo-app .lv-meta-period button.is-active{background:#c95d43!important;color:#fff!important}
