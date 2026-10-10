@@ -36,9 +36,10 @@ function bindCharts(){
  });
 }
 function render(){
+ const needsSetup=data?.status==='not_connected';
  root.innerHTML='<div class="lv-meta-toolbar"><div class="lv-meta-period" aria-label="Période">'+[7,30,90].map(n=>'<button type="button" data-meta-days="'+n+'" class="'+(days===n?'is-active':'')+'">'+n+' jours</button>').join('')+'</div><button type="button" class="lv-meta-refresh" data-meta-refresh '+(loading?'disabled':'')+'>'+(loading?'Actualisation…':'Actualiser')+'</button></div>'
   +(loading&&!data?'<div class="lv-meta-loading">Connexion à Meta et chargement des statistiques…</div>':
-  '<div class="lv-meta-summary"><div><span>LECTURE SIMPLE</span><h2>La visibilité et les réactions de vos réseaux, au même endroit</h2><p>Les chiffres se mettent à jour automatiquement. Survolez une courbe pour lire le détail d’une journée.</p></div><small>'+(data?.updatedAt?'Mis à jour '+new Intl.DateTimeFormat('fr-FR',{dateStyle:'short',timeStyle:'short'}).format(new Date(data.updatedAt)):'Connexion en attente')+'</small></div><div class="lv-meta-grid-cards">'+platformCard('facebook',data?.facebook)+platformCard('instagram',data?.instagram)+'</div>');
+  '<div class="lv-meta-summary"><div><span>LECTURE SIMPLE</span><h2>La visibilité et les réactions de vos réseaux, au même endroit</h2><p>Les chiffres se mettent à jour automatiquement. Survolez une courbe pour lire le détail d’une journée.</p></div><div class="lv-meta-summary-side"><small>'+(data?.updatedAt?'Mis à jour '+new Intl.DateTimeFormat('fr-FR',{dateStyle:'short',timeStyle:'short'}).format(new Date(data.updatedAt)):'Connexion en attente')+'</small>'+(needsSetup?'<a class="lv-meta-connect" href="/demo-meta-setup.php">Connecter Meta</a>':'')+'</div></div><div class="lv-meta-grid-cards">'+platformCard('facebook',data?.facebook)+platformCard('instagram',data?.instagram)+'</div>');
  root.querySelectorAll('[data-meta-days]').forEach(b=>b.onclick=()=>{days=Number(b.dataset.metaDays);load(true)});
  root.querySelector('[data-meta-refresh]')?.addEventListener('click',()=>load(true));bindCharts();
 }
