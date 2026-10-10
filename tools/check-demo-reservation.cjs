@@ -10,6 +10,7 @@ const scripts=[
  'assets/js/demo-reservation.js',
  'assets/js/demo-backoffice-core.js',
  'assets/js/demo-backoffice-comms.js',
+ 'assets/js/demo-meta.js',
  'assets/js/demo-booking-launcher.js'
 ];
 for(const file of scripts){
@@ -22,9 +23,15 @@ for(const file of scripts){
 const page=fs.readFileSync(path.join(root,'demo-reservation.php'),'utf8');
 assert.match(page,/password_verify/);
 assert.match(page,/noindex,nofollow,noarchive/);
-for(const name of ['demo-reservation.js','demo-backoffice-core.js','demo-backoffice-comms.js','demo-booking-launcher.js','demo-village-friendly.css']){
+for(const name of ['demo-reservation.js','demo-backoffice-core.js','demo-backoffice-comms.js','demo-meta.js','demo-booking-launcher.js','demo-village-friendly.css','demo-meta.css']){
  assert(page.includes(name),'Demo missing linked asset: '+name);
 }
+const metaApi=fs.readFileSync(path.join(root,'demo-meta-api.php'),'utf8');
+assert.match(metaApi,/LV_META_ACCESS_TOKEN/);
+assert.match(metaApi,/LV_META_PAGE_ACCESS_TOKEN/);
+assert.match(metaApi,/Authorization: Bearer/);
+assert.doesNotMatch(metaApi,/EA[A-Za-z0-9]{30,}/,'Never commit a Meta access token');
+assert.match(page,/demo-meta-api\.php|demo-meta\.js/);
 // The booking interaction should never replace the whole panel on a section change.
 const booking=fs.readFileSync(path.join(root,'assets/js/demo-reservation.js'),'utf8');
 const animationCSS=fs.readFileSync(path.join(root,'assets/css/demo-reservation-experience.css'),'utf8');
