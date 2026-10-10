@@ -18,7 +18,7 @@ function lineChart(rows,key,label,color){
 }
 function status(platform){const state=platform?.status||'not_connected';return '<span class="lv-meta-status '+(state==='connected'?'is-connected':state==='partial'?'is-partial':'')+'">'+esc(labels[state]||'À vérifier')+'</span>'}
 function delta(value,previous){
- if(compare==='none'||!Number.isFinite(Number(value))||!Number.isFinite(Number(previous)))return '';
+ if(compare==='none'||previous===null||previous===undefined||!Number.isFinite(Number(value))||!Number.isFinite(Number(previous)))return '';
  const current=Number(value),base=Number(previous);
  if(base===0)return current>0?'<em class="is-up">Nouveau</em>':'<em>0 %</em>';
  const change=((current-base)/Math.abs(base))*100,rounded=Math.round(change*10)/10;
