@@ -1,0 +1,274 @@
+/* Le Village · back-office visual system.
+   Loaded after the older demo styles so every screen shares one identity. */
+body.lv-demo-admin #lv-demo-app{
+ --bo-ink:#29251f;--bo-muted:#766f67;--bo-stone:#f2eee8;--bo-paper:#fff;
+ --bo-line:#e3dcd2;--bo-gold:#ad8657;--bo-gold-light:#f5eddf;--bo-night:#211c19;
+ color:var(--bo-ink)!important;font-family:Lato,Arial,sans-serif!important;
+}
+body.lv-demo-admin{background:var(--bo-stone)!important}
+body.lv-demo-admin #lv-demo-app .admin-shell{
+ display:grid!important;grid-template-columns:264px minmax(0,1fr)!important;
+ min-height:100dvh!important;background:var(--bo-stone)!important;
+}
+body.lv-demo-admin #lv-demo-app .admin-nav{
+ position:sticky!important;top:0!important;width:264px!important;height:100dvh!important;
+ max-height:100dvh!important;overflow-y:auto!important;overflow-x:hidden!important;
+ display:flex!important;flex-direction:column!important;gap:0!important;
+ padding:0!important;margin:0!important;background:var(--bo-night)!important;
+ border:0!important;border-right:1px solid #3b332d!important;box-shadow:8px 0 30px #2b22100e!important;
+ scrollbar-width:thin;scrollbar-color:#5a4c3f transparent;
+}
+body.lv-demo-admin #lv-demo-app .admin-logo{
+ display:flex!important;align-items:center!important;gap:12px!important;
+ min-height:92px!important;margin:0 0 16px!important;padding:18px 19px!important;
+ border-bottom:1px solid #3b332d!important;
+}
+body.lv-demo-admin #lv-demo-app .admin-logo span{
+ width:44px!important;height:44px!important;flex:0 0 44px!important;border-radius:50%!important;
+ display:grid!important;place-items:center!important;background:transparent!important;
+ border:1px solid #b99a70!important;color:#dfc6a3!important;
+ font:600 18px 'Playfair Display',Georgia,serif!important;box-shadow:none!important;
+}
+body.lv-demo-admin #lv-demo-app .admin-logo b{
+ display:block!important;color:#f8f2e8!important;font:600 19px 'Playfair Display',Georgia,serif!important;
+ white-space:nowrap;
+}
+body.lv-demo-admin #lv-demo-app .admin-logo small{
+ display:block!important;margin-top:4px!important;color:#bb9b73!important;
+ font:700 9px Lato,Arial,sans-serif!important;letter-spacing:.2em!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-extra-menu{
+ display:flex!important;flex:1 1 auto!important;flex-direction:column!important;
+ gap:10px!important;min-height:0!important;padding:0 12px 12px!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-nav-section{display:flex;flex-direction:column;gap:2px}
+body.lv-demo-admin #lv-demo-app .lv-menu-label{
+ display:block!important;margin:0!important;padding:16px 12px 7px!important;
+ color:#8e8378!important;font:700 10px Lato,Arial,sans-serif!important;
+ letter-spacing:.16em!important;text-transform:uppercase;
+}
+body.lv-demo-admin #lv-demo-app .lv-menu-entry{min-width:0}
+body.lv-demo-admin #lv-demo-app .lv-menu-entry .lv-menu-btn{
+ display:flex!important;align-items:center!important;gap:12px!important;
+ width:100%!important;min-height:42px!important;margin:0!important;padding:10px 12px!important;
+ border:0!important;border-left:3px solid transparent!important;border-radius:5px!important;
+ background:transparent!important;color:#c3bab1!important;
+ font:700 13px Lato,Arial,sans-serif!important;text-align:left!important;white-space:nowrap!important;
+ box-shadow:none!important;transition:background .18s,color .18s;
+}
+body.lv-demo-admin #lv-demo-app .lv-menu-entry .lv-menu-btn:hover{
+ background:#372e28!important;color:#fff7ed!important;border-color:transparent!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-menu-entry .lv-menu-btn.is-active{
+ background:#49392d!important;color:#fff8ef!important;border-left-color:#c9a36b!important;
+ box-shadow:none!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-nav-icon{
+ width:18px;height:18px;flex:0 0 18px;opacity:.82;
+}
+body.lv-demo-admin #lv-demo-app .lv-menu-btn.is-active .lv-nav-icon{color:#e0bc87;opacity:1}
+body.lv-demo-admin #lv-demo-app .lv-extra-nav-bottom{
+ display:grid!important;gap:3px!important;margin:0 12px 15px!important;
+ padding:15px 0 0!important;border-top:1px solid #3b332d!important;
+}
+body.lv-demo-admin #lv-demo-app .admin-nav .lv-extra-nav-bottom button,
+body.lv-demo-admin #lv-demo-app .admin-nav .lv-extra-nav-bottom a{
+ display:block!important;width:100%!important;margin:0!important;padding:9px 12px!important;
+ border:0!important;border-radius:5px!important;background:transparent!important;
+ color:#aaa097!important;font:700 11px Lato,Arial,sans-serif!important;text-decoration:none!important;
+}
+body.lv-demo-admin #lv-demo-app .admin-nav .lv-extra-nav-bottom :is(button,a):hover{
+ background:#372e28!important;color:#fff8ef!important;
+}
+body.lv-demo-admin #lv-demo-app .admin-main{
+ width:100%!important;max-width:none!important;min-width:0!important;
+ min-height:100dvh!important;margin:0!important;padding:0 clamp(20px,3.4vw,56px) 72px!important;
+ background:var(--bo-stone)!important;
+}
+body.lv-demo-admin #lv-demo-app .admin-main>.admin-tab{
+ max-width:1480px;margin:0 auto;
+}
+body.lv-demo-admin #lv-demo-app .lv-bo-topbar{
+ height:72px;margin:0 calc(-1 * clamp(20px,3.4vw,56px)) 34px;
+ padding:0 clamp(20px,3.4vw,56px);
+ display:flex;align-items:center;justify-content:space-between;gap:16px;
+ border-bottom:1px solid #ddd6cc;background:#f7f4ef;
+}
+body.lv-demo-admin #lv-demo-app .lv-bo-topbar-name{
+ color:#756b60;font:800 10px Lato,Arial,sans-serif;letter-spacing:.15em;white-space:nowrap;
+}
+body.lv-demo-admin #lv-demo-app .lv-bo-topbar-name i{color:#ba9464;font-style:normal;padding:0 4px}
+body.lv-demo-admin #lv-demo-app .lv-bo-topbar-actions{display:flex;align-items:center;gap:18px}
+body.lv-demo-admin #lv-demo-app .lv-bo-private{
+ color:#948779;font:700 10px Lato,Arial,sans-serif;letter-spacing:.12em;white-space:nowrap;
+}
+body.lv-demo-admin #lv-demo-app .lv-bo-private:before{
+ content:'';display:inline-block;width:6px;height:6px;margin:0 8px 1px 0;
+ border-radius:50%;background:#b89b73;
+}
+body.lv-demo-admin #lv-demo-app .lv-bo-topbar a{
+ display:inline-flex;align-items:center;justify-content:center;min-height:37px;
+ padding:0 14px;border:1px solid #cfc4b5;border-radius:5px;
+ color:#4b4035;text-decoration:none;font:800 10px Lato,Arial,sans-serif;letter-spacing:.11em;white-space:nowrap;
+}
+body.lv-demo-admin #lv-demo-app .lv-bo-topbar a:hover{background:#ede4d8}
+body.lv-demo-admin #lv-demo-app .admin-head,
+body.lv-demo-admin #lv-demo-app .lv-screen-head{margin:0 0 25px!important;gap:18px!important}
+body.lv-demo-admin #lv-demo-app .admin-head .eyebrow,
+body.lv-demo-admin #lv-demo-app .lv-screen-head span:first-child{
+ color:#a47b50!important;font:800 10px Lato,Arial,sans-serif!important;letter-spacing:.16em!important;
+}
+body.lv-demo-admin #lv-demo-app .admin-head h1,
+body.lv-demo-admin #lv-demo-app .lv-screen-head h1{
+ color:var(--bo-ink)!important;font:600 clamp(31px,3vw,42px)/1.1 'Playfair Display',Georgia,serif!important;
+ letter-spacing:-.02em!important;margin:0 0 8px!important;
+}
+body.lv-demo-admin #lv-demo-app .admin-head-caption,
+body.lv-demo-admin #lv-demo-app .lv-screen-head p{
+ color:var(--bo-muted)!important;font:400 13px/1.55 Lato,Arial,sans-serif!important;
+}
+body.lv-demo-admin #lv-demo-app .kpi-row{gap:12px!important;margin-bottom:19px!important}
+body.lv-demo-admin #lv-demo-app .kpi-row article,
+body.lv-demo-admin #lv-demo-app .calendar-panel,
+body.lv-demo-admin #lv-demo-app .reservations-panel,
+body.lv-demo-admin #lv-demo-app .settings-card,
+body.lv-demo-admin #lv-demo-app .lv-paper{
+ background:var(--bo-paper)!important;border:1px solid var(--bo-line)!important;
+ border-radius:7px!important;box-shadow:0 9px 25px #3c29150b!important;
+}
+body.lv-demo-admin #lv-demo-app .kpi-row article{padding:19px 21px!important}
+body.lv-demo-admin #lv-demo-app .kpi-row article span{
+ color:#82786e!important;font:700 11px Lato,Arial,sans-serif!important;letter-spacing:.035em;
+}
+body.lv-demo-admin #lv-demo-app .kpi-row article strong{
+ color:#382e24!important;font:600 30px 'Playfair Display',Georgia,serif!important;margin-top:5px!important;
+}
+body.lv-demo-admin #lv-demo-app .panel-title h2,
+body.lv-demo-admin #lv-demo-app .settings-card h2,
+body.lv-demo-admin #lv-demo-app .lv-paper h2{
+ color:#332a22!important;font:600 20px 'Playfair Display',Georgia,serif!important;
+ letter-spacing:-.015em!important;
+}
+body.lv-demo-admin #lv-demo-app .week-day{
+ min-height:96px!important;background:#fff!important;color:#51463b!important;
+ border:1px solid var(--bo-line)!important;border-radius:7px!important;box-shadow:none!important;
+}
+body.lv-demo-admin #lv-demo-app .week-day:hover{border-color:#b89b78!important}
+body.lv-demo-admin #lv-demo-app .week-day strong{
+ color:#352b21!important;font:600 24px 'Playfair Display',Georgia,serif!important;
+}
+body.lv-demo-admin #lv-demo-app .week-day.is-selected{
+ background:var(--bo-gold-light)!important;border-color:#b99b74!important;
+ color:#463321!important;box-shadow:inset 0 0 0 1px #b99b74!important;
+}
+body.lv-demo-admin #lv-demo-app .week-day.is-selected .week-day-name,
+body.lv-demo-admin #lv-demo-app .week-day.is-selected .week-day-total{color:#795936!important}
+body.lv-demo-admin #lv-demo-app .lv-subnav{
+ display:flex!important;gap:4px!important;background:#fff!important;
+ border:1px solid var(--bo-line)!important;border-radius:7px!important;
+ padding:5px!important;margin-bottom:24px!important;box-shadow:none!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-subnav button{
+ border:0!important;border-radius:5px!important;background:transparent!important;
+ color:#6b625a!important;font:700 12px Lato,Arial,sans-serif!important;
+ padding:10px 15px!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-subnav button.is-active{
+ background:#caa76f!important;color:#241e18!important;box-shadow:none!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-action,
+body.lv-demo-admin #lv-demo-app .admin-head-actions .primary,
+body.lv-demo-admin #lv-demo-app .lv-screen-head .lv-action{
+ border:1px solid #927044!important;border-radius:5px!important;
+ background:#96744e!important;color:#fff!important;
+ font:800 11px Lato,Arial,sans-serif!important;letter-spacing:.045em!important;
+ box-shadow:none!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-action:hover,
+body.lv-demo-admin #lv-demo-app .admin-head-actions .primary:hover{
+ background:#795b3d!important;border-color:#795b3d!important;
+}
+body.lv-demo-admin #lv-demo-app .service-filter button.is-active{
+ background:#e9d9bf!important;color:#483523!important;border-color:#d0b48d!important;
+}
+body.lv-demo-admin #lv-demo-app .admin-head-actions .today-link,
+body.lv-demo-admin #lv-demo-app .admin-head-actions .day-nav,
+body.lv-demo-admin #lv-demo-app .lv-soft-button,
+body.lv-demo-admin #lv-demo-app .calendar-toggle{
+ border-radius:5px!important;
+}
+body.lv-demo-admin #lv-demo-app :is(input,select,textarea):focus-visible,
+body.lv-demo-admin #lv-demo-app :is(button,a,summary):focus-visible{
+ outline:2px solid #a77b4b!important;outline-offset:2px!important;
+}
+body.lv-demo-admin #lv-demo-app .reservation-card,
+body.lv-demo-admin #lv-demo-app .lv-client-card,
+body.lv-demo-admin #lv-demo-app .lv-rts-day{
+ border-radius:7px!important;border-color:var(--bo-line)!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-rts-service{border-radius:6px!important}
+body.lv-demo-admin #lv-demo-app .lv-compose-fold{
+ background:#fff!important;border-color:var(--bo-line)!important;border-radius:7px!important;box-shadow:none!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-compose-fold>summary{min-height:88px!important}
+body.lv-demo-admin #lv-demo-app .lv-compose-plus{
+ background:#f0e5d4!important;color:#8c673c!important;border-radius:5px!important;
+}
+body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-explanation{
+ border-radius:6px!important;background:#f8f2e8!important;border-color:#e6d7c1!important;
+}
+body.lv-demo-admin #lv-demo-app .lv-client-editor{
+ border-radius:8px!important;color:var(--bo-ink)!important;
+}
+#lv-extra-message{background:#32271f!important;border-radius:6px!important}
+
+@media(max-width:900px){
+ body.lv-demo-admin #lv-demo-app .admin-shell{display:block!important}
+ body.lv-demo-admin #lv-demo-app .admin-nav{
+  position:sticky!important;top:0!important;z-index:100!important;
+  display:block!important;width:100%!important;height:auto!important;max-height:none!important;
+  padding:8px 12px 0!important;border-right:0!important;border-bottom:1px solid #3b332d!important;
+  overflow:visible!important;
+ }
+ body.lv-demo-admin #lv-demo-app .admin-logo{
+  min-height:42px!important;margin:0 0 6px!important;padding:0 4px!important;border:0!important;
+ }
+ body.lv-demo-admin #lv-demo-app .admin-logo span{
+  width:31px!important;height:31px!important;flex-basis:31px!important;font-size:13px!important;
+ }
+ body.lv-demo-admin #lv-demo-app .admin-logo b{font-size:16px!important}
+ body.lv-demo-admin #lv-demo-app .admin-logo small{display:none!important}
+ body.lv-demo-admin #lv-demo-app .lv-extra-menu{
+  display:flex!important;flex-direction:row!important;align-items:center!important;
+  flex-wrap:nowrap!important;gap:4px!important;overflow-x:auto!important;
+  padding:0 2px 8px!important;margin:0!important;scrollbar-width:none;
+ }
+ body.lv-demo-admin #lv-demo-app .lv-nav-section{display:contents!important}
+ body.lv-demo-admin #lv-demo-app .lv-menu-label{display:none!important}
+ body.lv-demo-admin #lv-demo-app .lv-menu-entry{flex:0 0 auto!important}
+ body.lv-demo-admin #lv-demo-app .lv-menu-entry .lv-menu-btn{
+  min-height:36px!important;width:auto!important;padding:8px 11px!important;font-size:11px!important;
+  border-left:0!important;border-bottom:2px solid transparent!important;gap:7px!important;
+ }
+ body.lv-demo-admin #lv-demo-app .lv-menu-entry .lv-menu-btn.is-active{
+  border-bottom-color:#d5b47c!important;
+ }
+ body.lv-demo-admin #lv-demo-app .lv-nav-icon{width:15px;height:15px;flex-basis:15px}
+ body.lv-demo-admin #lv-demo-app .lv-extra-nav-bottom{display:none!important}
+ body.lv-demo-admin #lv-demo-app .admin-main{min-height:calc(100dvh - 85px)!important;padding:0 16px 65px!important}
+ body.lv-demo-admin #lv-demo-app .lv-bo-topbar{
+  height:54px;margin:0 -16px 26px;padding:0 16px;
+ }
+ body.lv-demo-admin #lv-demo-app .lv-bo-topbar-name{display:none}
+ body.lv-demo-admin #lv-demo-app .lv-bo-topbar-actions{width:100%;justify-content:space-between;gap:8px}
+ body.lv-demo-admin #lv-demo-app .lv-bo-private{font-size:9px}
+ body.lv-demo-admin #lv-demo-app .lv-bo-topbar a{min-height:32px;font-size:9px;padding:0 10px}
+}
+@media(max-width:580px){
+ body.lv-demo-admin #lv-demo-app .admin-main{padding:0 12px 65px!important}
+ body.lv-demo-admin #lv-demo-app .lv-bo-topbar{margin:0 -12px 22px;padding:0 12px}
+ body.lv-demo-admin #lv-demo-app .admin-head h1,
+ body.lv-demo-admin #lv-demo-app .lv-screen-head h1{font-size:30px!important}
+ body.lv-demo-admin #lv-demo-app .kpi-row article{padding:13px 14px!important}
+ body.lv-demo-admin #lv-demo-app .lv-paper{padding:17px!important}
+}
