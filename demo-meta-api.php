@@ -163,6 +163,50 @@ function graphGet(string $path, array $params, string $token, array $config): ar
     return ['ok' => true, 'data' => $json];
 }
 
+function graphGetMany(array $requests, string $token, array $config): array {
+    if (!$requests) return [];
+    if ($token === '' || !function_exists('curl_multi_init')) {
+        return array_map(static fn(array $request) => graphGet($request['path'], $request['params'], $token, $config), $requests);
+    }
+    $multi = curl_multi_init();
+    $handles = [];
+    foreach ($requests as $index => $request) {
+        $base = 'https://graph.facebook.com/'.rawurlencode((string)$config['api_version']).'/'.ltrim((string)$request['path'], '/');
+        $url = $base.'?'.http_build_query($request['params'], '', '&', PHP_QUERY_RFC3986);
+        $curl = curl_init($url);
+        curl_setopt_array($curl, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => false,
+            CURLOPT_CONNECTTIMEOUT => 5,
+            CURLOPT_TIMEOUT => 15,
+            CURLOPT_MAXREDIRS => 0,
+            CURLOPT_HTTPHEADER => ['Accept: application/json', 'Authorization: Bearer '.$token],
+            CURLOPT_USERAGENT => 'LeVillage-Meta-Insights/1.0',
+            CURLOPT_PROTOCOLS => CURLPROTO_HTTPS,
+        ]);
+        curl_multi_add_handle($multi, $curl);
+        $handles[$index] = $curl;
+    }
+    do {
+        $status = curl_multi_exec($multi, $running);
+        if ($running) curl_multi_select($multi, 1.0);
+    } while ($running && $status === CURLM_OK);
+    $responses = [];
+    foreach ($handles as $index => $curl) {
+        $body = curl_multi_getcontent($curl);
+        $httpStatus = (int)curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        $json = is_string($body) && strlen($body) <= 1500000 ? json_decode($body, true) : null;
+        $responses[$index] = $httpStatus >= 200 && $httpStatus < 300 && is_array($json)
+            ? ['ok' => true, 'data' => $json]
+            : ['ok' => false, 'code' => $httpStatus ?: 503];
+        curl_multi_remove_handle($multi, $curl);
+        curl_close($curl);
+    }
+    curl_multi_close($multi);
+    ksort($responses);
+    return array_values($responses);
+}
+
 function numberOrNull(mixed $value): int|float|null {
     return is_numeric($value) ? $value + 0 : null;
 }
@@ -233,24 +277,32 @@ function instagramRangeData(array $range, string $token, array $config): array {
     $cursor = $range['sinceDate'];
     $totalsOk = true;
     $totalsCode = 0;
+    $requests = [];
+    $windowDates = [];
     while ($cursor < $range['untilDate']) {
         $chunkEnd = $cursor->add(new DateInterval('P28D'));
         if ($chunkEnd > $range['untilDate']) $chunkEnd = $range['untilDate'];
-        $response = graphGet((string)$config['instagram_id'].'/insights', [
-            'metric' => 'reach,total_interactions,profile_views',
-            'period' => 'day',
-            'metric_type' => 'total_value',
-            'since' => $cursor->format('Y-m-d'),
-            'until' => $chunkEnd->format('Y-m-d'),
-        ], $token, $config);
+        $requests[] = [
+            'path' => (string)$config['instagram_id'].'/insights',
+            'params' => [
+                'metric' => 'reach,total_interactions,profile_views',
+                'period' => 'day',
+                'metric_type' => 'total_value',
+                'since' => $cursor->format('Y-m-d'),
+                'until' => $chunkEnd->format('Y-m-d'),
+            ],
+        ];
+        $windowDates[] = $chunkEnd->sub(new DateInterval('P1D'))->format('Y-m-d');
+        $cursor = $chunkEnd;
+    }
+    foreach (graphGetMany($requests, $token, $config) as $index => $response) {
         if (!($response['ok'] ?? false)) {
             $totalsOk = false;
             $totalsCode = (int)($response['code'] ?? 0);
             break;
         }
         foreach (array_keys($totals) as $metric) $totals[$metric] += numberOrNull(insightTotal($response['data'], $metric)) ?? 0;
-        $windowSeries[$chunkEnd->sub(new DateInterval('P1D'))->format('Y-m-d')] = numberOrNull(insightTotal($response['data'], 'reach')) ?? 0;
-        $cursor = $chunkEnd;
+        $windowSeries[$windowDates[$index]] = numberOrNull(insightTotal($response['data'], 'reach')) ?? 0;
     }
     $reach = $range['days'] > 90
         ? ['ok' => $totalsOk, 'code' => $totalsCode, 'series' => $windowSeries]
