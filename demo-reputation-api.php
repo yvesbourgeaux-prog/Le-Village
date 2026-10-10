@@ -29,9 +29,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'GET') {
 }
 $source = (string)($_GET['source'] ?? '');
 $entity = (string)($_GET['entity'] ?? '');
-if (!in_array($source, ['google', 'tripadvisor'], true) ||
-    !in_array($entity, ['restaurant', 'hotel'], true) ||
-    ($source === 'google' && $entity !== 'restaurant')) {
+if ($source !== 'google' || $entity !== 'restaurant') {
     reply(400, ['status' => 'invalid_request', 'message' => 'Fiche inconnue.']);
 }
 
@@ -138,71 +136,5 @@ if ($source === 'google') {
     ]);
 }
 
-// Tripadvisor's standard Content API is not licensed for B2B reputation tools.
-// Do not fetch/display review data until an explicit applicable permission exists.
-if (envValue('LV_TRIPADVISOR_REPUTATION_APPROVED') !== '1') {
-    reply(200, [
-        'status' => 'requires_license', 'source' => 'tripadvisor', 'entity' => $entity,
-        'message' => 'Accès Tripadvisor pour la gestion de réputation à autoriser.',
-        'rating' => null, 'total' => null, 'reviews' => [],
-    ]);
-}
-$placeId = envValue($entity === 'restaurant' ? 'LV_TRIPADVISOR_RESTAURANT_ID' : 'LV_TRIPADVISOR_HOTEL_ID');
-$key = envValue('LV_TRIPADVISOR_API_KEY');
-$mode = envValue('LV_TRIPADVISOR_API_MODE') ?: 'terra';
-if ($key === '' || $placeId === '') {
-    reply(200, [
-        'status' => 'not_connected', 'source' => 'tripadvisor', 'entity' => $entity,
-        'message' => 'Clé API et identifiant de cette fiche à configurer.',
-        'rating' => null, 'total' => null, 'reviews' => [],
-    ]);
-}
-if (!ctype_digit($placeId) || !in_array($mode, ['terra', 'content'], true)) {
-    reply(503, ['status' => 'configuration_error', 'message' => 'Configuration Tripadvisor non valide.']);
-}
-if ($mode === 'terra') {
-    $headers = ['X-API-Key: '.$key];
-    $base = 'https://terra.tripadvisor.com/api/locations/'.$placeId;
-    $detailResult = requestJson($base.'?version=1&locale=fr-FR', $headers);
-    $reviewResult = requestJson($base.'/reviews?version=1&language=primary&size=10', $headers);
-} else {
-    // Legacy Content API (first 5,000 calls/month free on eligible plans).
-    $query = '?key='.rawurlencode($key).'&language=fr';
-    $base = 'https://api.content.tripadvisor.com/api/v1/location/'.$placeId;
-    $detailResult = requestJson($base.'/details'.$query, []);
-    $reviewResult = requestJson($base.'/reviews'.$query, []);
-}
-if (!isset($detailResult['data'])) upstreamError($detailResult, 'tripadvisor', $entity);
-if (!isset($reviewResult['data'])) upstreamError($reviewResult, 'tripadvisor', $entity);
-$detail = $detailResult['data'];
-$reviewData = $reviewResult['data'];
-$reviews = [];
-foreach (array_slice($reviewData['data'] ?? [], 0, 15) as $r) {
-    if (!is_array($r)) continue;
-    $rating = $r['rating'] ?? $r['overall_rating'] ?? null;
-    if (is_array($rating)) $rating = $rating['value'] ?? $rating['rating'] ?? null;
-    $author = $r['user'] ?? $r['reviewer'] ?? [];
-    $reviews[] = [
-        'id' => (string)($r['id'] ?? ''),
-        'author' => firstText($author) ?: (is_array($author) ? firstText($author['name'] ?? $author['username'] ?? null) : '') ?: 'Voyageur Tripadvisor',
-        'rating' => asNumber($rating),
-        'date' => safeDate($r['publish_ts'] ?? $r['published_date'] ?? $r['published_at'] ?? $r['date'] ?? null),
-        'title' => firstText($r['title'] ?? ''),
-        'text' => firstText($r['text'] ?? $r['body'] ?? ''),
-        'reply' => firstText($r['owner_response']['text'] ?? $r['owner_response'] ?? null),
-        'replyUrl' => '',
-    ];
-}
-$overall = $detail['traveler_ratings']['overall'] ?? null;
-if (is_array($overall)) $overall = $overall['rating'] ?? $overall['value'] ?? null;
-$overall ??= $detail['rating'] ?? null;
-$names = $detail['names'] ?? [];
-$displayName = is_array($names) && $names ? firstText($names[0]) : (string)($detail['name'] ?? '');
-reply(200, [
-    'status' => 'connected', 'source' => 'tripadvisor', 'entity' => $entity,
-    'name' => $displayName, 'rating' => asNumber($overall),
-    'total' => isset($detail['traveler_ratings']['overall']['count']) ? (int)$detail['traveler_ratings']['overall']['count'] :
-        (isset($detail['num_reviews']) ? (int)$detail['num_reviews'] :
-        (isset($detail['review_count']) ? (int)$detail['review_count'] : null)),
-    'reviews' => $reviews, 'readOnly' => true,
-]);
+// Only Google Business Profile is currently supported by this demo endpoint.
+reply(400, ['status' => 'unsupported_source', 'message' => 'Cette source de réputation n’est pas disponible.']);
