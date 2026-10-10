@@ -45,7 +45,7 @@ function reviewMarkup(key,p,r,index){
  +(r.title?'<h4>'+esc(r.title)+'</h4>':'')+'<p>'+esc(r.text||'Avis sans commentaire')+'</p>'
  +(answered?'<div class="lv-rep-reply"><strong>Réponse publiée</strong><p>'+esc(r.reply)+'</p></div>':'')
  +(p.source==='google'&&!answered?'<details class="lv-rep-draft"><summary>Préparer une réponse</summary><textarea rows="4" maxlength="4000" data-rep-draft="'+esc(draftKey)+'">'+esc(draft)+'</textarea><button type="button" data-rep-save="'+esc(draftKey)+'">Enregistrer le brouillon</button><small>Pas de publication depuis la démo.</small></details>':'')
- +(p.source==='tripadvisor'?'<a href="'+official.trip+'" target="_blank" rel="noopener noreferrer" class="lv-rep-owner-link">Répondre depuis l’espace propriétaire Tripadvisor ↗</a>':'')+'</article>';
+ +(p.source==='tripadvisor'?'<a href="'+official.trip+'" target="_blank" rel="noopener noreferrer" class="lv-rep-owner-link">Répondre depuis l’espace propriétaire Tripadvisor ↗</a>':(r.replyUrl&&urlAllowed(r.replyUrl,'google')?'<a href="'+esc(urlAllowed(r.replyUrl,'google'))+'" target="_blank" rel="noopener noreferrer" class="lv-rep-owner-link">Ouvrir l’avis sur Google ↗</a>':''))+'</article>';
 }
 function render(){
  const key=current(),p=profiles[key],d=cache[key]||{status:'not_connected',reviews:[],rating:null,total:null},state=loading?'loading':d.status;
@@ -60,6 +60,7 @@ function render(){
  +'<div class="lv-rep-metrics"><div><strong>'+rating(d)+' <small>/ 5</small></strong><span>Note</span></div><div><strong>'+total(d)+'</strong><span>Avis</span></div><div><strong>'+(connected?'Connectée':'Non connectée')+'</strong><span>Synchronisation</span></div></div>'
  +'<div class="lv-rep-actions"><button type="button" class="lv-rep-primary" data-rep-refresh '+(loading?'disabled':'')+'>'+(loading?'Vérification…':'Vérifier la connexion')+'</button>'
  +(publicUrl?'<a class="lv-rep-outline" href="'+esc(publicUrl)+'" target="_blank" rel="noopener noreferrer">Voir la fiche ↗</a>':'')
+ +'<a class="lv-rep-outline" href="'+(p.source==='google'?official.google:official.trip)+'" target="_blank" rel="noopener noreferrer">Gérer sur '+(p.source==='google'?'Google':'Tripadvisor')+' ↗</a>'
  +'<button type="button" class="lv-rep-text" data-rep-edit>'+ (editing?'Fermer les réglages':'Préparer la connexion')+'</button></div></section>'
  +(editing?setup(key,p):'')
  +'<section class="lv-rep-reviews"><div class="lv-rep-review-heading"><div><span class="lv-rep-eyebrow">VOS CLIENTS</span><h3>Avis récents</h3><p>Les avis restent séparés par plateforme et établissement.</p></div>'
