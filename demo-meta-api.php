@@ -165,6 +165,13 @@ function graphGet(string $path, array $params, string $token, array $config): ar
 
 function graphGetMany(array $requests, string $token, array $config): array {
     if (!$requests) return [];
+    if (count($requests) > 5) {
+        $responses = [];
+        foreach (array_chunk($requests, 5) as $batch) {
+            $responses = array_merge($responses, graphGetMany($batch, $token, $config));
+        }
+        return $responses;
+    }
     if ($token === '' || !function_exists('curl_multi_init')) {
         return array_map(static fn(array $request) => graphGet($request['path'], $request['params'], $token, $config), $requests);
     }
