@@ -263,11 +263,13 @@ function chunkedInsightSeries(string $path, string $metric, array $params, array
 }
 
 function facebookRangeData(array $range, string $token, array $config): array {
+    $cached = readRangeCache('facebook', $range);
+    if ($cached !== null) return $cached;
     $views = chunkedInsightSeries((string)$config['page_id'].'/insights', 'page_media_view', [], $range, $token, $config);
     $interactions = chunkedInsightSeries((string)$config['page_id'].'/insights', 'page_post_engagements', [], $range, $token, $config);
     $viewSeries = $views['series'] ?? [];
     $interactionSeries = $interactions['series'] ?? [];
-    return [
+    $result = [
         'ok' => ($views['ok'] ?? false) || ($interactions['ok'] ?? false),
         'code' => (int)($views['code'] ?? $interactions['code'] ?? 0),
         'views' => array_sum($viewSeries),
@@ -276,9 +278,13 @@ function facebookRangeData(array $range, string $token, array $config): array {
             'date' => $row['date'], 'views' => $row['m0'], 'interactions' => $row['m1'],
         ], mergeSeries($viewSeries, $interactionSeries)),
     ];
+    writeRangeCache('facebook', $range, $result);
+    return $result;
 }
 
 function instagramRangeData(array $range, string $token, array $config): array {
+    $cached = readRangeCache('instagram', $range);
+    if ($cached !== null) return $cached;
     $totals = ['reach' => 0, 'total_interactions' => 0, 'profile_views' => 0];
     $windowSeries = [];
     $cursor = $range['sinceDate'];
@@ -316,7 +322,7 @@ function instagramRangeData(array $range, string $token, array $config): array {
         : chunkedInsightSeries((string)$config['instagram_id'].'/insights', 'reach', [
             'metric_type' => 'time_series',
         ], $range, $token, $config, 28);
-    return [
+    $result = [
         'ok' => $totalsOk,
         'code' => $totalsCode ?: (int)($reach['code'] ?? 0),
         'reach' => $totalsOk ? $totals['reach'] : null,
@@ -325,6 +331,8 @@ function instagramRangeData(array $range, string $token, array $config): array {
         'cumulativeWindows' => $range['days'] > 90,
         'series' => array_map(static fn(array $row) => ['date' => $row['date'], 'reach' => $row['m0']], mergeSeries($reach['series'] ?? [])),
     ];
+    writeRangeCache('instagram', $range, $result);
+    return $result;
 }
 
 function mergeSeries(array ...$metrics): array {
@@ -338,6 +346,28 @@ function mergeSeries(array ...$metrics): array {
         $rows[] = $row;
     }
     return $rows;
+}
+
+function rangeCacheFile(string $namespace, array $range): string {
+    $dir = dirname(__DIR__) . '/lv-meta-cache';
+    if (!is_dir($dir)) @mkdir($dir, 0700, true);
+    return $dir.'/range-'.preg_replace('/[^a-z0-9_-]/i', '', $namespace).'-'.hash('sha256', $range['since'].'|'.$range['until']).'.json';
+}
+
+function readRangeCache(string $namespace, array $range): ?array {
+    if (($GLOBALS['metaForceRanges'] ?? false) === true) return null;
+    $file = rangeCacheFile($namespace, $range);
+    if (!is_file($file) || filemtime($file) <= time() - 600) return null;
+    $cached = json_decode((string)file_get_contents($file), true);
+    return is_array($cached) ? $cached : null;
+}
+
+function writeRangeCache(string $namespace, array $range, array $payload): void {
+    if (!($payload['ok'] ?? false)) return;
+    $file = rangeCacheFile($namespace, $range);
+    if (is_dir(dirname($file)) && is_writable(dirname($file))) {
+        @file_put_contents($file, json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES), LOCK_EX);
+    }
 }
 
 function upstreamMessage(int $code): string {
@@ -367,6 +397,7 @@ $cacheDir = dirname(__DIR__) . '/lv-meta-cache';
 $cacheKey = hash('sha256', implode('|', [$range['since'], $range['until'], $compareMode]));
 $cacheFile = $cacheDir.'/insights-'.$cacheKey.'.json';
 $force = ($_GET['refresh'] ?? '') === '1';
+$GLOBALS['metaForceRanges'] = $force && $compareMode === 'none';
 if (!$force && is_file($cacheFile) && filemtime($cacheFile) > time() - 600) {
     $cached = json_decode((string)file_get_contents($cacheFile), true);
     if (is_array($cached)) respond(200, $cached + ['cached' => true]);
