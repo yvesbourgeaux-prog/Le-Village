@@ -138,6 +138,15 @@ if ($source === 'google') {
     ]);
 }
 
+// Tripadvisor's standard Content API is not licensed for B2B reputation tools.
+// Do not fetch/display review data until an explicit applicable permission exists.
+if (envValue('LV_TRIPADVISOR_REPUTATION_APPROVED') !== '1') {
+    reply(200, [
+        'status' => 'requires_license', 'source' => 'tripadvisor', 'entity' => $entity,
+        'message' => 'Accès Tripadvisor pour la gestion de réputation à autoriser.',
+        'rating' => null, 'total' => null, 'reviews' => [],
+    ]);
+}
 $placeId = envValue($entity === 'restaurant' ? 'LV_TRIPADVISOR_RESTAURANT_ID' : 'LV_TRIPADVISOR_HOTEL_ID');
 $key = envValue('LV_TRIPADVISOR_API_KEY');
 $mode = envValue('LV_TRIPADVISOR_API_MODE') ?: 'terra';
