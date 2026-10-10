@@ -2,11 +2,11 @@
    Dernière feuille chargée : harmonise les modules existants. */
 body.lv-demo-admin #lv-demo-app{
  --bo-ink:#25282a;--bo-muted:#70777b;--bo-paper:#fff;
- --bo-canvas:#f6f7f6;--bo-line:#e6e9e8;--bo-brand:#8f532f;
- --bo-brand-strong:#754121;--bo-tint:#f8f0e9;--bo-soft:#eef3f0;
+ --bo-canvas:#dfeeea;--bo-line:#d2e2dd;--bo-brand:#c95d43;
+ --bo-brand-strong:#a94630;--bo-tint:#fff0e9;--bo-soft:#e8f4f0;
  color:var(--bo-ink)!important;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif!important;
 }
-body.lv-demo-admin{background:#f6f7f6!important}
+body.lv-demo-admin{background:#dfeeea!important}
 body.lv-demo-admin #lv-demo-app .admin-shell{
  display:grid!important;grid-template-columns:244px minmax(0,1fr)!important;
  min-height:100dvh!important;background:var(--bo-canvas)!important;
@@ -43,7 +43,7 @@ body.lv-demo-admin #lv-demo-app .lv-menu-entry{min-width:0!important}
 body.lv-demo-admin #lv-demo-app .lv-menu-entry .lv-menu-btn{
  display:flex!important;align-items:center!important;gap:11px!important;width:100%!important;
  min-height:43px!important;margin:0!important;padding:10px 12px!important;
- border:1px solid transparent!important;border-radius:11px!important;
+ border:1px solid transparent!important;border-radius:3px!important;
  background:transparent!important;color:#566064!important;
  font:600 13px/1.25 Inter,ui-sans-serif,system-ui,sans-serif!important;
  letter-spacing:0!important;text-align:left!important;white-space:nowrap!important;
@@ -53,18 +53,18 @@ body.lv-demo-admin #lv-demo-app .lv-menu-entry .lv-menu-btn:hover{
  background:#f5f6f5!important;color:#25282a!important;border-color:transparent!important;
 }
 body.lv-demo-admin #lv-demo-app .lv-menu-entry .lv-menu-btn.is-active{
- background:#f8eee6!important;color:#764323!important;border-color:#f1dfd1!important;
+ background:#fff0e9!important;color:#a94630!important;border-color:#f3cbbb!important;
  box-shadow:none!important;font-weight:700!important;
 }
 body.lv-demo-admin #lv-demo-app .lv-nav-icon{width:18px!important;height:18px!important;flex:0 0 18px!important;opacity:.75!important}
-body.lv-demo-admin #lv-demo-app .lv-menu-btn.is-active .lv-nav-icon{color:#9b5931!important;opacity:1!important}
+body.lv-demo-admin #lv-demo-app .lv-menu-btn.is-active .lv-nav-icon{color:#c95d43!important;opacity:1!important}
 body.lv-demo-admin #lv-demo-app .lv-extra-nav-bottom{
  display:grid!important;gap:3px!important;margin:0 16px 16px!important;
  padding:12px 0 0!important;border-top:1px solid var(--bo-line)!important;
 }
 body.lv-demo-admin #lv-demo-app .admin-nav .lv-extra-nav-bottom :is(button,a){
  display:block!important;width:100%!important;margin:0!important;padding:10px 12px!important;
- border:0!important;border-radius:10px!important;background:transparent!important;
+ border:0!important;border-radius:3px!important;background:transparent!important;
  color:#677175!important;font:600 12px Inter,ui-sans-serif,system-ui,sans-serif!important;
  text-align:left!important;text-decoration:none!important;
 }
@@ -89,7 +89,7 @@ body.lv-demo-admin #lv-demo-app .lv-bo-topbar-name i{color:#bdc2c1!important;fon
 body.lv-demo-admin #lv-demo-app .lv-bo-topbar-actions{display:flex!important;align-items:center!important;gap:12px!important}
 body.lv-demo-admin #lv-demo-app .lv-bo-private{
  display:inline-flex!important;align-items:center!important;min-height:30px!important;padding:0 10px!important;
- border-radius:999px!important;background:#f4f5f4!important;color:#737b7e!important;
+ border-radius:3px!important;background:#f4f5f4!important;color:#737b7e!important;
  font:600 11px Inter,ui-sans-serif,system-ui,sans-serif!important;letter-spacing:0!important;white-space:nowrap!important;
 }
 body.lv-demo-admin #lv-demo-app .lv-bo-private:before{
@@ -98,7 +98,7 @@ body.lv-demo-admin #lv-demo-app .lv-bo-private:before{
 }
 body.lv-demo-admin #lv-demo-app .lv-bo-topbar a{
  display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:35px!important;
- padding:0 13px!important;border:1px solid #dce1df!important;border-radius:9px!important;
+ padding:0 13px!important;border:1px solid #dce1df!important;border-radius:3px!important;
  background:#fff!important;color:#384044!important;text-decoration:none!important;
  font:650 12px Inter,ui-sans-serif,system-ui,sans-serif!important;letter-spacing:0!important;white-space:nowrap!important;
 }
@@ -128,43 +128,43 @@ body.lv-demo-admin #lv-demo-app .admin-head-actions :is(input,button){min-height
 body.lv-demo-admin #lv-demo-app .admin-head-actions :is(.day-nav,.today-link),
 body.lv-demo-admin #lv-demo-app .calendar-toggle,
 body.lv-demo-admin #lv-demo-app .lv-soft-button{
- border:1px solid #e1e5e3!important;border-radius:9px!important;background:#fff!important;
+ border:1px solid #e1e5e3!important;border-radius:3px!important;background:#fff!important;
  color:#4b5559!important;box-shadow:none!important;font-weight:600!important;
 }
 body.lv-demo-admin #lv-demo-app .admin-head-actions input{
- border:1px solid #e1e5e3!important;border-radius:9px!important;background:#fff!important;color:#3a4245!important;
+ border:1px solid #e1e5e3!important;border-radius:3px!important;background:#fff!important;color:#3a4245!important;
 }
 body.lv-demo-admin #lv-demo-app .lv-action,
 body.lv-demo-admin #lv-demo-app .admin-head-actions .primary{
- border:1px solid #8f532f!important;border-radius:9px!important;background:#8f532f!important;
+ border:1px solid #c95d43!important;border-radius:3px!important;background:#c95d43!important;
  color:#fff!important;box-shadow:none!important;
  font:650 12px Inter,ui-sans-serif,system-ui,sans-serif!important;letter-spacing:0!important;
 }
 body.lv-demo-admin #lv-demo-app :is(.lv-action,.admin-head-actions .primary):hover{
- background:#754121!important;border-color:#754121!important;
+ background:#a94630!important;border-color:#a94630!important;
 }
 /* Une lecture rapide de la journée. */
 body.lv-demo-admin #lv-demo-app .admin-week-strip{gap:8px!important;margin-bottom:18px!important}
 body.lv-demo-admin #lv-demo-app .week-day{
  min-height:88px!important;background:#fff!important;color:#545f62!important;
- border:1px solid var(--bo-line)!important;border-radius:13px!important;box-shadow:none!important;
+ border:1px solid var(--bo-line)!important;border-radius:3px!important;box-shadow:none!important;
 }
 body.lv-demo-admin #lv-demo-app .week-day:hover{border-color:#cdb6a4!important}
 body.lv-demo-admin #lv-demo-app .week-day strong{
  color:#2c3234!important;font:700 23px Inter,ui-sans-serif,system-ui,sans-serif!important;
 }
 body.lv-demo-admin #lv-demo-app .week-day.is-selected{
- background:#f9efe7!important;border-color:#cfa98d!important;color:#764323!important;
- box-shadow:inset 0 0 0 1px #cfa98d!important;
+ background:#fff0e9!important;border-color:#dc9980!important;color:#a94630!important;
+ box-shadow:inset 0 0 0 1px #dc9980!important;
 }
-body.lv-demo-admin #lv-demo-app .week-day.is-selected :is(strong,.week-day-name,.week-day-total){color:#764323!important}
+body.lv-demo-admin #lv-demo-app .week-day.is-selected :is(strong,.week-day-name,.week-day-total){color:#a94630!important}
 body.lv-demo-admin #lv-demo-app .kpi-row{gap:12px!important;margin-bottom:20px!important}
 body.lv-demo-admin #lv-demo-app .kpi-row article{
  position:relative!important;min-height:108px!important;padding:19px 22px!important;
- background:#fff!important;border:1px solid var(--bo-line)!important;border-radius:15px!important;
- box-shadow:0 3px 12px #253a3207!important;
+ background:#fff!important;border:1px solid var(--bo-line)!important;border-radius:3px!important;
+ box-shadow:none!important;
 }
-body.lv-demo-admin #lv-demo-app .kpi-row article:first-child{background:#f8eee7!important;border-color:#f0e2d8!important}
+body.lv-demo-admin #lv-demo-app .kpi-row article:first-child{background:#fff0e9!important;border-color:#f6d4c5!important}
 body.lv-demo-admin #lv-demo-app .kpi-row article span{
  color:#697276!important;font:600 12px Inter,ui-sans-serif,system-ui,sans-serif!important;letter-spacing:0!important;
 }
@@ -172,11 +172,11 @@ body.lv-demo-admin #lv-demo-app .kpi-row article strong{
  color:#293033!important;font:700 30px Inter,ui-sans-serif,system-ui,sans-serif!important;
  letter-spacing:-.04em!important;margin-top:7px!important;
 }
-body.lv-demo-admin #lv-demo-app .kpi-row article:first-child strong{color:#8f532f!important}
+body.lv-demo-admin #lv-demo-app .kpi-row article:first-child strong{color:#c95d43!important}
 body.lv-demo-admin #lv-demo-app .admin-grid{grid-template-columns:minmax(310px,.75fr) minmax(420px,1.5fr)!important;gap:18px!important}
 body.lv-demo-admin #lv-demo-app :is(.calendar-panel,.reservations-panel,.settings-card,.lv-paper){
- background:#fff!important;border:1px solid var(--bo-line)!important;border-radius:17px!important;
- box-shadow:0 4px 18px #253a3208!important;
+ background:#fff!important;border:1px solid var(--bo-line)!important;border-radius:3px!important;
+ box-shadow:none!important;
 }
 body.lv-demo-admin #lv-demo-app :is(.calendar-panel,.reservations-panel){padding:22px!important}
 body.lv-demo-admin #lv-demo-app .panel-title{gap:12px!important;margin-bottom:18px!important}
@@ -184,59 +184,59 @@ body.lv-demo-admin #lv-demo-app :is(.panel-title h2,.settings-card h2,.lv-paper 
  color:#293033!important;font:700 18px/1.3 Inter,ui-sans-serif,system-ui,sans-serif!important;
  letter-spacing:-.02em!important;
 }
-body.lv-demo-admin #lv-demo-app .panel-title button{border-color:#e1e5e3!important;border-radius:8px!important;background:#fff!important;color:#465055!important}
+body.lv-demo-admin #lv-demo-app .panel-title button{border-color:#e1e5e3!important;border-radius:3px!important;background:#fff!important;color:#465055!important}
 body.lv-demo-admin #lv-demo-app .admin-calendar button{
- background:#f8f9f8!important;border:1px solid transparent!important;border-radius:9px!important;color:#3e474a!important;
+ background:#f8f9f8!important;border:1px solid transparent!important;border-radius:3px!important;color:#3e474a!important;
 }
 body.lv-demo-admin #lv-demo-app .admin-calendar button:hover{background:#f2f5f3!important}
-body.lv-demo-admin #lv-demo-app .admin-calendar button.is-selected{background:#f8eee7!important;border-color:#cfa98d!important;color:#784524!important}
+body.lv-demo-admin #lv-demo-app .admin-calendar button.is-selected{background:#fff0e9!important;border-color:#dc9980!important;color:#a94630!important}
 body.lv-demo-admin #lv-demo-app .service-filter{
- display:flex!important;gap:3px!important;padding:3px!important;border-radius:10px!important;background:#f3f5f4!important;
+ display:flex!important;gap:3px!important;padding:3px!important;border-radius:3px!important;background:#f3f5f4!important;
 }
 body.lv-demo-admin #lv-demo-app .service-filter button{
- border:0!important;border-radius:8px!important;background:transparent!important;
+ border:0!important;border-radius:3px!important;background:transparent!important;
  color:#687174!important;font-weight:600!important;box-shadow:none!important;
 }
 body.lv-demo-admin #lv-demo-app .service-filter button.is-active{
- background:#fff!important;color:#8f532f!important;box-shadow:0 1px 5px #253a3212!important;
+ background:#fff!important;color:#c95d43!important;box-shadow:none!important;
 }
 body.lv-demo-admin #lv-demo-app .admin-search-wrap input,
 body.lv-demo-admin #lv-demo-app :is(.lv-form input,.lv-form select,.lv-form textarea){
- border:1px solid #dfe5e2!important;border-radius:9px!important;background:#fff!important;color:#2e3639!important;
+ border:1px solid #dfe5e2!important;border-radius:3px!important;background:#fff!important;color:#2e3639!important;
 }
 body.lv-demo-admin #lv-demo-app .reservation-list{gap:8px!important}
 body.lv-demo-admin #lv-demo-app .reservation-card{
- border:1px solid #e8ebea!important;border-radius:11px!important;background:#fff!important;
+ border:1px solid #e8ebea!important;border-radius:3px!important;background:#fff!important;
  padding:13px 15px!important;box-shadow:none!important;
 }
 body.lv-demo-admin #lv-demo-app .reservation-card:hover{background:#fcfaf8!important;border-color:#d6bba7!important}
-body.lv-demo-admin #lv-demo-app .reservation-card .time{color:#8f532f!important;font-weight:750!important}
-body.lv-demo-admin #lv-demo-app .pax-badge{background:#f4f6f5!important;color:#4a5558!important;border-radius:8px!important}
-body.lv-demo-admin #lv-demo-app .empty-state{background:#fafbfa!important;border-color:#e3e8e5!important;border-radius:12px!important}
+body.lv-demo-admin #lv-demo-app .reservation-card .time{color:#c95d43!important;font-weight:750!important}
+body.lv-demo-admin #lv-demo-app .pax-badge{background:#f4f6f5!important;color:#4a5558!important;border-radius:3px!important}
+body.lv-demo-admin #lv-demo-app .empty-state{background:#fafbfa!important;border-color:#e3e8e5!important;border-radius:3px!important}
 body.lv-demo-admin #lv-demo-app :is(.lv-client-card,.lv-rts-day,.lv-compose-fold){
- background:#fff!important;border-color:var(--bo-line)!important;border-radius:14px!important;box-shadow:none!important;
+ background:#fff!important;border-color:var(--bo-line)!important;border-radius:3px!important;box-shadow:none!important;
 }
-body.lv-demo-admin #lv-demo-app .lv-rts-service{border-radius:12px!important}
-body.lv-demo-admin #lv-demo-app .lv-compose-plus{background:#f8eee7!important;color:#8f532f!important;border-radius:9px!important}
+body.lv-demo-admin #lv-demo-app .lv-rts-service{border-radius:3px!important}
+body.lv-demo-admin #lv-demo-app .lv-compose-plus{background:#fff0e9!important;color:#c95d43!important;border-radius:3px!important}
 body.lv-demo-admin #lv-demo-app .lv-subnav{
  display:flex!important;gap:4px!important;padding:4px!important;margin-bottom:20px!important;
- background:#eef1ef!important;border:0!important;border-radius:11px!important;box-shadow:none!important;
+ background:#eef1ef!important;border:0!important;border-radius:3px!important;box-shadow:none!important;
 }
 body.lv-demo-admin #lv-demo-app .lv-subnav button{
- border:0!important;border-radius:8px!important;background:transparent!important;color:#606a6e!important;
+ border:0!important;border-radius:3px!important;background:transparent!important;color:#606a6e!important;
  font:650 12px Inter,ui-sans-serif,system-ui,sans-serif!important;padding:10px 14px!important;
 }
-body.lv-demo-admin #lv-demo-app .lv-subnav button.is-active{background:#fff!important;color:#8f532f!important;box-shadow:0 1px 5px #253a3212!important}
+body.lv-demo-admin #lv-demo-app .lv-subnav button.is-active{background:#fff!important;color:#c95d43!important;box-shadow:none!important}
 body.lv-demo-admin #lv-demo-app #admin-schedule .lv-rts-explanation{
- border-radius:12px!important;background:#f3f6f4!important;border-color:#e3eae5!important;
+ border-radius:3px!important;background:#eaf5f1!important;border-color:#cddfd9!important;
 }
-body.lv-demo-admin #lv-demo-app .lv-demo-notice{border-radius:11px!important}
-body.lv-demo-admin #lv-demo-app .lv-client-editor{border-radius:16px!important;color:var(--bo-ink)!important}
+body.lv-demo-admin #lv-demo-app .lv-demo-notice{border-radius:3px!important}
+body.lv-demo-admin #lv-demo-app .lv-client-editor{border-radius:3px!important;color:var(--bo-ink)!important}
 body.lv-demo-admin #lv-demo-app :is(input,select,textarea):focus-visible,
 body.lv-demo-admin #lv-demo-app :is(button,a,summary):focus-visible{
  outline:2px solid #ac7655!important;outline-offset:2px!important;
 }
-#lv-extra-message{background:#293332!important;border-radius:10px!important}
+#lv-extra-message{background:#293332!important;border-radius:3px!important}
 @media(max-width:1100px){
  body.lv-demo-admin #lv-demo-app .admin-grid{grid-template-columns:1fr!important}
  body.lv-demo-admin #lv-demo-app .admin-head{align-items:flex-start!important;flex-wrap:wrap!important}
@@ -286,3 +286,8 @@ body.lv-demo-admin #lv-demo-app :is(button,a,summary):focus-visible{
  body.lv-demo-admin #lv-demo-app :is(.calendar-panel,.reservations-panel,.lv-paper){padding:17px!important}
  body.lv-demo-admin #lv-demo-app .panel-title{align-items:flex-start!important;flex-wrap:wrap!important}
 }
+
+/* Cohérence des écrans secondaires : panneaux droits et accents frais. */
+body.lv-demo-admin #lv-demo-app :is(.lv-meta-platform,.lv-meta-kpi,.lv-meta-grid-cards>*,.lv-rts-service,.lv-rts-field,.lv-week-service,.lv-automation,.lv-item,.client-row,.lv-client-filter,.lv-demo-notice,.lv-preview,.lv-compose-fold,.lv-form input,.lv-form select,.lv-form textarea){border-radius:3px!important}
+body.lv-demo-admin #lv-demo-app :is(.lv-meta-platform,.lv-meta-kpi,.lv-automation,.lv-week-service,.client-row){box-shadow:none!important;border-color:#d2e2dd!important}
+body.lv-demo-admin #lv-demo-app .lv-meta-period button.is-active{background:#c95d43!important;color:#fff!important}
