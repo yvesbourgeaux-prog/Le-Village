@@ -1,12 +1,8 @@
-name: Check reputation demo
+name: Check private reservation demo
 on:
   push:
     paths:
-      - 'demo-reputation-api.php'
       - 'demo-reservation.php'
-      - 'assets/js/demo-reputation.js'
-      - 'assets/js/demo-backoffice-core.js'
-      - 'assets/css/demo-reputation.css'
       - 'tools/check-demo-reservation.cjs'
       - '.github/workflows/check-reputation-demo.yml'
   workflow_dispatch:
@@ -18,12 +14,9 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check PHP syntax
         run: |
-          php -l demo-reputation-api.php
           php -l demo-reservation.php
       - name: Check JavaScript syntax
         run: |
-          node --check assets/js/demo-reputation.js
-          node --check assets/js/demo-backoffice-core.js
           node --check assets/js/demo-reservation.js
       - name: Check booking regression
         run: node tools/check-demo-reservation.cjs
