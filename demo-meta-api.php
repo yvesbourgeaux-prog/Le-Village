@@ -496,7 +496,7 @@ if ($userToken === '' && $pageToken === '') {
 }
 
 $cacheDir = dirname(__DIR__) . '/lv-meta-cache';
-$cacheKey = hash('sha256', implode('|', ['schema-v3', $selectedPlatform, $range['since'], $range['until'], $compareMode]));
+$cacheKey = hash('sha256', implode('|', ['schema-v4', $selectedPlatform, $range['since'], $range['until'], $compareMode]));
 $cacheFile = $cacheDir.'/insights-'.$cacheKey.'.json';
 $force = ($_GET['refresh'] ?? '') === '1';
 $GLOBALS['metaForceRanges'] = $force && $compareMode === 'none';
@@ -541,8 +541,15 @@ if ($selectedPlatform === 'instagram' && $instagramToken !== '') {
     $instagramRange = instagramRangeData($range, $instagramToken, $config);
     $instagramComparison = $comparisonRange ? instagramRangeData($comparisonRange, $instagramToken, $config) : null;
     if (($igInfo['ok'] ?? false) && $instagramRange['ok']) {
+        $instagramTotalsComplete = count(array_filter([
+            $instagramRange['views'],
+            $instagramRange['reach'],
+            $instagramRange['interactions'],
+            $instagramRange['profileViews'],
+            $instagramRange['follows'],
+        ], static fn(mixed $value) => $value !== null)) === 5;
         $instagram = [
-            'status' => ($instagramRange['partial'] ?? false) ? 'partial' : 'connected',
+            'status' => $instagramTotalsComplete ? 'connected' : 'partial',
             'name' => '@'.ltrim((string)($igInfo['data']['username'] ?? 'restaurantlevillagehdc'), '@'),
             'followers' => numberOrNull($igInfo['data']['followers_count'] ?? null),
             'posts' => numberOrNull($igInfo['data']['media_count'] ?? null),
