@@ -70,7 +70,7 @@ $head = '<meta name="robots" content="noindex,nofollow,noarchive"/><title>Démo 
  . '<link rel="stylesheet" href="/assets/css/demo-village-redesign.css?v=20261011-logo4"/>'
  . '<link rel="stylesheet" href="/assets/css/demo-google-stats.css?v=20261011-site1"/>'
  . '<script defer src="/assets/js/demo-reservation.js?v=20261009-opening3"></script>'
- . '<script defer src="/assets/js/demo-backoffice-core.js?v=20261011-actions1"></script>'
+ . '<script defer src="/assets/js/demo-backoffice-core.js?v=20261011-stats2"></script>'
  . '<script defer src="/assets/js/demo-backoffice-comms.js?v=20261009-ux3"></script>'
  . '<script defer src="/assets/js/demo-meta.js?v=20261011-content14"></script>'
  . '<script defer src="/assets/js/demo-meta-editorial.js?v=20261011-schedule1"></script>'
