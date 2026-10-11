@@ -507,7 +507,7 @@ if ($userToken === '' && $pageToken === '') {
 }
 
 $cacheDir = dirname(__DIR__) . '/lv-meta-cache';
-$cacheKey = hash('sha256', implode('|', ['schema-v6', $selectedPlatform, $range['since'], $range['until'], $compareMode]));
+$cacheKey = hash('sha256', implode('|', ['schema-v7', $selectedPlatform, $range['since'], $range['until'], $compareMode]));
 $cacheFile = $cacheDir.'/insights-'.$cacheKey.'.json';
 $force = ($_GET['refresh'] ?? '') === '1';
 $GLOBALS['metaForceRanges'] = $force && $compareMode === 'none';
