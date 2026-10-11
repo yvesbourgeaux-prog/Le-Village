@@ -570,6 +570,7 @@ if ($selectedPlatform === 'instagram' && $instagramToken !== '') {
             'profileViews' => $instagramRange['profileViews'],
             'follows' => $instagramRange['follows'],
             'cumulativeWindows' => $instagramRange['cumulativeWindows'],
+            'chartSeries' => $instagramRange['chartSeries'] ?? [],
             'series' => $instagramRange['series'],
             'comparison' => $instagramComparison,
         ];
