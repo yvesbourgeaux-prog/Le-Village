@@ -411,23 +411,15 @@ function instagramRangeData(array $range, string $token, array $config): array {
     // the other days with zero, which creates fictitious spikes.
     $chartSeries = [];
     foreach (['views', 'reach', 'interactions', 'profileViews'] as $key) {
-        if (($available[$key] ?? false) && count($daily[$key] ?? []) > 1) {
-            $chartSeries[$key] = array_map(
-                static fn(string $date, int|float $value): array => ['date' => $date, $key => $value],
-                array_keys($daily[$key]),
-                array_values($daily[$key])
-            );
-        } else {
-            $chartSeries[$key] = [];
-            foreach ($windowDates as $index => $date) {
-                if (!isset($windowSeries[$key][$date])) continue;
-                $chartSeries[$key][] = [
-                    'date' => $date,
-                    'intervalStart' => $windowStarts[$index],
-                    'intervalEnd' => $date,
-                    $key => $windowSeries[$key][$date],
-                ];
-            }
+        $chartSeries[$key] = [];
+        foreach ($windowDates as $index => $date) {
+            if (!isset($windowSeries[$key][$date])) continue;
+            $chartSeries[$key][] = [
+                'date' => $date,
+                'intervalStart' => $windowStarts[$index],
+                'intervalEnd' => $date,
+                $key => $windowSeries[$key][$date],
+            ];
         }
     }
     $chartSeries['follows'] = array_map(
@@ -472,7 +464,7 @@ function mergeSeries(array ...$metrics): array {
 function rangeCacheFile(string $namespace, array $range): string {
     $dir = dirname(__DIR__) . '/lv-meta-cache';
     if (!is_dir($dir)) @mkdir($dir, 0700, true);
-    return $dir.'/range-v4-'.preg_replace('/[^a-z0-9_-]/i', '', $namespace).'-'.hash('sha256', $range['since'].'|'.$range['until']).'.json';
+    return $dir.'/range-v5-'.preg_replace('/[^a-z0-9_-]/i', '', $namespace).'-'.hash('sha256', $range['since'].'|'.$range['until']).'.json';
 }
 
 function readRangeCache(string $namespace, array $range): ?array {
@@ -515,7 +507,7 @@ if ($userToken === '' && $pageToken === '') {
 }
 
 $cacheDir = dirname(__DIR__) . '/lv-meta-cache';
-$cacheKey = hash('sha256', implode('|', ['schema-v5', $selectedPlatform, $range['since'], $range['until'], $compareMode]));
+$cacheKey = hash('sha256', implode('|', ['schema-v6', $selectedPlatform, $range['since'], $range['until'], $compareMode]));
 $cacheFile = $cacheDir.'/insights-'.$cacheKey.'.json';
 $force = ($_GET['refresh'] ?? '') === '1';
 $GLOBALS['metaForceRanges'] = $force && $compareMode === 'none';
