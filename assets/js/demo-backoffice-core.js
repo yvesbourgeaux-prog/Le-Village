@@ -121,6 +121,7 @@ panel('users','<div class="lv-screen-head"><div><span>ORGANISATION</span><h1>L�
 panel('account','<div class="lv-screen-head"><div><span>PRÉFÉRENCES</span><h1>Compte</h1><p>Les réglages généraux de votre espace.</p></div></div><form class="lv-paper lv-form lv-narrow" id="lv-account-form"><h2>Informations du restaurant</h2><label>Nom de l’expéditeur<input name="sender" required></label><label>E-mail de réponse<input name="reply" type="email"></label><label>Fuseau horaire<select name="timezone"><option>Europe/Paris</option></select></label><div class="lv-form-grid"><label>SMS à partir de<input name="smsFrom" type="time"></label><label>SMS jusqu’à<input name="smsUntil" type="time"></label></div><button class="lv-action" type="submit">Enregistrer</button><p class="lv-help">Les clés API restent hors de cette démonstration.</p></form>');
 panel('communication','<div class="lv-screen-head"><div><span>GARDER LE LIEN</span><h1>Communication</h1><p>Vos campagnes, messages et rappels dans un seul espace.</p></div></div><div class="lv-communication-hint">Créez vos messages, choisissez les bons clients et préparez vos envois en toute simplicité.</div><div id="lv-communication-content"></div>');
 panel('meta','<div class="lv-screen-head"><div><span>VOTRE VISIBILITÉ SUR LES RÉSEAUX</span><h1>Statistiques Meta</h1><p>Choisissez Facebook ou Instagram pour consulter les résultats de chaque réseau.</p></div></div><div id="lv-meta-root"></div>');
+panel('editorial','<div id="lv-editorial-root"></div>');
 const clientsPanel=$('#admin-clients',app);
 if(clientsPanel){
  clientsPanel.querySelector('.admin-head-actions')?.remove();
@@ -132,7 +133,7 @@ if(clientsPanel){
 // Related screens stay in one place instead of being separate administrative sections.
 const subChoices={
  clients:[['directory','Mes clients'],['segments','Groupes de clients']],
- communication:[['email','E-mails'],['sms','SMS'],['templates','Mes modèles'],['automations','Messages automatiques']],
+ communication:[['email','E-mails'],['sms','SMS'],['templates','Mes modèles'],['automations','Messages automatiques'],['editorial','Calendrier éditorial']],
  settings:[['reservation','Réservation en ligne'],['data','Données'],['users','Équipe'],['account','Compte']]
 };
 const currentSub={clients:'directory',communication:'email',settings:'reservation'};
