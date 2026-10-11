@@ -33,7 +33,8 @@ function graph(string $path, array $params=[], string $method='GET'): array {
     if ($code<200 || $code>=300 || !is_array($data)) {
         $metaCode=(int)($data['error']['code'] ?? 0);
         $metaSubcode=(int)($data['error']['error_subcode'] ?? 0);
-        return ['error'=>'Meta a refusé cette opération (HTTP '.($code ?: 503).', code '.$metaCode.($metaSubcode ? '/'.$metaSubcode : '').'). Vérifiez les droits de l’application et du jeton.'];
+        $reason=$metaCode===3 ? 'Cette capacité nécessite la validation de l’application par Meta.' : 'Vérifiez les droits de l’application et du jeton.';
+        return ['error'=>'Meta a refusé cette opération (HTTP '.($code ?: 503).', code '.$metaCode.($metaSubcode ? '/'.$metaSubcode : '').'). '.$reason];
     }
     return $data;
 }
