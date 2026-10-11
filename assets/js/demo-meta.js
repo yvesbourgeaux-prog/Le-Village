@@ -11,14 +11,14 @@ const metricSpecs={
   ['viewers','Spectateurs uniques','Personnes ayant vu les contenus'],
   ['interactions','Interactions avec le contenu','Réactions, commentaires, partages et clics'],
   ['visits','Visites de la Page','Consultations de la Page Facebook'],
-  ['follows','Nouveaux followers','Abonnements gagnés pendant la période']
+  ['follows','Followers en plus','Abonnements gagnés pendant la période']
  ],
  instagram:[
   ['views','Vues','Nombre total de vues des contenus'],
   ['reach','Couverture','Comptes touchés par les contenus'],
   ['interactions','Interactions avec le contenu','Réactions, commentaires, partages et enregistrements'],
   ['profileViews','Visites du profil','Consultations du profil Instagram'],
-  ['follows','Nouveaux followers','Abonnements gagnés pendant la période']
+  ['follows','Followers en plus','Abonnements gagnés pendant la période']
  ]
 };
 function dateLabel(value){try{return new Intl.DateTimeFormat('fr-FR',{day:'numeric',month:'short'}).format(new Date(value+'T12:00:00'))}catch{return value}}
