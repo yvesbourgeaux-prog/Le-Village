@@ -135,6 +135,10 @@ function comparisonRange(array $range, string $mode): ?array {
 $range = requestedRange($timezone);
 $compareMode = (string)($_GET['compare'] ?? 'none');
 $comparisonRange = comparisonRange($range, $compareMode);
+$selectedPlatform = (string)($_GET['platform'] ?? 'facebook');
+if (!in_array($selectedPlatform, ['facebook', 'instagram'], true)) {
+    respond(422, ['status' => 'invalid_platform', 'message' => 'Réseau Meta invalide.']);
+}
 $days = $range['days'];
 $since = $range['since'];
 $until = $range['until'];
@@ -262,21 +266,91 @@ function chunkedInsightSeries(string $path, string $metric, array $params, array
     return ['ok' => true, 'series' => $series];
 }
 
+function chunkedInsightMetrics(string $path, array $metricMap, array $params, array $range, string $token, array $config, int $chunkDays = 90): array {
+    $series = array_fill_keys(array_keys($metricMap), []);
+    $available = array_fill_keys(array_keys($metricMap), true);
+    $lastCode = 0;
+    $cursor = $range['sinceDate'];
+    while ($cursor < $range['untilDate']) {
+        $chunkEnd = $cursor->add(new DateInterval('P'.$chunkDays.'D'));
+        if ($chunkEnd > $range['untilDate']) $chunkEnd = $range['untilDate'];
+        $baseParams = $params + [
+            'period' => 'day',
+            'since' => $cursor->format('Y-m-d'),
+            'until' => $chunkEnd->format('Y-m-d'),
+        ];
+        $response = graphGet($path, $baseParams + ['metric' => implode(',', array_values($metricMap))], $token, $config);
+        if ($response['ok'] ?? false) {
+            foreach ($metricMap as $key => $metric) {
+                $metricSeries = insightSeries($response['data'], $metric);
+                if (!$metricSeries) $available[$key] = false;
+                $series[$key] = array_replace($series[$key], $metricSeries);
+            }
+        } else {
+            $lastCode = (int)($response['code'] ?? 0);
+            foreach ($metricMap as $key => $metric) {
+                $single = graphGet($path, $baseParams + ['metric' => $metric], $token, $config);
+                if (!($single['ok'] ?? false)) {
+                    $available[$key] = false;
+                    $lastCode = (int)($single['code'] ?? $lastCode);
+                    continue;
+                }
+                $metricSeries = insightSeries($single['data'], $metric);
+                if (!$metricSeries) $available[$key] = false;
+                $series[$key] = array_replace($series[$key], $metricSeries);
+            }
+        }
+        $cursor = $chunkEnd;
+    }
+    foreach ($series as &$metricSeries) ksort($metricSeries);
+    unset($metricSeries);
+    $availableCount = count(array_filter($available));
+    return [
+        'ok' => $availableCount > 0,
+        'partial' => $availableCount < count($metricMap),
+        'code' => $lastCode,
+        'available' => $available,
+        'series' => $series,
+    ];
+}
+
 function facebookRangeData(array $range, string $token, array $config): array {
     $cached = readRangeCache('facebook', $range);
     if ($cached !== null) return $cached;
-    $views = chunkedInsightSeries((string)$config['page_id'].'/insights', 'page_media_view', [], $range, $token, $config);
-    $interactions = chunkedInsightSeries((string)$config['page_id'].'/insights', 'page_post_engagements', [], $range, $token, $config);
-    $viewSeries = $views['series'] ?? [];
-    $interactionSeries = $interactions['series'] ?? [];
+    $metricMap = [
+        'views' => 'page_media_view',
+        'viewers' => 'page_media_viewer',
+        'interactions' => 'page_post_engagements',
+        'visits' => 'page_views_total',
+        'follows' => 'page_follows',
+    ];
+    $insights = chunkedInsightMetrics((string)$config['page_id'].'/insights', $metricMap, [], $range, $token, $config);
+    $metricSeries = $insights['series'] ?? [];
+    $available = $insights['available'] ?? [];
+    $merged = mergeSeries(
+        $metricSeries['views'] ?? [],
+        $metricSeries['viewers'] ?? [],
+        $metricSeries['interactions'] ?? [],
+        $metricSeries['visits'] ?? [],
+        $metricSeries['follows'] ?? []
+    );
     $result = [
-        'ok' => ($views['ok'] ?? false) || ($interactions['ok'] ?? false),
-        'code' => (int)($views['code'] ?? $interactions['code'] ?? 0),
-        'views' => array_sum($viewSeries),
-        'interactions' => array_sum($interactionSeries),
+        'ok' => (bool)($insights['ok'] ?? false),
+        'partial' => (bool)($insights['partial'] ?? false),
+        'code' => (int)($insights['code'] ?? 0),
+        'views' => ($available['views'] ?? false) ? array_sum($metricSeries['views'] ?? []) : null,
+        'viewers' => ($available['viewers'] ?? false) ? array_sum($metricSeries['viewers'] ?? []) : null,
+        'interactions' => ($available['interactions'] ?? false) ? array_sum($metricSeries['interactions'] ?? []) : null,
+        'visits' => ($available['visits'] ?? false) ? array_sum($metricSeries['visits'] ?? []) : null,
+        'follows' => ($available['follows'] ?? false) ? array_sum($metricSeries['follows'] ?? []) : null,
         'series' => array_map(static fn(array $row) => [
-            'date' => $row['date'], 'views' => $row['m0'], 'interactions' => $row['m1'],
-        ], mergeSeries($viewSeries, $interactionSeries)),
+            'date' => $row['date'],
+            'views' => $row['m0'],
+            'viewers' => $row['m1'],
+            'interactions' => $row['m2'],
+            'visits' => $row['m3'],
+            'follows' => $row['m4'],
+        ], $merged),
     ];
     writeRangeCache('facebook', $range, $result);
     return $result;
@@ -285,8 +359,8 @@ function facebookRangeData(array $range, string $token, array $config): array {
 function instagramRangeData(array $range, string $token, array $config): array {
     $cached = readRangeCache('instagram', $range);
     if ($cached !== null) return $cached;
-    $totals = ['reach' => 0, 'total_interactions' => 0, 'profile_views' => 0];
-    $windowSeries = [];
+    $totals = ['views' => 0, 'reach' => 0, 'total_interactions' => 0, 'profile_views' => 0];
+    $windowSeries = ['views' => [], 'reach' => [], 'interactions' => [], 'profileViews' => []];
     $cursor = $range['sinceDate'];
     $totalsOk = true;
     $totalsCode = 0;
@@ -298,7 +372,7 @@ function instagramRangeData(array $range, string $token, array $config): array {
         $requests[] = [
             'path' => (string)$config['instagram_id'].'/insights',
             'params' => [
-                'metric' => 'reach,total_interactions,profile_views',
+                'metric' => 'views,reach,total_interactions,profile_views',
                 'period' => 'day',
                 'metric_type' => 'total_value',
                 'since' => $cursor->format('Y-m-d'),
@@ -315,21 +389,49 @@ function instagramRangeData(array $range, string $token, array $config): array {
             break;
         }
         foreach (array_keys($totals) as $metric) $totals[$metric] += numberOrNull(insightTotal($response['data'], $metric)) ?? 0;
-        $windowSeries[$windowDates[$index]] = numberOrNull(insightTotal($response['data'], 'reach')) ?? 0;
+        $date = $windowDates[$index];
+        $windowSeries['views'][$date] = numberOrNull(insightTotal($response['data'], 'views')) ?? 0;
+        $windowSeries['reach'][$date] = numberOrNull(insightTotal($response['data'], 'reach')) ?? 0;
+        $windowSeries['interactions'][$date] = numberOrNull(insightTotal($response['data'], 'total_interactions')) ?? 0;
+        $windowSeries['profileViews'][$date] = numberOrNull(insightTotal($response['data'], 'profile_views')) ?? 0;
     }
-    $reach = $range['days'] > 90
-        ? ['ok' => $totalsOk, 'code' => $totalsCode, 'series' => $windowSeries]
-        : chunkedInsightSeries((string)$config['instagram_id'].'/insights', 'reach', [
-            'metric_type' => 'time_series',
-        ], $range, $token, $config, 28);
+    $timeSeries = chunkedInsightMetrics((string)$config['instagram_id'].'/insights', [
+        'views' => 'views',
+        'reach' => 'reach',
+        'interactions' => 'total_interactions',
+        'profileViews' => 'profile_views',
+        'follows' => 'follower_count',
+    ], ['metric_type' => 'time_series'], $range, $token, $config, 28);
+    $daily = $timeSeries['series'] ?? [];
+    $available = $timeSeries['available'] ?? [];
+    foreach (['views', 'reach', 'interactions', 'profileViews'] as $key) {
+        if (!($available[$key] ?? false)) $daily[$key] = $windowSeries[$key];
+    }
+    $merged = mergeSeries(
+        $daily['views'] ?? [],
+        $daily['reach'] ?? [],
+        $daily['interactions'] ?? [],
+        $daily['profileViews'] ?? [],
+        $daily['follows'] ?? []
+    );
     $result = [
         'ok' => $totalsOk,
-        'code' => $totalsCode ?: (int)($reach['code'] ?? 0),
+        'partial' => (bool)($timeSeries['partial'] ?? false),
+        'code' => $totalsCode ?: (int)($timeSeries['code'] ?? 0),
+        'views' => $totalsOk ? $totals['views'] : null,
         'reach' => $totalsOk ? $totals['reach'] : null,
         'interactions' => $totalsOk ? $totals['total_interactions'] : null,
         'profileViews' => $totalsOk ? $totals['profile_views'] : null,
-        'cumulativeWindows' => $range['days'] > 90,
-        'series' => array_map(static fn(array $row) => ['date' => $row['date'], 'reach' => $row['m0']], mergeSeries($reach['series'] ?? [])),
+        'follows' => ($available['follows'] ?? false) ? array_sum($daily['follows'] ?? []) : null,
+        'cumulativeWindows' => $range['days'] > 28,
+        'series' => array_map(static fn(array $row) => [
+            'date' => $row['date'],
+            'views' => $row['m0'],
+            'reach' => $row['m1'],
+            'interactions' => $row['m2'],
+            'profileViews' => $row['m3'],
+            'follows' => $row['m4'],
+        ], $merged),
     ];
     writeRangeCache('instagram', $range, $result);
     return $result;
@@ -351,7 +453,7 @@ function mergeSeries(array ...$metrics): array {
 function rangeCacheFile(string $namespace, array $range): string {
     $dir = dirname(__DIR__) . '/lv-meta-cache';
     if (!is_dir($dir)) @mkdir($dir, 0700, true);
-    return $dir.'/range-'.preg_replace('/[^a-z0-9_-]/i', '', $namespace).'-'.hash('sha256', $range['since'].'|'.$range['until']).'.json';
+    return $dir.'/range-v2-'.preg_replace('/[^a-z0-9_-]/i', '', $namespace).'-'.hash('sha256', $range['since'].'|'.$range['until']).'.json';
 }
 
 function readRangeCache(string $namespace, array $range): ?array {
@@ -394,7 +496,7 @@ if ($userToken === '' && $pageToken === '') {
 }
 
 $cacheDir = dirname(__DIR__) . '/lv-meta-cache';
-$cacheKey = hash('sha256', implode('|', [$range['since'], $range['until'], $compareMode]));
+$cacheKey = hash('sha256', implode('|', [$selectedPlatform, $range['since'], $range['until'], $compareMode]));
 $cacheFile = $cacheDir.'/insights-'.$cacheKey.'.json';
 $force = ($_GET['refresh'] ?? '') === '1';
 $GLOBALS['metaForceRanges'] = $force && $compareMode === 'none';
@@ -404,7 +506,7 @@ if (!$force && is_file($cacheFile) && filemtime($cacheFile) > time() - 600) {
 }
 
 $facebook = ['status' => 'not_connected'];
-if ($pageToken !== '') {
+if ($selectedPlatform === 'facebook' && $pageToken !== '') {
     $pageInfo = graphGet((string)$config['page_id'], [
         'fields' => 'id,name,fan_count,followers_count,instagram_business_account',
     ], $pageToken, $config);
@@ -412,11 +514,14 @@ if ($pageToken !== '') {
     $facebookComparison = $comparisonRange ? facebookRangeData($comparisonRange, $pageToken, $config) : null;
     if ($pageInfo['ok'] ?? false) {
         $facebook = [
-            'status' => $facebookRange['ok'] ? 'connected' : 'partial',
+            'status' => $facebookRange['ok'] ? (($facebookRange['partial'] ?? false) ? 'partial' : 'connected') : 'partial',
             'name' => (string)($pageInfo['data']['name'] ?? 'Restaurant Le Village'),
             'followers' => numberOrNull($pageInfo['data']['followers_count'] ?? $pageInfo['data']['fan_count'] ?? null),
             'views' => $facebookRange['views'],
+            'viewers' => $facebookRange['viewers'],
             'interactions' => $facebookRange['interactions'],
+            'visits' => $facebookRange['visits'],
+            'follows' => $facebookRange['follows'],
             'series' => $facebookRange['series'],
             'comparison' => $facebookComparison,
         ];
@@ -424,12 +529,12 @@ if ($pageToken !== '') {
     } else {
         $facebook = ['status' => 'connection_error', 'message' => upstreamMessage((int)($pageInfo['code'] ?? 0))];
     }
-} else {
+} elseif ($selectedPlatform === 'facebook') {
     $facebook = ['status' => 'not_connected', 'message' => 'Jeton de Page Facebook à ajouter sur le serveur.'];
 }
 
 $instagram = ['status' => 'not_connected'];
-if ($instagramToken !== '') {
+if ($selectedPlatform === 'instagram' && $instagramToken !== '') {
     $igInfo = graphGet((string)$config['instagram_id'], [
         'fields' => 'id,username,followers_count,media_count',
     ], $instagramToken, $config);
@@ -437,13 +542,15 @@ if ($instagramToken !== '') {
     $instagramComparison = $comparisonRange ? instagramRangeData($comparisonRange, $instagramToken, $config) : null;
     if (($igInfo['ok'] ?? false) && $instagramRange['ok']) {
         $instagram = [
-            'status' => 'connected',
+            'status' => ($instagramRange['partial'] ?? false) ? 'partial' : 'connected',
             'name' => '@'.ltrim((string)($igInfo['data']['username'] ?? 'restaurantlevillagehdc'), '@'),
             'followers' => numberOrNull($igInfo['data']['followers_count'] ?? null),
             'posts' => numberOrNull($igInfo['data']['media_count'] ?? null),
+            'views' => $instagramRange['views'],
             'reach' => $instagramRange['reach'],
             'interactions' => $instagramRange['interactions'],
             'profileViews' => $instagramRange['profileViews'],
+            'follows' => $instagramRange['follows'],
             'cumulativeWindows' => $instagramRange['cumulativeWindows'],
             'series' => $instagramRange['series'],
             'comparison' => $instagramComparison,
@@ -454,9 +561,10 @@ if ($instagramToken !== '') {
     }
 }
 
-$connected = array_filter([$facebook, $instagram], static fn(array $item) => in_array($item['status'] ?? '', ['connected', 'partial'], true));
+$selectedData = $selectedPlatform === 'facebook' ? $facebook : $instagram;
 $payload = [
-    'status' => count($connected) === 2 ? 'connected' : (count($connected) ? 'partial' : 'connection_error'),
+    'status' => (string)($selectedData['status'] ?? 'connection_error'),
+    'platform' => $selectedPlatform,
     'updatedAt' => (new DateTimeImmutable('now', $timezone))->format(DateTimeInterface::ATOM),
     'range' => array_diff_key($range, ['sinceDate' => true, 'untilDate' => true]),
     'comparisonRange' => $comparisonRange ? array_diff_key($comparisonRange, ['sinceDate' => true, 'untilDate' => true]) : null,
