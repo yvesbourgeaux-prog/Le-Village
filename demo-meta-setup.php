@@ -91,6 +91,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
     } else {
         $_SESSION['lv_meta_setup_attempts'] = $attempts + 1;
         $token = trim((string)($_POST['page_token'] ?? ''));
+        if (preg_match('/["\']?access_token["\']?\s*:\s*["\']([A-Za-z0-9_-]{40,1000})["\']/', $token, $match)) $token = $match[1];
         if ($token === '' || strlen($token) < 40 || strlen($token) > 1000) {
             $message = 'Collez le jeton de la Page Facebook Le Village.';
         } else {
