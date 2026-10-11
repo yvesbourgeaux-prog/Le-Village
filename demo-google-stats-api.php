@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') respond(405, ['error' => 'Méthode non
 
 $days = filter_input(INPUT_GET, 'days', FILTER_VALIDATE_INT);
 if (!in_array($days, [7, 28, 90, 180], true)) $days = 28;
-$configPath = getenv('LV_GOOGLE_OAUTH_CLIENT') ?: dirname(__DIR__) . '/le-village-oauth-client.json';
+$configPath = getenv('LV_GOOGLE_OAUTH_CLIENT') ?: dirname(__DIR__) . '/private/le-village-oauth-client.json';
 $rawConfig = is_readable($configPath) ? json_decode((string) file_get_contents($configPath), true) : null;
 $config = is_array($rawConfig) ? ($rawConfig['web'] ?? null) : null;
 if (!is_array($config) || empty($config['client_id']) || empty($config['client_secret']) || !in_array('https://legrimaldibylevillage.com/demo-google-oauth.php', $config['redirect_uris'] ?? [], true)) {
