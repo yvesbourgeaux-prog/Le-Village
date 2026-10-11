@@ -12,12 +12,12 @@ L’onglet **Statistiques > Site** lit les rapports GA4 et Search Console. Googl
 {
   "client_email": "compte-de-service@projet.iam.gserviceaccount.com",
   "private_key": "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n",
-  "property_id": "IDENTIFIANT_NUMERIQUE_GA4",
+  "property_id": "557530408",
   "site_url": "sc-domain:legrimaldibylevillage.com"
 }
 ```
 
-`property_id` est l’identifiant numérique de la propriété GA4, différent de l’ID de mesure `G-...`. Le chemin peut aussi être fourni dans la variable serveur `LV_GOOGLE_STATS_CONFIG`. Ne jamais placer la clé sous `public_html` ni dans le dépôt GitHub.
+La propriété GA4 `557530408` (Le Village — Le Grimaldi) et la propriété Search Console de type Domaine `legrimaldibylevillage.com` ont été vérifiées dans Analytics le 11 octobre 2026. `property_id` est différent de l’ID de mesure `G-...`. Le chemin peut aussi être fourni dans la variable serveur `LV_GOOGLE_STATS_CONFIG`. Ne jamais placer la clé sous `public_html` ni dans le dépôt GitHub.
 
 Le point d’accès `/demo-google-stats-api.php` utilise la session privée du back-office et ne renvoie que les statistiques agrégées. Il refuse les visiteurs non connectés. Si les accès Google manquent, l’interface indique clairement que la connexion reste à faire et n’affiche pas de chiffres fictifs.
 
