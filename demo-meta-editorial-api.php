@@ -44,6 +44,10 @@ if (!is_array($items)) $items = [];
 $action = (string)($input['action'] ?? '');
 $id = (string)($input['id'] ?? '');
 if ($action === 'delete') {
+    foreach ($items as $previous) if (($previous['id'] ?? '') === $id && in_array(($previous['status'] ?? ''), ['published','publishing'], true)) {
+        flock($handle, LOCK_UN); fclose($handle);
+        reply(409, ['message' => 'Ce contenu est publié ou en cours. Il ne peut pas être supprimé du suivi.']);
+    }
     $items = array_values(array_filter($items, static fn($item) => ($item['id'] ?? '') !== $id));
 } elseif ($action === 'save') {
     $title = trim((string)($input['title'] ?? ''));
@@ -65,7 +69,12 @@ if ($action === 'delete') {
     $found = false;
     foreach ($items as $index => $previous) {
         if (($previous['id'] ?? '') !== $id) continue;
-        $items[$index] = $item;
+        if (in_array(($previous['status'] ?? ''), ['published','publishing'], true)) {
+            flock($handle, LOCK_UN); fclose($handle);
+            reply(409, ['message' => 'Un contenu publié ne peut pas être modifié ici.']);
+        }
+        $items[$index] = array_merge($previous, $item);
+        if (!empty($previous['published'])) $items[$index]['status'] = 'partial';
         $found = true;
         break;
     }
