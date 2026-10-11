@@ -80,7 +80,7 @@ function insightValue(array $response, string $metric): ?int {
 function facebookContents(array $config, string $token): array {
     if ($token === '') return ['status' => 'not_connected', 'items' => []];
     $path = $config['page_id'].'/posts';
-    $fields = 'id,message,created_time,permalink_url,full_picture,shares,comments.limit(0).summary(true),reactions.limit(0).summary(true)';
+    $fields = 'id,message,created_time,permalink_url,shares,comments.limit(1).summary(true),reactions.limit(1).summary(true)';
     $response = graph($path, ['fields' => $fields, 'limit' => 12], $token, $config);
     $enriched = (bool)($response['ok'] ?? false);
     if (!$enriched) {
