@@ -1,0 +1,11 @@
+body.lv-demo-admin #lv-demo-app .lv-meta-actions-head{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:20px}
+body.lv-demo-admin #lv-demo-app .lv-meta-actions-head h2{font:600 24px 'Playfair Display',serif;color:#493c31;margin:0}
+body.lv-demo-admin #lv-demo-app .lv-meta-action-card{background:#fff;border:1px solid #e5d9ce;padding:18px;margin:0 0 12px;color:#574b40}
+body.lv-demo-admin #lv-demo-app .lv-meta-action-card h3{font:600 17px 'Playfair Display',serif;margin:6px 0}
+body.lv-demo-admin #lv-demo-app .lv-meta-action-card p{font:13px/1.5 Lato,sans-serif;white-space:pre-wrap}
+body.lv-demo-admin #lv-demo-app .lv-meta-action-card small{font:11px Lato,sans-serif;color:#827264}
+body.lv-demo-admin #lv-demo-app .lv-meta-action-card form{display:flex;gap:10px;margin-top:15px;align-items:end}
+body.lv-demo-admin #lv-demo-app .lv-meta-action-card textarea{flex:1;min-width:0;border:1px solid #d8ccbf;padding:10px;font:13px Lato,sans-serif;color:#493c31}
+body.lv-demo-admin #lv-demo-app .lv-meta-thread{border-left:2px solid #c79870;padding-left:12px}
+body.lv-demo-admin #lv-demo-app .lv-meta-warning{padding:12px;background:#fff4e7;color:#815534;font:13px Lato,sans-serif}
+@media(max-width:650px){body.lv-demo-admin #lv-demo-app .lv-meta-action-card form{display:grid}body.lv-demo-admin #lv-demo-app .lv-meta-action-card textarea{width:100%}}
