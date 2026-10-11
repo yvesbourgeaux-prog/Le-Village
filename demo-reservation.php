@@ -66,7 +66,7 @@ $head = '<meta name="robots" content="noindex,nofollow,noarchive"/><title>Démo 
  . '<link rel="stylesheet" href="/assets/css/demo-meta.css?v=20261011-meta8"/>'
  . '<link rel="stylesheet" href="/assets/css/demo-village-redesign.css?v=20261011-logo4"/>'
  . '<script defer src="/assets/js/demo-reservation.js?v=20261009-opening3"></script>'
- . '<script defer src="/assets/js/demo-backoffice-core.js?v=20261011-logo4"></script>'
+ . '<script defer src="/assets/js/demo-backoffice-core.js?v=20261011-logo5"></script>'
  . '<script defer src="/assets/js/demo-backoffice-comms.js?v=20261009-ux3"></script>'
  . '<script defer src="/assets/js/demo-meta.js?v=20261011-meta9"></script>'
  . '<script defer src="/assets/js/demo-booking-launcher.js?v=20261009-ux3"></script>';// Update the consent panel copy: the private demo never uses Zenchef.
