@@ -87,7 +87,8 @@ function allClients(){
 }
 function notify(msg){let n=$('#lv-extra-message');if(!n){n=document.createElement('div');n.id='lv-extra-message';document.body.append(n)}n.textContent=msg;n.classList.add('show');setTimeout(()=>n.classList.remove('show'),3200)}
 const sections=[
- {label:'Au quotidien',items:[['planning','Réservations','calendar'],['schedule','Horaires','clock'],['meta','Statistiques','chart']]},
+ {label:'Au quotidien',items:[['planning','Réservations','calendar'],['schedule','Horaires','clock']]},
+ {label:'Statistiques',items:[['meta','Réseaux sociaux','chart'],['site_stats','Site','chart']]},
  {label:'Relation clients',items:[['clients','Clients','users']]},
  {label:'Communication',items:[['communication','Communication','send']]},
  {label:'Paramètres',items:[['settings','Réglages','sliders']]}
@@ -105,7 +106,7 @@ const nav=$('.admin-nav',app),main=$('.admin-main',app);
 if(!nav||!main)return;
 let active='planning';
 nav.innerHTML='<div class="admin-logo"><img src="https://assets.zyrosite.com/gnKoPAn3rxzY53IR/chatgpt-image-22-nov.-2025-00_40_31-YvUWBeCav31wXD3h.png" alt="Le Grimaldi × Le Village" width="112" height="112"></div><div class="lv-extra-menu">'
- +sections.map(section=>'<div class="lv-nav-section"><p class="lv-menu-label">'+section.label+'</p>'
+ +sections.map(section=>'<div class="lv-nav-section '+(section.label==='Statistiques'?'lv-nav-stats':'')+'"><p class="lv-menu-label">'+section.label+'</p>'
  +section.items.map(p=>'<div class="lv-menu-entry"><button type="button" class="lv-menu-btn '+(p[0]==='planning'?'is-active':'')+'" data-lv-nav="'+p[0]+'">'+navIcon(p[2])+'<span>'+p[1]+'</span></button></div>').join('')+'</div>').join('')
  +'</div>';
 main.insertAdjacentHTML('afterbegin','<div class="lv-bo-topbar"><span class="lv-bo-topbar-name">Le Village <i>·</i> Espace de gestion</span><div class="lv-bo-topbar-actions"><span class="lv-bo-private">Démo privée</span><a href="/le-village-restaurant-haut-de-cagnes-sur-mer.html" target="_blank" rel="noopener noreferrer">Voir le site ↗</a></div></div>');
@@ -120,7 +121,8 @@ panel('data','<div class="lv-screen-head"><div><span>DONNÉES</span><h1>Importer
 panel('users','<div class="lv-screen-head"><div><span>ORGANISATION</span><h1>L’équipe</h1><p>Préparez les profils des collaborateurs.</p></div></div><div class="lv-demo-notice">Les profils ajoutés ne donnent aucun accès réel.</div><div class="lv-duo"><article class="lv-paper"><h2>Les profils</h2><div id="lv-users-list"></div></article><form class="lv-paper lv-form" id="lv-user-form"><h2>Ajouter un profil de test</h2><label>Nom<input name="name" required></label><label>E-mail<input name="email" type="email" required></label><label>Rôle<select name="role"><option>Gérant</option><option>Responsable</option><option>Accueil</option></select></label><button class="lv-action" type="submit">Ajouter</button></form></div>');
 panel('account','<div class="lv-screen-head"><div><span>PRÉFÉRENCES</span><h1>Compte</h1><p>Les réglages généraux de votre espace.</p></div></div><form class="lv-paper lv-form lv-narrow" id="lv-account-form"><h2>Informations du restaurant</h2><label>Nom de l’expéditeur<input name="sender" required></label><label>E-mail de réponse<input name="reply" type="email"></label><label>Fuseau horaire<select name="timezone"><option>Europe/Paris</option></select></label><div class="lv-form-grid"><label>SMS à partir de<input name="smsFrom" type="time"></label><label>SMS jusqu’à<input name="smsUntil" type="time"></label></div><button class="lv-action" type="submit">Enregistrer</button><p class="lv-help">Les clés API restent hors de cette démonstration.</p></form>');
 panel('communication','<div class="lv-screen-head"><div><span>GARDER LE LIEN</span><h1>Communication</h1><p>Vos campagnes, messages et rappels dans un seul espace.</p></div></div><div class="lv-communication-hint">Créez vos messages, choisissez les bons clients et préparez vos envois en toute simplicité.</div><div id="lv-communication-content"></div>');
-panel('meta','<div class="lv-screen-head"><div><span>VOTRE VISIBILITÉ SUR LES RÉSEAUX</span><h1>Statistiques Meta</h1><p>Choisissez Facebook ou Instagram pour consulter les résultats de chaque réseau.</p></div></div><div id="lv-meta-root"></div>');
+panel('meta','<div class="lv-screen-head"><div><span>STATISTIQUES · RÉSEAUX SOCIAUX</span><h1>Réseaux sociaux</h1><p>Choisissez Facebook ou Instagram pour consulter les résultats de chaque réseau.</p></div></div><div id="lv-meta-root"></div>');
+panel('site_stats','<div class="lv-screen-head"><div><span>STATISTIQUES · SITE</span><h1>Le site en chiffres</h1><p>Visites, pages consultées et visibilité dans la recherche Google.</p></div></div><div id="lv-site-stats-root" aria-live="polite"></div>');
 panel('editorial','<div id="lv-editorial-root"></div>');
 panel('meta_comments','<div id="lv-meta-comments-root"></div>');
 panel('meta_inbox','<div id="lv-meta-inbox-root"></div>');
@@ -452,3 +454,4 @@ function renderAccount(){const f=$('#lv-account-form');Object.entries(prefs).for
 register('account',renderAccount);
 $('#lv-account-form').addEventListener('submit',e=>{e.preventDefault();prefs=formVals(e.target);save('prefs',prefs);notify('Préférences enregistrées.')});
 })();
+
