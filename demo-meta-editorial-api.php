@@ -44,7 +44,7 @@ if (!is_array($items)) $items = [];
 $action = (string)($input['action'] ?? '');
 $id = (string)($input['id'] ?? '');
 if ($action === 'delete') {
-    foreach ($items as $previous) if (($previous['id'] ?? '') === $id && in_array(($previous['status'] ?? ''), ['published','publishing'], true)) {
+    foreach ($items as $previous) if (($previous['id'] ?? '') === $id && in_array(($previous['status'] ?? ''), ['published','publishing','scheduled'], true)) {
         flock($handle, LOCK_UN); fclose($handle);
         reply(409, ['message' => 'Ce contenu est publié ou en cours. Il ne peut pas être supprimé du suivi.']);
     }
@@ -69,7 +69,7 @@ if ($action === 'delete') {
     $found = false;
     foreach ($items as $index => $previous) {
         if (($previous['id'] ?? '') !== $id) continue;
-        if (in_array(($previous['status'] ?? ''), ['published','publishing'], true)) {
+        if (in_array(($previous['status'] ?? ''), ['published','publishing','scheduled'], true)) {
             flock($handle, LOCK_UN); fclose($handle);
             reply(409, ['message' => 'Un contenu publié ne peut pas être modifié ici.']);
         }
