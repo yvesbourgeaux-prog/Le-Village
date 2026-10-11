@@ -122,6 +122,8 @@ panel('account','<div class="lv-screen-head"><div><span>PRÉFÉRENCES</span><h1>
 panel('communication','<div class="lv-screen-head"><div><span>GARDER LE LIEN</span><h1>Communication</h1><p>Vos campagnes, messages et rappels dans un seul espace.</p></div></div><div class="lv-communication-hint">Créez vos messages, choisissez les bons clients et préparez vos envois en toute simplicité.</div><div id="lv-communication-content"></div>');
 panel('meta','<div class="lv-screen-head"><div><span>VOTRE VISIBILITÉ SUR LES RÉSEAUX</span><h1>Statistiques Meta</h1><p>Choisissez Facebook ou Instagram pour consulter les résultats de chaque réseau.</p></div></div><div id="lv-meta-root"></div>');
 panel('editorial','<div id="lv-editorial-root"></div>');
+panel('meta_comments','<div id="lv-meta-comments-root"></div>');
+panel('meta_inbox','<div id="lv-meta-inbox-root"></div>');
 const clientsPanel=$('#admin-clients',app);
 if(clientsPanel){
  clientsPanel.querySelector('.admin-head-actions')?.remove();
@@ -133,7 +135,7 @@ if(clientsPanel){
 // Related screens stay in one place instead of being separate administrative sections.
 const subChoices={
  clients:[['directory','Mes clients'],['segments','Groupes de clients']],
- communication:[['email','E-mails'],['sms','SMS'],['templates','Mes modèles'],['automations','Messages automatiques'],['editorial','Calendrier éditorial']],
+ communication:[['email','E-mails'],['sms','SMS'],['templates','Mes modèles'],['automations','Messages automatiques'],['editorial','Calendrier éditorial'],['meta_comments','Commentaires'],['meta_inbox','Messagerie Meta']],
  settings:[['reservation','Réservation en ligne'],['data','Données'],['users','Équipe'],['account','Compte']]
 };
 const currentSub={clients:'directory',communication:'email',settings:'reservation'};
