@@ -2,8 +2,9 @@
 'use strict';
 const root=document.getElementById('lv-meta-root'),extra=window.lvBOExtra;
 if(!root||!extra)return;
-const esc=extra.esc,fmt=v=>Number.isFinite(Number(v))?Number(v).toLocaleString('fr-FR'):'—';
+const esc=extra.esc,fmt=v=>v!==null&&v!==undefined&&v!==''&&Number.isFinite(Number(v))?Number(v).toLocaleString('fr-FR'):'—';
 let platform='facebook',preset='28',compare='none',customSince='',customUntil='',data=null,loading=false,loadedAt=0;
+let contentData=null,contentLoading=false,contentSort='engagement',contentType='all';
 const labels={connected:'Connecté',partial:'Données partielles',not_connected:'À connecter',connection_error:'Connexion à vérifier'};
 const metricSpecs={
  facebook:[
@@ -76,6 +77,36 @@ function platformPage(kind,item){
   +(windowed?'<p class="lv-meta-note">Pour certains indicateurs Instagram, Meta fournit des totaux par tranches de 28 jours. Chaque point représente sa tranche réelle, sans jours à zéro ajoutés.</p>':chartMode()==='day'?'':'<p class="lv-meta-note">Courbes regroupées par '+(chartMode()==='week'?'semaine':'mois')+'. Les chiffres en haut de chaque carte portent sur toute la période.</p>')
   +'<div class="lv-meta-stat-grid">'+metrics+'</div></section>';
 }
+function contentSection(){
+ const groups=['facebook','instagram'].flatMap(kind=>(contentData?.[kind]?.items||[]));
+ const since=data?.range?.since,end=data?.range?.end;
+ const items=groups.filter(row=>{
+  const date=String(row.date||'').slice(0,10);
+  return (!since||date>=since)&&(!end||date<=end)&&(contentType==='all'||row.type===contentType);
+ }).sort((a,b)=>{
+  const score=row=>contentSort==='views'?Number(row.views??-1):
+   contentSort==='recent'?Date.parse(row.date||''):
+   (Number(row.reactions)||0)+(Number(row.comments)||0)+(Number(row.shares)||0);
+  return score(b)-score(a);
+ }).slice(0,30);
+ const rows=items.map(row=>{
+  const date=row.date?new Intl.DateTimeFormat('fr-FR',{day:'2-digit',month:'short',year:'numeric'}).format(new Date(row.date)):'—';
+  const title=(row.text||row.type).trim().slice(0,105);
+  return '<tr><td><span class="lv-meta-network '+esc(row.platform)+'">'+(row.platform==='facebook'?'Facebook':'Instagram')+'</span><small>'+esc(row.type)+' · '+esc(date)+'</small></td>'
+   +'<td>'+(row.url?'<a href="'+esc(row.url)+'" target="_blank" rel="noopener noreferrer">'+esc(title)+'</a>':esc(title))+'</td>'
+   +'<td>'+fmt(row.views)+'</td><td>'+fmt(row.reach)+'</td><td>'+fmt(row.clicks)+'</td><td>'+fmt(row.reactions)+'</td><td>'+fmt(row.comments)+'</td><td>'+fmt(row.shares)+'</td></tr>';
+ }).join('');
+ const states=['facebook','instagram'].filter(kind=>contentData?.[kind]?.status==='connection_error').map(kind=>kind==='facebook'?'Facebook':'Instagram');
+ return '<section class="lv-meta-contents"><div class="lv-meta-content-head"><div><span>CONTENUS</span><h2>Publications, Reels et Stories</h2><p>Comparez les contenus des deux réseaux sur la période choisie. Les valeurs absentes sont indiquées par « — ».</p></div>'
+  +'<div class="lv-meta-content-controls"><label>Type <select data-content-type><option value="all">Tous</option><option value="Publication" '+(contentType==='Publication'?'selected':'')+'>Publications</option><option value="Reel" '+(contentType==='Reel'?'selected':'')+'>Reels</option><option value="Story" '+(contentType==='Story'?'selected':'')+'>Stories</option></select></label>'
+  +'<label>Trier <select data-content-sort><option value="engagement" '+(contentSort==='engagement'?'selected':'')+'>Interactions</option><option value="views" '+(contentSort==='views'?'selected':'')+'>Vues</option><option value="recent" '+(contentSort==='recent'?'selected':'')+'>Date</option></select></label></div></div>'
+  +(contentLoading&&!contentData?'<p class="lv-meta-content-empty">Chargement des contenus Meta…</p>':
+    !contentData?'<p class="lv-meta-content-empty">Les contenus seront chargés à l’ouverture de cette rubrique.</p>':
+    '<div class="lv-meta-content-scroll"><table><thead><tr><th>Réseau</th><th>Contenu</th><th>Vues</th><th>Couverture</th><th>Clics</th><th>Réactions</th><th>Commentaires</th><th>Partages</th></tr></thead><tbody>'
+    +(rows||'<tr><td colspan="8">Aucun contenu disponible pour cette période ou ce filtre.</td></tr>')+'</tbody></table></div>')
+  +(states.length?'<p class="lv-meta-note">Accès aux contenus à vérifier : '+esc(states.join(' et '))+'.</p>':'')
+  +'<p class="lv-meta-note">Classement sur les 12 contenus récents par réseau. Les Stories anciennes et certains indicateurs ne sont pas toujours renvoyés par Meta. Les nouveaux abonnés restent affichés dans les statistiques du compte.</p></section>';
+}
 function bindCharts(){
  root.querySelectorAll('.lv-meta-chart').forEach(chart=>{
   const svg=chart.querySelector('svg'),line=chart.querySelector('.lv-meta-cursor'),tip=chart.querySelector('.lv-meta-tooltip'),points=[...chart.querySelectorAll('[data-chart-point]')],label=chart.dataset.chartLabel;
@@ -96,14 +127,26 @@ function render(){
   +(preset==='custom'?'<button type="button" class="lv-meta-apply" data-meta-apply>Afficher</button>':'')+'</div>';
  const item=data?.[platform],needsSetup=item?.status==='not_connected';
  root.innerHTML='<div class="lv-meta-toolbar">'+controls+'<div class="lv-meta-toolbar-actions">'+(needsSetup?'<a class="lv-meta-connect" href="/demo-meta-setup.php">Connecter Meta</a>':'')+'<button type="button" class="lv-meta-refresh" data-meta-refresh '+(loading?'disabled':'')+'>'+(loading?'Actualisation…':'Actualiser')+'</button></div></div>'
-  +(loading&&!data?'<div class="lv-meta-loading">Chargement des statistiques '+(platform==='facebook'?'Facebook':'Instagram')+'…</div>':platformPage(platform,item));
+  +(loading&&!data?'<div class="lv-meta-loading">Chargement des statistiques '+(platform==='facebook'?'Facebook':'Instagram')+'…</div>':platformPage(platform,item))
+  +contentSection();
  root.querySelector('[data-meta-platform]')?.addEventListener('change',event=>{platform=event.target.value;data=null;load()});
  root.querySelector('[data-meta-preset]')?.addEventListener('change',event=>{preset=event.target.value;render();if(preset!=='custom'){data=null;load(true)}});
  root.querySelector('[data-meta-compare]')?.addEventListener('change',event=>{compare=event.target.value;data=null;load(true)});
  root.querySelector('[data-meta-since]')?.addEventListener('change',event=>{customSince=event.target.value});
  root.querySelector('[data-meta-until]')?.addEventListener('change',event=>{customUntil=event.target.value});
  root.querySelector('[data-meta-apply]')?.addEventListener('click',()=>{data=null;load(true)});
- root.querySelector('[data-meta-refresh]')?.addEventListener('click',()=>load(true));bindCharts();
+ root.querySelector('[data-meta-refresh]')?.addEventListener('click',()=>{load(true);loadContents(true)});
+ root.querySelector('[data-content-type]')?.addEventListener('change',event=>{contentType=event.target.value;render()});
+ root.querySelector('[data-content-sort]')?.addEventListener('change',event=>{contentSort=event.target.value;render()});bindCharts();
+}
+async function loadContents(force=false){
+ if(contentLoading)return;
+ contentLoading=true;render();
+ try{const response=await fetch('/demo-meta-content-api.php'+(force?'?refresh=1':''),{credentials:'same-origin',cache:'no-store'});
+  if(!response.ok)throw Error('Les contenus Meta sont indisponibles.');
+  contentData=await response.json();
+ }catch{contentData={facebook:{status:'connection_error',items:[]},instagram:{status:'connection_error',items:[]}}}
+ contentLoading=false;render();
 }
 async function load(force=false){
  loading=true;render();
@@ -111,6 +154,6 @@ async function load(force=false){
  catch(error){data={status:'connection_error',updatedAt:null,[platform]:{status:'connection_error',message:error.message}}}
  loading=false;render();
 }
-extra.register('meta',()=>{render();if(!data||Date.now()-loadedAt>10*60*1000)load()});
+extra.register('meta',()=>{render();if(!data||Date.now()-loadedAt>10*60*1000)load();if(!contentData)loadContents()});
 setInterval(()=>{if(data&&Date.now()-loadedAt>15*60*1000)load(true)},60*1000);
 })();
