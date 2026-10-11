@@ -32,30 +32,34 @@ function form(item={},date=''){
   '<fieldset><legend>Réseaux</legend><label><input type="checkbox" name="facebook" '+(item.networks?.includes('facebook')||!item.id?'checked':'')+'> Facebook</label><label><input type="checkbox" name="instagram" '+(item.networks?.includes('instagram')||!item.id?'checked':'')+'> Instagram</label></fieldset>'+
   '<label>Texte<textarea name="caption" rows="5" maxlength="5000" placeholder="Légende du contenu">'+esc(item.caption||'')+'</textarea></label>'+
   '<label>URL publique du média, si disponible<input type="url" name="media" value="'+esc(item.media||'')+'" placeholder="https://…"></label>'+
-  '<div class="lv-editorial-actions"><button type="submit" class="lv-action" '+(busy||item.status==='published'?'disabled':'')+'>Enregistrer dans le calendrier</button>'+
-  (item.id&&item.status!=='published'?'<button type="button" class="lv-soft-button" data-editorial-publish="'+esc(item.id)+'">Publier maintenant</button>':'')+
-  (item.id&&item.status!=='published'?'<button type="button" class="lv-editorial-delete" data-editorial-delete="'+esc(item.id)+'">Supprimer</button>':'')+'</div>'+
+  '<div class="lv-editorial-actions"><button type="submit" class="lv-action" '+(busy||['published','scheduled'].includes(item.status)?'disabled':'')+'>Enregistrer dans le calendrier</button>'+
+  (item.id&&item.networks?.some(n=>!item.published?.[n]&&!item.scheduled?.[n])?'<button type="button" class="lv-soft-button" data-editorial-publish="'+esc(item.id)+'">Publier maintenant</button>':'')+
+  (item.id&&item.networks?.includes('facebook')&&!item.scheduled?.facebook&&!item.published?.facebook&&item.format==='Publication'?'<button type="button" class="lv-soft-button" data-editorial-schedule="'+esc(item.id)+'">Programmer Facebook</button>':'')+
+  (item.id&&!['published','scheduled'].includes(item.status)?'<button type="button" class="lv-editorial-delete" data-editorial-delete="'+esc(item.id)+'">Supprimer</button>':'')+'</div>'+
   (item.published?'<p>Publié sur : '+esc(Object.keys(item.published).join(', '))+'</p>':'')+
+  (item.scheduled?.facebook?'<p>Facebook programmé pour le '+esc(item.date.replace('T',' à '))+'. Instagram reste à publier séparément.</p>':'')+
   (item.errors?'<p class="lv-meta-warning">'+esc(Object.entries(item.errors).map(([n,e])=>n+' : '+e).join(' · '))+'</p>':'')+'</form>';
 }
 function render(date=''){
  const item=items.find(x=>x.id===editing)||{};
  const visible=items.filter(x=>sameMonth(x.date||''));
- root.innerHTML='<div class="lv-editorial-intro"><div><h2>Calendrier éditorial</h2><p>Préparez vos contenus puis publiez-les depuis le calendrier. La date prévue organise le planning ; l’envoi automatique à cette date sera activé après la configuration du programmateur serveur.</p></div><div class="lv-editorial-month"><button type="button" data-editorial-month="-1" aria-label="Mois précédent">‹</button><strong>'+esc(human(month))+'</strong><button type="button" data-editorial-month="1" aria-label="Mois suivant">›</button></div></div>'+
+ root.innerHTML='<div class="lv-editorial-intro"><div><h2>Calendrier éditorial</h2><p>Préparez vos contenus, publiez maintenant ou programmez une publication Facebook. Pour Instagram, la date organise le planning et la publication se fait avec le bouton « Publier maintenant ».</p></div><div class="lv-editorial-month"><button type="button" data-editorial-month="-1" aria-label="Mois précédent">‹</button><strong>'+esc(human(month))+'</strong><button type="button" data-editorial-month="1" aria-label="Mois suivant">›</button></div></div>'+
   '<div class="lv-editorial-layout"><div class="lv-editorial-calendar">'+calendar()+'<div class="lv-editorial-list"><h3>Contenus du mois ('+visible.length+')</h3>'+
   (visible.length?visible.map(x=>'<button type="button" data-editorial-edit="'+esc(x.id)+'"><time>'+esc(x.date.replace('T',' · '))+'</time><b>'+esc(x.title)+'</b><small>'+esc(x.networks.join(' + '))+' · '+esc(x.format)+'</small></button>').join(''):'<p>Aucun contenu prévu ce mois-ci.</p>')+'</div></div><div class="lv-editorial-form">'+form(item,date)+'</div></div>';
  root.querySelectorAll('[data-editorial-month]').forEach(button=>button.onclick=()=>{month=new Date(month.getFullYear(),month.getMonth()+Number(button.dataset.editorialMonth),1);editing='';render()});
  root.querySelectorAll('[data-editorial-day]').forEach(button=>button.onclick=()=>{editing='';render(button.dataset.editorialDay)});
  root.querySelectorAll('[data-editorial-edit]').forEach(button=>button.onclick=()=>{editing=button.dataset.editorialEdit;render()});
  root.querySelector('[data-editorial-delete]')?.addEventListener('click',async event=>{if(!confirm('Supprimer ce contenu du calendrier ?'))return;await change({action:'delete',id:event.target.dataset.editorialDelete})});
- root.querySelector('[data-editorial-publish]')?.addEventListener('click',async event=>{
+ root.querySelectorAll('[data-editorial-publish],[data-editorial-schedule]').forEach(button=>button.addEventListener('click',async event=>{
   const id=event.target.dataset.editorialPublish, post=items.find(x=>x.id===id);
-  if(!post||busy||!confirm('Publier maintenant « '+post.title+' » sur '+post.networks.join(' et ')+' ?'))return;
+  const schedule=!!event.target.dataset.editorialSchedule, chosen=schedule?event.target.dataset.editorialSchedule:id;
+  const content=items.find(x=>x.id===chosen);
+  if(!content||busy||!confirm(schedule?'Programmer « '+content.title+' » sur Facebook le '+content.date.replace('T',' à ')+' ?':'Publier maintenant « '+content.title+' » sur les réseaux encore en attente ?'))return;
   busy=true;event.target.disabled=true;
-  try{const response=await fetch('/demo-meta-publish-api.php',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({id,csrf})});const result=await response.json();if(!response.ok)throw Error(result.message||'Publication impossible.');extra.notify(result.message);loaded=false;await load();editing=id;render()}
+  try{const response=await fetch('/demo-meta-publish-api.php',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:chosen,action:schedule?'schedule':'publish',csrf})});const result=await response.json();if(!response.ok)throw Error(result.message||'Publication impossible.');extra.notify(result.message);loaded=false;await load();editing=chosen;render()}
   catch(error){extra.notify(error.message);event.target.disabled=false}
   finally{busy=false}
- });
+ }));
  root.querySelector('#lv-editorial-form')?.addEventListener('submit',async event=>{
   event.preventDefault();const f=new FormData(event.target);
   await change({action:'save',id:f.get('id'),title:f.get('title'),date:f.get('day')+'T'+f.get('time'),format:f.get('format'),caption:f.get('caption'),media:f.get('media'),networks:['facebook','instagram'].filter(x=>f.get(x))});
