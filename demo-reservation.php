@@ -137,7 +137,7 @@ $demo = <<<'DEMO_HTML'
           </div>
         </div>
       </div>
-      <p class="demo-admin-warning">Démonstration privée · Données fictives enregistrées dans ce navigateur uniquement.</p>
+      <p class="demo-admin-warning">Démonstration privée · Réservations et clients fictifs ; calendrier éditorial enregistré sur le serveur.</p>
     </section>
 
   <button type="button" class="booking-float" data-open-booking>Réserver une table</button>
