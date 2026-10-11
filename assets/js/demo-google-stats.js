@@ -43,7 +43,13 @@
    const response=await fetch('/demo-google-stats-api.php?days='+days,{credentials:'same-origin',cache:'no-store'});
    const data=await response.json();
    if(current!==request)return;
-   if(!response.ok)throw Error(data.error||'Données indisponibles.');
+   if(!response.ok){
+    if(data.connect_url){
+     document.getElementById('lv-site-results').innerHTML='<div class="lv-site-unavailable"><strong>Autorisation Google nécessaire</strong><p>'+esc(data.error||'Connexion requise.')+'</p><a href="'+esc(data.connect_url)+'">Connecter Google Analytics et Search Console</a></div>';
+     return;
+    }
+    throw Error(data.error||'Données indisponibles.');
+   }
    const a=data.analytics,s=data.search,at=a.totals||[0,0,0,0],st=s.totals||{};
    const gaDaily=a.daily.map(row=>({label:date(row.dimensions[0]),value:row.metrics[0]}));
    const scDaily=s.daily.map(row=>({label:row.label,value:row.clicks}));
