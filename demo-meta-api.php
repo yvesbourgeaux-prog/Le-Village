@@ -319,10 +319,10 @@ function facebookRangeData(array $range, string $token, array $config): array {
     if ($cached !== null) return $cached;
     $metricMap = [
         'views' => 'page_media_view',
-        'viewers' => 'page_media_viewer',
+        'viewers' => 'page_total_media_view_unique',
         'interactions' => 'page_post_engagements',
         'visits' => 'page_views_total',
-        'follows' => 'page_follows',
+        'follows' => 'page_daily_follows',
     ];
     $insights = chunkedInsightMetrics((string)$config['page_id'].'/insights', $metricMap, [], $range, $token, $config);
     $metricSeries = $insights['series'] ?? [];
@@ -453,7 +453,7 @@ function mergeSeries(array ...$metrics): array {
 function rangeCacheFile(string $namespace, array $range): string {
     $dir = dirname(__DIR__) . '/lv-meta-cache';
     if (!is_dir($dir)) @mkdir($dir, 0700, true);
-    return $dir.'/range-v2-'.preg_replace('/[^a-z0-9_-]/i', '', $namespace).'-'.hash('sha256', $range['since'].'|'.$range['until']).'.json';
+    return $dir.'/range-v3-'.preg_replace('/[^a-z0-9_-]/i', '', $namespace).'-'.hash('sha256', $range['since'].'|'.$range['until']).'.json';
 }
 
 function readRangeCache(string $namespace, array $range): ?array {
