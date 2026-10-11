@@ -30,7 +30,11 @@ function graph(string $path, array $params=[], string $method='GET'): array {
     if ($method === 'POST') { curl_setopt($curl, CURLOPT_POST, true); curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params, '', '&', PHP_QUERY_RFC3986)); }
     $raw = curl_exec($curl); $code=(int)curl_getinfo($curl, CURLINFO_HTTP_CODE); curl_close($curl);
     $data=is_string($raw) && strlen($raw)<2000000 ? json_decode($raw, true) : null;
-    if ($code<200 || $code>=300 || !is_array($data)) return ['error'=>'Meta a refusé cette opération (HTTP '.($code ?: 503).'). Vérifiez les droits de l’application et du jeton.'];
+    if ($code<200 || $code>=300 || !is_array($data)) {
+        $metaCode=(int)($data['error']['code'] ?? 0);
+        $metaSubcode=(int)($data['error']['error_subcode'] ?? 0);
+        return ['error'=>'Meta a refusé cette opération (HTTP '.($code ?: 503).', code '.$metaCode.($metaSubcode ? '/'.$metaSubcode : '').'). Vérifiez les droits de l’application et du jeton.'];
+    }
     return $data;
 }
 function rows(array $response): array { return array_values(array_filter((array)($response['data'] ?? []), 'is_array')); }
