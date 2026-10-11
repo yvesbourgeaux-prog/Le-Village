@@ -44,8 +44,8 @@
    const data=await response.json();
    if(current!==request)return;
    if(!response.ok){
-    if(data.connect_url){
-     document.getElementById('lv-site-results').innerHTML='<div class="lv-site-unavailable"><strong>Autorisation Google nécessaire</strong><p>'+esc(data.error||'Connexion requise.')+'</p><a href="'+esc(data.connect_url)+'">Connecter Google Analytics et Search Console</a></div>';
+    if(data.connect_url || data.code==='not_authorized' || /Autorisez la lecture de Google Analytics/.test(data.error||'')){
+     document.getElementById('lv-site-results').innerHTML='<div class="lv-site-unavailable"><strong>Autorisation Google nécessaire</strong><p>'+esc(data.error||'Connexion requise.')+'</p><a href="'+esc(data.connect_url||'/demo-google-oauth.php')+'">Connecter Google Analytics et Search Console</a></div>';
      return;
     }
     throw Error(data.error||'Données indisponibles.');
