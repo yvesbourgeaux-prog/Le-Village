@@ -13,12 +13,12 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
 }
 
 $redirect = 'https://legrimaldibylevillage.com/demo-google-oauth.php';
-$configPath = getenv('LV_GOOGLE_OAUTH_CLIENT') ?: dirname(__DIR__) . '/le-village-oauth-client.json';
+$configPath = getenv('LV_GOOGLE_OAUTH_CLIENT') ?: dirname(__DIR__) . '/private/le-village-oauth-client.json';
 $source = is_readable($configPath) ? json_decode((string) file_get_contents($configPath), true) : null;
 $client = is_array($source) ? ($source['web'] ?? null) : null;
 if (!is_array($client) || empty($client['client_id']) || empty($client['client_secret']) || !in_array($redirect, $client['redirect_uris'] ?? [], true)) {
   http_response_code(503);
-  exit('Installez le JSON du client OAuth au-dessus de public_html sous le nom le-village-oauth-client.json.');
+  exit('Installez le JSON du client OAuth dans le dossier private sous le nom le-village-oauth-client.json.');
 }
 
 if (isset($_GET['error'])) {
