@@ -20,7 +20,7 @@ $token = trim((string)$config['page_access_token']);
 if ($token === '') answer(503, ['message'=>'Reconnectez Meta depuis le back-office.']);
 function graph(string $path, array $params=[], string $method='GET'): array {
     global $config, $token;
-    if (!preg_match('~^[0-9_]+(?:/[a-z_]+)?$~', $path) || !function_exists('curl_init')) return ['error'=>'Requête Meta indisponible.'];
+    if (!preg_match('~^[A-Za-z0-9_]+(?:/[a-z_]+)?$~', $path) || !function_exists('curl_init')) return ['error'=>'Requête Meta indisponible.'];
     $url = 'https://graph.facebook.com/'.$config['api_version'].'/'.$path;
     if ($method === 'GET') $url .= '?'.http_build_query($params, '', '&', PHP_QUERY_RFC3986);
     $curl = curl_init($url);
@@ -62,12 +62,13 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'GET') {
     if ($mode === 'inbox') {
         $out=[]; $status=[];
         foreach (['messenger','instagram'] as $network) {
-            $response=graph($config['page_id'].'/conversations',['platform'=>$network,'fields'=>'id,updated_time,participants,messages.limit(3){id,message,from,created_time}','limit'=>20]);
+            $account=$network==='instagram' ? $config['instagram_id'] : $config['page_id'];
+            $response=graph($account.'/conversations',['platform'=>$network,'fields'=>'id,updated_time,participants,messages.limit(3){id,message,from,created_time}','limit'=>20]);
             if (isset($response['error'])) { $status[$network]=$response['error']; continue; }
             foreach (rows($response) as $thread) {
                 $participants=rows((array)($thread['participants'] ?? []));
                 $other=''; $person='Contact';
-                foreach ($participants as $p) if ((string)($p['id'] ?? '') !== (string)$config['page_id']) { $other=(string)($p['id'] ?? ''); $person=(string)($p['name'] ?? $p['username'] ?? 'Contact'); break; }
+                foreach ($participants as $p) if ((string)($p['id'] ?? '') !== (string)$account) { $other=(string)($p['id'] ?? ''); $person=(string)($p['name'] ?? $p['username'] ?? 'Contact'); break; }
                 $messages=rows((array)($thread['messages'] ?? []));
                 $out[]=['network'=>$network,'id'=>(string)($thread['id'] ?? ''),'person'=>$person,'recipient'=>$other,
                     'updated'=>(string)($thread['updated_time'] ?? ''),
@@ -95,15 +96,16 @@ if ($action==='reply_comment' && preg_match('/^\d+(?:_\d+)?$/',$id)) {
     if (isset($result['error'])) answer(502,['message'=>$result['error']]);
     answer(200,['message'=>'Réponse envoyée.','id'=>(string)($result['id'] ?? '')]);
 }
-if ($action==='reply_message' && preg_match('/^\d+$/',$id)) {
+if ($action==='reply_message' && preg_match('/^[A-Za-z0-9_]{1,120}$/',$id)) {
     $network=(string)($input['network'] ?? '');
     if (!in_array($network,['messenger','instagram'],true)) answer(422,['message'=>'Réseau inconnu.']);
     $thread=graph($id,['fields'=>'id,participants']);
     if (isset($thread['error'])) answer(502,['message'=>$thread['error']]);
     $recipient='';
-    foreach (rows((array)($thread['participants'] ?? [])) as $p) if ((string)($p['id'] ?? '') !== (string)$config['page_id']) { $recipient=(string)($p['id'] ?? ''); break; }
+    $account=$network==='instagram' ? $config['instagram_id'] : $config['page_id'];
+    foreach (rows((array)($thread['participants'] ?? [])) as $p) if ((string)($p['id'] ?? '') !== (string)$account) { $recipient=(string)($p['id'] ?? ''); break; }
     if (!preg_match('/^\d+$/',$recipient)) answer(422,['message'=>'Destinataire introuvable.']);
-    $result=graph($config['page_id'].'/messages',['recipient'=>json_encode(['id'=>$recipient]),'messaging_type'=>'RESPONSE','message'=>json_encode(['text'=>$message])],'POST');
+    $result=graph($account.'/messages',['recipient'=>json_encode(['id'=>$recipient]),'messaging_type'=>'RESPONSE','message'=>json_encode(['text'=>$message])],'POST');
     if (isset($result['error'])) answer(502,['message'=>$result['error']]);
     answer(200,['message'=>'Message envoyé.']);
 }
