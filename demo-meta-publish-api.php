@@ -12,6 +12,7 @@ $raw=file_get_contents('php://input');
 if (!is_string($raw) || strlen($raw)>3000) respond(413,['message'=>'Requête trop longue.']);
 $input=json_decode($raw,true);
 if (!is_array($input) || empty($_SESSION['lv_editorial_csrf']) || !hash_equals($_SESSION['lv_editorial_csrf'],(string)($input['csrf'] ?? ''))) respond(403,['message'=>'Session expirée. Rechargez le calendrier.']);
+$schedule=(string)($input['action'] ?? '')==='schedule';
 $id=(string)($input['id'] ?? ''); if (!preg_match('/^[a-f0-9]{24}$/',$id)) respond(422,['message'=>'Contenu introuvable.']);
 $file=dirname(__DIR__).'/private/le-village-editorial.json';
 $handle=@fopen($file,'c+'); if (!$handle || !flock($handle,LOCK_EX)) respond(503,['message'=>'Calendrier indisponible.']);
@@ -26,9 +27,15 @@ if ($position===null) { flock($handle,LOCK_UN);fclose($handle);respond(404,['mes
 $item=$items[$position];
 if (($item['status'] ?? '')==='publishing' || ($item['status'] ?? '')==='published') { flock($handle,LOCK_UN);fclose($handle);respond(409,['message'=>'Ce contenu est déjà en cours de publication ou publié.']); }
 $networks=array_values(array_intersect((array)($item['networks'] ?? []),['facebook','instagram']));
-$published=(array)($item['published'] ?? []);
-$pending=array_values(array_diff($networks,array_keys($published)));
+$published=(array)($item['published'] ?? []);$scheduled=(array)($item['scheduled'] ?? []);
+$pending=$schedule ? (in_array('facebook',$networks,true) && empty($scheduled['facebook']) && empty($published['facebook']) ? ['facebook'] : []) : array_values(array_diff($networks,array_keys($published),array_keys($scheduled)));
 if (!$pending) { flock($handle,LOCK_UN);fclose($handle);respond(409,['message'=>'Déjà publié sur tous les réseaux.']); }
+if ($schedule) {
+    $when=DateTimeImmutable::createFromFormat('!Y-m-d\TH:i',(string)($item['date'] ?? ''),new DateTimeZone('Europe/Paris'));
+    if (!$when || $when->getTimestamp()<time()+600 || $when->getTimestamp()>time()+15552000 || ($item['format'] ?? '')!=='Publication') {
+        flock($handle,LOCK_UN);fclose($handle);respond(422,['message'=>'La programmation Facebook exige une publication classique prévue entre 10 minutes et 6 mois.']);
+    }
+}
 $item['status']='publishing';$items[$position]=$item;
 try { saveItems($handle,$items); } catch (Throwable $e) { flock($handle,LOCK_UN);fclose($handle);respond(503,['message'=>$e->getMessage()]); }
 flock($handle,LOCK_UN);fclose($handle);
@@ -55,9 +62,12 @@ $errors=[];
 foreach ($pending as $network) {
     if ($network==='facebook') {
         if ($format!=='Publication') { $errors[$network]='Ce format Facebook nécessite un flux de publication spécifique. Utilisez une publication classique.';continue; }
-        if ($media==='')$result=graph($config['page_id'].'/feed',['message'=>$caption]);
-        else $result=graph($config['page_id'].'/photos',['url'=>$media,'caption'=>$caption]);
-        if (isset($result['error']))$errors[$network]=$result['error'];else $published[$network]=(string)($result['post_id'] ?? $result['id'] ?? '');
+        $options=$schedule ? ['published'=>'false','scheduled_publish_time'=>(string)$when->getTimestamp()] : [];
+        if ($media==='')$result=graph($config['page_id'].'/feed',['message'=>$caption]+$options);
+        else $result=graph($config['page_id'].'/photos',['url'=>$media,'caption'=>$caption]+$options);
+        if (isset($result['error']))$errors[$network]=$result['error'];
+        elseif ($schedule)$scheduled[$network]=(string)($result['post_id'] ?? $result['id'] ?? '');
+        else $published[$network]=(string)($result['post_id'] ?? $result['id'] ?? '');
         continue;
     }
     if ($media==='' || !filter_var($media,FILTER_VALIDATE_URL) || parse_url($media,PHP_URL_SCHEME)!=='https') { $errors[$network]='Instagram exige une URL HTTPS publique du média.';continue; }
@@ -75,7 +85,7 @@ foreach ($pending as $network) {
 }
 $handle=@fopen($file,'c+');if (!$handle || !flock($handle,LOCK_EX)) respond(503,['message'=>'Publication envoyée à Meta, mais suivi du calendrier indisponible.']);
 $items=json_decode((string)stream_get_contents($handle),true);if(!is_array($items))$items=[];
-foreach($items as &$entry)if(($entry['id'] ?? '')===$id){$entry['published']=$published;$entry['errors']=$errors;$entry['status']=count($published)===count($networks)?'published':(count($published)?'partial':'planned');$entry['published_at']=gmdate('c');break;}unset($entry);
+foreach($items as &$entry)if(($entry['id'] ?? '')===$id){$entry['published']=$published;$entry['scheduled']=$scheduled;$entry['errors']=$errors;$entry['status']=count($published)===count($networks)?'published':(count($scheduled)?'scheduled':(count($published)?'partial':'planned'));if($published)$entry['published_at']=gmdate('c');break;}unset($entry);
 try{saveItems($handle,$items);}catch(Throwable $e){flock($handle,LOCK_UN);fclose($handle);respond(503,['message'=>'Meta a répondu, mais le calendrier n’a pas pu être mis à jour.']);}
 flock($handle,LOCK_UN);fclose($handle);
-respond($errors?207:200,['message'=>$errors?'Publication partielle ou refusée par Meta.':'Publication effectuée.','published'=>$published,'errors'=>$errors]);
+respond($errors?207:200,['message'=>$errors?'Opération partielle ou refusée par Meta.':($schedule?'Publication Facebook programmée.':'Publication effectuée.'),'published'=>$published,'scheduled'=>$scheduled,'errors'=>$errors]);
