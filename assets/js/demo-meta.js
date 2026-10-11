@@ -22,7 +22,7 @@ const metricSpecs={
  ]
 };
 function dateLabel(value){try{return new Intl.DateTimeFormat('fr-FR',{day:'numeric',month:'short'}).format(new Date(value+'T12:00:00'))}catch{return value}}
-function chartMode(){const days=Number(data?.range?.days)||0;return days>=300?'month':days>=60?'week':'day'}
+function chartMode(rows){if(rows?.some(row=>row.intervalStart))return 'window';const days=Number(data?.range?.days)||0;return days>=300?'month':days>=60?'week':'day'}
 function chartSeries(rows,key,mode){
  const groups=new Map();
  rows.forEach(row=>{
@@ -31,10 +31,12 @@ function chartSeries(rows,key,mode){
   let group=date;
   if(mode==='month')group=date.slice(0,7);
   if(mode==='week'){const monday=new Date(date+'T00:00:00Z');monday.setUTCDate(monday.getUTCDate()-((monday.getUTCDay()+6)%7));group=monday.toISOString().slice(0,10)}
-  if(!groups.has(group))groups.set(group,{start:date,end:date,value:0});
+  const start=mode==='window'?String(row.intervalStart||date).slice(0,10):date;
+  const end=mode==='window'?String(row.intervalEnd||date).slice(0,10):date;
+  if(!groups.has(group))groups.set(group,{start,end,value:0});
   const point=groups.get(group),value=Number(row[key]);
-  point.start=point.start<date?point.start:date;
-  point.end=point.end>date?point.end:date;
+  point.start=point.start<start?point.start:start;
+  point.end=point.end>end?point.end:end;
   if(Number.isFinite(value))point.value+=value;
  });
  return [...groups.entries()].sort(([a],[b])=>a.localeCompare(b)).map(([,point])=>point);
@@ -45,10 +47,10 @@ function chartPeriod(point,mode){
 }
 function lineChart(rows,key,label,color,kind){
  if(!rows?.length)return '<div class="lv-meta-empty-chart">La courbe apparaîtra dès que Meta renverra cet indicateur.</div>';
- const mode=chartMode(),shown=chartSeries(rows,key,mode);
+ const mode=chartMode(rows),shown=chartSeries(rows,key,mode);
  if(!shown.length)return '<div class="lv-meta-empty-chart">Aucune donnée disponible pour cette période.</div>';
  const width=760,height=220,pad={l:46,r:18,t:20,b:34},values=shown.map(r=>r.value),max=Math.max(1,...values);
- const x=i=>pad.l+(shown.length===1?0:(i*(width-pad.l-pad.r)/(shown.length-1))),y=v=>pad.t+(height-pad.t-pad.b)*(1-v/max);
+ const x=i=>pad.l+(shown.length===1?(width-pad.l-pad.r)/2:(i*(width-pad.l-pad.r)/(shown.length-1))),y=v=>pad.t+(height-pad.t-pad.b)*(1-v/max);
  const path=shown.map((r,i)=>(i?'L':'M')+x(i).toFixed(1)+' '+y(values[i]).toFixed(1)).join(' ');
  const grid=[0,.5,1].map(p=>{const yy=pad.t+(height-pad.t-pad.b)*p,val=Math.round(max*(1-p));return '<g><line x1="'+pad.l+'" y1="'+yy+'" x2="'+(width-pad.r)+'" y2="'+yy+'"/><text x="'+(pad.l-8)+'" y="'+(yy+4)+'">'+fmt(val)+'</text></g>'}).join('');
  const points=shown.map((r,i)=>'<circle cx="'+x(i)+'" cy="'+y(values[i])+'" r="3.5" data-chart-point="'+i+'" data-chart-date="'+esc(chartPeriod(r,mode))+'" data-chart-value="'+esc(fmt(r.value))+'"/>').join('');
@@ -65,12 +67,13 @@ function delta(value,previous){
 }
 function platformPage(kind,item){
  const facebook=kind==='facebook',color=facebook?'#1877f2':'#c13584',series=item?.series||[],previous=item?.comparison||{};
- const metrics=metricSpecs[kind].map(([key,label,help],index)=>'<article class="lv-meta-stat '+(index===0?'is-main':'')+'"><div class="lv-meta-stat-head"><div><span>'+esc(label)+'</span><div><strong>'+fmt(item?.[key])+'</strong>'+delta(item?.[key],previous?.[key])+'</div><small>'+esc(help)+'</small></div></div>'+lineChart(series,key,label,color,kind)+'</article>').join('');
+ const windowed=!facebook&&Object.values(item?.chartSeries||{}).some(rows=>rows?.some(row=>row.intervalStart));
+ const metrics=metricSpecs[kind].map(([key,label,help],index)=>'<article class="lv-meta-stat '+(index===0?'is-main':'')+'"><div class="lv-meta-stat-head"><div><span>'+esc(label)+'</span><div><strong>'+fmt(item?.[key])+'</strong>'+delta(item?.[key],previous?.[key])+'</div><small>'+esc(help)+'</small></div></div>'+lineChart(item?.chartSeries?.[key]||series,key,label,color,kind)+'</article>').join('');
  const updated=data?.updatedAt?new Intl.DateTimeFormat('fr-FR',{dateStyle:'short',timeStyle:'short'}).format(new Date(data.updatedAt)):'Connexion en attente';
  return '<section class="lv-meta-platform-page"><header class="lv-meta-page-head"><div class="lv-meta-brand '+(facebook?'is-fb':'is-ig')+'">'+(facebook?'f':'◎')+'</div><div><span>'+(facebook?'FACEBOOK':'INSTAGRAM')+'</span><h2>'+esc(item?.name||(facebook?'Restaurant Le Village':'@restaurantlevillagehdc'))+'</h2><p>'+esc(data?.range?.label||'Période choisie')+(data?.comparisonRange?' · comparée avec '+esc(data.comparisonRange.label.toLowerCase()):'')+'</p></div><div class="lv-meta-page-state">'+status(item)+'<small>Mis à jour '+esc(updated)+'</small></div></header>'
   +(item?.message?'<p class="lv-meta-warning">'+esc(item.message)+'</p>':'')
   +(!facebook&&item?.cumulativeWindows?'<p class="lv-meta-note">Sur une longue période, la couverture est additionnée par tranches de 28 jours ; un même compte peut donc apparaître dans plusieurs tranches.</p>':'')
-  +(chartMode()==='day'?'':'<p class="lv-meta-note">Courbes regroupées par '+(chartMode()==='week'?'semaine':'mois')+'. Les chiffres en haut de chaque carte portent sur toute la période.</p>')
+  +(windowed?'<p class="lv-meta-note">Pour certains indicateurs Instagram, Meta fournit des totaux par tranches de 28 jours. Chaque point représente sa tranche réelle, sans jours à zéro ajoutés.</p>':chartMode()==='day'?'':'<p class="lv-meta-note">Courbes regroupées par '+(chartMode()==='week'?'semaine':'mois')+'. Les chiffres en haut de chaque carte portent sur toute la période.</p>')
   +'<div class="lv-meta-stat-grid">'+metrics+'</div></section>';
 }
 function bindCharts(){
