@@ -1,0 +1,34 @@
+body.lv-demo-admin #lv-demo-app .lv-site-toolbar{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin:0 0 20px}
+body.lv-demo-admin #lv-demo-app .lv-site-period{display:flex;gap:5px;flex-wrap:wrap}
+body.lv-demo-admin #lv-demo-app .lv-site-period button,body.lv-demo-admin #lv-demo-app .lv-site-refresh{border:1px solid #e4d8d1;border-radius:3px;background:#fff;color:#654a40;padding:9px 13px;font:600 12px Inter,Arial,sans-serif;cursor:pointer}
+body.lv-demo-admin #lv-demo-app .lv-site-period button.is-active{background:#c95d43;color:#fff;border-color:#c95d43}
+body.lv-demo-admin #lv-demo-app .lv-site-source{display:flex;flex-wrap:wrap;gap:8px 20px;color:#817c78;font-size:12px;margin:0 0 19px}
+body.lv-demo-admin #lv-demo-app .lv-site-section{margin-bottom:30px}
+body.lv-demo-admin #lv-demo-app .lv-site-section-title{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid #e8dcd5;margin-bottom:14px;padding-bottom:9px;gap:12px}
+body.lv-demo-admin #lv-demo-app .lv-site-section-title h2{font:700 23px Georgia,serif;color:#392e2b;margin:0}
+body.lv-demo-admin #lv-demo-app .lv-site-section-title small{color:#9a8177;font-size:12px}
+body.lv-demo-admin #lv-demo-app .lv-site-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px;margin-bottom:13px}
+body.lv-demo-admin #lv-demo-app .lv-site-kpis article,body.lv-demo-admin #lv-demo-app .lv-site-card,body.lv-demo-admin #lv-demo-app .lv-site-unavailable{border:1px solid #e8dcd5;background:#fff;border-radius:3px;padding:18px;min-width:0;box-shadow:none}
+body.lv-demo-admin #lv-demo-app .lv-site-kpis span{display:block;color:#837773;font-size:12px;line-height:1.4;min-height:32px}
+body.lv-demo-admin #lv-demo-app .lv-site-kpis strong{display:block;color:#342a27;font:700 clamp(22px,2.4vw,30px) Inter,Arial,sans-serif;margin-top:4px}
+body.lv-demo-admin #lv-demo-app .lv-site-card{margin-bottom:12px}
+body.lv-demo-admin #lv-demo-app .lv-site-card h3{color:#463732;font:700 17px Inter,Arial,sans-serif;margin:0 0 18px}
+body.lv-demo-admin #lv-demo-app .lv-site-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+body.lv-demo-admin #lv-demo-app .lv-site-chart svg{display:block;width:100%;height:170px;overflow:visible}
+body.lv-demo-admin #lv-demo-app .lv-site-chart rect{fill:#c95d43}
+body.lv-demo-admin #lv-demo-app .lv-site-chart rect:hover{fill:#91422f}
+body.lv-demo-admin #lv-demo-app .lv-site-chart-axis{display:flex;justify-content:space-between;color:#82746c;font-size:11px;padding:0 9px}
+body.lv-demo-admin #lv-demo-app .lv-site-chart small{display:block;color:#968c85;margin-top:8px}
+body.lv-demo-admin #lv-demo-app .lv-site-table-wrap{overflow:auto}
+body.lv-demo-admin #lv-demo-app .lv-site-table{border-collapse:collapse;width:100%;font-size:12px;text-align:left}
+body.lv-demo-admin #lv-demo-app .lv-site-table th{color:#7c6f68;font-weight:700;border-bottom:1px solid #e8dcd5;padding:7px 8px}
+body.lv-demo-admin #lv-demo-app .lv-site-table td{color:#443b36;padding:10px 8px;border-bottom:1px solid #f2ebe7;overflow-wrap:anywhere}
+body.lv-demo-admin #lv-demo-app .lv-site-table td:not(:first-child),body.lv-demo-admin #lv-demo-app .lv-site-table th:not(:first-child){text-align:right;white-space:nowrap}
+body.lv-demo-admin #lv-demo-app .lv-site-note,body.lv-demo-admin #lv-demo-app .lv-site-empty,body.lv-demo-admin #lv-demo-app .lv-site-footer{font-size:12px;color:#877b74;line-height:1.6}
+body.lv-demo-admin #lv-demo-app .lv-site-footer{max-width:850px;margin:8px 0 26px}
+body.lv-demo-admin #lv-demo-app .lv-site-unavailable{border-left:3px solid #c95d43;max-width:720px}
+body.lv-demo-admin #lv-demo-app .lv-site-unavailable strong{font-size:17px;color:#3c302b}
+body.lv-demo-admin #lv-demo-app .lv-site-unavailable p{color:#766a64;margin:8px 0 0}
+@media(max-width:900px){body.lv-demo-admin #lv-demo-app .lv-site-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}body.lv-demo-admin #lv-demo-app .lv-site-columns{grid-template-columns:1fr}}
+@media(max-width:900px){body.lv-demo-admin #lv-demo-app .lv-nav-stats{display:flex!important;align-items:center!important;flex-wrap:wrap!important;gap:2px!important;flex:0 0 auto!important;border-left:1px solid #ddc9c0!important;padding-left:7px!important}body.lv-demo-admin #lv-demo-app .lv-nav-stats .lv-menu-label{display:block!important;flex-basis:100%!important;padding:0 8px 2px!important;margin:0!important;font-size:9px!important}}
+@media(max-width:520px){body.lv-demo-admin #lv-demo-app .lv-site-kpis article{padding:13px}body.lv-demo-admin #lv-demo-app .lv-site-kpis strong{font-size:22px}body.lv-demo-admin #lv-demo-app .lv-site-section-title h2{font-size:21px}}
