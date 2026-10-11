@@ -64,6 +64,10 @@ function safeUrl(mixed $value): string {
     if (!is_string($value) || !filter_var($value, FILTER_VALIDATE_URL)) return '';
     return parse_url($value, PHP_URL_SCHEME) === 'https' ? $value : '';
 }
+function shortText(mixed $value): string {
+    $text = (string)($value ?? '');
+    return function_exists('mb_substr') ? mb_substr($text, 0, 240) : substr($text, 0, 240);
+}
 function insightValue(array $response, string $metric): ?int {
     if (!($response['ok'] ?? false)) return null;
     foreach (($response['data']['data'] ?? []) as $entry) {
@@ -87,7 +91,7 @@ function facebookContents(array $config, string $token): array {
         $items[] = [
             'id' => $id, 'platform' => 'facebook', 'type' => 'Publication',
             'date' => (string)($row['created_time'] ?? ''),
-            'text' => mb_substr((string)($row['message'] ?? ''), 0, 240),
+            'text' => shortText($row['message'] ?? ''),
             'url' => safeUrl($row['permalink_url'] ?? ''),
             'reactions' => countValue($row['reactions']['summary']['total_count'] ?? null),
             'comments' => countValue($row['comments']['summary']['total_count'] ?? null),
@@ -106,7 +110,7 @@ function facebookContents(array $config, string $token): array {
             $items[] = [
                 'id' => $id, 'platform' => 'facebook', 'type' => $type,
                 'date' => (string)($row['created_time'] ?? ''),
-                'text' => mb_substr((string)($row['description'] ?? ''), 0, 240),
+                'text' => shortText($row['description'] ?? ''),
                 'url' => safeUrl($row['permalink_url'] ?? ''),
                 'reactions' => null, 'comments' => null, 'shares' => null,
                 'clicks' => null, 'views' => null, 'reach' => null,
@@ -132,7 +136,7 @@ function instagramContents(array $config, string $token): array {
         $items[] = [
             'id' => $id, 'platform' => 'instagram', 'type' => $type,
             'date' => (string)($row['timestamp'] ?? ''),
-            'text' => mb_substr((string)($row['caption'] ?? ''), 0, 240),
+            'text' => shortText($row['caption'] ?? ''),
             'url' => safeUrl($row['permalink'] ?? ''),
             'reactions' => countValue($row['like_count'] ?? null),
             'comments' => countValue($row['comments_count'] ?? null),
@@ -148,7 +152,7 @@ function instagramContents(array $config, string $token): array {
             $items[] = [
                 'id' => $id, 'platform' => 'instagram', 'type' => 'Story',
                 'date' => (string)($row['timestamp'] ?? ''),
-                'text' => mb_substr((string)($row['caption'] ?? ''), 0, 240),
+                'text' => shortText($row['caption'] ?? ''),
                 'url' => safeUrl($row['permalink'] ?? ''),
                 'reactions' => null, 'comments' => null, 'shares' => null, 'clicks' => null,
                 'views' => insightValue(graph($id.'/insights', ['metric' => 'views'], $token, $config), 'views'),
@@ -160,7 +164,7 @@ function instagramContents(array $config, string $token): array {
 }
 
 $cacheDir = dirname(__DIR__).'/lv-meta-cache';
-$cacheFile = $cacheDir.'/content-v1.json';
+$cacheFile = $cacheDir.'/content-v2-'.hash('sha256', $pageToken.'|'.$igToken).'.json';
 if (($_GET['refresh'] ?? '') !== '1' && is_file($cacheFile) && filemtime($cacheFile) > time() - 600) {
     $cached = json_decode((string)file_get_contents($cacheFile), true);
     if (is_array($cached)) reply(200, $cached);
@@ -172,5 +176,7 @@ $payload = [
     'updatedAt' => gmdate('c'), 'facebook' => $facebook, 'instagram' => $instagram,
 ];
 if (!is_dir($cacheDir)) @mkdir($cacheDir, 0700, true);
-if (is_dir($cacheDir) && is_writable($cacheDir)) @file_put_contents($cacheFile, json_encode($payload), LOCK_EX);
+if ($payload['status'] === 'connected' && is_dir($cacheDir) && is_writable($cacheDir)) {
+    @file_put_contents($cacheFile, json_encode($payload, JSON_INVALID_UTF8_SUBSTITUTE), LOCK_EX);
+}
 reply(200, $payload);
