@@ -366,6 +366,7 @@ function instagramRangeData(array $range, string $token, array $config): array {
     $totalsCode = 0;
     $requests = [];
     $windowDates = [];
+    $windowStarts = [];
     while ($cursor < $range['untilDate']) {
         $chunkEnd = $cursor->add(new DateInterval('P28D'));
         if ($chunkEnd > $range['untilDate']) $chunkEnd = $range['untilDate'];
@@ -379,6 +380,7 @@ function instagramRangeData(array $range, string $token, array $config): array {
                 'until' => $chunkEnd->format('Y-m-d'),
             ],
         ];
+        $windowStarts[] = $cursor->format('Y-m-d');
         $windowDates[] = $chunkEnd->sub(new DateInterval('P1D'))->format('Y-m-d');
         $cursor = $chunkEnd;
     }
@@ -404,16 +406,36 @@ function instagramRangeData(array $range, string $token, array $config): array {
     ], ['metric_type' => 'time_series'], $range, $token, $config, 28);
     $daily = $timeSeries['series'] ?? [];
     $available = $timeSeries['available'] ?? [];
+    // Meta may return totals only for these metrics. Keep each total attached to
+    // its real 28-day interval instead of putting it on one day and filling
+    // the other days with zero, which creates fictitious spikes.
+    $chartSeries = [];
     foreach (['views', 'reach', 'interactions', 'profileViews'] as $key) {
-        if (!($available[$key] ?? false)) $daily[$key] = $windowSeries[$key];
+        if (($available[$key] ?? false) && count($daily[$key] ?? []) > 1) {
+            $chartSeries[$key] = array_map(
+                static fn(string $date, int|float $value): array => ['date' => $date, $key => $value],
+                array_keys($daily[$key]),
+                array_values($daily[$key])
+            );
+        } else {
+            $chartSeries[$key] = [];
+            foreach ($windowDates as $index => $date) {
+                if (!isset($windowSeries[$key][$date])) continue;
+                $chartSeries[$key][] = [
+                    'date' => $date,
+                    'intervalStart' => $windowStarts[$index],
+                    'intervalEnd' => $date,
+                    $key => $windowSeries[$key][$date],
+                ];
+            }
+        }
     }
-    $merged = mergeSeries(
-        $daily['views'] ?? [],
-        $daily['reach'] ?? [],
-        $daily['interactions'] ?? [],
-        $daily['profileViews'] ?? [],
-        $daily['follows'] ?? []
+    $chartSeries['follows'] = array_map(
+        static fn(string $date, int|float $value): array => ['date' => $date, 'follows' => $value],
+        array_keys($daily['follows'] ?? []),
+        array_values($daily['follows'] ?? [])
     );
+    $merged = mergeSeries($daily['follows'] ?? []);
     $result = [
         'ok' => $totalsOk,
         'partial' => (bool)($timeSeries['partial'] ?? false),
@@ -424,13 +446,10 @@ function instagramRangeData(array $range, string $token, array $config): array {
         'profileViews' => $totalsOk ? $totals['profile_views'] : null,
         'follows' => ($available['follows'] ?? false) ? array_sum($daily['follows'] ?? []) : null,
         'cumulativeWindows' => $range['days'] > 28,
+        'chartSeries' => $chartSeries,
         'series' => array_map(static fn(array $row) => [
             'date' => $row['date'],
-            'views' => $row['m0'],
-            'reach' => $row['m1'],
-            'interactions' => $row['m2'],
-            'profileViews' => $row['m3'],
-            'follows' => $row['m4'],
+            'follows' => $row['m0'],
         ], $merged),
     ];
     writeRangeCache('instagram', $range, $result);
@@ -453,7 +472,7 @@ function mergeSeries(array ...$metrics): array {
 function rangeCacheFile(string $namespace, array $range): string {
     $dir = dirname(__DIR__) . '/lv-meta-cache';
     if (!is_dir($dir)) @mkdir($dir, 0700, true);
-    return $dir.'/range-v3-'.preg_replace('/[^a-z0-9_-]/i', '', $namespace).'-'.hash('sha256', $range['since'].'|'.$range['until']).'.json';
+    return $dir.'/range-v4-'.preg_replace('/[^a-z0-9_-]/i', '', $namespace).'-'.hash('sha256', $range['since'].'|'.$range['until']).'.json';
 }
 
 function readRangeCache(string $namespace, array $range): ?array {
@@ -496,7 +515,7 @@ if ($userToken === '' && $pageToken === '') {
 }
 
 $cacheDir = dirname(__DIR__) . '/lv-meta-cache';
-$cacheKey = hash('sha256', implode('|', ['schema-v4', $selectedPlatform, $range['since'], $range['until'], $compareMode]));
+$cacheKey = hash('sha256', implode('|', ['schema-v5', $selectedPlatform, $range['since'], $range['until'], $compareMode]));
 $cacheFile = $cacheDir.'/insights-'.$cacheKey.'.json';
 $force = ($_GET['refresh'] ?? '') === '1';
 $GLOBALS['metaForceRanges'] = $force && $compareMode === 'none';
