@@ -124,8 +124,8 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
   <main class="card">
     <img class="logo" src="https://assets.zyrosite.com/gnKoPAn3rxzY53IR/chatgpt-image-22-nov.-2025-00_40_31-YvUWBeCav31wXD3h.png" alt="Le Grimaldi × Le Village">
     <p class="eyebrow">PARAMÉTRAGE PRIVÉ</p>
-    <h1>Connecter les statistiques Meta</h1>
-    <p class="intro">Ajoutez une seule fois le jeton de la Page Facebook. Il donnera au back-office un accès en lecture aux statistiques Facebook et Instagram.</p>
+    <h1>Connecter Meta au back-office</h1>
+    <p class="intro">Ajoutez une seule fois le jeton de la Page Facebook. Il donnera au back-office les droits Meta que vous venez d’autoriser pour les statistiques, publications, commentaires et messages Facebook et Instagram.</p>
     <?php if ($message !== ''): ?><p class="notice <?=$success ? '' : 'error'?>"><?=e($message)?></p><?php endif; ?>
     <?php if (!$success): ?>
       <form method="post" autocomplete="off">
