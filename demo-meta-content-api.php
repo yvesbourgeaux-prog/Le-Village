@@ -82,6 +82,12 @@ function facebookContents(array $config, string $token): array {
     $path = $config['page_id'].'/posts';
     $fields = 'id,message,created_time,permalink_url,full_picture,shares,comments.limit(0).summary(true),reactions.limit(0).summary(true)';
     $response = graph($path, ['fields' => $fields, 'limit' => 12], $token, $config);
+    $enriched = (bool)($response['ok'] ?? false);
+    if (!$enriched) {
+        // Some Pages reject nested engagement fields even when the posts
+        // themselves are readable. Keep the comparison usable with null values.
+        $response = graph($path, ['fields' => 'id,message,created_time,permalink_url', 'limit' => 12], $token, $config);
+    }
     if (!$response['ok']) return ['status' => 'connection_error', 'items' => []];
     $items = [];
     foreach (($response['data']['data'] ?? []) as $row) {
@@ -117,7 +123,7 @@ function facebookContents(array $config, string $token): array {
             ];
         }
     }
-    return ['status' => 'connected', 'items' => $items];
+    return ['status' => $enriched ? 'connected' : 'partial', 'items' => $items];
 }
 function instagramContents(array $config, string $token): array {
     if ($token === '') return ['status' => 'not_connected', 'items' => []];
