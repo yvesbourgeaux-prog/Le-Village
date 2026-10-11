@@ -1,0 +1,28 @@
+body.lv-demo-admin #lv-demo-app .lv-editorial-intro{display:flex;justify-content:space-between;align-items:end;gap:22px;margin:5px 0 24px}
+body.lv-demo-admin #lv-demo-app .lv-editorial-intro h2{margin:0 0 5px;color:#493c31;font:600 24px 'Playfair Display',serif}
+body.lv-demo-admin #lv-demo-app .lv-editorial-intro p{max-width:610px;margin:0;color:#85766a;font:13px/1.5 Lato,sans-serif}
+body.lv-demo-admin #lv-demo-app .lv-editorial-month{display:flex;align-items:center;gap:12px;white-space:nowrap;text-transform:capitalize;color:#55483d}
+body.lv-demo-admin #lv-demo-app .lv-editorial-month button{border:1px solid #dacfc4;background:#fff;color:#715a48;font-size:23px;width:34px;height:34px;cursor:pointer}
+body.lv-demo-admin #lv-demo-app .lv-editorial-layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(280px,1fr);gap:18px;align-items:start}
+body.lv-demo-admin #lv-demo-app .lv-editorial-calendar,body.lv-demo-admin #lv-demo-app .lv-editorial-form{background:#fff;border:1px solid #e5d9ce;padding:18px}
+body.lv-demo-admin #lv-demo-app .lv-editorial-weekdays,body.lv-demo-admin #lv-demo-app .lv-editorial-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
+body.lv-demo-admin #lv-demo-app .lv-editorial-weekdays{margin-bottom:6px;text-align:center;color:#8e7f71;font:700 10px Lato,sans-serif;text-transform:uppercase}
+body.lv-demo-admin #lv-demo-app .lv-editorial-day,body.lv-demo-admin #lv-demo-app .lv-editorial-grid .is-empty{min-height:76px;padding:7px;border:1px solid #eee7e0;background:#fff;text-align:left;color:#6b5d51;min-width:0}
+body.lv-demo-admin #lv-demo-app .lv-editorial-day{cursor:pointer}
+body.lv-demo-admin #lv-demo-app .lv-editorial-day:hover,body.lv-demo-admin #lv-demo-app .lv-editorial-day.is-today{border-color:#a87050;background:#fbf5ee}
+body.lv-demo-admin #lv-demo-app .lv-editorial-day strong{display:block;font:700 12px Lato,sans-serif}
+body.lv-demo-admin #lv-demo-app .lv-editorial-chip{display:block;margin-top:4px;padding:3px 4px;background:#e9d9ca;color:#624833;font:10px/1.3 Lato,sans-serif;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+body.lv-demo-admin #lv-demo-app .lv-editorial-list{margin-top:22px;border-top:1px solid #eee6df;padding-top:10px}
+body.lv-demo-admin #lv-demo-app .lv-editorial-list h3,body.lv-demo-admin #lv-demo-app .lv-editorial-form h3{font:600 18px 'Playfair Display',serif;color:#4f4034;margin:8px 0 14px}
+body.lv-demo-admin #lv-demo-app .lv-editorial-list button{width:100%;display:grid;gap:4px;text-align:left;border:0;border-top:1px solid #eee6df;padding:10px 2px;background:#fff;cursor:pointer;color:#55483d}
+body.lv-demo-admin #lv-demo-app .lv-editorial-list time,body.lv-demo-admin #lv-demo-app .lv-editorial-list small{font:11px Lato,sans-serif;color:#88786a}
+body.lv-demo-admin #lv-demo-app .lv-editorial-form form>label,body.lv-demo-admin #lv-demo-app .lv-editorial-two label{display:grid;gap:6px;margin-bottom:13px;color:#67594d;font:700 12px Lato,sans-serif}
+body.lv-demo-admin #lv-demo-app .lv-editorial-form input:not([type=checkbox]),body.lv-demo-admin #lv-demo-app .lv-editorial-form select,body.lv-demo-admin #lv-demo-app .lv-editorial-form textarea{width:100%;box-sizing:border-box;border:1px solid #dcd0c4;border-radius:0;background:#fff;color:#4c4036;padding:10px;font:13px Lato,sans-serif}
+body.lv-demo-admin #lv-demo-app .lv-editorial-two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+body.lv-demo-admin #lv-demo-app .lv-editorial-form fieldset{border:1px solid #e4d9cf;margin:0 0 13px;padding:10px;display:flex;gap:20px}
+body.lv-demo-admin #lv-demo-app .lv-editorial-form legend{font:700 12px Lato,sans-serif;color:#67594d}
+body.lv-demo-admin #lv-demo-app .lv-editorial-form fieldset label{font:12px Lato,sans-serif;color:#67594d}
+body.lv-demo-admin #lv-demo-app .lv-editorial-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+body.lv-demo-admin #lv-demo-app .lv-editorial-delete{border:0;background:transparent;color:#a24944;text-decoration:underline;cursor:pointer}
+@media(max-width:900px){body.lv-demo-admin #lv-demo-app .lv-editorial-layout{grid-template-columns:1fr}}
+@media(max-width:600px){body.lv-demo-admin #lv-demo-app .lv-editorial-intro{display:block}body.lv-demo-admin #lv-demo-app .lv-editorial-month{justify-content:space-between;margin-top:16px}body.lv-demo-admin #lv-demo-app .lv-editorial-day{min-height:49px;padding:4px}body.lv-demo-admin #lv-demo-app .lv-editorial-chip{font-size:8px}}
