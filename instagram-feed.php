@@ -7,8 +7,8 @@ header('Cache-Control: public, max-age=300, stale-while-revalidate=600');
 header('X-Content-Type-Options: nosniff');
 header('X-Robots-Tag: noindex');
 
-function answer(array $posts): never {
-    echo json_encode(['posts' => $posts], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_SUBSTITUTE);
+function answer(array $posts, string $state = 'ok', int $received = 0): never {
+    echo json_encode(['posts' => $posts, 'state' => $state, 'received' => $received], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_SUBSTITUTE);
     exit;
 }
 if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'GET') {
@@ -21,7 +21,7 @@ $privateDirectory = dirname(__DIR__).'/private';
 $cacheFile = $privateDirectory.'/le-village-instagram-feed.json';
 $cached = is_file($cacheFile) ? json_decode((string)@file_get_contents($cacheFile), true) : null;
 if (is_array($cached) && isset($cached['updated'], $cached['posts']) && is_array($cached['posts'])
-    && time() - (int)$cached['updated'] < 900) answer($cached['posts']);
+    && time() - (int)$cached['updated'] < 900) answer($cached['posts'], 'cached');
 
 $config = [
     'page_access_token' => getenv('LV_META_PAGE_ACCESS_TOKEN') ?: '',
@@ -37,7 +37,7 @@ if (is_file($configFile)) {
 $token = trim((string)($config['access_token'] ?: $config['page_access_token']));
 if ($token === '' || !ctype_digit((string)$config['instagram_id'])
     || !preg_match('/^v\d+\.\d+$/', (string)$config['api_version']) || !function_exists('curl_init')) {
-    answer(is_array($cached['posts'] ?? null) ? $cached['posts'] : []);
+    answer(is_array($cached['posts'] ?? null) ? $cached['posts'] : [], 'configuration');
 }
 
 $url = 'https://graph.facebook.com/'.$config['api_version'].'/'.$config['instagram_id'].'/media?'.http_build_query([
@@ -58,7 +58,7 @@ $status = (int)curl_getinfo($curl, CURLINFO_HTTP_CODE);
 curl_close($curl);
 $response = is_string($raw) ? json_decode($raw, true) : null;
 if ($status !== 200 || !is_array($response['data'] ?? null)) {
-    answer(is_array($cached['posts'] ?? null) ? $cached['posts'] : []);
+    answer(is_array($cached['posts'] ?? null) ? $cached['posts'] : [], 'upstream_'.$status);
 }
 
 $posts = [];
@@ -90,4 +90,4 @@ if ($posts && is_dir($privateDirectory) && is_writable($privateDirectory)) {
         } else @unlink($tmp);
     }
 }
-answer($posts ?: (is_array($cached['posts'] ?? null) ? $cached['posts'] : []));
+answer($posts ?: (is_array($cached['posts'] ?? null) ? $cached['posts'] : []), 'ok', count($response['data']));
