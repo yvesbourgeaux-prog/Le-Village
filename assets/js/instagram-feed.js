@@ -7,7 +7,7 @@
   const failure = () => {
     if (label) label.textContent = english ? 'See our latest posts on Instagram.' : 'Retrouvez nos dernières publications sur Instagram.';
   };
-  fetch('/instagram-feed.php', { credentials: 'omit' })
+  fetch('/instagram-feed.php', { credentials: 'omit', cache: 'no-store' })
     .then(response => { if (!response.ok) throw new Error('Feed unavailable'); return response.json(); })
     .then(data => {
       grid.dataset.feedState = data.state || 'unknown';
