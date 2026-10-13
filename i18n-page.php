@@ -21,6 +21,11 @@ header('Cache-Control: public, max-age=300');
 $document = $data[$slug] ?? '';
 require_once __DIR__ . '/page-delivery.php';
 $document = lvPageDelivery($document, $lang, $slug);
+// The hotel entrance is at 6 Place du Château; the restaurant remains at number 4.
+if ($slug === 'hotel-cagnes-sur-mer-le-grimaldi') {
+    $document = str_replace('4 Place du Château', '6 Place du Château', $document);
+    $document = str_replace('Le%20Village%2C%204%20Place%20du%20Ch%C3%A2teau', 'H%C3%B4tel%20Le%20Grimaldi%2C%206%20Place%20du%20Ch%C3%A2teau', $document);
+}
 // This legacy press page has conflicting April/May dates; keep its snippets neutral.
 if ($slug === 'brunch-musical-cagnes-sur-mer') {
     $ambiguousDates = ['en' => 'April 26 ', 'sv' => ' den 26 april', 'da' => ' den 26. april', 'nl' => ' op 26 april', 'de' => ' am 26. April', 'it' => ' del 26 aprile', 'es' => ' del 26 de abril', 'nb' => ' 26. april', 'ru' => ' 26 апреля', 'pl' => ' 26 kwietnia'];
