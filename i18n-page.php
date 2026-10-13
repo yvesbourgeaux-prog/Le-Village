@@ -57,7 +57,7 @@ if (!str_contains($document, 'hreflang="nb"')) {
     $document = preg_replace('~(<button\b[^>]*\bdata-language-auto\b[^>]*>)~', $choices . '$1', $document, 1);
 }
 $document = preg_replace('~/assets/css/languages\.css\?v=[^"\s<>]*~', '/assets/css/languages.css?v=20261004-13', $document);
-$document = preg_replace('~/assets/js/(language-route|languages)\.js\?v=[^"\s<>]*~', '/assets/js/$1.js?v=20261004-13', $document);
+$document = preg_replace('~/assets/js/(language-route|languages)\.js\?v=[^"\s<>]*~', '/assets/js/$1.js?v=20261013-13', $document);
 $document = preg_replace('~/assets/js/site\.js(?:\?v=[^"\s<>]*)?~', '/assets/js/site.js?v=20261006-gtm1', $document);
 require_once __DIR__ . '/privacy-delivery.php';
 $document = lvPrivacyDelivery($document);
