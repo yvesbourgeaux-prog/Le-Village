@@ -1,4 +1,5 @@
-.village-instagram { background: #fcf9f3; padding: 64px 24px 88px; }
+.village-instagram { display: none; background: #fcf9f3; padding: 64px 24px 88px; }
+.village-instagram.is-ready { display: block; }
 .village-instagram-inner { max-width: 1400px; margin: 0 auto; }
 .village-instagram-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 30px; }
 .village-instagram-kicker { display: block; color: #794116; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; margin-bottom: 10px; }
