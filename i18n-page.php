@@ -26,6 +26,22 @@ if ($slug === 'hotel-cagnes-sur-mer-le-grimaldi') {
     $document = str_replace('4 Place du Château', '6 Place du Château', $document);
     $document = str_replace('Le%20Village%2C%204%20Place%20du%20Ch%C3%A2teau', 'H%C3%B4tel%20Le%20Grimaldi%2C%206%20Place%20du%20Ch%C3%A2teau', $document);
 }
+// Older translated homepages also carry a copy of the hotel schema.
+if ($slug === '') {
+    $document = preg_replace_callback('~<script type="application/ld\\+json">([^<]+)</script>~', static function ($match) {
+        $data = json_decode($match[1], true);
+        if (!is_array($data) || !isset($data['@graph']) || !is_array($data['@graph'])) return $match[0];
+        $changed = false;
+        foreach ($data['@graph'] as &$entity) {
+            if (($entity['@type'] ?? '') === 'Hotel' && ($entity['address']['streetAddress'] ?? '') === '4 Place du Château') {
+                $entity['address']['streetAddress'] = '6 Place du Château';
+                $changed = true;
+            }
+        }
+        unset($entity);
+        return $changed ? '<script type="application/ld+json">' . json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</script>' : $match[0];
+    }, $document);
+}
 // This legacy press page has conflicting April/May dates; keep its snippets neutral.
 if ($slug === 'brunch-musical-cagnes-sur-mer') {
     $ambiguousDates = ['en' => 'April 26 ', 'sv' => ' den 26 april', 'da' => ' den 26. april', 'nl' => ' op 26 april', 'de' => ' am 26. April', 'it' => ' del 26 aprile', 'es' => ' del 26 de abril', 'nb' => ' 26. april', 'ru' => ' 26 апреля', 'pl' => ' 26 kwietnia'];
