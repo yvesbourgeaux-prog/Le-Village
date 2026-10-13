@@ -58,7 +58,9 @@ $status = (int)curl_getinfo($curl, CURLINFO_HTTP_CODE);
 curl_close($curl);
 $response = is_string($raw) ? json_decode($raw, true) : null;
 if ($status !== 200 || !is_array($response['data'] ?? null)) {
-    answer(is_array($cached['posts'] ?? null) ? $cached['posts'] : [], 'upstream_'.$status);
+    $errorCode = (int)($response['error']['code'] ?? 0);
+    $errorSubcode = (int)($response['error']['error_subcode'] ?? 0);
+    answer(is_array($cached['posts'] ?? null) ? $cached['posts'] : [], 'upstream_'.$status.'_'.$errorCode.'_'.$errorSubcode);
 }
 
 $posts = [];
