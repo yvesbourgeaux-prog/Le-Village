@@ -7,8 +7,8 @@ header('Cache-Control: public, max-age=300, stale-while-revalidate=600');
 header('X-Content-Type-Options: nosniff');
 header('X-Robots-Tag: noindex');
 
-function answer(array $posts, string $state = 'ok', int $received = 0): never {
-    echo json_encode(['posts' => $posts, 'state' => $state, 'received' => $received], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_SUBSTITUTE);
+function answer(array $posts): never {
+    echo json_encode(['posts' => $posts], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_SUBSTITUTE);
     exit;
 }
 if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'GET') {
@@ -21,7 +21,7 @@ $privateDirectory = dirname(__DIR__).'/private';
 $cacheFile = $privateDirectory.'/le-village-instagram-feed.json';
 $cached = is_file($cacheFile) ? json_decode((string)@file_get_contents($cacheFile), true) : null;
 if (is_array($cached) && isset($cached['updated'], $cached['posts']) && is_array($cached['posts'])
-    && time() - (int)$cached['updated'] < 900) answer($cached['posts'], 'cached');
+    && time() - (int)$cached['updated'] < 900) answer($cached['posts']);
 
 $config = [
     'page_access_token' => getenv('LV_META_PAGE_ACCESS_TOKEN') ?: '',
@@ -37,7 +37,7 @@ if (is_file($configFile)) {
 $token = trim((string)($config['access_token'] ?: $config['page_access_token']));
 if ($token === '' || !ctype_digit((string)$config['instagram_id'])
     || !preg_match('/^v\d+\.\d+$/', (string)$config['api_version']) || !function_exists('curl_init')) {
-    answer(is_array($cached['posts'] ?? null) ? $cached['posts'] : [], 'configuration');
+    answer(is_array($cached['posts'] ?? null) ? $cached['posts'] : []);
 }
 
 $url = 'https://graph.facebook.com/'.$config['api_version'].'/'.$config['instagram_id'].'/media?'.http_build_query([
@@ -58,9 +58,7 @@ $status = (int)curl_getinfo($curl, CURLINFO_HTTP_CODE);
 curl_close($curl);
 $response = is_string($raw) ? json_decode($raw, true) : null;
 if ($status !== 200 || !is_array($response['data'] ?? null)) {
-    $errorCode = (int)($response['error']['code'] ?? 0);
-    $errorSubcode = (int)($response['error']['error_subcode'] ?? 0);
-    answer(is_array($cached['posts'] ?? null) ? $cached['posts'] : [], 'upstream_'.$status.'_'.$errorCode.'_'.$errorSubcode);
+    answer(is_array($cached['posts'] ?? null) ? $cached['posts'] : []);
 }
 
 $posts = [];
@@ -77,7 +75,7 @@ foreach ($response['data'] as $row) {
     $posts[] = [
         'image' => $image,
         'url' => $permalink,
-        'caption' => mb_substr($caption, 0, 140, 'UTF-8'),
+        'caption' => function_exists('mb_substr') ? mb_substr($caption, 0, 140, 'UTF-8') : substr($caption, 0, 140),
         'type' => $type === 'VIDEO' ? 'video' : 'image',
     ];
     if (count($posts) === 8) break;
@@ -92,4 +90,4 @@ if ($posts && is_dir($privateDirectory) && is_writable($privateDirectory)) {
         } else @unlink($tmp);
     }
 }
-answer($posts ?: (is_array($cached['posts'] ?? null) ? $cached['posts'] : []), 'ok', count($response['data']));
+answer($posts ?: (is_array($cached['posts'] ?? null) ? $cached['posts'] : []));
