@@ -10,6 +10,8 @@
   fetch('/instagram-feed.php', { credentials: 'omit' })
     .then(response => { if (!response.ok) throw new Error('Feed unavailable'); return response.json(); })
     .then(data => {
+      grid.dataset.feedState = data.state || 'unknown';
+      grid.dataset.received = String(data.received || 0);
       if (!Array.isArray(data.posts) || !data.posts.length) { failure(); return; }
       const fragment = document.createDocumentFragment();
       data.posts.slice(0, 8).forEach((post, index) => {
@@ -40,5 +42,5 @@
       if (!grid.children.length) failure();
       else if (label) label.remove();
     })
-    .catch(failure);
+    .catch(() => { grid.dataset.feedState = 'network'; failure(); });
 })();
