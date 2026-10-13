@@ -25,7 +25,7 @@ function graphPage(string $token): array {
     if (!function_exists('curl_init')) {
         return ['ok' => false, 'message' => 'La connexion sécurisée à Meta n’est pas disponible sur ce serveur.'];
     }
-    $url = 'https://graph.facebook.com/'.LV_META_API_VERSION.'/'.LV_META_PAGE_ID.'?'.http_build_query([
+    $url = 'https://graph.facebook.com/'.LV_META_API_VERSION.'/me?'.http_build_query([
         'fields' => 'id,name,instagram_business_account',
     ], '', '&', PHP_QUERY_RFC3986);
     $curl = curl_init($url);
@@ -44,10 +44,10 @@ function graphPage(string $token): array {
     curl_close($curl);
     $json = is_string($body) ? json_decode($body, true) : null;
     if ($status < 200 || $status >= 300 || !is_array($json)) {
-        return ['ok' => false, 'message' => 'Meta n’a pas accepté ce jeton. Vérifiez qu’il s’agit bien du jeton de la Page Le Village.'];
+        return ['ok' => false, 'message' => 'Meta n’a pas accepté ce jeton. Générez un jeton de Page pour Restaurant Le Village - Haut De Cagnes.'];
     }
     if (($json['id'] ?? '') !== LV_META_PAGE_ID) {
-        return ['ok' => false, 'message' => 'Ce jeton ne correspond pas à la Page Facebook du Village.'];
+        return ['ok' => false, 'message' => 'Ce jeton n’est pas celui de la Page Facebook Le Village. Dans l’Explorateur Meta, choisissez la Page dans « Utilisateur ou Page », puis copiez son jeton.'];
     }
     $instagramId = (string)($json['instagram_business_account']['id'] ?? '');
     if ($instagramId !== LV_META_INSTAGRAM_ID) {
