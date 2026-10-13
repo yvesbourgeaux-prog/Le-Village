@@ -18,11 +18,11 @@
         link.rel = 'noopener noreferrer';
         link.setAttribute('aria-label', (english ? 'Instagram post ' : 'Publication Instagram ') + (index + 1));
         const img = document.createElement('img');
-        img.src = post.image;
         img.alt = typeof post.caption === 'string' && post.caption ? post.caption : (english ? 'Restaurant Le Village on Instagram' : 'Le Village sur Instagram');
         img.loading = 'eager';
         img.addEventListener('load', () => section?.classList.add('is-ready'), { once: true });
         img.addEventListener('error', () => link.remove(), { once: true });
+        img.src = post.image;
         img.decoding = 'async';
         img.referrerPolicy = 'no-referrer';
         link.appendChild(img);
