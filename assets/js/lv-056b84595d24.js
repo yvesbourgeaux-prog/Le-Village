@@ -1,13 +1,8 @@
 (function(){const root=window.document.getElementById("lv-056b84595d24");if(!root)return;const document=window.lvScopedDocument(root);
 
 (function(){
-    // PAGES DU MENU (Hébergement Zyro)
-    const menuImages = [
-        "https://assets.zyrosite.com/gnKoPAn3rxzY53IR/carte-avril-26_page-0001-UOvdH59PfVkrM42N.jpg",
-        "https://assets.zyrosite.com/gnKoPAn3rxzY53IR/carte-avril-26_page-0002-dCjfLzbZOChvxSn0.jpg",
-        "https://assets.zyrosite.com/gnKoPAn3rxzY53IR/carte-avril-26_page-0003-Wdtr3QeJV3bq5k32.jpg",
-        "https://assets.zyrosite.com/gnKoPAn3rxzY53IR/carte-avril-26_page-0004-rKs8tZaLCkhUd3cd.jpg"
-    ];
+    // Les images affichées en grand sont les mêmes que les quatre vignettes du menu.
+    const menuImages = Array.from(document.querySelectorAll('.menu-trigger img')).map(img => img.getAttribute('data-lv-original-src') || img.getAttribute('src'));
 
     let currentMenuIndex = 0;
     const menuLightbox = document.getElementById('menuLightbox');
