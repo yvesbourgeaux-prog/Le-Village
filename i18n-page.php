@@ -21,6 +21,8 @@ header('Cache-Control: public, max-age=300');
 $document = $data[$slug] ?? '';
 require_once __DIR__ . '/page-delivery.php';
 $document = lvPageDelivery($document, $lang, $slug);
+require_once __DIR__ . '/autumn-menu-delivery.php';
+$document = lvAutumnMenuDelivery($document, $lang, $slug);
 // The hotel entrance is at 6 Place du Château; the restaurant remains at number 4.
 if ($slug === 'hotel-cagnes-sur-mer-le-grimaldi') {
     $document = str_replace('4 Place du Château', '6 Place du Château', $document);
