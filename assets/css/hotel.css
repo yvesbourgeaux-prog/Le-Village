@@ -16,3 +16,7 @@
 .hotel-page #village-hotel-bas-block .lv-map-modal-inner{height:min(860px,92svh)}
 .hotel-page #reservation{scroll-margin-top:110px}
 @media(max-width:640px){.hotel-page #village-hotel-top-block .hotel-hero{height:82svh;min-height:580px;padding-top:118px;padding-bottom:36px}.hotel-page .hotel-hero h1{font-size:60px}.hotel-page .hotel-hero p{font-size:11px;line-height:1.8;letter-spacing:.16em}.hotel-page .booking-card{padding:6px}.hotel-page #reservation{padding-left:12px;padding-right:12px}}
+
+.hotel-page .hotel-hero-play{position:absolute;z-index:20;left:50%;bottom:8%;transform:translateX(-50%);padding:12px 20px;border:1px solid rgba(255,255,255,.85);border-radius:999px;background:rgba(35,22,13,.76);color:#fff;font:600 14px/1.2 sans-serif;cursor:pointer;white-space:nowrap;box-shadow:0 3px 18px rgba(0,0,0,.3)}
+.hotel-page .hotel-hero-play[hidden]{display:none!important}
+.hotel-page .hotel-hero-play:focus-visible{outline:3px solid #fff;outline-offset:3px}
