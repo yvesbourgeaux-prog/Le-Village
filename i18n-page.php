@@ -25,6 +25,9 @@ require_once __DIR__ . '/autumn-menu-delivery.php';
 $document = lvAutumnMenuDelivery($document, $lang, $slug);
 // The hotel entrance is at 6 Place du Château; the restaurant remains at number 4.
 if ($slug === 'hotel-cagnes-sur-mer-le-grimaldi') {
+    $document = preg_replace('~/assets/js/home\\.js\\?v=[^"\\s<>]*~', '/assets/js/home.js?v=20261020-ipad-video', $document);
+    $document = preg_replace('~/assets/css/hotel\\.css\\?v=[^"\\s<>]*~', '/assets/css/hotel.css?v=20261020-ipad-video', $document);
+    $document = preg_replace('~(<video\\b(?![^>]*\\bposter=)[^>]*)(>)~i', '$1 poster="https://img.holidu.com/images/da29199d-ce71-4bc4-9ebc-179b92ee3630/l.avif"$2', $document, 1);
     $document = str_replace('4 Place du Château', '6 Place du Château', $document);
     $document = str_replace('Le%20Village%2C%204%20Place%20du%20Ch%C3%A2teau', 'H%C3%B4tel%20Le%20Grimaldi%2C%206%20Place%20du%20Ch%C3%A2teau', $document);
 }
