@@ -27,7 +27,6 @@ $document = lvAutumnMenuDelivery($document, $lang, $slug);
 if ($slug === 'hotel-cagnes-sur-mer-le-grimaldi') {
     $document = preg_replace('~/assets/js/home\\.js\\?v=[^"\\s<>]*~', '/assets/js/home.js?v=20261020-ipad-video', $document);
     $document = preg_replace('~/assets/css/hotel\\.css\\?v=[^"\\s<>]*~', '/assets/css/hotel.css?v=20261020-ipad-video', $document);
-    $document = preg_replace('~(<video\\b(?![^>]*\\bposter=)[^>]*)(>)~i', '$1 poster="https://img.holidu.com/images/da29199d-ce71-4bc4-9ebc-179b92ee3630/l.avif"$2', $document, 1);
     $document = str_replace('4 Place du Château', '6 Place du Château', $document);
     $document = str_replace('Le%20Village%2C%204%20Place%20du%20Ch%C3%A2teau', 'H%C3%B4tel%20Le%20Grimaldi%2C%206%20Place%20du%20Ch%C3%A2teau', $document);
 }
@@ -57,11 +56,19 @@ if ($slug === 'brunch-musical-cagnes-sur-mer') {
     }
 }
 
+// Serve the iPad-compatible H.264 hero and its visual fallback in every locale.
+if ($slug === 'hotel-cagnes-sur-mer-le-grimaldi') {
+    $document = str_replace('https://assets.zyrosite.com/gnKoPAn3rxzY53IR/aqm4soio0xloxztsws6x4nupsvbght8jageg2zyehwjn33zkk9uci_dbwaiyy8fnhr_fr1vchhy2gl7nclhj5-ip0y8tcbdelwg-1-ceLDQbBcGe5vb2LJ.mp4', '/assets/video/hotel-grimaldi-hero-h264.mp4', $document);
+}
 // Remove stale generic video posters from prebuilt language packs.
 // They can flash for a split second before the real video frame appears.
 $document = preg_replace_callback('~<video\\b[^>]*>~i', static function ($match) {
     return preg_replace('~\\s+poster=(?:"[^"]*"|\\x27[^\\x27]*\\x27)~i', '', $match[0]);
 }, $document);
+
+if ($slug === 'hotel-cagnes-sur-mer-le-grimaldi') {
+    $document = preg_replace('~(<video\\b[^>]*)(>)~i', '$1 poster="https://img.holidu.com/images/da29199d-ce71-4bc4-9ebc-179b92ee3630/l.avif"$2', $document, 1);
+}
 
 // Keep the short booking label in prebuilt translations.
 $bookingLabels = ["en" => "Book", "sv" => "Boka", "da" => "Book", "nl" => "Reserveer", "de" => "Reservieren", "it" => "Prenota", "es" => "Reservar", "ja" => "予約", "zh-CN" => "预订", "nb" => "Reserver", "ru" => "Забронировать", "pl" => "Zarezerwuj"];
