@@ -68,14 +68,14 @@ $head = '<meta name="robots" content="noindex,nofollow,noarchive"/><title>Démo 
  . '<link rel="stylesheet" href="/assets/css/demo-meta-editorial.css?v=20261011-editorial1"/>'
  . '<link rel="stylesheet" href="/assets/css/demo-meta-actions.css?v=20261011-actions1"/>'
  . '<link rel="stylesheet" href="/assets/css/demo-village-redesign.css?v=20261011-logo4"/>'
- . '<link rel="stylesheet" href="/assets/css/demo-google-stats.css?v=20261021-compare-v2"/>'
+ . '<link rel="stylesheet" href="/assets/css/demo-google-stats.css?v=20261021-compare-v3"/>'
  . '<script defer src="/assets/js/demo-reservation.js?v=20261009-opening3"></script>'
  . '<script defer src="/assets/js/demo-backoffice-core.js?v=20261011-stats2"></script>'
  . '<script defer src="/assets/js/demo-backoffice-comms.js?v=20261009-ux3"></script>'
  . '<script defer src="/assets/js/demo-meta.js?v=20261011-content14"></script>'
  . '<script defer src="/assets/js/demo-meta-editorial.js?v=20261011-schedule1"></script>'
  . '<script defer src="/assets/js/demo-meta-actions.js?v=20261011-actions2"></script>'
- . '<script defer src="/assets/js/demo-google-stats.js?v=20261021-compare-v2"></script>'
+ . '<script defer src="/assets/js/demo-google-stats.js?v=20261021-compare-v3"></script>'
  . '<script defer src="/assets/js/demo-booking-launcher.js?v=20261009-ux3"></script>';// Update the consent panel copy: the private demo never uses Zenchef.
 $site = str_replace('La carte et le module de réservation utilisent les services Google Maps et Zenchef.', 'La carte utilise Google Maps. La réservation est simulée localement sur cette page.', $site);
 $site = str_replace('</head>', $head . '</head>', $site);
