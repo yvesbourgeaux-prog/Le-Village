@@ -66,6 +66,29 @@ try {
   $timezone = new DateTimeZone('Europe/Paris');
   $end = (new DateTimeImmutable('today', $timezone))->modify('-1 day');
   $start = $end->modify('-' . ($days - 1) . ' days');
+  $selectedQuery = trim((string)($_GET['query'] ?? ''));
+  if ($selectedQuery !== '') {
+    if (mb_strlen($selectedQuery, 'UTF-8') > 200) respond(400, ['error' => 'Recherche trop longue.']);
+    $gscEnd = (new DateTimeImmutable('today', $timezone))->modify('-3 days');
+    $gscStart = $gscEnd->modify('-' . ($days - 1) . ' days');
+    $gscUrl = 'https://www.googleapis.com/webmasters/v3/sites/' . rawurlencode($config['site_url']) . '/searchAnalytics/query';
+    $gscRange = ['startDate' => $gscStart->format('Y-m-d'), 'endDate' => $gscEnd->format('Y-m-d'), 'type' => 'web'];
+    $queryFilter = ['dimensionFilterGroups' => [['groupType' => 'and', 'filters' => [['dimension' => 'query', 'operator' => 'equals', 'expression' => $selectedQuery]]]]];
+    $searchQuery = fn(array $body): array => googlePost($gscUrl, $gscRange + $queryFilter + $body, $token);
+    $mapRow = static fn(array $row): array => ['label' => (string)($row['keys'][0] ?? ''), 'clicks' => (int)($row['clicks'] ?? 0), 'impressions' => (int)($row['impressions'] ?? 0), 'ctr' => (float)($row['ctr'] ?? 0), 'position' => (float)($row['position'] ?? 0)];
+    $daily = $searchQuery(['dimensions' => ['date'], 'rowLimit' => 200]);
+    $pages = $searchQuery(['dimensions' => ['page'], 'rowLimit' => 25]);
+    $dailyRows = array_map($mapRow, $daily['rows'] ?? []);
+    $clicks = array_sum(array_column($dailyRows, 'clicks'));
+    $impressions = array_sum(array_column($dailyRows, 'impressions'));
+    $weightedPosition = array_reduce($dailyRows, static fn(float $sum, array $row): float => $sum + $row['position'] * $row['impressions'], 0.0);
+    respond(200, [
+      'query' => $selectedQuery,
+      'searchRange' => ['startDate' => $gscRange['startDate'], 'endDate' => $gscRange['endDate']],
+      'totals' => ['clicks' => $clicks, 'impressions' => $impressions, 'ctr' => $impressions ? $clicks / $impressions : 0, 'position' => $impressions ? $weightedPosition / $impressions : 0],
+      'daily' => $dailyRows, 'pages' => array_map($mapRow, $pages['rows'] ?? []),
+    ]);
+  }
   $gaUrl = 'https://analyticsdata.googleapis.com/v1beta/properties/' . $config['property_id'] . ':runReport';
   $range = ['startDate' => $start->format('Y-m-d'), 'endDate' => $end->format('Y-m-d')];
   $ga = fn(array $body): array => googlePost($gaUrl, ['dateRanges' => [$range]] + $body, $token);
@@ -83,8 +106,8 @@ try {
   $search = fn(array $body): array => googlePost($gscUrl, $gscRange + $body, $token);
   $gscTotals = $search(['rowLimit' => 1]);
   $gscDaily = $search(['dimensions' => ['date'], 'rowLimit' => 200]);
-  $gscPages = $search(['dimensions' => ['page'], 'rowLimit' => 8]);
-  $gscQueries = $search(['dimensions' => ['query'], 'rowLimit' => 8]);
+  $gscPages = $search(['dimensions' => ['page'], 'rowLimit' => 25]);
+  $gscQueries = $search(['dimensions' => ['query'], 'rowLimit' => 100]);
   $metric = static fn(array $row): array => ['clicks' => (int)($row['clicks'] ?? 0), 'impressions' => (int)($row['impressions'] ?? 0), 'ctr' => (float)($row['ctr'] ?? 0), 'position' => (float)($row['position'] ?? 0)];
   $mapSearch = static fn(array $report): array => array_map(static fn($row) => ['label' => (string)($row['keys'][0] ?? '')] + $metric($row), $report['rows'] ?? []);
   respond(200, [

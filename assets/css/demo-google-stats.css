@@ -29,6 +29,29 @@ body.lv-demo-admin #lv-demo-app .lv-site-footer{max-width:850px;margin:8px 0 26p
 body.lv-demo-admin #lv-demo-app .lv-site-unavailable{border-left:3px solid #c95d43;max-width:720px}
 body.lv-demo-admin #lv-demo-app .lv-site-unavailable strong{font-size:17px;color:#3c302b}
 body.lv-demo-admin #lv-demo-app .lv-site-unavailable p{color:#766a64;margin:8px 0 0}
+body.lv-demo-admin #lv-demo-app .lv-site-query-heading{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:end}
+body.lv-demo-admin #lv-demo-app .lv-site-query-heading h3{margin-bottom:5px}
+body.lv-demo-admin #lv-demo-app .lv-site-query-heading p{margin:0 0 12px}
+body.lv-demo-admin #lv-demo-app .lv-site-query-controls{display:flex;gap:10px;flex-wrap:wrap}
+body.lv-demo-admin #lv-demo-app .lv-site-query-controls label{display:grid;gap:5px;color:#685c55;font-size:11px;font-weight:700}
+body.lv-demo-admin #lv-demo-app .lv-site-query-controls input,body.lv-demo-admin #lv-demo-app .lv-site-query-controls select{min-height:38px;border:1px solid #d8c9c0;border-radius:3px;background:#fff;color:#3e332e;padding:7px 10px;font:13px Inter,Arial,sans-serif}
+body.lv-demo-admin #lv-demo-app .lv-site-query-link{padding:0;border:0;background:none;color:#934730;font:600 12px Inter,Arial,sans-serif;text-align:left;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+body.lv-demo-admin #lv-demo-app .lv-site-query-link:hover{color:#643522}
+body.lv-demo-admin #lv-demo-app .lv-site-query-link:focus-visible,body.lv-demo-admin #lv-demo-app .lv-site-metric button:focus-visible{outline:2px solid #934730;outline-offset:3px}
+body.lv-demo-admin #lv-demo-app #lv-site-query-detail{border:1px solid #d7b5a4;background:#fffaf7;padding:18px;margin:16px 0 20px}
+body.lv-demo-admin #lv-demo-app #lv-site-query-detail[hidden]{display:none}
+body.lv-demo-admin #lv-demo-app .lv-site-detail-head{display:flex;justify-content:space-between;gap:15px;align-items:start;margin-bottom:15px}
+body.lv-demo-admin #lv-demo-app .lv-site-detail-head span{font-size:10px;font-weight:700;letter-spacing:.12em;color:#aa624a}
+body.lv-demo-admin #lv-demo-app .lv-site-detail-head h3{margin:4px 0;font-size:21px}
+body.lv-demo-admin #lv-demo-app .lv-site-detail-head small{color:#877b74}
+body.lv-demo-admin #lv-demo-app .lv-site-detail-head button{border:1px solid #d8c9c0;background:white;padding:8px 11px;color:#59483f;cursor:pointer}
+body.lv-demo-admin #lv-demo-app .lv-site-metric{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+body.lv-demo-admin #lv-demo-app .lv-site-metric button{border:1px solid #d9c8bd;background:#fff;color:#6c5146;padding:8px 11px;cursor:pointer}
+body.lv-demo-admin #lv-demo-app .lv-site-metric button.is-active{background:#934730;color:white;border-color:#934730}
+body.lv-demo-admin #lv-demo-app .lv-site-trend polyline{fill:none;stroke:#b65035;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+body.lv-demo-admin #lv-demo-app .lv-site-trend circle{fill:#b65035;stroke:#fff;stroke-width:1.5}
+body.lv-demo-admin #lv-demo-app .lv-site-trend .lv-site-baseline{stroke:#e4d8d1;stroke-width:1}
+body.lv-demo-admin #lv-demo-app #lv-site-query-detail h4{font-size:15px;color:#463732;margin:20px 0 8px}
 @media(max-width:900px){body.lv-demo-admin #lv-demo-app .lv-site-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}body.lv-demo-admin #lv-demo-app .lv-site-columns{grid-template-columns:1fr}}
 @media(max-width:900px){body.lv-demo-admin #lv-demo-app .lv-nav-stats{display:flex!important;align-items:center!important;flex-wrap:wrap!important;gap:2px!important;flex:0 0 auto!important;border-left:1px solid #ddc9c0!important;padding-left:7px!important}body.lv-demo-admin #lv-demo-app .lv-nav-stats .lv-menu-label{display:block!important;flex-basis:100%!important;padding:0 8px 2px!important;margin:0!important;font-size:9px!important}}
 @media(max-width:520px){body.lv-demo-admin #lv-demo-app .lv-site-kpis article{padding:13px}body.lv-demo-admin #lv-demo-app .lv-site-kpis strong{font-size:22px}body.lv-demo-admin #lv-demo-app .lv-site-section-title h2{font-size:21px}}
