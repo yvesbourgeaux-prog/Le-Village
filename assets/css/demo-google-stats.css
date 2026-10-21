@@ -55,3 +55,38 @@ body.lv-demo-admin #lv-demo-app #lv-site-query-detail h4{font-size:15px;color:#4
 @media(max-width:900px){body.lv-demo-admin #lv-demo-app .lv-site-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}body.lv-demo-admin #lv-demo-app .lv-site-columns{grid-template-columns:1fr}}
 @media(max-width:900px){body.lv-demo-admin #lv-demo-app .lv-nav-stats{display:flex!important;align-items:center!important;flex-wrap:wrap!important;gap:2px!important;flex:0 0 auto!important;border-left:1px solid #ddc9c0!important;padding-left:7px!important}body.lv-demo-admin #lv-demo-app .lv-nav-stats .lv-menu-label{display:block!important;flex-basis:100%!important;padding:0 8px 2px!important;margin:0!important;font-size:9px!important}}
 @media(max-width:520px){body.lv-demo-admin #lv-demo-app .lv-site-kpis article{padding:13px}body.lv-demo-admin #lv-demo-app .lv-site-kpis strong{font-size:22px}body.lv-demo-admin #lv-demo-app .lv-site-section-title h2{font-size:21px}}
+/* Date ranges and comparable charts */
+body.lv-demo-admin #lv-demo-app .lv-site-date-picker{position:relative;flex:1;min-width:240px;max-width:600px}
+body.lv-demo-admin #lv-demo-app .lv-site-date-picker summary{list-style:none;cursor:pointer;background:#fff;border:1px solid #d8c9c0;padding:11px 14px;font-size:13px;font-weight:600;color:#59483f}
+body.lv-demo-admin #lv-demo-app .lv-site-date-picker summary:after{content:' ▾';float:right}
+body.lv-demo-admin #lv-demo-app .lv-site-date-panel{position:absolute;left:0;top:100%;z-index:30;width:min(650px,calc(100vw - 32px));display:grid;grid-template-columns:190px 1fr;background:#fff;border:1px solid #d8c9c0;box-shadow:0 8px 30px #392e2b22;padding:16px;gap:20px}
+body.lv-demo-admin #lv-demo-app .lv-site-presets{display:grid;align-content:start;border-right:1px solid #eee2db;padding-right:14px}
+body.lv-demo-admin #lv-demo-app .lv-site-presets button{border:0;background:none;padding:10px 8px;text-align:left;font:13px Inter,Arial,sans-serif;color:#59483f;cursor:pointer}
+body.lv-demo-admin #lv-demo-app .lv-site-presets button:hover{background:#faeee7}
+body.lv-demo-admin #lv-demo-app .lv-site-date-panel form{display:grid;gap:14px;align-content:start}
+body.lv-demo-admin #lv-demo-app .lv-site-date-panel label{display:grid;gap:5px;font-size:12px;color:#67564b}
+body.lv-demo-admin #lv-demo-app .lv-site-date-panel input,body.lv-demo-admin #lv-demo-app .lv-site-date-panel select{width:100%;min-width:0;padding:9px 6px;background:#fff;border:1px solid #d8c9c0;color:#392e2b;font:13px Inter,Arial,sans-serif;min-height:40px}
+body.lv-demo-admin #lv-demo-app .lv-site-date-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+body.lv-demo-admin #lv-demo-app .lv-site-date-fields[hidden]{display:none}
+body.lv-demo-admin #lv-demo-app .lv-site-apply{padding:10px;background:#934730;color:#fff;border:0;font:600 13px Inter,Arial,sans-serif;cursor:pointer}
+body.lv-demo-admin #lv-demo-app .lv-site-chart-types{display:flex}
+body.lv-demo-admin #lv-demo-app .lv-site-chart-types button{padding:10px 12px;border:1px solid #d8c9c0;background:#fff;color:#59483f;cursor:pointer}
+body.lv-demo-admin #lv-demo-app .lv-site-chart-types button[aria-pressed="true"]{background:#934730;border-color:#934730;color:#fff}
+body.lv-demo-admin #lv-demo-app .lv-site-comparison-chart svg{height:auto;min-height:220px;max-height:none;width:100%;overflow:visible}
+body.lv-demo-admin #lv-demo-app .lv-site-comparison-chart .lv-site-grid{stroke:#e9e0da;stroke-width:1}
+body.lv-demo-admin #lv-demo-app .lv-site-comparison-chart .lv-site-tick{fill:#75675e;font:11px Inter,Arial,sans-serif}
+body.lv-demo-admin #lv-demo-app .lv-site-comparison-chart .lv-site-axis-title{fill:#59483f;font:600 11px Inter,Arial,sans-serif}
+body.lv-demo-admin #lv-demo-app .lv-site-comparison-chart .lv-site-compare-tick{fill:#3d7180}
+body.lv-demo-admin #lv-demo-app .lv-site-comparison-chart polyline{stroke-width:2;stroke-linejoin:round;stroke-linecap:round;pointer-events:none}
+body.lv-demo-admin #lv-demo-app .lv-site-comparison-chart .lv-site-series-current{fill:#bc5438;stroke:#bc5438}
+body.lv-demo-admin #lv-demo-app .lv-site-comparison-chart .lv-site-series-compare{fill:#367685;stroke:#367685}
+body.lv-demo-admin #lv-demo-app .lv-site-comparison-chart polyline.lv-site-series-current,body.lv-demo-admin #lv-demo-app .lv-site-comparison-chart polyline.lv-site-series-compare{fill:none}
+body.lv-demo-admin #lv-demo-app .lv-site-comparison-chart polyline.lv-site-series-compare{stroke-dasharray:6 4}
+body.lv-demo-admin #lv-demo-app .lv-site-comparison-chart [data-point-label]:focus{outline:2px solid #392e2b;stroke:#392e2b;stroke-width:2}
+body.lv-demo-admin #lv-demo-app .lv-site-chart-legend{display:flex;flex-wrap:wrap;gap:8px 22px;margin:0 0 10px;font-size:12px;color:#67564b}
+body.lv-demo-admin #lv-demo-app .lv-site-chart-legend span{display:flex;align-items:center;gap:7px}
+body.lv-demo-admin #lv-demo-app .lv-site-chart-legend i{width:18px;height:3px;background:#bc5438;display:inline-block}
+body.lv-demo-admin #lv-demo-app .lv-site-chart-legend i.is-compare{background:#367685}
+body.lv-demo-admin #lv-demo-app .lv-site-chart-readout{min-height:20px;margin:9px 0 0;color:#67564b;font-size:12px}
+body.lv-demo-admin #lv-demo-app .lv-site-kpis .lv-site-delta{display:block;margin-top:8px;font-size:11px;color:#7b665b;line-height:1.5}
+@media(max-width:600px){body.lv-demo-admin #lv-demo-app .lv-site-date-panel{grid-template-columns:1fr;width:min(430px,calc(100vw - 38px))}body.lv-demo-admin #lv-demo-app .lv-site-presets{grid-template-columns:1fr 1fr;border:0;border-bottom:1px solid #eee2db;padding:0 0 10px}body.lv-demo-admin #lv-demo-app .lv-site-comparison-chart{overflow-x:auto}body.lv-demo-admin #lv-demo-app .lv-site-comparison-chart svg{min-width:540px}body.lv-demo-admin #lv-demo-app .lv-site-date-picker{max-width:100%}}
