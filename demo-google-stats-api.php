@@ -50,7 +50,7 @@ function accessToken(array $config): string {
   $status = (int)curl_getinfo($handle, CURLINFO_HTTP_CODE);
   curl_close($handle);
   $json = is_string($raw) ? json_decode($raw, true) : null;
-  if ($status === 400 && is_array($json) && ($json['error'] ?? '') === 'invalid_grant') throw new RuntimeException('google_refresh_expired');
+  if ($status === 400 && is_array($json) && ($json['error'] ?? '') === 'invalid_grant') throw new RuntimeException('google_refresh_rejected');
   if ($status !== 200 || !is_array($json) || empty($json['access_token'])) throw new RuntimeException('Autorisation Google indisponible');
   return (string)$json['access_token'];
 }
@@ -117,8 +117,8 @@ try {
     'tagManager' => ['container' => 'GTM-NCL2235Z', 'status' => 'Configuré sur le site, après consentement'],
   ]);
 } catch (Throwable $error) {
-  if ($error->getMessage() === 'google_refresh_expired') {
-    respond(503, ['error' => 'L’autorisation Google a expiré. Reconnectez votre compte pour rétablir les statistiques.', 'code' => 'not_authorized', 'connect_url' => '/demo-google-oauth.php']);
+  if ($error->getMessage() === 'google_refresh_rejected') {
+    respond(503, ['error' => 'Google refuse le jeton enregistré par le back-office. L’autorisation a pu être accordée, mais cette connexion ne permet plus de lire les données. Relancez la connexion pour remplacer le jeton enregistré.', 'code' => 'token_rejected', 'connect_url' => '/demo-google-oauth.php']);
   }
   error_log('Le Village Google stats: ' . $error->getMessage());
   respond(502, ['error' => 'Les données Google ne sont pas accessibles pour le moment. Vérifiez les accès Analytics et Search Console.', 'code' => 'google_unavailable']);
