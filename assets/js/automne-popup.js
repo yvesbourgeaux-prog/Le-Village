@@ -123,7 +123,8 @@
     "alt": "Jesienne dekoracje w Haut-de-Cagnes z logo Le Grimaldi x Le Village"
   }
 };
-  if (new Date() > new Date('2026-11-01T00:00:00+01:00')) return;
+  const endsAt = new Date('2026-11-02T00:00:00+01:00').getTime();
+  if (Date.now() >= endsAt) return;
   const key = 'lv-autumn-popup-2026';
   try { if (localStorage.getItem(key)) return; } catch (_) {}
   const dialog = document.createElement('dialog');
@@ -146,10 +147,25 @@
   event.href = prefix + '/automne-halloween-haut-de-cagnes';
   document.body.append(dialog);
   let initiated = false;
-  const close = () => { dialog.close(); try { localStorage.setItem(key, String(Date.now())); } catch (_) {} };
+  let expiryTimer = null;
+  const clearTheme = () => {
+    document.body.classList.remove('lv-halloween-active');
+    if (expiryTimer !== null) window.clearTimeout(expiryTimer);
+    expiryTimer = null;
+  };
+  const remember = () => { try { localStorage.setItem(key, String(Date.now())); } catch (_) {} };
+  const close = () => { clearTheme(); dialog.close(); remember(); };
   dialog.querySelector('button').addEventListener('click', close);
+  booking.addEventListener('click', close);
+  event.addEventListener('click', close);
   dialog.addEventListener('click', e => { if (e.target === dialog) close(); });
-  dialog.addEventListener('close', () => { try { localStorage.setItem(key, String(Date.now())); } catch (_) {} });
+  dialog.addEventListener('cancel', clearTheme);
+  dialog.addEventListener('close', () => { clearTheme(); remember(); });
+  window.addEventListener('pagehide', clearTheme);
+  window.addEventListener('pageshow', () => {
+    if (dialog.open && Date.now() < endsAt) document.body.classList.add('lv-halloween-active');
+    else clearTheme();
+  });
   const onScroll = () => {
     if (initiated || window.scrollY < 100) return;
     initiated = true;
@@ -161,7 +177,10 @@
       window.addEventListener('lv:consent', () => window.setTimeout(tryOpen, 1600), { once: true });
       return;
     }
+    if (Date.now() >= endsAt) return;
     dialog.showModal();
+    document.body.classList.add('lv-halloween-active');
+    expiryTimer = window.setTimeout(close, Math.max(0, endsAt - Date.now()));
   };
   window.addEventListener('scroll', onScroll, { passive: true });
 })();
