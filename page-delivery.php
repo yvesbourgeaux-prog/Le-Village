@@ -29,5 +29,8 @@ function lvPageDelivery(string $document, string $lang, string $slug): string {
             return $opening . htmlspecialchars($heading, ENT_QUOTES, 'UTF-8') . '</h1>';
         }, $document, 1);
     }
+    if (!str_contains($document, '/assets/js/seasonal-logo.js')) {
+        $document = str_replace('</head>', '<script data-lv-seasonal-logo-loader src="/assets/js/seasonal-logo.js?v=20261022-1"></script>' . '</head>', $document);
+    }
     return $document;
 }
