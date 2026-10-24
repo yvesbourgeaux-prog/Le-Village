@@ -30,7 +30,7 @@ function lvPageDelivery(string $document, string $lang, string $slug): string {
         }, $document, 1);
     }
     if (!str_contains($document, '/assets/js/seasonal-logo.js')) {
-        $document = str_replace('</head>', '<script data-lv-seasonal-logo-loader src="/assets/js/seasonal-logo.js?v=20261022-1"></script>' . '</head>', $document);
+        $document = str_replace('</head>', '<script data-lv-seasonal-logo-loader src="/assets/js/seasonal-logo.js?v=20261024-normal"></script>' . '</head>', $document);
     }
     return $document;
 }

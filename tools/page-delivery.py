@@ -36,7 +36,7 @@ def apply(document, lang='fr', slug=''):
     module=module_from_spec(spec); spec.loader.exec_module(module)
     document=module.apply(document)
     if '/assets/js/seasonal-logo.js' not in document:
-        document = document.replace('</head>', '<script data-lv-seasonal-logo-loader src="/assets/js/seasonal-logo.js?v=20261022-1"></script></head>')
+        document = document.replace('</head>', '<script data-lv-seasonal-logo-loader src="/assets/js/seasonal-logo.js?v=20261024-normal"></script></head>')
     return document.replace("/assets/js/site.js?v=20261005-ga1", "/assets/js/site.js?v=20261006-gtm1")
 
 if __name__ == '__main__':

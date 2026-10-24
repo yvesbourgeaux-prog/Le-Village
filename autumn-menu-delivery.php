@@ -17,7 +17,7 @@ function lvAutumnMenuDelivery(string $document, string $lang, string $slug): str
         );
         $document = preg_replace(
             '~/assets/js/lv-056b84595d24\\.js(?:\\?v=[^"\\s<>]*)?~',
-            '/assets/js/lv-056b84595d24.js?v=20261018-automne',
+            '/assets/js/lv-056b84595d24.js?v=20261024-complete',
             $document
         );
         // Some language packs have the inline lightbox list rather than the shared script.
@@ -26,6 +26,7 @@ function lvAutumnMenuDelivery(string $document, string $lang, string $slug): str
             '/assets/images/carte-automne-2026-$1.png',
             $document
         );
+        $document = preg_replace('~(/assets/(?:images|menus)/carte-automne-2026-[1-4]\\.(?:jpg|png|pdf))(?:\\?v=[^"\\s<>]*)?~', '$1?v=20261024-complete', $document);
         return $document;
     }
     if ($slug !== 'la-carte') return $document;
