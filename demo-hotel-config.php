@@ -1,0 +1,13 @@
+<?php
+declare(strict_types=1);session_start();header('Cache-Control: no-store, private');header('X-Robots-Tag: noindex, nofollow, noarchive');header('Referrer-Policy: no-referrer');
+if(empty($_SESSION['lv_demo_ok'])){header('Location: /demo-reservation?next=hotel');exit;}
+require __DIR__.'/hotel-demo-lib.php';
+if(empty($_SESSION['hd_csrf']))$_SESSION['hd_csrf']=bin2hex(random_bytes(24));$message='';$catalog=hd_catalog();
+if($_SERVER['REQUEST_METHOD']==='POST'){
+ try{if(!hash_equals($_SESSION['hd_csrf'],(string)($_POST['csrf']??'')))throw new RuntimeException('Session expirée.');$config=hd_config();foreach($catalog['rooms'] as $r){$url=trim((string)($_POST['calendar'][$r['id']]??''));if($url==='')continue;if(!hd_valid_url($url))throw new RuntimeException('Utilisez uniquement un lien HTTPS iCal exporté par Holidu.');$config[$r['id']]=$url;}
+ hd_write(hd_dir().'/calendars.json',$config);foreach($catalog['rooms'] as $r)@unlink(hd_dir().'/cache-'.$r['id'].'.json');$message='Calendriers enregistrés. Le site lit uniquement les nuits occupées ; aucun nom de voyageur ni lien privé n’est renvoyé au navigateur.';
+ }catch(Throwable $e){$message='La configuration n’a pas pu être enregistrée. Vérifiez les liens et réessayez.';}
+}
+function esc(string $s):string{return htmlspecialchars($s,ENT_QUOTES,'UTF-8');}
+$config=hd_config();
+?><!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Calendriers hôtel — Démo privée</title><link rel="stylesheet" href="/assets/css/demo-hotel.css?v=20261025-1"></head><body class="hd-settings"><main class="hd-config"><a href="/demo-hotel">← Démo hôtel</a><p class="hd-eyebrow">Paramétrage privé</p><h1>Disponibilités Holidu</h1><p>Lecture des calendriers iCal des cinq chambres. Les liens restent dans le dossier privé du serveur et ne sont pas affichés après enregistrement.</p><?php if($message):?><p class="hd-notice" role="status"><?=esc($message)?></p><?php endif?><form method="post" autocomplete="off"><input type="hidden" name="csrf" value="<?=esc($_SESSION['hd_csrf'])?>"><?php foreach($catalog['rooms'] as $r):?><label><?=esc($r['name'])?> · <?=esc($r['id'])?> <span><?=isset($config[$r['id']])?'Connecté · laisser vide pour conserver':'À connecter'?></span><input type="url" name="calendar[<?=esc($r['id'])?>]" aria-label="Calendrier <?=esc($r['id'])?>" placeholder="Lien iCal Holidu" autocomplete="off"></label><?php endforeach?><button class="hd-btn">Enregistrer les calendriers</button></form><p>Les essais de réservation ne sont jamais exportés vers Holidu. Les tarifs sont un relevé du 25 octobre 2026 et ne sont pas synchronisés par iCal.</p></main></body></html>

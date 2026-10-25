@@ -1,0 +1,241 @@
+{
+  "updated": "2026-10-25",
+  "rooms": [
+    {
+      "id": "67208942",
+      "slug": "chambre-double-01",
+      "name": "Chambre double 01",
+      "floor": 1,
+      "area": 16,
+      "capacity": 2,
+      "description": "La chambre « Chambre Double » à Cagnes-sur-Mer offre 16 m² et peut accueillir 2 personnes. Elle comprend une chambre et une salle de bain. Les équipements privés incluent la climatisation, une télévision, un espace de travail dédié et le Wi-Fi. Vous bénéficiez d'une vue unique sur la place du Château.",
+      "photos": [
+        "https://img.host.holidu.com/apartment/67208942/sQpcIRkZgQp8LIuGFfa_4i59se_TSRxvwkEHF_9-A2E.jpg/m",
+        "https://img.host.holidu.com/apartment/67208942/z2Ti3YIrezY--RI1L77aZDO-UWmX2fhCGgrTc7lZXCE.jpg/m",
+        "https://img.host.holidu.com/apartment/67208942/QpDjfROxcdsREsTQ9aw0tfjcMPj1GFv_zU6nC0KSafI.jpg/m",
+        "https://img.host.holidu.com/apartment/67208942/jkGfv14oP7slfEbiEKSVnW1tkbB4trFJbUFVK0hmkHg.jpg/m",
+        "https://img.host.holidu.com/apartment/67208942/FK-VU-yvV2FmV-p4jGYwvC7q0Egjfh0DXTsOxMnmPZg.jpg/m",
+        "https://img.host.holidu.com/apartment/67208942/8Z5ucnv8z0ORkvmPEEzO-os8-KUtqgfE5VDtolRS1r0.jpg/m",
+        "https://img.host.holidu.com/apartment/67208942/lIaIv_hEPM9TDlZX9_-BIBYFWNeqEsuy21cx_GlVaB0.jpg/m",
+        "https://img.host.holidu.com/apartment/67208942/QEyqHP2KHrUZtDmKYUq4Y933JTbzuWMcsvHNtDDb7Js.jpg/m",
+        "https://img.host.holidu.com/apartment/67208942/m11GTjKVj1TfyGNDwOpTq7FP49j10X9_QXZ32lIqJuk.jpg/m",
+        "https://img.host.holidu.com/apartment/67208942/S29vJqCUDjsEoIiFo48mIFRPIfqfLF6AnfsQ9t6Lu3Y.jpg/m"
+      ],
+      "bed": "1 lit queen-size",
+      "features": [
+        "Wi-Fi gratuit",
+        "Climatisation",
+        "Télévision",
+        "Espace de travail",
+        "Salle de bain privative",
+        "Linge et serviettes fournis",
+        "Vue sur la place du Château"
+      ],
+      "rates": [
+        {
+          "start": "2026-10-01",
+          "end": "2027-01-31",
+          "price": 123,
+          "minNights": 1
+        },
+        {
+          "start": "2026-12-19",
+          "end": "2027-01-02",
+          "price": 150,
+          "minNights": 1
+        }
+      ],
+      "extraGuest": 0
+    },
+    {
+      "id": "67208948",
+      "slug": "chambre-double-02",
+      "name": "Chambre double 02",
+      "floor": 1,
+      "area": 16,
+      "capacity": 2,
+      "description": "La chambre « Chambre Double » à Cagnes-sur-Mer offre 16 m² et peut accueillir 2 personnes. Elle comprend une chambre et une salle de bain. Les équipements privés incluent la climatisation, une télévision, un espace de travail dédié et le Wi-Fi. Vous bénéficiez d'une vue unique sur la place du Château.",
+      "photos": [
+        "https://img.host.holidu.com/apartment/67208948/KhEi-uHKD8J6xTAe1fZswf5oMAuVt2ifFjqzEy2eiZQ.jpg/m",
+        "https://img.host.holidu.com/apartment/67208948/E47_INeCpQLtedu_3GhNaxDRIF-WJlUURaUTgDzBX9E.jpg/m",
+        "https://img.host.holidu.com/apartment/67208948/8P1wZjpjUl8tuJUwx5mRZziCE1P90VQKptqG0tbKyWo.jpg/m",
+        "https://img.host.holidu.com/apartment/67208948/uyoZPfQQEuFOH8b0_N6zntlz-saCDh_e45yINMb3AGs.jpg/m",
+        "https://img.host.holidu.com/apartment/67208948/B-SfqA0-Gz4jbAdtaKIQPAupHwGuATUBSG1QqchwHwg.jpg/m",
+        "https://img.host.holidu.com/apartment/67208948/9Lwl1ZuGx3PPnqh1mE6XAQWcbbxtWQYhJGc14i_kx68.jpg/m",
+        "https://img.host.holidu.com/apartment/67208948/h9JnlyAE2KS11X2wCbB5UISaxv4KXy-MavpZ9gk6LjE.jpg/m",
+        "https://img.host.holidu.com/apartment/67208948/SkQuHlseqp-Rphw3hIefcX90kqMX-rz2U_1kXZwtIkY.jpg/m",
+        "https://img.host.holidu.com/apartment/67208948/ulPlL5XtlWqaKiQODcOOCcasOrUgiP5w8dzzTrtkgHs.jpg/m",
+        "https://img.host.holidu.com/apartment/67208948/r8ZxkK7x6MjIotg1tZ-OtZQSkxPtPX3vkNzhgPilggc.jpg/m"
+      ],
+      "bed": "1 lit queen-size",
+      "features": [
+        "Wi-Fi gratuit",
+        "Climatisation",
+        "Télévision",
+        "Espace de travail",
+        "Salle de bain privative",
+        "Linge et serviettes fournis",
+        "Vue sur la place du Château"
+      ],
+      "rates": [
+        {
+          "start": "2026-10-01",
+          "end": "2027-01-02",
+          "price": 123,
+          "minNights": 1
+        },
+        {
+          "start": "2026-12-20",
+          "end": "2027-01-02",
+          "price": 150,
+          "minNights": 1
+        }
+      ],
+      "extraGuest": 0
+    },
+    {
+      "id": "67208931",
+      "slug": "chambre-double-03",
+      "name": "Chambre double 03",
+      "floor": 2,
+      "area": 16,
+      "capacity": 2,
+      "description": "La chambre « Chambre Double » à Cagnes-sur-Mer offre 16 m² et peut accueillir 2 personnes. Elle comprend une chambre et une salle de bain. Les équipements privés incluent la climatisation, une télévision, un espace de travail dédié et le Wi-Fi. Vous bénéficiez d'une vue unique sur la place du Château.",
+      "photos": [
+        "https://img.host.holidu.com/apartment/67208931/QSZo7gduvVzhNFY9BJ4rE3-GicDwP26S8G_TuvhtTvQ.jpg/m",
+        "https://img.host.holidu.com/apartment/67208931/2S50CmbAUbSse9Qsrr9-d6ODghH5ahCqIMcFMW7YDJM.jpg/m",
+        "https://img.host.holidu.com/apartment/67208931/MDGeIxtLKFEiay73c5K_zD9iELwJrdzK1Sm5ARoPKi8.jpg/m",
+        "https://img.host.holidu.com/apartment/67208931/qDFsqpgPG4I2hSF6u3li0YeSmlvk7rQLI--0P3cKokA.jpg/m",
+        "https://img.host.holidu.com/apartment/67208931/MssbWH8Z__TNiEGHpxpNs624T5lU8cvADtPJN1H6-eU.jpg/m",
+        "https://img.host.holidu.com/apartment/67208931/OSgyvRaUSYjBVLM00mvSThqJ5G_UXCQjrPSpEsVRogw.jpg/m",
+        "https://img.host.holidu.com/apartment/67208931/uEA6SXIYYqz0IMQUEmogrifmP_ZlG2Mm25NbdPeKE64.jpg/m",
+        "https://img.host.holidu.com/apartment/67208931/QyVSJFGUahnICU5srpruGjFkpsyTq49YdspQVO63CTI.jpg/m",
+        "https://img.host.holidu.com/apartment/67208931/Hl_pwMY3WBiqzGXEl2Z_EDPcMMpNpMst7eak0R2yfA8.jpg/m",
+        "https://img.host.holidu.com/apartment/67208931/P0Hyf--mWkraD8QQCN7TIFETql2f5q3F1xwGUsZkXP4.jpg/m"
+      ],
+      "bed": "1 lit queen-size",
+      "features": [
+        "Wi-Fi gratuit",
+        "Climatisation",
+        "Télévision",
+        "Espace de travail",
+        "Salle de bain privative",
+        "Linge et serviettes fournis",
+        "Vue sur la place du Château"
+      ],
+      "rates": [
+        {
+          "start": "2026-10-01",
+          "end": "2027-01-02",
+          "price": 123,
+          "minNights": 1
+        },
+        {
+          "start": "2026-12-19",
+          "end": "2027-01-02",
+          "price": 150,
+          "minNights": 1
+        }
+      ],
+      "extraGuest": 0
+    },
+    {
+      "id": "67208952",
+      "slug": "chambre-double-04",
+      "name": "Chambre double 04",
+      "floor": 2,
+      "area": 16,
+      "capacity": 2,
+      "description": "Située au 2ᵉ étage, cette chambre double de 16 m² à Cagnes-sur-Mer accueille jusqu'à 2 personnes dans un environnement paisible et lumineux, avec une vue unique sur la place du Château. Vous profiterez d'un grand lit queen-size, de la climatisation, d'un espace de travail, d'une télévision et du Wi-Fi pour rester connectés pendant tout votre séjour.\n\nLa salle de bain privative comprend une douche et une baignoire. Le linge de lit et les serviettes sont fournis pour votre confort dès l'arrivée. Un petit-déjeuner est proposé moyennant un supplément pour bien commencer la journée avant d'explorer Cagnes-sur-Mer et son littoral.\n\nDétecteur de fumée et extincteur sur place. Stationnement dans la rue à proximité. Enfants bienvenus.",
+      "photos": [
+        "https://img.host.holidu.com/apartment/67208952/8293W7OmKQg1DqSztEq93AvE9yVtKwG3duMfkxOALvg.jpg/m",
+        "https://img.host.holidu.com/apartment/67208952/7Bs-sLiOh86NnYtZsnJYScRCUlVwts0HaaFwm81Xet8.jpg/m",
+        "https://img.host.holidu.com/apartment/67208952/HBFxalcM_FqmTLDBvf4y23KPOUIbSA6ObvVuHsgabHI.jpg/m",
+        "https://img.host.holidu.com/apartment/67208952/0KmsrpnfPYXLyLTp1umpLhPp9sAKXnccivju6rTvsfM.jpg/m",
+        "https://img.host.holidu.com/apartment/67208952/_H_FIVvE3vIQiRx98gNhqWDf-aUnUumN13bIVkk16dk.jpg/m",
+        "https://img.host.holidu.com/apartment/67208952/BaSo-3IfuLgmPzByHbUIwVP-bVWmfl0WUZYe4G4Kwxo.jpg/m",
+        "https://img.host.holidu.com/apartment/67208952/KLgqxSZOHqhsSC1ja-3Vg1GbRA6KuHoOBQaaIwKjB28.jpg/m",
+        "https://img.host.holidu.com/apartment/67208952/jRsSlad7J7TYXg5fmlLYbw_faaeXdS6_ScANNpMZSYY.jpg/m",
+        "https://img.host.holidu.com/apartment/67208952/lpjaJsXSHp3hhjFJrfq1Qx95WDoFFroXDSKLkAnfirk.jpg/m",
+        "https://img.host.holidu.com/apartment/67208952/puhs4sP6nrTJOZlkCoJnhYLam5wd3rZDepaf83oL8F4.jpg/m"
+      ],
+      "bed": "1 lit queen-size",
+      "features": [
+        "Wi-Fi gratuit",
+        "Climatisation",
+        "Télévision",
+        "Espace de travail",
+        "Salle de bain privative",
+        "Linge et serviettes fournis",
+        "Vue sur la place du Château"
+      ],
+      "rates": [
+        {
+          "start": "2026-10-01",
+          "end": "2027-01-31",
+          "price": 123,
+          "minNights": 1
+        },
+        {
+          "start": "2026-12-19",
+          "end": "2027-01-01",
+          "price": 150,
+          "minNights": 1
+        }
+      ],
+      "extraGuest": 0
+    },
+    {
+      "id": "67208953",
+      "slug": "la-suite",
+      "name": "La Suite",
+      "floor": 3,
+      "area": 28,
+      "capacity": 3,
+      "description": "La Suite à Cagnes-sur-Mer offre 28 m² pour accueillir jusqu'à 3 personnes. Vous disposez de 2 lits, un queen-size et un lit simple, ainsi que d'une salle de bain. Profitez d’un balcon privé avec vue sur la mer, de la climatisation, d’une télévision, d’un espace de travail dédié et du Wi-Fi.",
+      "photos": [
+        "https://img.host.holidu.com/apartment/67208953/xXKK7qYQZmEOX96l7GgNzhM_S4DY14KTQjnh136qUFc.jpg/m",
+        "https://img.host.holidu.com/apartment/67208953/L_fygCmjQLXN_QzyY0hvYhCI-oS3at100ru86XZrLfM.jpg/m",
+        "https://img.host.holidu.com/apartment/67208953/UmIdl7DqZzoOqI7JZAk7Pr-GaUERawxHF_59GiVKeXQ.jpg/m",
+        "https://img.host.holidu.com/apartment/67208953/kuQMFhR2XkDaBBzefK4-sCMCJHk8iMHKMbhY1W2S5w8.jpg/m",
+        "https://img.host.holidu.com/apartment/67208953/Ok4ZIS-WX50Fr94IpV8MTc9QMWpM7oszvnmFXNrn8jU.jpg/m",
+        "https://img.host.holidu.com/apartment/67208953/-gBsfTlm7Bl5pDNrsHKzztgaLwbzFNvK0aHz6nIN-9Y.jpg/m",
+        "https://img.host.holidu.com/apartment/67208953/84x0jd4ZBXTsAyMgSTJMYEcarzWfk8BDZTCXJxIej_Q.jpg/m",
+        "https://img.host.holidu.com/apartment/67208953/sZv6khxjZl5AgchWBb_Gu8ZMyNE8wK3QkIo1ULlIx6o.jpg/m",
+        "https://img.host.holidu.com/apartment/67208953/eys7AHSMYZMuqjFoBFX1496xYXyIK7ahTfna5kC14VU.jpg/m",
+        "https://img.host.holidu.com/apartment/67208953/n8vTv-XIlbZ1i4e_UWIM9Qk5ZkwOXEls2EWoMcwp_C0.jpg/m"
+      ],
+      "bed": "1 lit queen-size et 1 lit simple",
+      "features": [
+        "Wi-Fi gratuit",
+        "Climatisation",
+        "Télévision",
+        "Espace de travail",
+        "Salle de bain privative",
+        "Linge et serviettes fournis",
+        "Balcon privé · vue mer"
+      ],
+      "rates": [
+        {
+          "start": "2026-10-01",
+          "end": "2027-01-02",
+          "price": 160,
+          "minNights": 1
+        },
+        {
+          "start": "2026-12-19",
+          "end": "2027-01-02",
+          "price": 190,
+          "minNights": 1
+        }
+      ],
+      "extraGuest": 39
+    }
+  ],
+  "cleaning": 45,
+  "breakfast": 18,
+  "checkin": "16:00 – 20:00",
+  "checkout": "10:00",
+  "cancellation": "Annulation gratuite au moins 14 jours avant l’arrivée. À moins de 14 jours, le séjour est non remboursable.",
+  "taxNote": "Taxe de séjour en supplément, à confirmer auprès de l’hôtel. Aucun paiement dans cette démonstration."
+}

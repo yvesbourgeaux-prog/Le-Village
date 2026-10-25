@@ -20,7 +20,7 @@ $error='';
 if ($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['password'])) {
   if (password_verify((string)$_POST['password'], LV_DEMO_HASH)) {
     $_SESSION['lv_demo_ok']=true;
-    header('Location: /demo-reservation');
+    header('Location: '.(($_GET['next'] ?? '') === 'hotel' ? '/demo-hotel' : '/demo-reservation'));
     exit;
   }
   $error='Mot de passe incorrect.';
@@ -84,6 +84,7 @@ $demo = <<<'DEMO_HTML'
   <div class="demo-switchbar" role="navigation" aria-label="Navigation du prototype">
     <span class="demo-private-tag">PROTOTYPE PRIVÉ</span>
     <button type="button" data-go="showcase" class="is-active">Site restaurant</button>
+    <a href="/demo-hotel">Hôtel &amp; chambres</a>
     <button type="button" data-go="admin">Back-office</button>
     <a href="/demo-reservation?logout=1" aria-label="Se déconnecter">Quitter</a>
   </div>
