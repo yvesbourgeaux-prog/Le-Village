@@ -8,4 +8,4 @@ Five private export links are entered through `/demo-hotel-config.php`; they are
 
 Bookings are session-only simulations. They do not send mail, collect payments, export blocks, or modify Holidu. A real booking engine would require a shared transactional booking store, outbound inventory synchronization and operational confirmation, rather than treating delayed iCal as a channel-manager API.
 
-Validation: `php tests/hotel-demo.php`, PHP lint for all five PHP files, `node --check assets/js/demo-hotel.js`, rendered-page checks for native forms and absence of Holidu iframe. Live configuration and browser checks required after deployment.
+Validation: `php tools/hotel-demo-test.php`, PHP lint for all five PHP files, `node --check assets/js/demo-hotel.js`, rendered-page checks for native forms and absence of Holidu iframe. Live configuration and browser checks required after deployment.
