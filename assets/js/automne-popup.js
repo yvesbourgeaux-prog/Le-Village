@@ -170,8 +170,8 @@
   dialog.addEventListener('close', clearTheme);
   window.addEventListener('pagehide', clearTheme);
   window.addEventListener('pageshow', () => {
-    if (dialog.open && Date.now() < endsAt) document.body.classList.add('lv-halloween-active');
-    else clearTheme();
+    clearTheme();
+    if (dialog.open) expiryTimer = window.setTimeout(close, Math.max(0, endsAt - Date.now()));
   });
   const onScroll = () => {
     if (initiated || window.scrollY < 100) return;
@@ -189,7 +189,6 @@
     views.count += 1;
     views.last = Date.now();
     try { localStorage.setItem(key, JSON.stringify(views)); } catch (_) {}
-    document.body.classList.add('lv-halloween-active');
     expiryTimer = window.setTimeout(close, Math.max(0, endsAt - Date.now()));
   };
   window.addEventListener('scroll', onScroll, { passive: true });

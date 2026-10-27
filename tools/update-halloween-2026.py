@@ -12,7 +12,7 @@ BASE = 'https://legrimaldibylevillage.com'
 OLD = 'automne-halloween-haut-de-cagnes'
 SLUG = 'halloween-31-octobre-haut-de-cagnes-soupe-citrouille'
 POSTER = '/assets/images/halloween-31-octobre-2026.webp'
-VERSION = '20261027-soupe1'
+VERSION = '20261027-style2'
 DATA = json.loads((ROOT/'tools/halloween-2026-locales.json').read_text())
 LANGS = list(DATA)
 FRENCH = DATA['fr']
@@ -27,14 +27,27 @@ def content(lang):
     global T
     T=DATA[lang]
     book=BOOK[lang]['book']
-    links=f'<div class="hw-links"><a href="{url(lang,OLD)}">{E(T[26])}</a><a href="{url(lang,"visiter-haut-de-cagnes")}">{E(T[27])}</a></div>'
+    p='text-base md:text-lg text-village-dark/80 leading-relaxed font-sans mb-6'
+    h='font-serif text-3xl md:text-4xl text-village-dark mb-6 text-center mt-16'
+    links=f'<div class="nav-links-village"><div class="nav-col"><a class="village-link" href="{url(lang,OLD)}">{E(T[26])}</a><a class="village-link" href="{url(lang,"visiter-haut-de-cagnes")}">{E(T[27])}</a></div></div>'
     video='https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4281712742126931%2F&show_text=false&width=267&t=0'
-    return f'''<article class="lv-halloween-page">
-<header class="hw-hero"><div>{tag('p',2,'hw-eyebrow')}{tag('h1',3)}{tag('p',4)}<a class="book-button" href="#programme">{E(T[21])}</a></div><img class="hw-poster" src="{POSTER}" alt="{E(T[17])}" width="765" height="1024" fetchpriority="high" decoding="async"/></header>
-<aside id="programme" class="hw-practical">{tag('h2',24)}{tag('p',25)}</aside>
-<div class="hw-body"><section>{tag('h2',5)}{tag('p',6)}{links}</section><section>{tag('h2',7)}{tag('p',8)}</section><section>{tag('h2',9)}{tag('p',10)}</section>
-<section class="hw-video-section">{tag('h2',15)}<div class="hw-video-shell"><iframe data-consent-src="{E(video)}" hidden="" title="{E(T[15])}" width="267" height="476" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen="" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>{tag('p',16,'hw-video-caption')}</section>
-<section>{tag('h2',11)}{tag('p',12)}</section><section class="hw-meal">{tag('h2',13)}{tag('p',14)}<div class="hw-links"><a href="{url(lang,'la-carte')}">{E(T[28])}</a><a class="book-button" href="{url(lang,'reserver')}">{E(book)}</a></div></section></div></article>'''
+    return f'''<div class="lv-block" id="lv-2245ee60793a"><div class="font-serif antialiased w-full" id="village-blog-halloween-soupe-block">
+<header class="relative w-full h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center overflow-hidden bg-village-dark">
+<img class="absolute inset-0 w-full h-full object-cover" src="{POSTER}" alt="{E(T[17])}" width="765" height="1024" fetchpriority="high" decoding="async" style="object-position:center 30%"/>
+<div class="absolute inset-0 bg-gradient-to-t from-village-bg via-village-dark/60 to-village-dark/80"></div>
+<div class="relative z-10 text-center px-6 mt-16 md:mt-0 max-w-4xl mx-auto">{tag('p',2,'font-sans text-village-light uppercase tracking-widest text-xs md:text-sm block mb-4 drop-shadow-md')}{tag('h1',3,'font-cursive text-5xl md:text-7xl text-village-white drop-shadow-2xl mb-6 leading-tight')}</div>
+</header>
+<div class="w-full pb-24 -mt-8 relative z-20"><article class="max-w-4xl mx-auto px-6 bg-village-bg relative">
+<div class="flex items-center justify-center space-x-4 font-sans text-xs md:text-sm text-village-accent uppercase tracking-widest mb-12 pt-10 border-b border-village-accent/20 pb-6"><span>Le Grimaldi by Le Village</span><span>•</span><time datetime="2026-10-31">31.10.2026 · 19h</time></div>
+{tag('p',4,'drop-cap text-lg md:text-xl text-village-dark/90 leading-relaxed mb-10')}
+<section>{tag('h2',5,h)}{tag('p',6,p)}{links}</section>
+<section><div class="flex flex-col md:flex-row gap-10 md:gap-16 items-center my-12"><div class="w-full md:w-1/2">{tag('h2',7,'font-serif text-3xl md:text-4xl text-village-dark mb-6')}{tag('p',8,p)}</div><div class="w-full md:w-1/2 flex justify-center"><figure class="relative bg-village-white p-3 border border-village-dark/10 shadow-xl rounded-sm w-full max-w-[350px] transform rotate-2 hover:rotate-0 transition-transform duration-500"><img src="{POSTER}" alt="{E(T[17])}" width="765" height="1024" loading="lazy" decoding="async" class="w-full h-auto block"/></figure></div></div></section>
+<section>{tag('h2',9,h)}{tag('p',10,p)}</section>
+<section class="my-12 text-center border-t border-b border-village-accent/30 py-8 px-4">{tag('h2',15,'font-cursive text-4xl md:text-5xl text-village-accent leading-relaxed mb-6')}<div class="hw-video-shell"><iframe data-consent-src="{E(video)}" hidden="" title="{E(T[15])}" width="267" height="476" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen="" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>{tag('p',16,'font-sans text-sm text-village-dark/70 leading-relaxed mt-6')}</section>
+<section>{tag('h2',11,h)}{tag('p',12,p)}</section>
+<section class="info-card p-8 md:p-12 shadow-xl mb-16 relative mt-16" id="programme">{tag('h2',24,'font-serif text-2xl md:text-3xl text-village-dark mb-6 text-center')}{tag('p',25,'font-sans text-village-dark/80 leading-relaxed text-base md:text-lg text-center')}</section>
+<section class="text-center border-t border-village-accent/20 pt-10 pb-12">{tag('h2',13,'font-serif text-3xl md:text-4xl text-village-dark mb-6')}{tag('p',14,p)}<div class="nav-links-village"><div class="nav-col"><a class="village-link" href="{url(lang,'la-carte')}">{E(T[28])}</a><a class="book-button" href="{url(lang,'reserver')}">{E(book)}</a></div></div></section>
+</article></div></div></div>'''
 
 def schema(lang):
     t=DATA[lang];u=BASE+url(lang,SLUG)
@@ -160,6 +173,7 @@ for lang in LANGS:
         if slug==SLUG:continue
         doc=add_card(doc,lang,slug=='blog-list')
         if slug==OLD:doc=add_notice(doc,lang)
+        doc=re.sub(r'(/assets/(?:js|css)/automne-popup\.(?:js|css)\?v=)[^"\s<>]*',lambda m:m[1]+VERSION,doc)
         pages[slug]=doc
     path.write_bytes(gzip.compress(json.dumps(pages,ensure_ascii=False,separators=(',',':')).encode(),compresslevel=9,mtime=0))
 
