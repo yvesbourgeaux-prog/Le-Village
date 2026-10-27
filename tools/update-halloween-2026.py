@@ -23,6 +23,12 @@ def tag(name, i, cls=''):
     mapping=E(json.dumps({'t':{'0':hashlib.sha256(FRENCH[i].encode()).hexdigest()[:16]},'a':{}},separators=(',',':')))
     return f'<{name}'+(f' class="{cls}"' if cls else '')+f' data-i18n="{mapping}">{E(T[i])}</{name}>'
 
+def hotel_aside(lang):
+    template=(ROOT/(OLD+'.html')).read_text() if lang=='fr' else json.loads(gzip.decompress((ROOT/f'i18n/pages/{lang}.json.gz').read_bytes()))[OLD]
+    aside=re.search(r'<aside class="bg-village-dark\b.*?</aside>',template,re.S)
+    if not aside:raise ValueError('Missing hotel aside: '+lang)
+    return aside[0].replace('<aside ', '<aside data-halloween-hotel ', 1)
+
 def content(lang):
     global T
     T=DATA[lang]
@@ -47,7 +53,7 @@ def content(lang):
 <section>{tag('h2',11,h)}{tag('p',12,p)}</section>
 <section class="info-card p-8 md:p-12 shadow-xl mb-16 relative mt-16" id="programme">{tag('h2',24,'font-serif text-2xl md:text-3xl text-village-dark mb-6 text-center')}{tag('p',25,'font-sans text-village-dark/80 leading-relaxed text-base md:text-lg text-center')}</section>
 <section class="text-center border-t border-village-accent/20 pt-10 pb-12">{tag('h2',13,'font-serif text-3xl md:text-4xl text-village-dark mb-6')}{tag('p',14,p)}<div class="nav-links-village"><div class="nav-col"><a class="village-link" href="{url(lang,'la-carte')}">{E(T[28])}</a><a class="book-button" href="{url(lang,'reserver')}">{E(book)}</a></div></div></section>
-</article></div></div></div>'''
+{hotel_aside(lang)}</article></div></div></div>'''
 
 def schema(lang):
     t=DATA[lang];u=BASE+url(lang,SLUG)
@@ -86,8 +92,8 @@ def make_page(template,lang):
 
 def card(lang,grid=False):
     t=DATA[lang];u=url(lang,SLUG)
-    if grid:return f'<article data-halloween-2026-card><a href="{u}"><img src="{POSTER}" alt="{E(t[17])}" loading="lazy" style="object-fit:contain;background:#fcf9f3"/><h2>{E(t[19])}</h2></a><p>{E(t[20])}</p><a href="{u}">{E(t[21])} →</a></article>'
-    return f'''<a data-halloween-2026-card href="{u}" class="group flex flex-col w-[280px] md:w-[380px] flex-shrink-0 snap-start no-underline h-full"><div class="village-img-wrapper shadow-md mb-6 h-[220px] md:h-[260px] bg-village-white"><img src="{POSTER}" alt="{E(t[17])}" loading="lazy" class="village-img w-full h-full" style="object-fit:contain;background:#fcf9f3"/></div><div class="flex flex-col flex-grow"><span class="font-sans text-[10px] text-village-dark/50 uppercase tracking-widest mb-3">{E(t[18])}</span><h3 class="font-serif text-xl md:text-2xl text-village-dark leading-snug mb-3">{E(t[19])}</h3><p class="font-sans text-sm text-village-dark/80 leading-relaxed mb-6 flex-grow">{E(t[20])}</p><div><span class="village-link-read">{E(t[21])}</span></div></div></a>'''
+    if grid:return f'<article data-halloween-2026-card><a href="{u}"><img src="{POSTER}" alt="{E(t[17])}" loading="lazy" style="object-fit:cover;object-position:center"/><h2>{E(t[19])}</h2></a><p>{E(t[20])}</p><a href="{u}">{E(t[21])} →</a></article>'
+    return f'''<a data-halloween-2026-card href="{u}" class="group flex flex-col w-[280px] md:w-[380px] flex-shrink-0 snap-start no-underline h-full"><div class="village-img-wrapper shadow-md mb-6 h-[220px] md:h-[260px] bg-village-white"><img src="{POSTER}" alt="{E(t[17])}" loading="lazy" class="village-img w-full h-full" style="object-fit:cover;object-position:center"/></div><div class="flex flex-col flex-grow"><span class="font-sans text-[10px] text-village-dark/50 uppercase tracking-widest mb-3">{E(t[18])}</span><h3 class="font-serif text-xl md:text-2xl text-village-dark leading-snug mb-3">{E(t[19])}</h3><p class="font-sans text-sm text-village-dark/80 leading-relaxed mb-6 flex-grow">{E(t[20])}</p><div><span class="village-link-read">{E(t[21])}</span></div></div></a>'''
 
 def add_card(doc,lang,grid=False):
     if 'data-halloween-2026-card' in doc:return doc
@@ -194,3 +200,7 @@ for filename in ['i18n-page.php','tools/rebuild.py']:
         text=text.replace(needle," if slug in ('"+SLUG+"','"+OLD+"'):head+='<link rel=\"stylesheet\" href=\"/assets/css/halloween-event.css?v="+VERSION+"\">'\n"+needle)
     path.write_text(text)
 print('Updated campaign, new event page and all 13 locales.')
+
+# Reapply shared article imagery after regenerating the event or locale pages.
+from article_thumbnails import refresh
+refresh()
