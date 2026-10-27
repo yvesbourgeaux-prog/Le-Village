@@ -101,8 +101,8 @@ if ($slug === '' || $slug === 'le-village-restaurant-haut-de-cagnes-sur-mer') {
     // Avoid duplicate assets if a localized pack is rebuilt with the popup already included.
     $document = preg_replace('~<link\\b[^>]*automne-popup\\.css[^>]*>~i', '', $document);
     $document = preg_replace('~<script\\b[^>]*automne-popup\\.js[^>]*>\\s*</script>~i', '', $document);
-    $assets = '<link rel="stylesheet" href="/assets/css/automne-popup.css?v=20261022-night1"/>'
-        . '<script defer src="/assets/js/automne-popup.js?v=20261022-night1"></script>';
+    $assets = '<link rel="stylesheet" href="/assets/css/automne-popup.css?v=20261027-soupe1"/>'
+        . '<script defer src="/assets/js/automne-popup.js?v=20261027-soupe1"></script>';
     $document = str_replace('</head>', $assets . '</head>', $document);
 }
 echo preg_replace('~/assets/css/navigation\.css\?v=[^"\s<>]*~', '/assets/css/navigation.css?v=20261003-mobile-video1', $document);

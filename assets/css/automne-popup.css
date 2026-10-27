@@ -24,3 +24,16 @@ body.lv-halloween-active .lv-autumn-dialog :focus-visible{outline:2px solid #edb
 @keyframes lv-halloween-dusk{from{opacity:0}to{opacity:1}}
 @media(max-width:650px){body.lv-halloween-active .lv-autumn-visual:after{background:linear-gradient(0deg,#1d1713,transparent 48%)}body.lv-halloween-active .lv-autumn-dialog::backdrop{background-size:auto 100%,cover,cover,cover}}
 @media(prefers-reduced-motion:reduce){body.lv-halloween-active #main{transition:none}body.lv-halloween-active .lv-autumn-dialog::backdrop{animation:none}}
+
+/* Keep the complete event poster visible, including its date and credits. */
+.lv-autumn-dialog{width:min(900px,calc(100% - 32px))}
+.lv-autumn-card{min-height:0;align-items:stretch}
+.lv-autumn-visual{width:45%;display:flex;align-items:center;justify-content:center}
+.lv-autumn-photo{position:static;width:100%;height:auto;object-fit:contain}
+.lv-autumn-visual:after,body.lv-halloween-active .lv-autumn-visual:after{display:none}
+body.lv-halloween-active .lv-autumn-photo{filter:none}
+.lv-autumn-copy{width:55%;padding:62px 36px 34px}
+.lv-autumn-eyebrow{margin-bottom:18px;letter-spacing:.13em}
+.lv-autumn-copy h2{font-size:clamp(27px,3vw,36px);margin-bottom:20px}
+.lv-autumn-quote{font:400 17px/1.65 Lato,sans-serif;margin-bottom:26px;padding-left:16px}
+@media(max-width:650px){.lv-autumn-visual{width:100%;height:auto;min-height:0;max-height:none;padding:12px 0 0}.lv-autumn-photo{width:auto;max-width:100%;max-height:38dvh}.lv-autumn-copy{width:100%;padding:20px 25px 28px}.lv-autumn-copy h2{font-size:28px}.lv-autumn-quote{font-size:16px}.lv-autumn-eyebrow{margin-bottom:12px}.lv-autumn-close{top:12px;right:12px}}

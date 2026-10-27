@@ -200,6 +200,9 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
   if date:article['datePublished']=date
   if s.find('img'):article['image']=s.find('img').get('src',FALLBACK)
   graph.append(article)
+ if slug=='halloween-31-octobre-haut-de-cagnes-soupe-citrouille':
+  campaign=json.loads((ROOT/'tools/halloween-2026-locales.json').read_text())['fr']
+  graph.append({'@type':'Event','@id':canonical+'#event','name':campaign[19],'description':campaign[8],'startDate':'2026-10-31T19:00:00+01:00','eventStatus':'https://schema.org/EventScheduled','eventAttendanceMode':'https://schema.org/OfflineEventAttendanceMode','isAccessibleForFree':True,'image':BASE+'/assets/images/halloween-31-octobre-2026.webp','url':canonical,'location':{'@type':'Place','name':'Place du Château, Haut-de-Cagnes','address':{**address,'streetAddress':'Place du Château'}},'organizer':[{'@type':'Organization','name':'Association des Haut-Cagnois'},{'@type':'Restaurant','name':'Le Village','url':BASE+'/le-village-restaurant-haut-de-cagnes-sur-mer'}]})
  if slug:graph.append({'@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':'Accueil','item':BASE+'/'},{'@type':'ListItem','position':2,'name':title,'item':canonical}]})
  jsids=list(dict.fromkeys(used_js.get(slug,[])+used_js.get('carte-footer' if slug=='la-carte' else 'hotel-footer' if slug==HOTEL_SLUG else 'restaurant-footer' if slug==RESTAURANT_SLUG else 'home-footer' if not slug or slug=='visiter-haut-de-cagnes' else 'footer',[])))
  if kind=='press-release':jsids=list(dict.fromkeys(used_js.get(slug,[])+used_js.get('release-header',[])+used_js.get('release-footer',[])))
@@ -242,6 +245,7 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
   press_footer=release_footer
   head+='<link rel="stylesheet" href="/assets/css/press.css?v=cp-20261002"><link rel="stylesheet" href="/assets/css/releases.css?v=cp-20261002"><script defer src="/assets/js/press.js?v=cp-20261002"></script>'
   head=head.replace('/assets/css/blocks.css','/assets/css/blocks.css?v=cp-20261002').replace('/assets/css/tailwind.css','/assets/css/tailwind.css?v=cp-20261002')
+ if slug in ('halloween-31-octobre-haut-de-cagnes-soupe-citrouille','automne-halloween-haut-de-cagnes'):head+='<link rel="stylesheet" href="/assets/css/halloween-event.css?v=20261027-soupe1">'
  if slug=='automne-haut-de-cagnes':head+='<link rel="stylesheet" href="/assets/css/automne-gallery.css?v=20261002b">'
  head=re.sub(r'/assets/css/blocks\.css(?:\?[^\"]*)?', '/assets/css/blocks.css?v=blog-20261003', head)
  if common_header:head+='<link rel="stylesheet" href="/assets/css/navigation.css?v=20261003-mobile-video1">'
