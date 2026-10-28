@@ -63,6 +63,7 @@ if ($slug === 'hotel-cagnes-sur-mer-le-grimaldi') {
 // Remove stale generic video posters from prebuilt language packs.
 // They can flash for a split second before the real video frame appears.
 $document = preg_replace_callback('~<video\\b[^>]*>~i', static function ($match) {
+    if (str_contains($match[0], 'data-lv-native-video')) return $match[0];
     return preg_replace('~\\s+poster=(?:"[^"]*"|\\x27[^\\x27]*\\x27)~i', '', $match[0]);
 }, $document);
 
