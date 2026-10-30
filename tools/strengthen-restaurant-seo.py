@@ -26,6 +26,8 @@ def text_attr(index):
 
 def link(lang, index, destination, marker):
     prefix = '' if lang == 'fr' else '/'+lang
+    if index == 1:
+        return f'<p {marker} class="font-sans text-village-dark/80" style="margin:1rem 0 0;font-size:13px;line-height:1.6;max-width:320px"><a href="{prefix}/{destination}" style="color:inherit;text-decoration:underline;text-underline-offset:3px" {text_attr(index)}>{E(DATA[lang][index])}</a></p>'
     return f'<p {marker} class="font-sans text-base text-village-dark/80 leading-relaxed" style="margin:1.25rem 0"><a href="{prefix}/{destination}" style="color:inherit;text-decoration:underline;text-underline-offset:4px" {text_attr(index)}>{E(DATA[lang][index])}</a></p>'
 
 def edit(doc, slug, lang):
@@ -52,8 +54,9 @@ def edit(doc, slug, lang):
         def describe(m):
             return m[1].replace('07df47afbb1af983', KEYS[0])+E(DATA[lang][0])+m[3]
         doc = re.sub(pattern, describe, doc, count=1, flags=re.S)
-        if 'data-restaurant-access-link' not in doc:
-            doc = re.sub(r'(<p\b[^>]*e57473e8f92172bb[^>]*>.*?</p>)', lambda m: m[0]+link(lang,1,GUIDE,'data-restaurant-access-link'), doc, count=1, flags=re.S)
+        # Keep practical information with the address, away from the introduction.
+        doc = re.sub(r'<p\b[^>]*data-restaurant-access-link[^>]*>.*?</p>', '', doc, flags=re.S)
+        doc = re.sub(r'(<a\b[^>]*\bclass="[^"]*\bbtn-itineraire\b[^"]*"[^>]*>.*?</a>)', lambda m: m[0]+link(lang,1,GUIDE,'data-restaurant-access-link'), doc, count=1, flags=re.S)
     elif slug == GUIDE or slug in ARTICLES:
         marker = 'data-restaurant-context-link'
         if marker in doc:
