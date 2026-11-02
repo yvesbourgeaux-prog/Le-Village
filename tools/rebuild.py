@@ -169,7 +169,7 @@ def writepage(slug,meta,content,external=None,kind='default',date=None):
   page['isPartOf']={'@id':BASE+'/#website'}
  if slug==RESTAURANT_SLUG:
   page['mainEntity']={'@id':BASE+'/#restaurant'}
-  restaurant['openingHoursSpecification']=[{'@type':'OpeningHoursSpecification','dayOfWeek':['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],'opens':'09:00','closes':'21:30'}]
+  restaurant['openingHoursSpecification']=[{'@type':'OpeningHoursSpecification','dayOfWeek':['Monday','Wednesday','Thursday','Friday','Saturday','Sunday'],'opens':'09:00','closes':'21:15'}]
  if slug==HOTEL_SLUG:
   page['mainEntity']={'@id':BASE+'/#hotel'}
   hotel.update({'checkinTime':'16:00','checkoutTime':'10:00','petsAllowed':False})
