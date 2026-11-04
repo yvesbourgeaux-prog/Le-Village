@@ -651,5 +651,20 @@
       "72": "放大Le Duo des Muses海报",
       "74": "餐厅订位与菜单"
     }
+  },
+  "cta": {
+    "fr": "Découvrir le rendez-vous",
+    "en": "Explore the event",
+    "sv": "Upptäck evenemanget",
+    "da": "Oplev arrangementet",
+    "nl": "Ontdek het evenement",
+    "de": "Die Veranstaltung entdecken",
+    "it": "Scopri l’appuntamento",
+    "es": "Descubrir la cita",
+    "ja": "イベントの詳細を見る",
+    "zh-CN": "了解活动详情",
+    "nb": "Oppdag arrangementet",
+    "ru": "Подробнее о событии",
+    "pl": "Poznaj wydarzenie"
   }
 }

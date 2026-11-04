@@ -100,7 +100,7 @@ for lang in LANGS:
 
 def card(lang,grid=False):
  title=tr(FR[67],lang).split(' | ')[0];description=tr(FR[68],lang);href=url(lang,SLUG)
- read=D[lang].get(key('Lire l’article →'),{'fr':'Lire l’article →','en':'Read the article →'}.get(lang,'→'))
+ read=DATA['cta'][lang]
  E=lambda t:html.escape(t,quote=True)
  if grid:return f'<article data-music-2026-card><a href="{href}"><img src="{IMAGE}" alt="{E(title)}" loading="lazy" width="1200" height="750"/><h2>{E(title)}</h2></a><p>{E(description)}</p><a href="{href}">{E(read)}</a></article>'
  return f'<a data-music-2026-card href="{href}" class="group flex flex-col w-[280px] md:w-[380px] flex-shrink-0 snap-start no-underline h-full"><div class="village-img-wrapper shadow-md mb-6 h-[220px] md:h-[260px] bg-village-white"><img src="{IMAGE}" alt="{E(title)}" loading="lazy" width="1200" height="750" class="village-img w-full h-full" style="object-fit:cover;object-position:center"/></div><div class="flex flex-col flex-grow"><span class="font-sans text-[10px] text-village-dark/50 uppercase tracking-widest mb-3">08.11.2026 · 15:30</span><h3 class="font-serif text-xl md:text-2xl text-village-dark leading-snug mb-3">{E(title)}</h3><p class="font-sans text-sm text-village-dark/80 leading-relaxed mb-6 flex-grow">{E(description)}</p><div><span class="village-link-read">{E(read)}</span></div></div></a>'
