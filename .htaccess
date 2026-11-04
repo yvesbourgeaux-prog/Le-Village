@@ -1,6 +1,8 @@
 Options -Indexes -MultiViews
 DirectoryIndex index.html
 RewriteEngine On
+# Approved music preview is now a published article.
+RewriteRule ^demo-dimanches-musicaux-8-novembre-2026(?:\.html)?/?$ /dimanches-musicaux-8-novembre-2026-haut-de-cagnes [R=301,L]
 # Keep a single public hostname, including localized paths and query strings.
 RewriteCond %{HTTP_HOST} ^www\.legrimaldibylevillage\.com$ [NC]
 RewriteRule ^ https://legrimaldibylevillage.com%{REQUEST_URI} [R=301,L,NE]
