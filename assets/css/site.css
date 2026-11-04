@@ -2,3 +2,13 @@
 .lv-block{isolation:auto}.booking-dialog{border:0;border-radius:5px;background:#fcf9f3;color:#713506;width:min(800px,96vw);max-height:94dvh;padding:0;box-shadow:0 20px 100px #0005}.booking-dialog::backdrop{background:#271406aa}.booking-dialog-top{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 25px;border-bottom:1px solid #e8dcd0}.booking-dialog-top h2{font:400 24px 'Playfair Display',serif}.booking-dialog-top button{font-size:32px;line-height:1;width:40px;height:40px}.booking-dialog iframe{width:100%;height:65dvh;min-height:340px;border:0;background:#fff}.booking-help{padding:15px 25px;font:13px/1.6 Lato,sans-serif}.booking-help a,.booking-external{text-decoration:underline}.booking-external{display:block;text-align:center;font-size:12px;padding:15px}
 /* Keep the hotel title readable throughout the changing hero video. */
 section[aria-label="Hôtel Le Grimaldi au Haut-de-Cagnes"] h1,section[aria-label="Hôtel Le Grimaldi au Haut-de-Cagnes"] .relative.z-10 p{color:#fff;text-shadow:0 2px 20px rgba(35,20,10,.5)}
+
+/* Keep news links level despite different title and summary lengths. */
+#blog-track{display:grid;grid-auto-flow:column;grid-auto-columns:280px;align-items:stretch}
+#blog-track>a{width:100%;height:auto;min-width:0;display:flex;flex-direction:column}
+#blog-track>a>.village-img-wrapper{flex-shrink:0}
+#blog-track>a>div:last-child{display:flex;flex-direction:column;flex:1}
+#blog-track>a>div:last-child>div:last-child{margin-top:auto;min-height:2.5em;display:flex;align-items:flex-end}
+.article-grid>article{display:flex;flex-direction:column;min-width:0}
+.article-grid>article>a:last-child{align-self:flex-start;margin-top:auto}
+@media(min-width:768px){#blog-track{grid-auto-columns:380px}}
