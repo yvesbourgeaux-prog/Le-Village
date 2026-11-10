@@ -115,6 +115,36 @@ try {
   $allowedEvents = ['restaurant_booking_click', 'hotel_booking_click', 'phone_click', 'email_click', 'menu_click', 'directions_click'];
   $events = [];
   foreach (rows($gaEvents) as $row) if (in_array($row['dimensions'][0] ?? '', $allowedEvents, true)) $events[$row['dimensions'][0]] = (int)($row['metrics'][0] ?? 0);
+
+  // Optional GA4 breakdowns: failures do not interrupt the existing dashboard.
+  $extra = [];
+  $breakdowns = [
+    'channels' => [['sessionDefaultChannelGroup'], ['sessions','activeUsers','engagedSessions'], 30],
+    'sources' => [['sessionSourceMedium'], ['sessions','activeUsers','engagedSessions'], 35],
+    'campaigns' => [['sessionCampaignName'], ['sessions','activeUsers'], 30],
+    'weekdays' => [['dayOfWeek'], ['sessions','activeUsers'], 7],
+    'hours' => [['hour'], ['sessions','activeUsers'], 24],
+    'devices' => [['deviceCategory'], ['sessions','activeUsers'], 10],
+    'countries' => [['country'], ['sessions','activeUsers'], 25],
+    'cities' => [['city'], ['sessions','activeUsers'], 25],
+    'languages' => [['language'], ['sessions','activeUsers'], 20],
+    'landingPages' => [['landingPagePlusQueryString'], ['sessions','activeUsers'], 25],
+    'bookingSources' => [['sessionSourceMedium','eventName'], ['eventCount'], 100],
+    'bookingDevices' => [['deviceCategory','eventName'], ['eventCount'], 30],
+    'bookingPages' => [['pagePath','eventName'], ['eventCount'], 70],
+  ];
+  foreach ($breakdowns as $key => [$dimensions, $metrics, $limit]) {
+    try {
+      $body = ['dimensions' => array_map(static fn($v) => ['name'=>$v], $dimensions),
+        'metrics' => array_map(static fn($v) => ['name'=>$v], $metrics), 'limit'=>$limit,
+        'orderBys'=>[['metric'=>['metricName'=>$metrics[0]],'desc'=>true]]];
+      if (str_starts_with($key,'booking')) $body['dimensionFilter'] = ['filter'=>['fieldName'=>'eventName','inListFilter'=>['values'=>['restaurant_booking_click','hotel_booking_click','phone_click','menu_click','directions_click']]]];
+      $extra[$key] = rows($ga($body));
+    } catch (Throwable $optionalError) {
+      error_log('Le Village optional GA4 '.$key.': '.$optionalError->getMessage());
+      $extra[$key] = [];
+    }
+  }
   $gscEnd = $end;
   $gscStart = $start;
   $gscUrl = 'https://www.googleapis.com/webmasters/v3/sites/' . rawurlencode($config['site_url']) . '/searchAnalytics/query';
@@ -128,7 +158,7 @@ try {
   $mapSearch = static fn(array $report): array => array_map(static fn($row) => ['label' => (string)($row['keys'][0] ?? '')] + $metric($row), $report['rows'] ?? []);
   respond(200, [
     'period' => $days, 'analyticsRange' => $range, 'searchRange' => ['startDate' => $gscRange['startDate'], 'endDate' => $gscRange['endDate']],
-    'analytics' => ['totals' => rows($gaTotals)[0]['metrics'] ?? [0,0,0,0], 'daily' => rows($gaDaily), 'pages' => rows($gaPages), 'events' => $events],
+    'analytics' => ['totals' => rows($gaTotals)[0]['metrics'] ?? [0,0,0,0], 'daily' => rows($gaDaily), 'pages' => rows($gaPages), 'events' => $events, 'extra' => $extra],
     'search' => ['totals' => $metric($gscTotals['rows'][0] ?? []), 'daily' => $mapSearch($gscDaily), 'pages' => $mapSearch($gscPages), 'queries' => $mapSearch($gscQueries)],
     'tagManager' => ['container' => 'GTM-NCL2235Z', 'status' => 'Configuré sur le site, après consentement'],
   ]);
