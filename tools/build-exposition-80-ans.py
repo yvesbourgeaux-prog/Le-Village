@@ -35,7 +35,10 @@ def markup(lang):
     d=DATA[lang]
     def t(k): return html.escape(d[k])
     def p(k, cls=P): return f'<p class="{cls}" data-expo-copy="{k}">{t(k)}</p>'
-    def h(k, cls=H): return f'<h2 class="{cls}" data-expo-copy="{k}">{t(k)}</h2>'
+    def h(k, cls=H):
+        label=t(k)
+        if k=='visit_h':label=label.replace(' ?', '\u00a0?')
+        return f'<h2 class="{cls}" data-expo-copy="{k}">{label}</h2>'
     def link(k, href, cls='underline underline-offset-4', external=False):
         extra=' target="_blank" rel="noopener noreferrer"' if external else ''
         return f'<a class="{cls}" data-expo-copy="{k}" href="{href}"{extra}>{t(k)}</a>'
@@ -68,8 +71,9 @@ def markup(lang):
 {p('ticket_note','font-sans text-xs text-village-dark/60 mt-6 mb-6')}<div class="text-center">{link('official',OFFICIAL,official_button,True)}</div></section>
 <section>{h('visit_h',H+' text-center mt-16')}{p('visit_p')}<p class="font-sans text-base text-village-dark/80 mb-6">{link('guide','/visiter-haut-de-cagnes')}</p></section>
 <section>{h('restaurant_h',H+' text-center mt-16')}{p('restaurant_p')}
-<div class="menu-card p-8 md:p-10 shadow-lg mb-16 relative text-center mx-auto max-w-lg">{h('table_h','font-serif text-2xl text-village-dark mb-4')}{p('table_p','font-sans text-base text-village-dark/80 mb-6')}
-<div class="nav-links-village nav-links-village--cta"><div class="nav-col">{link('menu','/la-carte','village-link')}{link('book','/reserver','village-link')}{link('phone','tel:+33493200886','village-link')}</div></div></div></section>
+<div class="menu-card expo-table-card">{h('table_h','expo-table-title')}{p('table_p','expo-table-description')}
+<div class="expo-table-actions">{link('book','/reserver','expo-table-button')}{link('menu','/la-carte','expo-table-button expo-table-button-outline')}</div>
+<div class="expo-table-phone">{link('phone','tel:+33493200886','expo-table-phone-link')}</div></div></section>
 <aside class="bg-village-dark text-village-light p-8 md:p-12 shadow-xl mb-12 relative overflow-hidden flex flex-col md:flex-row items-center gap-8 md:gap-12 rounded-sm border border-village-accent/20 mt-16">
 <div class="w-full md:w-1/3 flex justify-center relative z-10"><div class="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-2 border-village-accent/30 shadow-2xl"><img src="/assets/images/articles-hd/chambre-grimaldi-4-hd-480.webp" alt="{t('hotel_alt')}" width="480" height="320" class="w-full h-full object-cover" loading="lazy" decoding="async"/></div></div>
 <div class="w-full md:w-2/3 relative z-10 text-center md:text-left">{h('hotel_h','font-cursive text-4xl md:text-5xl text-village-accent mb-4')}{p('hotel_p','font-sans text-base md:text-lg text-village-light/80 leading-relaxed mb-6')}{link('hotel_cta','/hotel-cagnes-sur-mer-le-grimaldi','inline-block border border-village-accent text-village-accent hover:bg-village-accent hover:text-village-white transition-colors duration-300 py-3 px-8 font-sans tracking-widest uppercase text-xs md:text-sm')}</div></aside>
@@ -80,6 +84,19 @@ CSS='''
 .expo-article .info-card{background-image:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(157,98,61,.08) 39px,rgba(157,98,61,.08) 40px);background-color:#fff;border:1px solid rgba(113,53,6,.2)}
 .expo-article .expo-row{display:grid;grid-template-columns:110px minmax(0,1fr);gap:20px;padding:16px 0;border-bottom:1px solid rgba(113,53,6,.12)}
 .expo-article .expo-row dt{font-weight:600}.expo-article .expo-row dd{margin:0}.expo-article .expo-row p{margin:0 0 8px}.expo-article .expo-practical{margin:0 0 22px}.expo-article h1{overflow-wrap:break-word}.expo-article .expo-row a{overflow-wrap:anywhere}
+.expo-article [data-expo-copy=visit_h]{text-wrap:balance}
+.expo-article .expo-table-card{position:relative;text-align:center;margin:40px auto 64px;padding:44px 40px 36px;max-width:740px;box-shadow:0 15px 40px -15px rgba(113,53,6,.18)}
+.expo-article .expo-table-card:before{content:'';position:absolute;inset:8px;border:1px solid rgba(157,98,61,.18);pointer-events:none}
+.expo-article .expo-table-title{font:400 clamp(40px,5vw,54px)/1.2 'Great Vibes',cursive;color:#713506;margin:0 0 18px}
+.expo-article .expo-table-description{font:400 16px/1.8 Lato,sans-serif;color:rgba(113,53,6,.8);max-width:510px;margin:0 auto 26px}
+.expo-article .expo-table-actions{display:flex;flex-wrap:wrap;align-items:stretch;justify-content:center;gap:14px}
+.expo-article .expo-table-button{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:15px 24px;border:1px solid #713506;background:#713506;color:#fcf9f3;font:500 12px/1.5 Poppins,sans-serif;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:background .25s,color .25s}
+.expo-article .expo-table-button:hover{background:#9d623d;border-color:#9d623d}
+.expo-article .expo-table-button-outline{background:transparent;color:#713506}
+.expo-article .expo-table-button-outline:hover{background:#f5f0ea;color:#713506}
+.expo-article .expo-table-phone{margin-top:22px}.expo-article .expo-table-phone-link{font:400 13px/1.6 Lato,sans-serif;color:#713506;text-decoration:underline;text-underline-offset:4px}
+.expo-article .expo-table-button:focus-visible,.expo-article .expo-table-phone-link:focus-visible{outline:2px solid #9d623d;outline-offset:4px}
+@media(max-width:600px){.expo-article .expo-table-card{padding:36px 25px 30px}.expo-article .expo-table-actions{flex-direction:column}.expo-article .expo-table-button{width:100%;box-sizing:border-box}}
 @media(max-width:600px){.expo-article .expo-row{grid-template-columns:1fr;gap:6px}.expo-article .info-card{padding:24px}.expo-article h1{font-size:clamp(36px,10vw,48px)}}
 '''
 
@@ -188,6 +205,9 @@ source.update(slug=SLUG,date='2026-11-13',sortDate='2026-11-13',meta={'title':FR
 # historical catalogue or the translations of any unrelated article.
 catalog={}
 for k,text in FR.items():catalog[text]={lang:DATA[lang][k] for lang in LANGS[1:]}
+for k,text in FR.items():
+    if ' ?' in text:
+        catalog[text.replace(' ?', '\u00a0?')]={lang:DATA[lang][k].replace(' ?', '\u00a0?') for lang in LANGS[1:]}
 catalog_path=ROOT/'tools/i18n/exposition-80-ans.json';catalog_path.write_text(json.dumps(catalog,ensure_ascii=False,indent=2)+'\n')
 for lang in LANGS:
     p=ROOT/f'assets/i18n/{lang}.json';dictionary=json.loads(p.read_text())
