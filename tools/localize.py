@@ -30,6 +30,10 @@ def footer(lang, slug):
 
 def build(manifest, base):
     catalog = json.loads((ROOT / 'tools/i18n/catalogue.json').read_text())
+    # Dedicated article copy also belongs to the regular rebuild pipeline.
+    exhibition_catalog = ROOT / 'tools/i18n/exposition-80-ans.json'
+    if exhibition_catalog.exists():
+        catalog.update(json.loads(exhibition_catalog.read_text()))
     # Keep reviewed SEO descriptions across rebuilds, independently of the text catalogue.
     from importlib.util import spec_from_file_location, module_from_spec
     seo_spec = spec_from_file_location('lv_seo_metadata', ROOT / 'tools/apply-seo-metadata.py')
