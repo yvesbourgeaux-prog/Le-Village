@@ -3,7 +3,7 @@
     "title": "Château Grimaldi à Cagnes : exposition des 80 ans | Le Village",
     "description": "À Cagnes-sur-Mer, l’exposition des 80 ans du Château-musée Grimaldi se prolonge jusqu’au 3 mai 2027. Horaires, tarifs et idées de sortie au Haut-de-Cagnes.",
     "eyebrow": "Culture & patrimoine au Haut-de-Cagnes",
-    "h1": "Les 80 ans du Château-musée Grimaldi",
+    "h1": "Exposition des 80 ans du Château-musée Grimaldi à Cagnes-sur-Mer",
     "subtitle": "Une histoire de la collection · Jusqu’au 3 mai 2027",
     "published": "13 novembre 2026",
     "crumb": "Exposition des 80 ans",
@@ -49,13 +49,14 @@
     "sources": "Informations vérifiées le 13 novembre 2026 auprès de la Ville et des musées de Cagnes-sur-Mer. Horaires et tarifs susceptibles d’évoluer.",
     "announcement": "L’annonce de la prolongation",
     "read": "Découvrir l’exposition",
-    "badge": "Prolongée jusqu’au 3 mai 2027"
+    "badge": "Prolongée jusqu’au 3 mai 2027",
+    "restaurant_link": "Découvrir notre restaurant au Haut-de-Cagnes"
   },
   "en": {
     "title": "Grimaldi Castle in Cagnes: 80th anniversary exhibition | Le Village",
     "description": "The Château-musée Grimaldi’s 80th anniversary exhibition in Cagnes-sur-Mer runs until 3 May 2027. Opening hours, admission and ideas for visiting Haut-de-Cagnes.",
     "eyebrow": "Culture & heritage in Haut-de-Cagnes",
-    "h1": "80 years of the Château-musée Grimaldi",
+    "h1": "The Château-musée Grimaldi’s 80th anniversary exhibition in Cagnes-sur-Mer",
     "subtitle": "Une histoire de la collection · Until 3 May 2027",
     "published": "13 November 2026",
     "crumb": "80th anniversary exhibition",
@@ -101,13 +102,14 @@
     "sources": "Information checked on 13 November 2026 with the City and museums of Cagnes-sur-Mer. Opening hours and admission prices may change.",
     "announcement": "The exhibition extension announcement",
     "read": "Discover the exhibition",
-    "badge": "Extended until 3 May 2027"
+    "badge": "Extended until 3 May 2027",
+    "restaurant_link": "Discover our restaurant in Haut-de-Cagnes"
   },
   "es": {
     "title": "Castillo Grimaldi en Cagnes: exposición del 80 aniversario | Le Village",
     "description": "La exposición del 80 aniversario del Château-musée Grimaldi, en Cagnes-sur-Mer, se prorroga hasta el 3 de mayo de 2027. Horarios, entradas e ideas para su visita.",
     "eyebrow": "Cultura y patrimonio en Haut-de-Cagnes",
-    "h1": "Los 80 años del Château-musée Grimaldi",
+    "h1": "Exposición del 80 aniversario del Château-musée Grimaldi en Cagnes-sur-Mer",
     "subtitle": "Une histoire de la collection · Hasta el 3 de mayo de 2027",
     "published": "13 de noviembre de 2026",
     "crumb": "Exposición del 80 aniversario",
@@ -153,13 +155,14 @@
     "sources": "Información verificada el 13 de noviembre de 2026 con el Ayuntamiento y los museos de Cagnes-sur-Mer. Los horarios y las tarifas pueden cambiar.",
     "announcement": "El anuncio de la prórroga",
     "read": "Descubrir la exposición",
-    "badge": "Prorrogada hasta el 3 de mayo de 2027"
+    "badge": "Prorrogada hasta el 3 de mayo de 2027",
+    "restaurant_link": "Descubrir nuestro restaurante en Haut-de-Cagnes"
   },
   "de": {
     "title": "Schloss Grimaldi in Cagnes: Ausstellung zum 80. Jubiläum | Le Village",
     "description": "Die Jubiläumsausstellung im Château-musée Grimaldi in Cagnes-sur-Mer läuft bis zum 3. Mai 2027. Öffnungszeiten, Eintritt und Tipps für Haut-de-Cagnes.",
     "eyebrow": "Kultur und Kulturerbe in Haut-de-Cagnes",
-    "h1": "80 Jahre Château-musée Grimaldi",
+    "h1": "Ausstellung zum 80. Jubiläum des Château-musée Grimaldi in Cagnes-sur-Mer",
     "subtitle": "Une histoire de la collection · Bis zum 3. Mai 2027",
     "published": "13. November 2026",
     "crumb": "Ausstellung zum 80. Jubiläum",
@@ -205,13 +208,14 @@
     "sources": "Informationen am 13. November 2026 bei der Stadt und den Museen von Cagnes-sur-Mer geprüft. Öffnungszeiten und Eintrittspreise können sich ändern.",
     "announcement": "Die Ankündigung der Verlängerung",
     "read": "Ausstellung entdecken",
-    "badge": "Verlängert bis zum 3. Mai 2027"
+    "badge": "Verlängert bis zum 3. Mai 2027",
+    "restaurant_link": "Unser Restaurant in Haut-de-Cagnes entdecken"
   },
   "it": {
     "title": "Castello Grimaldi a Cagnes: mostra per gli 80 anni | Le Village",
     "description": "A Cagnes-sur-Mer, la mostra per gli 80 anni del Château-musée Grimaldi è prorogata fino al 3 maggio 2027. Orari, biglietti e idee per visitare Haut-de-Cagnes.",
     "eyebrow": "Cultura e patrimonio a Haut-de-Cagnes",
-    "h1": "Gli 80 anni del Château-musée Grimaldi",
+    "h1": "Mostra per gli 80 anni del Château-musée Grimaldi a Cagnes-sur-Mer",
     "subtitle": "Une histoire de la collection · Fino al 3 maggio 2027",
     "published": "13 novembre 2026",
     "crumb": "Mostra per gli 80 anni",
@@ -257,13 +261,14 @@
     "sources": "Informazioni verificate il 13 novembre 2026 presso la Città e i musei di Cagnes-sur-Mer. Orari e tariffe possono cambiare.",
     "announcement": "L’annuncio della proroga",
     "read": "Scoprire la mostra",
-    "badge": "Prorogata fino al 3 maggio 2027"
+    "badge": "Prorogata fino al 3 maggio 2027",
+    "restaurant_link": "Scoprire il nostro ristorante a Haut-de-Cagnes"
   },
   "nl": {
     "title": "Kasteel Grimaldi in Cagnes: jubileumtentoonstelling | Le Village",
     "description": "De tentoonstelling voor het 80-jarig bestaan van het Château-musée Grimaldi in Cagnes-sur-Mer loopt tot 3 mei 2027. Openingstijden, tickets en bezoektips.",
     "eyebrow": "Cultuur en erfgoed in Haut-de-Cagnes",
-    "h1": "80 jaar Château-musée Grimaldi",
+    "h1": "Tentoonstelling voor 80 jaar Château-musée Grimaldi in Cagnes-sur-Mer",
     "subtitle": "Une histoire de la collection · Tot 3 mei 2027",
     "published": "13 november 2026",
     "crumb": "Jubileumtentoonstelling",
@@ -309,13 +314,14 @@
     "sources": "Informatie gecontroleerd op 13 november 2026 bij de gemeente en musea van Cagnes-sur-Mer. Openingstijden en tarieven kunnen wijzigen.",
     "announcement": "De aankondiging van de verlenging",
     "read": "De tentoonstelling ontdekken",
-    "badge": "Verlengd tot 3 mei 2027"
+    "badge": "Verlengd tot 3 mei 2027",
+    "restaurant_link": "Ontdek ons restaurant in Haut-de-Cagnes"
   },
   "sv": {
     "title": "Grimaldislottet i Cagnes: 80-årsjubileets utställning | Le Village",
     "description": "Utställningen som firar Château-musée Grimaldis 80 år i Cagnes-sur-Mer förlängs till den 3 maj 2027. Öppettider, entré och tips för Haut-de-Cagnes.",
     "eyebrow": "Kultur och kulturarv i Haut-de-Cagnes",
-    "h1": "Château-musée Grimaldi fyller 80 år",
+    "h1": "Château-musée Grimaldis 80-årsutställning i Cagnes-sur-Mer",
     "subtitle": "Une histoire de la collection · Till den 3 maj 2027",
     "published": "13 november 2026",
     "crumb": "80-årsjubileets utställning",
@@ -361,13 +367,14 @@
     "sources": "Uppgifterna kontrollerades den 13 november 2026 hos staden och museerna i Cagnes-sur-Mer. Öppettider och entrépriser kan ändras.",
     "announcement": "Beskedet om förlängningen",
     "read": "Upptäck utställningen",
-    "badge": "Förlängd till den 3 maj 2027"
+    "badge": "Förlängd till den 3 maj 2027",
+    "restaurant_link": "Upptäck vår restaurang i Haut-de-Cagnes"
   },
   "da": {
     "title": "Grimaldi-slottet i Cagnes: udstilling om 80-årsjubilæet | Le Village",
     "description": "Udstillingen om Château-musée Grimaldis 80-årsjubilæum i Cagnes-sur-Mer er forlænget til 3. maj 2027. Åbningstider, entré og besøgstips til Haut-de-Cagnes.",
     "eyebrow": "Kultur og kulturarv i Haut-de-Cagnes",
-    "h1": "Château-musée Grimaldi fylder 80 år",
+    "h1": "Château-musée Grimaldis 80-års jubilæumsudstilling i Cagnes-sur-Mer",
     "subtitle": "Une histoire de la collection · Indtil 3. maj 2027",
     "published": "13. november 2026",
     "crumb": "Udstilling om 80-årsjubilæet",
@@ -413,13 +420,14 @@
     "sources": "Oplysninger kontrolleret 13. november 2026 hos byen og museerne i Cagnes-sur-Mer. Åbningstider og entrépriser kan ændre sig.",
     "announcement": "Meddelelsen om forlængelsen",
     "read": "Oplev udstillingen",
-    "badge": "Forlænget til 3. maj 2027"
+    "badge": "Forlænget til 3. maj 2027",
+    "restaurant_link": "Oplev vores restaurant i Haut-de-Cagnes"
   },
   "nb": {
     "title": "Grimaldi-slottet i Cagnes: utstilling om 80-årsjubileet | Le Village",
     "description": "Utstillingen om Château-musée Grimaldis 80-årsjubileum i Cagnes-sur-Mer er forlenget til 3. mai 2027. Åpningstider, billetter og tips til Haut-de-Cagnes.",
     "eyebrow": "Kultur og kulturarv i Haut-de-Cagnes",
-    "h1": "Château-musée Grimaldi fyller 80 år",
+    "h1": "Château-musée Grimaldis 80-årsutstilling i Cagnes-sur-Mer",
     "subtitle": "Une histoire de la collection · Til 3. mai 2027",
     "published": "13. november 2026",
     "crumb": "Utstilling om 80-årsjubileet",
@@ -465,13 +473,14 @@
     "sources": "Informasjonen ble kontrollert 13. november 2026 hos byen og museene i Cagnes-sur-Mer. Åpningstider og priser kan endres.",
     "announcement": "Kunngjøringen om forlengelsen",
     "read": "Oppdag utstillingen",
-    "badge": "Forlenget til 3. mai 2027"
+    "badge": "Forlenget til 3. mai 2027",
+    "restaurant_link": "Oppdag restauranten vår i Haut-de-Cagnes"
   },
   "pl": {
     "title": "Zamek Grimaldi w Cagnes: wystawa na 80-lecie muzeum | Le Village",
     "description": "Wystawa z okazji 80-lecia Château-musée Grimaldi w Cagnes-sur-Mer została przedłużona do 3 maja 2027 r. Godziny otwarcia, bilety i pomysły na zwiedzanie.",
     "eyebrow": "Kultura i dziedzictwo w Haut-de-Cagnes",
-    "h1": "80 lat Château-musée Grimaldi",
+    "h1": "Wystawa z okazji 80-lecia Château-musée Grimaldi w Cagnes-sur-Mer",
     "subtitle": "Une histoire de la collection · Do 3 maja 2027 r.",
     "published": "13 listopada 2026 r.",
     "crumb": "Wystawa na 80-lecie muzeum",
@@ -517,13 +526,14 @@
     "sources": "Informacje sprawdzono 13 listopada 2026 r. w mieście i muzeach Cagnes-sur-Mer. Godziny otwarcia i ceny mogą ulec zmianie.",
     "announcement": "Ogłoszenie o przedłużeniu wystawy",
     "read": "Odkryj wystawę",
-    "badge": "Przedłużona do 3 maja 2027 r."
+    "badge": "Przedłużona do 3 maja 2027 r.",
+    "restaurant_link": "Poznaj naszą restaurację w Haut-de-Cagnes"
   },
   "ru": {
     "title": "Замок Гримальди в Кане: выставка к 80-летию музея | Le Village",
     "description": "Выставка к 80-летию Château-musée Grimaldi в Cagnes-sur-Mer продлена до 3 мая 2027 года. Часы работы, билеты и идеи для прогулок по Haut-de-Cagnes.",
     "eyebrow": "Культура и наследие Haut-de-Cagnes",
-    "h1": "80 лет Château-musée Grimaldi",
+    "h1": "Выставка к 80-летию Château-musée Grimaldi в Cagnes-sur-Mer",
     "subtitle": "Une histoire de la collection · До 3 мая 2027 года",
     "published": "13 ноября 2026 года",
     "crumb": "Выставка к 80-летию музея",
@@ -569,13 +579,14 @@
     "sources": "Информация проверена 13 ноября 2026 года по данным города и музеев Cagnes-sur-Mer. Часы работы и цены могут измениться.",
     "announcement": "Объявление о продлении выставки",
     "read": "Познакомиться с выставкой",
-    "badge": "Продлена до 3 мая 2027 года"
+    "badge": "Продлена до 3 мая 2027 года",
+    "restaurant_link": "Наш ресторан в Haut-de-Cagnes"
   },
   "ja": {
     "title": "カーニュのグリマルディ城：美術館80周年記念展 | Le Village",
     "description": "Cagnes-sur-MerのChâteau-musée Grimaldiでは、80周年記念展を2027年5月3日まで延長開催。開館時間、料金、Haut-de-Cagnes散策の情報をご紹介します。",
     "eyebrow": "Haut-de-Cagnesの文化と歴史遺産",
-    "h1": "Château-musée Grimaldiの80周年",
+    "h1": "Cagnes-sur-MerのChâteau-musée Grimaldi開館80周年記念展",
     "subtitle": "Une histoire de la collection · 2027年5月3日まで",
     "published": "2026年11月13日",
     "crumb": "80周年記念展",
@@ -621,13 +632,14 @@
     "sources": "情報は2026年11月13日にCagnes-sur-Mer市および市内美術館の公式情報で確認しました。開館時間や料金は変更される場合があります。",
     "announcement": "会期延長の公式発表",
     "read": "展覧会について詳しく見る",
-    "badge": "2027年5月3日まで延長"
+    "badge": "2027年5月3日まで延長",
+    "restaurant_link": "Haut-de-Cagnesの当レストランをご紹介"
   },
   "zh-CN": {
     "title": "卡涅格里马尔迪城堡：博物馆80周年纪念展 | Le Village",
     "description": "Cagnes-sur-Mer的Château-musée Grimaldi博物馆80周年纪念展延长至2027年5月3日。查看开放时间、票价和Haut-de-Cagnes游览建议。",
     "eyebrow": "Haut-de-Cagnes的文化与历史遗产",
-    "h1": "Château-musée Grimaldi博物馆80周年",
+    "h1": "Cagnes-sur-Mer的Château-musée Grimaldi博物馆80周年纪念展",
     "subtitle": "Une histoire de la collection · 至2027年5月3日",
     "published": "2026年11月13日",
     "crumb": "80周年纪念展",
@@ -673,6 +685,7 @@
     "sources": "信息已于2026年11月13日根据Cagnes-sur-Mer市政府及当地博物馆的官方资料核实。开放时间及票价可能调整。",
     "announcement": "展期延长的官方公告",
     "read": "了解展览",
-    "badge": "延长至2027年5月3日"
+    "badge": "延长至2027年5月3日",
+    "restaurant_link": "了解我们位于Haut-de-Cagnes的餐厅"
   }
 }

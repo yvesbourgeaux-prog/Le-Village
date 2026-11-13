@@ -34,7 +34,11 @@ H = 'font-serif text-3xl md:text-4xl text-village-dark mb-6'
 def markup(lang):
     d=DATA[lang]
     def t(k): return html.escape(d[k])
-    def p(k, cls=P): return f'<p class="{cls}" data-expo-copy="{k}">{t(k)}</p>'
+    def p(k, cls=P):
+        content=t(k)
+        if k=='restaurant_p':
+            content+=' '+link('restaurant_link','/le-village-restaurant-haut-de-cagnes-sur-mer')
+        return f'<p class="{cls}" data-expo-copy="{k}">{content}</p>'
     def h(k, cls=H):
         label=t(k)
         if k=='visit_h':label=label.replace(' ?', '\u00a0?')
