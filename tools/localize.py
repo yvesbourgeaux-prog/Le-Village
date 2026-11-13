@@ -156,3 +156,8 @@ def build(manifest, base):
     sitemap='<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+base+url(lang,m['path'].lstrip('/'))+'</loc></url>' for m in manifest if m['path']!='/404' for lang in LANGS)+'</urlset>'
     (ROOT/'sitemap.xml').write_text(sitemap)
     print('Localized', len(manifest), 'pages in', len(LANGS), 'languages.')
+    # Preserve reviewed editorial links and local metadata after translation.
+    editorial_spec = spec_from_file_location('lv_editorial_seo', ROOT / 'tools/optimize-editorial-seo.py')
+    editorial = module_from_spec(editorial_spec)
+    editorial_spec.loader.exec_module(editorial)
+    editorial.main()
