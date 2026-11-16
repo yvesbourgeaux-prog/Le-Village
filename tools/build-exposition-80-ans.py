@@ -132,7 +132,10 @@ for lang in LANGS:
     if lang!='fr':
         for a in main.select('a[href]'):
             href=a['href']
-            if href.startswith('/') and not href.startswith('/assets/'):a['href']='/'+lang+href
+            if (href.startswith('/') and not href.startswith('//')
+                    and not href.startswith('/assets/')
+                    and href != '/'+lang and not href.startswith('/'+lang+'/')):
+                a['href']='/'+lang+href
     s.main.replace_with(main)
     for e in s.select('[data-i18n]'):
         # Common chrome is already translated. The article uses its own catalogue.

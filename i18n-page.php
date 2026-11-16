@@ -19,6 +19,15 @@ header('Content-Language: ' . $lang);
 header('Cache-Control: public, max-age=300');
 // Refresh the shared stylesheet in existing language packs as well as new builds.
 $document = $data[$slug] ?? '';
+// Repair the exhibition breadcrumbs in already generated language packs.
+// The generator also prevents this duplicate locale prefix in future builds.
+if ($slug === 'exposition-80-ans-chateau-musee-grimaldi-cagnes-sur-mer') {
+    $document = str_replace(
+        ['href="/' . $lang . '/' . $lang . '/"', 'href="/' . $lang . '/' . $lang . '/blog-list"'],
+        ['href="/' . $lang . '/"', 'href="/' . $lang . '/blog-list"'],
+        $document
+    );
+}
 require_once __DIR__ . '/page-delivery.php';
 $document = lvPageDelivery($document, $lang, $slug);
 require_once __DIR__ . '/autumn-menu-delivery.php';
